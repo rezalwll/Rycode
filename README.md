@@ -1,4 +1,4 @@
-# Rycode Studio — رایکد استودیو
+# RYCODE STUDIO — استودیو رایکد
 
 Creative studio website built with Next.js 16 App Router, React 19, strict
 TypeScript and Tailwind CSS 4. Includes 17 public routes: home, work, six project
@@ -36,10 +36,12 @@ node scripts/verify-locales.mjs
 ```
 
 Set `VERIFY_URL` to the running server URL when using a different port.
+Both verification scripts cover English and Persian routes, including missing
+pages. The locale check also validates translated copy, metadata and links.
 
 ## Branding and source
 
-- `src/components/BrandLogo.tsx` renders the shared Rycode Studio identity.
+- `src/components/BrandLogo.tsx` renders the shared uppercase RYCODE STUDIO identity.
 - `src/app/brand.css` controls the header, footer and scrolling wordmarks.
 - `public/brand` includes the supplied original logos and optimized WebP assets.
   Red/white is used on dark backgrounds; red/charcoal on light backgrounds.
@@ -48,6 +50,11 @@ Set `VERIFY_URL` to the running server URL when using a different port.
   contains shared interactions. All fonts, videos and images are stored locally.
 - `.reference/routes.json` and `assets.json` support the existing verification
   script. Other local capture files are excluded from Git.
+- `src/app/hover.css` restores button fills, arrow travel, rotating SVGs,
+  footer underlines, and project/article previews for hover and keyboard focus.
+  Hidden hover layers are plain elements; scroll reveals never activate them.
+  Reveal observers measure the final box so entrance transforms cannot leave
+  controls permanently clipped. Reduced-motion preferences are respected.
 
 The contact form currently validates locally and displays a preview status; it
 does not deliver messages. Email links from the source template now point to the

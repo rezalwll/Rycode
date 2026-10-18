@@ -3,6 +3,7 @@
 .framer-ez4Wr,
 .framer-n76Tz .framer-text,
 .framer-fR17n .framer-text,
+.framer-rlt6y .framer-text,
 .framer-16cun4g .framer-text {
   transition:
     background-color 0.4s linear,
@@ -52,6 +53,9 @@
   width: auto;
   transition: left 0.4s linear;
 }
+.framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42) .framer-1glyh7l {
+  left: calc(100% - 42px);
+}
 .framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-1glyh7l {
   left: 4px;
 }
@@ -76,7 +80,7 @@
   transition: transform 0.4s linear;
 }
 .framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-7wq510 {
-  transform: rotate(45deg);
+  transform: rotate(45deg) !important;
 }
 .framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42):is(:hover, :focus-visible)
   .framer-7wq510 {
@@ -140,7 +144,7 @@
   left: 0;
   bottom: 0;
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: center;
   transition: transform 0.4s linear;
 }
 .framer-fR17n:is(:hover, :focus-visible) .framer-zvnvf1 {
@@ -158,6 +162,11 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
 }
 
 /* Desktop work cards blur behind the alternate project preview. */
+.framer-7wCKM .framer-hrddsa {
+  pointer-events: none;
+  bottom: auto;
+  top: 35%;
+}
 .framer-7wCKM
   :is(
     .framer-1qqezkx,
@@ -169,11 +178,46 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
   transition:
     transform 0.4s linear,
     opacity 0.4s linear,
+    top 0.4s linear,
     backdrop-filter 0.4s linear,
     background-color 0.4s linear;
 }
 .framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-10vim37 {
   backdrop-filter: blur(17px) !important;
+}
+
+/* Article previews use their own captured variants. They are nested in Links,
+   so keyboard focus belongs to the outer anchor, not the preview div. */
+.framer-X0SPq :is(.framer-1o9ixez, .framer-1jl6no1) {
+  pointer-events: none;
+  transition:
+    opacity 0.4s linear,
+    top 0.4s linear,
+    transform 0.4s linear;
+}
+.framer-X0SPq .framer-1jl6no1 {
+  bottom: auto;
+  top: 30%;
+}
+a:is(:hover, :focus-visible)
+  .framer-X0SPq:is(.framer-v-o0znmx, .framer-v-1tgtv73)
+  :is(.framer-1o9ixez, .framer-1jl6no1) {
+  opacity: 1 !important;
+}
+a:is(:hover, :focus-visible) .framer-X0SPq.framer-v-o0znmx .framer-1jl6no1 {
+  top: 15.1393%;
+  left: 15.1377%;
+}
+a:is(:hover, :focus-visible) .framer-X0SPq.framer-v-1tgtv73 .framer-1jl6no1 {
+  width: 70%;
+  top: 15%;
+  left: 14.6978%;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 4px;
 }
 .framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-1oq7wyn {
   opacity: 0 !important;
@@ -186,14 +230,13 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
 .framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-6aujbd {
   background-color: rgb(0 0 0 / 30%) !important;
 }
-.framer-7wCKM.framer-v-1vmciqn:is(:hover, :focus-visible)
-  .framer-1qqezkx {
+.framer-7wCKM.framer-v-1vmciqn:is(:hover, :focus-visible) .framer-1qqezkx {
   transform: scale(1.05) !important;
 }
 
 /* Contact submit uses the same expanding red fill and rotating arrow. */
 .framer-Irrnf.framer-v-1wjqi8p .framer-6vonoc {
-  left: calc(100% - 44px);
+  left: calc(100% - 42px);
   width: auto;
   transition:
     left 0.4s linear,
@@ -213,13 +256,20 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
   background-color: var(--brand-accent) !important;
 }
 .framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-bhgblo {
-  transform: rotate(45deg);
+  transform: rotate(45deg) !important;
 }
 .framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-text {
   color: #fff !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .framer-obWCA *,
+  .framer-Irrnf *,
+  .framer-7wCKM *,
+  .framer-X0SPq *,
+  .framer-fR17n * {
+    transition: none !important;
+  }
   /* Keep color/focus feedback while removing travel and duplicate-icon motion. */
   .framer-ez4Wr :is(.framer-g86u4c, .framer-tnk03u),
   .framer-Asbdw :is(.framer-gw8dsj, .framer-cnaow8),

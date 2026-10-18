@@ -113,12 +113,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -190,7 +188,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -294,12 +292,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -371,7 +367,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -475,12 +471,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -552,7 +546,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -661,12 +655,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -738,7 +730,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -842,12 +834,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -919,7 +909,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1023,12 +1013,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -1100,7 +1088,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1209,12 +1197,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -1286,7 +1272,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1390,12 +1376,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -1467,7 +1451,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1571,12 +1555,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -1648,7 +1630,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1757,12 +1739,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -1834,7 +1814,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -1938,12 +1918,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2015,7 +1993,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -2119,12 +2097,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2196,7 +2172,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -2305,12 +2281,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2382,7 +2356,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -2486,12 +2460,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2563,7 +2535,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -2667,12 +2639,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2744,7 +2714,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -2853,12 +2823,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -2930,7 +2898,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -3034,12 +3002,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -3111,7 +3077,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>
@@ -3215,12 +3181,10 @@ export async function WorkWorkSection() {
                         </div>
                       </div>
                     </div>
-                    <Reveal
+                    <div
                       className="framer-hrddsa"
                       data-framer-name="Hover"
                       style={referenceStyles.s888a330fb5}
-                      as="div"
-                      from="none"
                     >
                       <div className="framer-1qyebu1">
                         <div
@@ -3292,7 +3256,7 @@ export async function WorkWorkSection() {
                           </div>
                         </div>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
                 </Reveal>
               </div>

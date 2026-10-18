@@ -66,18 +66,14 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
-                        <Reveal
+                        ></div>
+                        <div
                           className="framer-1jl6no1"
                           style={referenceStyles.s6e17375e26}
-                          as="div"
-                          from="none"
                         >
                           <div
                             data-framer-background-image-wrapper="true"
@@ -96,7 +92,7 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                               style={referenceStyles.s258149b79d}
                             />
                           </div>
-                        </Reveal>
+                        </div>
                       </div>
                       <div
                         className="framer-1v7n3h6"
@@ -193,13 +189,11 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
+                        ></div>
                       </div>
                       <div
                         className="framer-1v7n3h6"
@@ -296,13 +290,11 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
+                        ></div>
                       </div>
                       <div
                         className="framer-1v7n3h6"
@@ -406,18 +398,14 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
-                        <Reveal
+                        ></div>
+                        <div
                           className="framer-1jl6no1"
                           style={referenceStyles.s6e17375e26}
-                          as="div"
-                          from="none"
                         >
                           <div
                             data-framer-background-image-wrapper="true"
@@ -436,7 +424,7 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                               style={referenceStyles.s258149b79d}
                             />
                           </div>
-                        </Reveal>
+                        </div>
                       </div>
                       <div
                         className="framer-1v7n3h6"
@@ -535,13 +523,11 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
+                        ></div>
                       </div>
                       <div
                         className="framer-1v7n3h6"
@@ -640,13 +626,11 @@ export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection(
                             />
                           </div>
                         </div>
-                        <Reveal
+                        <div
                           className="framer-1o9ixez"
                           data-framer-name="Layer"
                           style={referenceStyles.s47ade10003}
-                          as="div"
-                          from="none"
-                        ></Reveal>
+                        ></div>
                       </div>
                       <div
                         className="framer-1v7n3h6"

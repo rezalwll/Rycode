@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import { load } from "cheerio";
 
-const base = process.env.VERIFY_URL || "http://127.0.0.1:3020";
+const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
 const routes = JSON.parse(await readFile(".reference/routes.json", "utf8"));
 const results = [];
 for (const locale of ["en", "fa"]) {

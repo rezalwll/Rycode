@@ -30,6 +30,7 @@ type MotionProps = HTMLAttributes<HTMLElement> & { as?: Tag };
 export function Reveal({
   as: Tag = "div",
   from = "translateY(24px)",
+  style,
   ...props
 }: MotionProps & { from?: string }) {
   const ref = useRef<HTMLElement>(null);
@@ -59,7 +60,7 @@ export function Reveal({
       },
       {
         threshold: 0,
-        rootMargin: `${Math.max(0, Number(from.match(/translateY\((-?[\d.]+)px\)/)?.[1] ?? 0))}px ${Math.max(0, Number(from.match(/translateX\((-?[\d.]+)px\)/)?.[1] ?? 0))}px`,
+        rootMargin: "0px",
       },
     );
     if (reduced()) {
@@ -74,6 +75,9 @@ export function Reveal({
   return (
     <Tag
       {...props}
+      // Observe the final box. A captured entrance transform can put a child
+      // outside an ancestor's clipping area forever (notably the submit CTA).
+      style={{ ...style, transform: "none" }}
       ref={(element: HTMLElement | null) => {
         ref.current = element;
       }}
