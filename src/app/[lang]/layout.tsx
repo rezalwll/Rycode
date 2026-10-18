@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import "../brand.css";
 import "../hover.css";
+import "../line-trace.css";
 import "../locale.css";
 import { getLocale } from "@/lib/i18n-server";
 import { LocaleProvider } from "@/components/LocaleProvider";

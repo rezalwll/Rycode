@@ -1,0 +1,51 @@
+[data-line-trace] {
+  --trace-distance: var(--trace-desktop);
+  pointer-events: none;
+  animation: line-trace-x 6s linear infinite;
+  animation-play-state: paused;
+}
+
+[data-line-trace="y"] {
+  animation-name: line-trace-y;
+  animation-duration: 5s;
+}
+
+[data-line-trace][data-running="true"] {
+  animation-play-state: running;
+}
+
+@keyframes line-trace-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--trace-distance));
+  }
+}
+
+@keyframes line-trace-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--trace-distance));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  [data-line-trace] {
+    --trace-distance: var(--trace-tablet);
+  }
+}
+
+@media (max-width: 767.98px) {
+  [data-line-trace] {
+    --trace-distance: var(--trace-mobile);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-line-trace] {
+    animation: none;
+  }
+}

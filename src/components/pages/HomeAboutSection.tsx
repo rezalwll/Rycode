@@ -1,4 +1,5 @@
 import { getTranslations } from "@/lib/i18n-server";
+import { LineTrace } from "@/components/LineTrace";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
@@ -13,31 +14,31 @@ export async function HomeAboutSection() {
       <div className="framer-1m2h2wo" data-framer-name="Container">
         <div className="framer-1mjkhke" data-framer-name="Line Top">
           <div className="ssr-variant">
-            <div
+            <LineTrace
               className="framer-p5noej"
-              style={referenceStyles.s042daa9eb6}
-            ></div>
+              axis="x"
+              distance={1093}
+              tabletDistance={683}
+              mobileDistance={327}
+            />
           </div>
         </div>
         <div className="framer-1ba9znz" data-framer-name="Line Botton">
           <div className="ssr-variant">
-            <div
+            <LineTrace
               className="framer-1rm4asc"
-              style={referenceStyles.s042daa9eb6}
-            ></div>
+              axis="x"
+              distance={1092}
+              tabletDistance={680}
+              mobileDistance={328}
+            />
           </div>
         </div>
         <div className="framer-6apxzo" data-framer-name="Line Right">
-          <div
-            className="framer-9jzuei"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-9jzuei" axis="y" distance={640} />
         </div>
         <div className="framer-1m51ksp" data-framer-name="Line Left">
-          <div
-            className="framer-1r0a323"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1r0a323" axis="y" distance={640} />
         </div>
         <div className="ssr-variant hidden-1fs2pis">
           <div className="framer-1hk3vv6">
