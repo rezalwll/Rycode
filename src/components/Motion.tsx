@@ -1,6 +1,7 @@
 "use client";
 import {
   Children,
+  Fragment,
   cloneElement,
   isValidElement,
   useEffect,
@@ -10,6 +11,7 @@ import {
   type ReactNode,
   type VideoHTMLAttributes,
 } from "react";
+import { useLocale } from "./LocaleProvider";
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 type Tag =
   | "div"
@@ -81,14 +83,16 @@ export function Reveal({
 export function SplitText({
   as: Tag = "div",
   scrollLinked = false,
+  localizedText,
+  children,
   ...props
-}: MotionProps & { scrollLinked?: boolean }) {
+}: MotionProps & { scrollLinked?: boolean; localizedText?: string }) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
     const chars = root.querySelectorAll<HTMLElement>(
-      'span[style*="opacity"],span[style*="filter"]',
+      'span[style*="opacity"],span[style*="filter"],[data-animated-word]',
     );
     let animations: Animation[] = [];
     if (scrollLinked) {
@@ -164,14 +168,30 @@ export function SplitText({
       observer.disconnect();
       animations.forEach((animation) => animation.cancel());
     };
-  }, [scrollLinked]);
+  }, [scrollLinked, localizedText]);
   return (
     <Tag
       {...props}
+      aria-label={localizedText || props["aria-label"]}
+      data-localized-split={localizedText ? "true" : undefined}
       ref={(element: HTMLElement | null) => {
         ref.current = element;
       }}
-    />
+    >
+      {localizedText
+        ? localizedText.split(" ").map((word, index) => (
+            <Fragment key={index}>
+              {index > 0 ? " " : null}
+              <span
+                data-animated-word=""
+                style={{ display: "inline-block", opacity: 1 }}
+              >
+                {word}
+              </span>
+            </Fragment>
+          ))
+        : children}
+    </Tag>
   );
 }
 export function MediaVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
@@ -211,6 +231,7 @@ export function Carousel({
   items: ReactNode[];
   kind: "hero" | "stats";
 }) {
+  const { t } = useLocale();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -250,7 +271,7 @@ export function Carousel({
       className={`${className} relative! overflow-hidden!`}
       style={style}
       aria-roledescription="carousel"
-      aria-label={kind === "hero" ? "Studio showcase" : "Studio statistics"}
+      aria-label={t(kind === "hero" ? "Studio showcase" : "Studio statistics")}
       tabIndex={0}
       data-active-slide={active}
       onDragStart={(event) => event.preventDefault()}
@@ -312,6 +333,7 @@ export function Counter({
   suffix,
   ...props
 }: HTMLAttributes<HTMLHeadingElement> & { value: number; suffix: string }) {
+  const { t } = useLocale();
   const [current, setCurrent] = useState(0);
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -336,9 +358,8 @@ export function Counter({
     };
   }, [value]);
   return (
-    <h2 {...props} ref={ref} aria-label={value + suffix}>
-      {current}
-      {suffix}
+    <h2 {...props} ref={ref} aria-label={t(value + suffix)} dir="ltr">
+      {t(current + suffix)}
     </h2>
   );
 }
@@ -387,6 +408,7 @@ export function Ticker({
     <ul
       {...props}
       ref={ref}
+      dir="ltr"
       style={{ ...style, width: "max-content", maxWidth: "none", opacity: 1 }}
     >
       {children}

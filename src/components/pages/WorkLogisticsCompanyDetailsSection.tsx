@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function WorkLogisticsCompanyDetailsSection() {
+export async function WorkLogisticsCompanyDetailsSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-1ucgqp2" data-framer-name="Details Section">
       <div className="framer-14hxjb7" data-framer-name="Container">
@@ -117,7 +119,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                     dir="auto"
                     style={referenceStyles.s5a374ddac4}
                   >
-                    {"[04 Logistics Company"}
+                    {t("[04 Logistics Company")}
                   </h2>
                 </Reveal>
                 <Reveal
@@ -132,9 +134,9 @@ export function WorkLogisticsCompanyDetailsSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-uttc6m"
                   >
-                    {
-                      "Created for logistics providers, this website combines professional design, intuitive navigation, and reliable functionality to simplify operations, build customer confidence, and support business growth."
-                    }
+                    {t(
+                      "Created for logistics providers, this website combines professional design, intuitive navigation, and reliable functionality to simplify operations, build customer confidence, and support business growth.",
+                    )}
                   </h5>
                 </Reveal>
               </div>
@@ -159,7 +161,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Year]"}
+                        {t("[Year]")}
                       </h5>
                     </div>
                     <div
@@ -173,7 +175,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s0f3867a315}
                       >
-                        {"2022"}
+                        {t("2022")}
                       </p>
                     </div>
                   </div>
@@ -189,7 +191,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Client|"}
+                        {t("[Client|")}
                       </h5>
                     </div>
                     <div className="ssr-variant hidden-1xydt6v">
@@ -204,7 +206,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s0f3867a315}
                         >
-                          {"William Parker"}
+                          {t("William Parker")}
                         </p>
                       </div>
                     </div>
@@ -220,7 +222,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s402bdbd007}
                         >
-                          {"William Parker"}
+                          {t("William Parker")}
                         </p>
                       </div>
                     </div>
@@ -237,7 +239,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Industry]"}
+                        {t("[Industry]")}
                       </h5>
                     </div>
                     <div
@@ -251,7 +253,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s0f3867a315}
                       >
-                        {"Finance & SaaS"}
+                        {t("Finance & SaaS")}
                       </p>
                     </div>
                   </div>
@@ -275,7 +277,7 @@ export function WorkLogisticsCompanyDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s2a1463207d}
                         >
-                          {"View All Work"}
+                          {t("View All Work")}
                         </p>
                       </div>
                       <div className="framer-1glyh7l">

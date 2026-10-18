@@ -1,6 +1,8 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText, MediaVideo, Ticker } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeTestimonialsSection() {
+export async function HomeTestimonialsSection() {
+  const { t, locale } = await getTranslations();
   return (
     <section className="framer-1pbzewd" data-framer-name="Testimonials Section">
       <div className="framer-1xgbvwj" data-framer-name="Container">
@@ -43,7 +45,7 @@ export function HomeTestimonialsSection() {
                       dir="auto"
                       style={referenceStyles.s2a1463207d}
                     >
-                      {"TESTIMONIALS"}
+                      {t("TESTIMONIALS")}
                     </p>
                   </div>
                 </div>
@@ -59,6 +61,11 @@ export function HomeTestimonialsSection() {
                   style={referenceStyles.s3f28666393}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Trusted by growing brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"T"}</span>
@@ -108,6 +115,11 @@ export function HomeTestimonialsSection() {
                   style={referenceStyles.s9f2ef076de}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Trusted by growing brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"T"}</span>
@@ -157,6 +169,11 @@ export function HomeTestimonialsSection() {
                   style={referenceStyles.s1912e89047}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Trusted by growing brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"T"}</span>
@@ -270,7 +287,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/8f6c1ab28661a85a.jpg 512w, /assets/c659897aba3bd566.jpg 1024w, /assets/827575ed1b9418b1.jpg 2048w, /assets/1d40644d1e80822b.jpg 3408w"
                                         src="/assets/1d40644d1e80822b.jpg"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -291,7 +308,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Sarah Mitchell"}
+                                        {t("Sarah Mitchell")}
                                       </p>
                                     </div>
                                     <div
@@ -305,7 +322,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Founder, Nova Studio"}
+                                        {t("Founder, Nova Studio")}
                                       </p>
                                     </div>
                                   </div>
@@ -376,7 +393,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"This adventure exceeded'}
+                                    {t('"This adventure exceeded')}
                                   </p>
                                 </div>
                                 <div
@@ -390,9 +407,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "all my expectations and gave me memories I'll cherish forever.\""
-                                    }
+                                    {t(
+                                      "all my expectations and gave me memories I'll cherish forever.\"",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -416,7 +433,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -433,7 +450,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -450,7 +467,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -467,7 +484,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -484,7 +501,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -502,7 +519,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"09/30/2024"}
+                                  {t("09/30/2024")}
                                 </p>
                               </div>
                             </div>
@@ -564,7 +581,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/8f6c1ab28661a85a.jpg 512w, /assets/c659897aba3bd566.jpg 1024w, /assets/827575ed1b9418b1.jpg 2048w, /assets/1d40644d1e80822b.jpg 3408w"
                                         src="/assets/1d40644d1e80822b.jpg"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -585,7 +602,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Sarah Mitchell"}
+                                        {t("Sarah Mitchell")}
                                       </p>
                                     </div>
                                     <div
@@ -599,7 +616,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Founder, Nova Studio"}
+                                        {t("Founder, Nova Studio")}
                                       </p>
                                     </div>
                                   </div>
@@ -668,7 +685,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"This adventure exceeded'}
+                                    {t('"This adventure exceeded')}
                                   </p>
                                 </div>
                                 <div
@@ -682,9 +699,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "all my expectations and gave me memories I'll cherish forever.\""
-                                    }
+                                    {t(
+                                      "all my expectations and gave me memories I'll cherish forever.\"",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -707,7 +724,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -723,7 +740,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -739,7 +756,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -755,7 +772,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -771,7 +788,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -789,7 +806,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"09/30/2024"}
+                                  {t("09/30/2024")}
                                 </p>
                               </div>
                             </div>
@@ -859,7 +876,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/e9f39861569f16ca.png 512w, /assets/ee5804a1de978294.png 1024w, /assets/3044b2ec97d6d314.png 1200w"
                                         src="/assets/3044b2ec97d6d314.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -880,7 +897,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"James Carter"}
+                                        {t("James Carter")}
                                       </p>
                                     </div>
                                     <div
@@ -894,7 +911,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"Marketing Director"}
+                                        {t("Marketing Director")}
                                       </p>
                                     </div>
                                   </div>
@@ -970,7 +987,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -987,7 +1004,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1004,7 +1021,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1021,7 +1038,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1038,7 +1055,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1056,7 +1073,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/22/2025"}
+                                  {t("06/22/2025")}
                                 </p>
                               </div>
                             </div>
@@ -1121,7 +1138,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/e9f39861569f16ca.png 512w, /assets/ee5804a1de978294.png 1024w, /assets/3044b2ec97d6d314.png 1200w"
                                         src="/assets/3044b2ec97d6d314.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1142,7 +1159,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"James Carter"}
+                                        {t("James Carter")}
                                       </p>
                                     </div>
                                     <div
@@ -1156,7 +1173,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"Marketing Director"}
+                                        {t("Marketing Director")}
                                       </p>
                                     </div>
                                   </div>
@@ -1229,7 +1246,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1245,7 +1262,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1261,7 +1278,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1277,7 +1294,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1293,7 +1310,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1311,7 +1328,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/22/2025"}
+                                  {t("06/22/2025")}
                                 </p>
                               </div>
                             </div>
@@ -1384,7 +1401,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/8e423f24776983e8.png 512w, /assets/a10e40c37b2a4df4.png 1024w, /assets/c8ea5a34b1dde78d.png 1200w"
                                         src="/assets/c8ea5a34b1dde78d.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1405,7 +1422,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Emily Johnson"}
+                                        {t("Emily Johnson")}
                                       </p>
                                     </div>
                                     <div
@@ -1419,7 +1436,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Startup Founder"}
+                                        {t("Startup Founder")}
                                       </p>
                                     </div>
                                   </div>
@@ -1490,7 +1507,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"Exceptional from start to finish."'}
+                                    {t('"Exceptional from start to finish."')}
                                   </p>
                                 </div>
                                 <div
@@ -1504,9 +1521,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "The process was seamless, communication was excellent, and the final result exceeded every expectation."
-                                    }
+                                    {t(
+                                      "The process was seamless, communication was excellent, and the final result exceeded every expectation.",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -1530,7 +1547,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1547,7 +1564,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1564,7 +1581,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1581,7 +1598,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1598,7 +1615,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1616,7 +1633,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"07/26/2025"}
+                                  {t("07/26/2025")}
                                 </p>
                               </div>
                             </div>
@@ -1678,7 +1695,7 @@ export function HomeTestimonialsSection() {
                                         sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                         srcSet="/assets/8e423f24776983e8.png 512w, /assets/a10e40c37b2a4df4.png 1024w, /assets/c8ea5a34b1dde78d.png 1200w"
                                         src="/assets/c8ea5a34b1dde78d.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1699,7 +1716,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Emily Johnson"}
+                                        {t("Emily Johnson")}
                                       </p>
                                     </div>
                                     <div
@@ -1713,7 +1730,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Startup Founder"}
+                                        {t("Startup Founder")}
                                       </p>
                                     </div>
                                   </div>
@@ -1782,7 +1799,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"Exceptional from start to finish."'}
+                                    {t('"Exceptional from start to finish."')}
                                   </p>
                                 </div>
                                 <div
@@ -1796,9 +1813,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "The process was seamless, communication was excellent, and the final result exceeded every expectation."
-                                    }
+                                    {t(
+                                      "The process was seamless, communication was excellent, and the final result exceeded every expectation.",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -1821,7 +1838,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1837,7 +1854,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1853,7 +1870,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1869,7 +1886,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1885,7 +1902,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -1903,7 +1920,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"07/26/2025"}
+                                  {t("07/26/2025")}
                                 </p>
                               </div>
                             </div>
@@ -1972,7 +1989,7 @@ export function HomeTestimonialsSection() {
                                         width="223"
                                         height="201"
                                         src="/assets/1e6393cd4971d927.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1993,7 +2010,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"Michael Brown"}
+                                        {t("Michael Brown")}
                                       </p>
                                     </div>
                                     <div
@@ -2007,7 +2024,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"CEO, Bright Labs"}
+                                        {t("CEO, Bright Labs")}
                                       </p>
                                     </div>
                                   </div>
@@ -2083,7 +2100,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2100,7 +2117,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2117,7 +2134,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2134,7 +2151,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2151,7 +2168,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2169,7 +2186,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/17/2025"}
+                                  {t("06/17/2025")}
                                 </p>
                               </div>
                             </div>
@@ -2232,7 +2249,7 @@ export function HomeTestimonialsSection() {
                                         width="223"
                                         height="201"
                                         src="/assets/1e6393cd4971d927.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -2253,7 +2270,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"Michael Brown"}
+                                        {t("Michael Brown")}
                                       </p>
                                     </div>
                                     <div
@@ -2267,7 +2284,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"CEO, Bright Labs"}
+                                        {t("CEO, Bright Labs")}
                                       </p>
                                     </div>
                                   </div>
@@ -2340,7 +2357,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2356,7 +2373,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2372,7 +2389,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2388,7 +2405,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2404,7 +2421,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2422,7 +2439,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/17/2025"}
+                                  {t("06/17/2025")}
                                 </p>
                               </div>
                             </div>
@@ -2494,7 +2511,7 @@ export function HomeTestimonialsSection() {
                                         width="352"
                                         height="352"
                                         src="/assets/141b8568e1e9b894.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -2515,7 +2532,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Olivia Davis"}
+                                        {t("Olivia Davis")}
                                       </p>
                                     </div>
                                     <div
@@ -2529,7 +2546,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Product Manager"}
+                                        {t("Product Manager")}
                                       </p>
                                     </div>
                                   </div>
@@ -2600,7 +2617,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"A true creative partner."'}
+                                    {t('"A true creative partner."')}
                                   </p>
                                 </div>
                                 <div
@@ -2614,9 +2631,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of."
-                                    }
+                                    {t(
+                                      "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of.",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -2640,7 +2657,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2657,7 +2674,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2674,7 +2691,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2691,7 +2708,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2708,7 +2725,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2726,7 +2743,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"06/25/2025"}
+                                  {t("06/25/2025")}
                                 </p>
                               </div>
                             </div>
@@ -2786,7 +2803,7 @@ export function HomeTestimonialsSection() {
                                         width="352"
                                         height="352"
                                         src="/assets/141b8568e1e9b894.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -2807,7 +2824,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s2a1463207d}
                                       >
-                                        {"Olivia Davis"}
+                                        {t("Olivia Davis")}
                                       </p>
                                     </div>
                                     <div
@@ -2821,7 +2838,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {"Product Manager"}
+                                        {t("Product Manager")}
                                       </p>
                                     </div>
                                   </div>
@@ -2890,7 +2907,7 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {'"A true creative partner."'}
+                                    {t('"A true creative partner."')}
                                   </p>
                                 </div>
                                 <div
@@ -2904,9 +2921,9 @@ export function HomeTestimonialsSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {
-                                      "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of."
-                                    }
+                                    {t(
+                                      "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of.",
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -2929,7 +2946,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2945,7 +2962,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2961,7 +2978,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2977,7 +2994,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -2993,7 +3010,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3011,7 +3028,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"06/25/2025"}
+                                  {t("06/25/2025")}
                                 </p>
                               </div>
                             </div>
@@ -3080,7 +3097,7 @@ export function HomeTestimonialsSection() {
                                         width="168"
                                         height="168"
                                         src="/assets/f442c120406ab191.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -3101,7 +3118,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"Daniel Wilson"}
+                                        {t("Daniel Wilson")}
                                       </p>
                                     </div>
                                     <div
@@ -3115,7 +3132,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"Creative Director"}
+                                        {t("Creative Director")}
                                       </p>
                                     </div>
                                   </div>
@@ -3191,7 +3208,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3208,7 +3225,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3225,7 +3242,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3242,7 +3259,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3259,7 +3276,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3277,7 +3294,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/09/2025"}
+                                  {t("06/09/2025")}
                                 </p>
                               </div>
                             </div>
@@ -3340,7 +3357,7 @@ export function HomeTestimonialsSection() {
                                         width="168"
                                         height="168"
                                         src="/assets/f442c120406ab191.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -3361,7 +3378,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"Daniel Wilson"}
+                                        {t("Daniel Wilson")}
                                       </p>
                                     </div>
                                     <div
@@ -3375,7 +3392,7 @@ export function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {"Creative Director"}
+                                        {t("Creative Director")}
                                       </p>
                                     </div>
                                   </div>
@@ -3448,7 +3465,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3464,7 +3481,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3480,7 +3497,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3496,7 +3513,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3512,7 +3529,7 @@ export function HomeTestimonialsSection() {
                                       width="68"
                                       height="65"
                                       src="/assets/715245a6807fe9ab.png"
-                                      alt="Icon"
+                                      alt={t("Icon")}
                                       className="w-full! h-full!"
                                       style={referenceStyles.s1100a320a2}
                                     />
@@ -3530,7 +3547,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"06/09/2025"}
+                                  {t("06/09/2025")}
                                 </p>
                               </div>
                             </div>
@@ -3606,7 +3623,7 @@ export function HomeTestimonialsSection() {
                                   sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                   srcSet="/assets/8f6c1ab28661a85a.jpg 512w, /assets/c659897aba3bd566.jpg 1024w, /assets/827575ed1b9418b1.jpg 2048w, /assets/1d40644d1e80822b.jpg 3408w"
                                   src="/assets/1d40644d1e80822b.jpg"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -3627,7 +3644,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"Sarah Mitchell"}
+                                  {t("Sarah Mitchell")}
                                 </p>
                               </div>
                               <div
@@ -3641,7 +3658,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s0c39c3123b}
                                 >
-                                  {"Founder, Nova Studio"}
+                                  {t("Founder, Nova Studio")}
                                 </p>
                               </div>
                             </div>
@@ -3712,7 +3729,7 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {'"This adventure exceeded'}
+                              {t('"This adventure exceeded')}
                             </p>
                           </div>
                           <div
@@ -3726,9 +3743,9 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {
-                                "all my expectations and gave me memories I'll cherish forever.\""
-                              }
+                              {t(
+                                "all my expectations and gave me memories I'll cherish forever.\"",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -3752,7 +3769,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -3769,7 +3786,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -3786,7 +3803,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -3803,7 +3820,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -3820,7 +3837,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -3838,7 +3855,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.s2a1463207d}
                           >
-                            {"09/30/2024"}
+                            {t("09/30/2024")}
                           </p>
                         </div>
                       </div>
@@ -3898,7 +3915,7 @@ export function HomeTestimonialsSection() {
                                   sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                   srcSet="/assets/e9f39861569f16ca.png 512w, /assets/ee5804a1de978294.png 1024w, /assets/3044b2ec97d6d314.png 1200w"
                                   src="/assets/3044b2ec97d6d314.png"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -3919,7 +3936,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"James Carter"}
+                                  {t("James Carter")}
                                 </p>
                               </div>
                               <div
@@ -3933,7 +3950,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s833ee3534c}
                                 >
-                                  {"Marketing Director"}
+                                  {t("Marketing Director")}
                                 </p>
                               </div>
                             </div>
@@ -4009,7 +4026,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4026,7 +4043,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4043,7 +4060,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4060,7 +4077,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4077,7 +4094,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4095,7 +4112,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"06/22/2025"}
+                            {t("06/22/2025")}
                           </p>
                         </div>
                       </div>
@@ -4158,7 +4175,7 @@ export function HomeTestimonialsSection() {
                                   sizes="(min-width: 1200px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px, (max-width: 767.98px) 41px"
                                   srcSet="/assets/8e423f24776983e8.png 512w, /assets/a10e40c37b2a4df4.png 1024w, /assets/c8ea5a34b1dde78d.png 1200w"
                                   src="/assets/c8ea5a34b1dde78d.png"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -4179,7 +4196,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"Emily Johnson"}
+                                  {t("Emily Johnson")}
                                 </p>
                               </div>
                               <div
@@ -4193,7 +4210,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s0c39c3123b}
                                 >
-                                  {"Startup Founder"}
+                                  {t("Startup Founder")}
                                 </p>
                               </div>
                             </div>
@@ -4264,7 +4281,7 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {'"Exceptional from start to finish."'}
+                              {t('"Exceptional from start to finish."')}
                             </p>
                           </div>
                           <div
@@ -4278,9 +4295,9 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {
-                                "The process was seamless, communication was excellent, and the final result exceeded every expectation."
-                              }
+                              {t(
+                                "The process was seamless, communication was excellent, and the final result exceeded every expectation.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -4304,7 +4321,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4321,7 +4338,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4338,7 +4355,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4355,7 +4372,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4372,7 +4389,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4390,7 +4407,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.s2a1463207d}
                           >
-                            {"07/26/2025"}
+                            {t("07/26/2025")}
                           </p>
                         </div>
                       </div>
@@ -4449,7 +4466,7 @@ export function HomeTestimonialsSection() {
                                   width="223"
                                   height="201"
                                   src="/assets/1e6393cd4971d927.png"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -4470,7 +4487,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"Michael Brown"}
+                                  {t("Michael Brown")}
                                 </p>
                               </div>
                               <div
@@ -4484,7 +4501,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s833ee3534c}
                                 >
-                                  {"CEO, Bright Labs"}
+                                  {t("CEO, Bright Labs")}
                                 </p>
                               </div>
                             </div>
@@ -4560,7 +4577,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4577,7 +4594,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4594,7 +4611,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4611,7 +4628,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4628,7 +4645,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4646,7 +4663,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"06/17/2025"}
+                            {t("06/17/2025")}
                           </p>
                         </div>
                       </div>
@@ -4708,7 +4725,7 @@ export function HomeTestimonialsSection() {
                                   width="352"
                                   height="352"
                                   src="/assets/141b8568e1e9b894.png"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -4729,7 +4746,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s2a1463207d}
                                 >
-                                  {"Olivia Davis"}
+                                  {t("Olivia Davis")}
                                 </p>
                               </div>
                               <div
@@ -4743,7 +4760,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s0c39c3123b}
                                 >
-                                  {"Product Manager"}
+                                  {t("Product Manager")}
                                 </p>
                               </div>
                             </div>
@@ -4814,7 +4831,7 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {'"A true creative partner."'}
+                              {t('"A true creative partner."')}
                             </p>
                           </div>
                           <div
@@ -4828,9 +4845,9 @@ export function HomeTestimonialsSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {
-                                "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of."
-                              }
+                              {t(
+                                "RYCODE combined strategy, design, and execution to deliver a modern digital experience we’re proud of.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -4854,7 +4871,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4871,7 +4888,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4888,7 +4905,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4905,7 +4922,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4922,7 +4939,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -4940,7 +4957,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.s2a1463207d}
                           >
-                            {"06/25/2025"}
+                            {t("06/25/2025")}
                           </p>
                         </div>
                       </div>
@@ -4999,7 +5016,7 @@ export function HomeTestimonialsSection() {
                                   width="168"
                                   height="168"
                                   src="/assets/f442c120406ab191.png"
-                                  alt="Image"
+                                  alt={t("Image")}
                                   className="w-full! h-full!"
                                   style={referenceStyles.s258149b79d}
                                 />
@@ -5020,7 +5037,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.se8682f4ed5}
                                 >
-                                  {"Daniel Wilson"}
+                                  {t("Daniel Wilson")}
                                 </p>
                               </div>
                               <div
@@ -5034,7 +5051,7 @@ export function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s833ee3534c}
                                 >
-                                  {"Creative Director"}
+                                  {t("Creative Director")}
                                 </p>
                               </div>
                             </div>
@@ -5110,7 +5127,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -5127,7 +5144,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -5144,7 +5161,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -5161,7 +5178,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -5178,7 +5195,7 @@ export function HomeTestimonialsSection() {
                                 width="68"
                                 height="65"
                                 src="/assets/715245a6807fe9ab.png"
-                                alt="Icon"
+                                alt={t("Icon")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1100a320a2}
                               />
@@ -5196,7 +5213,7 @@ export function HomeTestimonialsSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"06/09/2025"}
+                            {t("06/09/2025")}
                           </p>
                         </div>
                       </div>

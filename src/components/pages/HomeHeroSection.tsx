@@ -1,8 +1,10 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Fragment } from "react";
 import Link from "next/link";
 import { Reveal, SplitText, MediaVideo, Carousel } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeHeroSection() {
+export async function HomeHeroSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <section
       className="framer-15gz4dg"
@@ -61,7 +63,7 @@ export function HomeHeroSection() {
                       dir="auto"
                       style={referenceStyles.se8682f4ed5}
                     >
-                      {"Helping ambitious brands launch faster"}
+                      {t("Helping ambitious brands launch faster")}
                     </p>
                   </div>
                 </div>
@@ -83,6 +85,9 @@ export function HomeHeroSection() {
                   style={referenceStyles.s5a374ddac4}
                   as="h1"
                   scrollLinked={false}
+                  localizedText={
+                    locale === "fa" ? t("rycode studio") : undefined
+                  }
                 >
                   <span style={referenceStyles.sa20496458d}>
                     <span
@@ -129,6 +134,9 @@ export function HomeHeroSection() {
                   style={referenceStyles.s516259b142}
                   as="h1"
                   scrollLinked={false}
+                  localizedText={
+                    locale === "fa" ? t("rycode studio") : undefined
+                  }
                 >
                   <span style={referenceStyles.sa20496458d}>
                     <span
@@ -184,9 +192,9 @@ export function HomeHeroSection() {
                     dir="auto"
                     style={referenceStyles.s0f3867a315}
                   >
-                    {
-                      "We build websites and experiences that help brands launch faster, grow smarter, and stand out with confidence."
-                    }
+                    {t(
+                      "We build websites and experiences that help brands launch faster, grow smarter, and stand out with confidence.",
+                    )}
                   </p>
                 </div>
               </div>
@@ -202,9 +210,9 @@ export function HomeHeroSection() {
                     dir="auto"
                     style={referenceStyles.s402bdbd007}
                   >
-                    {
-                      "We build websites and experiences that help brands launch faster, grow smarter, and stand out with confidence."
-                    }
+                    {t(
+                      "We build websites and experiences that help brands launch faster, grow smarter, and stand out with confidence.",
+                    )}
                   </p>
                 </div>
               </div>
@@ -215,7 +223,7 @@ export function HomeHeroSection() {
                       className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-18sfddm framer-1fsrsxu"
                       data-border="true"
                       data-framer-name="Variant 1"
-                      href="/work"
+                      href={href("/work")}
                       style={referenceStyles.s64b4a2310d}
                     >
                       <div
@@ -229,7 +237,7 @@ export function HomeHeroSection() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"Explore Projects"}
+                          {t("Explore Projects")}
                         </p>
                       </div>
                       <div className="framer-1glyh7l">
@@ -268,7 +276,7 @@ export function HomeHeroSection() {
                       className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                       data-border="true"
                       data-framer-name="Variant 2"
-                      href="/contact"
+                      href={href("/contact")}
                       style={referenceStyles.s3bb9702481}
                     >
                       <div
@@ -282,7 +290,7 @@ export function HomeHeroSection() {
                           dir="auto"
                           style={referenceStyles.s2a1463207d}
                         >
-                          {"Book a Call"}
+                          {t("Book a Call")}
                         </p>
                       </div>
                       <div className="framer-1glyh7l">
@@ -364,7 +372,7 @@ export function HomeHeroSection() {
                                             sizes="(min-width: 1200px) max((max(492px, 1px) - 16px) / 2, 1px), (max-width: 767.98px) max(max((min(max(min(100vw - 40px, 1120px), 1px), 492px) - 10px) / 2, 50px), 1px), (min-width: 768px) and (max-width: 1199.98px) max((max(492px, 1px) - 16px) / 2, 1px)"
                                             srcSet="/assets/0540f6a2c0215a67.png 512w, /assets/853506061054dbb7.png 1024w, /assets/4e5eb3a3b4dc15eb.png 1200w"
                                             src="/assets/4e5eb3a3b4dc15eb.png"
-                                            alt="Image"
+                                            alt={t("Image")}
                                             className="w-full! h-full!"
                                             style={referenceStyles.s258149b79d}
                                           />
@@ -397,7 +405,7 @@ export function HomeHeroSection() {
                                             sizes="(min-width: 1200px) max((max(492px, 1px) - 16px) / 2, 1px), (max-width: 767.98px) max(max((min(max(min(100vw - 40px, 1120px), 1px), 492px) - 10px) / 2, 50px), 1px), (min-width: 768px) and (max-width: 1199.98px) max((max(492px, 1px) - 16px) / 2, 1px)"
                                             srcSet="/assets/a61fe20e1a470b9e.png 512w, /assets/e9caac000ea7cf9d.png 1024w, /assets/17d9438e92d7a286.png 1200w"
                                             src="/assets/17d9438e92d7a286.png"
-                                            alt="Image"
+                                            alt={t("Image")}
                                             className="w-full! h-full!"
                                             style={referenceStyles.s258149b79d}
                                           />
@@ -421,9 +429,9 @@ export function HomeHeroSection() {
                                         >
                                           <>
                                             <span className="brand-accent">
-                                              ry
+                                              {t("ry")}
                                             </span>
-                                            code studio
+                                            {t("code studio")}
                                           </>
                                         </h5>
                                       </div>
@@ -444,7 +452,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.1"}
+                                        {t("0.1")}
                                       </p>
                                     </div>
                                     <div className="framer-rp0r5w-container">
@@ -468,7 +476,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.2"}
+                                        {t("0.2")}
                                       </p>
                                     </div>
                                   </div>
@@ -540,9 +548,9 @@ export function HomeHeroSection() {
                                         >
                                           <>
                                             <span className="brand-accent">
-                                              ry
+                                              {t("ry")}
                                             </span>
-                                            code studio
+                                            {t("code studio")}
                                           </>
                                         </h5>
                                       </div>
@@ -585,7 +593,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.2"}
+                                        {t("0.2")}
                                       </p>
                                     </div>
                                     <div className="framer-rp0r5w-container">
@@ -609,7 +617,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.3"}
+                                        {t("0.3")}
                                       </p>
                                     </div>
                                   </div>
@@ -679,7 +687,7 @@ export function HomeHeroSection() {
                                             sizes="(min-width: 1200px) max((max(492px, 1px) - 16px) / 2, 1px), (max-width: 767.98px) max(max((min(max(min(100vw - 40px, 1120px), 1px), 492px) - 10px) / 2, 50px), 1px), (min-width: 768px) and (max-width: 1199.98px) max((max(492px, 1px) - 16px) / 2, 1px)"
                                             srcSet="/assets/7aae1d3c9d02029b.png 512w, /assets/21e7253e7087a6ca.png 1024w, /assets/7939f31af4457ea1.png 1500w"
                                             src="/assets/7939f31af4457ea1.png"
-                                            alt="Image"
+                                            alt={t("Image")}
                                             className="w-full! h-full!"
                                             style={referenceStyles.s258149b79d}
                                           />
@@ -707,7 +715,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.3"}
+                                        {t("0.3")}
                                       </p>
                                     </div>
                                     <div className="framer-rp0r5w-container">
@@ -731,7 +739,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.4"}
+                                        {t("0.4")}
                                       </p>
                                     </div>
                                   </div>
@@ -812,7 +820,7 @@ export function HomeHeroSection() {
                                             sizes="(min-width: 1200px) max((max(492px, 1px) - 16px) / 2, 1px), (max-width: 767.98px) max(max((min(max(min(100vw - 40px, 1120px), 1px), 492px) - 10px) / 2, 50px), 1px), (min-width: 768px) and (max-width: 1199.98px) max((max(492px, 1px) - 16px) / 2, 1px)"
                                             srcSet="/assets/0540f6a2c0215a67.png 512w, /assets/853506061054dbb7.png 1024w, /assets/4e5eb3a3b4dc15eb.png 1200w"
                                             src="/assets/4e5eb3a3b4dc15eb.png"
-                                            alt="Image"
+                                            alt={t("Image")}
                                             className="w-full! h-full!"
                                             style={referenceStyles.s258149b79d}
                                           />
@@ -840,7 +848,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.4"}
+                                        {t("0.4")}
                                       </p>
                                     </div>
                                     <div className="framer-rp0r5w-container">
@@ -864,7 +872,7 @@ export function HomeHeroSection() {
                                         dir="auto"
                                         style={referenceStyles.se8682f4ed5}
                                       >
-                                        {"0.1"}
+                                        {t("0.1")}
                                       </p>
                                     </div>
                                   </div>
@@ -921,7 +929,7 @@ export function HomeHeroSection() {
                                     sizes="(min-width: 1200px) max((max(492px, 1px) - 16px) / 2, 1px), (max-width: 767.98px) max(max((min(max(min(100vw - 40px, 1120px), 1px), 492px) - 10px) / 2, 50px), 1px), (min-width: 768px) and (max-width: 1199.98px) max((max(492px, 1px) - 16px) / 2, 1px)"
                                     srcSet="/assets/0540f6a2c0215a67.png 512w, /assets/853506061054dbb7.png 1024w, /assets/4e5eb3a3b4dc15eb.png 1200w"
                                     src="/assets/4e5eb3a3b4dc15eb.png"
-                                    alt="Image"
+                                    alt={t("Image")}
                                     className="w-full! h-full!"
                                     style={referenceStyles.s258149b79d}
                                   />
@@ -997,8 +1005,10 @@ export function HomeHeroSection() {
                                   style={referenceStyles.s0c86264d05}
                                 >
                                   <>
-                                    <span className="brand-accent">ry</span>code
-                                    studio
+                                    <span className="brand-accent">
+                                      {t("ry")}
+                                    </span>
+                                    {t("code studio")}
                                   </>
                                 </h5>
                               </div>

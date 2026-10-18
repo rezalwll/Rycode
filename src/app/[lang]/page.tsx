@@ -1,3 +1,4 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { HomeBlock0 } from "@/components/pages/HomeBlock0";
@@ -10,9 +11,12 @@ import { HomeChooseUsSection } from "@/components/pages/HomeChooseUsSection";
 import { HomePricingSection } from "@/components/pages/HomePricingSection";
 import { HomeTestimonialsSection } from "@/components/pages/HomeTestimonialsSection";
 import { HomeFAQSection } from "@/components/pages/HomeFAQSection";
-export const metadata: Metadata = {
-  title: { absolute: "Rycode Studio — Modern Creative Studio" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: { absolute: t("Rycode Studio — Modern Creative Studio") },
+  };
+}
 export default function Page() {
   return (
     <main

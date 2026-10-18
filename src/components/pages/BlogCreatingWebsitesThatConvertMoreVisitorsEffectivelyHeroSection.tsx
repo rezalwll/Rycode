@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSection() {
+export async function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,9 +117,9 @@ export function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSectio
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Successful websites combine strong visuals with clear messaging. Every page should guide visitors toward meaningful actions."
-                    }
+                    {t(
+                      "Successful websites combine strong visuals with clear messaging. Every page should guide visitors toward meaningful actions.",
+                    )}
                   </p>
                   <p
                     dir="auto"
@@ -129,9 +131,9 @@ export function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSectio
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "User-friendly layouts and intuitive navigation help increase engagement and improve the overall browsing experience."
-                    }
+                    {t(
+                      "User-friendly layouts and intuitive navigation help increase engagement and improve the overall browsing experience.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -171,17 +173,17 @@ export function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSectio
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Trust is built through fast performance, responsive design, and consistent branding across every device."
-                    }
+                    {t(
+                      "Trust is built through fast performance, responsive design, and consistent branding across every device.",
+                    )}
                   </p>
                   <p
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "A well-optimized website turns more visitors into loyal customers and supports long-term business growth."
-                    }
+                    {t(
+                      "A well-optimized website turns more visitors into loyal customers and supports long-term business growth.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -234,7 +236,7 @@ export function BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSectio
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Creating Websites That Convert More Visitors Effectively"}
+                {t("Creating Websites That Convert More Visitors Effectively")}
               </h4>
             </Reveal>
           </div>

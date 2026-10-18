@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function WorkAiAutomationPlatformDetailsSection() {
+export async function WorkAiAutomationPlatformDetailsSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-1ucgqp2" data-framer-name="Details Section">
       <div className="framer-14hxjb7" data-framer-name="Container">
@@ -117,7 +119,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                     dir="auto"
                     style={referenceStyles.s5a374ddac4}
                   >
-                    {"[02 AI Automation Platform"}
+                    {t("[02 AI Automation Platform")}
                   </h2>
                 </Reveal>
                 <Reveal
@@ -132,9 +134,9 @@ export function WorkAiAutomationPlatformDetailsSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-uttc6m"
                   >
-                    {
-                      "Built for businesses embracing intelligent automation, this platform combines modern design with powerful AI-driven workflows to streamline operations, improve productivity, and support scalable digital transformation."
-                    }
+                    {t(
+                      "Built for businesses embracing intelligent automation, this platform combines modern design with powerful AI-driven workflows to streamline operations, improve productivity, and support scalable digital transformation.",
+                    )}
                   </h5>
                 </Reveal>
               </div>
@@ -159,7 +161,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Year]"}
+                        {t("[Year]")}
                       </h5>
                     </div>
                     <div
@@ -173,7 +175,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s0f3867a315}
                       >
-                        {"2022"}
+                        {t("2022")}
                       </p>
                     </div>
                   </div>
@@ -189,7 +191,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Client|"}
+                        {t("[Client|")}
                       </h5>
                     </div>
                     <div className="ssr-variant hidden-1xydt6v">
@@ -204,7 +206,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s0f3867a315}
                         >
-                          {"Ethan Walker"}
+                          {t("Ethan Walker")}
                         </p>
                       </div>
                     </div>
@@ -220,7 +222,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s402bdbd007}
                         >
-                          {"Ethan Walker"}
+                          {t("Ethan Walker")}
                         </p>
                       </div>
                     </div>
@@ -237,7 +239,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s5a374ddac4}
                       >
-                        {"[Industry]"}
+                        {t("[Industry]")}
                       </h5>
                     </div>
                     <div
@@ -251,7 +253,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                         dir="auto"
                         style={referenceStyles.s0f3867a315}
                       >
-                        {"Finance & SaaS"}
+                        {t("Finance & SaaS")}
                       </p>
                     </div>
                   </div>
@@ -275,7 +277,7 @@ export function WorkAiAutomationPlatformDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s2a1463207d}
                         >
-                          {"View All Work"}
+                          {t("View All Work")}
                         </p>
                       </div>
                       <div className="framer-1glyh7l">

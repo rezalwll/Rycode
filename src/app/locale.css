@@ -39,6 +39,52 @@
 .framer-ATxvc .framer-uk7nae {
   gap: 12px;
 }
+html[lang="fa"] body,
+html[lang="fa"] .framer-text,
+html[lang="fa"] input,
+html[lang="fa"] textarea,
+html[lang="fa"] select {
+  font-family: "Vazirmatn", Tahoma, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+html[lang="fa"] .framer-text {
+  --framer-text-alignment: start;
+  line-height: 1.65 !important;
+}
+html[lang="fa"] :is(h1, h2, h3, h4, h5).framer-text {
+  line-height: 1.4 !important;
+}
+html[lang="fa"] [data-localized-split] {
+  direction: rtl;
+}
+html[lang="fa"] .framer-form-input {
+  text-align: start;
+}
+html[lang="fa"] input[type="email"] {
+  direction: ltr;
+  text-align: left;
+}
+.brand-logo,
+[aria-roledescription="carousel"],
+.framer-obWCA,
+.framer-Irrnf {
+  direction: ltr;
+}
+html[lang="fa"] .rycode-slide {
+  direction: rtl;
+}
+html[lang="fa"] .framer-HujZo .framer-1nayp60 h1 {
+  font-size: clamp(54px, 9vw, 130px);
+  white-space: normal;
+}
+html[lang="fa"] .framer-7wCKM .framer-text {
+  text-align: start;
+}
+@media (min-width: 1200px) {
+  html[lang="fa"] .framer-15gz4dg {
+    min-height: max(100svh, 860px);
+  }
+}
 @media (max-width: 767px) {
   .framer-ATxvc .framer-uk7nae {
     gap: 10px;

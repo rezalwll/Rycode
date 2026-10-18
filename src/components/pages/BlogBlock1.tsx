@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogBlock1() {
+export async function BlogBlock1() {
+  const { t, href } = await getTranslations();
   return (
     <div className="framer-7ew324-container hidden-1iwgygr hidden-poasp1">
       <section
@@ -22,7 +24,7 @@ export function BlogBlock1() {
                 sizes="(min-width: 1200px) max(max(100vw, 1px), max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(100vw, 1px), max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(max(100vw, 1px), max(max(100vw - 40px, 1px), 1px))"
                 srcSet="/assets/f8530c1da19d5f0e.png 773w, /assets/46fbadd99d68ae26.png 1500w"
                 src="/assets/46fbadd99d68ae26.png"
-                alt="Image"
+                alt={t("Image")}
                 className="w-full! h-full!"
                 style={referenceStyles.s258149b79d}
               />
@@ -45,7 +47,7 @@ export function BlogBlock1() {
                 sizes="(min-width: 1200px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(100vw, max(max(100vw - 40px, 1px), 1px))"
                 srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
                 src="/assets/49673833e2e44520.png"
-                alt="Image"
+                alt={t("Image")}
                 className="w-full! h-full!"
                 style={referenceStyles.s258149b79d}
               />
@@ -68,7 +70,7 @@ export function BlogBlock1() {
                 sizes="(min-width: 1200px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(100vw, max(max(100vw - 40px, 1px), 1px))"
                 srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
                 src="/assets/61b2b6dd4ec05747.png"
-                alt="Image"
+                alt={t("Image")}
                 className="w-full! h-full!"
                 style={referenceStyles.s258149b79d}
               />
@@ -96,9 +98,9 @@ export function BlogBlock1() {
                 dir="auto"
                 style={referenceStyles.s4bba586cf3}
               >
-                {
-                  "Explore expert insights, design trends, no-code strategies, and practical resources to help you create better digital experiences and grow your business."
-                }
+                {t(
+                  "Explore expert insights, design trends, no-code strategies, and practical resources to help you create better digital experiences and grow your business.",
+                )}
               </h2>
             </Reveal>
             <Reveal
@@ -112,7 +114,9 @@ export function BlogBlock1() {
               <div className="framer-ihxpdz">
                 <Link
                   className="framer-15ei59e framer-1xervn6"
-                  href="/blog/why-great-design-creates-better-business-results"
+                  href={href(
+                    "/blog/why-great-design-creates-better-business-results",
+                  )}
                 >
                   <div className="framer-1u1v4km-container">
                     <div
@@ -130,7 +134,9 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"Why Great Design Creates Better Business Results"}
+                          {t(
+                            "Why Great Design Creates Better Business Results",
+                          )}
                         </p>
                       </div>
                       <div
@@ -144,7 +150,7 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"OCT 12, 2026"}
+                          {t("OCT 12, 2026")}
                         </p>
                       </div>
                       <div
@@ -180,7 +186,7 @@ export function BlogBlock1() {
               <div className="framer-18p6jd7">
                 <Link
                   className="framer-2x3wed framer-1xervn6"
-                  href="/blog/the-future-of-no-code-product-development"
+                  href={href("/blog/the-future-of-no-code-product-development")}
                 >
                   <div className="framer-1l3wlpq-container">
                     <div
@@ -198,7 +204,7 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"The Future of No-Code Product Development"}
+                          {t("The Future of No-Code Product Development")}
                         </p>
                       </div>
                       <div
@@ -212,7 +218,7 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"OCT 10, 2026"}
+                          {t("OCT 10, 2026")}
                         </p>
                       </div>
                       <div
@@ -229,7 +235,9 @@ export function BlogBlock1() {
               <div className="framer-rjohw6">
                 <Link
                   className="framer-m81glm framer-1xervn6"
-                  href="/blog/creating-websites-that-convert-more-visitors-effectively"
+                  href={href(
+                    "/blog/creating-websites-that-convert-more-visitors-effectively",
+                  )}
                 >
                   <div className="framer-1td9m1s-container">
                     <div
@@ -247,9 +255,9 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {
-                            "Creating Websites That Convert More Visitors Effectively"
-                          }
+                          {t(
+                            "Creating Websites That Convert More Visitors Effectively",
+                          )}
                         </p>
                       </div>
                       <div
@@ -263,7 +271,7 @@ export function BlogBlock1() {
                           dir="auto"
                           style={referenceStyles.se8682f4ed5}
                         >
-                          {"OCT 08, 2026"}
+                          {t("OCT 08, 2026")}
                         </p>
                       </div>
                       <div

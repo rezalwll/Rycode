@@ -1,6 +1,8 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function WorkHeroSection() {
+export async function WorkHeroSection() {
+  const { t, locale } = await getTranslations();
   return (
     <section className="framer-tv7fdn" data-framer-name="Hero Section">
       <div className="framer-ug79fj" data-framer-name="Container">
@@ -38,7 +40,7 @@ export function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt="Icon"
+              alt={t("Icon")}
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
@@ -54,7 +56,7 @@ export function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt="Icon"
+              alt={t("Icon")}
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
@@ -70,7 +72,7 @@ export function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt="Icon"
+              alt={t("Icon")}
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
@@ -86,7 +88,7 @@ export function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt="Icon"
+              alt={t("Icon")}
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
@@ -118,7 +120,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0902), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) / 10), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0995)"
                     srcSet="/assets/00ab0c19eab604a1.png 512w, /assets/76c9dcaf78c4c054.png 1024w, /assets/1a72b1c7bab30ba9.png 2048w, /assets/b74c8dab03c71ef7.png 2240w"
                     src="/assets/b74c8dab03c71ef7.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -142,7 +144,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0902), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) / 10), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0995)"
                     srcSet="/assets/00ab0c19eab604a1.png 512w, /assets/76c9dcaf78c4c054.png 1024w, /assets/1a72b1c7bab30ba9.png 2048w, /assets/b74c8dab03c71ef7.png 2240w"
                     src="/assets/b74c8dab03c71ef7.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -166,7 +168,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0902), (max-width: 767.98px) 68.7971px, (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0995)"
                     srcSet="/assets/66086745d1b3a68a.png 512w, /assets/8fdaeb1daaef133e.png 1024w, /assets/b0b6a35075abc828.png 2048w, /assets/7fe0c65afa233743.png 2192w"
                     src="/assets/7fe0c65afa233743.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -190,7 +192,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0902), (max-width: 767.98px) 68.7971px, (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0995)"
                     srcSet="/assets/66086745d1b3a68a.png 512w, /assets/8fdaeb1daaef133e.png 1024w, /assets/b0b6a35075abc828.png 2048w, /assets/7fe0c65afa233743.png 2192w"
                     src="/assets/7fe0c65afa233743.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -214,7 +216,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.1229), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.093)"
                     srcSet="/assets/32e8705959a6a0c1.png 512w, /assets/2aaff2f838e3832a.png 1024w, /assets/dae9de3544eb1948.png 2048w, /assets/dea53d5d20a59271.png 2240w"
                     src="/assets/dea53d5d20a59271.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -238,7 +240,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.1229), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.093)"
                     srcSet="/assets/32e8705959a6a0c1.png 512w, /assets/2aaff2f838e3832a.png 1024w, /assets/dae9de3544eb1948.png 2048w, /assets/dea53d5d20a59271.png 2240w"
                     src="/assets/dea53d5d20a59271.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -262,7 +264,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0857), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.0946), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0948)"
                     srcSet="/assets/54a46187a968054f.png 512w, /assets/e3e3b504f3a520de.png 1024w, /assets/2242c0639117d0a6.png 2048w, /assets/54e36b1b57179056.png 2088w"
                     src="/assets/54e36b1b57179056.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -286,7 +288,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.0857), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.0946), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) * 0.0948)"
                     srcSet="/assets/54a46187a968054f.png 512w, /assets/e3e3b504f3a520de.png 1024w, /assets/2242c0639117d0a6.png 2048w, /assets/54e36b1b57179056.png 2088w"
                     src="/assets/54e36b1b57179056.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -310,7 +312,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) / 8.12), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.093)"
                     srcSet="/assets/b62b0838e5cd7108.png 512w, /assets/f8b11a32a9a92b01.png 1024w, /assets/cdd2cfcd194f1caf.png 1864w"
                     src="/assets/cdd2cfcd194f1caf.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -334,7 +336,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) / 8.12), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.093)"
                     srcSet="/assets/b62b0838e5cd7108.png 512w, /assets/f8b11a32a9a92b01.png 1024w, /assets/cdd2cfcd194f1caf.png 1864w"
                     src="/assets/cdd2cfcd194f1caf.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -358,7 +360,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.1229), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.12)"
                     srcSet="/assets/d62af9213f7a0199.png 512w, /assets/bd9f65c637d49a73.png 1024w, /assets/84437b89eed9b1ce.png 1974w"
                     src="/assets/84437b89eed9b1ce.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -382,7 +384,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.1229), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.12)"
                     srcSet="/assets/d62af9213f7a0199.png 512w, /assets/bd9f65c637d49a73.png 1024w, /assets/84437b89eed9b1ce.png 1974w"
                     src="/assets/84437b89eed9b1ce.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -406,7 +408,7 @@ export function WorkHeroSection() {
                     sizes="(min-width: 1200px) calc(max(min(max(100vw - 60px, 1px), 1120px), 1px) / 8.96), (max-width: 767.98px) calc(max(min(100vw - 40px, 1120px), 1px) * 0.1229), (min-width: 768px) and (max-width: 1199.98px) calc((max(min(max(100vw - 60px, 1px), 1120px), 1px) - 66px) / 8.12)"
                     srcSet="/assets/d62af9213f7a0199.png 512w, /assets/bd9f65c637d49a73.png 1024w, /assets/84437b89eed9b1ce.png 1974w"
                     src="/assets/84437b89eed9b1ce.png"
-                    alt="Image"
+                    alt={t("Image")}
                     className="w-full! h-full!"
                     style={referenceStyles.s258149b79d}
                   />
@@ -428,6 +430,11 @@ export function WorkHeroSection() {
                 style={referenceStyles.s74a84b5217}
                 as="div"
                 scrollLinked={true}
+                localizedText={
+                  locale === "fa"
+                    ? t("Selected Projects. Real Business Impact.")
+                    : undefined
+                }
               >
                 <span style={referenceStyles.se34a5ceebc}>
                   <span style={referenceStyles.s354fe386da}>{"S"}</span>
@@ -496,6 +503,11 @@ export function WorkHeroSection() {
                 style={referenceStyles.s199340d136}
                 as="div"
                 scrollLinked={true}
+                localizedText={
+                  locale === "fa"
+                    ? t("Selected Projects. Real Business Impact.")
+                    : undefined
+                }
               >
                 <span style={referenceStyles.se34a5ceebc}>
                   <span style={referenceStyles.s354fe386da}>{"S"}</span>
@@ -564,6 +576,11 @@ export function WorkHeroSection() {
                 style={referenceStyles.s78db03cecf}
                 as="div"
                 scrollLinked={true}
+                localizedText={
+                  locale === "fa"
+                    ? t("Selected Projects. Real Business Impact.")
+                    : undefined
+                }
               >
                 <span style={referenceStyles.se34a5ceebc}>
                   <span style={referenceStyles.s354fe386da}>{"S"}</span>

@@ -1,12 +1,17 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyBlock0 } from "@/components/pages/BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyBlock0";
 import { BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSection } from "@/components/pages/BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSection";
 import { BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyBlogSection } from "@/components/pages/BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyBlogSection";
-export const metadata: Metadata = {
-  title: "Creating Websites That Convert More Visitors Effectively",
-};
-export default function Page() {
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: t("Creating Websites That Convert More Visitors Effectively"),
+  };
+}
+export default async function Page() {
+  const { t } = await getTranslations();
   return (
     <main
       data-framer-root=""
@@ -14,7 +19,7 @@ export default function Page() {
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">
-        Creating Websites That Convert More Visitors Effectively
+        {t("Creating Websites That Convert More Visitors Effectively")}
       </h1>
       <BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyBlock0 />
       <BlogCreatingWebsitesThatConvertMoreVisitorsEffectivelyHeroSection />

@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function WorkWorkSection() {
+export async function WorkWorkSection() {
+  const { href, t } = await getTranslations();
   return (
     <section className="framer-10d3fdc" data-framer-name="Work Section">
       <div className="framer-1llhsa3" data-framer-name="Container">
@@ -9,7 +11,7 @@ export function WorkWorkSection() {
           <div className="framer-1fqxwy5">
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/finance-saas-website"
+              href={href("/work/finance-saas-website")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -44,7 +46,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                             src="/assets/5c389cc347701526.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -72,7 +74,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"01"}
+                          {t("01")}
                         </h2>
                       </div>
                       <div
@@ -90,7 +92,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Finance SaaS Website"}
+                            {t("Finance SaaS Website")}
                           </h3>
                         </div>
                         <div
@@ -104,9 +106,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                            }
+                            {t(
+                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -135,7 +137,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                               src="/assets/5c389cc347701526.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -167,7 +169,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Finance SaaS Website"}
+                              {t("Finance SaaS Website")}
                             </h3>
                           </div>
                           <div
@@ -181,9 +183,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                              }
+                              {t(
+                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -225,7 +227,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                             src="/assets/5c389cc347701526.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -253,7 +255,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"01"}
+                          {t("01")}
                         </h2>
                       </div>
                       <div
@@ -271,7 +273,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Finance SaaS Website"}
+                            {t("Finance SaaS Website")}
                           </h3>
                         </div>
                         <div
@@ -285,9 +287,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                            }
+                            {t(
+                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -316,7 +318,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                               src="/assets/5c389cc347701526.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -348,7 +350,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Finance SaaS Website"}
+                              {t("Finance SaaS Website")}
                             </h3>
                           </div>
                           <div
@@ -362,9 +364,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                              }
+                              {t(
+                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -406,7 +408,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                             src="/assets/5c389cc347701526.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -434,7 +436,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"01"}
+                          {t("01")}
                         </h2>
                       </div>
                       <div
@@ -452,7 +454,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Finance SaaS Website"}
+                            {t("Finance SaaS Website")}
                           </h3>
                         </div>
                         <div
@@ -466,9 +468,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                            }
+                            {t(
+                              "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -497,7 +499,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/c4ece3fc79887f38.png 512w, /assets/1264e45ed8314c48.png 1024w, /assets/5c389cc347701526.png 1500w"
                               src="/assets/5c389cc347701526.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -529,7 +531,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Finance SaaS Website"}
+                              {t("Finance SaaS Website")}
                             </h3>
                           </div>
                           <div
@@ -543,9 +545,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion."
-                              }
+                              {t(
+                                "A premium Framer website designed for a modern fintech startup with a focus on trust, speed, and conversion.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -557,7 +559,7 @@ export function WorkWorkSection() {
             </Link>
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/ai-automation-platform"
+              href={href("/work/ai-automation-platform")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -592,7 +594,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                             src="/assets/c055dfbc646842dc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -620,7 +622,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"02"}
+                          {t("02")}
                         </h2>
                       </div>
                       <div
@@ -638,7 +640,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Automation Platform"}
+                            {t("AI Automation Platform")}
                           </h3>
                         </div>
                         <div
@@ -652,9 +654,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                            }
+                            {t(
+                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -683,7 +685,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                               src="/assets/c055dfbc646842dc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -715,7 +717,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Automation Platform"}
+                              {t("AI Automation Platform")}
                             </h3>
                           </div>
                           <div
@@ -729,9 +731,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                              }
+                              {t(
+                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -773,7 +775,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                             src="/assets/c055dfbc646842dc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -801,7 +803,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"02"}
+                          {t("02")}
                         </h2>
                       </div>
                       <div
@@ -819,7 +821,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Automation Platform"}
+                            {t("AI Automation Platform")}
                           </h3>
                         </div>
                         <div
@@ -833,9 +835,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                            }
+                            {t(
+                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -864,7 +866,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                               src="/assets/c055dfbc646842dc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -896,7 +898,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Automation Platform"}
+                              {t("AI Automation Platform")}
                             </h3>
                           </div>
                           <div
@@ -910,9 +912,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                              }
+                              {t(
+                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -954,7 +956,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                             src="/assets/c055dfbc646842dc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -982,7 +984,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"02"}
+                          {t("02")}
                         </h2>
                       </div>
                       <div
@@ -1000,7 +1002,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Automation Platform"}
+                            {t("AI Automation Platform")}
                           </h3>
                         </div>
                         <div
@@ -1014,9 +1016,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                            }
+                            {t(
+                              "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1045,7 +1047,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/6e3bd1574d35b3ad.png 512w, /assets/f12edc0fa176090e.png 1024w, /assets/c055dfbc646842dc.png 1200w"
                               src="/assets/c055dfbc646842dc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1077,7 +1079,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Automation Platform"}
+                              {t("AI Automation Platform")}
                             </h3>
                           </div>
                           <div
@@ -1091,9 +1093,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design."
-                              }
+                              {t(
+                                "A scalable product website built to simplify complex AI solutions through clear storytelling and intuitive design.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -1105,7 +1107,7 @@ export function WorkWorkSection() {
             </Link>
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/fashion-ecommerce"
+              href={href("/work/fashion-ecommerce")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -1140,7 +1142,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                             src="/assets/139099262b4af3c7.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -1168,7 +1170,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"03"}
+                          {t("03")}
                         </h2>
                       </div>
                       <div
@@ -1186,7 +1188,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Fashion Ecommerce"}
+                            {t("Fashion Ecommerce")}
                           </h3>
                         </div>
                         <div
@@ -1200,9 +1202,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                            }
+                            {t(
+                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1231,7 +1233,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                               src="/assets/139099262b4af3c7.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1263,7 +1265,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Fashion Ecommerce"}
+                              {t("Fashion Ecommerce")}
                             </h3>
                           </div>
                           <div
@@ -1277,9 +1279,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                              }
+                              {t(
+                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -1321,7 +1323,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                             src="/assets/139099262b4af3c7.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -1349,7 +1351,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"03"}
+                          {t("03")}
                         </h2>
                       </div>
                       <div
@@ -1367,7 +1369,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Fashion Ecommerce"}
+                            {t("Fashion Ecommerce")}
                           </h3>
                         </div>
                         <div
@@ -1381,9 +1383,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                            }
+                            {t(
+                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1412,7 +1414,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                               src="/assets/139099262b4af3c7.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1444,7 +1446,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Fashion Ecommerce"}
+                              {t("Fashion Ecommerce")}
                             </h3>
                           </div>
                           <div
@@ -1458,9 +1460,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                              }
+                              {t(
+                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -1502,7 +1504,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                             src="/assets/139099262b4af3c7.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -1530,7 +1532,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"03"}
+                          {t("03")}
                         </h2>
                       </div>
                       <div
@@ -1548,7 +1550,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Fashion Ecommerce"}
+                            {t("Fashion Ecommerce")}
                           </h3>
                         </div>
                         <div
@@ -1562,9 +1564,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                            }
+                            {t(
+                              "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1593,7 +1595,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d2b0ff9756c92df5.png 512w, /assets/3b929f659b425fd5.png 1024w, /assets/139099262b4af3c7.png 1500w"
                               src="/assets/139099262b4af3c7.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1625,7 +1627,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Fashion Ecommerce"}
+                              {t("Fashion Ecommerce")}
                             </h3>
                           </div>
                           <div
@@ -1639,9 +1641,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic."
-                              }
+                              {t(
+                                "An editorial shopping experience crafted to showcase premium products with a clean, modern aesthetic.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -1653,7 +1655,7 @@ export function WorkWorkSection() {
             </Link>
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/logistics-company"
+              href={href("/work/logistics-company")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -1688,7 +1690,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                             src="/assets/9e6a623a95964bcc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -1716,7 +1718,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"04"}
+                          {t("04")}
                         </h2>
                       </div>
                       <div
@@ -1734,7 +1736,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Logistics Company"}
+                            {t("Logistics Company")}
                           </h3>
                         </div>
                         <div
@@ -1748,9 +1750,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                            }
+                            {t(
+                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1779,7 +1781,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                               src="/assets/9e6a623a95964bcc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1811,7 +1813,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Logistics Company"}
+                              {t("Logistics Company")}
                             </h3>
                           </div>
                           <div
@@ -1825,9 +1827,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                              }
+                              {t(
+                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -1869,7 +1871,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                             src="/assets/9e6a623a95964bcc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -1897,7 +1899,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"04"}
+                          {t("04")}
                         </h2>
                       </div>
                       <div
@@ -1915,7 +1917,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Logistics Company"}
+                            {t("Logistics Company")}
                           </h3>
                         </div>
                         <div
@@ -1929,9 +1931,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                            }
+                            {t(
+                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -1960,7 +1962,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                               src="/assets/9e6a623a95964bcc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -1992,7 +1994,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Logistics Company"}
+                              {t("Logistics Company")}
                             </h3>
                           </div>
                           <div
@@ -2006,9 +2008,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                              }
+                              {t(
+                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2050,7 +2052,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                             src="/assets/9e6a623a95964bcc.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2078,7 +2080,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"04"}
+                          {t("04")}
                         </h2>
                       </div>
                       <div
@@ -2096,7 +2098,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Logistics Company"}
+                            {t("Logistics Company")}
                           </h3>
                         </div>
                         <div
@@ -2110,9 +2112,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                            }
+                            {t(
+                              "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -2141,7 +2143,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d9d680eec294ef15.png 512w, /assets/b5e27e1796452b7d.png 1024w, /assets/9e6a623a95964bcc.png 1500w"
                               src="/assets/9e6a623a95964bcc.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -2173,7 +2175,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Logistics Company"}
+                              {t("Logistics Company")}
                             </h3>
                           </div>
                           <div
@@ -2187,9 +2189,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients."
-                              }
+                              {t(
+                                "A conversion-focused website helping logistics businesses build credibility and attract enterprise clients.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2201,7 +2203,7 @@ export function WorkWorkSection() {
             </Link>
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/creative-agency"
+              href={href("/work/creative-agency")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -2236,7 +2238,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                             src="/assets/975c8c2047116118.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2264,7 +2266,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"05"}
+                          {t("05")}
                         </h2>
                       </div>
                       <div
@@ -2282,7 +2284,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Creative Agency"}
+                            {t("Creative Agency")}
                           </h3>
                         </div>
                         <div
@@ -2296,9 +2298,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                            }
+                            {t(
+                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -2327,7 +2329,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                               src="/assets/975c8c2047116118.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -2359,7 +2361,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Creative Agency"}
+                              {t("Creative Agency")}
                             </h3>
                           </div>
                           <div
@@ -2373,9 +2375,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                              }
+                              {t(
+                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2417,7 +2419,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                             src="/assets/975c8c2047116118.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2445,7 +2447,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"05"}
+                          {t("05")}
                         </h2>
                       </div>
                       <div
@@ -2463,7 +2465,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Creative Agency"}
+                            {t("Creative Agency")}
                           </h3>
                         </div>
                         <div
@@ -2477,9 +2479,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                            }
+                            {t(
+                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -2508,7 +2510,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                               src="/assets/975c8c2047116118.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -2540,7 +2542,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Creative Agency"}
+                              {t("Creative Agency")}
                             </h3>
                           </div>
                           <div
@@ -2554,9 +2556,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                              }
+                              {t(
+                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2598,7 +2600,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                             src="/assets/975c8c2047116118.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2626,7 +2628,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"05"}
+                          {t("05")}
                         </h2>
                       </div>
                       <div
@@ -2644,7 +2646,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"Creative Agency"}
+                            {t("Creative Agency")}
                           </h3>
                         </div>
                         <div
@@ -2658,9 +2660,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                            }
+                            {t(
+                              "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -2689,7 +2691,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/d55e9eee9ea8cb44.png 819w, /assets/975c8c2047116118.png 1500w"
                               src="/assets/975c8c2047116118.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -2721,7 +2723,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"Creative Agency"}
+                              {t("Creative Agency")}
                             </h3>
                           </div>
                           <div
@@ -2735,9 +2737,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling."
-                              }
+                              {t(
+                                "A bold agency website featuring immersive interactions, smooth animations, and premium visual storytelling.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2749,7 +2751,7 @@ export function WorkWorkSection() {
             </Link>
             <Link
               className="framer-1s211g6 framer-z64aky"
-              href="/work/ai-agency-website"
+              href={href("/work/ai-agency-website")}
             >
               <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
                 <Reveal
@@ -2784,7 +2786,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                             src="/assets/1f85b9f13658cfe3.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2812,7 +2814,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"06"}
+                          {t("06")}
                         </h2>
                       </div>
                       <div
@@ -2830,7 +2832,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Agency Website"}
+                            {t("AI Agency Website")}
                           </h3>
                         </div>
                         <div
@@ -2844,9 +2846,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                            }
+                            {t(
+                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -2875,7 +2877,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                               src="/assets/1f85b9f13658cfe3.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -2907,7 +2909,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Agency Website"}
+                              {t("AI Agency Website")}
                             </h3>
                           </div>
                           <div
@@ -2921,9 +2923,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                              }
+                              {t(
+                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -2965,7 +2967,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                             src="/assets/1f85b9f13658cfe3.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -2993,7 +2995,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"06"}
+                          {t("06")}
                         </h2>
                       </div>
                       <div
@@ -3011,7 +3013,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Agency Website"}
+                            {t("AI Agency Website")}
                           </h3>
                         </div>
                         <div
@@ -3025,9 +3027,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                            }
+                            {t(
+                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -3056,7 +3058,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                               src="/assets/1f85b9f13658cfe3.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -3088,7 +3090,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Agency Website"}
+                              {t("AI Agency Website")}
                             </h3>
                           </div>
                           <div
@@ -3102,9 +3104,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                              }
+                              {t(
+                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -3146,7 +3148,7 @@ export function WorkWorkSection() {
                             sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                             srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                             src="/assets/1f85b9f13658cfe3.png"
-                            alt="Image"
+                            alt={t("Image")}
                             className="w-full! h-full!"
                             style={referenceStyles.s258149b79d}
                           />
@@ -3174,7 +3176,7 @@ export function WorkWorkSection() {
                           dir="auto"
                           style={referenceStyles.s0b5b49610b}
                         >
-                          {"06"}
+                          {t("06")}
                         </h2>
                       </div>
                       <div
@@ -3192,7 +3194,7 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s014a368608}
                           >
-                            {"AI Agency Website"}
+                            {t("AI Agency Website")}
                           </h3>
                         </div>
                         <div
@@ -3206,9 +3208,9 @@ export function WorkWorkSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {
-                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                            }
+                            {t(
+                              "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                            )}
                           </p>
                         </div>
                       </div>
@@ -3237,7 +3239,7 @@ export function WorkWorkSection() {
                               sizes="(min-width: 1200px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px)), (max-width: 767.98px) max(max(min(100vw - 60px, 1120px), 1px), max(max(min(100vw - 60px, 1120px), 1px) * 0.65, 1px)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 1120px), 1px), max(max(min(max(100vw - 60px, 1px), 1120px), 1px) * 0.65, 1px))"
                               srcSet="/assets/659b1cd179ced567.png 512w, /assets/035f3a01c541a553.png 1024w, /assets/1f85b9f13658cfe3.png 1500w"
                               src="/assets/1f85b9f13658cfe3.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -3269,7 +3271,7 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s014a368608}
                             >
-                              {"AI Agency Website"}
+                              {t("AI Agency Website")}
                             </h3>
                           </div>
                           <div
@@ -3283,9 +3285,9 @@ export function WorkWorkSection() {
                               dir="auto"
                               style={referenceStyles.s833ee3534c}
                             >
-                              {
-                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity."
-                              }
+                              {t(
+                                "A high-converting agency website crafted with premium interactions, clean layouts, and a modern visual identity.",
+                              )}
                             </p>
                           </div>
                         </div>

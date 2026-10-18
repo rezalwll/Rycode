@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
+export async function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
+  const { t, href } = await getTranslations();
   return (
     <section className="framer-15k5ci" data-framer-name="Blog Section">
       <div className="framer-1na4b0c" data-framer-name="Container">
@@ -18,13 +20,13 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"More Insights"}
+                {t("More Insights")}
               </h5>
             </div>
             <div className="framer-1rzvrt0">
               <Link
                 className="framer-7d58r3 framer-1agk2ur"
-                href="/blog/the-future-of-no-code-product-development"
+                href={href("/blog/the-future-of-no-code-product-development")}
               >
                 <div className="ssr-variant hidden-dtm6nr hidden-1qf0chi">
                   <Reveal
@@ -58,7 +60,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
                               src="/assets/49673833e2e44520.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -89,7 +91,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
                               src="/assets/49673833e2e44520.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -115,7 +117,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {"The Future of No-Code Product Development"}
+                              {t("The Future of No-Code Product Development")}
                             </p>
                           </div>
                           <div
@@ -129,9 +131,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Learn how modern no-code tools accelerate product launches without sacrificing quality."
-                              }
+                              {t(
+                                "Learn how modern no-code tools accelerate product launches without sacrificing quality.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -146,7 +148,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 10, 2026"}
+                            {t("OCT 10, 2026")}
                           </p>
                         </div>
                       </div>
@@ -185,7 +187,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
                               src="/assets/49673833e2e44520.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -218,7 +220,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {"The Future of No-Code Product Development"}
+                              {t("The Future of No-Code Product Development")}
                             </p>
                           </div>
                           <div
@@ -232,9 +234,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Learn how modern no-code tools accelerate product launches without sacrificing quality."
-                              }
+                              {t(
+                                "Learn how modern no-code tools accelerate product launches without sacrificing quality.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -249,7 +251,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 10, 2026"}
+                            {t("OCT 10, 2026")}
                           </p>
                         </div>
                       </div>
@@ -288,7 +290,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
                               src="/assets/49673833e2e44520.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -321,7 +323,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {"The Future of No-Code Product Development"}
+                              {t("The Future of No-Code Product Development")}
                             </p>
                           </div>
                           <div
@@ -335,9 +337,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Learn how modern no-code tools accelerate product launches without sacrificing quality."
-                              }
+                              {t(
+                                "Learn how modern no-code tools accelerate product launches without sacrificing quality.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -352,7 +354,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 10, 2026"}
+                            {t("OCT 10, 2026")}
                           </p>
                         </div>
                       </div>
@@ -362,7 +364,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
               </Link>
               <Link
                 className="framer-7d58r3 framer-1agk2ur"
-                href="/blog/creating-websites-that-convert-more-visitors-effectively"
+                href={href(
+                  "/blog/creating-websites-that-convert-more-visitors-effectively",
+                )}
               >
                 <div className="ssr-variant hidden-dtm6nr hidden-1qf0chi">
                   <Reveal
@@ -396,7 +400,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
                               src="/assets/61b2b6dd4ec05747.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -427,7 +431,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
                               src="/assets/61b2b6dd4ec05747.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -453,9 +457,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {
-                                "Creating Websites That Convert More Visitors Effectively"
-                              }
+                              {t(
+                                "Creating Websites That Convert More Visitors Effectively",
+                              )}
                             </p>
                           </div>
                           <div
@@ -469,9 +473,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Explore proven strategies for designing websites that attract, engage, and convert users."
-                              }
+                              {t(
+                                "Explore proven strategies for designing websites that attract, engage, and convert users.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -486,7 +490,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 08, 2026"}
+                            {t("OCT 08, 2026")}
                           </p>
                         </div>
                       </div>
@@ -525,7 +529,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
                               src="/assets/61b2b6dd4ec05747.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -558,9 +562,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {
-                                "Creating Websites That Convert More Visitors Effectively"
-                              }
+                              {t(
+                                "Creating Websites That Convert More Visitors Effectively",
+                              )}
                             </p>
                           </div>
                           <div
@@ -574,9 +578,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Explore proven strategies for designing websites that attract, engage, and convert users."
-                              }
+                              {t(
+                                "Explore proven strategies for designing websites that attract, engage, and convert users.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -591,7 +595,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 08, 2026"}
+                            {t("OCT 08, 2026")}
                           </p>
                         </div>
                       </div>
@@ -630,7 +634,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               sizes="(min-width: 1200px) max(max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), calc(max(min(max(100vw - 60px, 1px), 741px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(min(max(100vw - 60px, 1px), 741px), 1px), 1px), (max-width: 767.98px) max(max(min(max(100vw - 40px, 1px), 741px), 1px), 1px)"
                               srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
                               src="/assets/61b2b6dd4ec05747.png"
-                              alt="Image"
+                              alt={t("Image")}
                               className="w-full! h-full!"
                               style={referenceStyles.s258149b79d}
                             />
@@ -663,9 +667,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.se8682f4ed5}
                             >
-                              {
-                                "Creating Websites That Convert More Visitors Effectively"
-                              }
+                              {t(
+                                "Creating Websites That Convert More Visitors Effectively",
+                              )}
                             </p>
                           </div>
                           <div
@@ -679,9 +683,9 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                               dir="auto"
                               style={referenceStyles.s6fed620468}
                             >
-                              {
-                                "Explore proven strategies for designing websites that attract, engage, and convert users."
-                              }
+                              {t(
+                                "Explore proven strategies for designing websites that attract, engage, and convert users.",
+                              )}
                             </p>
                           </div>
                         </div>
@@ -696,7 +700,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"OCT 08, 2026"}
+                            {t("OCT 08, 2026")}
                           </p>
                         </div>
                       </div>

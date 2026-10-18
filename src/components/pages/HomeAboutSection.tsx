@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeAboutSection() {
+export async function HomeAboutSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <section
       className="framer-1lr93fr"
@@ -49,7 +51,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -67,7 +69,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -86,7 +88,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -104,7 +106,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -123,7 +125,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -141,7 +143,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -160,7 +162,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -178,7 +180,7 @@ export function HomeAboutSection() {
                 width="11"
                 height="11"
                 src="/assets/4f839789bbd8d450.svg"
-                alt="Icon"
+                alt={t("Icon")}
                 className="w-full! h-full!"
                 style={referenceStyles.s1100a320a2}
               />
@@ -222,7 +224,7 @@ export function HomeAboutSection() {
                     dir="auto"
                     style={referenceStyles.s2a1463207d}
                   >
-                    {"ABOUT RYCODE"}
+                    {t("ABOUT RYCODE")}
                   </p>
                 </div>
               </div>
@@ -246,6 +248,13 @@ export function HomeAboutSection() {
                     style={referenceStyles.s43dce70fb4}
                     as="div"
                     scrollLinked={true}
+                    localizedText={
+                      locale === "fa"
+                        ? t(
+                            "Built for ambitious brands that refuse ordinary, combining strategy, creativity, and modern no-code solutions to create lasting impact worldwide.",
+                          )
+                        : undefined
+                    }
                   >
                     <span style={referenceStyles.se34a5ceebc}>
                       <span style={referenceStyles.s05b6f147d0}>{"B"}</span>
@@ -474,6 +483,13 @@ export function HomeAboutSection() {
                     style={referenceStyles.s135b2534d7}
                     as="div"
                     scrollLinked={true}
+                    localizedText={
+                      locale === "fa"
+                        ? t(
+                            "Built for ambitious brands that refuse ordinary, combining strategy, creativity, and modern no-code solutions to create lasting impact worldwide.",
+                          )
+                        : undefined
+                    }
                   >
                     <span style={referenceStyles.se34a5ceebc}>
                       <span style={referenceStyles.s05b6f147d0}>{"B"}</span>
@@ -702,6 +718,13 @@ export function HomeAboutSection() {
                     style={referenceStyles.s801866e792}
                     as="div"
                     scrollLinked={true}
+                    localizedText={
+                      locale === "fa"
+                        ? t(
+                            "Built for ambitious brands that refuse ordinary, combining strategy, creativity, and modern no-code solutions to create lasting impact worldwide.",
+                          )
+                        : undefined
+                    }
                   >
                     <span style={referenceStyles.se34a5ceebc}>
                       <span style={referenceStyles.s05b6f147d0}>{"B"}</span>
@@ -931,7 +954,7 @@ export function HomeAboutSection() {
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-5x2t3t framer-1fsrsxu"
                     data-border="true"
                     data-framer-name="Variant 3"
-                    href="/contact"
+                    href={href("/contact")}
                     style={referenceStyles.sbac9824f63}
                   >
                     <div
@@ -945,7 +968,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Let's Talk"}
+                        {t("Let's Talk")}
                       </p>
                     </div>
                     <div className="framer-1glyh7l">
@@ -983,7 +1006,7 @@ export function HomeAboutSection() {
                           width="400"
                           height="80"
                           src="/assets/718c9a40a9343388.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s258149b79d}
                         />
@@ -1001,7 +1024,7 @@ export function HomeAboutSection() {
                           width="400"
                           height="80"
                           src="/assets/718c9a40a9343388.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s258149b79d}
                         />
@@ -1019,9 +1042,9 @@ export function HomeAboutSection() {
                       dir="auto"
                       style={referenceStyles.s012fd96313}
                     >
-                      {
-                        '"RYCODE helped us launch a modern website that looked incredible and delivered measurable business results."'
-                      }
+                      {t(
+                        '"RYCODE helped us launch a modern website that looked incredible and delivered measurable business results."',
+                      )}
                     </p>
                   </div>
                 </div>
@@ -1042,7 +1065,7 @@ export function HomeAboutSection() {
                           sizes="(min-width: 1200px) 41px, (max-width: 767.98px) 41px, (min-width: 768px) and (max-width: 1199.98px) 41px"
                           srcSet="/assets/11aeaf00543df483.png 769w, /assets/157ef02b51ac78cc.png 1500w"
                           src="/assets/157ef02b51ac78cc.png"
-                          alt="Image"
+                          alt={t("Image")}
                           className="w-full! h-full!"
                           style={referenceStyles.s882004a661}
                         />
@@ -1064,7 +1087,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s2dadd18f2b}
                       >
-                        {"Sarah Mitchell"}
+                        {t("Sarah Mitchell")}
                       </p>
                     </div>
                     <div
@@ -1078,7 +1101,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {"Founder, Nova Studio"}
+                        {t("Founder, Nova Studio")}
                       </p>
                     </div>
                   </div>
@@ -1104,7 +1127,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s2dadd18f2b}
                       >
-                        {"50+"}
+                        {t("50+")}
                       </h3>
                     </div>
                     <div
@@ -1118,7 +1141,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {"Happy Clients"}
+                        {t("Happy Clients")}
                       </p>
                     </div>
                   </div>
@@ -1137,7 +1160,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s2dadd18f2b}
                       >
-                        {"Sarah Mitchell"}
+                        {t("Sarah Mitchell")}
                       </p>
                     </div>
                     <div
@@ -1151,7 +1174,7 @@ export function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {"Founder, RYCODE Studio"}
+                        {t("Founder, RYCODE Studio")}
                       </p>
                     </div>
                   </div>
@@ -1169,7 +1192,7 @@ export function HomeAboutSection() {
                         sizes="(min-width: 1200px) 124px, (max-width: 767.98px) max((min(max(min(100vw - 40px, 1050px), 1px), 704px) - 52px) / 2, 1px), (min-width: 768px) and (max-width: 1199.98px) 100vw"
                         srcSet="/assets/cd55e295268c6b76.jpg 512w, /assets/9f7c2faec45bc4df.jpg 1024w, /assets/e5c2dd2213be7ae1.jpg 2048w, /assets/48eaa50b373bce5c.jpg 4096w"
                         src="/assets/48eaa50b373bce5c.jpg"
-                        alt="Image"
+                        alt={t("Image")}
                         className="w-full! h-full!"
                         style={referenceStyles.s258149b79d}
                       />
@@ -1188,7 +1211,7 @@ export function HomeAboutSection() {
                         height="2731"
                         srcSet="/assets/cd55e295268c6b76.jpg 512w, /assets/9f7c2faec45bc4df.jpg 1024w, /assets/e5c2dd2213be7ae1.jpg 2048w, /assets/48eaa50b373bce5c.jpg 4096w"
                         src="/assets/48eaa50b373bce5c.jpg"
-                        alt="Image"
+                        alt={t("Image")}
                         sizes="(min-width: 1200px) 124px, (max-width: 767.98px) max((min(max(min(100vw - 40px, 1050px), 1px), 704px) - 52px) / 2, 1px), (min-width: 768px) and (max-width: 1199.98px) 100vw"
                         className="w-full! h-full!"
                         style={referenceStyles.s258149b79d}

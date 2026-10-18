@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
+export async function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,9 +117,9 @@ export function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Framer helps creators design and launch modern websites with speed and precision."
-                    }
+                    {t(
+                      "Framer helps creators design and launch modern websites with speed and precision.",
+                    )}
                   </p>
                   <p
                     dir="auto"
@@ -129,9 +131,9 @@ export function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Its intuitive workflow allows teams to build responsive, interactive experiences more efficiently."
-                    }
+                    {t(
+                      "Its intuitive workflow allows teams to build responsive, interactive experiences more efficiently.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -171,17 +173,17 @@ export function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Powerful design features make it easy to create professional websites without unnecessary complexity."
-                    }
+                    {t(
+                      "Powerful design features make it easy to create professional websites without unnecessary complexity.",
+                    )}
                   </p>
                   <p
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Mastering Framer enables faster launches while maintaining exceptional quality and performance."
-                    }
+                    {t(
+                      "Mastering Framer enables faster launches while maintaining exceptional quality and performance.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -234,7 +236,7 @@ export function BlogMasteringFramerForFasterWebsiteLaunchesHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Mastering Framer For Faster Website Launches"}
+                {t("Mastering Framer For Faster Website Launches")}
               </h4>
             </Reveal>
           </div>

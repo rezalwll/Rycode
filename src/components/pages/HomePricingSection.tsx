@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomePricingSection() {
+export async function HomePricingSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <section
       className="framer-t2o7bb"
@@ -48,7 +50,7 @@ export function HomePricingSection() {
                       dir="auto"
                       style={referenceStyles.s2a1463207d}
                     >
-                      {"PRICING"}
+                      {t("PRICING")}
                     </p>
                   </div>
                 </div>
@@ -64,6 +66,11 @@ export function HomePricingSection() {
                   style={referenceStyles.s74a84b5217}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Flexible plans for growing businesses.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"F"}</span>
@@ -129,6 +136,11 @@ export function HomePricingSection() {
                   style={referenceStyles.s199340d136}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Flexible plans for growing businesses.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"F"}</span>
@@ -194,6 +206,11 @@ export function HomePricingSection() {
                   style={referenceStyles.s78db03cecf}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Flexible plans for growing businesses.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"F"}</span>
@@ -307,7 +324,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Single Project"}
+                              {t("Single Project")}
                             </p>
                           </div>
                         </div>
@@ -324,7 +341,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sdc1c86cde7}
                           >
-                            {"Single"}
+                            {t("Single")}
                           </h4>
                         </div>
                         <div
@@ -338,7 +355,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sad631ac374}
                           >
-                            {"Project"}
+                            {t("Project")}
                           </h2>
                         </div>
                       </div>
@@ -358,9 +375,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s76fdf01e72}
                         >
-                          {
-                            "Perfect for startups and businesses launching a single premium website."
-                          }
+                          {t(
+                            "Perfect for startups and businesses launching a single premium website.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -379,7 +396,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -393,7 +410,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s1a92a053b3}
                           >
-                            {"$499"}
+                            {t("$499")}
                           </h2>
                         </div>
                         <div
@@ -407,7 +424,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"/ Project"}
+                            {t("/ Project")}
                           </p>
                         </div>
                       </div>
@@ -429,7 +446,7 @@ export function HomePricingSection() {
                             width="80"
                             height="80"
                             src="/assets/ebc31eb3df399936.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -446,7 +463,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -454,7 +471,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-c40k20 framer-v8kq0b"
                         data-framer-name="Variant 1"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div
@@ -522,7 +539,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Single Project"}
+                              {t("Single Project")}
                             </p>
                           </div>
                         </div>
@@ -539,7 +556,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sdc1c86cde7}
                           >
-                            {"Single"}
+                            {t("Single")}
                           </h4>
                         </div>
                         <div
@@ -553,7 +570,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sad631ac374}
                           >
-                            {"Project"}
+                            {t("Project")}
                           </h2>
                         </div>
                       </div>
@@ -573,9 +590,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s76fdf01e72}
                         >
-                          {
-                            "Perfect for startups and businesses launching a single premium website."
-                          }
+                          {t(
+                            "Perfect for startups and businesses launching a single premium website.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -594,7 +611,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -608,7 +625,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s1a92a053b3}
                           >
-                            {"$499"}
+                            {t("$499")}
                           </h2>
                         </div>
                         <div
@@ -622,7 +639,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"/ Project"}
+                            {t("/ Project")}
                           </p>
                         </div>
                       </div>
@@ -644,7 +661,7 @@ export function HomePricingSection() {
                             width="80"
                             height="80"
                             src="/assets/ebc31eb3df399936.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -661,7 +678,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -669,7 +686,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-c40k20 framer-v8kq0b"
                         data-framer-name="Variant 1"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div
@@ -737,7 +754,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Single Project"}
+                              {t("Single Project")}
                             </p>
                           </div>
                         </div>
@@ -754,7 +771,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sdc1c86cde7}
                           >
-                            {"Single"}
+                            {t("Single")}
                           </h4>
                         </div>
                         <div
@@ -768,7 +785,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sad631ac374}
                           >
-                            {"Project"}
+                            {t("Project")}
                           </h2>
                         </div>
                       </div>
@@ -788,9 +805,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s76fdf01e72}
                         >
-                          {
-                            "Perfect for startups and businesses launching a single premium website."
-                          }
+                          {t(
+                            "Perfect for startups and businesses launching a single premium website.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -809,7 +826,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -823,7 +840,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s1a92a053b3}
                           >
-                            {"$499"}
+                            {t("$499")}
                           </h2>
                         </div>
                         <div
@@ -837,7 +854,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s833ee3534c}
                           >
-                            {"/ Project"}
+                            {t("/ Project")}
                           </p>
                         </div>
                       </div>
@@ -858,7 +875,7 @@ export function HomePricingSection() {
                             width="80"
                             height="80"
                             src="/assets/ebc31eb3df399936.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -875,7 +892,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -883,7 +900,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-c40k20 framer-v8kq0b"
                         data-framer-name="Variant 1"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div
@@ -951,7 +968,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Growth Package"}
+                              {t("Growth Package")}
                             </p>
                           </div>
                         </div>
@@ -968,7 +985,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.se56df9ff67}
                           >
-                            {"Multi-Project"}
+                            {t("Multi-Project")}
                           </h4>
                         </div>
                         <div
@@ -982,7 +999,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sae7545a3d4}
                           >
-                            {"Package"}
+                            {t("Package")}
                           </h2>
                         </div>
                       </div>
@@ -1002,9 +1019,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.sab36aa4f56}
                         >
-                          {
-                            "Ideal for agencies and growing brands managing multiple projects."
-                          }
+                          {t(
+                            "Ideal for agencies and growing brands managing multiple projects.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -1023,7 +1040,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -1037,7 +1054,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s4a440dca67}
                           >
-                            {"$1,499"}
+                            {t("$1,499")}
                           </h2>
                         </div>
                         <div
@@ -1051,7 +1068,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"/ Package"}
+                            {t("/ Package")}
                           </p>
                         </div>
                       </div>
@@ -1073,7 +1090,7 @@ export function HomePricingSection() {
                             width="66"
                             height="66"
                             src="/assets/4cacfc7ed99aeca8.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -1090,7 +1107,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -1098,7 +1115,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-12429e3 framer-v8kq0b"
                         data-framer-name="Variant 3"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div
@@ -1166,7 +1183,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Growth Package"}
+                              {t("Growth Package")}
                             </p>
                           </div>
                         </div>
@@ -1183,7 +1200,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.se56df9ff67}
                           >
-                            {"Multi-Project"}
+                            {t("Multi-Project")}
                           </h4>
                         </div>
                         <div
@@ -1197,7 +1214,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sae7545a3d4}
                           >
-                            {"Package"}
+                            {t("Package")}
                           </h2>
                         </div>
                       </div>
@@ -1217,9 +1234,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.sab36aa4f56}
                         >
-                          {
-                            "Ideal for agencies and growing brands managing multiple projects."
-                          }
+                          {t(
+                            "Ideal for agencies and growing brands managing multiple projects.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -1238,7 +1255,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -1252,7 +1269,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s4a440dca67}
                           >
-                            {"$1,499"}
+                            {t("$1,499")}
                           </h2>
                         </div>
                         <div
@@ -1266,7 +1283,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"/ Package"}
+                            {t("/ Package")}
                           </p>
                         </div>
                       </div>
@@ -1288,7 +1305,7 @@ export function HomePricingSection() {
                             width="66"
                             height="66"
                             src="/assets/4cacfc7ed99aeca8.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -1305,7 +1322,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -1313,7 +1330,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-c40k20 framer-v8kq0b"
                         data-framer-name="Variant 1"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div
@@ -1381,7 +1398,7 @@ export function HomePricingSection() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Growth Package"}
+                              {t("Growth Package")}
                             </p>
                           </div>
                         </div>
@@ -1398,7 +1415,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.se56df9ff67}
                           >
-                            {"Multi-Project"}
+                            {t("Multi-Project")}
                           </h4>
                         </div>
                         <div
@@ -1412,7 +1429,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.sae7545a3d4}
                           >
-                            {"Package"}
+                            {t("Package")}
                           </h2>
                         </div>
                       </div>
@@ -1432,9 +1449,9 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.sab36aa4f56}
                         >
-                          {
-                            "Ideal for agencies and growing brands managing multiple projects."
-                          }
+                          {t(
+                            "Ideal for agencies and growing brands managing multiple projects.",
+                          )}
                         </p>
                       </div>
                       <div
@@ -1453,7 +1470,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"From"}
+                            {t("From")}
                           </p>
                         </div>
                         <div
@@ -1467,7 +1484,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s4a440dca67}
                           >
-                            {"$1,499"}
+                            {t("$1,499")}
                           </h2>
                         </div>
                         <div
@@ -1481,7 +1498,7 @@ export function HomePricingSection() {
                             dir="auto"
                             style={referenceStyles.s0c39c3123b}
                           >
-                            {"/ Package"}
+                            {t("/ Package")}
                           </p>
                         </div>
                       </div>
@@ -1502,7 +1519,7 @@ export function HomePricingSection() {
                             width="66"
                             height="66"
                             src="/assets/4cacfc7ed99aeca8.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -1519,7 +1536,7 @@ export function HomePricingSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {"Available Worldwide"}
+                          {t("Available Worldwide")}
                         </p>
                       </div>
                     </div>
@@ -1527,7 +1544,7 @@ export function HomePricingSection() {
                       <Link
                         className="framer-ez4Wr framer-c40k20 framer-v-12429e3 framer-v8kq0b"
                         data-framer-name="Variant 3"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s0dfe548b37}
                       >
                         <div

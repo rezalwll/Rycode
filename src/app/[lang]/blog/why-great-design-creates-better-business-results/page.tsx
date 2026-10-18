@@ -1,12 +1,17 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { BlogWhyGreatDesignCreatesBetterBusinessResultsBlock0 } from "@/components/pages/BlogWhyGreatDesignCreatesBetterBusinessResultsBlock0";
 import { BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection } from "@/components/pages/BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection";
 import { BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection } from "@/components/pages/BlogWhyGreatDesignCreatesBetterBusinessResultsBlogSection";
-export const metadata: Metadata = {
-  title: "Why Great Design Creates Better Business Results",
-};
-export default function Page() {
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: t("Why Great Design Creates Better Business Results"),
+  };
+}
+export default async function Page() {
+  const { t } = await getTranslations();
   return (
     <main
       data-framer-root=""
@@ -14,7 +19,7 @@ export default function Page() {
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">
-        Why Great Design Creates Better Business Results
+        {t("Why Great Design Creates Better Business Results")}
       </h1>
       <BlogWhyGreatDesignCreatesBetterBusinessResultsBlock0 />
       <BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection />

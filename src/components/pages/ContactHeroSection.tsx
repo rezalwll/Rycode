@@ -1,8 +1,10 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { ContactForm, FormField } from "@/components/ContactForm";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function ContactHeroSection() {
+export async function ContactHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-zh7igo" data-framer-name="Hero Section">
       <div className="framer-16icyyk" data-framer-name="Container">
@@ -140,7 +142,7 @@ export function ContactHeroSection() {
                   dir="auto"
                   style={referenceStyles.s5a374ddac4}
                 >
-                  {"RYCODE Studio"}
+                  {t("RYCODE Studio")}
                 </h5>
               </div>
               <div
@@ -154,9 +156,9 @@ export function ContactHeroSection() {
                   dir="auto"
                   style={referenceStyles.s5a374ddac4}
                 >
-                  {
-                    "1209 Mountain Road Place NE Albuquerque, NM 87110 United States"
-                  }
+                  {t(
+                    "1209 Mountain Road Place NE Albuquerque, NM 87110 United States",
+                  )}
                 </p>
               </div>
             </Reveal>
@@ -184,7 +186,7 @@ export function ContactHeroSection() {
                     dir="auto"
                     style={referenceStyles.s5a374ddac4}
                   >
-                    {"Phone"}
+                    {t("Phone")}
                   </p>
                 </div>
                 <div className="framer-2wh2ey-container">
@@ -205,7 +207,7 @@ export function ContactHeroSection() {
                         dir="auto"
                         style={referenceStyles.s22c291e9ee}
                       >
-                        {"+1 (505) 555-0148"}
+                        {t("+1 (505) 555-0148")}
                       </p>
                     </div>
                   </a>
@@ -227,7 +229,7 @@ export function ContactHeroSection() {
                     dir="auto"
                     style={referenceStyles.s5a374ddac4}
                   >
-                    {"Project inquiry"}
+                    {t("Project inquiry")}
                   </p>
                 </div>
                 <div className="framer-1dv129i-container">
@@ -247,7 +249,7 @@ export function ContactHeroSection() {
                         dir="auto"
                         style={referenceStyles.s22c291e9ee}
                       >
-                        {"Start a project"}
+                        {t("Start a project")}
                       </p>
                     </div>
                   </a>
@@ -265,7 +267,7 @@ export function ContactHeroSection() {
                     dir="auto"
                     style={referenceStyles.s5a374ddac4}
                   >
-                    {"Social"}
+                    {t("Social")}
                   </p>
                 </div>
                 <div className="framer-1uv64u8" data-framer-name="Sosial Links">
@@ -286,7 +288,7 @@ export function ContactHeroSection() {
                             width="96"
                             height="96"
                             src="/assets/edd06ce955caf15f.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -302,7 +304,7 @@ export function ContactHeroSection() {
                             width="96"
                             height="96"
                             src="/assets/edd06ce955caf15f.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -327,7 +329,7 @@ export function ContactHeroSection() {
                             width="76"
                             height="76"
                             src="/assets/0c23ec67df00adba.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -346,7 +348,7 @@ export function ContactHeroSection() {
                             width="76"
                             height="76"
                             src="/assets/0c23ec67df00adba.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -371,7 +373,7 @@ export function ContactHeroSection() {
                             width="76"
                             height="76"
                             src="/assets/78e50ca8e4c83ea1.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -390,7 +392,7 @@ export function ContactHeroSection() {
                             width="76"
                             height="76"
                             src="/assets/78e50ca8e4c83ea1.png"
-                            alt="Logo"
+                            alt={t("Logo")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -417,7 +419,7 @@ export function ContactHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Let's Build Something Great"}
+                {t("Let's Build Something Great")}
               </h2>
             </Reveal>
             <ContactForm id="project-inquiry" className="framer-lknqqb">
@@ -440,7 +442,7 @@ export function ContactHeroSection() {
                       dir="auto"
                       style={referenceStyles.s5a374ddac4}
                     >
-                      {"What's your name?"}
+                      {t("What's your name?")}
                     </p>
                   </div>
                   <div className="framer-form-text-input framer-form-input-wrapper framer-1qy90qm framer-form-text-input-type">
@@ -448,7 +450,7 @@ export function ContactHeroSection() {
                       type="text"
                       required={true}
                       name="Name"
-                      placeholder="e.g John Doe"
+                      placeholder={t("e.g John Doe")}
                       className="framer-form-input framer-form-input-empty"
                       as="input"
                     ></FormField>
@@ -472,7 +474,7 @@ export function ContactHeroSection() {
                       dir="auto"
                       style={referenceStyles.s5a374ddac4}
                     >
-                      {"What's your email?"}
+                      {t("What's your email?")}
                     </p>
                   </div>
                   <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
@@ -480,7 +482,7 @@ export function ContactHeroSection() {
                       type="email"
                       required={true}
                       name="Email"
-                      placeholder="e.g info@mail.com"
+                      placeholder={t("e.g info@mail.com")}
                       className="framer-form-input framer-form-input-empty"
                       as="input"
                     ></FormField>
@@ -504,14 +506,14 @@ export function ContactHeroSection() {
                       dir="auto"
                       style={referenceStyles.s5a374ddac4}
                     >
-                      {"Tell us about your project"}
+                      {t("Tell us about your project")}
                     </p>
                   </div>
                   <div className="framer-form-text-input framer-form-input-wrapper framer-762f3r framer-form-textarea-input-type">
                     <FormField
                       required={true}
                       name="Massege"
-                      placeholder="Write in detail..."
+                      placeholder={t("Write in detail...")}
                       className="framer-form-input"
                       as="textarea"
                     ></FormField>
@@ -549,7 +551,7 @@ export function ContactHeroSection() {
                       dir="auto"
                       style={referenceStyles.s2a1463207d}
                     >
-                      {"Send Message"}
+                      {t("Send Message")}
                     </p>
                   </div>
                   <div

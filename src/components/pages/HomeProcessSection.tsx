@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeProcessSection() {
+export async function HomeProcessSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <section
       className="framer-nc16a8"
@@ -70,7 +72,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s2a1463207d}
                         >
-                          {"PROCESS"}
+                          {t("PROCESS")}
                         </p>
                       </div>
                     </div>
@@ -86,6 +88,13 @@ export function HomeProcessSection() {
                       style={referenceStyles.s3f28666393}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "Creating digital experiences that help ambitious brands grow, connect, and stand apart.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s4c7dd41f2b}>{"C"}</span>
@@ -228,6 +237,13 @@ export function HomeProcessSection() {
                       style={referenceStyles.s9f2ef076de}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "Creating digital experiences that help ambitious brands grow, connect, and stand apart.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s4c7dd41f2b}>{"C"}</span>
@@ -370,6 +386,13 @@ export function HomeProcessSection() {
                       style={referenceStyles.s1912e89047}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "Creating digital experiences that help ambitious brands grow, connect, and stand apart.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s4c7dd41f2b}>{"C"}</span>
@@ -514,7 +537,7 @@ export function HomeProcessSection() {
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-ymklat framer-1fsrsxu"
                     data-border="true"
                     data-framer-name="Variant 4"
-                    href="/contact"
+                    href={href("/contact")}
                     style={referenceStyles.s559429094b}
                   >
                     <div
@@ -528,7 +551,7 @@ export function HomeProcessSection() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Contact Us"}
+                        {t("Contact Us")}
                       </p>
                     </div>
                     <div className="framer-1glyh7l">
@@ -584,7 +607,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/69872f1a957155d3.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -605,7 +628,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"01 — Discover"}
+                          {t("01 — Discover")}
                         </h5>
                       </div>
                       <div
@@ -619,9 +642,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Understanding your goals, audience, and opportunities before every decision."
-                          }
+                          {t(
+                            "Understanding your goals, audience, and opportunities before every decision.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -649,7 +672,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/69872f1a957155d3.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -670,7 +693,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"01 — Discover"}
+                          {t("01 — Discover")}
                         </h5>
                       </div>
                       <div
@@ -684,9 +707,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Understanding your goals, audience, and opportunities before every decision."
-                          }
+                          {t(
+                            "Understanding your goals, audience, and opportunities before every decision.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -713,7 +736,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/69872f1a957155d3.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -734,7 +757,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"01 — Discover"}
+                          {t("01 — Discover")}
                         </h5>
                       </div>
                       <div
@@ -748,9 +771,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Understanding your goals, audience, and opportunities before every decision."
-                          }
+                          {t(
+                            "Understanding your goals, audience, and opportunities before every decision.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -778,7 +801,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/84733fda4a52228a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -799,7 +822,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c86264d05}
                         >
-                          {"02 — Design"}
+                          {t("02 — Design")}
                         </h5>
                       </div>
                       <div
@@ -813,9 +836,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {
-                            "Crafting intuitive experiences that balance beauty, usability, and performance."
-                          }
+                          {t(
+                            "Crafting intuitive experiences that balance beauty, usability, and performance.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -843,7 +866,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/11e1d43b7ba9a78a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -864,7 +887,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"04 — Launch"}
+                          {t("04 — Launch")}
                         </h5>
                       </div>
                       <div
@@ -878,9 +901,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Delivering a polished digital experience ready to grow your business."
-                          }
+                          {t(
+                            "Delivering a polished digital experience ready to grow your business.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -907,7 +930,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/84733fda4a52228a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -928,7 +951,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c86264d05}
                         >
-                          {"02 — Design"}
+                          {t("02 — Design")}
                         </h5>
                       </div>
                       <div
@@ -942,9 +965,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {
-                            "Crafting intuitive experiences that balance beauty, usability, and performance."
-                          }
+                          {t(
+                            "Crafting intuitive experiences that balance beauty, usability, and performance.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -972,7 +995,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/51387f2546e8ab17.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -993,7 +1016,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"03 — Develop"}
+                          {t("03 — Develop")}
                         </h5>
                       </div>
                       <div
@@ -1007,9 +1030,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Building scalable no-code websites with precision, speed, and flexibility."
-                          }
+                          {t(
+                            "Building scalable no-code websites with precision, speed, and flexibility.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1037,7 +1060,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/84733fda4a52228a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1058,7 +1081,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c86264d05}
                         >
-                          {"02 — Design"}
+                          {t("02 — Design")}
                         </h5>
                       </div>
                       <div
@@ -1072,9 +1095,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {
-                            "Crafting intuitive experiences that balance beauty, usability, and performance."
-                          }
+                          {t(
+                            "Crafting intuitive experiences that balance beauty, usability, and performance.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1101,7 +1124,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/51387f2546e8ab17.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1122,7 +1145,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"03 — Develop"}
+                          {t("03 — Develop")}
                         </h5>
                       </div>
                       <div
@@ -1136,9 +1159,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Building scalable no-code websites with precision, speed, and flexibility."
-                          }
+                          {t(
+                            "Building scalable no-code websites with precision, speed, and flexibility.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1166,7 +1189,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/11e1d43b7ba9a78a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1187,7 +1210,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c86264d05}
                         >
-                          {"04 — Launch"}
+                          {t("04 — Launch")}
                         </h5>
                       </div>
                       <div
@@ -1201,9 +1224,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {
-                            "Delivering a polished digital experience ready to grow your business."
-                          }
+                          {t(
+                            "Delivering a polished digital experience ready to grow your business.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1231,7 +1254,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/51387f2546e8ab17.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1252,7 +1275,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.sbb6a8b195d}
                         >
-                          {"03 — Develop"}
+                          {t("03 — Develop")}
                         </h5>
                       </div>
                       <div
@@ -1266,9 +1289,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {
-                            "Building scalable no-code websites with precision, speed, and flexibility."
-                          }
+                          {t(
+                            "Building scalable no-code websites with precision, speed, and flexibility.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1295,7 +1318,7 @@ export function HomeProcessSection() {
                           width="192"
                           height="192"
                           src="/assets/11e1d43b7ba9a78a.png"
-                          alt="Icon"
+                          alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1316,7 +1339,7 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s0c86264d05}
                         >
-                          {"04 — Launch"}
+                          {t("04 — Launch")}
                         </h5>
                       </div>
                       <div
@@ -1330,9 +1353,9 @@ export function HomeProcessSection() {
                           dir="auto"
                           style={referenceStyles.s833ee3534c}
                         >
-                          {
-                            "Delivering a polished digital experience ready to grow your business."
-                          }
+                          {t(
+                            "Delivering a polished digital experience ready to grow your business.",
+                          )}
                         </p>
                       </div>
                     </div>

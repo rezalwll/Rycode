@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
+export async function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,9 +117,9 @@ export function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "A strong brand starts with a clear vision and consistent identity. Every detail should communicate purpose and value."
-                    }
+                    {t(
+                      "A strong brand starts with a clear vision and consistent identity. Every detail should communicate purpose and value.",
+                    )}
                   </p>
                   <p
                     dir="auto"
@@ -129,9 +131,9 @@ export function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Meaningful branding creates emotional connections that help businesses earn customer trust and loyalty."
-                    }
+                    {t(
+                      "Meaningful branding creates emotional connections that help businesses earn customer trust and loyalty.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -171,17 +173,17 @@ export function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Consistent design, messaging, and storytelling strengthen recognition across digital platforms."
-                    }
+                    {t(
+                      "Consistent design, messaging, and storytelling strengthen recognition across digital platforms.",
+                    )}
                   </p>
                   <p
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Purpose-driven brands leave lasting impressions and stand out in competitive markets."
-                    }
+                    {t(
+                      "Purpose-driven brands leave lasting impressions and stand out in competitive markets.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -234,7 +236,7 @@ export function BlogBuildingModernBrandsWithPurposeTodayHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Building Modern Brands With Purpose Today"}
+                {t("Building Modern Brands With Purpose Today")}
               </h4>
             </Reveal>
           </div>

@@ -6,10 +6,12 @@ import {
   type SelectHTMLAttributes,
   type TextareaHTMLAttributes,
 } from "react";
+import { useLocale } from "./LocaleProvider";
 export function ContactForm({
   children,
   ...props
 }: FormHTMLAttributes<HTMLFormElement>) {
+  const { t } = useLocale();
   const [submitted, setSubmitted] = useState(false);
   return (
     <form
@@ -25,7 +27,7 @@ export function ContactForm({
           role="status"
           className="rounded-xl border border-white/20 p-4 text-sm text-white"
         >
-          Preview only — no message has been sent.
+          {t("Preview only — no message has been sent.")}
         </p>
       )}
     </form>

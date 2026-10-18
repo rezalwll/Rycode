@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection() {
+export async function BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,14 +117,14 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Successful digital products begin with a clear strategy. Every design decision should solve real problems, simplify user journeys, and create meaningful experiences."
-                    }
+                    {t(
+                      "Successful digital products begin with a clear strategy. Every design decision should solve real problems, simplify user journeys, and create meaningful experiences.",
+                    )}
                     <br className="framer-text" />
                     <br className="framer-text" />
-                    {
-                      "Great design goes beyond visual appeal. It builds trust, improves usability, strengthens brand perception, and helps businesses achieve measurable growth."
-                    }
+                    {t(
+                      "Great design goes beyond visual appeal. It builds trust, improves usability, strengthens brand perception, and helps businesses achieve measurable growth.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -162,14 +164,14 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Every interaction should feel natural and intentional. Thoughtful layouts, clear hierarchy, and purposeful motion create experiences users genuinely enjoy."
-                    }
+                    {t(
+                      "Every interaction should feel natural and intentional. Thoughtful layouts, clear hierarchy, and purposeful motion create experiences users genuinely enjoy.",
+                    )}
                     <br className="framer-text" />
                     <br className="framer-text" />
-                    {
-                      "Modern no-code platforms empower teams to launch faster while maintaining flexibility, performance, and exceptional design quality across every device."
-                    }
+                    {t(
+                      "Modern no-code platforms empower teams to launch faster while maintaining flexibility, performance, and exceptional design quality across every device.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -222,7 +224,7 @@ export function BlogWhyGreatDesignCreatesBetterBusinessResultsHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Why Great Design Creates Better Business Results"}
+                {t("Why Great Design Creates Better Business Results")}
               </h4>
             </Reveal>
           </div>

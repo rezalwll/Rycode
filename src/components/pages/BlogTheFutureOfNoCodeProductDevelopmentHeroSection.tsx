@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
+export async function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,9 +117,9 @@ export function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "No-code platforms are changing the way businesses build digital products. They make development faster, simpler, and more accessible for every team."
-                    }
+                    {t(
+                      "No-code platforms are changing the way businesses build digital products. They make development faster, simpler, and more accessible for every team.",
+                    )}
                   </p>
                   <p
                     dir="auto"
@@ -129,9 +131,9 @@ export function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Teams can rapidly test ideas, launch products, and improve workflows without relying on complex coding processes."
-                    }
+                    {t(
+                      "Teams can rapidly test ideas, launch products, and improve workflows without relying on complex coding processes.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -171,17 +173,17 @@ export function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Modern no-code tools provide flexibility, performance, and seamless collaboration throughout every stage of development."
-                    }
+                    {t(
+                      "Modern no-code tools provide flexibility, performance, and seamless collaboration throughout every stage of development.",
+                    )}
                   </p>
                   <p
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "The future belongs to businesses that embrace faster innovation while delivering high-quality digital experiences."
-                    }
+                    {t(
+                      "The future belongs to businesses that embrace faster innovation while delivering high-quality digital experiences.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -234,7 +236,7 @@ export function BlogTheFutureOfNoCodeProductDevelopmentHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"The Future of No-Code Product Development"}
+                {t("The Future of No-Code Product Development")}
               </h4>
             </Reveal>
           </div>

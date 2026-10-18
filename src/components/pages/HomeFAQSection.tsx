@@ -1,3 +1,4 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText } from "@/components/Motion";
 import {
   AccordionItem,
@@ -6,7 +7,8 @@ import {
 } from "@/components/Accordion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeFAQSection() {
+export async function HomeFAQSection() {
+  const { t, locale } = await getTranslations();
   return (
     <section className="framer-g3n3eu" data-framer-name="FAQ Section">
       <div className="framer-1hog1pq" data-framer-name="Container">
@@ -49,7 +51,7 @@ export function HomeFAQSection() {
                       dir="auto"
                       style={referenceStyles.se8682f4ed5}
                     >
-                      {"FAQ"}
+                      {t("FAQ")}
                     </p>
                   </div>
                 </div>
@@ -65,6 +67,11 @@ export function HomeFAQSection() {
                   style={referenceStyles.s74a84b5217}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Frequently asked questions.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"F"}</span>
@@ -111,6 +118,11 @@ export function HomeFAQSection() {
                   style={referenceStyles.s199340d136}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Frequently asked questions.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"F"}</span>
@@ -157,6 +169,11 @@ export function HomeFAQSection() {
                   style={referenceStyles.s78db03cecf}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Frequently asked questions.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"F"}</span>
@@ -240,7 +257,7 @@ export function HomeFAQSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"How long does a typical project take?"}
+                            {t("How long does a typical project take?")}
                           </p>
                         </div>
                         <AccordionToggle
@@ -248,7 +265,7 @@ export function HomeFAQSection() {
                           data-framer-name="Icon"
                           data-reset="button"
                           style={referenceStyles.s9d13712d7f}
-                          label="How long does a typical project take?"
+                          label={t("How long does a typical project take?")}
                         >
                           <div
                             className="framer-1okky9a"
@@ -273,9 +290,9 @@ export function HomeFAQSection() {
                           dir="auto"
                           style={referenceStyles.s4b608901d2}
                         >
-                          {
-                            "Most websites are completed within 2–4 weeks, depending on the project scope, content, and revisions."
-                          }
+                          {t(
+                            "Most websites are completed within 2–4 weeks, depending on the project scope, content, and revisions.",
+                          )}
                         </p>
                       </AccordionPanel>
                     </AccordionItem>
@@ -313,7 +330,7 @@ export function HomeFAQSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"Do you provide ongoing support?"}
+                            {t("Do you provide ongoing support?")}
                           </p>
                         </div>
                         <AccordionToggle
@@ -321,7 +338,7 @@ export function HomeFAQSection() {
                           data-framer-name="Icon"
                           data-reset="button"
                           style={referenceStyles.s9d13712d7f}
-                          label="Do you provide ongoing support?"
+                          label={t("Do you provide ongoing support?")}
                         >
                           <div
                             className="framer-1okky9a"
@@ -346,9 +363,9 @@ export function HomeFAQSection() {
                           dir="auto"
                           style={referenceStyles.s4b608901d2}
                         >
-                          {
-                            "Yes, we offer ongoing support, maintenance, and updates to keep your website secure and performing smoothly."
-                          }
+                          {t(
+                            "Yes, we offer ongoing support, maintenance, and updates to keep your website secure and performing smoothly.",
+                          )}
                         </p>
                       </AccordionPanel>
                     </AccordionItem>
@@ -386,7 +403,7 @@ export function HomeFAQSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"Can you redesign an existing website?"}
+                            {t("Can you redesign an existing website?")}
                           </p>
                         </div>
                         <AccordionToggle
@@ -394,7 +411,7 @@ export function HomeFAQSection() {
                           data-framer-name="Icon"
                           data-reset="button"
                           style={referenceStyles.s9d13712d7f}
-                          label="Can you redesign an existing website?"
+                          label={t("Can you redesign an existing website?")}
                         >
                           <div
                             className="framer-1okky9a"
@@ -419,9 +436,9 @@ export function HomeFAQSection() {
                           dir="auto"
                           style={referenceStyles.s4b608901d2}
                         >
-                          {
-                            "Yes, we redesign existing websites with modern layouts, improved functionality, and a better user experience."
-                          }
+                          {t(
+                            "Yes, we redesign existing websites with modern layouts, improved functionality, and a better user experience.",
+                          )}
                         </p>
                       </AccordionPanel>
                     </AccordionItem>
@@ -459,7 +476,7 @@ export function HomeFAQSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"Which platforms do you work with?"}
+                            {t("Which platforms do you work with?")}
                           </p>
                         </div>
                         <AccordionToggle
@@ -467,7 +484,7 @@ export function HomeFAQSection() {
                           data-framer-name="Icon"
                           data-reset="button"
                           style={referenceStyles.s9d13712d7f}
-                          label="Which platforms do you work with?"
+                          label={t("Which platforms do you work with?")}
                         >
                           <div
                             className="framer-1okky9a"
@@ -492,9 +509,9 @@ export function HomeFAQSection() {
                           dir="auto"
                           style={referenceStyles.s4b608901d2}
                         >
-                          {
-                            "We work with Framer, WordPress, Webflow, and other modern platforms based on your project requirements."
-                          }
+                          {t(
+                            "We work with Framer, WordPress, Webflow, and other modern platforms based on your project requirements.",
+                          )}
                         </p>
                       </AccordionPanel>
                     </AccordionItem>
@@ -532,7 +549,7 @@ export function HomeFAQSection() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {"How do we get started?"}
+                            {t("How do we get started?")}
                           </p>
                         </div>
                         <AccordionToggle
@@ -540,7 +557,7 @@ export function HomeFAQSection() {
                           data-framer-name="Icon"
                           data-reset="button"
                           style={referenceStyles.s9d13712d7f}
-                          label="How do we get started?"
+                          label={t("How do we get started?")}
                         >
                           <div
                             className="framer-1okky9a"
@@ -565,9 +582,9 @@ export function HomeFAQSection() {
                           dir="auto"
                           style={referenceStyles.s4b608901d2}
                         >
-                          {
-                            "Simply contact us to discuss your goals, project scope, and timeline, and we'll guide you through every step."
-                          }
+                          {t(
+                            "Simply contact us to discuss your goals, project scope, and timeline, and we'll guide you through every step.",
+                          )}
                         </p>
                       </AccordionPanel>
                     </AccordionItem>

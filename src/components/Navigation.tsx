@@ -8,6 +8,7 @@ import {
   type HTMLAttributes,
   type ButtonHTMLAttributes,
 } from "react";
+import { useLocale } from "./LocaleProvider";
 const Menu = createContext<{ open: boolean; toggle: () => void } | null>(null);
 export function MobileNavigation({
   children,
@@ -52,12 +53,13 @@ export function MenuToggle({
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>) {
   const menu = useContext(Menu);
+  const { t } = useLocale();
   return (
     <button
       {...props}
       type="button"
       className={`${className} rycode-menu-toggle`}
-      aria-label={menu?.open ? "Close menu" : "Open menu"}
+      aria-label={t(menu?.open ? "Close menu" : "Open menu")}
       aria-expanded={menu?.open ?? false}
       onClick={menu?.toggle}
     />

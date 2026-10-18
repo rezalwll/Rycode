@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { vertexShader, fragmentShader } from "@/lib/distortion-shaders";
+import { useLocale } from "./LocaleProvider";
 export function DistortedImage({
   src,
   fade = false,
@@ -10,6 +11,7 @@ export function DistortedImage({
   fade?: boolean;
   replay?: boolean;
 }) {
+  const { t } = useLocale();
   const root = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
@@ -247,7 +249,7 @@ export function DistortedImage({
     <div ref={root} className="relative h-full w-full overflow-hidden">
       <img
         src={src}
-        alt="Abstract studio artwork"
+        alt={t("Abstract studio artwork")}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ opacity: ready ? 0 : 1 }}
       />

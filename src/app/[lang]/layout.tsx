@@ -1,3 +1,4 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import "../globals.css";
@@ -10,20 +11,26 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { VectorSymbols } from "@/components/VectorSymbols";
 import { ScrollEffects } from "@/components/ScrollEffects";
-export const metadata: Metadata = {
-  title: {
-    default: "Rycode Studio — Modern Creative Studio",
-    template: "%s | Rycode Studio",
-  },
-  applicationName: "Rycode Studio",
-  description:
-    "Rycode Studio — رایکد استودیو. Creative websites and brand experiences built with purpose.",
-  openGraph: {
-    siteName: "Rycode Studio",
-    title: "Rycode Studio — Modern Creative Studio",
-    description: "Creative websites and brand experiences built with purpose.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: {
+      default: t("Rycode Studio — Modern Creative Studio"),
+      template: t("%s | Rycode Studio"),
+    },
+    applicationName: t("Rycode Studio"),
+    description: t(
+      "Rycode Studio — رایکد استودیو. Creative websites and brand experiences built with purpose.",
+    ),
+    openGraph: {
+      siteName: t("Rycode Studio"),
+      title: t("Rycode Studio — Modern Creative Studio"),
+      description: t(
+        "Creative websites and brand experiences built with purpose.",
+      ),
+    },
+  };
+}
 export default async function Layout({
   children,
 }: {

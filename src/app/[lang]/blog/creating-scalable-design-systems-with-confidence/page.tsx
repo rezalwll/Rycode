@@ -1,12 +1,17 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { BlogCreatingScalableDesignSystemsWithConfidenceBlock0 } from "@/components/pages/BlogCreatingScalableDesignSystemsWithConfidenceBlock0";
 import { BlogCreatingScalableDesignSystemsWithConfidenceHeroSection } from "@/components/pages/BlogCreatingScalableDesignSystemsWithConfidenceHeroSection";
 import { BlogCreatingScalableDesignSystemsWithConfidenceBlogSection } from "@/components/pages/BlogCreatingScalableDesignSystemsWithConfidenceBlogSection";
-export const metadata: Metadata = {
-  title: "Creating Scalable Design Systems With Confidence",
-};
-export default function Page() {
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getTranslations();
+  return {
+    title: t("Creating Scalable Design Systems With Confidence"),
+  };
+}
+export default async function Page() {
+  const { t } = await getTranslations();
   return (
     <main
       data-framer-root=""
@@ -14,7 +19,7 @@ export default function Page() {
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">
-        Creating Scalable Design Systems With Confidence
+        {t("Creating Scalable Design Systems With Confidence")}
       </h1>
       <BlogCreatingScalableDesignSystemsWithConfidenceBlock0 />
       <BlogCreatingScalableDesignSystemsWithConfidenceHeroSection />

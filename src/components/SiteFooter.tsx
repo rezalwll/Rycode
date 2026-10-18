@@ -1,9 +1,11 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { BrandLogo } from "@/components/BrandLogo";
 import Link from "next/link";
 import { Reveal, Ticker } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function SiteFooter() {
+export async function SiteFooter() {
+  const { t, href } = await getTranslations();
   return (
     <>
       <div className="framer-10ygyz8"></div>
@@ -406,7 +408,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Let's build together"}
+                              {t("Let's build together")}
                             </p>
                           </div>
                         </div>
@@ -415,7 +417,7 @@ export function SiteFooter() {
                         <a
                           className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
                           data-framer-name="Variant 1"
-                          href="/contact"
+                          href={href("/contact")}
                           target="_blank"
                         >
                           <div
@@ -429,7 +431,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Start a project"}
+                              {t("Start a project")}
                             </p>
                           </div>
                         </a>
@@ -455,7 +457,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Navigation"}
+                          {t("Navigation")}
                         </p>
                       </div>
                       <div
@@ -466,7 +468,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/"
+                            href={href("/")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -479,7 +481,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Home"}
+                                {t("Home")}
                               </p>
                             </div>
                             <div
@@ -493,7 +495,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Service%20Section"
+                            href={href("/#Service%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -506,7 +508,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Services"}
+                                {t("Services")}
                               </p>
                             </div>
                             <div
@@ -520,7 +522,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Process%20Section"
+                            href={href("/#Process%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -533,7 +535,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Process"}
+                                {t("Process")}
                               </p>
                             </div>
                             <div
@@ -547,7 +549,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Pricing%20Section"
+                            href={href("/#Pricing%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -560,7 +562,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Pricing"}
+                                {t("Pricing")}
                               </p>
                             </div>
                             <div
@@ -574,7 +576,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/blog"
+                            href={href("/blog")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -587,7 +589,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Blog"}
+                                {t("Blog")}
                               </p>
                             </div>
                             <div
@@ -614,7 +616,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Social media"}
+                          {t("Social media")}
                         </p>
                       </div>
                       <div
@@ -637,7 +639,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Twitter"}
+                                {t("Twitter")}
                               </p>
                             </div>
                             <div
@@ -663,7 +665,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Dribbble"}
+                                {t("Dribbble")}
                               </p>
                             </div>
                             <div
@@ -689,7 +691,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Instagram"}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -715,7 +717,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Facebook"}
+                                {t("Facebook")}
                               </p>
                             </div>
                             <div
@@ -749,7 +751,7 @@ export function SiteFooter() {
                         dir="auto"
                         style={referenceStyles.s0c39c3123b}
                       >
-                        {"©2026 RYCODE Studio. All Rights Reserved."}
+                        {t("©2026 RYCODE Studio. All Rights Reserved.")}
                       </p>
                     </div>
                     <div className="framer-1kx7ns8" data-framer-name="Policy">
@@ -771,7 +773,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Terms of Use"}
+                              {t("Terms of Use")}
                             </p>
                           </div>
                           <div
@@ -799,7 +801,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Privacy Policy"}
+                              {t("Privacy Policy")}
                             </p>
                           </div>
                           <div
@@ -890,7 +892,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Let's build together"}
+                              {t("Let's build together")}
                             </p>
                           </div>
                         </div>
@@ -899,7 +901,7 @@ export function SiteFooter() {
                         <a
                           className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
                           data-framer-name="Variant 1"
-                          href="/contact"
+                          href={href("/contact")}
                           target="_blank"
                         >
                           <div
@@ -913,7 +915,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Start a project"}
+                              {t("Start a project")}
                             </p>
                           </div>
                         </a>
@@ -939,7 +941,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Navigation"}
+                          {t("Navigation")}
                         </p>
                       </div>
                       <div
@@ -950,7 +952,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/"
+                            href={href("/")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -963,7 +965,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Home"}
+                                {t("Home")}
                               </p>
                             </div>
                             <div
@@ -977,7 +979,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Service%20Section"
+                            href={href("/#Service%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -990,7 +992,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Services"}
+                                {t("Services")}
                               </p>
                             </div>
                             <div
@@ -1004,7 +1006,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Process%20Section"
+                            href={href("/#Process%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1017,7 +1019,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Process"}
+                                {t("Process")}
                               </p>
                             </div>
                             <div
@@ -1031,7 +1033,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Pricing%20Section"
+                            href={href("/#Pricing%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1044,7 +1046,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Pricing"}
+                                {t("Pricing")}
                               </p>
                             </div>
                             <div
@@ -1058,7 +1060,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/blog"
+                            href={href("/blog")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1071,7 +1073,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Blog"}
+                                {t("Blog")}
                               </p>
                             </div>
                             <div
@@ -1098,7 +1100,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Social media"}
+                          {t("Social media")}
                         </p>
                       </div>
                       <div
@@ -1121,7 +1123,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Twitter"}
+                                {t("Twitter")}
                               </p>
                             </div>
                             <div
@@ -1147,7 +1149,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Dribbble"}
+                                {t("Dribbble")}
                               </p>
                             </div>
                             <div
@@ -1173,7 +1175,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Instagram"}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -1199,7 +1201,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Facebook"}
+                                {t("Facebook")}
                               </p>
                             </div>
                             <div
@@ -1233,7 +1235,7 @@ export function SiteFooter() {
                         dir="auto"
                         style={referenceStyles.s58373922e0}
                       >
-                        {"©2026 RYCODE Studio. All Rights Reserved."}
+                        {t("©2026 RYCODE Studio. All Rights Reserved.")}
                       </p>
                     </div>
                     <div className="framer-1kx7ns8" data-framer-name="Policy">
@@ -1255,7 +1257,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Terms of Use"}
+                              {t("Terms of Use")}
                             </p>
                           </div>
                           <div
@@ -1283,7 +1285,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Privacy Policy"}
+                              {t("Privacy Policy")}
                             </p>
                           </div>
                           <div
@@ -1374,7 +1376,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Let's build together"}
+                              {t("Let's build together")}
                             </p>
                           </div>
                         </div>
@@ -1383,7 +1385,7 @@ export function SiteFooter() {
                         <a
                           className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
                           data-framer-name="Variant 1"
-                          href="/contact"
+                          href={href("/contact")}
                           target="_blank"
                         >
                           <div
@@ -1397,7 +1399,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Start a project"}
+                              {t("Start a project")}
                             </p>
                           </div>
                         </a>
@@ -1423,7 +1425,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Navigation"}
+                          {t("Navigation")}
                         </p>
                       </div>
                       <div
@@ -1434,7 +1436,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/"
+                            href={href("/")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1447,7 +1449,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Home"}
+                                {t("Home")}
                               </p>
                             </div>
                             <div
@@ -1461,7 +1463,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Service%20Section"
+                            href={href("/#Service%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1474,7 +1476,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Services"}
+                                {t("Services")}
                               </p>
                             </div>
                             <div
@@ -1488,7 +1490,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Process%20Section"
+                            href={href("/#Process%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1501,7 +1503,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Process"}
+                                {t("Process")}
                               </p>
                             </div>
                             <div
@@ -1515,7 +1517,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/#Pricing%20Section"
+                            href={href("/#Pricing%20Section")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1528,7 +1530,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Pricing"}
+                                {t("Pricing")}
                               </p>
                             </div>
                             <div
@@ -1542,7 +1544,7 @@ export function SiteFooter() {
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
                             data-framer-name="Footer"
-                            href="/blog"
+                            href={href("/blog")}
                           >
                             <div
                               className="framer-10d9t98"
@@ -1555,7 +1557,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Blog"}
+                                {t("Blog")}
                               </p>
                             </div>
                             <div
@@ -1582,7 +1584,7 @@ export function SiteFooter() {
                           dir="auto"
                           style={referenceStyles.s0c39c3123b}
                         >
-                          {"Social media"}
+                          {t("Social media")}
                         </p>
                       </div>
                       <div
@@ -1605,7 +1607,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Twitter"}
+                                {t("Twitter")}
                               </p>
                             </div>
                             <div
@@ -1631,7 +1633,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Dribbble"}
+                                {t("Dribbble")}
                               </p>
                             </div>
                             <div
@@ -1657,7 +1659,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Instagram"}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -1683,7 +1685,7 @@ export function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {"Facebook"}
+                                {t("Facebook")}
                               </p>
                             </div>
                             <div
@@ -1717,7 +1719,7 @@ export function SiteFooter() {
                         dir="auto"
                         style={referenceStyles.s0c39c3123b}
                       >
-                        {"©2026 RYCODE Studio. All Rights Reserved."}
+                        {t("©2026 RYCODE Studio. All Rights Reserved.")}
                       </p>
                     </div>
                     <div className="framer-1kx7ns8" data-framer-name="Policy">
@@ -1739,7 +1741,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Terms of Use"}
+                              {t("Terms of Use")}
                             </p>
                           </div>
                           <div
@@ -1767,7 +1769,7 @@ export function SiteFooter() {
                               dir="auto"
                               style={referenceStyles.s2a1463207d}
                             >
-                              {"Privacy Policy"}
+                              {t("Privacy Policy")}
                             </p>
                           </div>
                           <div

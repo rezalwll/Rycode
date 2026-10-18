@@ -1,3 +1,4 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { BrandLogo } from "@/components/BrandLogo";
 import Link from "next/link";
@@ -7,7 +8,8 @@ import {
   MenuPanel,
 } from "@/components/Navigation";
 import { referenceStyles } from "@/styles/reference-styles";
-export function SiteHeader() {
+export async function SiteHeader() {
+  const { href, t } = await getTranslations();
   return (
     <header
       className="framer-ro7694"
@@ -26,7 +28,7 @@ export function SiteHeader() {
               <Link
                 className="framer-6w0zrt framer-1kjkpwk"
                 data-framer-name="Logo Block"
-                href="/"
+                href={href("/")}
               >
                 <BrandLogo />
               </Link>
@@ -40,7 +42,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/work"
+                    href={href("/work")}
                     tabIndex={0}
                     style={referenceStyles.s5f3b0adb3a}
                   >
@@ -55,7 +57,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Work"}
+                        {t("Work")}
                       </p>
                     </div>
                   </Link>
@@ -65,7 +67,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/#Service%20Section"
+                    href={href("/#Service%20Section")}
                     tabIndex={0}
                     style={referenceStyles.s5f3b0adb3a}
                   >
@@ -80,7 +82,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Services"}
+                        {t("Services")}
                       </p>
                     </div>
                   </Link>
@@ -90,7 +92,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/blog"
+                    href={href("/blog")}
                     tabIndex={0}
                     style={referenceStyles.s5f3b0adb3a}
                   >
@@ -105,7 +107,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Blog"}
+                        {t("Blog")}
                       </p>
                     </div>
                   </Link>
@@ -115,7 +117,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/#Pricing%20Section"
+                    href={href("/#Pricing%20Section")}
                     tabIndex={0}
                     style={referenceStyles.s5f3b0adb3a}
                   >
@@ -130,7 +132,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Pricing"}
+                        {t("Pricing")}
                       </p>
                     </div>
                   </Link>
@@ -143,7 +145,7 @@ export function SiteHeader() {
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-18sfddm framer-1fsrsxu"
                     data-border="true"
                     data-framer-name="Variant 1"
-                    href="/contact"
+                    href={href("/contact")}
                     style={referenceStyles.s64b4a2310d}
                   >
                     <div
@@ -157,7 +159,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Start Project"}
+                        {t("Start Project")}
                       </p>
                     </div>
                     <div className="framer-1glyh7l">
@@ -194,7 +196,7 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-      <div className="ssr-variant hidden-zx6348 hidden-uxe76n">
+      <div className="ssr-variant hidden-uxe76n">
         <div className="framer-gu70t0-container">
           <MobileNavigation
             className="framer-ATxvc framer-2hf838 framer-v-1t09hgd w-full!"
@@ -205,7 +207,7 @@ export function SiteHeader() {
               <Link
                 className="framer-6w0zrt framer-1kjkpwk"
                 data-framer-name="Logo Block"
-                href="/"
+                href={href("/")}
               >
                 <BrandLogo />
               </Link>
@@ -246,7 +248,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/"
+                    href={href("/")}
                     tabIndex={0}
                     style={referenceStyles.s5ff7a5484d}
                   >
@@ -261,7 +263,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Home"}
+                        {t("Home")}
                       </p>
                     </div>
                   </Link>
@@ -274,7 +276,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/work"
+                    href={href("/work")}
                     tabIndex={0}
                     style={referenceStyles.s5ff7a5484d}
                   >
@@ -289,7 +291,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Work"}
+                        {t("Work")}
                       </p>
                     </div>
                   </Link>
@@ -302,7 +304,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/#Service%20Section"
+                    href={href("/#Service%20Section")}
                     tabIndex={0}
                     style={referenceStyles.s5ff7a5484d}
                   >
@@ -317,7 +319,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Services"}
+                        {t("Services")}
                       </p>
                     </div>
                   </Link>
@@ -330,7 +332,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/blog"
+                    href={href("/blog")}
                     tabIndex={0}
                     style={referenceStyles.s5ff7a5484d}
                   >
@@ -345,7 +347,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Blog"}
+                        {t("Blog")}
                       </p>
                     </div>
                   </Link>
@@ -358,7 +360,7 @@ export function SiteHeader() {
                     className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
                     data-framer-name="Primary"
                     data-highlight="true"
-                    href="/#Pricing%20Section"
+                    href={href("/#Pricing%20Section")}
                     tabIndex={0}
                     style={referenceStyles.s5ff7a5484d}
                   >
@@ -373,7 +375,7 @@ export function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {"Pricing"}
+                        {t("Pricing")}
                       </p>
                     </div>
                   </Link>
@@ -381,48 +383,6 @@ export function SiteHeader() {
               </div>
             </MenuPanel>
           </MobileNavigation>
-        </div>
-      </div>
-      <div className="ssr-variant hidden-16wj1xo hidden-uxe76n">
-        <div className="framer-gu70t0-container">
-          <div
-            className="framer-ATxvc framer-2hf838 framer-v-1trdhwr w-full!"
-            data-framer-name="Tablet"
-            style={referenceStyles.sf4b181c342}
-          >
-            <div className="framer-1mgfzd9" data-framer-name="Container">
-              <Link
-                className="framer-6w0zrt framer-1kjkpwk"
-                data-framer-name="Logo Block"
-                href="/"
-              >
-                <BrandLogo />
-              </Link>
-              <div className="framer-uk7nae" data-framer-name="Button Block">
-                <LanguageSwitch />
-                <div className="framer-1xrfdkn-container">
-                  <MenuToggle
-                    className="framer-JjGLa framer-tge9hy framer-v-tge9hy"
-                    data-framer-name="Menu"
-                    data-highlight="true"
-                    style={referenceStyles.s9bd38a27f9}
-                  >
-                    <div
-                      className="framer-1rvl0gn"
-                      data-framer-name="Line 01"
-                      style={referenceStyles.s2601f6f815}
-                    ></div>
-                    <div
-                      className="framer-mbjeww"
-                      data-framer-name="Line 01"
-                      style={referenceStyles.s2601f6f815}
-                    ></div>
-                  </MenuToggle>
-                </div>
-              </div>
-            </div>
-            <div className="framer-jc5u9r" data-framer-name="Container"></div>
-          </div>
         </div>
       </div>
     </header>

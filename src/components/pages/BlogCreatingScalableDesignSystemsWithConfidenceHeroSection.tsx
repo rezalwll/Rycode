@@ -1,7 +1,9 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
+export async function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
+  const { t } = await getTranslations();
   return (
     <section className="framer-8xh1tf" data-framer-name="Hero Section">
       <div className="framer-1yaeu7q" data-framer-name="Container">
@@ -115,9 +117,9 @@ export function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Design systems ensure consistency across every product and digital experience."
-                    }
+                    {t(
+                      "Design systems ensure consistency across every product and digital experience.",
+                    )}
                   </p>
                   <p
                     dir="auto"
@@ -129,9 +131,9 @@ export function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Reusable components help teams save time while maintaining a unified visual identity."
-                    }
+                    {t(
+                      "Reusable components help teams save time while maintaining a unified visual identity.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -171,17 +173,17 @@ export function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "Clear guidelines improve collaboration between designers, developers, and stakeholders."
-                    }
+                    {t(
+                      "Clear guidelines improve collaboration between designers, developers, and stakeholders.",
+                    )}
                   </p>
                   <p
                     dir="auto"
                     className="framer-text framer-styles-preset-egbnuh"
                   >
-                    {
-                      "A scalable design system supports long-term growth without compromising quality."
-                    }
+                    {t(
+                      "A scalable design system supports long-term growth without compromising quality.",
+                    )}
                   </p>
                 </Reveal>
               </div>
@@ -234,7 +236,7 @@ export function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection() {
                 dir="auto"
                 style={referenceStyles.s5a374ddac4}
               >
-                {"Creating Scalable Design Systems With Confidence"}
+                {t("Creating Scalable Design Systems With Confidence")}
               </h4>
             </Reveal>
           </div>

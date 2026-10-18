@@ -1,9 +1,11 @@
+import { getTranslations } from "@/lib/i18n-server";
 import { Fragment } from "react";
 import Link from "next/link";
 import { Reveal, SplitText, Carousel, Counter } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeChooseUsSection() {
+export async function HomeChooseUsSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <section className="framer-49zht" data-framer-name="Choose Us Section">
       <div className="framer-9k7if5" data-framer-name="Container">
@@ -46,7 +48,7 @@ export function HomeChooseUsSection() {
                       dir="auto"
                       style={referenceStyles.s2a1463207d}
                     >
-                      {"WHY CHOOSE US"}
+                      {t("WHY CHOOSE US")}
                     </p>
                   </div>
                 </div>
@@ -62,6 +64,11 @@ export function HomeChooseUsSection() {
                   style={referenceStyles.s74a84b5217}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("A trusted partner for ambitious brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"A"}</span>
@@ -132,6 +139,11 @@ export function HomeChooseUsSection() {
                   style={referenceStyles.s199340d136}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("A trusted partner for ambitious brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"A"}</span>
@@ -202,6 +214,11 @@ export function HomeChooseUsSection() {
                   style={referenceStyles.s78db03cecf}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("A trusted partner for ambitious brands.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s4c7dd41f2b}>{"A"}</span>
@@ -296,6 +313,13 @@ export function HomeChooseUsSection() {
                       style={referenceStyles.s801866e792}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "We combine design and no-code expertise to create experiences that help businesses launch faster, scale confidently, and achieve growth.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s05b6f147d0}>{"W"}</span>
@@ -515,6 +539,13 @@ export function HomeChooseUsSection() {
                       style={referenceStyles.s6e2d299974}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "We combine design and no-code expertise to create experiences that help businesses launch faster, scale confidently, and achieve growth.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s05b6f147d0}>{"W"}</span>
@@ -734,6 +765,13 @@ export function HomeChooseUsSection() {
                       style={referenceStyles.s4428ca8151}
                       as="div"
                       scrollLinked={true}
+                      localizedText={
+                        locale === "fa"
+                          ? t(
+                              "We combine design and no-code expertise to create experiences that help businesses launch faster, scale confidently, and achieve growth.",
+                            )
+                          : undefined
+                      }
                     >
                       <span style={referenceStyles.se34a5ceebc}>
                         <span style={referenceStyles.s05b6f147d0}>{"W"}</span>
@@ -969,7 +1007,7 @@ export function HomeChooseUsSection() {
                             width="128"
                             height="128"
                             src="/assets/6b9a7e67b5c61ec7.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -987,7 +1025,7 @@ export function HomeChooseUsSection() {
                             width="128"
                             height="128"
                             src="/assets/6b9a7e67b5c61ec7.png"
-                            alt="Icon"
+                            alt={t("Icon")}
                             className="w-full! h-full!"
                             style={referenceStyles.s1100a320a2}
                           />
@@ -1005,7 +1043,7 @@ export function HomeChooseUsSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {"Trusted Worldwide 12+ Countries"}
+                        {t("Trusted Worldwide 12+ Countries")}
                       </p>
                     </div>
                   </div>
@@ -1021,7 +1059,7 @@ export function HomeChooseUsSection() {
                           width="416"
                           height="152"
                           src="/assets/95ea9d28d0ed2641.png"
-                          alt="Image"
+                          alt={t("Image")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1039,7 +1077,7 @@ export function HomeChooseUsSection() {
                           width="416"
                           height="152"
                           src="/assets/95ea9d28d0ed2641.png"
-                          alt="Image"
+                          alt={t("Image")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
                         />
@@ -1075,7 +1113,7 @@ export function HomeChooseUsSection() {
                           dir="auto"
                           style={referenceStyles.s2dadd18f2b}
                         >
-                          {"Trusted by  Modern Businesses"}
+                          {t("Trusted by  Modern Businesses")}
                         </p>
                       </div>
                       <div
@@ -1088,9 +1126,9 @@ export function HomeChooseUsSection() {
                           data-styles-preset="fHx27tEvF"
                           dir="auto"
                         >
-                          {
-                            "Helping ambitious brands launch confidently worldwide."
-                          }
+                          {t(
+                            "Helping ambitious brands launch confidently worldwide.",
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1134,7 +1172,7 @@ export function HomeChooseUsSection() {
                                         width="228"
                                         height="80"
                                         src="/assets/8f7548240d60986c.png"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1160,7 +1198,7 @@ export function HomeChooseUsSection() {
                                         width="228"
                                         height="80"
                                         src="/assets/8f7548240d60986c.png"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1195,7 +1233,7 @@ export function HomeChooseUsSection() {
                                         width="73"
                                         height="20"
                                         src="/assets/8048d95379007fbc.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1221,7 +1259,7 @@ export function HomeChooseUsSection() {
                                         width="73"
                                         height="20"
                                         src="/assets/8048d95379007fbc.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1256,7 +1294,7 @@ export function HomeChooseUsSection() {
                                         width="51"
                                         height="20"
                                         src="/assets/474056e8c24db082.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1282,7 +1320,7 @@ export function HomeChooseUsSection() {
                                         width="51"
                                         height="20"
                                         src="/assets/474056e8c24db082.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1330,7 +1368,7 @@ export function HomeChooseUsSection() {
                                         width="57"
                                         height="20"
                                         src="/assets/2492daa100dd7900.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1356,7 +1394,7 @@ export function HomeChooseUsSection() {
                                         width="57"
                                         height="20"
                                         src="/assets/2492daa100dd7900.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1391,7 +1429,7 @@ export function HomeChooseUsSection() {
                                         width="57"
                                         height="20"
                                         src="/assets/0b58929227e7d388.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1417,7 +1455,7 @@ export function HomeChooseUsSection() {
                                         width="57"
                                         height="20"
                                         src="/assets/0b58929227e7d388.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1452,7 +1490,7 @@ export function HomeChooseUsSection() {
                                         width="63"
                                         height="20"
                                         src="/assets/87d2b5ddf0fb33fc.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1478,7 +1516,7 @@ export function HomeChooseUsSection() {
                                         width="63"
                                         height="20"
                                         src="/assets/87d2b5ddf0fb33fc.svg"
-                                        alt="Logo"
+                                        alt={t("Logo")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s1100a320a2}
                                       />
@@ -1498,7 +1536,7 @@ export function HomeChooseUsSection() {
                         className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1d5fd42 framer-1fsrsxu w-full!"
                         data-border="true"
                         data-framer-name="V5"
-                        href="/contact"
+                        href={href("/contact")}
                         style={referenceStyles.s559429094b}
                       >
                         <div
@@ -1512,7 +1550,7 @@ export function HomeChooseUsSection() {
                             dir="auto"
                             style={referenceStyles.sea361c3b28}
                           >
-                            {"Start Project"}
+                            {t("Start Project")}
                           </p>
                         </div>
                         <div className="framer-1glyh7l">
@@ -1578,7 +1616,7 @@ export function HomeChooseUsSection() {
                                         sizes="(min-width: 1200px) 275px, (max-width: 767.98px) 275px, (min-width: 768px) and (max-width: 1199.98px) 275px"
                                         srcSet="/assets/e5258974e6ea202c.png 992w, /assets/ace642dd096b1092.png 1500w"
                                         src="/assets/ace642dd096b1092.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1603,7 +1641,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.se8682f4ed5}
                                         >
-                                          {"Client Satisfaction"}
+                                          {t("Client Satisfaction")}
                                         </p>
                                       </div>
                                       <div
@@ -1617,7 +1655,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.s833ee3534c}
                                         >
-                                          {"01/04"}
+                                          {t("01/04")}
                                         </p>
                                       </div>
                                     </div>
@@ -1664,9 +1702,9 @@ export function HomeChooseUsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {
-                                          "Exceptional results backed by partnerships."
-                                        }
+                                        {t(
+                                          "Exceptional results backed by partnerships.",
+                                        )}
                                       </p>
                                     </div>
                                   </div>
@@ -1699,7 +1737,7 @@ export function HomeChooseUsSection() {
                                         sizes="(min-width: 1200px) 275px, (max-width: 767.98px) 275px, (min-width: 768px) and (max-width: 1199.98px) 275px"
                                         srcSet="/assets/df4447a86e0fa458.png 512w, /assets/d961550afe05945e.png 1024w, /assets/6330c7ffa9690823.png 1100w"
                                         src="/assets/6330c7ffa9690823.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1724,7 +1762,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.se8682f4ed5}
                                         >
-                                          {"Projects Delivered"}
+                                          {t("Projects Delivered")}
                                         </p>
                                       </div>
                                       <div
@@ -1738,7 +1776,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.s833ee3534c}
                                         >
-                                          {"02/04"}
+                                          {t("02/04")}
                                         </p>
                                       </div>
                                     </div>
@@ -1785,9 +1823,9 @@ export function HomeChooseUsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {
-                                          "Delivering premium websites for brands."
-                                        }
+                                        {t(
+                                          "Delivering premium websites for brands.",
+                                        )}
                                       </p>
                                     </div>
                                   </div>
@@ -1820,7 +1858,7 @@ export function HomeChooseUsSection() {
                                         sizes="(min-width: 1200px) 275px, (max-width: 767.98px) 275px, (min-width: 768px) and (max-width: 1199.98px) 275px"
                                         srcSet="/assets/300bf60fd3dae872.png 512w, /assets/e0306ba92ce57bea.png 1024w, /assets/836c8c6ebc81ac8b.png 1100w"
                                         src="/assets/836c8c6ebc81ac8b.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1845,7 +1883,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.se8682f4ed5}
                                         >
-                                          {"Countries Reached"}
+                                          {t("Countries Reached")}
                                         </p>
                                       </div>
                                       <div
@@ -1859,7 +1897,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.s833ee3534c}
                                         >
-                                          {"03/04"}
+                                          {t("03/04")}
                                         </p>
                                       </div>
                                     </div>
@@ -1906,9 +1944,9 @@ export function HomeChooseUsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {
-                                          "Supporting ambitious brands across markets."
-                                        }
+                                        {t(
+                                          "Supporting ambitious brands across markets.",
+                                        )}
                                       </p>
                                     </div>
                                   </div>
@@ -1941,7 +1979,7 @@ export function HomeChooseUsSection() {
                                         sizes="(min-width: 1200px) 275px, (max-width: 767.98px) 275px, (min-width: 768px) and (max-width: 1199.98px) 275px"
                                         srcSet="/assets/c4842f88a126fa71.png 512w, /assets/f8f60ddcc2f7a2c2.png 1024w, /assets/c0a97144289e39bf.png 1100w"
                                         src="/assets/c0a97144289e39bf.png"
-                                        alt="Image"
+                                        alt={t("Image")}
                                         className="w-full! h-full!"
                                         style={referenceStyles.s258149b79d}
                                       />
@@ -1966,7 +2004,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.se8682f4ed5}
                                         >
-                                          {"Years of Experience"}
+                                          {t("Years of Experience")}
                                         </p>
                                       </div>
                                       <div
@@ -1980,7 +2018,7 @@ export function HomeChooseUsSection() {
                                           dir="auto"
                                           style={referenceStyles.s833ee3534c}
                                         >
-                                          {"04/04"}
+                                          {t("04/04")}
                                         </p>
                                       </div>
                                     </div>
@@ -2027,9 +2065,9 @@ export function HomeChooseUsSection() {
                                         dir="auto"
                                         style={referenceStyles.s833ee3534c}
                                       >
-                                        {
-                                          "Creating thoughtful digital experiences with precision."
-                                        }
+                                        {t(
+                                          "Creating thoughtful digital experiences with precision.",
+                                        )}
                                       </p>
                                     </div>
                                   </div>

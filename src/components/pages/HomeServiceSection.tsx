@@ -1,3 +1,4 @@
+import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
 import {
@@ -7,7 +8,8 @@ import {
   AccordionToggle,
 } from "@/components/Accordion";
 import { referenceStyles } from "@/styles/reference-styles";
-export function HomeServiceSection() {
+export async function HomeServiceSection() {
+  const { t, locale, href } = await getTranslations();
   return (
     <AccordionGroup
       className="framer-y8np0u"
@@ -54,7 +56,7 @@ export function HomeServiceSection() {
                       dir="auto"
                       style={referenceStyles.se8682f4ed5}
                     >
-                      {"SERVICES"}
+                      {t("SERVICES")}
                     </p>
                   </div>
                 </div>
@@ -70,6 +72,11 @@ export function HomeServiceSection() {
                   style={referenceStyles.s74a84b5217}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Crafted with purpose. Built for lasting impact.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"C"}</span>
@@ -152,6 +159,11 @@ export function HomeServiceSection() {
                   style={referenceStyles.s199340d136}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Crafted with purpose. Built for lasting impact.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"C"}</span>
@@ -234,6 +246,11 @@ export function HomeServiceSection() {
                   style={referenceStyles.s78db03cecf}
                   as="div"
                   scrollLinked={true}
+                  localizedText={
+                    locale === "fa"
+                      ? t("Crafted with purpose. Built for lasting impact.")
+                      : undefined
+                  }
                 >
                   <span style={referenceStyles.se34a5ceebc}>
                     <span style={referenceStyles.s354fe386da}>{"C"}</span>
@@ -351,7 +368,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"01."}
+                          {t("01.")}
                         </p>
                       </div>
                       <div
@@ -373,7 +390,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Website Design"}
+                              {t("Website Design")}
                             </h4>
                           </div>
                           <div
@@ -398,7 +415,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"UI/UX"}
+                                    {t("UI/UX")}
                                   </p>
                                 </div>
                               </div>
@@ -421,7 +438,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Responsive"}
+                                    {t("Responsive")}
                                   </p>
                                 </div>
                               </div>
@@ -444,7 +461,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Performance"}
+                                    {t("Performance")}
                                   </p>
                                 </div>
                               </div>
@@ -470,7 +487,7 @@ export function HomeServiceSection() {
                                 sizes="(min-width: 1200px) 339px, (max-width: 767.98px) min(max(max(min(100vw - 40px, 1120px), 1px) - 74px, 1px), 710px), (min-width: 768px) and (max-width: 1199.98px) 190px"
                                 srcSet="/assets/5111438053d1eb63.png 512w, /assets/72c3f4c6773173b5.png 1024w, /assets/3345d22a74a07841.png 1500w"
                                 src="/assets/3345d22a74a07841.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s258149b79d}
                               />
@@ -491,9 +508,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Beautiful websites crafted to engage, inspire confidence."
-                                }
+                                {t(
+                                  "Beautiful websites crafted to engage, inspire confidence.",
+                                )}
                               </h5>
                             </div>
                             <div className="framer-12o1p8o-container">
@@ -501,7 +518,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s3bb9702481}
                               >
                                 <div
@@ -515,7 +532,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div className="framer-1glyh7l">
@@ -551,7 +568,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Website Design"
+                      label={t("Website Design")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -599,7 +616,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"02."}
+                          {t("02.")}
                         </p>
                       </div>
                       <div
@@ -621,7 +638,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Framer Development"}
+                              {t("Framer Development")}
                             </h4>
                           </div>
                           <div
@@ -646,7 +663,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Framer"}
+                                    {t("Framer")}
                                   </p>
                                 </div>
                               </div>
@@ -669,7 +686,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"CMS"}
+                                    {t("CMS")}
                                   </p>
                                 </div>
                               </div>
@@ -692,7 +709,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Motion"}
+                                    {t("Motion")}
                                   </p>
                                 </div>
                               </div>
@@ -720,7 +737,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/63dd57f7c994aeba.png 819w, /assets/ac62f0a5a6f4433f.png 960w"
                                 src="/assets/ac62f0a5a6f4433f.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -742,9 +759,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Fast Framer experiences built for exceptional performance."
-                                }
+                                {t(
+                                  "Fast Framer experiences built for exceptional performance.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -755,7 +772,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -769,7 +786,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -808,7 +825,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Framer Development"
+                      label={t("Framer Development")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -856,7 +873,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"03."}
+                          {t("03.")}
                         </p>
                       </div>
                       <div
@@ -878,7 +895,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"No-Code Automation"}
+                              {t("No-Code Automation")}
                             </h4>
                           </div>
                           <div
@@ -903,7 +920,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Automation"}
+                                    {t("Automation")}
                                   </p>
                                 </div>
                               </div>
@@ -926,7 +943,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Workflow"}
+                                    {t("Workflow")}
                                   </p>
                                 </div>
                               </div>
@@ -949,7 +966,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Integration"}
+                                    {t("Integration")}
                                   </p>
                                 </div>
                               </div>
@@ -977,7 +994,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/6eea4d261dd2de92.png 512w, /assets/f0531b0320a1dffb.png 1024w, /assets/9b3d48012a1cca23.png 1500w"
                                 src="/assets/9b3d48012a1cca23.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -999,9 +1016,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Automate workflows efficiently without writing code."
-                                }
+                                {t(
+                                  "Automate workflows efficiently without writing code.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -1012,7 +1029,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -1026,7 +1043,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -1065,7 +1082,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="No-Code Automation"
+                      label={t("No-Code Automation")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -1113,7 +1130,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"04."}
+                          {t("04.")}
                         </p>
                       </div>
                       <div
@@ -1135,7 +1152,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Brand Identity"}
+                              {t("Brand Identity")}
                             </h4>
                           </div>
                           <div
@@ -1160,7 +1177,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Identity"}
+                                    {t("Identity")}
                                   </p>
                                 </div>
                               </div>
@@ -1183,7 +1200,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Strategy"}
+                                    {t("Strategy")}
                                   </p>
                                 </div>
                               </div>
@@ -1206,7 +1223,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Visuals"}
+                                    {t("Visuals")}
                                   </p>
                                 </div>
                               </div>
@@ -1234,7 +1251,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/0ca02ec65b9efd5b.png 512w, /assets/1093883db13272e8.png 1024w, /assets/683feaedbf07a4c8.png 1200w"
                                 src="/assets/683feaedbf07a4c8.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -1256,9 +1273,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Distinctive brand identities building trust and recognition."
-                                }
+                                {t(
+                                  "Distinctive brand identities building trust and recognition.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -1269,7 +1286,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -1283,7 +1300,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -1322,7 +1339,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Brand Identity"
+                      label={t("Brand Identity")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -1370,7 +1387,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"05."}
+                          {t("05.")}
                         </p>
                       </div>
                       <div
@@ -1392,7 +1409,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"SEO & Growth"}
+                              {t("SEO & Growth")}
                             </h4>
                           </div>
                           <div
@@ -1417,7 +1434,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"SEO"}
+                                    {t("SEO")}
                                   </p>
                                 </div>
                               </div>
@@ -1440,7 +1457,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Analytics"}
+                                    {t("Analytics")}
                                   </p>
                                 </div>
                               </div>
@@ -1463,7 +1480,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Growth"}
+                                    {t("Growth")}
                                   </p>
                                 </div>
                               </div>
@@ -1491,7 +1508,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/9348b4e1b02f9706.png 819w, /assets/c9e087c0e10f7761.png 960w"
                                 src="/assets/c9e087c0e10f7761.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -1513,9 +1530,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Drive organic growth through strategic optimization."
-                                }
+                                {t(
+                                  "Drive organic growth through strategic optimization.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -1526,7 +1543,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -1540,7 +1557,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -1579,7 +1596,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="SEO & Growth"
+                      label={t("SEO & Growth")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -1642,7 +1659,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"01."}
+                          {t("01.")}
                         </p>
                       </div>
                       <div
@@ -1664,7 +1681,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Website Design"}
+                              {t("Website Design")}
                             </h4>
                           </div>
                           <div
@@ -1689,7 +1706,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"UI/UX"}
+                                    {t("UI/UX")}
                                   </p>
                                 </div>
                               </div>
@@ -1712,7 +1729,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Responsive"}
+                                    {t("Responsive")}
                                   </p>
                                 </div>
                               </div>
@@ -1735,7 +1752,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Performance"}
+                                    {t("Performance")}
                                   </p>
                                 </div>
                               </div>
@@ -1761,7 +1778,7 @@ export function HomeServiceSection() {
                                 sizes="(min-width: 1200px) 339px, (max-width: 767.98px) min(max(max(min(100vw - 40px, 1120px), 1px) - 74px, 1px), 710px), (min-width: 768px) and (max-width: 1199.98px) 190px"
                                 srcSet="/assets/5111438053d1eb63.png 512w, /assets/72c3f4c6773173b5.png 1024w, /assets/3345d22a74a07841.png 1500w"
                                 src="/assets/3345d22a74a07841.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s258149b79d}
                               />
@@ -1782,9 +1799,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Beautiful websites crafted to engage, inspire confidence."
-                                }
+                                {t(
+                                  "Beautiful websites crafted to engage, inspire confidence.",
+                                )}
                               </h5>
                             </div>
                             <div className="framer-12o1p8o-container">
@@ -1792,7 +1809,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s3bb9702481}
                               >
                                 <div
@@ -1806,7 +1823,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div className="framer-1glyh7l">
@@ -1842,7 +1859,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Website Design"
+                      label={t("Website Design")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -1890,7 +1907,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"02."}
+                          {t("02.")}
                         </p>
                       </div>
                       <div
@@ -1912,7 +1929,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Framer Development"}
+                              {t("Framer Development")}
                             </h4>
                           </div>
                           <div
@@ -1937,7 +1954,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Framer"}
+                                    {t("Framer")}
                                   </p>
                                 </div>
                               </div>
@@ -1960,7 +1977,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"CMS"}
+                                    {t("CMS")}
                                   </p>
                                 </div>
                               </div>
@@ -1983,7 +2000,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Motion"}
+                                    {t("Motion")}
                                   </p>
                                 </div>
                               </div>
@@ -2011,7 +2028,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/63dd57f7c994aeba.png 819w, /assets/ac62f0a5a6f4433f.png 960w"
                                 src="/assets/ac62f0a5a6f4433f.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -2033,9 +2050,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Fast Framer experiences built for exceptional performance."
-                                }
+                                {t(
+                                  "Fast Framer experiences built for exceptional performance.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -2046,7 +2063,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -2060,7 +2077,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -2099,7 +2116,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Framer Development"
+                      label={t("Framer Development")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -2147,7 +2164,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"03."}
+                          {t("03.")}
                         </p>
                       </div>
                       <div
@@ -2169,7 +2186,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"No-Code Automation"}
+                              {t("No-Code Automation")}
                             </h4>
                           </div>
                           <div
@@ -2194,7 +2211,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Automation"}
+                                    {t("Automation")}
                                   </p>
                                 </div>
                               </div>
@@ -2217,7 +2234,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Workflow"}
+                                    {t("Workflow")}
                                   </p>
                                 </div>
                               </div>
@@ -2240,7 +2257,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Integration"}
+                                    {t("Integration")}
                                   </p>
                                 </div>
                               </div>
@@ -2268,7 +2285,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/6eea4d261dd2de92.png 512w, /assets/f0531b0320a1dffb.png 1024w, /assets/9b3d48012a1cca23.png 1500w"
                                 src="/assets/9b3d48012a1cca23.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -2290,9 +2307,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Automate workflows efficiently without writing code."
-                                }
+                                {t(
+                                  "Automate workflows efficiently without writing code.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -2303,7 +2320,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -2317,7 +2334,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -2356,7 +2373,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="No-Code Automation"
+                      label={t("No-Code Automation")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -2404,7 +2421,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"04."}
+                          {t("04.")}
                         </p>
                       </div>
                       <div
@@ -2426,7 +2443,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Brand Identity"}
+                              {t("Brand Identity")}
                             </h4>
                           </div>
                           <div
@@ -2451,7 +2468,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Identity"}
+                                    {t("Identity")}
                                   </p>
                                 </div>
                               </div>
@@ -2474,7 +2491,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Strategy"}
+                                    {t("Strategy")}
                                   </p>
                                 </div>
                               </div>
@@ -2497,7 +2514,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Visuals"}
+                                    {t("Visuals")}
                                   </p>
                                 </div>
                               </div>
@@ -2525,7 +2542,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/0ca02ec65b9efd5b.png 512w, /assets/1093883db13272e8.png 1024w, /assets/683feaedbf07a4c8.png 1200w"
                                 src="/assets/683feaedbf07a4c8.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -2547,9 +2564,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Distinctive brand identities building trust and recognition."
-                                }
+                                {t(
+                                  "Distinctive brand identities building trust and recognition.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -2560,7 +2577,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -2574,7 +2591,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -2613,7 +2630,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Brand Identity"
+                      label={t("Brand Identity")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -2661,7 +2678,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"05."}
+                          {t("05.")}
                         </p>
                       </div>
                       <div
@@ -2683,7 +2700,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"SEO & Growth"}
+                              {t("SEO & Growth")}
                             </h4>
                           </div>
                           <div
@@ -2708,7 +2725,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"SEO"}
+                                    {t("SEO")}
                                   </p>
                                 </div>
                               </div>
@@ -2731,7 +2748,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Analytics"}
+                                    {t("Analytics")}
                                   </p>
                                 </div>
                               </div>
@@ -2754,7 +2771,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Growth"}
+                                    {t("Growth")}
                                   </p>
                                 </div>
                               </div>
@@ -2782,7 +2799,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/9348b4e1b02f9706.png 819w, /assets/c9e087c0e10f7761.png 960w"
                                 src="/assets/c9e087c0e10f7761.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -2804,9 +2821,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Drive organic growth through strategic optimization."
-                                }
+                                {t(
+                                  "Drive organic growth through strategic optimization.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -2817,7 +2834,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -2831,7 +2848,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -2870,7 +2887,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="SEO & Growth"
+                      label={t("SEO & Growth")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -2933,7 +2950,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"01."}
+                          {t("01.")}
                         </p>
                       </div>
                       <div
@@ -2955,7 +2972,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Website Design"}
+                              {t("Website Design")}
                             </h4>
                           </div>
                           <div
@@ -2980,7 +2997,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"UI/UX"}
+                                    {t("UI/UX")}
                                   </p>
                                 </div>
                               </div>
@@ -3003,7 +3020,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Responsive"}
+                                    {t("Responsive")}
                                   </p>
                                 </div>
                               </div>
@@ -3026,7 +3043,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Performance"}
+                                    {t("Performance")}
                                   </p>
                                 </div>
                               </div>
@@ -3052,7 +3069,7 @@ export function HomeServiceSection() {
                                 sizes="(min-width: 1200px) 339px, (max-width: 767.98px) min(max(max(min(100vw - 40px, 1120px), 1px) - 74px, 1px), 710px), (min-width: 768px) and (max-width: 1199.98px) 190px"
                                 srcSet="/assets/5111438053d1eb63.png 512w, /assets/72c3f4c6773173b5.png 1024w, /assets/3345d22a74a07841.png 1500w"
                                 src="/assets/3345d22a74a07841.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s258149b79d}
                               />
@@ -3073,9 +3090,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Beautiful websites crafted to engage, inspire confidence."
-                                }
+                                {t(
+                                  "Beautiful websites crafted to engage, inspire confidence.",
+                                )}
                               </h5>
                             </div>
                             <div className="framer-12o1p8o-container">
@@ -3083,7 +3100,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s3bb9702481}
                               >
                                 <div
@@ -3097,7 +3114,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div className="framer-1glyh7l">
@@ -3133,7 +3150,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Website Design"
+                      label={t("Website Design")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -3181,7 +3198,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"02."}
+                          {t("02.")}
                         </p>
                       </div>
                       <div
@@ -3203,7 +3220,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Framer Development"}
+                              {t("Framer Development")}
                             </h4>
                           </div>
                           <div
@@ -3228,7 +3245,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Framer"}
+                                    {t("Framer")}
                                   </p>
                                 </div>
                               </div>
@@ -3251,7 +3268,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"CMS"}
+                                    {t("CMS")}
                                   </p>
                                 </div>
                               </div>
@@ -3274,7 +3291,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Motion"}
+                                    {t("Motion")}
                                   </p>
                                 </div>
                               </div>
@@ -3302,7 +3319,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/63dd57f7c994aeba.png 819w, /assets/ac62f0a5a6f4433f.png 960w"
                                 src="/assets/ac62f0a5a6f4433f.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -3324,9 +3341,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Fast Framer experiences built for exceptional performance."
-                                }
+                                {t(
+                                  "Fast Framer experiences built for exceptional performance.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -3337,7 +3354,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -3351,7 +3368,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -3390,7 +3407,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Framer Development"
+                      label={t("Framer Development")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -3438,7 +3455,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"03."}
+                          {t("03.")}
                         </p>
                       </div>
                       <div
@@ -3460,7 +3477,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"No-Code Automation"}
+                              {t("No-Code Automation")}
                             </h4>
                           </div>
                           <div
@@ -3485,7 +3502,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Automation"}
+                                    {t("Automation")}
                                   </p>
                                 </div>
                               </div>
@@ -3508,7 +3525,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Workflow"}
+                                    {t("Workflow")}
                                   </p>
                                 </div>
                               </div>
@@ -3531,7 +3548,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Integration"}
+                                    {t("Integration")}
                                   </p>
                                 </div>
                               </div>
@@ -3559,7 +3576,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/6eea4d261dd2de92.png 512w, /assets/f0531b0320a1dffb.png 1024w, /assets/9b3d48012a1cca23.png 1500w"
                                 src="/assets/9b3d48012a1cca23.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -3581,9 +3598,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Automate workflows efficiently without writing code."
-                                }
+                                {t(
+                                  "Automate workflows efficiently without writing code.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -3594,7 +3611,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -3608,7 +3625,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -3647,7 +3664,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="No-Code Automation"
+                      label={t("No-Code Automation")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -3695,7 +3712,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"04."}
+                          {t("04.")}
                         </p>
                       </div>
                       <div
@@ -3717,7 +3734,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"Brand Identity"}
+                              {t("Brand Identity")}
                             </h4>
                           </div>
                           <div
@@ -3742,7 +3759,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Identity"}
+                                    {t("Identity")}
                                   </p>
                                 </div>
                               </div>
@@ -3765,7 +3782,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Strategy"}
+                                    {t("Strategy")}
                                   </p>
                                 </div>
                               </div>
@@ -3788,7 +3805,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Visuals"}
+                                    {t("Visuals")}
                                   </p>
                                 </div>
                               </div>
@@ -3816,7 +3833,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/0ca02ec65b9efd5b.png 512w, /assets/1093883db13272e8.png 1024w, /assets/683feaedbf07a4c8.png 1200w"
                                 src="/assets/683feaedbf07a4c8.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -3838,9 +3855,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Distinctive brand identities building trust and recognition."
-                                }
+                                {t(
+                                  "Distinctive brand identities building trust and recognition.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -3851,7 +3868,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -3865,7 +3882,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -3904,7 +3921,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="Brand Identity"
+                      label={t("Brand Identity")}
                     >
                       <div
                         className="framer-6ju8k5"
@@ -3952,7 +3969,7 @@ export function HomeServiceSection() {
                           dir="auto"
                           style={referenceStyles.s97ca6ab9e2}
                         >
-                          {"05."}
+                          {t("05.")}
                         </p>
                       </div>
                       <div
@@ -3974,7 +3991,7 @@ export function HomeServiceSection() {
                               dir="auto"
                               style={referenceStyles.se56df9ff67}
                             >
-                              {"SEO & Growth"}
+                              {t("SEO & Growth")}
                             </h4>
                           </div>
                           <div
@@ -3999,7 +4016,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"SEO"}
+                                    {t("SEO")}
                                   </p>
                                 </div>
                               </div>
@@ -4022,7 +4039,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Analytics"}
+                                    {t("Analytics")}
                                   </p>
                                 </div>
                               </div>
@@ -4045,7 +4062,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.se8682f4ed5}
                                   >
-                                    {"Growth"}
+                                    {t("Growth")}
                                   </p>
                                 </div>
                               </div>
@@ -4073,7 +4090,7 @@ export function HomeServiceSection() {
                                 sizes="339px"
                                 srcSet="/assets/9348b4e1b02f9706.png 819w, /assets/c9e087c0e10f7761.png 960w"
                                 src="/assets/c9e087c0e10f7761.png"
-                                alt="Image"
+                                alt={t("Image")}
                                 className="w-full! h-full!"
                                 style={referenceStyles.s1adb816c0e}
                               />
@@ -4095,9 +4112,9 @@ export function HomeServiceSection() {
                                 dir="auto"
                                 style={referenceStyles.s6861219acf}
                               >
-                                {
-                                  "Drive organic growth through strategic optimization."
-                                }
+                                {t(
+                                  "Drive organic growth through strategic optimization.",
+                                )}
                               </h5>
                             </div>
                             <div
@@ -4108,7 +4125,7 @@ export function HomeServiceSection() {
                                 className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                                 data-border="true"
                                 data-framer-name="Variant 2"
-                                href="/contact"
+                                href={href("/contact")}
                                 style={referenceStyles.s5dc0758bc3}
                               >
                                 <div
@@ -4122,7 +4139,7 @@ export function HomeServiceSection() {
                                     dir="auto"
                                     style={referenceStyles.s2a1463207d}
                                   >
-                                    {"Start Project"}
+                                    {t("Start Project")}
                                   </p>
                                 </div>
                                 <div
@@ -4161,7 +4178,7 @@ export function HomeServiceSection() {
                       data-framer-name="Icon"
                       data-reset="button"
                       style={referenceStyles.sbbbd28238a}
-                      label="SEO & Growth"
+                      label={t("SEO & Growth")}
                     >
                       <div
                         className="framer-6ju8k5"
