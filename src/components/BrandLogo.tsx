@@ -22,7 +22,9 @@ export function BrandLogo({
         className="brand-logo__emblem"
       />
       <span className="brand-logo__type" aria-hidden="true">
-        <span className="brand-logo__name">rycode</span>
+        <span className="brand-logo__name">
+          <span className="brand-accent">ry</span>code
+        </span>
         <span className="brand-logo__studio">studio</span>
       </span>
     </span>

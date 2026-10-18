@@ -85,8 +85,18 @@ export function HomeHeroSection() {
                   scrollLinked={false}
                 >
                   <span style={referenceStyles.sa20496458d}>
-                    <span style={referenceStyles.s1b9115ae2a}>{"r"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"y"}</span>
+                    <span
+                      className="brand-accent"
+                      style={referenceStyles.s1b9115ae2a}
+                    >
+                      {"r"}
+                    </span>
+                    <span
+                      className="brand-accent"
+                      style={referenceStyles.s1b9115ae2a}
+                    >
+                      {"y"}
+                    </span>
                     <span style={referenceStyles.s1b9115ae2a}>{"c"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
@@ -121,8 +131,18 @@ export function HomeHeroSection() {
                   scrollLinked={false}
                 >
                   <span style={referenceStyles.sa20496458d}>
-                    <span style={referenceStyles.s1b9115ae2a}>{"r"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"y"}</span>
+                    <span
+                      className="brand-accent"
+                      style={referenceStyles.s1b9115ae2a}
+                    >
+                      {"r"}
+                    </span>
+                    <span
+                      className="brand-accent"
+                      style={referenceStyles.s1b9115ae2a}
+                    >
+                      {"y"}
+                    </span>
                     <span style={referenceStyles.s1b9115ae2a}>{"c"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
@@ -399,7 +419,12 @@ export function HomeHeroSection() {
                                           dir="auto"
                                           style={referenceStyles.s0c86264d05}
                                         >
-                                          {"rycode studio"}
+                                          <>
+                                            <span className="brand-accent">
+                                              ry
+                                            </span>
+                                            code studio
+                                          </>
                                         </h5>
                                       </div>
                                     </div>
@@ -513,7 +538,12 @@ export function HomeHeroSection() {
                                           dir="auto"
                                           style={referenceStyles.s0c86264d05}
                                         >
-                                          {"rycode studio"}
+                                          <>
+                                            <span className="brand-accent">
+                                              ry
+                                            </span>
+                                            code studio
+                                          </>
                                         </h5>
                                       </div>
                                     </div>
@@ -966,7 +996,10 @@ export function HomeHeroSection() {
                                   dir="auto"
                                   style={referenceStyles.s0c86264d05}
                                 >
-                                  {"rycode studio"}
+                                  <>
+                                    <span className="brand-accent">ry</span>code
+                                    studio
+                                  </>
                                 </h5>
                               </div>
                             </div>

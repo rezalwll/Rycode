@@ -1,3 +1,11 @@
+:root {
+  --brand-accent: #ff1a05;
+}
+
+.brand-accent {
+  color: var(--brand-accent);
+}
+
 .brand-logo {
   display: inline-flex;
   align-items: center;

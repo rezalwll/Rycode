@@ -1,0 +1,229 @@
+/* Restore the reference's gesture variants with native hover and keyboard focus. */
+.framer-hFcgW,
+.framer-ez4Wr,
+.framer-n76Tz .framer-text,
+.framer-fR17n .framer-text,
+.framer-16cun4g .framer-text {
+  transition:
+    background-color 0.4s linear,
+    color 0.4s linear;
+}
+
+.framer-hFcgW:is(:hover, :focus-visible) {
+  background-color: #fff !important;
+}
+.framer-hFcgW:is(:hover, :focus-visible) .framer-text {
+  color: #1b1b1b !important;
+}
+
+/* Four red dots spread around the white center dot. */
+.framer-obWCA
+  :is(.framer-d6q9x7, .framer-qtebog, .framer-tvyhl2, .framer-1kar949) {
+  transition:
+    top 0.4s linear,
+    left 0.4s linear,
+    transform 0.4s linear;
+}
+.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-d6q9x7 {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-qtebog {
+  top: 13%;
+  left: 88%;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-tvyhl2 {
+  top: 88%;
+  left: 13%;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-1kar949 {
+  top: 88%;
+  left: 88%;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+/* Animate a definite left inset so the circle expands smoothly in both directions. */
+.framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-ymklat, .framer-v-1d5fd42)
+  .framer-1glyh7l {
+  left: calc(100% - 44px);
+  width: auto;
+  transition: left 0.4s linear;
+}
+.framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-1glyh7l {
+  left: 4px;
+}
+.framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42):is(:hover, :focus-visible)
+  .framer-1glyh7l {
+  left: 2px;
+}
+.framer-obWCA:is(.framer-v-5x2t3t, .framer-v-2zyqfl) .framer-1glyh7l {
+  left: calc(100% + 16px);
+  transition: left 0.4s linear;
+}
+.framer-obWCA:is(.framer-v-5x2t3t, .framer-v-2zyqfl):is(:hover, :focus-visible)
+  .framer-1glyh7l {
+  left: -17px;
+}
+.framer-obWCA:not(.framer-v-18sfddm) .framer-1oado6a {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+.framer-obWCA .framer-7wq510 {
+  transition: transform 0.4s linear;
+}
+.framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-7wq510 {
+  transform: rotate(45deg);
+}
+.framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42):is(:hover, :focus-visible)
+  .framer-7wq510 {
+  transform: rotate(0deg) !important;
+}
+.framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-2zyqfl):is(:hover, :focus-visible)
+  .framer-14jkp0r
+  .framer-text {
+  color: #fff !important;
+}
+.framer-obWCA .framer-14jkp0r .framer-text {
+  transition: color 0.4s linear;
+}
+
+/* Arrow and social icons leave the clipped button as their duplicate enters. */
+.framer-ez4Wr .framer-g86u4c,
+.framer-ez4Wr .framer-tnk03u,
+.framer-Asbdw .framer-gw8dsj,
+.framer-Asbdw .framer-cnaow8,
+.framer-rlCr3 .framer-8hgace,
+.framer-rlCr3 .framer-1x99mq8 {
+  transition: transform 0.4s linear;
+}
+.framer-ez4Wr .framer-tnk03u,
+.framer-Asbdw .framer-cnaow8,
+.framer-rlCr3 .framer-1x99mq8 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  transform: translate(-50%, calc(-50% + 48px));
+}
+.framer-ez4Wr .framer-tnk03u {
+  transform: translate(calc(-50% - 48px), calc(-50% + 48px));
+}
+.framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-g86u4c {
+  transform: translate(48px, -48px);
+}
+.framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-tnk03u,
+.framer-Asbdw:is(:hover, :focus-visible) .framer-cnaow8,
+.framer-rlCr3:is(:hover, :focus-visible) .framer-1x99mq8 {
+  transform: translate(-50%, -50%);
+}
+.framer-Asbdw:is(:hover, :focus-visible) .framer-gw8dsj,
+.framer-rlCr3:is(:hover, :focus-visible) .framer-8hgace {
+  transform: translateY(-48px) !important;
+}
+.framer-ez4Wr.framer-v-c40k20:is(:hover, :focus-visible) {
+  background-color: #000 !important;
+}
+.framer-ez4Wr.framer-v-12429e3:is(:hover, :focus-visible) {
+  background-color: #fff !important;
+}
+.framer-ez4Wr.framer-v-c40k20 .framer-tnk03u {
+  --szd5nr: #fff !important;
+}
+
+/* Footer underline follows each label's actual width, including translated labels. */
+.framer-fR17n .framer-zvnvf1 {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s linear;
+}
+.framer-fR17n:is(:hover, :focus-visible) .framer-zvnvf1 {
+  transform: scaleX(1);
+}
+.framer-fR17n:is(:hover, :focus-visible) .framer-text,
+.framer-rlt6y:is(:hover, :focus-visible) .framer-text {
+  color: var(--brand-accent) !important;
+}
+a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
+  color: var(--brand-accent) !important;
+}
+.framer-n76Tz:is(:hover, :focus-visible) .framer-text {
+  color: rgb(255 255 255 / 80%) !important;
+}
+
+/* Desktop work cards blur behind the alternate project preview. */
+.framer-7wCKM
+  :is(
+    .framer-1qqezkx,
+    .framer-10vim37,
+    .framer-1oq7wyn,
+    .framer-hrddsa,
+    .framer-6aujbd
+  ) {
+  transition:
+    transform 0.4s linear,
+    opacity 0.4s linear,
+    backdrop-filter 0.4s linear,
+    background-color 0.4s linear;
+}
+.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-10vim37 {
+  backdrop-filter: blur(17px) !important;
+}
+.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-1oq7wyn {
+  opacity: 0 !important;
+}
+.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-hrddsa {
+  opacity: 1 !important;
+  bottom: auto;
+  top: 17.608%;
+}
+.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-6aujbd {
+  background-color: rgb(0 0 0 / 30%) !important;
+}
+.framer-7wCKM.framer-v-1vmciqn:is(:hover, :focus-visible)
+  .framer-1qqezkx {
+  transform: scale(1.05) !important;
+}
+
+/* Contact submit uses the same expanding red fill and rotating arrow. */
+.framer-Irrnf.framer-v-1wjqi8p .framer-6vonoc {
+  left: calc(100% - 44px);
+  width: auto;
+  transition:
+    left 0.4s linear,
+    background-color 0.4s linear;
+}
+.framer-Irrnf .framer-bhgblo {
+  transition: transform 0.4s linear;
+}
+.framer-Irrnf .framer-1uu97bw {
+  z-index: 1;
+}
+.framer-Irrnf .framer-1uu97bw .framer-text {
+  transition: color 0.4s linear;
+}
+.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-6vonoc {
+  left: 2px;
+  background-color: var(--brand-accent) !important;
+}
+.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-bhgblo {
+  transform: rotate(45deg);
+}
+.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-text {
+  color: #fff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep color/focus feedback while removing travel and duplicate-icon motion. */
+  .framer-ez4Wr :is(.framer-g86u4c, .framer-tnk03u),
+  .framer-Asbdw :is(.framer-gw8dsj, .framer-cnaow8),
+  .framer-rlCr3 :is(.framer-8hgace, .framer-1x99mq8) {
+    transition: none;
+  }
+}

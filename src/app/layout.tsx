@@ -2,6 +2,7 @@ import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import "./globals.css";
 import "./brand.css";
+import "./hover.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { VectorSymbols } from "@/components/VectorSymbols";
