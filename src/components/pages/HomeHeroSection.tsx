@@ -86,7 +86,7 @@ export async function HomeHeroSection() {
                   as="h1"
                   scrollLinked={false}
                   localizedText={
-                    locale === "fa" ? t("rycode studio") : undefined
+                    locale === "fa" ? t("RYCODE STUDIO") : undefined
                   }
                 >
                   <span style={referenceStyles.sa20496458d}>
@@ -135,7 +135,7 @@ export async function HomeHeroSection() {
                   as="h1"
                   scrollLinked={false}
                   localizedText={
-                    locale === "fa" ? t("rycode studio") : undefined
+                    locale === "fa" ? t("RYCODE STUDIO") : undefined
                   }
                 >
                   <span style={referenceStyles.sa20496458d}>

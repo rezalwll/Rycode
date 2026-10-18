@@ -21,6 +21,9 @@ for (const locale of ["en", "fa"]) {
     );
     assert.ok($("header .language-switch").length, `${path}: language switch`);
     if (locale === "fa") {
+      if (route === "/") {
+        assert.match($("main h1").text(), /استودیو رایکد/, `${path}: Persian brand heading`);
+      }
       assert.match(
         $("title").text(),
         /[\u0600-\u06ff]/,
