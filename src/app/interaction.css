@@ -1,0 +1,59 @@
+button.rycode-menu-toggle {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+button.rycode-menu-toggle[aria-expanded="true"] .framer-1rvl0gn {
+  top: calc(50% - 1px) !important;
+  transform: rotate(45deg) !important;
+}
+button.rycode-menu-toggle[aria-expanded="true"] .framer-mbjeww {
+  top: calc(50% - 1px) !important;
+  transform: rotate(-45deg) !important;
+}
+.rycode-menu-toggle .framer-1rvl0gn,
+.rycode-menu-toggle .framer-mbjeww {
+  transition:
+    transform 0.35s ease,
+    top 0.35s ease;
+}
+.rycode-slide > div {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  transform: none !important;
+}
+[data-rycode-accordion][data-open="false"] .framer-6ju8k5 {
+  transform: none !important;
+}
+[data-rycode-accordion][data-open="true"] .framer-6ju8k5 {
+  transform: rotate(270deg) !important;
+}
+[data-rycode-accordion][data-open="false"] .framer-1okky9a {
+  transform: none !important;
+}
+[data-rycode-accordion][data-open="true"] .framer-1okky9a {
+  transform: rotate(270deg) !important;
+}
+.framer-6ju8k5,
+.framer-1okky9a {
+  transition: transform 0.4s ease;
+}
+.framer-15gz4dg {
+  background-color: #000;
+}
+.framer-cc7aC::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+[aria-roledescription="carousel"] {
+  touch-action: pan-y;
+}
