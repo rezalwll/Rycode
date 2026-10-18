@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/assets/vazirmatn-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex: none;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 47px;
+  color: #fff;
+  background: transparent;
+  text-decoration: none;
+  font:
+    500 13px/1.2 Arial,
+    sans-serif;
+  transition:
+    color 0.4s linear,
+    background-color 0.4s linear;
+}
+.language-switch:lang(fa) {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+}
+.language-switch:is(:hover, :focus-visible) {
+  color: #1b1b1b;
+  background: #fff;
+}
+.language-switch:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 4px;
+}
+.framer-ATxvc .framer-uk7nae {
+  gap: 12px;
+}
+@media (max-width: 767px) {
+  .framer-ATxvc .framer-uk7nae {
+    gap: 10px;
+  }
+  .language-switch {
+    min-height: 36px;
+    padding: 7px 10px;
+  }
+}

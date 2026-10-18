@@ -1,8 +1,11 @@
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
-import "./globals.css";
-import "./brand.css";
-import "./hover.css";
+import "../globals.css";
+import "../brand.css";
+import "../hover.css";
+import "../locale.css";
+import { getLocale } from "@/lib/i18n-server";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { VectorSymbols } from "@/components/VectorSymbols";
@@ -21,23 +24,30 @@ export const metadata: Metadata = {
     description: "Creative websites and brand experiences built with purpose.",
   },
 };
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const locale = await getLocale();
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
       <body>
-        <ScrollEffects />
-        <div id="main">
-          <div
-            className="framer-ZUZaS framer-uxe76n"
-            data-layout-template="true"
-            style={referenceStyles.se06159d2f1}
-          >
-            <SiteHeader />
-            {children}
-            <SiteFooter />
+        <LocaleProvider locale={locale}>
+          <ScrollEffects />
+          <div id="main">
+            <div
+              className="framer-ZUZaS framer-uxe76n"
+              data-layout-template="true"
+              style={referenceStyles.se06159d2f1}
+            >
+              <SiteHeader />
+              {children}
+              <SiteFooter />
+            </div>
           </div>
-        </div>
-        <VectorSymbols />
+          <VectorSymbols />
+        </LocaleProvider>
       </body>
     </html>
   );

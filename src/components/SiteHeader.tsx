@@ -1,3 +1,4 @@
+import { LanguageSwitch } from "./LanguageSwitch";
 import { BrandLogo } from "@/components/BrandLogo";
 import Link from "next/link";
 import {
@@ -136,6 +137,7 @@ export function SiteHeader() {
                 </div>
               </div>
               <div className="framer-uk7nae" data-framer-name="Button Block">
+                <LanguageSwitch />
                 <div className="framer-196w2zi-container">
                   <Link
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-18sfddm framer-1fsrsxu"
@@ -208,6 +210,7 @@ export function SiteHeader() {
                 <BrandLogo />
               </Link>
               <div className="framer-uk7nae" data-framer-name="Button Block">
+                <LanguageSwitch />
                 <div className="framer-1xrfdkn-container">
                   <MenuToggle
                     className="framer-JjGLa framer-tge9hy framer-v-tge9hy"
@@ -396,6 +399,7 @@ export function SiteHeader() {
                 <BrandLogo />
               </Link>
               <div className="framer-uk7nae" data-framer-name="Button Block">
+                <LanguageSwitch />
                 <div className="framer-1xrfdkn-container">
                   <MenuToggle
                     className="framer-JjGLa framer-tge9hy framer-v-tge9hy"
