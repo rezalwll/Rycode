@@ -65,11 +65,11 @@
 }
 
 .brand-logo--ticker {
-  font-size: 66px;
+  font-size: 62px;
   justify-content: center;
 }
 .brand-logo--footer {
-  font-size: clamp(32px, 12.2vw, 152px);
+  font-size: clamp(32px, 9.2vw, 132px);
   justify-content: center;
 }
 .brand-logo--footer .brand-logo__emblem {
@@ -79,16 +79,19 @@
 
 @media (min-width: 768px) {
   .framer-HujZo .framer-1nayp60 h1 {
-    font-size: clamp(80px, 10.7vw, 154px);
+    font-size: clamp(70px, 8.8vw, 126px);
     white-space: nowrap;
   }
 }
 
 @media (max-width: 767px) {
+  .framer-HujZo .framer-1nayp60 h1 {
+    font-size: clamp(30px, 10vw, 52px);
+  }
   .brand-logo--ticker {
     font-size: 34px;
   }
   .brand-logo--footer {
-    font-size: 10.8vw;
+    font-size: 9.2vw;
   }
 }

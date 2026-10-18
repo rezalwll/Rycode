@@ -13,7 +13,7 @@ export async function BrandLogo({
     <span
       className={`brand-logo brand-logo--${variant} brand-logo--${tone}`}
       role="img"
-      aria-label={t("Rycode Studio — رایکد استودیو")}
+      aria-label={t("RYCODE Studio — رایکد استودیو")}
     >
       <img
         src={`/brand/rycode-${tone === "dark" ? "white" : "charcoal"}.webp`}
@@ -25,10 +25,10 @@ export async function BrandLogo({
       />
       <span className="brand-logo__type" aria-hidden="true">
         <span className="brand-logo__name">
-          <span className="brand-accent">{t("ry")}</span>
-          {t("code")}
+          <span className="brand-accent">{t("RY")}</span>
+          {t("CODE")}
         </span>
-        <span className="brand-logo__studio">{t("studio")}</span>
+        <span className="brand-logo__studio">{t("STUDIO")}</span>
       </span>
     </span>
   );

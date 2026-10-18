@@ -14,7 +14,7 @@ import { HomeFAQSection } from "@/components/pages/HomeFAQSection";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return {
-    title: { absolute: t("Rycode Studio — Modern Creative Studio") },
+    title: { absolute: t("RYCODE Studio — Modern Creative Studio") },
   };
 }
 export default function Page() {

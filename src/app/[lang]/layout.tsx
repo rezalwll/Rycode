@@ -15,16 +15,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return {
     title: {
-      default: t("Rycode Studio — Modern Creative Studio"),
-      template: t("%s | Rycode Studio"),
+      default: t("RYCODE Studio — Modern Creative Studio"),
+      template: t("%s | RYCODE Studio"),
     },
-    applicationName: t("Rycode Studio"),
+    applicationName: t("RYCODE Studio"),
     description: t(
-      "Rycode Studio — رایکد استودیو. Creative websites and brand experiences built with purpose.",
+      "RYCODE Studio — رایکد استودیو. Creative websites and brand experiences built with purpose.",
     ),
     openGraph: {
-      siteName: t("Rycode Studio"),
-      title: t("Rycode Studio — Modern Creative Studio"),
+      siteName: t("RYCODE Studio"),
+      title: t("RYCODE Studio — Modern Creative Studio"),
       description: t(
         "Creative websites and brand experiences built with purpose.",
       ),

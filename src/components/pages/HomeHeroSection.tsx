@@ -94,26 +94,26 @@ export async function HomeHeroSection() {
                       className="brand-accent"
                       style={referenceStyles.s1b9115ae2a}
                     >
-                      {"r"}
+                      {"R"}
                     </span>
                     <span
                       className="brand-accent"
                       style={referenceStyles.s1b9115ae2a}
                     >
-                      {"y"}
+                      {"Y"}
                     </span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"c"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"e"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"C"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
                   <span style={referenceStyles.sa20496458d}>
-                    <span style={referenceStyles.s1b9115ae2a}>{"s"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"t"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"u"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"i"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"I"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
                   </span>
                 </SplitText>
               </Reveal>
@@ -143,26 +143,26 @@ export async function HomeHeroSection() {
                       className="brand-accent"
                       style={referenceStyles.s1b9115ae2a}
                     >
-                      {"r"}
+                      {"R"}
                     </span>
                     <span
                       className="brand-accent"
                       style={referenceStyles.s1b9115ae2a}
                     >
-                      {"y"}
+                      {"Y"}
                     </span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"c"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"e"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"C"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
                   <span style={referenceStyles.sa20496458d}>
-                    <span style={referenceStyles.s1b9115ae2a}>{"s"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"t"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"u"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"d"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"i"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"o"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"I"}</span>
+                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
                   </span>
                 </SplitText>
               </Reveal>
@@ -429,9 +429,9 @@ export async function HomeHeroSection() {
                                         >
                                           <>
                                             <span className="brand-accent">
-                                              {t("ry")}
+                                              {t("RY")}
                                             </span>
-                                            {t("code studio")}
+                                            {t("CODE STUDIO")}
                                           </>
                                         </h5>
                                       </div>
@@ -548,9 +548,9 @@ export async function HomeHeroSection() {
                                         >
                                           <>
                                             <span className="brand-accent">
-                                              {t("ry")}
+                                              {t("RY")}
                                             </span>
-                                            {t("code studio")}
+                                            {t("CODE STUDIO")}
                                           </>
                                         </h5>
                                       </div>
@@ -1006,9 +1006,9 @@ export async function HomeHeroSection() {
                                 >
                                   <>
                                     <span className="brand-accent">
-                                      {t("ry")}
+                                      {t("RY")}
                                     </span>
-                                    {t("code studio")}
+                                    {t("CODE STUDIO")}
                                   </>
                                 </h5>
                               </div>
