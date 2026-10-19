@@ -112,31 +112,6 @@ export async function SiteHeader() {
                     </div>
                   </Link>
                 </div>
-                <div className="framer-31yeqf-container">
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/#Pricing%20Section")}
-                    tabIndex={0}
-                    style={referenceStyles.s5f3b0adb3a}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s143c03551f}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Pricing")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
               </div>
               <div className="framer-uk7nae" data-framer-name="Button Block">
                 <LanguageSwitch />
@@ -348,34 +323,6 @@ export async function SiteHeader() {
                         style={referenceStyles.se8682f4ed5}
                       >
                         {t("Blog")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div
-                  className="framer-16viqec-container"
-                  style={referenceStyles.sc1ca5c600f}
-                >
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/#Pricing%20Section")}
-                    tabIndex={0}
-                    style={referenceStyles.s5ff7a5484d}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s9fee3511a6}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Pricing")}
                       </p>
                     </div>
                   </Link>

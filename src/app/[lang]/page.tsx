@@ -8,8 +8,6 @@ import { HomeWorkSection } from "@/components/pages/HomeWorkSection";
 import { HomeServiceSection } from "@/components/pages/HomeServiceSection";
 import { HomeProcessSection } from "@/components/pages/HomeProcessSection";
 import { HomeChooseUsSection } from "@/components/pages/HomeChooseUsSection";
-import { HomePricingSection } from "@/components/pages/HomePricingSection";
-import { HomeTestimonialsSection } from "@/components/pages/HomeTestimonialsSection";
 import { HomeFAQSection } from "@/components/pages/HomeFAQSection";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
@@ -31,8 +29,6 @@ export default function Page() {
       <HomeServiceSection />
       <HomeProcessSection />
       <HomeChooseUsSection />
-      <HomePricingSection />
-      <HomeTestimonialsSection />
       <HomeFAQSection />
     </main>
   );

@@ -545,33 +545,6 @@ export async function SiteFooter() {
                             ></div>
                           </Link>
                         </div>
-                        <div className="framer-65xsda-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Pricing%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Pricing")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
                         <div className="framer-1agjm0w-container">
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
@@ -1029,33 +1002,6 @@ export async function SiteFooter() {
                             ></div>
                           </Link>
                         </div>
-                        <div className="framer-65xsda-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Pricing%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Pricing")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
                         <div className="framer-1agjm0w-container">
                           <Link
                             className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
@@ -1504,33 +1450,6 @@ export async function SiteFooter() {
                                 style={referenceStyles.s2a1463207d}
                               >
                                 {t("Process")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-65xsda-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Pricing%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Pricing")}
                               </p>
                             </div>
                             <div
