@@ -5,6 +5,8 @@ node_modules
 .env*
 !.env.example
 storage
+backups
+*.dump
 coverage
 test-results
 playwright-report

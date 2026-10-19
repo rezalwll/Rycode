@@ -8,6 +8,8 @@ out/
 !.reference/routes.json
 !.reference/assets.json
 storage/
+backups/
+*.dump
 src/generated/
 coverage/
 test-results/
