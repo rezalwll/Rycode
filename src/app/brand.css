@@ -57,6 +57,9 @@
   height: 42px;
   font-size: 29px;
 }
+.brand-logo--header .brand-logo__emblem {
+  transform: translateY(-6px);
+}
 
 .brand-logo--header .brand-logo__type {
   flex-direction: column;
