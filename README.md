@@ -19,7 +19,7 @@ English keeps the existing URLs. Persian pages use `/fa`, `/fa/work`,
 `/fa/blog`, and `/fa/contact`, including all project and article detail pages.
 The header language switch preserves the current page, query string and anchor.
 Persian is rendered on the server with RTL layout and the locally hosted
-Vazirmatn variable font (license included beside the font).
+IRANYekan font supplied for the project (`public/fonts`, WOFF2 with TTF fallback).
 Translations are maintained in `src/locales/fa.json`; English source copy is
 preserved in the page components. Animated Persian headings reveal complete
 words so connected letters remain intact.

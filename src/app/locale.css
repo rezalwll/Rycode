@@ -1,7 +1,9 @@
 @font-face {
-  font-family: "Vazirmatn";
-  src: url("/assets/vazirmatn-variable.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "IRANYekan";
+  src:
+    url("/fonts/iranyekan.woff2") format("woff2"),
+    url("/fonts/iranyekan.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -26,7 +28,7 @@
     background-color 0.4s linear;
 }
 .language-switch:lang(fa) {
-  font-family: "Vazirmatn", Tahoma, sans-serif;
+  font-family: "IRANYekan", Tahoma, sans-serif;
 }
 .language-switch:is(:hover, :focus-visible) {
   color: #1b1b1b;
@@ -40,11 +42,14 @@
   gap: 12px;
 }
 html[lang="fa"] body,
+html[lang="fa"] body * {
+  font-family: "IRANYekan", Tahoma, sans-serif !important;
+}
+html[lang="fa"] body,
 html[lang="fa"] .framer-text,
 html[lang="fa"] input,
 html[lang="fa"] textarea,
 html[lang="fa"] select {
-  font-family: "Vazirmatn", Tahoma, sans-serif !important;
   letter-spacing: 0 !important;
 }
 html[lang="fa"] .framer-text {
