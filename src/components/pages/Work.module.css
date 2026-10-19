@@ -1,0 +1,6 @@
+.heading {
+  color: #fff;
+}
+.page:lang(fa) :global(.framer-18pgrnb) h2 {
+  direction: rtl;
+}

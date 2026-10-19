@@ -1,3 +1,5 @@
+import { WorkArtwork } from "@/components/WorkArtwork";
+import styles from "./Work.module.css";
 import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText } from "@/components/Motion";
@@ -84,13 +86,11 @@ export async function WorkHeroSection() {
           </div>
         </div>
         <div className="framer-14wezeb" data-framer-name="Content">
-          <Reveal
+          <WorkArtwork
             className="framer-o1qkk6"
             data-framer-appear-id="o1qkk6"
             data-framer-name="Image"
             style={referenceStyles.s753530771e}
-            as="div"
-            from="translateY(300px)"
           >
             <div className="ssr-variant hidden-z2ghmu">
               <div
@@ -404,7 +404,7 @@ export async function WorkHeroSection() {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </WorkArtwork>
           <Reveal
             className="framer-1dqfk20-container"
             data-code-component-plugin-id="84d4c1"
@@ -415,9 +415,9 @@ export async function WorkHeroSection() {
           >
             <div className="ssr-variant hidden-z2ghmu hidden-1suspea">
               <SplitText
-                className="w-full!"
+                className={`${styles.heading} w-full!`}
                 style={referenceStyles.s74a84b5217}
-                as="div"
+                as="h2"
                 scrollLinked={true}
                 localizedText={
                   locale === "fa"
@@ -488,9 +488,9 @@ export async function WorkHeroSection() {
             </div>
             <div className="ssr-variant hidden-3tl24i hidden-1suspea">
               <SplitText
-                className="w-full!"
+                className={`${styles.heading} w-full!`}
                 style={referenceStyles.s199340d136}
-                as="div"
+                as="h2"
                 scrollLinked={true}
                 localizedText={
                   locale === "fa"
@@ -561,9 +561,9 @@ export async function WorkHeroSection() {
             </div>
             <div className="ssr-variant hidden-3tl24i hidden-z2ghmu">
               <SplitText
-                className="w-full!"
+                className={`${styles.heading} w-full!`}
                 style={referenceStyles.s78db03cecf}
-                as="div"
+                as="h2"
                 scrollLinked={true}
                 localizedText={
                   locale === "fa"

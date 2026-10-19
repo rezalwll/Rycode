@@ -19,6 +19,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -198,6 +200,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -377,6 +381,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"
@@ -561,6 +567,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -740,6 +748,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -919,6 +929,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"
@@ -1103,6 +1115,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -1282,6 +1296,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -1461,6 +1477,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"
@@ -1645,6 +1663,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -1824,6 +1844,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -2003,6 +2025,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"
@@ -2187,6 +2211,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -2366,6 +2392,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -2545,6 +2573,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"
@@ -2729,6 +2759,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-1f3fcye w-full!"
@@ -2908,6 +2940,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-x5bm98 w-full!"
@@ -3087,6 +3121,8 @@ export async function WorkWorkSection() {
                   style={referenceStyles.s5916c9ffdd}
                   as="div"
                   from="translateY(200px)"
+                  viewportOffset={200}
+                  duration={1200}
                 >
                   <div
                     className="framer-7wCKM framer-A8dYT framer-OQzud framer-5BqlT framer-1f3fcye framer-v-11fuext w-full!"

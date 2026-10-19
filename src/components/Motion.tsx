@@ -30,9 +30,15 @@ type MotionProps = HTMLAttributes<HTMLElement> & { as?: Tag };
 export function Reveal({
   as: Tag = "div",
   from = "translateY(24px)",
+  viewportOffset = 0,
+  duration = 900,
   style,
   ...props
-}: MotionProps & { from?: string }) {
+}: MotionProps & {
+  from?: string;
+  viewportOffset?: number;
+  duration?: number;
+}) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const element = ref.current;
@@ -50,7 +56,7 @@ export function Reveal({
                 { opacity: 1, transform: "none" },
               ],
               {
-                duration: 900,
+                duration,
                 easing: "cubic-bezier(.16,1,.3,1)",
                 fill: "backwards",
               },
@@ -60,7 +66,7 @@ export function Reveal({
       },
       {
         threshold: 0,
-        rootMargin: "0px",
+        rootMargin: `0px 0px -${viewportOffset}px 0px`,
       },
     );
     if (reduced()) {
@@ -71,7 +77,7 @@ export function Reveal({
       observer.disconnect();
       animation?.cancel();
     };
-  }, [from]);
+  }, [from, viewportOffset, duration]);
   return (
     <Tag
       {...props}

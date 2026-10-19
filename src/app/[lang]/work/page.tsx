@@ -1,3 +1,4 @@
+import styles from "@/components/pages/Work.module.css";
 import { getTranslations } from "@/lib/i18n-server";
 import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
@@ -14,7 +15,7 @@ export default async function Page() {
   return (
     <main
       data-framer-root=""
-      className="framer-wQzdj framer-3tl24i contents!"
+      className={`framer-wQzdj framer-3tl24i w-full! ${styles.page}`}
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">{t("Work")}</h1>

@@ -1,0 +1,61 @@
+.artwork :global(.framer-189uupa) > [data-framer-background-image-wrapper],
+.artwork :global(.framer-nbgmph) > [data-framer-background-image-wrapper] {
+  animation: pulsePauseLong 4.4s linear infinite;
+}
+.artwork :global(.framer-9hfwsm) > [data-framer-background-image-wrapper],
+.artwork :global(.framer-2ivbrf) > [data-framer-background-image-wrapper] {
+  animation: pulsePauseShort 4.2s linear infinite;
+}
+.artwork :global(.framer-1izge4o) > [data-framer-background-image-wrapper],
+.artwork :global(.framer-1ovzu5w) > [data-framer-background-image-wrapper] {
+  animation: pulse 4s linear infinite;
+}
+.artwork[data-running="false"] [data-framer-background-image-wrapper] {
+  animation-play-state: paused;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.7;
+  }
+}
+@keyframes pulsePauseLong {
+  0%,
+  95.4545%,
+  100% {
+    scale: 1;
+  }
+  45.4545%,
+  50% {
+    scale: 0.7;
+  }
+}
+@keyframes pulsePauseShort {
+  0%,
+  97.619%,
+  100% {
+    scale: 1;
+  }
+  47.619%,
+  50% {
+    scale: 0.7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artwork div {
+    animation: none !important;
+  }
+}
+@media (max-width: 767px) {
+  /* A translated heading can add a line; keep this thumbnail from stretching
+     with the resulting taller artwork area. */
+  .artwork:global(.framer-o1qkk6) :global(.framer-9hfwsm) {
+    width: 10.4%;
+    height: auto;
+    top: 51px;
+    bottom: auto;
+  }
+}
