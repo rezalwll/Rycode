@@ -77,11 +77,15 @@ export function AccordionItem({
       <div
         {...props}
         ref={root}
+        tabIndex={mode === "faq" ? undefined : props.tabIndex}
         className={`${base} ${open ? openClass : closedClass}`}
         data-rycode-accordion={mode}
         data-open={open}
         onClick={(event) => {
-          if (!(event.target as Element).closest("a,button")) toggle();
+          const target = event.target as Element;
+          if (target.closest("a,button")) return;
+          if (mode === "faq" && !target.closest(".framer-k86jas")) return;
+          toggle();
         }}
         onKeyDown={(event) => {
           if (
@@ -100,7 +104,15 @@ export function AccordionItem({
 }
 export function AccordionPanel(props: HTMLAttributes<HTMLDivElement>) {
   const item = useContext(Item);
-  return <div {...props} id={item?.id} hidden={!item?.open} />;
+  return (
+    <div
+      {...props}
+      id={item?.id}
+      role="region"
+      aria-labelledby={item ? `${item.id}-toggle` : undefined}
+      hidden={!item?.open}
+    />
+  );
 }
 export function AccordionToggle({
   label,
@@ -110,6 +122,7 @@ export function AccordionToggle({
   return (
     <button
       {...props}
+      id={item ? `${item.id}-toggle` : undefined}
       type="button"
       aria-label={label}
       aria-expanded={item?.open}

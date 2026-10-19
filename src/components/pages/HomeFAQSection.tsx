@@ -63,9 +63,9 @@ export async function HomeFAQSection() {
             >
               <div className="ssr-variant hidden-1bcn26v hidden-1fs2pis">
                 <SplitText
-                  className="w-full!"
+                  className="faq-heading w-full!"
                   style={referenceStyles.s74a84b5217}
-                  as="div"
+                  as="h2"
                   scrollLinked={true}
                   localizedText={
                     locale === "fa"
@@ -114,9 +114,9 @@ export async function HomeFAQSection() {
               </div>
               <div className="ssr-variant hidden-72rtr7 hidden-1fs2pis">
                 <SplitText
-                  className="w-full!"
+                  className="faq-heading w-full!"
                   style={referenceStyles.s199340d136}
-                  as="div"
+                  as="h2"
                   scrollLinked={true}
                   localizedText={
                     locale === "fa"
@@ -165,9 +165,9 @@ export async function HomeFAQSection() {
               </div>
               <div className="ssr-variant hidden-1bcn26v hidden-72rtr7">
                 <SplitText
-                  className="w-full!"
+                  className="faq-heading w-full!"
                   style={referenceStyles.s78db03cecf}
-                  as="div"
+                  as="h2"
                   scrollLinked={true}
                   localizedText={
                     locale === "fa"
