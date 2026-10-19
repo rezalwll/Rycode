@@ -83,6 +83,15 @@ export function AccordionItem({
         onClick={(event) => {
           if (!(event.target as Element).closest("a,button")) toggle();
         }}
+        onKeyDown={(event) => {
+          if (
+            event.target === event.currentTarget &&
+            (event.key === "Enter" || event.key === " ")
+          ) {
+            event.preventDefault();
+            toggle();
+          }
+        }}
       >
         {children}
       </div>

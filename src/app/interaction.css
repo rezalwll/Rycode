@@ -33,6 +33,30 @@ button.rycode-menu-toggle[aria-expanded="true"] .framer-mbjeww {
 [data-rycode-accordion][data-open="true"] .framer-6ju8k5 {
   transform: rotate(270deg) !important;
 }
+/* Captured inline styles used different line directions on each service card.
+   Keep the horizontal stroke fixed so every closed/open item shows +/−. */
+[data-rycode-accordion="service"] .framer-qhogpv {
+  transform: rotate(-90deg) !important;
+}
+.framer-IOjX6 button.framer-hf6rbv {
+  width: 44px;
+  height: 44px;
+  margin: -6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  touch-action: manipulation;
+}
+/* Preserve the reference's 32px circle inside a 44px pointer/touch target. */
+.framer-IOjX6 button.framer-hf6rbv::after {
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  transition: border-color 0.2s ease;
+}
+.framer-IOjX6 button.framer-hf6rbv:is(:hover, :focus-visible) {
+  --border-color: var(--brand-accent) !important;
+}
 [data-rycode-accordion][data-open="false"] .framer-1okky9a {
   transform: none !important;
 }
@@ -42,6 +66,13 @@ button.rycode-menu-toggle[aria-expanded="true"] .framer-mbjeww {
 .framer-6ju8k5,
 .framer-1okky9a {
   transition: transform 0.4s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .framer-6ju8k5,
+  .framer-1okky9a,
+  .framer-IOjX6 button.framer-hf6rbv::after {
+    transition: none;
+  }
 }
 .framer-15gz4dg {
   background-color: #000;
