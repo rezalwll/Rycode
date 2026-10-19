@@ -37,6 +37,10 @@ export function DistortedImage({
       start = 0,
       loaded = false,
       progress = 0;
+    const contextLost = () => {
+      cancelAnimationFrame(frame);
+      setReady(false);
+    };
     const shader = (type: number, source: string) => {
       const result = gl.createShader(type);
       if (!result) throw new Error("Shader allocation failed");
@@ -117,7 +121,7 @@ export function DistortedImage({
     const image = new window.Image();
     image.decoding = "async";
     const draw = () => {
-      if (!loaded || disposed) return;
+      if (!loaded || disposed || gl.isContextLost()) return;
       gl.uniform1f(uniform("uProgress"), progress);
       gl.uniform1f(uniform("uAlpha"), fade ? progress : 1);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -213,7 +217,7 @@ export function DistortedImage({
       );
       loaded = true;
       resize();
-      setReady(true);
+      setReady(!gl.isContextLost());
       run();
     };
     const observer = new IntersectionObserver(
@@ -227,11 +231,13 @@ export function DistortedImage({
       { threshold: 0 },
     );
     observer.observe(element);
+    surface.addEventListener("webglcontextlost", contextLost);
     const sizing = new ResizeObserver(resize);
     sizing.observe(element);
     return () => {
       disposed = true;
       image.onload = null;
+      surface.removeEventListener("webglcontextlost", contextLost);
       observer.disconnect();
       sizing.disconnect();
       cancelAnimationFrame(frame);
@@ -257,6 +263,7 @@ export function DistortedImage({
         ref={canvas}
         aria-hidden
         className="absolute inset-0 h-full w-full"
+        style={{ opacity: ready ? 1 : 0 }}
       />
     </div>
   );

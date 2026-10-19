@@ -54,10 +54,10 @@ html[lang="fa"] select {
 }
 html[lang="fa"] .framer-text {
   --framer-text-alignment: start;
-  line-height: 1.65 !important;
+  line-height: var(--framer-line-height, 1.5) !important;
 }
 html[lang="fa"] :is(h1, h2, h3, h4, h5).framer-text {
-  line-height: 1.4 !important;
+  line-height: var(--framer-line-height, 1.4) !important;
 }
 html[lang="fa"] [data-localized-split] {
   direction: rtl;
@@ -126,6 +126,50 @@ html[lang="fa"] .framer-nc16a8 .framer-5vpldf {
 html[lang="fa"] .framer-nc16a8 [data-localized-split] {
   text-align: start !important;
 }
+/* Persian navigation and legal labels are wider than their English originals. */
+html[lang="fa"] .framer-CoplX :is(.framer-ysjwqo, .framer-18f0cg1) {
+  width: max-content;
+  max-width: none;
+}
+html[lang="fa"] .framer-CoplX :is(.framer-15h5s5j, .framer-1yeaahq) {
+  width: max-content;
+}
+html[lang="fa"] .framer-CoplX .framer-1kx7ns8 {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: none;
+  padding-inline: 0;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+html[lang="fa"] .framer-HujZo .framer-swkk2m {
+  white-space: normal;
+  min-width: 0;
+  flex: 1;
+  width: auto;
+}
+@media (max-width: 767px) {
+  html[lang="fa"] .framer-CoplX .framer-1kx7ns8 {
+    max-width: 100%;
+    column-gap: 16px;
+  }
+}
+html[lang="fa"]
+  .framer-KWZQu
+  :is(.framer-159iqqg, .framer-191tz0p, .framer-1y1alj3) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 24px;
+  max-width: 100%;
+  justify-content: start;
+}
+html[lang="fa"]
+  .framer-KWZQu
+  :is(.framer-dw2jep, .framer-773cuu, .framer-s7u1u1) {
+  min-width: 0;
+  width: 100%;
+  white-space: normal;
+}
 /* The reference service cards use these compact vertical metrics. The global
    Persian line-height remains generous elsewhere for readable RTL copy. */
 html[lang="fa"] .framer-y8np0u .framer-d34t68 .framer-text {
@@ -142,11 +186,6 @@ html[lang="fa"] .framer-y8np0u .framer-1ggwkfr .framer-text {
 }
 html[lang="fa"] .framer-y8np0u .framer-14jkp0r .framer-text {
   line-height: 24px !important;
-}
-@media (min-width: 1200px) {
-  html[lang="fa"] .framer-15gz4dg {
-    min-height: max(100svh, 860px);
-  }
 }
 @media (max-width: 767px) {
   .framer-ATxvc .framer-uk7nae {
