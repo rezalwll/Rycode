@@ -1,0 +1,57 @@
+name: rycode
+services:
+  db:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: rycode
+      POSTGRES_USER: rycode
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong POSTGRES_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U rycode -d rycode']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks: [internal]
+  migrate:
+    image: ${MIGRATION_IMAGE:-rycode-migration:local}
+    build:
+      context: .
+      target: migration
+    env_file: .env.production
+    environment:
+      DATABASE_URL: postgresql://rycode:${POSTGRES_PASSWORD}@db:5432/rycode
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: 'no'
+    networks: [internal]
+  app:
+    image: ${APP_IMAGE:-rycode:local}
+    build:
+      context: .
+      target: runner
+    restart: unless-stopped
+    env_file: .env.production
+    environment:
+      DATABASE_URL: postgresql://rycode:${POSTGRES_PASSWORD}@db:5432/rycode
+      MEDIA_ROOT: /app/storage/media
+      TRUST_PROXY: 'false'
+    ports: ['127.0.0.1:3014:3000']
+    volumes:
+      - media:/app/storage/media
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    networks: [internal, outbound]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+networks:
+  internal:
+    internal: true
+  outbound: {}
+volumes:
+  database: {}
+  media: {}

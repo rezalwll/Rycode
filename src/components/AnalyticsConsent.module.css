@@ -1,0 +1,54 @@
+.banner {
+  position: fixed;
+  inset-inline: 20px;
+  bottom: 20px;
+  max-width: 480px;
+  margin-inline-start: auto;
+  z-index: 1000;
+  background: #191919;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 10px 50px #0006;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.banner p {
+  margin: 0 0 14px;
+}
+.banner div {
+  display: flex;
+  gap: 10px;
+}
+.banner button,
+.preference {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #777;
+  border-radius: 99px;
+  background: #191919;
+  color: #fff;
+  padding: 7px 18px;
+}
+.banner button:first-child {
+  background: #ff1a05;
+  border-color: #ff1a05;
+}
+.banner button:focus-visible,
+.preference:focus-visible {
+  outline: 2px solid #ff1a05;
+  outline-offset: 4px;
+}
+.preference {
+  position: fixed;
+  bottom: 8px;
+  inset-inline-start: 8px;
+  z-index: 40;
+  font-size: 10px;
+  opacity: 0.7;
+  padding: 4px 8px;
+}
+.preference:hover {
+  opacity: 1;
+}

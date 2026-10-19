@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import Layout from "./[lang]/layout";
+import Layout from "./[lang]/(public)/layout";
 import NotFound from "./[lang]/not-found";
 import { getTranslations } from "@/lib/i18n-server";
+import { LocaleProvider } from "@/components/LocaleProvider";
+import "./globals.css";
+import "./brand.css";
+import "./hover.css";
+import "./locale.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
@@ -11,10 +16,17 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function GlobalNotFound() {
+export default async function GlobalNotFound() {
+  const { locale } = await getTranslations();
   return (
-    <Layout>
-      <NotFound />
-    </Layout>
+    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
+      <body>
+        <LocaleProvider locale={locale}>
+          <Layout>
+            <NotFound />
+          </Layout>
+        </LocaleProvider>
+      </body>
+    </html>
   );
 }

@@ -105,7 +105,8 @@ for (const locale of ["en", "fa"]) {
         )
           return;
         assert.ok(
-          !/[A-Za-z]{3}/.test(value),
+          // Technical product names remain meaningful inside Persian service copy.
+          !/[A-Za-z]{3}/.test(value.replace(/\b(?:CRM|API|SEO|CMS|WordPress|WooCommerce|Excel|B2B|Power BI)\b/g, "")),
           `${path}: untranslated text: ${value}`,
         );
       });

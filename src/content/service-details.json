@@ -1,0 +1,543 @@
+[
+  {
+    "id": "build",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "طراحی سایت شرکتی، شخصی، فروشگاهی، پزشکی، آموزشی، املاک، صنعتی، وردپرس، ووکامرس، سایت اختصاصی، چندزبانه، B2B، لندینگ‌پیج و بازطراحی سایت‌های قدیمی.",
+          "en": "Business, personal, ecommerce, medical, educational, real-estate and industrial websites; WordPress, WooCommerce, custom and multilingual sites, B2B, landing pages and redesigns."
+        }
+      },
+      {
+        "title": {
+          "fa": "این سرویس به درد چه کاری می‌خورد؟",
+          "en": "What it solves"
+        },
+        "body": {
+          "fa": "وقتی سایت قرار است فقط یک کارت ویزیت نباشد؛ باید مشتری بیاورد، محتوا را خوب نشان بدهد و بعداً هم بتوانید گسترشش دهید.",
+          "en": "For websites that must support sales and communication while remaining a maintainable product foundation."
+        }
+      },
+      {
+        "title": {
+          "fa": "آخر کار چه چیزی تحویل می‌گیرید؟",
+          "en": "Deliverables"
+        },
+        "items": [
+          {
+            "fa": "ساختاری که کاربر در آن گم نشود",
+            "en": "Information architecture and UX"
+          },
+          {
+            "fa": "نمای درست روی موبایل، تبلت و دسکتاپ",
+            "en": "Responsive, accessible implementation"
+          },
+          {
+            "fa": "پایه فنی سالم برای سرعت و دیده‌شدن در گوگل",
+            "en": "Technical SEO and Core Web Vitals"
+          },
+          {
+            "fa": "راه ساده برای مدیریت محتوا، همراه با توضیحات لازم",
+            "en": "Content management and documentation"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "تعداد و نوع صفحات، محتوای آماده، امکانات اختصاصی، زبان‌ها و اتصال به سرویس‌های دیگر روی برآورد اثر دارند. WordPress یا توسعهٔ اختصاصی را بر اساس همین نیازها انتخاب می‌کنیم",
+          "en": "Page types, available content, custom features, languages and integrations affect the estimate. These needs guide the choice between WordPress and custom development."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "دامنه، هاست، حساب‌های اصلی و دسترسی مدیریت با مالکیت روشن تحویل می‌شوند؛ نگهداری و توسعهٔ بعدی دامنهٔ جداگانه دارد",
+          "en": "Domains, hosting accounts and administration access have explicit ownership. Ongoing care has a separately agreed scope."
+        }
+      }
+    ]
+  },
+  {
+    "id": "grow",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "سئو تکنیکال، سئو فروشگاهی، سئو محلی، تحقیق کلمات کلیدی، تولید و بهینه‌سازی محتوا، بهبود رتبه صفحات، لینک‌سازی داخلی، افزایش سرعت، رفع مشکلات ایندکس و بررسی رقبا.",
+          "en": "Technical, ecommerce and local SEO, keyword research, content creation and optimization, page-ranking improvements, internal linking, performance, indexing fixes and competitor research."
+        }
+      },
+      {
+        "title": {
+          "fa": "روی چه چیزهایی کار می‌کنیم؟",
+          "en": "Areas"
+        },
+        "items": [
+          {
+            "fa": "اینکه گوگل صفحه‌ها را پیدا کند و درست بشناسد",
+            "en": "Crawling, indexing and metadata"
+          },
+          {
+            "fa": "ساختار محتوا و ارتباط درست بین صفحه‌ها",
+            "en": "Content structure and internal linking"
+          },
+          {
+            "fa": "سرعت سایت و تجربه‌ای که کاربر واقعاً حس می‌کند",
+            "en": "Performance and page experience"
+          },
+          {
+            "fa": "اندازه‌گیری مسیر مشتری، بدون حدس و عددهای تزئینی",
+            "en": "First-party funnels and attribution"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "وضعیت فعلی سایت، رقابت حوزه، حجم صفحات و محتوا و دسترسی اجرای اصلاحات روی دامنه و زمان اثر دارند",
+          "en": "Current site condition, competition, content volume and access to implement improvements affect scope and timing."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "رتبه یا فروش تضمینی اعلام نمی‌کنیم؛ معیارهای سنجش و مسئولیت تولید و انتشار محتوا از ابتدا روشن می‌شوند",
+          "en": "We do not guarantee rankings or sales. Measurement criteria and content responsibilities are agreed in advance."
+        }
+      }
+    ]
+  },
+  {
+    "id": "software",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "نرم‌افزار تحت وب، ویندوز و اندروید، CRM، پنل مدیریت، داشبورد مدیریتی، سیستم فروش و سفارش‌گیری، سامانه رزرو و نوبت‌دهی، گارانتی، پنل مشتریان و نمایندگان، سامانه آموزشی و نرم‌افزارهای سازمانی.",
+          "en": "Web, Windows and Android software, CRM, admin panels, management dashboards, sales and ordering, booking and scheduling, warranty systems, customer and dealer portals, learning platforms and enterprise software."
+        }
+      },
+      {
+        "title": {
+          "fa": "از کجا شروع می‌کنیم؟",
+          "en": "Approach"
+        },
+        "body": {
+          "fa": "اول می‌بینیم چه کسی چه کاری انجام می‌دهد، اطلاعات از کجا می‌آید و کجا تصمیم گرفته می‌شود؛ انتخاب تکنولوژی بعد از این‌هاست.",
+          "en": "Roles, decisions and data flows are modelled before the technology is selected."
+        }
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "نقش‌های کاربری، قواعد کسب‌وکار، پیچیدگی داده، اتصال‌ها و انتقال از سیستم قبلی تعیین‌کننده‌اند. نسخهٔ اول را از امکانات ضروری شروع می‌کنیم",
+          "en": "User roles, business rules, data complexity, integrations and migration drive scope. The first version starts with essential capabilities."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "تحویل مرحله‌ای و معیار پذیرش از ابتدا مشخص می‌شود؛ مسیر توسعهٔ بعدی و مالکیت کد و داده هم روشن می‌ماند",
+          "en": "Milestones and acceptance criteria are agreed early, with clear code and data ownership and a path for future development."
+        }
+      }
+    ]
+  },
+  {
+    "id": "rescue",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "رفع باگ، تکمیل پروژه‌های نیمه‌کاره، اصلاح کدهای قدیمی، اضافه‌کردن امکانات جدید، بهینه‌سازی سرعت و دیتابیس، رفع مشکلات وردپرس و ووکامرس، مهاجرت و بازسازی پروژه‌ها.",
+          "en": "Bug fixes, unfinished project completion, legacy-code improvements, new features, performance and database optimization, WordPress and WooCommerce fixes, migrations and rebuilding."
+        }
+      },
+      {
+        "title": {
+          "fa": "دقیقاً چه چیزهایی را نگاه می‌کنیم؟",
+          "en": "What we inspect"
+        },
+        "items": [
+          {
+            "fa": "وضعیت کلی کد و امنیت",
+            "en": "Architecture and security"
+          },
+          {
+            "fa": "اینکه پروژه واقعاً اجرا، تست و منتشر می‌شود یا نه",
+            "en": "Build, test and deployment readiness"
+          },
+          {
+            "fa": "ریسک‌های فنی و احتمال آسیب‌دیدن اطلاعات",
+            "en": "Technical debt and data risk"
+          },
+          {
+            "fa": "کوتاه‌ترین راه امن برای راه‌انداختن دوباره پروژه",
+            "en": "Shortest safe route back to delivery"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "دسترسی به کد و محیط اجرا، وضعیت وابستگی‌ها، مستندات و ریسک داده را اول بررسی می‌کنیم؛ قبل از شناخت پروژه قیمت بازسازی نمی‌دهیم",
+          "en": "We review code access, runtime, dependencies, documentation and data risks before quoting a rebuild."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "بخش‌های سالم را تا جای ممکن حفظ می‌کنیم؛ پشتیبان‌گیری و مسیر برگشت باید پیش از تغییرهای پرریسک مشخص شود",
+          "en": "Healthy parts are preserved where practical, with backups and rollback plans before high-risk changes."
+        }
+      }
+    ]
+  },
+  {
+    "id": "connect",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "ساخت ربات تلگرام، ربات سفارش‌گیری و اطلاع‌رسانی، طراحی و اتصال API، اتصال فروشگاه به انبار و حسابداری، اتصال درگاه پرداخت و پیامک، جابه‌جایی خودکار اطلاعات و اتوماسیون کارهای روزمره.",
+          "en": "Telegram bots, ordering and notification bots, API design and integration, store connections to inventory and accounting, payments and SMS, automatic data transfer and everyday workflow automation."
+        }
+      },
+      {
+        "title": {
+          "fa": "چیزهایی که حواسمان به آن‌هاست",
+          "en": "Principles"
+        },
+        "items": [
+          {
+            "fa": "معلوم باشد نسخه اصلی هر اطلاعات کجاست",
+            "en": "Explicit source of truth"
+          },
+          {
+            "fa": "اگر ارتباط قطع شد، اطلاعات دوباره و اشتباه ثبت نشود",
+            "en": "Idempotency and controlled retry"
+          },
+          {
+            "fa": "خطاها ثبت شوند و قبل از دردسر جدی خبردار شویم",
+            "en": "Event logging and failure alerts"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "مستندات و محدودیت سرویس مقصد، حجم و تناوب انتقال، مالکیت داده و روش مدیریت خطا در برآورد مهم‌اند",
+          "en": "Destination API limitations, data volume, transfer frequency, data ownership and failure handling shape the estimate."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "دسترسی به سرویس مقصد باید مجاز و در اختیار کسب‌وکار باشد. تغییر API سرویس‌های دیگر ممکن است به به‌روزرسانی اتصال نیاز داشته باشد",
+          "en": "Third-party access must be authorised and available to the business. Upstream API changes may require integration updates."
+        }
+      }
+    ]
+  },
+  {
+    "id": "data",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "طراحی فایل اکسل اختصاصی، فرمول‌نویسی، ابزارهای محاسباتی، داشبورد گزارش‌گیری، گزارش‌های مدیریتی، پاک‌سازی و تبدیل داده، ورود و خروجی اطلاعات و ساخت ابزارهای کاربردی برای کسب‌وکار.",
+          "en": "Custom Excel files, formulas, calculators, reporting dashboards, management reports, data cleaning and conversion, imports and exports, and practical business tools."
+        }
+      },
+      {
+        "title": {
+          "fa": "از کدام داده‌ها شروع می‌کنیم؟",
+          "en": "Where does the data come from?"
+        },
+        "items": [
+          {
+            "fa": "فروش، مالی، انبار و اطلاعات عملیاتی",
+            "en": "Sales, finance, inventory and operations"
+          },
+          {
+            "fa": "فایل‌های Excel و CSV و دیتابیس‌های موجود",
+            "en": "Existing Excel, CSV files and databases"
+          },
+          {
+            "fa": "اطلاعات سایت، CRM و سرویس‌های دیگر",
+            "en": "Website, CRM and third-party service data"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "ابزار متناسب با مسئله",
+          "en": "Choose the right tool"
+        },
+        "body": {
+          "fa": "گاهی یک فایل Excel درست کافی است؛ گاهی Power BI یا یک داشبورد اختصاصی لازم می‌شود. ابزار را بعد از شناخت داده، کاربران و نیاز به‌روزرسانی انتخاب می‌کنیم",
+          "en": "A well-built spreadsheet may be enough; another project may need Power BI or a custom dashboard. The data, users and update requirements guide the choice."
+        }
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "کیفیت و دسترسی داده، تعداد منابع، پیچیدگی شاخص‌ها، سطح دسترسی کاربران و نیاز به گزارش زنده تعیین‌کننده‌اند",
+          "en": "Data quality, source count, metric complexity, access levels and live reporting needs drive scope."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "منبع و روش محاسبهٔ هر شاخص مستند می‌شود تا عددها قابل‌پیگیری باشند؛ کیفیت گزارش به کیفیت دادهٔ ورودی هم وابسته است",
+          "en": "Metric sources and calculations are documented. Report quality also depends on the quality of incoming data."
+        }
+      }
+    ]
+  },
+  {
+    "id": "continue",
+    "sections": [
+      {
+        "title": {
+          "fa": "چه کارهایی انجام می‌دیم؟",
+          "en": "What can we help with?"
+        },
+        "body": {
+          "fa": "پشتیبانی سایت، فروشگاه اینترنتی، وردپرس، ووکامرس و نرم‌افزارهای اختصاصی، نگهداری فنی، بروزرسانی، رفع مشکلات دوره‌ای، بهینه‌سازی عملکرد و توسعه امکانات جدید.",
+          "en": "Support for websites, online stores, WordPress, WooCommerce and custom software; technical maintenance, updates, recurring fixes, performance improvements and new features."
+        }
+      },
+      {
+        "title": {
+          "fa": "همکاری چطور پیش می‌رود؟",
+          "en": "Engagement model"
+        },
+        "body": {
+          "fa": "درخواست‌ها یک‌جا ثبت می‌شوند، با هم اولویت می‌دهیم و همیشه می‌دانید هر کار الان در چه وضعیتی است.",
+          "en": "Requests are recorded, prioritised and followed through transparent states to delivery."
+        }
+      },
+      {
+        "title": {
+          "fa": "چطور جلو می‌رویم؟",
+          "en": "Delivery process"
+        },
+        "items": [
+          {
+            "fa": "اول مسئله و محدودیت‌ها را با هم روشن می‌کنیم",
+            "en": "Understand the problem and constraints"
+          },
+          {
+            "fa": "روی نسخه اول، زمان‌بندی و خط قرمزها توافق می‌کنیم",
+            "en": "Define scope, acceptance criteria and risks"
+          },
+          {
+            "fa": "مرحله‌به‌مرحله می‌سازیم، تست می‌کنیم و نشانتان می‌دهیم",
+            "en": "Design, implement and verify incrementally"
+          },
+          {
+            "fa": "با خیال راحت منتشر می‌کنیم و بعد بهترش می‌کنیم",
+            "en": "Release deliberately and improve continuously"
+          }
+        ]
+      },
+      {
+        "title": {
+          "fa": "هزینه و زمان به چه چیزهایی بستگی دارد؟",
+          "en": "What affects cost and timing?"
+        },
+        "body": {
+          "fa": "اندازه و وضعیت سیستم، زیرساخت، حجم درخواست‌ها و سطح پاسخ‌گویی موردنیاز روی قرارداد پشتیبانی اثر دارند",
+          "en": "System size and condition, infrastructure, request volume and response expectations shape the support agreement."
+        }
+      },
+      {
+        "title": {
+          "fa": "تحویل و ادامهٔ همکاری",
+          "en": "Handover and ongoing care"
+        },
+        "body": {
+          "fa": "ساعات پاسخ‌گویی، کانال ثبت درخواست و مسئولیت زیرساخت در توافق مشخص می‌شوند؛ وعدهٔ پشتیبانی نامحدود و مبهم نمی‌دهیم",
+          "en": "Response hours, request channels and infrastructure responsibility are explicit. Support is not presented as unlimited or undefined."
+        }
+      }
+    ]
+  }
+]

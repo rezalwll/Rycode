@@ -151,13 +151,14 @@ export function ServiceCard({
                   <p className="framer-text rycode-service-scope" dir="auto">
                     {service.scope[locale]}
                   </p>
+                  <Link className="rycode-service-details" href={href("/services/"+service.id)}>{locale==="fa"?"جزئیات این خدمت ↖":"Explore this service ↗"}</Link>
                 </div>
                 <div className="framer-12o1p8o-container">
                   <Link
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-1fa7o3w framer-1fsrsxu"
                     data-border="true"
                     data-framer-name="Variant 2"
-                    href={href("/contact")}
+                    href={href("/contact?service="+service.id)}
                     style={referenceStyles.s3bb9702481}
                   >
                     <div

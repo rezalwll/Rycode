@@ -1,12 +1,16 @@
+import { siteSettings } from "@/server/content";
 import { SocialLinks } from "@/components/SocialLinks";
 import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
-import { ContactForm, FormField } from "@/components/ContactForm";
+import { ContactForm, FormField, FormSubmit } from "@/components/ContactForm";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function ContactHeroSection() {
   const { t, locale } = await getTranslations();
+  const settings = await siteSettings();
+  const phone = String(settings["contact.phone"] || "0998 - 122 - 2022");
+  const dial = phone.replace(/[^+0-9]/g, "");
   return (
     <section className="framer-zh7igo" data-framer-name="Hero Section">
       <div className="framer-16icyyk" data-framer-name="Container">
@@ -153,8 +157,11 @@ export async function ContactHeroSection() {
                   dir="auto"
                   style={referenceStyles.s5a374ddac4}
                 >
-                  {t(
-                    "1209 Mountain Road Place NE Albuquerque, NM 87110 United States",
+                  {String(
+                    settings["contact.address." + locale] ||
+                      (locale === "fa"
+                        ? "برای هماهنگی از فرم یا شمارهٔ تماس استفاده کنید"
+                        : "Use the form or phone number to arrange a conversation"),
                   )}
                 </p>
               </div>
@@ -190,7 +197,10 @@ export async function ContactHeroSection() {
                   <a
                     className="framer-n76Tz framer-9qjuV framer-1in1u19 framer-v-1in1u19 framer-1y6m83r"
                     data-framer-name="Variant 1"
-                    href="tel:+989981222022"
+                    href={
+                      "tel:" +
+                      (dial.startsWith("0") ? "+98" + dial.slice(1) : dial)
+                    }
                     dir="ltr"
                   >
                     <div
@@ -204,7 +214,7 @@ export async function ContactHeroSection() {
                         dir="ltr"
                         style={referenceStyles.s22c291e9ee}
                       >
-                        {"0998 - 122 - 2022"}
+                        {phone}
                       </p>
                     </div>
                   </a>
@@ -347,9 +357,41 @@ export async function ContactHeroSection() {
                   <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
                     <FormField
                       type="email"
-                      required={true}
+                      required={false}
                       name="Email"
                       placeholder={t("e.g info@mail.com")}
+                      className="framer-form-input framer-form-input-empty"
+                      as="input"
+                    ></FormField>
+                  </div>
+                </Reveal>
+                <Reveal
+                  className="framer-1yitcnd rycode-phone-field"
+                  data-framer-appear-id="rycode-phone-field"
+                  style={referenceStyles.sd26cd70eb9}
+                  as="label"
+                  from="translateY(150px)"
+                >
+                  <div
+                    className="framer-uemtml"
+                    data-framer-component-type="RichTextContainer"
+                    style={referenceStyles.se120e01975}
+                  >
+                    <p
+                      className="framer-text framer-styles-preset-1e46qyy"
+                      data-styles-preset="l8F5L_1Ss"
+                      dir="auto"
+                      style={referenceStyles.s5a374ddac4}
+                    >
+                      {locale === "fa" ? "شمارهٔ تماس" : "Phone number"}
+                    </p>
+                  </div>
+                  <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
+                    <FormField
+                      type="tel"
+                      required={false}
+                      name="Phone"
+                      placeholder={"09xxxxxxxxx"}
                       className="framer-form-input framer-form-input-empty"
                       as="input"
                     ></FormField>
@@ -379,7 +421,7 @@ export async function ContactHeroSection() {
                   <div className="framer-form-text-input framer-form-input-wrapper framer-762f3r framer-form-textarea-input-type">
                     <FormField
                       required={true}
-                      name="Massege"
+                      name="Message"
                       placeholder={t("Write in detail...")}
                       className="framer-form-input"
                       as="textarea"
@@ -394,7 +436,7 @@ export async function ContactHeroSection() {
                 as="div"
                 from="translateY(150px)"
               >
-                <button
+                <FormSubmit
                   type="submit"
                   className="framer-Irrnf framer-P2lQE framer-9qjuV framer-1wjqi8p framer-v-1wjqi8p"
                   data-framer-name="Default"
@@ -435,7 +477,7 @@ export async function ContactHeroSection() {
                       <use href="#2430009286"></use>
                     </svg>
                   </div>
-                </button>
+                </FormSubmit>
               </Reveal>
             </ContactForm>
           </div>

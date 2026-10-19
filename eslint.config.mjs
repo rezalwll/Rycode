@@ -8,5 +8,5 @@ export default defineConfig([
     // Locally stored reference renditions preserve original sizes and crops.
     rules: { "@next/next/no-img-element": "off" },
   },
-  globalIgnores([".next/**", ".reference/**"]),
+  globalIgnores([".next/**", ".reference/**", "src/generated/**"]),
 ]);

@@ -516,7 +516,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/terms")}
                           target="_blank"
                         >
                           <div
@@ -544,7 +544,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/privacy")}
                           target="_blank"
                         >
                           <div
@@ -754,7 +754,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/terms")}
                           target="_blank"
                         >
                           <div
@@ -782,7 +782,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/privacy")}
                           target="_blank"
                         >
                           <div
@@ -992,7 +992,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/terms")}
                           target="_blank"
                         >
                           <div
@@ -1020,7 +1020,7 @@ export async function SiteFooter() {
                         <a
                           className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-1vijufv framer-zcpo7a"
                           data-framer-name="Terms & Policy"
-                          href="https://www.framer.com/legal/terms-of-service/"
+                          href={href("/privacy")}
                           target="_blank"
                         >
                           <div

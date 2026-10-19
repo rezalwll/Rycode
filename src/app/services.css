@@ -10,3 +10,5 @@
 .framer-y8np0u .framer-rjp6f9 {
   min-width: 0;
 }
+.rycode-service-details {display:inline-block;color:#fff;text-decoration:none;border-bottom:1px solid #777;padding-bottom:3px;margin-top:12px;font-size:14px;transition:color .3s,border-color .3s}
+.rycode-service-details:hover,.rycode-service-details:focus-visible{color:#ff7565;border-color:#ff1a05}

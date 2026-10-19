@@ -1,0 +1,222 @@
+generator client {
+  provider = "prisma-client"
+  output = "../src/generated/prisma"
+}
+datasource db {
+  provider = "postgresql"
+}
+enum StaffRole {
+  ADMIN
+  EDITOR
+}
+enum ContentKind {
+  ARTICLE
+  SERVICE
+  PROJECT
+  PAGE
+}
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  SCHEDULED
+  ARCHIVED
+}
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  WON
+  LOST
+  SPAM
+  ARCHIVED
+}
+model User {
+  id String @id
+  name String
+  email String @unique
+  emailVerified Boolean @default(false)
+  image String?
+  role StaffRole @default(EDITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessions Session[]
+  accounts Account[]
+}
+model Session {
+  id String @id
+  token String @unique
+  userId String
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+model Account {
+  id String @id
+  accountId String
+  providerId String
+  userId String
+  accessToken String?
+  refreshToken String?
+  idToken String?
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope String?
+  password String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@unique([providerId, accountId])
+}
+model Verification {
+  id String @id
+  identifier String
+  value String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([identifier])
+}
+model Lead {
+  id String @id @default(uuid())
+  receipt String @unique
+  requestKey String @unique
+  name String
+  email String?
+  phone String?
+  message String
+  service String?
+  sourcePath String
+  locale String @default("fa")
+  status LeadStatus @default(NEW)
+  notes LeadNote[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([status, createdAt])
+}
+model LeadNote {
+  id String @id @default(uuid())
+  leadId String
+  actorId String
+  body String
+  createdAt DateTime @default(now())
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  @@index([leadId, createdAt])
+}
+model Content {
+  id String @id @default(uuid())
+  kind ContentKind
+  slug String
+  sourceKey String? @unique
+  status ContentStatus @default(DRAFT)
+  featuredImage String?
+  author String @default("RYCODE")
+  category String @default("")
+  tags String[] @default([])
+  relatedIds String[] @default([])
+  serviceId String?
+  noIndex Boolean @default(false)
+  legacy Boolean @default(false)
+  position Int @default(0)
+  publishedAt DateTime?
+  scheduledAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  translations ContentTranslation[]
+  revisions ContentRevision[]
+  @@unique([kind, slug])
+  @@index([kind, status, publishedAt])
+  @@index([status, scheduledAt])
+}
+model ContentTranslation {
+  id String @id @default(uuid())
+  contentId String
+  locale String
+  approved Boolean @default(false)
+  title String
+  summary String
+  body Json
+  bodyText String @default("")
+  seoTitle String?
+  seoDescription String?
+  imageAlt String @default("")
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  @@unique([contentId, locale])
+}
+model ContentRevision {
+  id String @id @default(uuid())
+  contentId String
+  actorId String
+  snapshot Json
+  createdAt DateTime @default(now())
+  content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  @@index([contentId, createdAt])
+}
+model Media {
+  id String @id @default(uuid())
+  filename String
+  mimeType String
+  size Int
+  width Int
+  height Int
+  alt String @default("")
+  uploaderId String
+  createdAt DateTime @default(now())
+}
+model SiteSetting {
+  key String @id
+  value Json
+  updatedAt DateTime @updatedAt
+}
+model Redirect {
+  id String @id @default(uuid())
+  source String @unique
+  destination String
+  permanent Boolean @default(true)
+  createdAt DateTime @default(now())
+}
+model Faq {
+  id String @id @default(uuid())
+  scope String @default("home")
+  locale String @default("fa")
+  question String
+  answer String
+  published Boolean @default(false)
+  position Int @default(0)
+  @@index([scope, locale, published])
+}
+model AuditLog {
+  id String @id @default(uuid())
+  actorId String
+  action String
+  entityId String
+  metadata Json?
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+model RateLimit {
+  key String @id
+  count Int
+  resetAt DateTime
+  @@index([resetAt])
+}
+model AnalyticsEvent {
+  id String @id @default(uuid())
+  name String
+  path String
+  referrerHost String?
+  campaign String?
+  sessionHash String
+  createdAt DateTime @default(now())
+  @@index([createdAt, name])
+}
+model AuthRateLimit {
+  id String @id @default(uuid())
+  key String @unique
+  count Int
+  lastRequest BigInt
+}

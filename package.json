@@ -1,33 +1,65 @@
 {
- "name": "rycode-studio",
- "version": "1.0.0",
- "private": true,
- "type": "module",
- "scripts": {
-  "dev": "next dev --hostname 127.0.0.1 --port 3014",
-  "build": "next build",
-  "start": "next start --hostname 127.0.0.1 --port 3014",
-  "typecheck": "tsc --noEmit",
-  "lint": "eslint src --max-warnings 0",
-  "reference": "node scripts/capture-reference.mjs"
- },
- "dependencies": {
-  "lenis": "^1.1.9",
-  "next": "16.4.2",
-  "react": "19.3.1",
-  "react-dom": "19.3.1"
- },
- "devDependencies": {
-  "@tailwindcss/postcss": "4.3.3",
-  "@types/node": "^22.0.0",
-  "@types/react": "19.3.0",
-  "@types/react-dom": "^19.0.0",
-  "cheerio": "1.0.0",
-  "eslint": "10.13.0",
-  "eslint-config-next": "16.4.2",
-  "postcss": "^8.5.30",
-  "prettier": "3.9.10",
-  "tailwindcss": "4.3.3",
-  "typescript": "6.0.3"
- }
+  "name": "rycode-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3014",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3014",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "eslint src --max-warnings 0",
+    "reference": "node scripts/capture-reference.mjs",
+    "postinstall": "prisma generate",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "tsx scripts/seed.ts",
+    "admin:create": "tsx scripts/create-admin.ts",
+    "maintenance": "tsx scripts/maintenance.ts",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "verify": "node scripts/verify.mjs && node scripts/verify-locales.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "db:dev": "tsx scripts/dev-database.ts",
+    "test:local": "node scripts/test-local.mjs"
+  },
+  "dependencies": {
+    "@better-auth/prisma-adapter": "1.7.11",
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "@tiptap/extension-image": "3.32.0",
+    "@tiptap/react": "3.32.0",
+    "@tiptap/starter-kit": "3.32.0",
+    "better-auth": "1.7.11",
+    "lenis": "1.1.9",
+    "next": "16.4.2",
+    "pg": "8.23.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "server-only": "0.0.1",
+    "sharp": "0.35.5",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.0.0",
+    "@types/pg": "8.23.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.0.0",
+    "cheerio": "1.0.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.2",
+    "postcss": "8.5.30",
+    "prettier": "3.9.10",
+    "prisma": "7.10.1",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.0",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11",
+    "embedded-postgres": "18.4.0-beta.17"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.2",
+    "mysql2": "3.24.6"
+  }
 }

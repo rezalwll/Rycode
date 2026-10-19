@@ -7,6 +7,7 @@ const referenceRoutes = JSON.parse(
 const routes = [
   ...referenceRoutes,
   ...referenceRoutes.map((route) => "/en" + (route === "/" ? "" : route)),
+  ...["/services", "/privacy", "/terms", ...["build","grow","software","rescue","connect","data","continue"].map(id=>"/services/"+id)].flatMap(route=>[route,"/en"+route]),
   "/this-page-does-not-exist",
   "/en/this-page-does-not-exist",
 ];
@@ -77,6 +78,7 @@ for (const asset of assets) {
 async function files(dir) {
   const output = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.name === "generated") continue;
     const path = dir + "/" + entry.name;
     output.push(...(entry.isDirectory() ? await files(path) : [path]));
   }
@@ -84,7 +86,8 @@ async function files(dir) {
 }
 for (const path of await files("src")) {
   const source = await readFile(path, "utf8");
-  if (/dangerouslySetInnerHTML|<iframe|eval\(/.test(source))
+  const safeJsonLd = ["src/components/StructuredData.tsx", "src/components/content/ContentDetail.tsx"].includes(path) && source.includes('type="application/ld+json"') && source.includes("jsonLd(");
+  if ((source.includes("dangerouslySetInnerHTML") && !safeJsonLd) || /<iframe|eval\(/.test(source))
     errors.push(`Unacceptable runtime markup: ${path}`);
 }
 const result = {

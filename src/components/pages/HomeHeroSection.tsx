@@ -13,7 +13,9 @@ export async function HomeHeroSection() {
     >
       <div className="framer-1iqbyd4-container">
         <MediaVideo
-          src="/assets/5093df37e3065e5a.mp4"
+          src="/brand/hero-desktop.mp4"
+          mobileSrc="/brand/hero-mobile.mp4"
+          poster="/brand/hero-poster.webp"
           loop={true}
           preload="none"
           muted={true}

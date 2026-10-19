@@ -1,8 +1,9 @@
+import { siteSettings } from "@/server/content";
 import { socialNetworks } from "@/content/social-networks";
 import { translate, type Locale } from "@/lib/i18n";
 import { referenceStyles } from "@/styles/reference-styles";
 
-export function SocialLinks({
+export async function SocialLinks({
   locale,
   variant,
 }: {
@@ -10,13 +11,23 @@ export function SocialLinks({
   variant: "footer" | "contact";
 }) {
   const footer = variant === "footer";
+  const settings = await siteSettings();
   return (
     <div
       className={footer ? "framer-1yeaahq" : "framer-1uv64u8"}
       data-framer-name={footer ? "Footer Buttons" : "Social Links"}
       data-social-networks={variant}
     >
-      {socialNetworks.map((network) => {
+      {socialNetworks.map((original) => {
+        const network = {
+          ...original,
+          href:
+            String(
+              settings["social." + original.name.toLowerCase()] ||
+                original.href ||
+                "",
+            ) || undefined,
+        };
         const label = translate(network.name, locale);
         const Element = network.href ? "a" : "div";
         return (

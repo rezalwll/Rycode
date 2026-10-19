@@ -211,32 +211,59 @@ export function SplitText({
     </Tag>
   );
 }
-export function MediaVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
+export function MediaVideo(
+  props: VideoHTMLAttributes<HTMLVideoElement> & { mobileSrc?: string },
+) {
   const ref = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    let visible = false;
+    const sync = () => {
+      if (
+        visible &&
+        !document.hidden &&
+        !motion.matches &&
+        !connection?.saveData &&
+        !["slow-2g", "2g"].includes(connection?.effectiveType || "")
+      ) {
+        const source =
+          props.mobileSrc && matchMedia("(max-width: 767px)").matches
+            ? props.mobileSrc
+            : props.src;
+        if (typeof source === "string" && video.getAttribute("src") !== source) video.src = source;
+        video.muted = true;
+        void video.play().catch(() => {});
+      } else video.pause();
+    };
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries)
-          if (
-            entry.isIntersecting &&
-            video.getClientRects().length &&
-            !reduced()
-          ) {
-            video.muted = true;
-            void video.play().catch(() => {});
-          } else video.pause();
+          visible = entry.isIntersecting && video.getClientRects().length > 0;
+        sync();
       },
       { threshold: 0.05 },
     );
     observer.observe(video);
+    document.addEventListener("visibilitychange", sync);
+    motion.addEventListener("change", sync);
     return () => {
       observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      motion.removeEventListener("change", sync);
       video.pause();
     };
-  }, []);
-  return <video {...props} ref={ref} muted playsInline />;
+  }, [props.src, props.mobileSrc]);
+  const { src, mobileSrc, ...rest } = props;
+  void src;
+  void mobileSrc;
+  return <video {...rest} ref={ref} muted playsInline />;
 }
 export function Carousel({
   items,

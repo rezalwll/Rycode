@@ -1,11 +1,12 @@
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText } from "@/components/Motion";
 import { AccordionGroup } from "@/components/Accordion";
-import { services } from "@/content/services";
+import { serviceCatalog } from "@/server/content";
 import { ServiceCard } from "@/components/ServiceCard";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function HomeServiceSection() {
   const { t, locale } = await getTranslations();
+  const services = await serviceCatalog(locale);
   return (
     <AccordionGroup
       className="framer-y8np0u"

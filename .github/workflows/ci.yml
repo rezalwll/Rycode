@@ -1,0 +1,85 @@
+name: Validate RYCODE
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: rycode_test
+          POSTGRES_USER: rycode
+          POSTGRES_PASSWORD: ci-only-database-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U rycode -d rycode_test"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      DATABASE_URL: postgresql://rycode:ci-only-database-password@127.0.0.1:5432/rycode_test
+      SITE_URL: http://127.0.0.1:3014
+      NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3014
+      BETTER_AUTH_SECRET: ci-only-not-a-production-secret-rycode-test-2026
+      INDEXABLE: "false"
+      RUN_INTEGRATION: "1"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24.20.0"
+          cache: npm
+      - run: npm ci
+      - run: npm run db:migrate
+      - run: npm run db:seed
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run test:integration
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run build
+      - name: Verify production HTTP behavior
+        shell: bash
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          PORT=3014 HOSTNAME=127.0.0.1 node .next/standalone/server.js > /tmp/rycode-server.log 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3014/api/health >/dev/null; then break; fi
+            sleep 1
+          done
+          npm run verify
+          node scripts/verify-platform.mjs
+      - name: Upload diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: rycode-ci-diagnostics
+          path: |
+            /tmp/rycode-server.log
+            test-results/
+          retention-days: 7
+  container:
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: runner
+          push: false
+          tags: rycode:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

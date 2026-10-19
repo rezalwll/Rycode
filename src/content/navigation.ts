@@ -12,7 +12,7 @@ export const primaryNavigation: NavigationItem[] = [
   {
     id: "services",
     label: { fa: "خدمات", en: "Services" },
-    href: "/#Service%20Section",
+    href: "/services",
   },
   {
     id: "work",
