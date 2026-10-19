@@ -9,7 +9,9 @@ const TickerTone = createContext<"light" | "dark">("light");
 
 export function FooterTicker({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const tone = /^\/(?:(?:fa|en)\/)?(?:contact|work)\/?$/.test(pathname)
+  const tone = /^\/(?:(?:fa|en)\/)?(?:contact\/?|work(?:\/[^/]+)?\/?)$/.test(
+    pathname,
+  )
     ? "dark"
     : "light";
 
