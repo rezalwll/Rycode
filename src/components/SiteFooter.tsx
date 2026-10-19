@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Reveal, Ticker } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
+import { FooterFluid } from "@/components/FooterFluid";
 export async function SiteFooter() {
   const { t, href } = await getTranslations();
   return (
@@ -344,10 +345,11 @@ export async function SiteFooter() {
       <div className="framer-1u5xqzl-container">
         <div className="ssr-variant hidden-16wj1xo hidden-zx6348">
           <footer
-            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1bxxpnk w-full!"
+            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1bxxpnk rycode-footer-fluid-host w-full!"
             data-framer-name="Desktop"
             style={referenceStyles.s338e3545a1}
           >
+            <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
                 <Reveal
@@ -801,10 +803,11 @@ export async function SiteFooter() {
         </div>
         <div className="ssr-variant hidden-zx6348 hidden-uxe76n">
           <footer
-            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1vxswwt w-full!"
+            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1vxswwt rycode-footer-fluid-host w-full!"
             data-framer-name="Phone"
             style={referenceStyles.s338e3545a1}
           >
+            <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
                 <Reveal
@@ -1258,10 +1261,11 @@ export async function SiteFooter() {
         </div>
         <div className="ssr-variant hidden-16wj1xo hidden-uxe76n">
           <footer
-            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1sao26m w-full!"
+            className="framer-CoplX framer-9qjuV framer-1bxxpnk framer-v-1sao26m rycode-footer-fluid-host w-full!"
             data-framer-name="Tablet"
             style={referenceStyles.s338e3545a1}
           >
+            <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
                 <Reveal
