@@ -49,6 +49,8 @@
 /* Animate a definite left inset so the circle expands smoothly in both directions. */
 .framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-ymklat, .framer-v-1d5fd42)
   .framer-1glyh7l {
+  /* The fill widens independently; a square ratio makes it overflow vertically. */
+  aspect-ratio: auto;
   left: calc(100% - 44px);
   width: auto;
   transition: left 0.4s linear;
@@ -64,6 +66,7 @@
   left: 2px;
 }
 .framer-obWCA:is(.framer-v-5x2t3t, .framer-v-2zyqfl) .framer-1glyh7l {
+  aspect-ratio: auto;
   left: calc(100% + 16px);
   transition: left 0.4s linear;
 }
