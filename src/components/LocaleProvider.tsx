@@ -3,7 +3,7 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { translate, type Locale } from "@/lib/i18n";
 
-const LocaleContext = createContext<Locale>("en");
+const LocaleContext = createContext<Locale>("fa");
 
 export function LocaleProvider({
   locale,

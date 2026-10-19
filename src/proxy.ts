@@ -4,10 +4,10 @@ export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const localized = /^\/(en|fa)(\/|$)/.exec(pathname);
   const headers = new Headers(request.headers);
-  headers.set("x-rycode-locale", localized?.[1] === "fa" ? "fa" : "en");
+  headers.set("x-rycode-locale", localized?.[1] === "en" ? "en" : "fa");
   if (localized) return NextResponse.next({ request: { headers } });
   const destination = request.nextUrl.clone();
-  destination.pathname = `/en${pathname === "/" ? "" : pathname}`;
+  destination.pathname = `/fa${pathname === "/" ? "" : pathname}`;
   return NextResponse.rewrite(destination, { request: { headers } });
 }
 

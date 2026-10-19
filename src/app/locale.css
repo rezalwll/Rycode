@@ -78,9 +78,13 @@ html[lang="fa"] input[type="email"] {
 html[lang="fa"] .rycode-slide {
   direction: rtl;
 }
-html[lang="fa"] .framer-HujZo .framer-1nayp60 h1 {
-  font-size: clamp(54px, 9vw, 130px);
-  white-space: normal;
+html[lang="fa"] :is(.brand-logo, .brand-wordmark),
+html[lang="fa"] :is(.brand-logo, .brand-wordmark) * {
+  font-family: "Geist", sans-serif !important;
+}
+html[lang="fa"] .brand-wordmark {
+  direction: ltr;
+  text-align: right;
 }
 html[lang="fa"] .framer-7wCKM .framer-text {
   text-align: start;

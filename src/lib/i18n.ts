@@ -23,6 +23,7 @@ export function translate(source: string, locale: Locale): string {
 
 export function localizedHref(href: string, locale: Locale): string {
   if (!href.startsWith("/") || href.startsWith("//")) return href;
-  const plain = href.replace(/^\/(?:fa|en)(?=\/|$|[?#])/, "") || "/";
-  return locale === "fa" ? `/fa${plain === "/" ? "" : plain}` : plain;
+  const unprefixed = href.replace(/^\/(?:fa|en)(?=\/|$|[?#])/, "");
+  const plain = unprefixed.startsWith("/") ? unprefixed : `/${unprefixed}`;
+  return locale === "en" ? `/en${plain === "/" ? "" : plain}` : plain;
 }

@@ -19,12 +19,12 @@ export async function generateMetadata(): Promise<Metadata> {
       default: t("RYCODE Studio — Modern Creative Studio"),
       template: t("%s | RYCODE Studio"),
     },
-    applicationName: t("RYCODE Studio"),
+    applicationName: "RYCODE Studio",
     description: t(
       "RYCODE Studio — رایکد استودیو. Creative websites and brand experiences built with purpose.",
     ),
     openGraph: {
-      siteName: t("RYCODE Studio"),
+      siteName: "RYCODE Studio",
       title: t("RYCODE Studio — Modern Creative Studio"),
       description: t(
         "Creative websites and brand experiences built with purpose.",

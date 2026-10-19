@@ -1,4 +1,4 @@
-# RYCODE STUDIO — استودیو رایکد
+# RYCODE STUDIO — رایکد
 
 Creative studio website built with Next.js 16 App Router, React 19, strict
 TypeScript and Tailwind CSS 4. Includes 17 public routes: home, work, six project
@@ -15,8 +15,9 @@ Preview at http://127.0.0.1:3014/.
 
 If the default port is occupied, run `npm run dev -- --port 3020`.
 
-English keeps the existing URLs. Persian pages use `/fa`, `/fa/work`,
-`/fa/blog`, and `/fa/contact`, including all project and article detail pages.
+Persian is the default language at `/`, `/work`, `/blog` and `/contact`.
+English pages use `/en`, `/en/work`, `/en/blog` and `/en/contact`.
+Old `/fa` URLs remain available; Persian navigation uses the default URLs.
 The header language switch preserves the current page, query string and anchor.
 Persian is rendered on the server with RTL layout and the locally hosted
 IRANYekan font supplied for the project (`public/fonts`, WOFF2 with TTF fallback).

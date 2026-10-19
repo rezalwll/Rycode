@@ -6,9 +6,9 @@ const referenceRoutes = JSON.parse(
 );
 const routes = [
   ...referenceRoutes,
-  ...referenceRoutes.map((route) => "/fa" + (route === "/" ? "" : route)),
+  ...referenceRoutes.map((route) => "/en" + (route === "/" ? "" : route)),
   "/this-page-does-not-exist",
-  "/fa/this-page-does-not-exist",
+  "/en/this-page-does-not-exist",
 ];
 const results = [],
   errors = [],

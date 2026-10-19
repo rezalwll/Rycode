@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { localizedHref, translate, type Locale } from "./i18n";
 
 export const getLocale = cache(async (): Promise<Locale> =>
-  (await headers()).get("x-rycode-locale") === "fa" ? "fa" : "en",
+  (await headers()).get("x-rycode-locale") === "en" ? "en" : "fa",
 );
 
 export async function getTranslations() {

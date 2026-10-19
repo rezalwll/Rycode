@@ -7,7 +7,7 @@ const routes = JSON.parse(await readFile(".reference/routes.json", "utf8"));
 const results = [];
 for (const locale of ["en", "fa"]) {
   for (const route of [...routes, "/missing-test-page"]) {
-    const path = locale === "fa" ? `/fa${route === "/" ? "" : route}` : route;
+    const path = locale === "en" ? `/en${route === "/" ? "" : route}` : route;
     const response = await fetch(base + path);
     const $ = load(await response.text());
     const expected =
@@ -20,9 +20,18 @@ for (const locale of ["en", "fa"]) {
       `${path}: dir`,
     );
     assert.ok($("header .language-switch").length, `${path}: language switch`);
+    assert.equal(
+      $("header .language-switch").first().attr("href"),
+      locale === "fa" ? `/en${route === "/" ? "" : route}` : route,
+      `${path}: switch destination`,
+    );
     if (locale === "fa") {
       if (route === "/") {
-        assert.match($("main h1").text(), /استودیو رایکد/, `${path}: Persian brand heading`);
+        assert.match(
+          $("main h1").text(),
+          /RYCODE STUDIO/,
+          `${path}: original brand heading`,
+        );
       }
       assert.match(
         $("title").text(),
@@ -32,10 +41,10 @@ for (const locale of ["en", "fa"]) {
       $("a[href^='/']")
         .not(".language-switch")
         .each((_, element) => {
-          assert.match(
-            $(element).attr("href"),
-            /^\/fa(?:$|[\/#?])/,
-            `${path}: locale-preserving link`,
+          const href = $(element).attr("href");
+          assert.ok(
+            !/^\/(fa|en)(?:$|[\/#?])/.test(href),
+            `${path}: Persian link uses default route: ${href}`,
           );
         });
       $(".framer-text").each((_, element) => {
@@ -50,10 +59,22 @@ for (const locale of ["en", "fa"]) {
           `${path}: untranslated text: ${value}`,
         );
       });
+      assert.doesNotMatch(
+        $("body").text(),
+        /استودیو رایکد|رایکد استودیو/,
+        `${path}: concise Persian brand references`,
+      );
     }
     results.push({ path, status: response.status, title: $("title").text() });
   }
 }
+const legacy = await fetch(`${base}/fa/blog?preview=1`);
+assert.equal(legacy.status, 200, "Legacy Persian URLs remain available");
+assert.equal(
+  load(await legacy.text())("html").attr("lang"),
+  "fa",
+  "Legacy URL stays Persian",
+);
 await writeFile(
   ".reference/locale-verification.json",
   JSON.stringify(results, null, 2),

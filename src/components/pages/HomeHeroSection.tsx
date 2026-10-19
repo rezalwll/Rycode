@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Reveal, SplitText, MediaVideo, Carousel } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function HomeHeroSection() {
-  const { t, locale, href } = await getTranslations();
+  const { t, href } = await getTranslations();
   return (
     <section
       className="framer-15gz4dg"
@@ -79,15 +79,12 @@ export async function HomeHeroSection() {
                 from="translateY(300px)"
               >
                 <SplitText
-                  className="framer-text framer-styles-preset-843oen"
+                  className="framer-text framer-styles-preset-843oen brand-wordmark"
                   data-styles-preset="QzS5d9Y4F"
                   dir="auto"
                   style={referenceStyles.s5a374ddac4}
                   as="h1"
                   scrollLinked={false}
-                  localizedText={
-                    locale === "fa" ? t("RYCODE STUDIO") : undefined
-                  }
                 >
                   <span style={referenceStyles.sa20496458d}>
                     <span
@@ -128,15 +125,12 @@ export async function HomeHeroSection() {
                 from="translateY(300px)"
               >
                 <SplitText
-                  className="framer-text framer-styles-preset-843oen"
+                  className="framer-text framer-styles-preset-843oen brand-wordmark"
                   data-styles-preset="QzS5d9Y4F"
                   dir="auto"
                   style={referenceStyles.s516259b142}
                   as="h1"
                   scrollLinked={false}
-                  localizedText={
-                    locale === "fa" ? t("RYCODE STUDIO") : undefined
-                  }
                 >
                   <span style={referenceStyles.sa20496458d}>
                     <span
