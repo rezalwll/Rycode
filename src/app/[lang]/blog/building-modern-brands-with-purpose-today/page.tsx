@@ -15,7 +15,7 @@ export default async function Page() {
   return (
     <main
       data-framer-root=""
-      className="framer-aLubk framer-i30eY framer-A8dYT framer-OQzud framer-1jK3j framer-ge77Z framer-5BqlT framer-11oea5z contents!"
+      className="framer-aLubk framer-i30eY framer-A8dYT framer-OQzud framer-1jK3j framer-ge77Z framer-5BqlT framer-11oea5z w-full!"
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">
