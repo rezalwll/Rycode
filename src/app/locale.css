@@ -126,6 +126,23 @@ html[lang="fa"] .framer-nc16a8 .framer-5vpldf {
 html[lang="fa"] .framer-nc16a8 [data-localized-split] {
   text-align: start !important;
 }
+/* The reference service cards use these compact vertical metrics. The global
+   Persian line-height remains generous elsewhere for readable RTL copy. */
+html[lang="fa"] .framer-y8np0u .framer-d34t68 .framer-text {
+  line-height: 100px !important;
+}
+html[lang="fa"] .framer-y8np0u .framer-146p3zs .framer-text {
+  line-height: 35.2px !important;
+}
+html[lang="fa"] .framer-y8np0u .framer-1e1h34l .framer-text {
+  line-height: 19.6px !important;
+}
+html[lang="fa"] .framer-y8np0u .framer-1ggwkfr .framer-text {
+  line-height: 31.2px !important;
+}
+html[lang="fa"] .framer-y8np0u .framer-14jkp0r .framer-text {
+  line-height: 24px !important;
+}
 @media (min-width: 1200px) {
   html[lang="fa"] .framer-15gz4dg {
     min-height: max(100svh, 860px);
