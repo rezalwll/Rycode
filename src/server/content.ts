@@ -105,7 +105,11 @@ export const lookupContent = cache(
     preview = false,
   ): Promise<{ owned: boolean; content: PublicContent | null }> => {
     if (!databaseConfigured()) return { owned: false, content: null };
-    try { slug = decodeURIComponent(slug); } catch { return {owned: true, content: null}; }
+    try {
+      slug = decodeURIComponent(slug);
+    } catch {
+      return { owned: true, content: null };
+    }
     const record = await database().content.findUnique({
       where: { kind_slug: { kind, slug } },
       include,

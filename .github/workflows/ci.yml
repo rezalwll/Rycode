@@ -50,8 +50,9 @@ jobs:
       - name: Verify production HTTP behavior
         shell: bash
         run: |
-          cp -r public .next/standalone/public
-          cp -r .next/static .next/standalone/.next/static
+          mkdir -p .next/standalone/public .next/standalone/.next/static
+          cp -a public/. .next/standalone/public/
+          cp -a .next/static/. .next/standalone/.next/static/
           PORT=3014 HOSTNAME=127.0.0.1 node .next/standalone/server.js > /tmp/rycode-server.log 2>&1 &
           for attempt in $(seq 1 60); do
             if curl -fsS http://127.0.0.1:3014/api/health >/dev/null; then break; fi

@@ -246,7 +246,7 @@ export async function POST(request: Request, context: Context) {
       const input = contentSchema.parse(raw);
       if (actor.role !== "ADMIN" && input.status !== "DRAFT")
         throw new HttpError(403, "Publishing requires an administrator");
-      const existing = input.id
+      let existing = input.id
         ? await database().content.findUnique({
             where: { id: input.id },
             include: { translations: true },
@@ -261,6 +261,20 @@ export async function POST(request: Request, context: Context) {
       if (actor.role !== "ADMIN" && existing && existing.status !== "DRAFT")
         throw new HttpError(403, "Published content requires an administrator");
       const result = await database().$transaction(async (tx) => {
+        if (existing) {
+          await tx.$queryRaw`SELECT id FROM "Content" WHERE id = ${existing.id} FOR UPDATE`;
+          const current = await tx.content.findUnique({
+            where: { id: existing.id },
+            include: { translations: true },
+          });
+          if (!current) throw new HttpError(404, "Content not found");
+          if (actor.role !== "ADMIN" && current.status !== "DRAFT")
+            throw new HttpError(
+              403,
+              "Published content requires an administrator",
+            );
+          existing = current;
+        }
         if (
           existing &&
           (existing.slug !== input.slug || existing.kind !== input.kind)
@@ -519,9 +533,20 @@ export async function POST(request: Request, context: Context) {
           ?.published
       )
         throw new HttpError(403, "Published content requires an administrator");
-      const record = input.id
-        ? await database().faq.update({ where: { id: input.id }, data: input })
-        : await database().faq.create({ data: input });
+      const record = await database().$transaction(async (tx) => {
+        if (input.id) {
+          await tx.$queryRaw`SELECT id FROM "Faq" WHERE id = ${input.id} FOR UPDATE`;
+          const current = await tx.faq.findUnique({ where: { id: input.id } });
+          if (!current) throw new HttpError(404, "FAQ not found");
+          if (actor.role !== "ADMIN" && current.published)
+            throw new HttpError(
+              403,
+              "Published content requires an administrator",
+            );
+          return tx.faq.update({ where: { id: input.id }, data: input });
+        }
+        return tx.faq.create({ data: input });
+      });
       entityId = record.id;
     } else if (resource === "users") {
       const input = z

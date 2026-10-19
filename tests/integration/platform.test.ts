@@ -49,7 +49,10 @@ describe.skipIf(!enabled)("Real PostgreSQL publication and persistence", () => {
     expect((await lookupContent("ARTICLE", slug, "fa")).content?.title).toBe(
       "آزمون فارسی",
     );
-    expect((await lookupContent("ARTICLE", encodeURIComponent(slug), "fa")).content?.title).toBe("آزمون فارسی");
+    expect(
+      (await lookupContent("ARTICLE", encodeURIComponent(slug), "fa")).content
+        ?.title,
+    ).toBe("آزمون فارسی");
     expect((await lookupContent("ARTICLE", slug, "en")).content).toBeNull();
     await database().content.update({
       where: { id: record.id },

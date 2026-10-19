@@ -226,6 +226,30 @@ try {
     "untranslated English article must not fall back to Persian",
   );
   const renamed = slug + "-فارسی";
+  assert.equal(
+    (await post("/api/admin/content", { ...draft, id: record.id }, adminCookie))
+      .status,
+    200,
+  );
+  const [publishing, editing] = await Promise.all([
+    post(
+      "/api/admin/content",
+      { ...draft, id: record.id, status: "PUBLISHED" },
+      adminCookie,
+    ),
+    post("/api/admin/content", { ...draft, id: record.id }, editorCookie),
+  ]);
+  assert.equal(publishing.status, 200);
+  assert.ok([200, 403].includes(editing.status));
+  assert.equal(
+    (
+      await client.query('SELECT status FROM "Content" WHERE id=$1', [
+        record.id,
+      ])
+    ).rows[0].status,
+    "PUBLISHED",
+    "a racing draft save cannot withdraw an administrator's publication",
+  );
   response = await post(
     "/api/admin/content",
     { ...draft, id: record.id, slug: renamed, status: "PUBLISHED" },
