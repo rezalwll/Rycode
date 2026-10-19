@@ -1,3 +1,4 @@
+import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { ContactForm, FormField } from "@/components/ContactForm";
@@ -64,20 +65,14 @@ export async function ContactHeroSection() {
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-bjrpan"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-bjrpan" axis="x" distance={1094} />
         </div>
         <div
           className="framer-5dmamn"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-yy9oih"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-yy9oih" axis="x" distance={1094} />
         </div>
         <div
           className="framer-1ggja40"
@@ -85,10 +80,12 @@ export async function ContactHeroSection() {
           data-framer-name="Layer"
         >
           <div className="ssr-variant">
-            <div
+            <LineTrace
               className="framer-15p1owo"
-              style={referenceStyles.s042daa9eb6}
-            ></div>
+              axis="y"
+              distance={703}
+              mobileDistance={1034}
+            />
           </div>
         </div>
         <div
@@ -96,10 +93,7 @@ export async function ContactHeroSection() {
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-1fweau2"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1fweau2" axis="y" distance={703} />
         </div>
         <div
           className="framer-ekdjfg"
@@ -107,10 +101,12 @@ export async function ContactHeroSection() {
           data-framer-name="Layer"
         >
           <div className="ssr-variant">
-            <div
+            <LineTrace
               className="framer-5pmhj6"
-              style={referenceStyles.s042daa9eb6}
-            ></div>
+              axis="y"
+              distance={703}
+              mobileDistance={1034}
+            />
           </div>
         </div>
         <div className="framer-1h20kp" data-framer-name="Content">

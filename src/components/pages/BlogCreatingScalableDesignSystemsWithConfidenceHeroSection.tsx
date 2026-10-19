@@ -1,3 +1,4 @@
+import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
@@ -63,40 +64,28 @@ export async function BlogCreatingScalableDesignSystemsWithConfidenceHeroSection
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-9w7glh"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-9w7glh" axis="x" distance={1094} />
         </div>
         <div
           className="framer-v3ppu7"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-2i51pl"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-2i51pl" axis="y" distance={2409} />
         </div>
         <div
           className="framer-1upldr9 hidden-1qf0chi"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-1hijfke"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1hijfke" axis="y" distance={2409} />
         </div>
         <div
           className="framer-u41v3f"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-442342"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-442342" axis="y" distance={2409} />
         </div>
         <div className="framer-1xzhtii" data-framer-name="Content">
           <div className="framer-ax4ed3" data-framer-name="Blog Details">

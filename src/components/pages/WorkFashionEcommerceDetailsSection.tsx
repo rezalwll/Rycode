@@ -1,3 +1,4 @@
+import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
@@ -63,40 +64,28 @@ export async function WorkFashionEcommerceDetailsSection() {
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-1qzr8va"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1qzr8va" axis="x" distance={1094} />
         </div>
         <div
           className="framer-120dbed"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-tyw5yv"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-tyw5yv" axis="y" distance={2409} />
         </div>
         <div
           className="framer-1qyk8s3 hidden-1xydt6v"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-1uo4s77"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1uo4s77" axis="y" distance={2409} />
         </div>
         <div
           className="framer-kp5642"
           data-border="true"
           data-framer-name="Layer"
         >
-          <div
-            className="framer-1b8kjhv"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1b8kjhv" axis="y" distance={2409} />
         </div>
         <div className="framer-pfj9x8" data-framer-name="Content">
           <div className="framer-s20ky4" data-framer-name="Title & Image">

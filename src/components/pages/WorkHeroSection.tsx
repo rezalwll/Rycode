@@ -1,3 +1,4 @@
+import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
@@ -7,28 +8,16 @@ export async function WorkHeroSection() {
     <section className="framer-tv7fdn" data-framer-name="Hero Section">
       <div className="framer-ug79fj" data-framer-name="Container">
         <div className="framer-1qyvljh" data-framer-name="Line Top">
-          <div
-            className="framer-piet4b"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-piet4b" axis="x" distance={1093} />
         </div>
         <div className="framer-1ynebvx" data-framer-name="Line Botton">
-          <div
-            className="framer-1szfrtd"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1szfrtd" axis="x" distance={1093} />
         </div>
         <div className="framer-569kmd" data-framer-name="Line Left">
-          <div
-            className="framer-2y5gkq"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-2y5gkq" axis="y" distance={464} />
         </div>
         <div className="framer-dkrwus" data-framer-name="Line Right">
-          <div
-            className="framer-1k6vkmt"
-            style={referenceStyles.s042daa9eb6}
-          ></div>
+          <LineTrace className="framer-1k6vkmt" axis="y" distance={464} />
         </div>
         <div className="framer-1xa203k">
           <div
