@@ -1,11 +1,12 @@
 import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal, SplitText } from "@/components/Motion";
+import { ProcessSection } from "@/components/ProcessSection";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function HomeProcessSection() {
   const { t, locale, href } = await getTranslations();
   return (
-    <section
+    <ProcessSection
       className="framer-nc16a8"
       data-framer-name="Process Section"
       id="Process Section"
@@ -851,9 +852,9 @@ export async function HomeProcessSection() {
                   style={referenceStyles.s042daa9eb6}
                 >
                   <div
-                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-koyefg w-full!"
+                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-1qy738s w-full!"
                     data-framer-name="Variant 5"
-                    style={referenceStyles.s1f865e87e1}
+                    style={referenceStyles.scacd1b083c}
                   >
                     <div className="framer-cmf096">
                       <div
@@ -865,7 +866,7 @@ export async function HomeProcessSection() {
                           loading="lazy"
                           width="192"
                           height="192"
-                          src="/assets/11e1d43b7ba9a78a.png"
+                          src="/assets/84733fda4a52228a.png"
                           alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
@@ -879,30 +880,30 @@ export async function HomeProcessSection() {
                       <div
                         className="framer-spfz6a"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.sd1b612ddae}
+                        style={referenceStyles.sa04f18bfa2}
                       >
                         <h5
                           className="framer-text framer-styles-preset-uttc6m"
                           data-styles-preset="lllneI4EJ"
                           dir="auto"
-                          style={referenceStyles.sbb6a8b195d}
+                          style={referenceStyles.s0c86264d05}
                         >
-                          {t("04 — Launch")}
+                          {t("02 — Design")}
                         </h5>
                       </div>
                       <div
                         className="framer-138i8i5"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.sefbf82470d}
+                        style={referenceStyles.s3a05f9f9c1}
                       >
                         <p
                           className="framer-text framer-styles-preset-12928c1"
                           data-styles-preset="V0V25Na8R"
                           dir="auto"
-                          style={referenceStyles.s0c39c3123b}
+                          style={referenceStyles.s833ee3534c}
                         >
                           {t(
-                            "Delivering a polished digital experience ready to grow your business.",
+                            "Crafting intuitive experiences that balance beauty, usability, and performance.",
                           )}
                         </p>
                       </div>
@@ -1045,9 +1046,9 @@ export async function HomeProcessSection() {
                   style={referenceStyles.s042daa9eb6}
                 >
                   <div
-                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-1qy738s w-full!"
+                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-koyefg w-full!"
                     data-framer-name="Variant 6"
-                    style={referenceStyles.scacd1b083c}
+                    style={referenceStyles.s1f865e87e1}
                   >
                     <div className="framer-cmf096">
                       <div
@@ -1059,7 +1060,7 @@ export async function HomeProcessSection() {
                           loading="lazy"
                           width="192"
                           height="192"
-                          src="/assets/84733fda4a52228a.png"
+                          src="/assets/51387f2546e8ab17.png"
                           alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
@@ -1073,30 +1074,30 @@ export async function HomeProcessSection() {
                       <div
                         className="framer-spfz6a"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.sa04f18bfa2}
+                        style={referenceStyles.sd1b612ddae}
                       >
                         <h5
                           className="framer-text framer-styles-preset-uttc6m"
                           data-styles-preset="lllneI4EJ"
                           dir="auto"
-                          style={referenceStyles.s0c86264d05}
+                          style={referenceStyles.sbb6a8b195d}
                         >
-                          {t("02 — Design")}
+                          {t("03 — Develop")}
                         </h5>
                       </div>
                       <div
                         className="framer-138i8i5"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.s3a05f9f9c1}
+                        style={referenceStyles.sefbf82470d}
                       >
                         <p
                           className="framer-text framer-styles-preset-12928c1"
                           data-styles-preset="V0V25Na8R"
                           dir="auto"
-                          style={referenceStyles.s833ee3534c}
+                          style={referenceStyles.s0c39c3123b}
                         >
                           {t(
-                            "Crafting intuitive experiences that balance beauty, usability, and performance.",
+                            "Building scalable no-code websites with precision, speed, and flexibility.",
                           )}
                         </p>
                       </div>
@@ -1239,9 +1240,9 @@ export async function HomeProcessSection() {
                   style={referenceStyles.s042daa9eb6}
                 >
                   <div
-                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-koyefg w-full!"
+                    className="framer-kyd25 framer-ge77Z framer-9qjuV framer-10tnql framer-v-1qy738s w-full!"
                     data-framer-name="Variant 5"
-                    style={referenceStyles.s1f865e87e1}
+                    style={referenceStyles.scacd1b083c}
                   >
                     <div className="framer-cmf096">
                       <div
@@ -1253,7 +1254,7 @@ export async function HomeProcessSection() {
                           loading="lazy"
                           width="192"
                           height="192"
-                          src="/assets/51387f2546e8ab17.png"
+                          src="/assets/11e1d43b7ba9a78a.png"
                           alt={t("Icon")}
                           className="w-full! h-full!"
                           style={referenceStyles.s1100a320a2}
@@ -1267,30 +1268,30 @@ export async function HomeProcessSection() {
                       <div
                         className="framer-spfz6a"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.sd1b612ddae}
+                        style={referenceStyles.sa04f18bfa2}
                       >
                         <h5
                           className="framer-text framer-styles-preset-uttc6m"
                           data-styles-preset="lllneI4EJ"
                           dir="auto"
-                          style={referenceStyles.sbb6a8b195d}
+                          style={referenceStyles.s0c86264d05}
                         >
-                          {t("03 — Develop")}
+                          {t("04 — Launch")}
                         </h5>
                       </div>
                       <div
                         className="framer-138i8i5"
                         data-framer-component-type="RichTextContainer"
-                        style={referenceStyles.sefbf82470d}
+                        style={referenceStyles.s3a05f9f9c1}
                       >
                         <p
                           className="framer-text framer-styles-preset-12928c1"
                           data-styles-preset="V0V25Na8R"
                           dir="auto"
-                          style={referenceStyles.s0c39c3123b}
+                          style={referenceStyles.s833ee3534c}
                         >
                           {t(
-                            "Building scalable no-code websites with precision, speed, and flexibility.",
+                            "Delivering a polished digital experience ready to grow your business.",
                           )}
                         </p>
                       </div>
@@ -1386,6 +1387,6 @@ export async function HomeProcessSection() {
           ></div>
         </div>
       </div>
-    </section>
+    </ProcessSection>
   );
 }

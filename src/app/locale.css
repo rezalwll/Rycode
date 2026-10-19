@@ -120,6 +120,12 @@ html[lang="fa"]
 html[lang="fa"] .framer-cc7aC::after {
   transform-origin: right;
 }
+html[lang="fa"] .framer-nc16a8 .framer-5vpldf {
+  column-gap: 24px;
+}
+html[lang="fa"] .framer-nc16a8 [data-localized-split] {
+  text-align: start !important;
+}
 @media (min-width: 1200px) {
   html[lang="fa"] .framer-15gz4dg {
     min-height: max(100svh, 860px);

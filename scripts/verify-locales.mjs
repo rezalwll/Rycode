@@ -46,6 +46,29 @@ for (const locale of ["en", "fa"]) {
       if (/^\$[\d۰-۹,]+$/.test($(element).text().trim()))
         assert.equal($(element).attr("dir"), "ltr", `${path}: price direction`);
     });
+    if (route === "/") {
+      const layouts = new Map();
+      $('[id="Process Section"] .ssr-variant')
+        .has("h5")
+        .each((_, element) => {
+          const variant = $(element).attr("class");
+          const heading = $(element)
+            .find("h5")
+            .text()
+            .replace(/[۰-۹]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit));
+          layouts.set(variant, [
+            ...(layouts.get(variant) ?? []),
+            Number(heading.match(/^\d+/)?.[0]),
+          ]);
+        });
+      assert.equal(layouts.size, 3, `${path}: process responsive layouts`);
+      for (const steps of layouts.values())
+        assert.deepEqual(
+          steps,
+          [1, 2, 3, 4],
+          `${path}: process steps stay in reading order`,
+        );
+    }
     assert.ok($("header .language-switch").length, `${path}: language switch`);
     assert.equal(
       $("header .language-switch").first().attr("href"),
