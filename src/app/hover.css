@@ -27,23 +27,23 @@
     transform 0.4s linear;
 }
 .framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-d6q9x7 {
-  top: 0;
-  left: 0;
+  top: 12.5%;
+  left: 12.5%;
   transform: translate(-50%, -50%) scale(1) !important;
 }
 .framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-qtebog {
-  top: 13%;
-  left: 88%;
+  top: 12.5%;
+  left: 87.5%;
   transform: translate(-50%, -50%) scale(1) !important;
 }
 .framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-tvyhl2 {
-  top: 88%;
-  left: 13%;
+  top: 87.5%;
+  left: 12.5%;
   transform: translate(-50%, -50%) scale(1) !important;
 }
 .framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-1kar949 {
-  top: 88%;
-  left: 88%;
+  top: 87.5%;
+  left: 87.5%;
   transform: translate(-50%, -50%) scale(1) !important;
 }
 
