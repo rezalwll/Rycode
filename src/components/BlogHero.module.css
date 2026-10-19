@@ -1,0 +1,93 @@
+.hero [data-blog-images] > div:nth-child(2),
+.hero [data-blog-images] > div:nth-child(3) {
+  top: 0;
+  bottom: auto;
+  opacity: 0;
+  transform: translateY(150%);
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+.hero:is([data-blog-active="1"], [data-blog-active="2"])
+  [data-blog-images]
+  > div:nth-child(2),
+.hero[data-blog-active="2"] [data-blog-images] > div:nth-child(3) {
+  opacity: 1;
+  transform: none;
+}
+.hero [data-blog-images] > div:nth-child(2) img {
+  object-position: 50.2% 24.8% !important;
+}
+.hero [data-blog-images] > div:nth-child(3) img {
+  object-position: 50.6% 19.5% !important;
+}
+.hero :global(.framer-1j2enta) {
+  height: 1px;
+  background: rgb(255 255 255 / 25%);
+}
+.hero :global(.framer-1j2enta) > * {
+  visibility: hidden;
+}
+.hero :global(.framer-1j2enta)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.hero:lang(fa) :global(.framer-1j2enta)::after {
+  transform-origin: right;
+}
+.hero[data-blog-active="0"]
+  [data-blog-previews]
+  > div:nth-child(1)
+  :global(.framer-1j2enta)::after,
+.hero[data-blog-active="1"]
+  [data-blog-previews]
+  > div:nth-child(2)
+  :global(.framer-1j2enta)::after,
+.hero[data-blog-active="2"]
+  [data-blog-previews]
+  > div:nth-child(3)
+  :global(.framer-1j2enta)::after {
+  animation: progress 4s linear both;
+}
+.hero[data-blog-running="false"] :global(.framer-1j2enta)::after {
+  animation-play-state: paused !important;
+}
+.hero a:focus-visible {
+  outline-offset: -2px;
+}
+@media (min-width: 768px) {
+  .hero [data-blog-previews],
+  .hero [data-blog-previews] a {
+    align-items: stretch;
+  }
+  .hero [data-blog-previews] > div,
+  .hero [data-blog-previews] a,
+  .hero [data-blog-previews] a > div,
+  .hero :global(.framer-wqubC) {
+    height: auto;
+    flex: 1;
+  }
+  .hero [data-blog-previews] a > div {
+    display: flex;
+  }
+  .hero :global(.framer-qawdxa) {
+    flex: 1;
+  }
+}
+@keyframes progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero [data-blog-images] > div {
+    transition: none;
+  }
+  .hero :global(.framer-1j2enta)::after {
+    animation: none !important;
+  }
+}

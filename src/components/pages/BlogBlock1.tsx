@@ -1,3 +1,4 @@
+import { BlogHero } from "@/components/BlogHero";
 import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
@@ -6,12 +7,16 @@ export async function BlogBlock1() {
   const { t, href } = await getTranslations();
   return (
     <div className="framer-7ew324-container hidden-1iwgygr hidden-poasp1">
-      <section
+      <BlogHero
         className="framer-lQ8Q4 framer-A8dYT framer-16mycgt framer-v-16mycgt h-full! w-full!"
         data-framer-name="Desktop"
         data-highlight="true"
       >
-        <div className="framer-1mrzp3" data-framer-name="Image">
+        <div
+          className="framer-1mrzp3"
+          data-framer-name="Image"
+          data-blog-images
+        >
           <div className="framer-lnaelj">
             <div
               data-framer-background-image-wrapper="true"
@@ -30,12 +35,7 @@ export async function BlogBlock1() {
               />
             </div>
           </div>
-          <Reveal
-            className="framer-1kqrt4a"
-            style={referenceStyles.sdfd548890a}
-            as="div"
-            from="none"
-          >
+          <div className="framer-1kqrt4a">
             <div
               data-framer-background-image-wrapper="true"
               style={referenceStyles.s8a54025f8d}
@@ -52,13 +52,8 @@ export async function BlogBlock1() {
                 style={referenceStyles.s258149b79d}
               />
             </div>
-          </Reveal>
-          <Reveal
-            className="framer-1nn5lr1"
-            style={referenceStyles.sdfd548890a}
-            as="div"
-            from="none"
-          >
+          </div>
+          <div className="framer-1nn5lr1">
             <div
               data-framer-background-image-wrapper="true"
               style={referenceStyles.s8a54025f8d}
@@ -75,7 +70,7 @@ export async function BlogBlock1() {
                 style={referenceStyles.s258149b79d}
               />
             </div>
-          </Reveal>
+          </div>
           <div
             className="framer-1aiyt8b"
             data-framer-name="Overlay"
@@ -107,6 +102,7 @@ export async function BlogBlock1() {
               className="framer-1hgzstj"
               data-framer-appear-id="1hgzstj"
               data-framer-name="Taxt Wrapper"
+              data-blog-previews
               style={referenceStyles.sd189d1cd9b}
               as="div"
               from="translateY(120px)"
@@ -288,7 +284,7 @@ export async function BlogBlock1() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </BlogHero>
     </div>
   );
 }

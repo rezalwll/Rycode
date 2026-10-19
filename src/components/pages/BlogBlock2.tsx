@@ -1,3 +1,4 @@
+import { BlogHero } from "@/components/BlogHero";
 import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
@@ -7,12 +8,16 @@ export async function BlogBlock2() {
   return (
     <div className="ssr-variant">
       <div className="framer-17t6xgj-container hidden-l5lhc hidden-poasp1">
-        <section
+        <BlogHero
           className="framer-aQ9vY framer-A8dYT framer-1hplv6u framer-v-1hplv6u w-full!"
           data-framer-name="Desktop"
           data-highlight="true"
         >
-          <div className="framer-d44grj" data-framer-name="Image">
+          <div
+            className="framer-d44grj"
+            data-framer-name="Image"
+            data-blog-images
+          >
             <div className="framer-oqepsw">
               <div
                 data-framer-background-image-wrapper="true"
@@ -98,6 +103,7 @@ export async function BlogBlock2() {
                 className="framer-1ep8fap"
                 data-framer-appear-id="1ep8fap"
                 data-framer-name="Taxt Wrapper"
+                data-blog-previews
                 style={referenceStyles.sd189d1cd9b}
                 as="div"
                 from="translateY(120px)"
@@ -281,7 +287,7 @@ export async function BlogBlock2() {
               </Reveal>
             </div>
           </div>
-        </section>
+        </BlogHero>
       </div>
     </div>
   );

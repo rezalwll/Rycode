@@ -1,3 +1,4 @@
+import { BlogHero } from "@/components/BlogHero";
 import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
@@ -7,12 +8,16 @@ export async function BlogBlock3() {
   return (
     <div className="ssr-variant">
       <div className="framer-1q914f4-container hidden-l5lhc hidden-1iwgygr">
-        <section
+        <BlogHero
           className="framer-sPdYw framer-A8dYT framer-1n22gti framer-v-1n22gti w-full!"
           data-framer-name="Desktop"
           data-highlight="true"
         >
-          <div className="framer-mjf5f1" data-framer-name="Image">
+          <div
+            className="framer-mjf5f1"
+            data-framer-name="Image"
+            data-blog-images
+          >
             <div className="framer-1izydpp">
               <div
                 data-framer-background-image-wrapper="true"
@@ -98,6 +103,7 @@ export async function BlogBlock3() {
                 className="framer-1ndtgvd"
                 data-framer-appear-id="1ndtgvd"
                 data-framer-name="Taxt Wrapper"
+                data-blog-previews
                 style={referenceStyles.sd189d1cd9b}
                 as="div"
                 from="translateY(120px)"
@@ -229,7 +235,7 @@ export async function BlogBlock3() {
                   <Link
                     className="framer-kbic21 framer-1o7ia1z"
                     href={href(
-                      "/blog/the-future-of-no-code-product-development",
+                      "/blog/creating-websites-that-convert-more-visitors-effectively",
                     )}
                   >
                     <div className="framer-artimm-container">
@@ -248,7 +254,9 @@ export async function BlogBlock3() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {t("The Future of No-Code Product Development")}
+                            {t(
+                              "Creating Websites That Convert More Visitors Effectively",
+                            )}
                           </p>
                         </div>
                         <div
@@ -262,7 +270,7 @@ export async function BlogBlock3() {
                             dir="auto"
                             style={referenceStyles.se8682f4ed5}
                           >
-                            {t("OCT 10, 2026")}
+                            {t("OCT 08, 2026")}
                           </p>
                         </div>
                         <div
@@ -279,7 +287,7 @@ export async function BlogBlock3() {
               </Reveal>
             </div>
           </div>
-        </section>
+        </BlogHero>
       </div>
     </div>
   );
