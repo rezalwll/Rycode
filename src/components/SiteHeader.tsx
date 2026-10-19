@@ -1,4 +1,6 @@
 import { getTranslations } from "@/lib/i18n-server";
+import { SiteNavigationLinks } from "./SiteNavigationLinks";
+import { navigationAction } from "@/content/navigation";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { BrandLogo } from "@/components/BrandLogo";
 import Link from "next/link";
@@ -9,7 +11,7 @@ import {
 } from "@/components/Navigation";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function SiteHeader() {
-  const { href, t } = await getTranslations();
+  const { href, locale } = await getTranslations();
   return (
     <header
       className="framer-ro7694"
@@ -32,87 +34,7 @@ export async function SiteHeader() {
               >
                 <BrandLogo />
               </Link>
-              <div
-                className="framer-1cgc59w"
-                data-framer-name="Navbar Block"
-                style={referenceStyles.s1aad2a6e88}
-              >
-                <div className="framer-a503if-container">
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/work")}
-                    tabIndex={0}
-                    style={referenceStyles.s5f3b0adb3a}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s143c03551f}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Work")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div className="framer-3ovr7l-container">
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/#Service%20Section")}
-                    tabIndex={0}
-                    style={referenceStyles.s5f3b0adb3a}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s143c03551f}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Services")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div className="framer-1uzk9ve-container">
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/blog")}
-                    tabIndex={0}
-                    style={referenceStyles.s5f3b0adb3a}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s143c03551f}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Blog")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
+              <SiteNavigationLinks locale={locale} variant="desktop" />
               <div className="framer-uk7nae" data-framer-name="Button Block">
                 <LanguageSwitch />
                 <div className="framer-196w2zi-container">
@@ -120,7 +42,7 @@ export async function SiteHeader() {
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-18sfddm framer-1fsrsxu"
                     data-border="true"
                     data-framer-name="Variant 1"
-                    href={href("/contact")}
+                    href={href(navigationAction.href)}
                     style={referenceStyles.s64b4a2310d}
                   >
                     <div
@@ -134,7 +56,7 @@ export async function SiteHeader() {
                         dir="auto"
                         style={referenceStyles.se8682f4ed5}
                       >
-                        {t("Start Project")}
+                        {navigationAction.label[locale]}
                       </p>
                     </div>
                     <div className="framer-1glyh7l">
@@ -210,124 +132,7 @@ export async function SiteHeader() {
               </div>
             </div>
             <MenuPanel className="framer-jc5u9r" data-framer-name="Container">
-              <div
-                className="framer-1uao1gk"
-                data-framer-name="Navbar Block"
-                style={referenceStyles.sc1ca5c600f}
-              >
-                <div
-                  className="framer-9aq93d-container"
-                  style={referenceStyles.sc1ca5c600f}
-                >
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/")}
-                    tabIndex={0}
-                    style={referenceStyles.s5ff7a5484d}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s9fee3511a6}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Home")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div
-                  className="framer-1muktef-container"
-                  style={referenceStyles.sc1ca5c600f}
-                >
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/work")}
-                    tabIndex={0}
-                    style={referenceStyles.s5ff7a5484d}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s9fee3511a6}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Work")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div
-                  className="framer-xp2zdq-container"
-                  style={referenceStyles.sc1ca5c600f}
-                >
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/#Service%20Section")}
-                    tabIndex={0}
-                    style={referenceStyles.s5ff7a5484d}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s9fee3511a6}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Services")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div
-                  className="framer-1v5x9ti-container"
-                  style={referenceStyles.sc1ca5c600f}
-                >
-                  <Link
-                    className="framer-hFcgW framer-9qjuV framer-gx3c1j framer-v-gx3c1j framer-8juzgy"
-                    data-framer-name="Primary"
-                    data-highlight="true"
-                    href={href("/blog")}
-                    tabIndex={0}
-                    style={referenceStyles.s5ff7a5484d}
-                  >
-                    <div
-                      className="framer-1s61fu6"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s9fee3511a6}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.se8682f4ed5}
-                      >
-                        {t("Blog")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
+              <SiteNavigationLinks locale={locale} variant="mobile" />
             </MenuPanel>
           </MobileNavigation>
         </div>

@@ -35,6 +35,10 @@ export function MobileNavigation({
         ref={root}
         data-menu-open={open}
         className={`${className?.replace(/\bframer-v-[\w-]+/g, "")} ${open ? "framer-v-aax49p" : "framer-v-1t09hgd"}`}
+        style={{
+          ...props.style,
+          ...(open ? { maxHeight: "100svh", overflowY: "auto" } : {}),
+        }}
         onClick={(event) => {
           if ((event.target as Element).closest("a[href]")) setOpen(false);
         }}

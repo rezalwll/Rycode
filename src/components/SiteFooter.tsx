@@ -1,13 +1,13 @@
+import { SiteNavigationLinks } from "./SiteNavigationLinks";
 import { FooterTicker, TickerBrandLogo } from "./FooterTicker";
 import { getTranslations } from "@/lib/i18n-server";
 import { BrandLogo } from "@/components/BrandLogo";
-import Link from "next/link";
 import { Reveal, Ticker } from "@/components/Motion";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
 import { FooterFluid } from "@/components/FooterFluid";
 export async function SiteFooter() {
-  const { t, href } = await getTranslations();
+  const { t, href, locale } = await getTranslations();
   return (
     <>
       <div className="framer-10ygyz8"></div>
@@ -463,119 +463,7 @@ export async function SiteFooter() {
                           {t("Navigation")}
                         </p>
                       </div>
-                      <div
-                        className="framer-15h5s5j"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-1cnbq5x-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Home")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1htqdkd-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Service%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Services")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-fopaui-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Process%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Process")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1agjm0w-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/blog")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Blog")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
                     </div>
                     <div
                       className="framer-18f0cg1"
@@ -921,119 +809,7 @@ export async function SiteFooter() {
                           {t("Navigation")}
                         </p>
                       </div>
-                      <div
-                        className="framer-15h5s5j"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-1cnbq5x-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Home")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1htqdkd-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Service%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Services")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-fopaui-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Process%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Process")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1agjm0w-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/blog")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Blog")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
                     </div>
                     <div
                       className="framer-18f0cg1"
@@ -1379,119 +1155,7 @@ export async function SiteFooter() {
                           {t("Navigation")}
                         </p>
                       </div>
-                      <div
-                        className="framer-15h5s5j"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-1cnbq5x-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Home")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1htqdkd-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Service%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Services")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-fopaui-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/#Process%20Section")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Process")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                        <div className="framer-1agjm0w-container">
-                          <Link
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-h28y84 framer-zcpo7a"
-                            data-framer-name="Footer"
-                            href={href("/blog")}
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-4un9qc"
-                                data-styles-preset="LwB02gzuV"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Blog")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </Link>
-                        </div>
-                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
                     </div>
                     <div
                       className="framer-18f0cg1"
