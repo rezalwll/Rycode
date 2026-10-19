@@ -2,14 +2,19 @@
 import { useEffect, useRef, useState } from "react";
 import { vertexShader, fragmentShader } from "@/lib/distortion-shaders";
 import { useLocale } from "./LocaleProvider";
+import { referenceSpringProgress } from "@/lib/reference-spring";
 export function DistortedImage({
   src,
   fade = false,
   replay = false,
+  delay = 0,
+  referenceSpring = false,
 }: {
   src: string;
   fade?: boolean;
   replay?: boolean;
+  delay?: number;
+  referenceSpring?: boolean;
 }) {
   const { t } = useLocale();
   const root = useRef<HTMLDivElement>(null);
@@ -123,7 +128,10 @@ export function DistortedImage({
     const draw = () => {
       if (!loaded || disposed || gl.isContextLost()) return;
       gl.uniform1f(uniform("uProgress"), progress);
-      gl.uniform1f(uniform("uAlpha"), fade ? progress : 1);
+      gl.uniform1f(
+        uniform("uAlpha"),
+        fade ? Math.min(1, progress * (referenceSpring ? 3 : 1)) : 1,
+      );
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     };
@@ -175,8 +183,12 @@ export function DistortedImage({
       draw();
     };
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / 1200);
-      progress = t === 1 ? 1 : 1 - (1 + 9 * t) * Math.exp(-9 * t);
+      const t = Math.max(0, Math.min(1, (now - start - delay) / 1200));
+      progress = referenceSpring
+        ? referenceSpringProgress(t)
+        : t === 1
+          ? 1
+          : 1 - (1 + 9 * t) * Math.exp(-9 * t);
       draw();
       if (t < 1 && visible) frame = requestAnimationFrame(tick);
     };
@@ -250,7 +262,7 @@ export function DistortedImage({
       gl.deleteShader(fragment);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [src, fade, replay]);
+  }, [src, fade, replay, delay, referenceSpring]);
   return (
     <div ref={root} className="relative h-full w-full overflow-hidden">
       <img

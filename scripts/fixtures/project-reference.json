@@ -1,0 +1,150 @@
+{
+  "source": "https://covix.framer.website",
+  "audited": "2026-10-19",
+  "projects": [
+    {
+      "route": "/work/finance-saas-website",
+      "title": "[01 Finance SaaS Website",
+      "description": "Designed for a fintech startup, Finexa combines premium design, experience, and development to build trust, improve engagement, and drive growth.",
+      "metadata": ["2026", "Finexa Technologies", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/UTN1A8Zq1JJyGRYovnTN3sTbhk.png?width=1500&height=1130",
+          "local": "/assets/5c389cc347701526.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/bc0uh3Cv4PSTXF22K3jVQ8sNk4.png?width=1500&height=2250",
+          "local": "/assets/be6e5b47a4640160.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/5bGUzivWMd9nOXdxAXTVNQQ7pU.png?width=1500&height=2676",
+          "local": "/assets/61b2b6dd4ec05747.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/FnyZ6HQuU1hLyohgEdorqsPLf7Q.png?width=1500&height=1991",
+          "local": "/assets/be48c8e8f72a2f47.png"
+        }
+      ]
+    },
+    {
+      "route": "/work/ai-automation-platform",
+      "title": "[02 AI Automation Platform",
+      "description": "Built for businesses embracing intelligent automation, this platform combines modern design with powerful AI-driven workflows to streamline operations, improve productivity, and support scalable digital transformation.",
+      "metadata": ["2022", "Ethan Walker", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/VuCZ35ct2bfWWwo01KtVJMZZot0.png?width=1200&height=1200",
+          "local": "/assets/c055dfbc646842dc.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/z54CgrVVKslswZfzz8XNKZfGU8.png?width=1500&height=1815",
+          "local": "/assets/4a5cdb0993ba530b.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/kbTfvPxZI0lVW8u6VwryKE24is.png?width=1500&height=841",
+          "local": "/assets/e910d1e90b07e321.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/D0nkP0zERdJMrVc0keTlk3gOC0.png?width=1500&height=2250",
+          "local": "/assets/3bec5082044715be.png"
+        }
+      ]
+    },
+    {
+      "route": "/work/fashion-ecommerce",
+      "title": "[03 Fashion Ecommerce",
+      "description": "Designed for a fintech startup, Finexa combines premium design, experience, and development to build trust, improve engagement, and drive growth.",
+      "metadata": ["2025", "Daniel Brooks", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/RounwKiiewvIsqEUO8W8PY9k.png?width=1500&height=841",
+          "local": "/assets/139099262b4af3c7.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/Ccu5xA9ugwCOcdULjdj8Tmg2U.png?width=1500&height=1500",
+          "local": "/assets/0bfb598811a56085.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/v8q5c2wMYMeSbtxHvEkXZSDl8.png?width=1500&height=1991",
+          "local": "/assets/947538cfbf24f586.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/sh5F4A9yYjA4hEZf1oDxJ0MDsGk.png?width=1500&height=1000",
+          "local": "/assets/1115c40b7f2ee826.png"
+        }
+      ]
+    },
+    {
+      "route": "/work/logistics-company",
+      "title": "[04 Logistics Company",
+      "description": "Created for logistics providers, this website combines professional design, intuitive navigation, and reliable functionality to simplify operations, build customer confidence, and support business growth.",
+      "metadata": ["2022", "William Parker", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/WaQtceGT8kMcuz4tifhXVF0kPg.png?width=1500&height=841",
+          "local": "/assets/9e6a623a95964bcc.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/WSRzQoF5vljIMJJ8rLF9xEt2s.png?width=1500&height=1875",
+          "local": "/assets/25e2405b4128f6c1.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/Z30FuFfKA2glTnHvoouwHQwkdhA.png?width=1500&height=1500",
+          "local": "/assets/fe61aa6e9a3a8e0d.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/xAK6Gu4EykOqp7UHsq2QFgYwtHc.png?width=1500&height=2000",
+          "local": "/assets/046044c65b19949e.png"
+        }
+      ]
+    },
+    {
+      "route": "/work/creative-agency",
+      "title": "[05 Creative Agency",
+      "description": "Designed for creative agencies, this website showcases bold visuals, engaging user experiences, and modern development to highlight expertise, attract new clients, and elevate brand presence.",
+      "metadata": ["2023", "Michael Carter", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/4xWzvCecRfxcMUT8E6Z3GB33aw.png?width=1500&height=1875",
+          "local": "/assets/975c8c2047116118.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/eYIZQXnfCNfTApfx60Rn8NIMx8U.png?width=1500&height=2000",
+          "local": "/assets/e91e755f9f6c0d7f.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/SM7w4yw5Cov3AbAWPerQ2tAM.png?width=1500&height=2250",
+          "local": "/assets/ae6916c233e0e4a2.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/v8q5c2wMYMeSbtxHvEkXZSDl8.png?width=1500&height=1991",
+          "local": "/assets/947538cfbf24f586.png"
+        }
+      ]
+    },
+    {
+      "route": "/work/ai-agency-website",
+      "title": "[06 AI Agency Website",
+      "description": "Built for AI-focused agencies, this website combines innovative design, intelligent user experiences, and scalable development to build credibility, generate leads, and accelerate business growth.",
+      "metadata": ["2024", "James Anderson", "Finance & SaaS"],
+      "images": [
+        {
+          "source": "https://framerusercontent.com/images/LEDYBK7vK7Gj2Iy1nmHA50u86rk.png?width=1500&height=1500",
+          "local": "/assets/1f85b9f13658cfe3.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/qmQhkqNKfvCcTV1e8UvcybJd84.png?width=1500&height=2008",
+          "local": "/assets/1bd0a92c750dc6bb.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/RjvrhSURhi3tsWXE1RkBegsRhI.png?width=1500&height=1500",
+          "local": "/assets/5ca73c6e1a8606d3.png"
+        },
+        {
+          "source": "https://framerusercontent.com/images/gQTXvFBCMbCrhlv3FfCb4Ra76Fk.png?width=1500&height=2250",
+          "local": "/assets/79de4a62dbad0012.png"
+        }
+      ]
+    }
+  ]
+}

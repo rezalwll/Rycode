@@ -32,12 +32,18 @@ export function Reveal({
   from = "translateY(24px)",
   viewportOffset = 0,
   duration = 900,
+  delay = 0,
+  easing = "cubic-bezier(.16,1,.3,1)",
+  initialOpacity = 0,
   style,
   ...props
 }: MotionProps & {
   from?: string;
   viewportOffset?: number;
   duration?: number;
+  delay?: number;
+  easing?: string;
+  initialOpacity?: number;
 }) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -52,12 +58,13 @@ export function Reveal({
           if (!reduced())
             animation = element.animate(
               [
-                { opacity: 0, transform: from },
+                { opacity: initialOpacity, transform: from },
                 { opacity: 1, transform: "none" },
               ],
               {
                 duration,
-                easing: "cubic-bezier(.16,1,.3,1)",
+                delay,
+                easing,
                 fill: "backwards",
               },
             );
@@ -77,7 +84,7 @@ export function Reveal({
       observer.disconnect();
       animation?.cancel();
     };
-  }, [from, viewportOffset, duration]);
+  }, [from, viewportOffset, duration, delay, easing, initialOpacity]);
   return (
     <Tag
       {...props}

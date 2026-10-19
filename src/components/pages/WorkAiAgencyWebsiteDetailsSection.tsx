@@ -1,10 +1,10 @@
 import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
-import { Reveal } from "@/components/Motion";
+import { ProjectReveal } from "@/components/ProjectReveal";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function WorkAiAgencyWebsiteDetailsSection() {
-  const { t } = await getTranslations();
+  const { t, href } = await getTranslations();
   return (
     <section className="framer-1ucgqp2" data-framer-name="Details Section">
       <div className="framer-14hxjb7" data-framer-name="Container">
@@ -94,13 +94,11 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                 className="framer-ywyqyr"
                 data-framer-name="Title And Details"
               >
-                <Reveal
+                <ProjectReveal
                   className="framer-1hus8nl"
                   data-framer-appear-id="1hus8nl"
                   data-framer-component-type="RichTextContainer"
                   style={referenceStyles.s753530771e}
-                  as="div"
-                  from="translateY(300px)"
                 >
                   <h2
                     className="framer-text framer-styles-preset-eiwrr4"
@@ -110,14 +108,13 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                   >
                     {t("[06 AI Agency Website")}
                   </h2>
-                </Reveal>
-                <Reveal
+                </ProjectReveal>
+                <ProjectReveal
                   className="framer-1ps20o6"
                   data-framer-appear-id="1ps20o6"
                   data-framer-component-type="RichTextContainer"
                   style={referenceStyles.s753530771e}
-                  as="div"
-                  from="translateY(300px)"
+                  delay={100}
                 >
                   <h5
                     dir="auto"
@@ -127,15 +124,14 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                       "Built for AI-focused agencies, this website combines innovative design, intelligent user experiences, and scalable development to build credibility, generate leads, and accelerate business growth.",
                     )}
                   </h5>
-                </Reveal>
+                </ProjectReveal>
               </div>
-              <Reveal
+              <ProjectReveal
                 className="framer-rjhajs"
                 data-framer-appear-id="rjhajs"
                 data-framer-name="Information & Button"
                 style={referenceStyles.s753530771e}
-                as="div"
-                from="translateY(300px)"
+                delay={200}
               >
                 <div className="framer-cygntx" data-framer-name="Text Wrapper">
                   <div className="framer-159iqqg" data-framer-name="Year">
@@ -250,6 +246,7 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                 <div className="ssr-variant">
                   <div className="framer-1rp7c6q-container">
                     <a
+                      href={href("/work")}
                       className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-2zyqfl framer-1fsrsxu"
                       data-border="true"
                       data-framer-name="Variant 6"
@@ -279,7 +276,7 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                     </a>
                   </div>
                 </div>
-              </Reveal>
+              </ProjectReveal>
             </div>
             <div className="framer-11w6e86" data-framer-name="Image Wrapper">
               <div className="framer-ei1yql" data-framer-name="Card Image">
@@ -288,6 +285,8 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                     src="/assets/1f85b9f13658cfe3.png"
                     fade={true}
                     replay={false}
+                    delay={100}
+                    referenceSpring
                   />
                 </div>
                 <div className="framer-1kqi2w9" data-framer-name="Layer"></div>
@@ -298,6 +297,8 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                     src="/assets/1bd0a92c750dc6bb.png"
                     fade={true}
                     replay={false}
+                    delay={100}
+                    referenceSpring
                   />
                 </div>
               </div>
@@ -307,6 +308,8 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                     src="/assets/5ca73c6e1a8606d3.png"
                     fade={true}
                     replay={false}
+                    delay={100}
+                    referenceSpring
                   />
                 </div>
               </div>
@@ -316,6 +319,8 @@ export async function WorkAiAgencyWebsiteDetailsSection() {
                     src="/assets/79de4a62dbad0012.png"
                     fade={true}
                     replay={false}
+                    delay={100}
+                    referenceSpring
                   />
                 </div>
               </div>
