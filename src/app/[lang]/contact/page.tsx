@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <main
       data-framer-root=""
-      className="framer-UUxDN framer-ge77Z framer-Bq5uF framer-P2lQE framer-A8dYT framer-PLVRZ framer-1krnw25 contents!"
+      className="framer-UUxDN framer-ge77Z framer-Bq5uF framer-P2lQE framer-A8dYT framer-PLVRZ framer-1krnw25 w-full!"
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">{t("Contact")}</h1>

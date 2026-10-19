@@ -1,3 +1,4 @@
+import { FooterTicker, TickerBrandLogo } from "./FooterTicker";
 import { getTranslations } from "@/lib/i18n-server";
 import { BrandLogo } from "@/components/BrandLogo";
 import Link from "next/link";
@@ -10,7 +11,7 @@ export async function SiteFooter() {
   return (
     <>
       <div className="framer-10ygyz8"></div>
-      <div className="framer-1jk9zd7-container">
+      <FooterTicker>
         <div className="ssr-variant hidden-16wj1xo hidden-zx6348">
           <section
             className="framer-5fvLi framer-1hpyrqy framer-v-1hpyrqy w-full!"
@@ -47,7 +48,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -63,7 +64,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -79,7 +80,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -95,7 +96,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -111,7 +112,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -157,7 +158,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -173,7 +174,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -189,7 +190,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -205,7 +206,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -221,7 +222,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -267,7 +268,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -283,7 +284,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -299,7 +300,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -315,7 +316,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -331,7 +332,7 @@ export async function SiteFooter() {
                           data-framer-background-image-wrapper="true"
                           style={referenceStyles.s8a54025f8d}
                         >
-                          <BrandLogo tone="light" variant="ticker" />
+                          <TickerBrandLogo />
                         </div>
                       </div>
                     </li>
@@ -341,7 +342,7 @@ export async function SiteFooter() {
             </div>
           </section>
         </div>
-      </div>
+      </FooterTicker>
       <div className="framer-1u5xqzl-container">
         <div className="ssr-variant hidden-16wj1xo hidden-zx6348">
           <footer
