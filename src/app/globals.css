@@ -5196,7 +5196,7 @@ NavigationContainer [data-framer-component-type="NavigationContainer"] > *,
   flex-flow: row;
   flex: none;
   place-content: flex-start center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 16px;
   width: 100%;
   height: min-content;
@@ -7136,14 +7136,17 @@ html[dir="rtl"] .framer-slideshow-axis-x {
 .framer-kyd25.framer-10tnql {
   flex-flow: column;
   place-content: flex-start center;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 90px;
   width: 268px;
-  height: min-content;
+  height: 100%;
   padding: 16px;
   display: flex;
   position: relative;
   overflow: visible;
+  /* Preserve the reference silhouette when translated copy changes the height. */
+  mask-size: 100% 100% !important;
 }
 .framer-kyd25 .framer-cmf096 {
   aspect-ratio: 1;
