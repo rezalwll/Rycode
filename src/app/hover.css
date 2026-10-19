@@ -1,5 +1,6 @@
 /* Restore the reference's gesture variants with native hover and keyboard focus. */
 .framer-hFcgW,
+.framer-hFcgW .framer-text,
 .framer-ez4Wr,
 .framer-n76Tz .framer-text,
 .framer-fR17n .framer-text,
@@ -117,19 +118,27 @@
   transform: translate(-50%, calc(-50% + 48px));
 }
 .framer-ez4Wr .framer-tnk03u {
-  transform: translate(calc(-50% - 48px), calc(-50% + 48px));
+  transform: translate(calc(-50% - 42px), calc(-50% + 42px));
 }
 .framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-g86u4c {
-  transform: translate(48px, -48px);
+  transform: translate(42px, -42px);
 }
 .framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-tnk03u,
 .framer-Asbdw:is(:hover, :focus-visible) .framer-cnaow8,
 .framer-rlCr3:is(:hover, :focus-visible) .framer-1x99mq8 {
   transform: translate(-50%, -50%);
 }
-.framer-Asbdw:is(:hover, :focus-visible) .framer-gw8dsj,
-.framer-rlCr3:is(:hover, :focus-visible) .framer-8hgace {
+.framer-Asbdw:is(:hover, :focus-visible) .framer-gw8dsj {
   transform: translateY(-48px) !important;
+}
+.framer-Asbdw :is(.framer-gw8dsj, .framer-cnaow8) {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.framer-rlCr3 .framer-1x99mq8 {
+  transform: translate(-50%, calc(-50% + 40px));
+}
+.framer-rlCr3:is(:hover, :focus-visible) .framer-8hgace {
+  transform: translateY(-40px) !important;
 }
 .framer-ez4Wr.framer-v-c40k20:is(:hover, :focus-visible) {
   background-color: #000 !important;
@@ -163,6 +172,21 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
 .framer-n76Tz:is(:hover, :focus-visible) .framer-text {
   color: rgb(255 255 255 / 80%) !important;
 }
+.framer-rlt6y .framer-text,
+.framer-16cun4g .framer-text {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Featured article titles and dates share the reference's muted-white hover. */
+.framer-wqubC :is(.framer-qawdxa, .framer-16c1a6a) .framer-text {
+  transition: color 0.4s linear;
+}
+a:is(:hover, :focus-visible)
+  .framer-wqubC
+  :is(.framer-qawdxa, .framer-16c1a6a)
+  .framer-text {
+  color: rgb(255 255 255 / 80%) !important;
+}
 
 /* Desktop work cards blur behind the alternate project preview. */
 .framer-7wCKM .framer-hrddsa {
@@ -185,7 +209,7 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
     backdrop-filter 0.4s linear,
     background-color 0.4s linear;
 }
-.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-10vim37 {
+a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-10vim37 {
   backdrop-filter: blur(17px) !important;
 }
 
@@ -196,6 +220,7 @@ a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
   transition:
     opacity 0.4s linear,
     top 0.4s linear,
+    left 0.4s linear,
     transform 0.4s linear;
 }
 .framer-X0SPq .framer-1jl6no1 {
@@ -222,24 +247,24 @@ button:focus-visible {
   outline: 2px solid var(--brand-accent);
   outline-offset: 4px;
 }
-.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-1oq7wyn {
+a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-1oq7wyn {
   opacity: 0 !important;
 }
-.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-hrddsa {
+a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-hrddsa {
   opacity: 1 !important;
   bottom: auto;
   top: 17.608%;
 }
-.framer-7wCKM.framer-v-1f3fcye:is(:hover, :focus-visible) .framer-6aujbd {
+a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-6aujbd {
   background-color: rgb(0 0 0 / 30%) !important;
 }
-.framer-7wCKM.framer-v-1vmciqn:is(:hover, :focus-visible) .framer-1qqezkx {
+a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1vmciqn .framer-1qqezkx {
   transform: scale(1.05) !important;
 }
 
 /* Contact submit uses the same expanding red fill and rotating arrow. */
 .framer-Irrnf.framer-v-1wjqi8p .framer-6vonoc {
-  left: calc(100% - 42px);
+  left: calc(100% - 44px);
   width: auto;
   transition:
     left 0.4s linear,
@@ -270,6 +295,7 @@ button:focus-visible {
   .framer-Irrnf *,
   .framer-7wCKM *,
   .framer-X0SPq *,
+  .framer-wqubC *,
   .framer-fR17n * {
     transition: none !important;
   }
