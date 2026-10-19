@@ -190,9 +190,8 @@ export async function ContactHeroSection() {
                   <a
                     className="framer-n76Tz framer-9qjuV framer-1in1u19 framer-v-1in1u19 framer-1y6m83r"
                     data-framer-name="Variant 1"
-                    href="tel:+1 (505) 555-0148"
+                    href="tel:+989981222022"
                     dir="ltr"
-                    target="_blank"
                   >
                     <div
                       className="framer-19ao40j"
@@ -202,10 +201,10 @@ export async function ContactHeroSection() {
                       <p
                         className="framer-text framer-styles-preset-12928c1"
                         data-styles-preset="V0V25Na8R"
-                        dir="auto"
+                        dir="ltr"
                         style={referenceStyles.s22c291e9ee}
                       >
-                        {t("+1 (505) 555-0148")}
+                        {"0998 - 122 - 2022"}
                       </p>
                     </div>
                   </a>
