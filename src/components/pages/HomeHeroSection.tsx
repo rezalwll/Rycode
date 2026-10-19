@@ -104,7 +104,10 @@ export async function HomeHeroSection() {
                     <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
-                  <span style={referenceStyles.sa20496458d}>
+                  <span
+                    className="brand-studio"
+                    style={referenceStyles.sa20496458d}
+                  >
                     <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
@@ -150,7 +153,10 @@ export async function HomeHeroSection() {
                     <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
-                  <span style={referenceStyles.sa20496458d}>
+                  <span
+                    className="brand-studio"
+                    style={referenceStyles.sa20496458d}
+                  >
                     <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
@@ -425,7 +431,10 @@ export async function HomeHeroSection() {
                                             <span className="brand-accent">
                                               {t("RY")}
                                             </span>
-                                            {t("CODE STUDIO")}
+                                            {"CODE "}
+                                            <span className="brand-studio">
+                                              STUDIO
+                                            </span>
                                           </>
                                         </h5>
                                       </div>
@@ -544,7 +553,10 @@ export async function HomeHeroSection() {
                                             <span className="brand-accent">
                                               {t("RY")}
                                             </span>
-                                            {t("CODE STUDIO")}
+                                            {"CODE "}
+                                            <span className="brand-studio">
+                                              STUDIO
+                                            </span>
                                           </>
                                         </h5>
                                       </div>
@@ -1002,7 +1014,8 @@ export async function HomeHeroSection() {
                                     <span className="brand-accent">
                                       {t("RY")}
                                     </span>
-                                    {t("CODE STUDIO")}
+                                    {"CODE "}
+                                    <span className="brand-studio">STUDIO</span>
                                   </>
                                 </h5>
                               </div>

@@ -42,8 +42,11 @@
 .brand-logo__name {
   font-weight: 600;
 }
+.brand-logo__studio,
+.brand-studio {
+  color: #aaa;
+}
 .brand-logo__studio {
-  color: inherit;
   opacity: 1;
   font-weight: 400;
   letter-spacing: -0.065em;
