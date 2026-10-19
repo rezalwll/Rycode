@@ -170,6 +170,11 @@ html[lang="fa"]
   width: 100%;
   white-space: normal;
 }
+/* Numeric-only text resolves dir="auto" to LTR. Align the year beside its
+   Persian label independently of the number's writing direction. */
+html[lang="fa"] .framer-KWZQu .framer-dw2jep .framer-text {
+  text-align: right;
+}
 /* The reference service cards use these compact vertical metrics. The global
    Persian line-height remains generous elsewhere for readable RTL copy. */
 html[lang="fa"] .framer-y8np0u .framer-d34t68 .framer-text {
