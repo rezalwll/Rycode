@@ -6,6 +6,7 @@ import "../brand.css";
 import "../hover.css";
 import "../line-trace.css";
 import "../locale.css";
+import "../services.css";
 import { getLocale } from "@/lib/i18n-server";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import { SiteHeader } from "@/components/SiteHeader";
