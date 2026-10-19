@@ -12,18 +12,16 @@ export async function HomeProcessSection() {
       id="Process Section"
     >
       <div className="ssr-variant">
-        <div className="framer-u10ewl">
+        <div className="framer-u10ewl" aria-hidden="true">
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
           >
             <img
               decoding="async"
-              width="5289"
-              height="1339"
-              sizes="(min-width: 1200px) 100vw, (max-width: 767.98px) 100vw, (min-width: 768px) and (max-width: 1199.98px) 100vw"
-              srcSet="/assets/d94001e8c47fd2b7.png 512w, /assets/5330a8808a582a6b.png 1024w, /assets/2789b4303ae40187.png 2048w, /assets/2c2b02c2a93c3f31.png 4096w, /assets/430cd16262d906e5.png 5289w"
-              src="/assets/430cd16262d906e5.png"
+              width="1200"
+              height="220"
+              src="/brand/rycode-watermark.svg"
               alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
