@@ -503,7 +503,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Twitter")}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -529,7 +529,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Dribbble")}
+                                {t("Telegram")}
                               </p>
                             </div>
                             <div
@@ -555,33 +555,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-ycam4u-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Facebook")}
+                                {t("Bale")}
                               </p>
                             </div>
                             <div
@@ -849,7 +823,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Twitter")}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -875,7 +849,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Dribbble")}
+                                {t("Telegram")}
                               </p>
                             </div>
                             <div
@@ -901,33 +875,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-ycam4u-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Facebook")}
+                                {t("Bale")}
                               </p>
                             </div>
                             <div
@@ -1195,7 +1143,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Twitter")}
+                                {t("Instagram")}
                               </p>
                             </div>
                             <div
@@ -1221,7 +1169,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Dribbble")}
+                                {t("Telegram")}
                               </p>
                             </div>
                             <div
@@ -1247,33 +1195,7 @@ export async function SiteFooter() {
                                 dir="auto"
                                 style={referenceStyles.s2a1463207d}
                               >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-ycam4u-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Facebook")}
+                                {t("Bale")}
                               </p>
                             </div>
                             <div
