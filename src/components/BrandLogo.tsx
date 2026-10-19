@@ -10,6 +10,7 @@ export function BrandLogo({
   return (
     <span
       className={`brand-logo brand-logo--${variant} brand-logo--${tone}`}
+      dir="ltr"
       role="img"
       aria-label="RYCODE Studio"
     >

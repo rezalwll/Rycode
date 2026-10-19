@@ -407,7 +407,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s1a92a053b3}
                           >
                             {t("$499")}
@@ -622,7 +622,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s1a92a053b3}
                           >
                             {t("$499")}
@@ -837,7 +837,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s1a92a053b3}
                           >
                             {t("$499")}
@@ -1051,7 +1051,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s4a440dca67}
                           >
                             {t("$1,499")}
@@ -1266,7 +1266,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s4a440dca67}
                           >
                             {t("$1,499")}
@@ -1481,7 +1481,7 @@ export async function HomePricingSection() {
                           <h2
                             className="framer-text framer-styles-preset-eiwrr4"
                             data-styles-preset="uizb2JBlh"
-                            dir="auto"
+                            dir="ltr"
                             style={referenceStyles.s4a440dca67}
                           >
                             {t("$1,499")}

@@ -19,6 +19,33 @@ for (const locale of ["en", "fa"]) {
       locale === "fa" ? "rtl" : "ltr",
       `${path}: dir`,
     );
+    $(".brand-logo").each((_, element) => {
+      assert.equal(
+        $(element).attr("dir"),
+        "ltr",
+        `${path}: Latin brand direction`,
+      );
+    });
+    $(
+      "a[href^='tel:'], input[type='email'], input[type='url'], input[type='tel']",
+    ).each((_, element) => {
+      assert.equal(
+        $(element).attr("dir"),
+        "ltr",
+        `${path}: contact value direction`,
+      );
+    });
+    $("input[type='text'], textarea").each((_, element) => {
+      assert.equal(
+        $(element).attr("dir"),
+        locale === "fa" ? "rtl" : "ltr",
+        `${path}: empty field and placeholder direction`,
+      );
+    });
+    $("h2").each((_, element) => {
+      if (/^\$[\d۰-۹,]+$/.test($(element).text().trim()))
+        assert.equal($(element).attr("dir"), "ltr", `${path}: price direction`);
+    });
     assert.ok($("header .language-switch").length, `${path}: language switch`);
     assert.equal(
       $("header .language-switch").first().attr("href"),

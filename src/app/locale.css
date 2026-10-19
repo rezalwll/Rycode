@@ -65,17 +65,18 @@ html[lang="fa"] [data-localized-split] {
 html[lang="fa"] .framer-form-input {
   text-align: start;
 }
+html[lang="fa"] :is(input, textarea)[dir="auto"]:placeholder-shown {
+  direction: rtl;
+}
 html[lang="fa"] input[type="email"] {
   direction: ltr;
   text-align: left;
 }
 .brand-logo,
-[aria-roledescription="carousel"],
-.framer-obWCA,
-.framer-Irrnf {
+[aria-roledescription="carousel"] {
   direction: ltr;
 }
-html[lang="fa"] .rycode-slide {
+html[lang="fa"] :is(.rycode-slide, .ticker-item) {
   direction: rtl;
 }
 html[lang="fa"] :is(.brand-logo, .brand-wordmark),
@@ -88,6 +89,36 @@ html[lang="fa"] .brand-wordmark {
 }
 html[lang="fa"] .framer-7wCKM .framer-text {
   text-align: start;
+}
+/* Keep Latin identities and contact values independent of surrounding Persian. */
+:is(.brand-logo, .brand-wordmark, .language-switch),
+a:is([href^="tel:"], [href^="mailto:"]),
+.framer-form-input:is([type="email"], [type="url"], [type="tel"]) {
+  unicode-bidi: isolate;
+}
+html[lang="fa"] a:is([href^="tel:"], [href^="mailto:"]) {
+  direction: ltr;
+}
+/* The label starts on the right; the icon and expanding fill finish on the left. */
+html[lang="fa"] .framer-obWCA.framer-v-1fa7o3w {
+  padding-inline: 16px 4px;
+}
+html[lang="fa"] .framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42) {
+  padding-inline: 22px 2px;
+}
+html[lang="fa"] .framer-Irrnf.framer-v-1wjqi8p {
+  padding-inline: 24px 4px;
+}
+html[lang="fa"]
+  :is(
+    .framer-obWCA .framer-vweyvw,
+    .framer-Irrnf .framer-1akqox4,
+    .framer-ez4Wr
+  ) {
+  scale: -1 1;
+}
+html[lang="fa"] .framer-cc7aC::after {
+  transform-origin: right;
 }
 @media (min-width: 1200px) {
   html[lang="fa"] .framer-15gz4dg {

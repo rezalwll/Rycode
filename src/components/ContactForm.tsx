@@ -38,14 +38,17 @@ type FieldProps =
   | ({ as: "textarea" } & TextareaHTMLAttributes<HTMLTextAreaElement>)
   | ({ as: "select" } & SelectHTMLAttributes<HTMLSelectElement>);
 export function FormField(props: FieldProps) {
+  const { locale } = useLocale();
   const [value, setValue] = useState("");
   const [checked, setChecked] = useState(false);
+  const textDirection = value ? "auto" : locale === "fa" ? "rtl" : "ltr";
   if (props.as === "textarea") {
     const { as: tag, ...rest } = props;
     void tag;
     return (
       <textarea
         {...rest}
+        dir={rest.dir ?? textDirection}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
@@ -76,6 +79,12 @@ export function FormField(props: FieldProps) {
   return (
     <input
       {...rest}
+      dir={
+        rest.dir ??
+        (["email", "url", "tel"].includes(props.type ?? "")
+          ? "ltr"
+          : textDirection)
+      }
       value={value}
       className={`${className?.replace("framer-form-input-empty", "") ?? ""}${value ? "" : " framer-form-input-empty"}`}
       onChange={(event) => setValue(event.target.value)}

@@ -14,6 +14,7 @@ export function LanguageSwitch() {
       href={localizedHref(pathname, next)}
       hrefLang={next}
       lang={next}
+      dir={next === "fa" ? "rtl" : "ltr"}
       aria-label={
         locale === "en" ? "Switch to Persian" : "تغییر زبان به انگلیسی"
       }

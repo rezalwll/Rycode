@@ -194,6 +194,7 @@ export async function ContactHeroSection() {
                     className="framer-n76Tz framer-9qjuV framer-1in1u19 framer-v-1in1u19 framer-1y6m83r"
                     data-framer-name="Variant 1"
                     href="tel:+1 (505) 555-0148"
+                    dir="ltr"
                     target="_blank"
                   >
                     <div

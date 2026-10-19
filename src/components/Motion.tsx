@@ -235,7 +235,8 @@ export function Carousel({
   items: ReactNode[];
   kind: "hero" | "stats";
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const direction = locale === "fa" ? -1 : 1;
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -290,7 +291,9 @@ export function Carousel({
           dy = event.clientY - start.y;
         if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy))
           setActive(
-            (value) => (value + (dx < 0 ? 1 : items.length - 1)) % items.length,
+            (value) =>
+              (value + (dx * direction < 0 ? 1 : items.length - 1)) %
+              items.length,
           );
       }}
       onPointerCancel={() => {
@@ -306,7 +309,10 @@ export function Carousel({
           event.preventDefault();
           setActive(
             (value) =>
-              (value + (event.key === "ArrowRight" ? 1 : items.length - 1)) %
+              (value +
+                (event.key === (locale === "fa" ? "ArrowLeft" : "ArrowRight")
+                  ? 1
+                  : items.length - 1)) %
               items.length,
           );
         }
@@ -319,7 +325,7 @@ export function Carousel({
               key={index}
               className="rycode-slide absolute inset-0 h-full w-full transition-transform duration-700 ease-in-out motion-reduce:transition-none"
               style={{
-                transform: `translateX(${(((index - active + items.length + 1) % items.length) - 1) * 100}%)`,
+                transform: `translateX(${(((index - active + items.length + 1) % items.length) - 1) * 100 * direction}%)`,
               }}
               aria-hidden={index !== active}
               inert={index !== active || undefined}
