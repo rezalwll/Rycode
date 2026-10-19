@@ -17,7 +17,9 @@ export function translate(source: string, locale: Locale): string {
       timeZone: "UTC",
     }).format(new Date(Date.UTC(+date[3], +date[1] - 1, +date[2])));
   if (/^[\d\s.,$%+\/[\]—-]+$/.test(source))
-    return source.replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[+digit]);
+    return source
+      .replace(/\./g, "")
+      .replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[+digit]);
   return source;
 }
 
