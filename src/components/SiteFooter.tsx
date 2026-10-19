@@ -1,3 +1,4 @@
+import { SocialLinks } from "./SocialLinks";
 import { SiteNavigationLinks } from "./SiteNavigationLinks";
 import { FooterTicker, TickerBrandLogo } from "./FooterTicker";
 import { getTranslations } from "@/lib/i18n-server";
@@ -483,89 +484,7 @@ export async function SiteFooter() {
                           {t("Social media")}
                         </p>
                       </div>
-                      <div
-                        className="framer-1yeaahq"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-yezfjw-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-1xf1vhb-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Telegram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-o9f1n1-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Bale")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
                     </div>
                   </div>
                 </Reveal>
@@ -803,89 +722,7 @@ export async function SiteFooter() {
                           {t("Social media")}
                         </p>
                       </div>
-                      <div
-                        className="framer-1yeaahq"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-yezfjw-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-1xf1vhb-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Telegram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-o9f1n1-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Bale")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
                     </div>
                   </div>
                 </Reveal>
@@ -1123,89 +960,7 @@ export async function SiteFooter() {
                           {t("Social media")}
                         </p>
                       </div>
-                      <div
-                        className="framer-1yeaahq"
-                        data-framer-name="Footer Buttons"
-                      >
-                        <div className="framer-yezfjw-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Instagram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-1xf1vhb-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Telegram")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                        <div className="framer-o9f1n1-container">
-                          <a
-                            className="framer-fR17n framer-CkNQH framer-BGvaq framer-P2lQE framer-h28y84 framer-v-a9b1q3 framer-zcpo7a"
-                            data-framer-name="Social Link"
-                          >
-                            <div
-                              className="framer-10d9t98"
-                              data-framer-component-type="RichTextContainer"
-                              style={referenceStyles.sdb4e5c5446}
-                            >
-                              <p
-                                className="framer-text framer-styles-preset-1wgmhge"
-                                data-styles-preset="o7GNKckl6"
-                                dir="auto"
-                                style={referenceStyles.s2a1463207d}
-                              >
-                                {t("Bale")}
-                              </p>
-                            </div>
-                            <div
-                              className="framer-zvnvf1"
-                              data-framer-name="Line"
-                              style={referenceStyles.saab222fd1f}
-                            ></div>
-                          </a>
-                        </div>
-                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
                     </div>
                   </div>
                 </Reveal>

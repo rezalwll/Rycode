@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/SocialLinks";
 import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { Reveal } from "@/components/Motion";
@@ -5,7 +6,7 @@ import { ContactForm, FormField } from "@/components/ContactForm";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function ContactHeroSection() {
-  const { t } = await getTranslations();
+  const { t, locale } = await getTranslations();
   return (
     <section className="framer-zh7igo" data-framer-name="Hero Section">
       <div className="framer-16icyyk" data-framer-name="Container">
@@ -267,137 +268,7 @@ export async function ContactHeroSection() {
                     {t("Social")}
                   </p>
                 </div>
-                <div className="framer-1uv64u8" data-framer-name="Sosial Links">
-                  <div className="framer-k889av-container">
-                    <a
-                      className="framer-rlCr3 framer-jzm7mt framer-v-jzm7mt framer-1pkfbc1"
-                      data-framer-name="Variant 1"
-                      href="https://www.instagram.com/"
-                      target="_blank"
-                    >
-                      <div className="framer-8hgace">
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="96"
-                            height="96"
-                            src="/assets/edd06ce955caf15f.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                      <div className="framer-1x99mq8">
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="96"
-                            height="96"
-                            src="/assets/edd06ce955caf15f.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="framer-1o21s48-container">
-                    <a
-                      className="framer-rlCr3 framer-jzm7mt framer-v-f40die framer-1pkfbc1"
-                      data-framer-name="Variant 2"
-                      href="https://www.linkedin.com/"
-                      target="_blank"
-                    >
-                      <div className="framer-8hgace">
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="76"
-                            height="76"
-                            src="/assets/0c23ec67df00adba.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="framer-1x99mq8"
-                        style={referenceStyles.s4317ba2255}
-                      >
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="76"
-                            height="76"
-                            src="/assets/0c23ec67df00adba.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="framer-k0tycu-container">
-                    <a
-                      className="framer-rlCr3 framer-jzm7mt framer-v-f40die framer-1pkfbc1"
-                      data-framer-name="Variant 2"
-                      href="https://www.facebook.com/"
-                      target="_blank"
-                    >
-                      <div className="framer-8hgace">
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="76"
-                            height="76"
-                            src="/assets/78e50ca8e4c83ea1.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="framer-1x99mq8"
-                        style={referenceStyles.s4317ba2255}
-                      >
-                        <div
-                          data-framer-background-image-wrapper="true"
-                          style={referenceStyles.s8a54025f8d}
-                        >
-                          <img
-                            decoding="async"
-                            width="76"
-                            height="76"
-                            src="/assets/78e50ca8e4c83ea1.png"
-                            alt={t("Logo")}
-                            className="w-full! h-full!"
-                            style={referenceStyles.s1100a320a2}
-                          />
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
+                <SocialLinks locale={locale} variant="contact" />
               </div>
             </Reveal>
           </div>
