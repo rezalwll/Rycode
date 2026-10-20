@@ -7,8 +7,10 @@ import nextEnv from "@next/env";
 import { hashPassword } from "better-auth/crypto";
 import sharp from "sharp";
 import { load } from "cheerio";
+import { verifySpecialtyServices } from "./verify-specialty-services.mjs";
 nextEnv.loadEnvConfig(process.cwd());
 const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
+await verifySpecialtyServices(base);
 for (const [path, status, type] of [
   ["/sitemap.xml", 200, "xml"],
   ["/robots.txt", 200, "text/plain"],
@@ -57,6 +59,7 @@ const slug = "http-test-" + randomUUID();
 let adminCookie = "",
   editorCookie = "";
 const failureTrigger = "qa_media_" + randomUUID().replaceAll("-", "");
+const renamedFaqId = randomUUID();
 let keptMedia;
 const post = async (path, data, cookie = "", origin = base) =>
   fetch(base + path, {
@@ -211,6 +214,15 @@ try {
     await client.query('SELECT id FROM "Content" WHERE slug=$1', [slug])
   ).rows[0];
   contentIds.push(record.id);
+  await client.query(
+    "INSERT INTO \"Faq\" (id,scope,locale,question,answer,published,position) VALUES ($1,$2,'fa',$3,$4,true,0)",
+    [
+      renamedFaqId,
+      "blog/" + slug,
+      "پرسش آزمایشی تغییر نشانی",
+      "پاسخ این پرسش همراه با نشانی محتوای آزمایشی جابه‌جا می‌شود.",
+    ],
+  );
   assert.equal(
     (await fetch(base + "/blog/" + slug)).status,
     404,
@@ -298,6 +310,12 @@ try {
   );
   assert.equal(response.status, 200);
   const moved = await fetch(base + "/blog/" + slug, { redirect: "manual" });
+  assert.equal(
+    (await client.query('SELECT scope FROM "Faq" WHERE id=$1', [renamedFaqId]))
+      .rows[0].scope,
+    "blog/" + renamed,
+    "FAQ follows a renamed content page",
+  );
   assert.ok([307, 308].includes(moved.status), "slug change redirects");
   assert.equal(
     (await fetch(base + "/blog/" + renamed)).status,
@@ -636,6 +654,7 @@ try {
     "PASS: staff login, disabled signup, server permissions, CSRF, draft/preview/publish/schedule/archive, Persian-only publishing, slug redirects, idempotent inquiries, analytics consent, safe uploads and redirect cycles",
   );
 } finally {
+  await client.query('DELETE FROM "Faq" WHERE id=$1', [renamedFaqId]);
   await client.query(`DROP TRIGGER IF EXISTS ${failureTrigger} ON "AuditLog"`);
   await client.query(`DROP FUNCTION IF EXISTS ${failureTrigger}()`);
   await client.query('DELETE FROM "Content" WHERE id=ANY($1::text[])', [

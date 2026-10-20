@@ -73,6 +73,7 @@ export async function GET(request: Request, context: Context) {
               id: true,
               kind: true,
               slug: true,
+              sourceKey: true,
               serviceId: true,
               translations: { select: { locale: true, title: true } },
             },
@@ -277,6 +278,10 @@ export async function POST(request: Request, context: Context) {
           existing &&
           (existing.slug !== input.slug || existing.kind !== input.kind)
         ) {
+          await tx.faq.updateMany({
+            where: { scope: contentPath(existing).slice(1) },
+            data: { scope: contentPath(input).slice(1) },
+          });
           for (const prefix of ["", "/en"]) {
             const source = safeInternalPath(prefix + contentPath(existing));
             const destination = safeInternalPath(prefix + contentPath(input));
@@ -309,7 +314,9 @@ export async function POST(request: Request, context: Context) {
           category: input.category,
           tags: input.tags,
           relatedIds: input.relatedIds,
-          serviceId: input.serviceId || null,
+          serviceId: existing?.sourceKey?.startsWith("service:")
+            ? existing.sourceKey.slice("service:".length)
+            : input.serviceId || null,
           noIndex: input.noIndex,
           position: input.position,
           scheduledAt:

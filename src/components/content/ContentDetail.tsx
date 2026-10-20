@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { RichContent } from "./RichContent";
 import { ContentCards } from "./ContentCards";
+import { ContentToc } from "./ContentToc";
 import {
   contentSegments,
   relatedContent,
   contentPath,
+  serviceHierarchy,
   type PublicContent,
 } from "@/server/content";
 import { database, databaseConfigured } from "@/server/db";
@@ -40,6 +42,22 @@ export async function ContentDetail({
             ? "رایکد"
             : "RYCODE";
   const related = await relatedContent(content, locale);
+  const hierarchy = await serviceHierarchy(content, locale);
+  const headings =
+    content.kind === "SERVICE"
+      ? (content.body.content || []).flatMap((node, index) =>
+          node.type === "heading" && Number(node.attrs?.level) === 2
+            ? [
+                {
+                  id: "heading-" + index,
+                  title:
+                    node.content?.map((child) => child.text || "").join("") ||
+                    "",
+                },
+              ]
+            : [],
+        )
+      : [];
   const faqs = databaseConfigured()
     ? await database().faq.findMany({
         where: { scope: `${segment}/${content.slug}`, locale, published: true },
@@ -48,6 +66,23 @@ export async function ContentDetail({
       })
     : [];
   const path = localizedHref(contentPath(content), locale);
+  const inquiryHref = localizedHref(
+    "/contact?service=" +
+      encodeURIComponent(
+        content.kind === "SERVICE"
+          ? content.slug
+          : content.serviceId || content.slug,
+      ),
+    locale,
+  );
+  const breadcrumbs = [
+    { name: fa ? "خانه" : "Home", path: "/" },
+    ...(content.kind === "PAGE" ? [] : [{ name: section, path: sectionPath }]),
+    ...(hierarchy.parent
+      ? [{ name: hierarchy.parent.title, path: contentPath(hierarchy.parent) }]
+      : []),
+    { name: content.title, path: contentPath(content) },
+  ];
   const structured = {
     "@context": "https://schema.org",
     "@graph": [
@@ -58,33 +93,51 @@ export async function ContentDetail({
             : content.kind === "SERVICE"
               ? "Service"
               : "CreativeWork",
-        headline: content.title,
+        ...(content.kind === "SERVICE"
+          ? {
+              serviceType: content.title,
+              provider: {
+                "@type": "Organization",
+                name: "RYCODE",
+                url: absoluteUrl(localizedHref("/", locale)),
+              },
+              ...(hierarchy.parent ? { category: hierarchy.parent.title } : {}),
+            }
+          : {
+              headline: content.title,
+              inLanguage: locale,
+              datePublished: content.publishedAt,
+              dateModified: content.updatedAt,
+              author: { "@type": "Organization", name: content.author },
+            }),
         name: content.title,
         description: content.summary,
         url: absoluteUrl(path),
-        inLanguage: locale,
         ...(content.image ? { image: absoluteUrl(content.image) } : {}),
-        datePublished: content.publishedAt,
-        dateModified: content.updatedAt,
-        author: { "@type": "Organization", name: content.author },
       },
       {
         "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: section,
-            item: absoluteUrl(localizedHref(sectionPath, locale)),
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: content.title,
-            item: absoluteUrl(path),
-          },
-        ],
+        itemListElement: breadcrumbs.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.name,
+          item: absoluteUrl(localizedHref(item.path, locale)),
+        })),
       },
+      ...(faqs.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": absoluteUrl(path) + "#faq",
+              inLanguage: locale,
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: { "@type": "Answer", text: faq.answer },
+              })),
+            },
+          ]
+        : []),
     ],
   };
   return (
@@ -102,15 +155,31 @@ export async function ContentDetail({
         aria-label={fa ? "مسیر صفحه" : "Breadcrumb"}
         className={styles.breadcrumb}
       >
-        <Link href={localizedHref("/", locale)}>{fa ? "خانه" : "Home"}</Link>
-        <span>/</span>
-        <Link href={localizedHref(sectionPath, locale)}>{section}</Link>
-        <span>/</span>
-        <span>{content.title}</span>
+        {breadcrumbs.map((item, index) => (
+          <span key={item.path}>
+            {index > 0 && <span aria-hidden="true"> / </span>}
+            {index === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{item.name}</span>
+            ) : (
+              <Link href={localizedHref(item.path, locale)}>{item.name}</Link>
+            )}
+          </span>
+        ))}
       </nav>
       <p className={styles.eyebrow}>{section}</p>
       <h1>{content.title}</h1>
       <p className={styles.summary}>{content.summary}</p>
+      {content.kind === "SERVICE" && (
+        <div className={styles.actions}>
+          <Link
+            className={styles.button + " " + styles.primary}
+            href={inquiryHref}
+          >
+            {fa ? "بررسی پروژه و برآورد هزینه" : "Discuss your project"}
+            <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
+          </Link>
+        </div>
+      )}
       <div className={styles.meta}>
         <span>{content.author}</span>
         <time dateTime={content.publishedAt}>
@@ -136,11 +205,54 @@ export async function ContentDetail({
           fetchPriority="high"
         />
       )}
+      {hierarchy.children.length > 0 && (
+        <section
+          className={styles.specialties}
+          aria-labelledby="specialty-services-title"
+        >
+          <p className={styles.eyebrow}>
+            {fa ? "مسیر تخصصی پروژهٔ تو" : "Find your specialist service"}
+          </p>
+          <h2 id="specialty-services-title">
+            {fa ? "خدمات تخصصی این بخش" : "Specialist services"}
+          </h2>
+          <p>
+            {fa
+              ? "برای شناخت دقیق‌تر امکانات، مراحل و شرایط تحویل، صفحهٔ مرتبط با پروژه‌ات را ببین"
+              : "Explore the scope, delivery process and handover for your project."}
+          </p>
+          <div className={styles.services}>
+            {hierarchy.children.map((child) => (
+              <Link
+                key={child.id}
+                className={styles.service}
+                href={localizedHref(contentPath(child), locale)}
+              >
+                <h3>{child.title}</h3>
+                <p>{child.summary}</p>
+                <span>
+                  {fa
+                    ? "بررسی جزئیات و شروع همکاری ↖"
+                    : "Explore this service ↗"}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
       <div className={styles.article}>
         <article>
+          {headings.length > 0 && (
+            <ContentToc
+              headings={headings}
+              fa={fa}
+              hasFaq={faqs.length > 0}
+              mobile
+            />
+          )}
           <RichContent document={content.body} />
         </article>
-        <aside className={styles.aside}>
+        <aside className={styles.aside} data-lenis-prevent>
           <h2>
             {fa ? "دربارهٔ پروژه‌ات حرف بزنیم" : "Tell us about your project"}
           </h2>
@@ -149,25 +261,23 @@ export async function ContentDetail({
               ? "مسئله و هدفت را بگو تا قدم بعدی را با هم مشخص کنیم"
               : "Share your goals and we will work out the next step."}
           </p>
-          <Link
-            className={styles.button}
-            href={localizedHref(
-              "/contact?service=" +
-                encodeURIComponent(content.serviceId || content.slug),
-              locale,
-            )}
-          >
+          <Link className={styles.button} href={inquiryHref}>
             {fa ? "شروع همکاری" : "Get started"}{" "}
             <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
           </Link>
           {content.tags.map((tag) => (
             <span key={tag}>#{tag} </span>
           ))}
+          {headings.length > 0 && (
+            <ContentToc headings={headings} fa={fa} hasFaq={faqs.length > 0} />
+          )}
         </aside>
       </div>
       {faqs.length > 0 && (
-        <section>
-          <h2>{fa ? "پرسش‌های متداول" : "Frequently asked questions"}</h2>
+        <section aria-labelledby="faq">
+          <h2 id="faq">
+            {fa ? "پرسش‌های متداول" : "Frequently asked questions"}
+          </h2>
           {faqs.map((faq) => (
             <details key={faq.id} className={styles.faq}>
               <summary>{faq.question}</summary>

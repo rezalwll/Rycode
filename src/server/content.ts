@@ -242,6 +242,55 @@ export const serviceCatalog = cache(
     return result;
   },
 );
+export const serviceHierarchy = cache(
+  async (content: PublicContent, locale: Locale) => {
+    if (
+      content.kind !== "SERVICE" ||
+      !content.serviceId ||
+      !databaseConfigured()
+    )
+      return { parent: null, children: [] as PublicContent[] };
+    const rows = await database().content.findMany({
+      where: {
+        kind: "SERVICE",
+        OR: [
+          { sourceKey: "service:" + content.serviceId },
+          { slug: content.serviceId },
+          {
+            sourceKey: { startsWith: "specialty:" },
+            serviceId: content.serviceId,
+          },
+        ],
+      },
+      include,
+      orderBy: [{ position: "asc" }, { createdAt: "asc" }],
+    });
+    const parent =
+      rows.find((row) => row.sourceKey === "service:" + content.serviceId) ||
+      rows.find(
+        (row) =>
+          row.slug === content.serviceId &&
+          !row.sourceKey?.startsWith("specialty:"),
+      );
+    return {
+      parent:
+        parent && parent.id !== content.id && visibleContent(parent, locale)
+          ? publicDto(parent, locale)
+          : null,
+      children:
+        parent?.id === content.id
+          ? rows
+              .filter(
+                (row) =>
+                  row.id !== content.id &&
+                  row.sourceKey?.startsWith("specialty:") &&
+                  visibleContent(row, locale),
+              )
+              .map((row) => publicDto(row, locale))
+          : [],
+    };
+  },
+);
 export async function relatedContent(content: PublicContent, locale: Locale) {
   if (!databaseConfigured()) return [];
   const relations: Prisma.ContentWhereInput[] = [

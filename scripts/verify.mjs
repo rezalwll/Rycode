@@ -1,5 +1,6 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { load } from "cheerio";
+import { specialtyServices } from "../src/content/specialty-services.ts";
 const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
 const referenceRoutes = JSON.parse(
   await readFile(".reference/routes.json", "utf8"),
@@ -7,7 +8,24 @@ const referenceRoutes = JSON.parse(
 const routes = [
   ...referenceRoutes,
   ...referenceRoutes.map((route) => "/en" + (route === "/" ? "" : route)),
-  ...["/services", "/privacy", "/terms", ...["build","grow","software","rescue","connect","data","continue"].map(id=>"/services/"+id)].flatMap(route=>[route,"/en"+route]),
+  ...[
+    "/services",
+    "/privacy",
+    "/terms",
+    ...[
+      "build",
+      "grow",
+      "software",
+      "rescue",
+      "connect",
+      "data",
+      "continue",
+    ].map((id) => "/services/" + id),
+  ].flatMap((route) => [route, "/en" + route]),
+  ...specialtyServices.flatMap((service) => [
+    "/services/" + service.slug,
+    "/en/services/" + service.slug,
+  ]),
   "/this-page-does-not-exist",
   "/en/this-page-does-not-exist",
 ];
@@ -24,7 +42,13 @@ for (const route of routes) {
   const response = await fetch(base + route);
   const html = await response.text();
   const $ = load(html);
-  const expected = /\/(404|this-page-does-not-exist)$/.test(route) ? 404 : 200;
+  const expected =
+    /\/(404|this-page-does-not-exist)$/.test(route) ||
+    specialtyServices.some(
+      (service) => route === "/en/services/" + service.slug,
+    )
+      ? 404
+      : 200;
   if (response.status !== expected)
     errors.push(`${route}: HTTP ${response.status}`);
   if (!$("body").text().trim()) errors.push(`${route}: empty page`);
@@ -86,8 +110,17 @@ async function files(dir) {
 }
 for (const path of await files("src")) {
   const source = await readFile(path, "utf8");
-  const safeJsonLd = ["src/components/StructuredData.tsx", "src/components/content/ContentDetail.tsx"].includes(path) && source.includes('type="application/ld+json"') && source.includes("jsonLd(");
-  if ((source.includes("dangerouslySetInnerHTML") && !safeJsonLd) || /<iframe|eval\(/.test(source))
+  const safeJsonLd =
+    [
+      "src/components/StructuredData.tsx",
+      "src/components/content/ContentDetail.tsx",
+    ].includes(path) &&
+    source.includes('type="application/ld+json"') &&
+    source.includes("jsonLd(");
+  if (
+    (source.includes("dangerouslySetInnerHTML") && !safeJsonLd) ||
+    /<iframe|eval\(/.test(source)
+  )
     errors.push(`Unacceptable runtime markup: ${path}`);
 }
 const result = {

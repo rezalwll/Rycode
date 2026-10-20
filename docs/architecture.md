@@ -48,6 +48,8 @@ and sitemap describe actual approved translations. Articles/projects require a
 featured image. Private previews require a staff session and use noindex.
 
 The seed preserves existing data and adds seven service groups and six articles.
+It also adds four Persian specialty services and their editable FAQ sets; see
+[specialty page notes](service-specialties.md) for paths and editorial behavior.
 Existing article layouts remain until their first CMS save. Seeded services have
 a stable source key so renaming their slug updates the catalog and adds an
 internal redirect. Existing sample projects, testimonials and statistics remain

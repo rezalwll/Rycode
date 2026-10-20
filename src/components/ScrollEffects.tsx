@@ -43,7 +43,9 @@ export function ScrollEffects() {
       );
       if (!target) return;
       event.preventDefault();
-      scroll.scrollTo(target);
+      const margin =
+        Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      scroll.scrollTo(target, { offset: -margin });
       history.pushState(null, "", url.hash);
     };
     document.addEventListener("click", anchor, true);

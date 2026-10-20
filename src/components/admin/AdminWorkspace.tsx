@@ -29,6 +29,7 @@ type ContentRow = {
   tags?: string[];
   relatedIds?: string[];
   serviceId?: string;
+  sourceKey?: string | null;
   noIndex?: boolean;
   position?: number;
   scheduledAt?: string;
@@ -297,15 +298,27 @@ function ContentEditor({
             value={record.tags?.join(", ")}
           />
           <label>
-            خدمت مرتبط
+            {record.kind === "SERVICE" ? "گروه خدمت" : "خدمت مرتبط"}
+            {record.sourceKey?.startsWith("service:") && (
+              <input
+                type="hidden"
+                name="serviceId"
+                value={record.serviceId || ""}
+              />
+            )}
             <select
               key={choices.length}
               name="serviceId"
+              disabled={record.sourceKey?.startsWith("service:")}
               defaultValue={record.serviceId || ""}
             >
               <option value="">بدون ارتباط</option>
               {choices
-                .filter((item) => item.kind === "SERVICE")
+                .filter(
+                  (item) =>
+                    item.kind === "SERVICE" &&
+                    !item.sourceKey?.startsWith("specialty:"),
+                )
                 .map((item) => (
                   <option key={item.id} value={item.serviceId || item.slug}>
                     {item.translations.find((t) => t.locale === "fa")?.title ||

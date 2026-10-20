@@ -221,6 +221,9 @@
   border: 1px solid #333;
   border-radius: 20px;
   padding: 24px;
+  max-height: calc(100dvh - 130px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .aside a {
   display: block;
@@ -230,6 +233,43 @@
 }
 .aside a:hover {
   color: #ff7565;
+}
+.aside h2 {
+  font-size: 24px;
+  margin: 0 0 16px;
+}
+.toc {
+  border-top: 1px solid #333;
+  margin-top: 24px;
+  padding-top: 18px;
+}
+.toc h3 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.toc ol {
+  padding-inline-start: 20px;
+  font-size: 14px;
+}
+.toc a {
+  margin: 8px 0;
+}
+.mobileToc {
+  display: none;
+}
+.rich h2,
+.page [id="faq"] {
+  scroll-margin-top: 110px;
+}
+.specialties {
+  margin-block: 20px 70px;
+}
+.service h3 {
+  margin: 0 0 18px;
+  font-size: 26px;
+}
+.service:focus-visible {
+  border-color: #ff1a05;
 }
 .panel {
   padding: 30px;
@@ -360,6 +400,27 @@
   color: #333;
 }
 @media (max-width: 1000px) {
+  .desktopToc {
+    display: none;
+  }
+  .mobileToc {
+    display: block;
+    margin: 0 0 30px;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 16px 20px;
+  }
+  .mobileToc summary {
+    cursor: pointer;
+  }
+  .mobileToc a {
+    color: #ccc;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .mobileToc a:hover {
+    color: #ff7565;
+  }
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -369,6 +430,8 @@
   }
   .aside {
     position: static;
+    max-height: none;
+    overflow: visible;
   }
   .page {
     padding-top: 130px;
