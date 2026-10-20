@@ -7,14 +7,19 @@ import { BlogBlock2 } from "@/components/pages/BlogBlock2";
 import { BlogBlock3 } from "@/components/pages/BlogBlock3";
 import { PublishedListing } from "@/components/content/PublishedListing";
 import { ManagedBlogHero } from "@/components/content/ManagedBlogHero";
-export async function generateMetadata(): Promise<Metadata> {
-  const { t } = await getTranslations();
-  return { title: t("Blog") };
+import type { ListingSearchParams } from "@/lib/listing-params";
+import { listingMetadata } from "@/server/listing-metadata";
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<ListingSearchParams>;
+}): Promise<Metadata> {
+  return listingMetadata("/blog", await searchParams);
 }
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string; q?: string; category?: string }>;
+  searchParams: Promise<ListingSearchParams>;
 }) {
   const { t } = await getTranslations();
   return (

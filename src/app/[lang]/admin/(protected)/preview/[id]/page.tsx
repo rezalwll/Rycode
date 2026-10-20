@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { requireStaff } from "@/server/auth";
+import { requireStaffPage } from "@/server/auth";
 import { database } from "@/server/db";
 import { lookupContent } from "@/server/content";
 import { ContentDetail } from "@/components/content/ContentDetail";
@@ -10,7 +10,7 @@ export default async function Preview({
   params: Promise<{ id: string }>;
   searchParams: Promise<{ locale?: string }>;
 }) {
-  await requireStaff();
+  await requireStaffPage();
   const { id } = await params;
   const locale = (await searchParams).locale === "en" ? "en" : "fa";
   const record = await database().content.findUnique({

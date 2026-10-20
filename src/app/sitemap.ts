@@ -13,6 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         select: { kind: true, slug: true, sourceKey: true },
       })
     : [];
+  const redirects = databaseConfigured()
+    ? await database().redirect.findMany({ select: { source: true } })
+    : [];
+  const redirectedPaths = new Set(redirects.map((redirect) => redirect.source));
   const paths = [
     "/",
     "/contact",
@@ -74,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   ].filter(
     (entry, index, all) =>
+      !redirectedPaths.has(new URL(entry.url).pathname) &&
       all.findIndex((other) => other.url === entry.url) === index,
   );
 }

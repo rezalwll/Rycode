@@ -22,8 +22,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          state=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/check-runs" --jq '[.check_runs[] | select(.name == "validate") | .conclusion] | first')
-          test "$state" = success || { echo 'The validate check must pass on this commit before preparing a release.'; exit 1; }
+          for required_check in validate container; do
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/check-runs" --jq "[.check_runs[] | select(.name == \"${required_check}\" and .app.slug == \"github-actions\") | .conclusion] | first")
+            test "$state" = success || { echo "The ${required_check} check must pass on this commit before preparing a release."; exit 1; }
+          done
       - uses: docker/setup-buildx-action@v3
       - name: Set lowercase image reference
         shell: bash

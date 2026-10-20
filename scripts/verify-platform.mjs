@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
-import { randomUUID, randomBytes, createHmac } from "node:crypto";
-import { unlink } from "node:fs/promises";
+import { randomUUID, randomBytes, createHmac, createHash } from "node:crypto";
+import { unlink, readdir, mkdir, writeFile } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import pg from "pg";
 import nextEnv from "@next/env";
@@ -56,6 +56,8 @@ const userIds = [],
 const slug = "http-test-" + randomUUID();
 let adminCookie = "",
   editorCookie = "";
+const failureTrigger = "qa_media_" + randomUUID().replaceAll("-", "");
+let keptMedia;
 const post = async (path, data, cookie = "", origin = base) =>
   fetch(base + path, {
     method: "POST",
@@ -90,6 +92,40 @@ async function user(role) {
 try {
   adminCookie = await user("ADMIN");
   editorCookie = await user("EDITOR");
+  for (const path of [
+    "/admin",
+    "/admin/content",
+    "/admin/preview/" + randomUUID(),
+  ]) {
+    const anonymous = await fetch(base + path, { redirect: "manual" });
+    assert.equal(anonymous.status, 307, path + " requires sign-in");
+    assert.equal(
+      new URL(anonymous.headers.get("location"), base).pathname,
+      "/admin/login",
+    );
+  }
+  for (const query of [
+    "q=a&q=b",
+    "category=a&category=b",
+    "page=1.1",
+    "page=Infinity",
+    "page=-1",
+    "page=2&page=3",
+  ]) {
+    const page = await fetch(base + "/blog?" + query);
+    assert.equal(page.status, 200, query);
+    const html = load(await page.text());
+    assert.ok(html("h1").text().length > 0, query + " renders a real page");
+    assert.equal(html("html").attr("lang"), "fa");
+  }
+  assert.equal(
+    (
+      await fetch(base + "/api/admin/content?page=1.1", {
+        headers: { Cookie: adminCookie },
+      })
+    ).status,
+    200,
+  );
   assert.equal(
     (
       await post("/api/auth/sign-up/email", {
@@ -221,6 +257,11 @@ try {
   );
   assert.ok($("script[type='application/ld+json']").length >= 1);
   assert.equal(
+    $("a.language-switch").length,
+    0,
+    "no switch to an unavailable translation",
+  );
+  assert.equal(
     (await fetch(base + "/en/blog/" + slug)).status,
     404,
     "untranslated English article must not fall back to Persian",
@@ -280,6 +321,19 @@ try {
     adminCookie,
   );
   assert.equal(response.status, 200);
+  const redirectedSitemap = load(
+    await (await fetch(base + "/sitemap.xml")).text(),
+    { xml: true },
+  );
+  assert.equal(
+    redirectedSitemap("loc")
+      .toArray()
+      .some(
+        (node) => redirectedSitemap(node).text() === base + "/blog/" + slug,
+      ),
+    false,
+    "redirect sources are excluded from sitemap",
+  );
   response = await post(
     "/api/admin/content",
     { ...draft, id: record.id, slug: renamed, status: "ARCHIVED" },
@@ -306,6 +360,89 @@ try {
   ).rows[0];
   contentIds.push(record.id);
   assert.equal((await fetch(base + "/blog/" + scheduled.slug)).status, 404);
+  // Exercise both pages of a real project listing; noIndex controls indexing, not visibility.
+  for (let index = 0; index < 13; index++) {
+    const result = await post(
+      "/api/admin/content",
+      {
+        ...draft,
+        kind: "PROJECT",
+        slug: slug + "-project-" + index,
+        status: "PUBLISHED",
+        noIndex: index === 12,
+        position: index,
+        translations: [
+          { ...draft.translations[0], title: "آزمون پروژه " + index },
+        ],
+      },
+      adminCookie,
+    );
+    assert.equal(result.status, 200, "project fixture");
+    contentIds.push((await result.json()).id);
+  }
+  const projects = load(await (await fetch(base + "/work")).text());
+  assert.ok(
+    projects("a[href='/work?page=2']").length > 0,
+    "projects paginate within work",
+  );
+  const secondProjects = load(
+    await (await fetch(base + "/work?page=2")).text(),
+  );
+  assert.ok(
+    secondProjects("a[href='/work/" + slug + "-project-12']").length > 0,
+    "second page includes noIndex published project",
+  );
+  assert.equal(
+    secondProjects("link[rel='canonical']").attr("href"),
+    base + "/work?page=2",
+  );
+  const projectSitemap = await (await fetch(base + "/sitemap.xml")).text();
+  assert.ok(
+    !projectSitemap.includes(slug + "-project-12"),
+    "noIndex project excluded from sitemap",
+  );
+  const noIndexPage = load(
+    await (await fetch(base + "/work/" + slug + "-project-12")).text(),
+  );
+  assert.match(noIndexPage("meta[name='robots']").attr("content"), /noindex/);
+  const policy = await post(
+    "/api/admin/content",
+    {
+      ...draft,
+      kind: "PAGE",
+      slug: "privacy",
+      status: "PUBLISHED",
+      noIndex: true,
+      translations: [
+        {
+          ...draft.translations[0],
+          title: "حریم خصوصی آزمایشی",
+          seoTitle: "عنوان سئوی آزمایشی",
+          seoDescription: "توضیحات سئوی سیاست حریم خصوصی آزمایشی",
+        },
+      ],
+    },
+    adminCookie,
+  );
+  assert.equal(policy.status, 200);
+  contentIds.push((await policy.json()).id);
+  const privacy = load(await (await fetch(base + "/privacy")).text());
+  assert.match(privacy("title").text(), /عنوان سئوی آزمایشی/);
+  assert.equal(
+    privacy("meta[name='description']").attr("content"),
+    "توضیحات سئوی سیاست حریم خصوصی آزمایشی",
+  );
+  assert.match(privacy("meta[name='robots']").attr("content"), /noindex/);
+  assert.equal(
+    privacy("a[href='/pages']").length,
+    0,
+    "policy breadcrumb has no missing parent",
+  );
+  assert.equal(
+    (await fetch(base + "/en/privacy")).status,
+    404,
+    "unapproved English policy is a real 404",
+  );
   const limitKey = createHmac("sha256", process.env.BETTER_AUTH_SECRET)
     .update("leads:local")
     .digest("hex");
@@ -326,6 +463,16 @@ try {
   assert.match(saved.receipt, /^RY-/);
   response = await post("/api/leads", inquiry);
   assert.equal(response.status, 200);
+  assert.equal((await response.json()).receipt, saved.receipt);
+  response = await post("/api/leads", {
+    ...inquiry,
+    startedAt: Date.now() - 2 * 86400000,
+  });
+  assert.equal(
+    response.status,
+    200,
+    "a delayed retry still returns its original receipt",
+  );
   assert.equal((await response.json()).receipt, saved.receipt);
   assert.equal(
     Number(
@@ -391,6 +538,57 @@ try {
   const media = await fetch(base + "/media/" + uploaded.id);
   assert.equal(media.status, 200);
   assert.equal(media.headers.get("content-type"), "image/webp");
+  if (process.env.PERSIST_MEDIA_SMOKE === "1") {
+    keptMedia = uploaded.id;
+    await mkdir("test-results", { recursive: true });
+    await writeFile(
+      "test-results/media-smoke.json",
+      JSON.stringify({
+        id: uploaded.id,
+        alt: uploaded.alt,
+        sha256: createHash("sha256")
+          .update(Buffer.from(await media.arrayBuffer()))
+          .digest("hex"),
+      }),
+    );
+  }
+  const mediaRoot = resolve(process.env.MEDIA_ROOT || "storage/media");
+  const beforeFiles = (await readdir(mediaRoot)).sort();
+  const beforeMedia = await client.query('SELECT COUNT(*) FROM "Media"');
+  // Reject the audit insert in the dedicated test database to verify full rollback.
+  await client.query(
+    `CREATE FUNCTION ${failureTrigger}() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action = 'media.created' AND NEW."actorId" = TG_ARGV[0] THEN RAISE EXCEPTION 'QA forced audit failure'; END IF; RETURN NEW; END $$`,
+  );
+  await client.query(
+    `CREATE TRIGGER ${failureTrigger} BEFORE INSERT ON "AuditLog" FOR EACH ROW EXECUTE FUNCTION ${failureTrigger}('${userIds[0]}')`,
+  );
+  try {
+    const rejected = await fetch(base + "/api/media", {
+      method: "POST",
+      headers: { Cookie: adminCookie, Origin: base },
+      body: input,
+    });
+    assert.equal(
+      rejected.status,
+      503,
+      "storage failures are not reported as invalid images",
+    );
+    assert.equal(
+      (await client.query('SELECT COUNT(*) FROM "Media"')).rows[0].count,
+      beforeMedia.rows[0].count,
+      "failed audit rolls back the media row",
+    );
+    assert.deepEqual(
+      (await readdir(mediaRoot)).sort(),
+      beforeFiles,
+      "failed transaction removes its uploaded file",
+    );
+  } finally {
+    await client.query(
+      `DROP TRIGGER IF EXISTS ${failureTrigger} ON "AuditLog"`,
+    );
+    await client.query(`DROP FUNCTION IF EXISTS ${failureTrigger}()`);
+  }
   const invalid = new FormData();
   invalid.set(
     "file",
@@ -438,6 +636,8 @@ try {
     "PASS: staff login, disabled signup, server permissions, CSRF, draft/preview/publish/schedule/archive, Persian-only publishing, slug redirects, idempotent inquiries, analytics consent, safe uploads and redirect cycles",
   );
 } finally {
+  await client.query(`DROP TRIGGER IF EXISTS ${failureTrigger} ON "AuditLog"`);
+  await client.query(`DROP FUNCTION IF EXISTS ${failureTrigger}()`);
   await client.query('DELETE FROM "Content" WHERE id=ANY($1::text[])', [
     contentIds,
   ]);
@@ -453,11 +653,12 @@ try {
     ["%http-test-%", "/test-%"],
   );
   await client.query('DELETE FROM "Media" WHERE id=ANY($1::text[])', [
-    mediaIds,
+    mediaIds.filter((id) => id !== keptMedia),
   ]);
   for (const id of mediaIds)
-    await unlink(
-      join(resolve(process.env.MEDIA_ROOT || "storage/media"), id + ".webp"),
-    ).catch(() => {});
+    if (id !== keptMedia)
+      await unlink(
+        join(resolve(process.env.MEDIA_ROOT || "storage/media"), id + ".webp"),
+      ).catch(() => {});
   await client.end();
 }

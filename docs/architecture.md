@@ -92,6 +92,8 @@ server; set `VERIFY_URL` for a different port. `node scripts/verify-platform.mjs
 also tests login/permissions/publishing/forms/uploads; write scenarios require
 the dedicated test database and `RUN_INTEGRATION=1`.
 
-`/api/health` checks PostgreSQL and returns 503 if unavailable. Actual Ubuntu
-execution and backup restoration require their first run on the target server.
+`/api/health` checks PostgreSQL and returns 503 if unavailable. CI also runs the
+non-root production container on Ubuntu, verifies persisted uploads after restart,
+and rehearses database/media backup restoration against deliberately changed test
+fixtures. Production server configuration still needs verification on the target server.
 No Lighthouse score or production uptime is claimed from local checks.

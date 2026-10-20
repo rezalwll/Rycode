@@ -26,17 +26,17 @@ export async function POST(request: Request) {
       return Response.json({
         receipt: "RY-" + randomBytes(6).toString("hex").toUpperCase(),
       });
+    const existing = await database().lead.findUnique({
+      where: { requestKey: input.requestKey },
+      select: { receipt: true },
+    });
+    if (existing) return Response.json(existing);
     if (
       Date.now() - input.startedAt < 500 ||
       Date.now() - input.startedAt > 86400000
     )
       throw new HttpError(422, "Please refresh the form and try again");
     await consumeLimit(await requestKey("leads"), 8, 900);
-    const existing = await database().lead.findUnique({
-      where: { requestKey: input.requestKey },
-      select: { receipt: true },
-    });
-    if (existing) return Response.json(existing);
     const lead = await database().lead.upsert({
       where: { requestKey: input.requestKey },
       update: {},

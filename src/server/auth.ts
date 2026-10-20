@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth/minimal";
 import { prismaAdapter } from "@better-auth/prisma-adapter";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { database } from "./db";
 import { secret, HttpError } from "./security";
 
@@ -55,5 +56,10 @@ export async function requireStaff(adminOnly = false) {
   if (!staff) throw new HttpError(401, "Sign in required");
   if (adminOnly && staff.role !== "ADMIN")
     throw new HttpError(403, "Administrator access required");
+  return staff;
+}
+export async function requireStaffPage() {
+  const staff = await currentStaff();
+  if (!staff) redirect("/admin/login");
   return staff;
 }

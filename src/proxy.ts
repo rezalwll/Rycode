@@ -3,6 +3,7 @@ import { managedRedirect } from "@/server/redirects";
 import { lookupContent } from "@/server/content";
 import legacy from "@/content/legacy-content.json";
 import { services } from "@/content/services";
+import { contentRoute } from "@/lib/content-route";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -29,26 +30,19 @@ export async function proxy(request: NextRequest) {
       new URL(target.destination, request.url),
       target.permanent ? 308 : 307,
     );
-  const contentPath = /^\/(blog|work|services|pages)\/([^/]+)$/.exec(
-    headers.get("x-rycode-path") || "",
-  );
+  const contentPath = contentRoute(headers.get("x-rycode-path") || "");
   if (contentPath) {
-    const kind = {
-      blog: "ARTICLE",
-      work: "PROJECT",
-      services: "SERVICE",
-      pages: "PAGE",
-    }[contentPath[1]] as "ARTICLE" | "PROJECT" | "SERVICE" | "PAGE";
-    const slug = decodeURIComponent(contentPath[2]);
+    const { kind, slug } = contentPath;
     const result = await lookupContent(
       kind,
       slug,
       localized?.[1] === "en" ? "en" : "fa",
     );
     const fallback =
-      kind === "SERVICE"
+      contentPath.policy ||
+      (kind === "SERVICE"
         ? services.some((s) => s.id === slug)
-        : legacy.some((item) => item.kind === kind && item.slug === slug);
+        : legacy.some((item) => item.kind === kind && item.slug === slug));
     if ((result.owned && !result.content) || (!result.owned && !fallback)) {
       const missing = request.nextUrl.clone();
       missing.pathname = localized?.[1] === "en" ? "/en/404" : "/fa/404";

@@ -27,6 +27,40 @@ const article = {
   ],
 };
 describe("Publishing boundaries", () => {
+  it("rejects incomplete English when marked approved for publication", () => {
+    expect(
+      contentSchema.safeParse({
+        ...article,
+        translations: [
+          ...article.translations,
+          {
+            locale: "en",
+            approved: true,
+            title: "English title",
+            summary: "",
+            body: textDocument(""),
+          },
+        ],
+      }).success,
+    ).toBe(false);
+  });
+  it("allows unfinished English to stay unapproved beside published Persian", () => {
+    expect(
+      contentSchema.safeParse({
+        ...article,
+        translations: [
+          ...article.translations,
+          {
+            locale: "en",
+            approved: false,
+            title: "English draft",
+            summary: "",
+            body: textDocument(""),
+          },
+        ],
+      }).success,
+    ).toBe(true);
+  });
   it("publishes approved Persian without requiring English", () =>
     expect(contentSchema.safeParse(article).success).toBe(true));
   it("does not publish an unapproved Persian draft", () =>

@@ -81,6 +81,24 @@ jobs:
           context: .
           target: runner
           push: false
+          load: true
           tags: rycode:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: migration
+          push: false
+          load: true
+          tags: rycode-migration:ci
+          cache-from: type=gha
+      - name: Rehearse container runtime and backup recovery
+        run: bash scripts/verify-container.sh
+      - name: Upload container diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: rycode-container-diagnostics
+          path: test-results/
+          retention-days: 7

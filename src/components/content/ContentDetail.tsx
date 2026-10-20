@@ -22,6 +22,7 @@ export async function ContentDetail({
 }) {
   const fa = locale === "fa";
   const segment = contentSegments[content.kind];
+  const sectionPath = content.kind === "PAGE" ? "/" : "/" + segment;
   const section =
     content.kind === "ARTICLE"
       ? fa
@@ -74,7 +75,7 @@ export async function ContentDetail({
             "@type": "ListItem",
             position: 1,
             name: section,
-            item: absoluteUrl(localizedHref("/" + segment, locale)),
+            item: absoluteUrl(localizedHref(sectionPath, locale)),
           },
           {
             "@type": "ListItem",
@@ -103,7 +104,7 @@ export async function ContentDetail({
       >
         <Link href={localizedHref("/", locale)}>{fa ? "خانه" : "Home"}</Link>
         <span>/</span>
-        <Link href={localizedHref("/" + segment, locale)}>{section}</Link>
+        <Link href={localizedHref(sectionPath, locale)}>{section}</Link>
         <span>/</span>
         <span>{content.title}</span>
       </nav>

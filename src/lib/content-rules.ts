@@ -144,6 +144,19 @@ export const contentSchema = z
     )
       ctx.addIssue({ code: "custom", message: "Duplicate language" });
     if (content.status === "PUBLISHED" || content.status === "SCHEDULED") {
+      for (const [index, translation] of content.translations.entries()) {
+        if (
+          translation.approved &&
+          (!translation.summary ||
+            documentText(translation.body as RichNode).trim().length < 20)
+        )
+          ctx.addIssue({
+            code: "custom",
+            path: ["translations", index],
+            message:
+              "Every approved translation needs a summary and complete body",
+          });
+      }
       if (
         !content.translations.some(
           (t) =>

@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/i18n";
 import type { RichNode } from "@/lib/content-rules";
 import { services, type Service } from "@/content/services";
 import { documentText } from "@/lib/content-rules";
+import { listingPage } from "@/lib/listing-params";
 
 export const contentSegments = {
   ARTICLE: "blog",
@@ -136,7 +137,6 @@ export const listPublishedContent = cache(
     const now = new Date();
     const where: Prisma.ContentWhereInput = {
       kind,
-      noIndex: false,
       OR: [
         { status: "PUBLISHED" },
         { status: "SCHEDULED", scheduledAt: { lte: now } },
@@ -167,7 +167,7 @@ export const listPublishedContent = cache(
       },
       ...(options.category ? { category: options.category.slice(0, 100) } : {}),
     };
-    const page = Math.max(1, Math.min(options.page || 1, 10000));
+    const page = listingPage(options.page);
     const [records, total] = await Promise.all([
       database().content.findMany({
         where,

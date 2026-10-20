@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { currentStaff } from "@/server/auth";
+import { requireStaffPage } from "@/server/auth";
 import { AdminWorkspace } from "@/components/admin/AdminWorkspace";
 export default async function AdminSection({
   params,
@@ -21,11 +21,8 @@ export default async function AdminSection({
     ].includes(section)
   )
     notFound();
-  const staff = await currentStaff();
-  if (
-    staff!.role !== "ADMIN" &&
-    !["content", "media", "faqs"].includes(section)
-  )
+  const staff = await requireStaffPage();
+  if (staff.role !== "ADMIN" && !["content", "media", "faqs"].includes(section))
     redirect("/admin");
-  return <AdminWorkspace section={section} role={staff!.role} />;
+  return <AdminWorkspace section={section} role={staff.role} />;
 }

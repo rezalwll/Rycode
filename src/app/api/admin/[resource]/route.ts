@@ -2,6 +2,7 @@ import { z } from "zod";
 import { database } from "@/server/db";
 import { requireStaff } from "@/server/auth";
 import { contentPath } from "@/server/content";
+import { listingPage } from "@/lib/listing-params";
 import {
   contentSchema,
   documentText,
@@ -59,10 +60,7 @@ export async function GET(request: Request, context: Context) {
     await requireStaff(adminOnly.has(resource));
     const url = new URL(request.url);
     const search = (url.searchParams.get("q") || "").slice(0, 100);
-    const page = Math.max(
-      1,
-      Math.min(Number(url.searchParams.get("page")) || 1, 10000),
-    );
+    const page = listingPage(url.searchParams.get("page"));
     const take = 30,
       skip = (page - 1) * take;
     if (resource === "content") {

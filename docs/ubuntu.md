@@ -7,11 +7,16 @@ certificate, production account or live deployment is configured by this task.
 
 `ci.yml` runs on main/codex pushes and PRs: Node 24.20.0, PostgreSQL 18, clean
 install, migrations, seed, lint/typecheck, unit/integration tests, runtime audit,
-Next build, production standalone HTTP checks, then a Docker runner build.
+Next build and production standalone HTTP checks. The container job builds and
+runs the non-root runner with PostgreSQL in an isolated Compose project. It tests
+migrations, publication/forms/uploads, persistence across restart, and actual
+database/media backup and restore, including intentionally changing a test
+fixture after backup and verifying that the original bytes/metadata return.
+The rehearsal exposes no host ports and removes only its own CI volumes.
 No deployment credentials are needed. Configure `validate` and `container` as
 required branch checks when setting repository protections.
 
-`release-image.yml` is manual and requires a successful `validate` for the same
+`release-image.yml` is manual and requires successful `validate` and `container` checks for the same
 commit. Its `release` environment should have required reviewers before use.
 By default it builds without publishing. Explicit `publish_image=true` publishes
 runner and migration images to GHCR, tagged with the full commit SHA. It never
@@ -71,7 +76,8 @@ Pause form/admin writes or use a maintenance window for a consistent snapshot:
 database and media are captured sequentially. Dumps contain personal lead data
 and credential hashes.
 
-Rehearse on an isolated database/volume pair before launch. Restore only when
+CI rehearses recovery on temporary Ubuntu containers. Also rehearse on an
+isolated database/volume pair on the actual target server before launch. Restore only when
 intentionally replacing data:
 `CONFIRM_RESTORE=REPLACE_RYCODE_DATA bash scripts/restore.sh <backup-directory>`.
 It checks hashes, stops app, restores database/media, then starts app. A failed

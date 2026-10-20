@@ -180,6 +180,7 @@ function ContentEditor({
         key={revision}
         onSubmit={async (event) => {
           event.preventDefault();
+          if (busy) return;
           setBusy(true);
           setMessage("");
           const f = new FormData(event.currentTarget);
@@ -199,7 +200,7 @@ function ContentEditor({
                 imageAlt: String(f.get(locale + "ImageAlt") || ""),
               });
             }
-            await api("content", {
+            const saved = await api("content", {
               ...(record.id ? { id: record.id } : {}),
               kind: f.get("kind"),
               slug: f.get("slug"),
@@ -224,6 +225,9 @@ function ContentEditor({
                 : {}),
               translations,
             });
+            setRecord((current) => ({ ...current, id: saved.id }));
+            const updated = await api("content?id=" + saved.id);
+            setRecord(updated);
             setMessage("محتوا ذخیره شد");
             onSaved();
           } catch (e) {

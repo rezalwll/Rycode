@@ -5,15 +5,21 @@ import { BlogBlogSection } from "@/components/pages/BlogBlogSection";
 import styles from "./Content.module.css";
 import type { ContentKind } from "@/generated/prisma/client";
 import Link from "next/link";
+import {
+  listingParams,
+  listingHref,
+  type ListingSearchParams,
+} from "@/lib/listing-params";
 export async function PublishedListing({
   kind,
-  searchParams = {},
+  searchParams: rawParams = {},
 }: {
-  kind: ContentKind;
-  searchParams?: { page?: string; q?: string; category?: string };
+  kind: Extract<ContentKind, "ARTICLE" | "PROJECT">;
+  searchParams?: ListingSearchParams;
 }) {
   const { locale, href } = await getTranslations();
-  const page = Math.max(1, Number(searchParams.page) || 1);
+  const searchParams = listingParams(rawParams);
+  const { page } = searchParams;
   const result = await listPublishedContent(kind, locale, {
     page,
     search: searchParams.q,
@@ -54,7 +60,7 @@ export async function PublishedListing({
     kind === "PROJECT"
       ? result.items.filter((item) => !item.legacy)
       : result.items;
-  if (kind === "PROJECT" && items.length === 0) return null;
+  if (kind === "PROJECT" && result.total === 0 && page === 1) return null;
   return (
     <section
       className={styles.page}
@@ -95,14 +101,15 @@ export async function PublishedListing({
             : "No matching content found"}
         </p>
       )}
-      {result.total > 12 && (
-        <nav className={styles.actions} aria-label="Pagination">
+      {(result.total > 12 || page > 1) && (
+        <nav
+          className={styles.actions}
+          aria-label={locale === "fa" ? "صفحه‌بندی" : "Pagination"}
+        >
           {page > 1 && (
             <Link
               className={styles.button}
-              href={href(
-                `/blog?page=${page - 1}&q=${encodeURIComponent(searchParams.q || "")}&category=${encodeURIComponent(searchParams.category || "")}`,
-              )}
+              href={href(listingHref(kind, page - 1, searchParams))}
             >
               {locale === "fa" ? "قبلی" : "Previous"}
             </Link>
@@ -111,9 +118,7 @@ export async function PublishedListing({
           {page * 12 < result.total && (
             <Link
               className={styles.button}
-              href={href(
-                `/blog?page=${page + 1}&q=${encodeURIComponent(searchParams.q || "")}&category=${encodeURIComponent(searchParams.category || "")}`,
-              )}
+              href={href(listingHref(kind, page + 1, searchParams))}
             >
               {locale === "fa" ? "بعدی" : "Next"}
             </Link>

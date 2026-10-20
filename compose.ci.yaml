@@ -1,0 +1,53 @@
+x-test-environment: &test-environment
+  DATABASE_URL: postgresql://rycode:ci-only-database-password@db:5432/rycode_ci
+  SITE_URL: http://app:3000
+  NEXT_PUBLIC_SITE_URL: http://app:3000
+  BETTER_AUTH_SECRET: ci-only-not-a-production-secret-rycode-container-2026
+  INDEXABLE: "false"
+  TRUST_PROXY: "false"
+  MEDIA_ROOT: /app/storage/media
+  NEXT_TELEMETRY_DISABLED: "1"
+
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: rycode_ci
+      POSTGRES_USER: rycode
+      POSTGRES_PASSWORD: ci-only-database-password
+    volumes: ["database:/var/lib/postgresql"]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U rycode -d rycode_ci"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  migrate:
+    image: rycode-migration:ci
+    environment: *test-environment
+    command: [sh, -c, "npm run db:migrate && npm run db:seed"]
+    depends_on:
+      db:
+        condition: service_healthy
+  app:
+    image: rycode:ci
+    environment: *test-environment
+    volumes: ["media:/app/storage/media"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+  checks:
+    image: rycode-migration:ci
+    environment:
+      <<: *test-environment
+      VERIFY_URL: http://app:3000
+      RUN_INTEGRATION: "1"
+      PERSIST_MEDIA_SMOKE: "1"
+    volumes: ["media:/app/storage/media", "results:/app/test-results"]
+    profiles: [checks]
+    command: [node, scripts/verify-platform.mjs]
+volumes:
+  database: {}
+  media: {}
+  results: {}

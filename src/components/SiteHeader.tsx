@@ -10,8 +10,18 @@ import {
   MenuPanel,
 } from "@/components/Navigation";
 import { referenceStyles } from "@/styles/reference-styles";
+import { headers } from "next/headers";
+import { contentRoute } from "@/lib/content-route";
+import { lookupContent } from "@/server/content";
 export async function SiteHeader() {
   const { href, locale } = await getTranslations();
+  const route = contentRoute((await headers()).get("x-rycode-path") || "/");
+  const managed = route
+    ? await lookupContent(route.kind, route.slug, locale)
+    : null;
+  const switchAvailable =
+    !managed?.owned ||
+    Boolean(managed.content?.locales.includes(locale === "fa" ? "en" : "fa"));
   return (
     <header
       className="framer-ro7694"
@@ -36,7 +46,7 @@ export async function SiteHeader() {
               </Link>
               <SiteNavigationLinks locale={locale} variant="desktop" />
               <div className="framer-uk7nae" data-framer-name="Button Block">
-                <LanguageSwitch />
+                <LanguageSwitch available={switchAvailable} />
                 <div className="framer-196w2zi-container">
                   <Link
                     className="framer-obWCA framer-9qjuV framer-Bq5uF framer-18sfddm framer-v-18sfddm framer-1fsrsxu"
@@ -109,7 +119,7 @@ export async function SiteHeader() {
                 <BrandLogo />
               </Link>
               <div className="framer-uk7nae" data-framer-name="Button Block">
-                <LanguageSwitch />
+                <LanguageSwitch available={switchAvailable} />
                 <div className="framer-1xrfdkn-container">
                   <MenuToggle
                     className="framer-JjGLa framer-tge9hy framer-v-tge9hy"

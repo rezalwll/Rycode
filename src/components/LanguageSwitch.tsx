@@ -4,10 +4,11 @@ import { usePathname } from "next/navigation";
 import { localizedHref } from "@/lib/i18n";
 import { useLocale } from "./LocaleProvider";
 
-export function LanguageSwitch() {
+export function LanguageSwitch({ available = true }: { available?: boolean }) {
   const pathname = usePathname();
   const { locale } = useLocale();
   const next = locale === "en" ? "fa" : "en";
+  if (!available) return null;
   return (
     <a
       className="language-switch"
