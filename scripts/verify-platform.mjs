@@ -268,6 +268,26 @@ try {
     "no imaginary English translation",
   );
   assert.ok($("script[type='application/ld+json']").length >= 1);
+  const managedBlog = load(await (await fetch(base + "/blog")).text());
+  assert.equal(
+    managedBlog("[data-framer-name='Blog Section']").length,
+    1,
+    "CMS publication retains the reference blog layout",
+  );
+  assert.equal(
+    managedBlog("[data-blog-card][data-article-id='" + record.id + "']").length,
+    1,
+    "CMS article uses the original card template",
+  );
+  assert.equal(
+    managedBlog("h1").length,
+    1,
+    "no replacement generic hero heading",
+  );
+  assert.ok(
+    managedBlog("[data-blog-images]").length > 0,
+    "reference slideshow survives editorial changes",
+  );
   assert.equal(
     $("a.language-switch").length,
     0,
@@ -363,6 +383,13 @@ try {
     404,
     "archive withdrawal",
   );
+  const withdrawnBlog = load(await (await fetch(base + "/blog")).text());
+  assert.equal(
+    withdrawnBlog("[data-blog-card][data-article-id='" + record.id + "']")
+      .length,
+    0,
+    "withdrawn articles leave the listing",
+  );
   const scheduled = {
     ...draft,
     slug: slug + "-scheduled",
@@ -378,6 +405,47 @@ try {
   ).rows[0];
   contentIds.push(record.id);
   assert.equal((await fetch(base + "/blog/" + scheduled.slug)).status, 404);
+  const blogCategory = "qa-blog-" + slug;
+  let lastBlogId;
+  for (let index = 0; index < 13; index++) {
+    const fixture = await post(
+      "/api/admin/content",
+      {
+        ...draft,
+        slug: slug + "-blog-" + index,
+        status: "PUBLISHED",
+        category: blogCategory,
+        position: index,
+      },
+      adminCookie,
+    );
+    assert.equal(fixture.status, 200);
+    const data = await fixture.json();
+    contentIds.push(data.id);
+    lastBlogId = data.id;
+  }
+  const filteredBlog = load(
+    await (await fetch(base + "/blog?category=" + blogCategory)).text(),
+  );
+  assert.equal(
+    filteredBlog("[data-blog-card]").length,
+    12,
+    "filtered articles keep reference cards",
+  );
+  assert.ok(filteredBlog("nav a[href*='page=2']").length > 0);
+  const secondBlog = load(
+    await (await fetch(base + "/blog?page=2&category=" + blogCategory)).text(),
+  );
+  assert.equal(secondBlog("[data-blog-card]").length, 1);
+  assert.equal(
+    secondBlog("[data-blog-card]").attr("data-article-id"),
+    lastBlogId,
+  );
+  assert.equal(
+    secondBlog("[data-framer-name='Blog Section']").length,
+    1,
+    "pagination retains reference layout",
+  );
   // Exercise both pages of a real project listing; noIndex controls indexing, not visibility.
   for (let index = 0; index < 13; index++) {
     const result = await post(

@@ -1,14 +1,18 @@
+import { articleImageSources } from "@/lib/article-images";
+import type { PublicContent } from "@/server/content";
+import { articleDate } from "@/lib/article-date";
 import { BlogHero } from "@/components/BlogHero";
 import { getTranslations } from "@/lib/i18n-server";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-export async function BlogBlock3() {
-  const { t, href } = await getTranslations();
+export async function BlogBlock3({ articles }: { articles: PublicContent[] }) {
+  const { t, href, locale } = await getTranslations();
   return (
     <div className="ssr-variant">
       <div className="framer-1q914f4-container hidden-l5lhc hidden-1iwgygr">
         <BlogHero
+          itemCount={articles.length}
           className="framer-sPdYw framer-A8dYT framer-1n22gti framer-v-1n22gti w-full!"
           data-framer-name="Desktop"
           data-highlight="true"
@@ -25,14 +29,13 @@ export async function BlogBlock3() {
               >
                 <img
                   decoding="async"
-                  width="1500"
-                  height="1986"
-                  sizes="(min-width: 1200px) max(max(100vw, 1px), max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(max(100vw, 1px), max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(max(100vw, 1px), max(max(100vw - 40px, 1px), 1px))"
-                  srcSet="/assets/f8530c1da19d5f0e.png 773w, /assets/46fbadd99d68ae26.png 1500w"
-                  src="/assets/46fbadd99d68ae26.png"
-                  alt={t("Image")}
+                  src={articles[0]?.image || "/brand/og-card.png"}
+                  srcSet={articleImageSources(articles[0]?.image)}
+                  sizes="100vw"
+                  alt=""
                   className="w-full! h-full!"
                   style={referenceStyles.s258149b79d}
+                  fetchPriority="high"
                 />
               </div>
             </div>
@@ -43,14 +46,13 @@ export async function BlogBlock3() {
               >
                 <img
                   decoding="async"
-                  width="1500"
-                  height="1991"
-                  sizes="(min-width: 1200px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(100vw, max(max(100vw - 40px, 1px), 1px))"
-                  srcSet="/assets/0295f0e470a65f2e.png 771w, /assets/49673833e2e44520.png 1500w"
-                  src="/assets/49673833e2e44520.png"
-                  alt={t("Image")}
+                  src={articles[1]?.image || "/brand/og-card.png"}
+                  srcSet={articleImageSources(articles[1]?.image)}
+                  sizes="100vw"
+                  alt=""
                   className="w-full! h-full!"
                   style={referenceStyles.s258149b79d}
+                  fetchPriority="auto"
                 />
               </div>
             </div>
@@ -61,14 +63,13 @@ export async function BlogBlock3() {
               >
                 <img
                   decoding="async"
-                  width="1500"
-                  height="2676"
-                  sizes="(min-width: 1200px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px), 1px), calc(max(max((max(100vw - 60px, 1px) - 32px) / 3, 50px), 1px) * 0.7)), (min-width: 768px) and (max-width: 1199.98px) max(100vw, max(max(max((max(100vw - 60px, 1px) - 16px) / 2, 50px), 1px), 1px)), (max-width: 767.98px) max(100vw, max(max(100vw - 40px, 1px), 1px))"
-                  srcSet="/assets/9687ec6232582fba.png 573w, /assets/06627ec678df7c8c.png 1147w, /assets/61b2b6dd4ec05747.png 1500w"
-                  src="/assets/61b2b6dd4ec05747.png"
-                  alt={t("Image")}
+                  src={articles[2]?.image || "/brand/og-card.png"}
+                  srcSet={articleImageSources(articles[2]?.image)}
+                  sizes="100vw"
+                  alt=""
                   className="w-full! h-full!"
                   style={referenceStyles.s258149b79d}
+                  fetchPriority="auto"
                 />
               </div>
             </div>
@@ -108,182 +109,178 @@ export async function BlogBlock3() {
                 as="div"
                 from="translateY(120px)"
               >
-                <div className="framer-boit9">
-                  <Link
-                    className="framer-1a04bi5 framer-1o7ia1z"
-                    href={href(
-                      "/blog/why-great-design-creates-better-business-results",
-                    )}
-                  >
-                    <div className="framer-11k38rn-container">
-                      <div
-                        className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-19a506g w-full!"
-                        data-framer-name="Variant 1"
-                      >
+                {articles[0] && (
+                  <div className="framer-boit9">
+                    <Link
+                      className="framer-1a04bi5 framer-1o7ia1z"
+                      href={href("/blog/" + articles[0].slug)}
+                    >
+                      <div className="framer-11k38rn-container">
                         <div
-                          className="framer-qawdxa"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
+                          className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-19a506g w-full!"
+                          data-framer-name="Variant 1"
                         >
-                          <p
-                            className="framer-text framer-styles-preset-rx12qp"
-                            data-styles-preset="EzakxyTlE"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                          <div
+                            className="framer-qawdxa"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t(
-                              "Why Great Design Creates Better Business Results",
-                            )}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-16c1a6a"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
-                        >
-                          <p
-                            className="framer-text framer-styles-preset-woy26o"
-                            data-styles-preset="QSDP86qs3"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articles[0].title}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-16c1a6a"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t("OCT 12, 2026")}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-1j2enta"
-                          data-framer-name="Line"
-                          style={referenceStyles.s79d81f830d}
-                        >
-                          <svg
-                            className="framer-lllko framer-fn69f1"
-                            role="presentation"
-                            viewBox="0 0 352 1"
+                            <p
+                              className="framer-text framer-styles-preset-woy26o"
+                              data-styles-preset="QSDP86qs3"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articleDate(articles[0].publishedAt, locale)}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-1j2enta"
+                            data-framer-name="Line"
+                            style={referenceStyles.s79d81f830d}
                           >
-                            <path
-                              d="M 0 0.5 L 352 0"
-                              fill="transparent"
-                              height="1px"
-                              id="s2XG_rfo2"
-                              stroke="var(--token-b02c606e-9b2a-4d9e-8320-ea5ab15fdd98, rgb(255, 255, 255))"
-                              strokeDasharray="352.0003662109375 352.0003662109375"
-                              strokeLinecap="butt"
-                              strokeLinejoin="miter"
-                              strokeMiterlimit="4"
-                              strokeWidth="2"
-                              width="352px"
-                              strokeDashoffset="351.6483658447266"
-                            ></path>
-                          </svg>
+                            <svg
+                              className="framer-lllko framer-fn69f1"
+                              role="presentation"
+                              viewBox="0 0 352 1"
+                            >
+                              <path
+                                d="M 0 0.5 L 352 0"
+                                fill="transparent"
+                                height="1px"
+                                id="s2XG_rfo2"
+                                stroke="var(--token-b02c606e-9b2a-4d9e-8320-ea5ab15fdd98, rgb(255, 255, 255))"
+                                strokeDasharray="352.0003662109375 352.0003662109375"
+                                strokeLinecap="butt"
+                                strokeLinejoin="miter"
+                                strokeMiterlimit="4"
+                                strokeWidth="2"
+                                width="352px"
+                                strokeDashoffset="351.6483658447266"
+                              ></path>
+                            </svg>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-                <div className="framer-omn5qh">
-                  <Link
-                    className="framer-1mslo35 framer-1o7ia1z"
-                    href={href(
-                      "/blog/the-future-of-no-code-product-development",
-                    )}
-                  >
-                    <div className="framer-19fhlkn-container">
-                      <div
-                        className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-nbl93y w-full!"
-                        data-framer-name="Variant 2"
-                      >
+                    </Link>
+                  </div>
+                )}
+                {articles[1] && (
+                  <div className="framer-omn5qh">
+                    <Link
+                      className="framer-1mslo35 framer-1o7ia1z"
+                      href={href("/blog/" + articles[1].slug)}
+                    >
+                      <div className="framer-19fhlkn-container">
                         <div
-                          className="framer-qawdxa"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
+                          className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-nbl93y w-full!"
+                          data-framer-name="Variant 2"
                         >
-                          <p
-                            className="framer-text framer-styles-preset-rx12qp"
-                            data-styles-preset="EzakxyTlE"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                          <div
+                            className="framer-qawdxa"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t("The Future of No-Code Product Development")}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-16c1a6a"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
-                        >
-                          <p
-                            className="framer-text framer-styles-preset-woy26o"
-                            data-styles-preset="QSDP86qs3"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articles[1].title}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-16c1a6a"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t("OCT 10, 2026")}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-1j2enta"
-                          data-framer-name="Line"
-                          style={referenceStyles.s79d81f830d}
-                        >
-                          <div className="framer-HFYKW framer-fn69f1"></div>
+                            <p
+                              className="framer-text framer-styles-preset-woy26o"
+                              data-styles-preset="QSDP86qs3"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articleDate(articles[1].publishedAt, locale)}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-1j2enta"
+                            data-framer-name="Line"
+                            style={referenceStyles.s79d81f830d}
+                          >
+                            <div className="framer-HFYKW framer-fn69f1"></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-                <div className="framer-bjvmi9">
-                  <Link
-                    className="framer-kbic21 framer-1o7ia1z"
-                    href={href(
-                      "/blog/creating-websites-that-convert-more-visitors-effectively",
-                    )}
-                  >
-                    <div className="framer-artimm-container">
-                      <div
-                        className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-nbl93y w-full!"
-                        data-framer-name="Variant 2"
-                      >
+                    </Link>
+                  </div>
+                )}
+                {articles[2] && (
+                  <div className="framer-bjvmi9">
+                    <Link
+                      className="framer-kbic21 framer-1o7ia1z"
+                      href={href("/blog/" + articles[2].slug)}
+                    >
+                      <div className="framer-artimm-container">
                         <div
-                          className="framer-qawdxa"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
+                          className="framer-wqubC framer-P2lQE framer-YUW4K framer-19a506g framer-v-nbl93y w-full!"
+                          data-framer-name="Variant 2"
                         >
-                          <p
-                            className="framer-text framer-styles-preset-rx12qp"
-                            data-styles-preset="EzakxyTlE"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                          <div
+                            className="framer-qawdxa"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t(
-                              "Creating Websites That Convert More Visitors Effectively",
-                            )}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-16c1a6a"
-                          data-framer-component-type="RichTextContainer"
-                          style={referenceStyles.s143c03551f}
-                        >
-                          <p
-                            className="framer-text framer-styles-preset-woy26o"
-                            data-styles-preset="QSDP86qs3"
-                            dir="auto"
-                            style={referenceStyles.se8682f4ed5}
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articles[2].title}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-16c1a6a"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.s143c03551f}
                           >
-                            {t("OCT 08, 2026")}
-                          </p>
-                        </div>
-                        <div
-                          className="framer-1j2enta"
-                          data-framer-name="Line"
-                          style={referenceStyles.s79d81f830d}
-                        >
-                          <div className="framer-HFYKW framer-fn69f1"></div>
+                            <p
+                              className="framer-text framer-styles-preset-woy26o"
+                              data-styles-preset="QSDP86qs3"
+                              dir="auto"
+                              style={referenceStyles.se8682f4ed5}
+                            >
+                              {articleDate(articles[2].publishedAt, locale)}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-1j2enta"
+                            data-framer-name="Line"
+                            style={referenceStyles.s79d81f830d}
+                          >
+                            <div className="framer-HFYKW framer-fn69f1"></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
+                    </Link>
+                  </div>
+                )}
               </Reveal>
             </div>
           </div>

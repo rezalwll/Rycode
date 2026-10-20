@@ -7,8 +7,9 @@ import styles from "./BlogHero.module.css";
 export function BlogHero({
   className,
   children,
+  itemCount = 3,
   ...props
-}: HTMLAttributes<HTMLElement>) {
+}: HTMLAttributes<HTMLElement> & { itemCount?: number }) {
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -28,22 +29,23 @@ export function BlogHero({
     if (
       !visible ||
       focused ||
+      itemCount < 2 ||
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return;
     const timer = setInterval(() => {
-      if (!document.hidden) setActive((value) => (value + 1) % 3);
+      if (!document.hidden) setActive((value) => (value + 1) % itemCount);
     }, 4000);
     return () => clearInterval(timer);
-  }, [visible, focused]);
+  }, [visible, focused, itemCount]);
 
   return (
     <section
       {...props}
       ref={ref}
       className={`${className} ${styles.hero}`}
-      data-blog-active={active}
-      data-blog-running={visible && !focused}
+      data-blog-active={Math.min(active, Math.max(itemCount - 1, 0))}
+      data-blog-running={visible && !focused && itemCount > 1}
       onFocusCapture={(event) => {
         const link = (event.target as Element).closest("a");
         const links = [...event.currentTarget.querySelectorAll("a")];

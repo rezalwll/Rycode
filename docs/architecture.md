@@ -50,8 +50,14 @@ featured image. Private previews require a staff session and use noindex.
 The seed preserves existing data and adds seven service groups and six articles.
 It also adds four Persian specialty services and their editable FAQ sets; see
 [specialty page notes](service-specialties.md) for paths and editorial behavior.
-Existing article layouts remain until their first CMS save. Seeded services have
-a stable source key so renaming their slug updates the catalog and adds an
+Existing article detail layouts remain until their first CMS save.
+The blog listing and featured slideshow always
+use the original responsive templates, including newly published and edited
+articles and filtered/paginated results. Search opens within the light article
+section rather than introducing a separate full-height section. Original dates
+are retained only for untouched seed articles; editorial publication dates remain owned by the CMS.
+
+Seeded services have a stable source key so renaming their slug updates the catalog and adds an
 internal redirect. Existing sample projects, testimonials and statistics remain
 untouched. CMS-created project records can supplement the supplied work section.
 

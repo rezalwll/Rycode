@@ -1,5 +1,6 @@
 import { serviceDocument } from "../src/content/service-document";
 import { seedSpecialtyServices } from "./seed-specialty-services";
+import { legacyArticleDates } from "../src/content/legacy-article-dates";
 import nextEnv from "@next/env";
 import { database } from "../src/server/db";
 import { services } from "../src/content/services";
@@ -68,12 +69,25 @@ for (const service of services) {
   });
 }
 for (const item of legacy.filter((entry) => entry.kind === "ARTICLE")) {
-  if (
-    await db.content.findUnique({
-      where: { kind_slug: { kind: "ARTICLE", slug: item.slug } },
-    })
-  )
+  const existingArticle = await db.content.findUnique({
+    where: { kind_slug: { kind: "ARTICLE", slug: item.slug } },
+    include: { _count: { select: { revisions: true } } },
+  });
+  if (existingArticle) {
+    const originalDate = legacyArticleDates[item.slug];
+    if (
+      originalDate &&
+      existingArticle.legacy &&
+      existingArticle._count.revisions === 0 &&
+      existingArticle.publishedAt?.toISOString() !==
+        new Date(originalDate).toISOString()
+    )
+      await db.content.update({
+        where: { id: existingArticle.id },
+        data: { publishedAt: new Date(originalDate) },
+      });
     continue;
+  }
   await db.content.create({
     data: {
       kind: "ARTICLE",
@@ -81,7 +95,7 @@ for (const item of legacy.filter((entry) => entry.kind === "ARTICLE")) {
       status: "PUBLISHED",
       legacy: true,
       featuredImage: item.image,
-      publishedAt: new Date(),
+      publishedAt: new Date(legacyArticleDates[item.slug] || Date.now()),
       translations: {
         create: (["fa", "en"] as const).map((locale) => ({
           locale,
