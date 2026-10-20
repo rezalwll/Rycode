@@ -80,9 +80,12 @@ in the database; no email or SMS service is configured. Rate keys use HMACs.
 Forwarded IPs are only trusted when `TRUST_PROXY=true` behind a verified proxy.
 With the current false setting, limits are shared conservatively across clients.
 
-Analytics requires browser opt-in and records event/path, HMAC session, optional
-referrer hostname and campaign token. It excludes inquiry contents and raw IPs.
-The dashboard separates these approximate consented events from actual saved
+Analytics increments one PostgreSQL counter per UTC day, event and public page.
+There are no individual visit records, visitor/session identifiers, analytics
+cookies, referrers, campaign parameters or inquiry details. Browser requests omit
+credentials and referrers; no consent banner or status badge is rendered. The
+migration preserves old event totals and discards their individual records and
+identifiers. The dashboard separates these approximate totals from actual saved
 Lead totals. Client events may be blocked or spoofed and are not unique people.
 
 `npm run maintenance` removes expired sessions/verifications/rate buckets and

@@ -56,6 +56,7 @@ const userIds = [],
   contentIds = [],
   mediaIds = [];
 const slug = "http-test-" + randomUUID();
+const analyticsPath = "/pages/" + slug + "-analytics";
 let adminCookie = "",
   editorCookie = "";
 const failureTrigger = "qa_media_" + randomUUID().replaceAll("-", "");
@@ -571,28 +572,104 @@ try {
     ),
     1,
   );
+  const analyticsInput = { name: "page_view", path: analyticsPath };
+  for (const extra of [
+    { session: randomUUID() },
+    { referrerHost: "example.com" },
+    { campaign: "private-token" },
+    { path: analyticsPath + "?email=qa@example.com" },
+  ])
+    assert.equal(
+      (await post("/api/analytics", { ...analyticsInput, ...extra })).status,
+      400,
+      "analytics rejects identifiers, referral data and URL parameters",
+    );
   assert.equal(
-    (
-      await post("/api/analytics", {
-        name: "page_view",
-        path: "/contact",
-        session: randomUUID(),
-        consent: false,
-      })
-    ).status,
-    400,
-    "consent required",
+    (await post("/api/analytics", analyticsInput, "", "https://other.invalid"))
+      .status,
+    403,
+    "analytics rejects cross-origin requests",
   );
+  const counters = await Promise.all(
+    Array.from({ length: 24 }, () => post("/api/analytics", analyticsInput)),
+  );
+  for (const counter of counters) {
+    assert.equal(
+      counter.status,
+      204,
+      "anonymous counters need no consent or ID",
+    );
+    assert.equal(
+      counter.headers.get("set-cookie"),
+      null,
+      "no analytics cookie",
+    );
+  }
   assert.equal(
     (
       await post("/api/analytics", {
-        name: "page_view",
-        path: "/contact",
-        session: randomUUID(),
-        consent: true,
+        ...analyticsInput,
+        path: "/fa" + analyticsPath + "/",
       })
     ).status,
     204,
+    "canonical locale and trailing slash share a counter",
+  );
+  const aggregate = await client.query(
+    'SELECT "day", "count" FROM "AnalyticsDaily" WHERE "name"=$1 AND "path"=$2',
+    [analyticsInput.name, analyticsPath],
+  );
+  assert.equal(
+    aggregate.rows.length,
+    1,
+    "one daily aggregate, not per-visit records",
+  );
+  assert.equal(
+    aggregate.rows[0].count,
+    25,
+    "concurrent increments lose no visits",
+  );
+  assert.equal(
+    (
+      await client.query(
+        "SELECT to_regclass('public.\"AnalyticsEvent\"') AS old",
+      )
+    ).rows[0].old,
+    null,
+    "individual event storage has been removed",
+  );
+  for (const privatePath of [
+    "/admin",
+    "/en/admin",
+    "/api/health",
+    "/preview/test",
+  ])
+    assert.equal(
+      (await post("/api/analytics", { ...analyticsInput, path: privatePath }))
+        .status,
+      204,
+    );
+  assert.equal(
+    Number(
+      (
+        await client.query(
+          'SELECT COUNT(*) FROM "AnalyticsDaily" WHERE "path"=ANY($1::text[])',
+          [["/admin", "/en/admin", "/api/health", "/preview/test"]],
+        )
+      ).rows[0].count,
+    ),
+    0,
+    "private paths are not counted",
+  );
+  const report = await fetch(base + "/api/admin/analytics", {
+    headers: { Cookie: adminCookie },
+  });
+  assert.equal(report.status, 200);
+  assert.equal(
+    (await report.json()).paths.find((row) => row.path === analyticsPath)
+      ?._count,
+    25,
+    "admin reports sums of increments, not numbers of daily rows",
   );
   const input = new FormData();
   input.set(
@@ -719,9 +796,12 @@ try {
     422,
   );
   console.log(
-    "PASS: staff login, disabled signup, server permissions, CSRF, draft/preview/publish/schedule/archive, Persian-only publishing, slug redirects, idempotent inquiries, analytics consent, safe uploads and redirect cycles",
+    "PASS: staff login, disabled signup, server permissions, CSRF, draft/preview/publish/schedule/archive, Persian-only publishing, slug redirects, idempotent inquiries, anonymous aggregate counters, safe uploads and redirect cycles",
   );
 } finally {
+  await client.query('DELETE FROM "AnalyticsDaily" WHERE "path"=$1', [
+    analyticsPath,
+  ]);
   await client.query('DELETE FROM "Faq" WHERE id=$1', [renamedFaqId]);
   await client.query(`DROP TRIGGER IF EXISTS ${failureTrigger} ON "AuditLog"`);
   await client.query(`DROP FUNCTION IF EXISTS ${failureTrigger}()`);

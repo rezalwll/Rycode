@@ -554,7 +554,7 @@ export function AdminWorkspace({
           <div className={styles.metrics}>
             {role === "ADMIN" ? (
               Object.entries({
-                page_view: "بازدید با رضایت کاربر",
+                page_view: "بازدید صفحه‌ها",
                 contact_click: "کلیک تماس",
                 lead_saved: "ارسال موفق فرم",
               }).map(([name, label]) => (
@@ -596,7 +596,7 @@ export function AdminWorkspace({
                 ))}
               </div>
               <p className={styles.muted}>
-                آمار بازدید فقط شامل کاربران موافق ثبت آمار است؛ تعداد
+                آمار بازدید، مجموع روزانهٔ رویدادهاست و تعداد افراد یکتا نیست؛
                 درخواست‌ها مستقیماً از فرم‌های ذخیره‌شده خوانده می‌شود.
               </p>
             </div>

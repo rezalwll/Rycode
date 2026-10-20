@@ -42,8 +42,8 @@ export async function PolicyPage({ kind }: { kind: "privacy" | "terms" }) {
               <h2>{fa ? "آمار بازدید" : "Visit analytics"}</h2>
               <p>
                 {fa
-                  ? "ثبت آمار بازدید و کلیک تنها با انتخاب موافقت انجام می‌شود. متن پیام، شمارهٔ تماس و ایمیل فرم وارد آمار بازدید نمی‌شوند. می‌توانی انتخابت را از دکمهٔ آمار ناشناس پایین صفحه تغییر بدهی."
-                  : "Visit and click statistics are collected only after you opt in. Inquiry messages, phone numbers and email addresses are not included in analytics. You can change your choice using the analytics button."}
+                  ? "تعداد بازدید صفحه‌ها و کلیک‌ها به‌صورت تجمیعی ثبت می‌شود. برای این آمار، کوکی یا شناسهٔ بازدیدکننده ذخیره نمی‌شود و اطلاعات فرم، نشانی ارجاع‌دهنده و پارامترهای پیوند در آن وارد نمی‌شوند."
+                  : "Page views and clicks are counted in daily aggregates without analytics cookies or visitor identifiers. Form details, referrers and URL parameters are not included."}
               </p>
               <h2>{fa ? "پیگیری اطلاعات" : "Your information"}</h2>
               <p>

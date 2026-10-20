@@ -10,8 +10,8 @@ const results = await db.$transaction([
   db.authRateLimit.deleteMany({
     where: { lastRequest: { lt: BigInt(Date.now() - 86400000) } },
   }),
-  db.analyticsEvent.deleteMany({
-    where: { createdAt: { lt: new Date(Date.now() - 90 * 86400000) } },
+  db.analyticsDaily.deleteMany({
+    where: { day: { lt: new Date(Date.now() - 90 * 86400000) } },
   }),
 ]);
 console.log(

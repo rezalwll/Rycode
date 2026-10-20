@@ -204,15 +204,12 @@ model RateLimit {
   resetAt DateTime
   @@index([resetAt])
 }
-model AnalyticsEvent {
-  id String @id @default(uuid())
+model AnalyticsDaily {
+  day DateTime @db.Date
   name String
   path String
-  referrerHost String?
-  campaign String?
-  sessionHash String
-  createdAt DateTime @default(now())
-  @@index([createdAt, name])
+  count Int @default(0)
+  @@id([day, name, path])
 }
 model AuthRateLimit {
   id String @id @default(uuid())

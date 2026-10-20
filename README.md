@@ -4,7 +4,7 @@ Creative studio website built with Next.js 16 App Router, React 19, strict
 TypeScript and Tailwind CSS 4. Includes 17 public routes: home, work, six project
 details, blog, six articles, contact and a custom 404 page. The staff CMS now
 adds PostgreSQL 18, Prisma 7, Better Auth, editable services/articles/projects/
-pages, media, leads, FAQs, settings, redirects and consent-based analytics.
+pages, media, leads, FAQs, settings, redirects and anonymous aggregate analytics.
 
 See [local setup and architecture](docs/architecture.md) and
 [Ubuntu / CI operations](docs/ubuntu.md). No UI from the earlier RYCODE project

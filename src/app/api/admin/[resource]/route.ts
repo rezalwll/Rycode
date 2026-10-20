@@ -208,16 +208,16 @@ export async function GET(request: Request, context: Context) {
     if (resource === "analytics") {
       const since = new Date(Date.now() - 30 * 86400000);
       const [events, paths, leads] = await Promise.all([
-        database().analyticsEvent.groupBy({
+        database().analyticsDaily.groupBy({
           by: ["name"],
-          where: { createdAt: { gte: since } },
-          _count: true,
+          where: { day: { gte: since } },
+          _sum: { count: true },
         }),
-        database().analyticsEvent.groupBy({
+        database().analyticsDaily.groupBy({
           by: ["path"],
-          where: { createdAt: { gte: since } },
-          _count: true,
-          orderBy: { _count: { path: "desc" } },
+          where: { day: { gte: since } },
+          _sum: { count: true },
+          orderBy: { _sum: { count: "desc" } },
           take: 20,
         }),
         database().lead.groupBy({
@@ -226,7 +226,17 @@ export async function GET(request: Request, context: Context) {
           _count: true,
         }),
       ]);
-      return Response.json({ events, paths, leads });
+      return Response.json({
+        events: events.map(({ name, _sum }) => ({
+          name,
+          _count: _sum.count || 0,
+        })),
+        paths: paths.map(({ path, _sum }) => ({
+          path,
+          _count: _sum.count || 0,
+        })),
+        leads,
+      });
     }
     throw new HttpError(404, "Unknown section");
   } catch (error) {

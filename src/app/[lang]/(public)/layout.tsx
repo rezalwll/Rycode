@@ -4,7 +4,7 @@ import { ScrollEffects } from "@/components/ScrollEffects";
 import { VectorSymbols } from "@/components/VectorSymbols";
 import { referenceStyles } from "@/styles/reference-styles";
 import { StructuredData } from "@/components/StructuredData";
-import { AnalyticsConsent } from "@/components/AnalyticsConsent";
+import { AnonymousAnalytics } from "@/components/AnonymousAnalytics";
 import { headers } from "next/headers";
 import { permanentRedirect, redirect } from "next/navigation";
 import { managedRedirect } from "@/server/redirects";
@@ -39,7 +39,7 @@ export default async function PublicLayout({
       </div>
       <VectorSymbols />
       <StructuredData />
-      <AnalyticsConsent />
+      <AnonymousAnalytics />
     </>
   );
 }
