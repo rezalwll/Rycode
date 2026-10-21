@@ -16,7 +16,7 @@ export function ServicesOverview({
   const heroArt = services[0]?.artwork || services[0]?.image;
   const arrow = fa ? "↖" : "↗";
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${styles.atlasPage}`}>
       <section className={styles.hero} aria-labelledby="services-title">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>
