@@ -1,0 +1,163 @@
+.root {
+  position: relative;
+  color: #fff;
+}
+:global(.framer-ATxvc.framer-v-2hf838):has(.root) {
+  overflow: visible;
+}
+.trigger {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 40px;
+  padding: 8px 12px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  /* Keep the services trigger aligned with the 16px primary nav labels. */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.trigger svg {
+  transition: transform 0.25s;
+}
+.trigger[aria-expanded="true"] {
+  background: #fff;
+  color: #151515;
+}
+.trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.trigger:focus-visible,
+.panel a:focus-visible {
+  outline: 2px solid #ff1a05;
+  outline-offset: 4px;
+}
+.panel {
+  position: absolute;
+  z-index: 50;
+  inset-block-start: 100%;
+  inset-inline-start: -24px;
+  padding-block-start: 16px;
+  width: min(640px, calc(100vw - 80px));
+}
+.panel[hidden] {
+  display: none;
+}
+.inner {
+  border: 1px solid #ffffff24;
+  border-radius: 24px;
+  padding: 22px;
+  background: #111;
+  box-shadow: 0 24px 70px #0008;
+  max-height: calc(100svh - 130px);
+  overflow-y: auto;
+}
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.7;
+}
+.caption > span {
+  color: #ff1a05;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #eee;
+  font-size: 13px;
+  line-height: 1.8;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.list a:hover,
+.list a:focus-visible {
+  color: #fff;
+  background: #242424;
+}
+.number {
+  flex: none;
+  color: #777;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.arrow {
+  margin-inline-start: auto;
+  color: #888;
+  font-size: 19px;
+  transition: color 0.25s;
+}
+.list a:is(:hover, :focus-visible) :is(.number, .arrow) {
+  color: #ff4a39;
+}
+.all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-start: 18px;
+  padding: 14px 12px 0;
+  border-block-start: 1px solid #ffffff1f;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.25s;
+}
+.all:hover {
+  color: #ff4a39;
+}
+.root[data-mobile="true"] {
+  width: 100%;
+}
+.root[data-mobile="true"] .trigger {
+  padding-inline: 12px;
+  min-height: 44px;
+}
+.root[data-mobile="true"] .panel {
+  position: static;
+  width: 100%;
+  padding-block-start: 12px;
+}
+.root[data-mobile="true"] .inner {
+  max-height: none;
+  box-shadow: none;
+  padding: 14px;
+  border-radius: 18px;
+}
+.root[data-mobile="true"] .list {
+  grid-template-columns: 1fr;
+}
+.root[data-mobile="true"] .list a {
+  min-height: 48px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .root *,
+  .root *::before {
+    transition: none !important;
+  }
+}

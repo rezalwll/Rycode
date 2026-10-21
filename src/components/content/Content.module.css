@@ -399,6 +399,210 @@
 .white .aside a {
   color: #333;
 }
+
+/* Premium service detail treatment: editorial hero + conversion-focused content. */
+.servicePage {
+  position: relative;
+  background:
+    radial-gradient(ellipse 42% 32% at 92% 2%, #c75a3b20 0%, transparent 72%),
+    #f4f0ea;
+  color: #24211e;
+}
+.servicePage::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-inline-end: 4%;
+  top: 170px;
+  width: min(360px, 45vw);
+  height: 360px;
+  border-radius: 50%;
+  background: #b84e3426;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.servicePage::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 108px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bfb2a4, transparent);
+}
+.servicePage > * {
+  position: relative;
+  z-index: 1;
+}
+.servicePage .breadcrumb {
+  position: relative;
+  z-index: 1;
+  color: #81796f;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+.servicePage .breadcrumb a {
+  color: #5d574f;
+}
+.servicePage > .eyebrow {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 64px;
+  margin-bottom: 22px;
+  padding: 7px 13px;
+  border: 1px solid #cfc3b7;
+  border-radius: 999px;
+  color: #6d6258;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.servicePage > .eyebrow::before {
+  margin: 0;
+  color: #ff1a05;
+}
+.servicePage > h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 840px;
+  margin: 0 0 26px;
+  font-size: clamp(48px, 6.2vw, 88px);
+  line-height: 1.18;
+  color: #211e1b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+.servicePage > .summary {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  color: #655e56;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.85;
+}
+.servicePage .actions {
+  position: relative;
+  z-index: 1;
+  margin-block: 34px 28px;
+}
+.servicePage .primary {
+  padding: 14px 20px 14px 25px;
+  border: 0;
+  background: #211e1b;
+  color: #f9f5ef;
+  font-weight: 500;
+  box-shadow: 0 12px 35px #0008;
+}
+.servicePage .primary span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #b84e34;
+  color: #fff;
+  transition: transform 0.35s, background 0.35s;
+}
+.servicePage .primary:hover,
+.servicePage .primary:focus-visible {
+  background: #b84e34;
+  color: #fff;
+}
+.servicePage .primary:hover span,
+.servicePage .primary:focus-visible span {
+  background: #211e1b;
+  transform: rotate(45deg);
+}
+.servicePage .meta {
+  max-width: 840px;
+  margin-bottom: 42px;
+  border-color: #d2c7bc;
+  color: #81776d;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+.servicePage .cover {
+  max-height: 680px;
+  margin: 0 0 78px;
+  border: 1px solid #d7ccc1;
+  border-radius: 28px;
+  box-shadow: 0 30px 80px #7b60421c;
+}
+.servicePage .specialties {
+  margin-block: 0 92px;
+  padding: 58px;
+  border: 1px solid #d9cec2;
+  border-radius: 28px;
+  background: #fbf9f6;
+}
+.servicePage .specialties > h2 {
+  margin-top: 16px;
+  font-size: clamp(30px, 3.6vw, 52px);
+  letter-spacing: -0.04em;
+  color: #24211e;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.servicePage .specialties > p:not(.eyebrow) {
+  max-width: 620px;
+  color: #756c63;
+}
+.servicePage .service {
+  position: relative;
+  overflow: hidden;
+  border-color: #ded3c8;
+  background: #f4f0ea;
+  color: #24211e;
+}
+.servicePage .service::after {
+  content: "↗";
+  position: absolute;
+  inset-inline-end: 24px;
+  inset-block-start: 24px;
+  color: #b84e34;
+  font-size: 22px;
+  transition: transform 0.35s;
+}
+.servicePage .service:hover::after {
+  transform: translate(4px, -4px);
+}
+.servicePage .article {
+  gap: 72px;
+}
+.servicePage .rich h2 {
+  margin-top: 0;
+  padding-top: 28px;
+  border-top: 1px solid #d2c7bc;
+  font-size: clamp(30px, 3.4vw, 48px);
+  letter-spacing: -0.04em;
+  color: #24211e;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.servicePage .rich h2 ~ h2 {
+  margin-top: 72px;
+}
+.servicePage .rich li::marker {
+  color: #b84e34;
+}
+.servicePage .aside {
+  border-color: #d9cec2;
+  background: #fbf9f6;
+  color: #24211e;
+  box-shadow: 0 20px 50px #7b60421c;
+}
+.servicePage .aside .button {
+  justify-content: space-between;
+  border-color: #211e1b;
+  background: #211e1b;
+  color: #f9f5ef;
+}
+.servicePage .aside .button:hover {
+  border-color: #b84e34;
+  background: #b84e34;
+  color: #fff;
+}
 @media (max-width: 1000px) {
   .desktopToc {
     display: none;
@@ -447,6 +651,20 @@
   }
   .page h1 {
     font-size: 40px;
+  }
+  .servicePage > .eyebrow {
+    margin-top: 42px;
+  }
+  .servicePage > h1 {
+    font-size: 44px;
+  }
+  .servicePage .specialties {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .servicePage .cover {
+    border-radius: 18px;
+    margin-bottom: 52px;
   }
   .cardImage {
     aspect-ratio: 1.12;

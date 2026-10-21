@@ -224,6 +224,10 @@ export const serviceCatalog = cache(
           ).slice(0, 700),
         },
         image: item.image || fallback.image,
+        artwork:
+          item.image && item.image !== fallback.image
+            ? item.image
+            : fallback.artwork,
       });
     }
     for (const record of rows.filter(

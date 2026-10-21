@@ -8,19 +8,21 @@ export type Service = {
   scope: LocalizedText;
   tags: LocalizedText[];
   image: string;
+  artwork?: string;
 };
 
 // The seven service groups supplied in the RYCODE business platform.
 export const services: Service[] = [
   {
     id: "build",
+    artwork: "/brand/services/build.webp",
     title: {
       fa: "طراحی سایت و فروشگاه اینترنتی",
       en: "Website & ecommerce design",
     },
     summary: {
-      fa: "از یه سایت ساده و شیک تا یه فروشگاه اینترنتی کامل.",
-      en: "From a simple, polished website to a complete online store.",
+      fa: "سایتی می‌سازیم که فقط زیبا نیست؛ مسیر معرفی، اعتماد و تبدیل بازدیدکننده به مشتری را روشن می‌کند.",
+      en: "We build websites that do more than look good: they clarify your story, earn trust and turn attention into action.",
     },
     scope: {
       fa: "طراحی سایت شرکتی، شخصی، فروشگاهی، پزشکی، آموزشی، املاک، صنعتی، وردپرس، ووکامرس، سایت اختصاصی، چندزبانه، B2B، لندینگ‌پیج و بازطراحی سایت‌های قدیمی.",
@@ -40,6 +42,7 @@ export const services: Service[] = [
   },
   {
     id: "grow",
+    artwork: "/brand/services/grow.webp",
     title: {
       fa: "سئو و رشد سایت",
       en: "SEO & website growth",
@@ -66,6 +69,7 @@ export const services: Service[] = [
   },
   {
     id: "software",
+    artwork: "/brand/services/software.webp",
     title: {
       fa: "طراحی و توسعه نرم‌افزار اختصاصی",
       en: "Custom software design & development",
@@ -88,6 +92,7 @@ export const services: Service[] = [
   },
   {
     id: "rescue",
+    artwork: "/brand/services/rescue.webp",
     title: {
       fa: "رفع باگ و توسعه پروژه‌های موجود",
       en: "Bug fixes & existing project development",
@@ -114,6 +119,7 @@ export const services: Service[] = [
   },
   {
     id: "connect",
+    artwork: "/brand/services/connect.webp",
     title: {
       fa: "ربات‌ها و خودکارسازی کارها",
       en: "Bots & workflow automation",
@@ -144,6 +150,7 @@ export const services: Service[] = [
   },
   {
     id: "data",
+    artwork: "/brand/services/data.webp",
     title: {
       fa: "اکسل، داده و ابزارهای کاری",
       en: "Excel, data & business tools",
@@ -174,6 +181,7 @@ export const services: Service[] = [
   },
   {
     id: "continue",
+    artwork: "/brand/services/continue.webp",
     title: {
       fa: "پشتیبانی و توسعه مستمر",
       en: "Support & ongoing development",

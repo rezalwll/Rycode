@@ -143,7 +143,9 @@ export async function ContentDetail({
   return (
     <main
       className={
-        styles.page + (content.kind === "ARTICLE" ? " " + styles.white : "")
+        styles.page +
+        (content.kind === "ARTICLE" ? " " + styles.white : "") +
+        (content.kind === "SERVICE" ? " " + styles.servicePage : "")
       }
     >
       {preview && (

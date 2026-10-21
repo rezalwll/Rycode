@@ -5,12 +5,14 @@ import { lookupContent, type PublicContent } from "@/server/content";
 import { serviceDocument } from "@/content/service-document";
 import { pageMetadata } from "@/lib/seo";
 import { ContentDetail } from "@/components/content/ContentDetail";
+import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
 async function resolve(slug: string) {
   const { locale } = await getTranslations();
   const result = await lookupContent("SERVICE", slug, locale);
-  if (result.owned) return result.content;
   const service = services.find((s) => s.id === slug);
-  if (!service) return null;
+  // Keep the seven canonical service pages on the curated product copy. CMS
+  // records still power custom services and specialist child pages.
+  if (!service) return result.owned ? result.content : null;
   return {
     id: service.id,
     kind: "SERVICE",
@@ -63,5 +65,9 @@ export default async function ServiceDetail({
   const content = await resolve(slug);
   if (!content) notFound();
   const { locale } = await getTranslations();
-  return <ContentDetail content={content} locale={locale} />;
+  return content.kind === "SERVICE" ? (
+    <ServiceDetailPage content={content} locale={locale} />
+  ) : (
+    <ContentDetail content={content} locale={locale} />
+  );
 }
