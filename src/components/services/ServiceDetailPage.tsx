@@ -227,6 +227,26 @@ const continueCadence = [
   { label: { fa: "رشد", en: "Growth" }, title: { fa: "توسعهٔ همراه", en: "Partnered growth" }, body: { fa: "برای تیم‌هایی که محصولشان همزمان با کسب‌وکارشان بزرگ می‌شود.", en: "For teams whose product grows alongside the business." } },
 ] as const;
 
+const growthSignals = [
+  { value: "01", label: { fa: "مسئلهٔ قابل اندازه‌گیری", en: "A measurable problem" } },
+  { value: "02", label: { fa: "صفحهٔ درست برای رشد", en: "The right page to grow" } },
+  { value: "03", label: { fa: "گزارش قابل فهم", en: "A readable report" } },
+] as const;
+
+const growthChannels = [
+  { number: "01", title: { fa: "سئوی تکنیکال", en: "Technical SEO" }, body: { fa: "ساختار، سرعت و ایندکس را برای موتور جست‌وجو و آدم‌ها قابل فهم می‌کنیم.", en: "Make structure, speed and indexing clear for search engines and people." } },
+  { number: "02", title: { fa: "صفحه‌های هدف", en: "Landing pages" }, body: { fa: "هر صفحه را برای یک جست‌وجو و یک قدم بعدی دقیق طراحی می‌کنیم.", en: "Shape every page around one search intent and one next action." } },
+  { number: "03", title: { fa: "محتوای ماندگار", en: "Durable content" }, body: { fa: "موضوع‌هایی می‌سازیم که فقط امروز کلیک نگیرند؛ فردا هم جواب بدهند.", en: "Build topics that keep answering people beyond today’s click." } },
+  { number: "04", title: { fa: "سئوی محلی", en: "Local SEO" }, body: { fa: "کسب‌وکارت را در جایی که مشتری واقعاً دنبالت می‌گردد، پیدا کردنی می‌کنیم.", en: "Make the business findable where customers are actually looking." } },
+] as const;
+
+const growthProcess = [
+  { number: "01", title: { fa: "کشف", en: "Discover" }, body: { fa: "جست‌وجو، رقیب و وضعیت فعلی را می‌خوانیم.", en: "Read search intent, competitors and the current state." } },
+  { number: "02", title: { fa: "اولویت", en: "Prioritize" }, body: { fa: "صفحه‌هایی را انتخاب می‌کنیم که بیشترین اثر را دارند.", en: "Choose the pages with the highest potential impact." } },
+  { number: "03", title: { fa: "بهینه‌سازی", en: "Optimize" }, body: { fa: "ساختار، محتوا و تجربه را با هم بهتر می‌کنیم.", en: "Improve structure, content and experience together." } },
+  { number: "04", title: { fa: "اندازه‌گیری", en: "Measure" }, body: { fa: "می‌بینیم چه چیزی جلو رفت و قدم بعدی را دقیق‌تر می‌چینیم.", en: "See what moved and make the next step more precise." } },
+] as const;
+
 export async function ServiceDetailPage({
   content,
   locale,
@@ -241,6 +261,7 @@ export async function ServiceDetailPage({
   const isConnectService = content.slug === "connect";
   const isDataService = content.slug === "data";
   const isContinueService = content.slug === "continue";
+  const isGrowthService = content.slug === "grow";
   const hierarchy = await serviceHierarchy(content, locale);
   const inquiryHref = localizedHref(
     "/contact?service=" + encodeURIComponent(content.slug),
@@ -255,7 +276,7 @@ export async function ServiceDetailPage({
 
   return (
     <main
-      className={`${styles.page} serviceDetailPage${isWebsiteService ? ` buildPage ${styles.buildPage}` : isSoftwareService ? ` softwarePage softwareLight currentPage ${styles.softwarePage} ${styles.softwareLight} ${styles.currentPage}` : isRescueService ? ` rescuePage ${styles.rescuePage}` : isConnectService ? ` connectPage brutalistPage ${styles.connectPage} ${styles.brutalistPage}` : isDataService ? ` dataPage fintlyPage ${styles.dataPage} ${styles.fintlyPage}` : isContinueService ? ` continuePage ledgerPage ${styles.continuePage} ${styles.ledgerPage}` : ""}`}
+      className={`${styles.page} serviceDetailPage${isWebsiteService ? ` buildPage ${styles.buildPage}` : isSoftwareService ? ` softwarePage softwareLight currentPage ${styles.softwarePage} ${styles.softwareLight} ${styles.currentPage}` : isRescueService ? ` rescuePage ${styles.rescuePage}` : isConnectService ? ` connectPage brutalistPage ${styles.connectPage} ${styles.brutalistPage}` : isDataService ? ` dataPage fintlyPage ${styles.dataPage} ${styles.fintlyPage}` : isContinueService ? ` continuePage ledgerPage ${styles.continuePage} ${styles.ledgerPage}` : isGrowthService ? ` growthPage seoPage ${styles.growthPage} ${styles.seoPage}` : ""}`}
     >
       <nav className={styles.breadcrumb} aria-label={fa ? "مسیر صفحه" : "Breadcrumb"}>
         <Link href={localizedHref("/", locale)}>{fa ? "خانه" : "Home"}</Link>
@@ -269,9 +290,13 @@ export async function ServiceDetailPage({
         <div className={styles.heroCopy}>
           <p className={styles.kicker}><span>✦</span>{fa ? "خدمات رایکد" : "RYCODE SERVICE"}</p>
           <h1>{content.title}</h1>
-          {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService) && (
+          {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
             <p className={styles.heroClaim}>
-              {isContinueService
+              {isGrowthService
+                ? fa
+                  ? "رشد واقعی از دیده‌شدن درست شروع می‌شود."
+                  : "Real growth starts with being found for the right thing."
+                : isContinueService
                 ? fa
                   ? "بعد از تحویل، پروژه باید هر روز آرام‌تر و بهتر کار کند."
                   : "After launch, the project should feel calmer and work better every day."
@@ -302,9 +327,9 @@ export async function ServiceDetailPage({
               {fa ? "شروع پروژه" : "Start a project"}
               <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
             </Link>
-            {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService) && (
-              <a className={styles.secondaryAction} href={isContinueService ? "#continue-services" : isDataService ? "#data-dashboard" : isConnectService ? "#connect-flow" : isRescueService ? "#rescue-findings" : isSoftwareService ? "#software-map" : "#build-work"}>
-                {isContinueService ? (fa ? "دیدن مسیر پشتیبانی" : "See the support path") : isDataService ? (fa ? "دیدن داشبورد" : "See the dashboard") : isConnectService ? (fa ? "دیدن مسیر خودکارسازی" : "See the workflow") : isRescueService ? (fa ? "دیدن یافته‌های اسکن" : "See the findings") : isSoftwareService ? (fa ? "دیدن معماری راه‌حل" : "See the system map") : fa ? "دیدن نمونه‌کارها" : "See selected work"}
+            {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
+              <a className={styles.secondaryAction} href={isGrowthService ? "#growth-results" : isContinueService ? "#continue-services" : isDataService ? "#data-dashboard" : isConnectService ? "#connect-flow" : isRescueService ? "#rescue-findings" : isSoftwareService ? "#software-map" : "#build-work"}>
+                {isGrowthService ? (fa ? "دیدن مسیر رشد" : "See the growth path") : isContinueService ? (fa ? "دیدن مسیر پشتیبانی" : "See the support path") : isDataService ? (fa ? "دیدن داشبورد" : "See the dashboard") : isConnectService ? (fa ? "دیدن مسیر خودکارسازی" : "See the workflow") : isRescueService ? (fa ? "دیدن یافته‌های اسکن" : "See the findings") : isSoftwareService ? (fa ? "دیدن معماری راه‌حل" : "See the system map") : fa ? "دیدن نمونه‌کارها" : "See selected work"}
                 <span aria-hidden="true">↓</span>
               </a>
             )}
@@ -391,6 +416,14 @@ export async function ServiceDetailPage({
             <div className={`${styles.continueNode} ${styles.continueNodeTwo}`}><span>02</span><b>{fa ? "بهبود" : "IMPROVE"}</b></div>
             <div className={`${styles.continueNode} ${styles.continueNodeThree}`}><span>03</span><b>{fa ? "توسعه" : "GROW"}</b></div>
             <div className={styles.continueNote}><small>{fa ? "وضعیت پروژه" : "PROJECT HEALTH"}</small><strong>{fa ? "پایدار و رو به رشد" : "Stable & growing"}</strong><i>↗</i></div>
+          </div>
+        ) : isGrowthService ? (
+          <div className={styles.growthSearchVisual} role="img" aria-label={fa ? "نمایش نتیجهٔ جست‌وجو و رتبهٔ سایت" : "Search result and ranking preview"}>
+            <div className={styles.growthSearchTop}><span>RYCODE / SEARCH CONSOLE</span><b><i /> LIVE QUERY</b></div>
+            <div className={styles.growthQuery}><span>⌕</span><strong>{fa ? "طراحی سایت برای کسب‌وکار" : "website design for business"}</strong><small>⌘ K</small></div>
+            <div className={styles.growthResult}><span className={styles.growthResultRank}>#01</span><div><small>rycode.studio / services</small><h3>{fa ? "طراحی سایت که برایت مشتری می‌آورد" : "Website design that brings the right clients"}</h3><p>{fa ? "ساختار، محتوا و تجربه‌ای که دیده‌شدن را به اقدام تبدیل می‌کند." : "A structure, story and experience that turns visibility into action."}</p></div><b>↗</b></div>
+            <div className={styles.growthRankLadder}><span>50</span><i style={{width:"28%"}} /><span>20</span><i style={{width:"52%"}} /><span>05</span><i style={{width:"77%"}} /><strong>#01</strong><i style={{width:"100%"}} /></div>
+            <div className={styles.growthArtwork}><Image src="/brand/services/grow.webp" alt="" fill sizes="280px" /></div>
           </div>
         ) : (
           <figure className={styles.heroMedia}>
@@ -789,6 +822,28 @@ export async function ServiceDetailPage({
             <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "خط همراهی" : "THE CARE LINE"}</p><h2 id="continue-steps-title">{fa ? "هر درخواست، یک قدم قابل مشاهده دارد." : "Every request has a visible next step."}</h2></div></div>
             <ol className={styles.continueStepList}>{continueSteps.map((item) => <li key={item.number}><span>{item.number}</span><div><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p></div></li>)}</ol>
           </section>
+        </>
+      )}
+
+      {isGrowthService && (
+        <>
+          <section className={styles.growthSignals} aria-label={fa ? "سیگنال‌های رشد" : "Growth signals"}>
+            {growthSignals.map((item) => <div key={item.value}><strong>{item.value}</strong><span>{item.label[locale]}</span></div>)}
+          </section>
+
+          <section className={styles.growthResults} id="growth-results" aria-labelledby="growth-results-title">
+            <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "نتیجه‌ای که دیده می‌شود" : "THE RESULT"}</p><h2 id="growth-results-title">{fa ? "از صفحهٔ پنجاه تا جایی که مشتری تو را می‌بیند." : "From page fifty to where the right customer sees you."}</h2></div><p>{fa ? "رشد را با یک عدد تزئینی تعریف نمی‌کنیم؛ مسیر رتبه، صفحه و اقدام را کنار هم می‌خوانیم." : "Growth is not a decorative number. We read ranking, page and action as one path."}</p></div>
+            <div className={styles.growthRankTable}><div className={styles.growthRankHeader}><span>{fa ? "عبارت جست‌وجو" : "QUERY"}</span><span>{fa ? "رتبه" : "RANK"}</span><span>{fa ? "صفحه" : "PAGE"}</span><span>{fa ? "حرکت" : "MOTION"}</span></div><div className={styles.growthRankRow}><strong>{fa ? "طراحی سایت شرکتی" : "corporate website design"}</strong><b>#01</b><span>/services/build</span><i>↑ ۴۹ رتبه</i></div><div className={styles.growthRankRow}><strong>{fa ? "سئوی فروشگاه" : "ecommerce SEO"}</strong><b>#04</b><span>/services/grow</span><i>↑ ۲۳ رتبه</i></div><div className={styles.growthRankRow}><strong>{fa ? "ساخت داشبورد مدیریتی" : "management dashboard"}</strong><b>#08</b><span>/services/software</span><i>↑ ۱۶ رتبه</i></div></div>
+          </section>
+
+          <section className={styles.growthChannels} aria-labelledby="growth-channels-title">
+            <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "مسیرهای رشد" : "GROWTH CHANNELS"}</p><h2 id="growth-channels-title">{fa ? "هر جست‌وجو، یک فرصت برای ورود است." : "Every search is a way in."}</h2></div><p>{fa ? "از تکنیکال تا محتوا و جست‌وجوی محلی، فقط چیزی را جلو می‌بریم که به هدف واقعی کسب‌وکار وصل باشد." : "From technical foundations to content and local search, we move what connects to a real business goal."}</p></div>
+            <div className={styles.growthChannelGrid}>{growthChannels.map((item) => <article key={item.number}><span>{item.number}</span><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p><b>↗</b></article>)}</div>
+          </section>
+
+          <section className={styles.growthAudit} aria-labelledby="growth-audit-title"><div><p className={styles.kicker}><span>✦</span>{fa ? "شروع با یک audit" : "START WITH AN AUDIT"}</p><h2 id="growth-audit-title">{fa ? "اول ببینیم چرا دیده نمی‌شوی." : "First, let’s see why you are not being found."}</h2><p>{fa ? "یک بررسی کوتاه از وضعیت فعلی سایت، صفحه‌ها و فرصت‌های سریع رشد." : "A focused review of the current site, pages and quickest growth opportunities."}</p></div><Link className={styles.primary} href={inquiryHref}>{fa ? "درخواست بررسی سئو" : "Request an SEO audit"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link></section>
+
+          <section className={styles.growthProcess} aria-labelledby="growth-process-title"><div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "فرایند رشد" : "THE GROWTH LOOP"}</p><h2 id="growth-process-title">{fa ? "می‌سنجیم، بهتر می‌کنیم، دوباره می‌سنجیم." : "Measure, improve, measure again."}</h2></div></div><ol className={styles.growthProcessList}>{growthProcess.map((item) => <li key={item.number}><span>{item.number}</span><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p></li>)}</ol></section>
         </>
       )}
 
