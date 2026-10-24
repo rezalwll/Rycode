@@ -1,0 +1,317 @@
+.intro {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  color: #171717;
+  padding-block: 0 8px;
+}
+.intro *,
+.intro *::before,
+.intro *::after {
+  box-sizing: border-box;
+}
+:global(.framer-CoplX .framer-foecea):has(> .intro) {
+  gap: 0;
+}
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 12px 28px;
+  border-bottom: 1px solid #dedede;
+}
+.brandLink {
+  display: inline-flex;
+  text-decoration: none;
+}
+.brandLink :global(.brand-logo) {
+  width: clamp(185px, 25vw, 310px);
+  height: auto;
+}
+.brandLink :global(.brand-logo__emblem) {
+  width: clamp(32px, 4vw, 52px);
+  height: clamp(42px, 5.2vw, 66px);
+}
+.brandLink :global(.brand-logo__type) {
+  font-size: clamp(24px, 3.6vw, 46px);
+}
+.brandNote {
+  color: #777;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.invitation {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+  align-items: end;
+  gap: 40px 70px;
+  padding-block: 60px 55px;
+  border-bottom: 1px solid #dedede;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0 0 22px;
+}
+.eyebrow > span {
+  color: var(--brand-accent);
+  font-size: 17px;
+}
+.invitation h2 {
+  margin: 0;
+  font-size: clamp(36px, 4.3vw, 62px);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.invitation h2:lang(fa) {
+  line-height: 1.65;
+  font-size: clamp(34px, 4.1vw, 56px);
+}
+.invitation h2 > span {
+  color: var(--brand-accent);
+}
+.description {
+  max-width: 450px;
+  margin: 18px 0 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.95;
+  text-wrap: pretty;
+}
+.contactAction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 50px;
+  padding: 5px 5px 5px 22px;
+  border-radius: 60px;
+  background: #171717;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.7;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.project:dir(rtl) {
+  padding-inline: 22px 5px;
+}
+.projectIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand-accent);
+  color: #fff;
+  font-size: 22px;
+  transition:
+    background 0.3s,
+    transform 0.4s;
+}
+.project:is(:hover, :focus-visible) {
+  background: var(--brand-accent);
+}
+.project:is(:hover, :focus-visible) .projectIcon {
+  background: #171717;
+  transform: rotate(45deg);
+}
+.phone {
+  color: #555;
+  font:
+    500 14px/1.8 Arial,
+    sans-serif;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.phone:hover {
+  color: var(--brand-accent);
+}
+.directory {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  padding-block: 42px 48px;
+  border-bottom: 1px solid #dedede;
+}
+.label {
+  margin: 0 0 17px;
+  color: #777;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.group ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.group li a,
+.networkName,
+.networks a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 31px;
+  color: #242424;
+  font-size: 14px;
+  line-height: 1.8;
+  text-decoration: none;
+}
+.group li a > span:first-child {
+  position: relative;
+  transition: color 0.25s;
+}
+.group li a > span:first-child::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+.group li a:dir(ltr) > span:first-child::after {
+  transform-origin: left;
+}
+.linkArrow {
+  color: var(--brand-accent);
+  opacity: 0;
+  transform: translateY(3px);
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
+}
+.group li a:is(:hover, :focus-visible) {
+  color: var(--brand-accent);
+}
+.group li a:is(:hover, :focus-visible) > span:first-child::after {
+  transform: scaleX(1);
+}
+.group li a:is(:hover, :focus-visible) .linkArrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+.networks {
+  display: grid;
+  gap: 8px;
+}
+.networks a,
+.networkName {
+  border: 1px solid #d9d9d9;
+  border-radius: 30px;
+  padding: 5px 12px;
+  font-size: 12px;
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+.networks a > span:last-child {
+  color: #777;
+}
+.networks a:is(:hover, :focus-visible) {
+  border-color: #171717;
+  background: #171717;
+  color: #fff;
+}
+.networkName {
+  justify-content: center;
+}
+.sourceNote {
+  color: #777;
+  font-size: 11px;
+  line-height: 1.8;
+  padding-block: 22px 5px;
+}
+.intro a:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 5px;
+}
+@media (max-width: 1199px) {
+  .invitation {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 35px;
+  }
+  .directory {
+    gap: 22px;
+  }
+  .group li a,
+  .networkName,
+  .networks a {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
+  .brandRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding-block: 0 23px;
+  }
+  .brandNote {
+    font-size: 10px;
+  }
+  .invitation {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 38px 35px;
+  }
+  .invitation h2,
+  .invitation h2:lang(fa) {
+    font-size: clamp(34px, 8.4vw, 48px);
+  }
+  .description {
+    margin-block: 15px 0;
+    font-size: 13px;
+  }
+  .contactAction {
+    gap: 14px;
+  }
+  .project {
+    font-size: 13px;
+  }
+  .directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 31px 19px;
+    padding-block: 30px 35px;
+  }
+  .group:last-child {
+    grid-column: 1/-1;
+  }
+  .label {
+    margin-block-end: 11px;
+  }
+  .group li a,
+  .networkName,
+  .networks a {
+    font-size: 12px;
+  }
+  .sourceNote {
+    font-size: 10px;
+    padding-block: 18px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro *,
+  .intro *::after {
+    transition: none !important;
+  }
+}
