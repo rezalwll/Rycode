@@ -10,11 +10,7 @@ import { referenceStyles } from "@/styles/reference-styles";
 export async function HomeFAQSection() {
   const { t, locale } = await getTranslations();
   return (
-    <section
-      className="framer-g3n3eu"
-      data-framer-name="FAQ Section"
-      id="FAQ Section"
-    >
+    <section className="framer-g3n3eu" data-framer-name="FAQ Section">
       <div className="framer-1hog1pq" data-framer-name="Container">
         <div className="framer-pizuxl" data-framer-name="Content">
           <Reveal

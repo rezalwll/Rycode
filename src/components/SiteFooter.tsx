@@ -1,8 +1,10 @@
-import { FooterIntro } from "./FooterIntro";
+import { SocialLinks } from "./SocialLinks";
+import { SiteNavigationLinks } from "./SiteNavigationLinks";
 import { FooterTicker, TickerBrandLogo } from "./FooterTicker";
 import { getTranslations } from "@/lib/i18n-server";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Reveal, Ticker } from "@/components/Motion";
+import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
 import { FooterFluid } from "@/components/FooterFluid";
 export async function SiteFooter() {
@@ -352,7 +354,140 @@ export async function SiteFooter() {
             <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
-                <FooterIntro locale={locale} />
+                <Reveal
+                  className="framer-roqvu8"
+                  data-framer-name="Mail & Footer Button"
+                  style={referenceStyles.s5916c9ffdd}
+                  as="div"
+                  from="translateY(200px)"
+                >
+                  <div
+                    className="framer-1166935"
+                    data-framer-name="Image & mail"
+                  >
+                    <div
+                      className="framer-1eftl7w"
+                      data-framer-name="Image"
+                      style={referenceStyles.sbc989dc343}
+                    >
+                      <div className="framer-18pq9ai-container">
+                        <DistortedImage
+                          src="/assets/4cd219039e2c992e.png"
+                          fade={true}
+                          replay={false}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="framer-a8ui0q"
+                      data-framer-name="Text & mail"
+                    >
+                      <div className="framer-1f8brwj-container">
+                        <div
+                          className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1tly2e5"
+                          data-framer-name="Variant 2"
+                        >
+                          <div
+                            className="framer-1f0zcfp"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sa95470ceb9}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-10zsitg"
+                              data-styles-preset="Ic0XZZbRG"
+                              dir="auto"
+                              style={referenceStyles.s781d92f43a}
+                            >
+                              {"✦"}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-qs9ltm"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Let's build together")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="framer-u05wfg-container">
+                        <a
+                          className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
+                          data-framer-name="Variant 1"
+                          href={href("/contact")}
+                          target="_blank"
+                        >
+                          <div
+                            className="framer-16cun4g"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-4un9qc"
+                              data-styles-preset="LwB02gzuV"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Start a project")}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="framer-2hwii5"
+                    data-framer-name="Footer Buttons"
+                  >
+                    <div
+                      className="framer-ysjwqo"
+                      data-framer-name="Navigation bar"
+                    >
+                      <div
+                        className="framer-f5kcb5"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Navigation")}
+                        </p>
+                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
+                    </div>
+                    <div
+                      className="framer-18f0cg1"
+                      data-framer-name="Social Media"
+                    >
+                      <div
+                        className="framer-1qkyi6c"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Social media")}
+                        </p>
+                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
+                    </div>
+                  </div>
+                </Reveal>
                 <Reveal
                   className="framer-f34uki"
                   data-border="true"
@@ -457,7 +592,140 @@ export async function SiteFooter() {
             <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
-                <FooterIntro locale={locale} />
+                <Reveal
+                  className="framer-roqvu8"
+                  data-framer-name="Mail & Footer Button"
+                  style={referenceStyles.s5916c9ffdd}
+                  as="div"
+                  from="translateY(200px)"
+                >
+                  <div
+                    className="framer-1166935"
+                    data-framer-name="Image & mail"
+                  >
+                    <div
+                      className="framer-1eftl7w"
+                      data-framer-name="Image"
+                      style={referenceStyles.sbc989dc343}
+                    >
+                      <div className="framer-18pq9ai-container">
+                        <DistortedImage
+                          src="/assets/4cd219039e2c992e.png"
+                          fade={true}
+                          replay={false}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="framer-a8ui0q"
+                      data-framer-name="Text & mail"
+                    >
+                      <div className="framer-1f8brwj-container">
+                        <div
+                          className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1tly2e5"
+                          data-framer-name="Variant 2"
+                        >
+                          <div
+                            className="framer-1f0zcfp"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sa95470ceb9}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-10zsitg"
+                              data-styles-preset="Ic0XZZbRG"
+                              dir="auto"
+                              style={referenceStyles.s781d92f43a}
+                            >
+                              {"✦"}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-qs9ltm"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Let's build together")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="framer-u05wfg-container">
+                        <a
+                          className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
+                          data-framer-name="Variant 1"
+                          href={href("/contact")}
+                          target="_blank"
+                        >
+                          <div
+                            className="framer-16cun4g"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-4un9qc"
+                              data-styles-preset="LwB02gzuV"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Start a project")}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="framer-2hwii5"
+                    data-framer-name="Footer Buttons"
+                  >
+                    <div
+                      className="framer-ysjwqo"
+                      data-framer-name="Navigation bar"
+                    >
+                      <div
+                        className="framer-f5kcb5"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Navigation")}
+                        </p>
+                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
+                    </div>
+                    <div
+                      className="framer-18f0cg1"
+                      data-framer-name="Social Media"
+                    >
+                      <div
+                        className="framer-1qkyi6c"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Social media")}
+                        </p>
+                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
+                    </div>
+                  </div>
+                </Reveal>
                 <Reveal
                   className="framer-f34uki"
                   data-border="true"
@@ -562,7 +830,140 @@ export async function SiteFooter() {
             <FooterFluid />
             <div className="framer-1c22mt7" data-framer-name="Container">
               <div className="framer-foecea" data-framer-name="Content">
-                <FooterIntro locale={locale} />
+                <Reveal
+                  className="framer-roqvu8"
+                  data-framer-name="Mail & Footer Button"
+                  style={referenceStyles.s5916c9ffdd}
+                  as="div"
+                  from="translateY(200px)"
+                >
+                  <div
+                    className="framer-1166935"
+                    data-framer-name="Image & mail"
+                  >
+                    <div
+                      className="framer-1eftl7w"
+                      data-framer-name="Image"
+                      style={referenceStyles.sbc989dc343}
+                    >
+                      <div className="framer-18pq9ai-container">
+                        <DistortedImage
+                          src="/assets/4cd219039e2c992e.png"
+                          fade={true}
+                          replay={false}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="framer-a8ui0q"
+                      data-framer-name="Text & mail"
+                    >
+                      <div className="framer-1f8brwj-container">
+                        <div
+                          className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1tly2e5"
+                          data-framer-name="Variant 2"
+                        >
+                          <div
+                            className="framer-1f0zcfp"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sa95470ceb9}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-10zsitg"
+                              data-styles-preset="Ic0XZZbRG"
+                              dir="auto"
+                              style={referenceStyles.s781d92f43a}
+                            >
+                              {"✦"}
+                            </p>
+                          </div>
+                          <div
+                            className="framer-qs9ltm"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-rx12qp"
+                              data-styles-preset="EzakxyTlE"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Let's build together")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="framer-u05wfg-container">
+                        <a
+                          className="framer-rlt6y framer-CkNQH framer-yjdnct framer-v-yjdnct framer-fmkks2 w-full!"
+                          data-framer-name="Variant 1"
+                          href={href("/contact")}
+                          target="_blank"
+                        >
+                          <div
+                            className="framer-16cun4g"
+                            data-framer-component-type="RichTextContainer"
+                            style={referenceStyles.sdb4e5c5446}
+                          >
+                            <p
+                              className="framer-text framer-styles-preset-4un9qc"
+                              data-styles-preset="LwB02gzuV"
+                              dir="auto"
+                              style={referenceStyles.s2a1463207d}
+                            >
+                              {t("Start a project")}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="framer-2hwii5"
+                    data-framer-name="Footer Buttons"
+                  >
+                    <div
+                      className="framer-ysjwqo"
+                      data-framer-name="Navigation bar"
+                    >
+                      <div
+                        className="framer-f5kcb5"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Navigation")}
+                        </p>
+                      </div>
+                      <SiteNavigationLinks locale={locale} variant="footer" />
+                    </div>
+                    <div
+                      className="framer-18f0cg1"
+                      data-framer-name="Social Media"
+                    >
+                      <div
+                        className="framer-1qkyi6c"
+                        data-framer-component-type="RichTextContainer"
+                        style={referenceStyles.sefbf82470d}
+                      >
+                        <p
+                          className="framer-text framer-styles-preset-12928c1"
+                          data-styles-preset="V0V25Na8R"
+                          dir="auto"
+                          style={referenceStyles.s0c39c3123b}
+                        >
+                          {t("Social media")}
+                        </p>
+                      </div>
+                      <SocialLinks locale={locale} variant="footer" />
+                    </div>
+                  </div>
+                </Reveal>
                 <Reveal
                   className="framer-f34uki"
                   data-border="true"
