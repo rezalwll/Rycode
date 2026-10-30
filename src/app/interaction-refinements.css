@@ -222,6 +222,24 @@
 .rycode-public .capability-card-link:focus-visible .capability-card-link-copy > strong {
   color: var(--feature-accent);
 }
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 1) {
+  --feature-accent: #2f9df4 !important;
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 2) {
+  --feature-accent: #ff1b0b !important;
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 3) {
+  --feature-accent: #8c5cff !important;
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 4) {
+  --feature-accent: #18a86b !important;
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 5) {
+  --feature-accent: #e4a600 !important;
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n) {
+  --feature-accent: #e85d9e !important;
+}
 
 @media (max-width: 639px) {
   .rycode-public .rycode-header .rycode-header-inner {

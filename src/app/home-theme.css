@@ -23,8 +23,8 @@
 .home-colorful .rycode-services-source .feature-card {
   position: relative;
   isolation: isolate;
-  background: #eaf5ff;
-  border: 1px solid #cfe8fb;
+  background: #fff;
+  border: 1px solid #e8e8e8;
   box-shadow: 0 12px 32px rgb(20 26 34 / 7%);
   transition:
     border-color 280ms ease,
@@ -32,24 +32,42 @@
     transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(even) {
-  background: #fff0ed;
-  border-color: #ffd7d0;
+  background: #fff;
+  border-color: #e8e8e8;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(3n) {
-  background: #f3edff;
-  border-color: #ded0ff;
+  background: #fff;
+  border-color: #e8e8e8;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(4n) {
-  background: #eaf8ef;
-  border-color: #ccebd7;
+  background: #fff;
+  border-color: #e8e8e8;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(5n) {
-  background: #fff8df;
-  border-color: #f6e6a9;
+  background: #fff;
+  border-color: #e8e8e8;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(6n) {
-  background: #f3f3f3;
-  border-color: #dfdfdf;
+  background: #fff;
+  border-color: #e8e8e8;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n + 1) {
+  --feature-accent: #2f9df4 !important;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n + 2) {
+  --feature-accent: #ff1b0b !important;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n + 3) {
+  --feature-accent: #8c5cff !important;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n + 4) {
+  --feature-accent: #18a86b !important;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n + 5) {
+  --feature-accent: #e4a600 !important;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n) {
+  --feature-accent: #e85d9e !important;
 }
 .home-colorful .rycode-services-source .feature-card:hover {
   border-color: color-mix(in srgb, var(--feature-accent) 48%, #e8e8e8);
@@ -77,6 +95,10 @@
 .home-colorful .rycode-services-source .feature-card-tag {
   color: color-mix(in srgb, var(--feature-accent) 70%, #333);
   font-weight: 600;
+}
+.home-colorful .rycode-services-source .capability-card-link-arrow {
+  color: var(--feature-accent);
+  border-color: color-mix(in srgb, var(--feature-accent) 38%, #e8e8e8);
 }
 .home-colorful .rycode-services-source .features-heading :is(h2, mark) {
   color: var(--home-ink);
