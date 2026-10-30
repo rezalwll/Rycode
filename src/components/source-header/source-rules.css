@@ -1,0 +1,269 @@
+/* Header and submenu rules copied from the source RYCODE project. */
+
+/* coorda.css */
+
+/* coorda-reference-overrides.css */
+
+.rycode-source-header > header.reference-overlay-header {
+  background: #08181c24;
+  border-color: #ffffff26;
+}
+.rycode-source-header .rycode-header {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: var(--ui-duration);
+  transition-timing-function: var(--ui-ease);
+}
+.rycode-source-header
+  :is(
+    .rycode-primary-link,
+    .rycode-services-menu-link,
+    .rycode-submenu-link,
+    .rycode-header-tools a,
+    .rycode-theme-toggle button,
+    .coorda-button,
+    .studio-button,
+    .pn-btn,
+    .pn-tab,
+    .pn-readmore
+  ) {
+  transition-property:
+    background-color, border-color, color, box-shadow, transform;
+  transition-duration: var(--ui-duration);
+  transition-timing-function: var(--ui-ease);
+}
+.rycode-source-header
+  :is(.rycode-primary-link, .rycode-header-tools, #site-mobile-menu button)
+  svg {
+  transition-duration: 320ms;
+  transition-timing-function: var(--ui-ease);
+}
+.rycode-source-header .rycode-desktop-submenu {
+  width: max-content;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transform-origin: top right;
+  transition:
+    opacity 200ms var(--ui-ease),
+    transform 240ms var(--ui-ease),
+    visibility 0s;
+}
+.rycode-source-header .rycode-desktop-submenu[dir="ltr"] {
+  transform-origin: top left;
+}
+.rycode-source-header .rycode-desktop-submenu[data-state="closed"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 140ms ease-out,
+    transform 180ms var(--ui-ease),
+    visibility 0s linear 180ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-source-header
+    :is(.rycode-desktop-submenu, .rycode-desktop-submenu[data-state="closed"]) {
+    transition: none;
+    transform: none;
+  }
+}
+.rycode-source-header .rycode-primary-link:hover,
+.rycode-source-header .rycode-primary-link[aria-current="page"] {
+  background: var(--brand-soft);
+}
+.rycode-source-header
+  header.reference-overlay-header
+  .rycode-primary-link:hover,
+.rycode-source-header
+  header.reference-overlay-header
+  .rycode-primary-link[aria-current="page"] {
+  background: #ffffff18;
+}
+
+/* Main navigation stays typographic; the hover capsule belongs to the submenu. */
+.rycode-public .rycode-source-header .rycode-header .rycode-primary-link {
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding-inline: 8px;
+  font-size: 16px;
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header
+  .rycode-primary-link:is(:hover, :focus-visible, [aria-current="page"]) {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none;
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header
+  .rycode-primary-link:focus-visible {
+  outline-offset: 5px;
+}
+.rycode-source-header :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
+  --submenu-accent: #2871a6;
+  --submenu-wash: color-mix(in srgb, var(--accent-blue) 12%, var(--surface));
+  --submenu-edge: color-mix(in srgb, var(--accent-blue) 24%, var(--border));
+}
+.dark
+  .rycode-source-header
+  :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
+  --submenu-accent: var(--accent-blue);
+}
+.rycode-source-header .rycode-submenu-surface {
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px;
+  border: 1px solid var(--submenu-edge);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--foreground);
+  box-shadow:
+    0 20px 50px -16px #102b4640,
+    0 4px 12px -4px #102b4610;
+  scrollbar-width: thin;
+}
+.rycode-source-header :is(.rycode-services-menu-list, .rycode-submenu-list) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rycode-source-header .rycode-header .rycode-submenu-link,
+.rycode-source-header #site-mobile-menu .rycode-submenu-link {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 14px;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-align: start;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+.rycode-public
+  .rycode-source-header
+  :is(.rycode-header .rycode-submenu-link, #site-mobile-menu .rycode-submenu-link) {
+  font-size: 16px !important;
+}
+.rycode-public .rycode-source-header .rycode-submenu-surface > div > p {
+  font-size: 16px !important;
+}
+.rycode-public .rycode-source-header #site-mobile-menu nav button:hover {
+  background: transparent !important;
+}
+.rycode-public .rycode-source-header #site-mobile-menu .rycode-mobile-submenu > div > p {
+  font-size: 16px !important;
+}
+.rycode-source-header .rycode-submenu-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.rycode-source-header .rycode-submenu-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--submenu-edge);
+  border-radius: 9px;
+  background: var(--submenu-wash);
+  color: var(--submenu-accent);
+}
+.rycode-source-header .rycode-submenu-arrow {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  opacity: 0.45;
+  transition:
+    transform var(--ui-duration) var(--ui-ease),
+    opacity var(--ui-duration) var(--ui-ease);
+}
+.rycode-source-header .rycode-submenu-link:dir(rtl) .rycode-submenu-arrow {
+  rotate: 180deg;
+}
+.rycode-source-header
+  .rycode-submenu-link:is(:hover, :focus-visible, [aria-current="page"]) {
+  background: var(--submenu-wash);
+  border-color: var(--submenu-edge);
+}
+.rycode-source-header .rycode-submenu-link[aria-current="page"] {
+  box-shadow: inset -2px 0 var(--submenu-accent);
+}
+.rycode-source-header .rycode-submenu-link:dir(ltr)[aria-current="page"] {
+  box-shadow: inset 2px 0 var(--submenu-accent);
+}
+.rycode-source-header
+  .rycode-submenu-link:is(:hover, :focus-visible)
+  .rycode-submenu-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+.rycode-source-header
+  .rycode-submenu-link:dir(rtl):is(:hover, :focus-visible)
+  .rycode-submenu-arrow {
+  transform: translateX(-3px);
+}
+.rycode-source-header .rycode-submenu-link:focus-visible {
+  outline: 2px solid var(--submenu-accent);
+  outline-offset: -2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-source-header .rycode-submenu-link,
+  .rycode-source-header .rycode-submenu-arrow {
+    transition: none;
+  }
+  .rycode-source-header
+    [dir]
+    .rycode-submenu-link:is(:hover, :focus-visible)
+    .rycode-submenu-arrow {
+    transform: none;
+  }
+}
+.rycode-source-header .rycode-services-menu-mobile {
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+/* coorda-palette.css */
+
+.rycode-source-header .rycode-logo {
+  color: var(--logo-color);
+}
+.rycode-source-header #site-mobile-menu nav :is(a, button) {
+  color: var(--foreground);
+}
+.rycode-source-header header.reference-overlay-header nav :is(a, button) {
+  color: #fff;
+}
+.rycode-source-header
+  header.reference-overlay-header
+  nav
+  [role="region"]
+  :is(a, button) {
+  color: var(--foreground);
+}
+.rycode-source-header header button[aria-controls="site-mobile-menu"] {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.rycode-source-header
+  header.reference-overlay-header
+  button[aria-controls="site-mobile-menu"] {
+  color: #fff;
+  border-color: #ffffff40;
+}
+.rycode-source-header #site-mobile-menu nav .rycode-brand-name {
+  color: inherit;
+}
