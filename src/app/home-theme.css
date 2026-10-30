@@ -23,8 +23,8 @@
 .home-colorful .rycode-services-source .feature-card {
   position: relative;
   isolation: isolate;
-  background: #fff;
-  border: 1px solid #e8e8e8;
+  background: #eaf5ff;
+  border: 1px solid #cfe8fb;
   box-shadow: 0 12px 32px rgb(20 26 34 / 7%);
   transition:
     border-color 280ms ease,
@@ -32,8 +32,24 @@
     transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(even) {
-  background: #fff;
-  border-color: #e8e8e8;
+  background: #fff0ed;
+  border-color: #ffd7d0;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(3n) {
+  background: #f3edff;
+  border-color: #ded0ff;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(4n) {
+  background: #eaf8ef;
+  border-color: #ccebd7;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(5n) {
+  background: #fff8df;
+  border-color: #f6e6a9;
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(6n) {
+  background: #f3f3f3;
+  border-color: #dfdfdf;
 }
 .home-colorful .rycode-services-source .feature-card:hover {
   border-color: color-mix(in srgb, var(--feature-accent) 48%, #e8e8e8);

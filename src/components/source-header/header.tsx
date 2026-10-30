@@ -88,7 +88,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         <header
           ref={headerRef}
           className={cn(
-            "rycode-header fixed inset-x-3 top-3 z-50 border-b transition-shadow duration-300 sm:inset-x-4 sm:top-4",
+            "rycode-header fixed z-50 border-b transition-[background-color,border-color,box-shadow,top,inset] duration-300",
+            scrolled
+              ? "rycode-header--scrolled inset-x-0 top-0 rounded-none"
+              : "inset-x-3 top-3 rounded-[18px] sm:inset-x-4 sm:top-4",
             overlay
               ? "reference-overlay-header border-transparent bg-transparent text-white"
               : "border-border bg-surface text-foreground",

@@ -9,6 +9,9 @@
 .rycode-public .rycode-header .rycode-header-inner {
   height: 74px;
 }
+.rycode-public .rycode-header--scrolled .rycode-header-inner {
+  height: 60px;
+}
 .rycode-public .rycode-header .rycode-primary-link {
   font-size: 16px;
   padding: 10px 14px;
@@ -102,11 +105,15 @@
   );
 }
 .rycode-public .framer-nc16a8 .framer-u10ewl {
-  opacity: 0.24;
+  opacity: 0.14;
   pointer-events: none;
 }
+.rycode-public .framer-nc16a8 .framer-u10ewl img {
+  filter: hue-rotate(68deg) saturate(1.35);
+}
 .rycode-public .services-overview .watermark {
-  opacity: 0.26;
+  color: #8c5cff;
+  opacity: 0.16;
 }
 
 /* Preserve the black community section above the white footer. */
@@ -148,6 +155,12 @@
     box-shadow 300ms ease,
     border-color 300ms ease;
 }
+.rycode-public :is(a, button)[data-fill-button] {
+  --fill-base: #1a1a1a;
+  --button-line: #1a1a1a;
+  --button-hover: #66c0ff;
+  color: #fff !important;
+}
 .rycode-public :is(a, button)[data-fill-button]::before {
   content: "";
   position: absolute;
@@ -177,7 +190,7 @@
 }
 .rycode-public .features-about-link[data-fill-button] {
   --fill-base: #1a1a1a;
-  --button-hover: #ff1b0b;
+  --button-hover: #66c0ff;
   --button-line: #1a1a1a;
   color: #fff !important;
 }
@@ -188,10 +201,16 @@
 /* Branded CTAs use a confident red/ink interaction instead of a muted pastel wash. */
 .rycode-public .hero-cta[data-fill-button] {
   --fill-base: #ff1b0b;
-  --button-hover: #1a1a1a;
+  --button-hover: #66c0ff;
   --button-line: #ff1b0b;
   color: #fff !important;
   box-shadow: 0 12px 28px rgb(255 27 11 / 24%);
+}
+.rycode-public .coorda-footer-cta[data-fill-button] {
+  --fill-base: #1a1a1a;
+  --button-hover: #66c0ff;
+  --button-line: #1a1a1a;
+  color: #fff !important;
 }
 .rycode-public
   :is(.hero-cta, .features-about-link)[data-fill-button]:is(:hover, :focus-visible) {
@@ -207,6 +226,9 @@
 @media (max-width: 639px) {
   .rycode-public .rycode-header .rycode-header-inner {
     height: 64px;
+  }
+  .rycode-public .rycode-header--scrolled .rycode-header-inner {
+    height: 56px;
   }
   .rycode-public .rycode-header .rycode-wordmark {
     font-size: 24px;
