@@ -8,7 +8,7 @@ export async function HomeCapabilitiesSection() {
   return (
     <div
       id="About Section"
-      className="rycode-services-source"
+      className="rycode-services-source coorda-reference"
       dir={locale === "fa" ? "rtl" : "ltr"}
     >
       <ReferenceLocale locale={locale}>
