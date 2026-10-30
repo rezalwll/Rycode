@@ -105,7 +105,7 @@ export default function ReferenceHero() {
                 "We build digital experiences for businesses that think big, from websites and stores to custom software with focus, care and engineering.",
               )}
             </motion.p>
-            <motion.a data-fill-button
+            <motion.a
               {...appear(0.34)}
               href={href("/contact")}
               className="hero-cta"

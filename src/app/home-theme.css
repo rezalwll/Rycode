@@ -158,20 +158,20 @@
   color: rgb(255 255 255 / 85%);
 }
 .home-colorful .rycode-hero-source .hero .hero-cta {
-  background: #ff1b0b;
-  border-color: #ff1b0b;
-  color: #fff;
-  box-shadow: 0 12px 28px rgb(255 27 11 / 26%);
+  background: #66c0ff;
+  border-color: #66c0ff;
+  color: #1a1a1a;
+  box-shadow: 0 12px 28px rgb(102 192 255 / 26%);
   transition:
     background-color 0.25s,
     transform 0.25s,
     box-shadow 0.25s;
 }
 .home-colorful .rycode-hero-source .hero .hero-cta:hover {
-  background: #1a1a1a;
-  border-color: #1a1a1a;
-  color: #fff;
-  box-shadow: 0 16px 30px rgb(26 26 26 / 22%);
+  background: #8fd5ff;
+  border-color: #8fd5ff;
+  color: #1a1a1a;
+  box-shadow: 0 16px 30px rgb(102 192 255 / 30%);
   transform: translateY(-3px);
 }
 @media (max-width: 809px) {
