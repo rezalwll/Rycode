@@ -1,0 +1,235 @@
+/* Source theme utilities resolve only inside this header, keeping other UI scoped. */
+.rycode-source-header {
+  display: contents;
+  --background: #f2f2f2;
+  --foreground: #1a1a1a;
+  --surface: #fff;
+  --surface-2: #fafafa;
+  --muted-foreground: #707070;
+  --border: #1a1a1a1a;
+  --brand: #1a1a1a;
+  --brand-foreground: #fff;
+  --brand-soft: #e8e8e8;
+  --logo-color: var(--brand-blue);
+  --accent-blue: #66c0ff;
+  --ui-duration: 280ms;
+  --ui-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --source-header-background: var(--background);
+  --source-header-foreground: var(--foreground);
+  --source-header-surface: var(--surface);
+  --source-header-surface-2: var(--surface-2);
+  --source-header-muted: var(--muted-foreground);
+  --source-header-border: var(--border);
+  --source-header-brand: var(--brand);
+  --source-header-brand-soft: var(--brand-soft);
+  --source-header-brand-foreground: var(--brand-foreground);
+  --source-header-ink: #1a1a1a;
+}
+.dark .rycode-source-header {
+  --background: #1a1a1a;
+  --foreground: #fff;
+  --surface: #242424;
+  --surface-2: #303030;
+  --muted-foreground: #b7b7b7;
+  --border: #ffffff26;
+  --brand: #fff;
+  --brand-foreground: #1a1a1a;
+  --brand-soft: #303030;
+}
+/* The source uses Tailwind preflight; reproduce it only for this component. */
+@layer base {
+  .rycode-source-header *,
+  .rycode-source-header *::before,
+  .rycode-source-header *::after {
+    box-sizing: border-box;
+    border: 0 solid;
+  }
+  .rycode-source-header :where(a) {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  .rycode-source-header :where(button) {
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+  .rycode-source-header :where(ul, p) {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .rycode-source-header :where(svg, img) {
+    display: block;
+    vertical-align: middle;
+  }
+}
+.rycode-source-header .rycode-brand-name,
+.rycode-source-header .rycode-wordmark-suffix {
+  color: var(--logo-color);
+  -webkit-text-fill-color: var(--logo-color);
+}
+.rycode-source-header .rycode-wordmark-prefix {
+  color: var(--brand-blue) !important;
+  -webkit-text-fill-color: var(--brand-blue);
+}
+.dark .rycode-source-header .rycode-wordmark-prefix,
+.rycode-source-header
+  .rycode-logo[data-variant="light"]
+  .rycode-wordmark-prefix {
+  color: var(--brand-blue) !important;
+  -webkit-text-fill-color: var(--brand-blue);
+}
+.rycode-source-header :is(a, button):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.rycode-source-header .reference-overlay-header :is(a, button):focus-visible {
+  outline-color: #fff;
+}
+.rycode-source-header .rycode-submenu-link:focus-visible {
+  outline-color: var(--submenu-accent);
+  outline-offset: -2px;
+}
+
+/* Two distinct tools replace the nested pill controls. */
+.rycode-public .rycode-source-header .rycode-header-tools {
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.rycode-public .rycode-source-header .rycode-language-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 40px;
+  padding: 0 13px;
+  border: 1px solid #e5e3e9;
+  border-radius: 12px;
+  background: #fff;
+  color: #47434d;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+.rycode-public .rycode-source-header .rycode-language-link:hover {
+  border-color: #d2cbdc;
+  background: #f8f6fc;
+  color: #1a1a1a;
+}
+.rycode-source-header .rycode-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  height: 40px;
+  border: 1px solid #e5e3e9;
+  border-radius: 12px;
+  background: #f4f3f6;
+}
+.rycode-source-header .rycode-theme-option {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #827c89;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease;
+}
+.rycode-source-header .rycode-theme-option:hover {
+  color: #29252f;
+  background: #ebe8f0;
+}
+.rycode-source-header .rycode-theme-option[aria-pressed="true"] {
+  color: #353039;
+  background: #fff;
+  border-color: #e6e3eb;
+  box-shadow: 0 1px 3px rgb(20 15 30 / 7%);
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header-tools[data-overlay="true"]
+  .rycode-language-link {
+  color: #fff;
+  background: transparent;
+  border-color: rgb(255 255 255 / 30%);
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header-tools[data-overlay="true"]
+  .rycode-language-link:hover {
+  background: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 55%);
+}
+.rycode-source-header .rycode-theme-toggle[data-variant="light"] {
+  background: transparent;
+  border-color: rgb(255 255 255 / 30%);
+}
+.rycode-source-header
+  .rycode-theme-toggle[data-variant="light"]
+  .rycode-theme-option {
+  color: rgb(255 255 255 / 75%);
+}
+.rycode-source-header
+  .rycode-theme-toggle[data-variant="light"]
+  .rycode-theme-option:hover {
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+}
+.rycode-source-header
+  .rycode-theme-toggle[data-variant="light"]
+  .rycode-theme-option[aria-pressed="true"] {
+  background: #fff;
+  color: #353039;
+  border-color: #fff;
+  box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-source-header :is(.rycode-language-link, .rycode-theme-option) {
+    transition: none;
+  }
+}
+
+/* Keep the public header clear of the hero edge while preserving its overlay mode. */
+.rycode-public .rycode-source-header .rycode-header {
+  border-radius: 18px;
+  overflow: visible;
+}
+
+/* CODE must remain readable on the dark first section. */
+.rycode-public
+  .rycode-source-header
+  .rycode-header.reference-overlay-header
+  .rycode-wordmark-suffix {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header:not(.reference-overlay-header)
+  .rycode-wordmark-suffix {
+  color: var(--ui-ink, #1a1a1a) !important;
+  -webkit-text-fill-color: var(--ui-ink, #1a1a1a) !important;
+}
+
+@media (max-width: 639px) {
+  .rycode-public .rycode-source-header .rycode-header {
+    border-radius: 14px;
+  }
+}
