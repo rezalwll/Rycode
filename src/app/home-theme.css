@@ -1,0 +1,147 @@
+/* White sections with blue and purple accents; the video hero is preserved. */
+.home-colorful {
+  --home-ink: var(--ui-ink);
+  --home-muted: var(--ui-muted);
+  color: var(--home-ink);
+  background: #fff;
+}
+.home-colorful
+  :is(
+    .rycode-services-source,
+    .framer-1udbsna,
+    .framer-nc16a8,
+    .framer-g3n3eu,
+    #blog-preview
+  ) {
+  background: #fff;
+  color: var(--home-ink);
+}
+.home-colorful .rycode-services-source :is(.features, .feature-card),
+.home-colorful .rycode-services-source .features::before {
+  background: #fff;
+}
+.home-colorful .rycode-services-source .feature-card {
+  position: relative;
+  isolation: isolate;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 12px 32px rgb(20 26 34 / 7%);
+  transition:
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.home-colorful .rycode-services-source .feature-card:nth-child(even) {
+  background: #fff;
+  border-color: #e8e8e8;
+}
+.home-colorful .rycode-services-source .feature-card:hover {
+  border-color: color-mix(in srgb, var(--feature-accent) 48%, #e8e8e8);
+  box-shadow: 0 20px 44px rgb(20 26 34 / 12%);
+  transform: translateY(-6px);
+}
+.home-colorful .rycode-services-source .feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: -1;
+  width: 4px;
+  border-radius: 24px 0 0 24px;
+  background: var(--feature-accent);
+  opacity: 0.95;
+}
+.home-colorful .rycode-services-source .capability-card-label > span:first-child {
+  color: var(--feature-accent);
+  font-weight: 700;
+}
+.home-colorful .rycode-services-source .capability-card-image {
+  border: 1px solid color-mix(in srgb, var(--feature-accent) 36%, #e8e8e8);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 55%);
+}
+.home-colorful .rycode-services-source .feature-card-tag {
+  color: color-mix(in srgb, var(--feature-accent) 70%, #333);
+  font-weight: 600;
+}
+.home-colorful .rycode-services-source .features-heading :is(h2, mark) {
+  color: var(--home-ink);
+  background: #fff;
+}
+.home-colorful .rycode-services-source .features-about-link {
+  background: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 10px 24px rgb(26 26 26 / 18%);
+}
+.home-colorful .rycode-services-source .features-about-link:hover {
+  background: #ff1b0b;
+  color: #fff;
+}
+.home-colorful .rycode-services-source .feature-foot-arrow {
+  background: #fff;
+  color: var(--feature-accent, #ff1b0b);
+}
+
+/* Preserve the video layout without the pastel wash obscuring the footage. */
+.home-colorful .rycode-hero-source {
+  --home-ink: #17233d;
+  --home-muted: #5f6d84;
+  background: linear-gradient(135deg, #fff7ed 0%, #eef7ff 48%, #f6efff 100%);
+}
+.home-colorful .rycode-hero-source .hero {
+  padding: 18px;
+}
+.home-colorful .rycode-hero-source .hero-frame {
+  min-height: 680px;
+  color: #fff;
+  background: #1a1a1a;
+  box-shadow: none;
+}
+.home-colorful .rycode-hero-source .hero-scene {
+  z-index: -1;
+  opacity: 1;
+  filter: brightness(0.82);
+  mix-blend-mode: normal;
+}
+.home-colorful .rycode-hero-source .hero-frame::before {
+  content: none;
+}
+.home-colorful .rycode-hero-source .hero-title,
+.home-colorful .rycode-hero-source .rycode-hero-title {
+  color: #fff;
+  text-shadow: none;
+}
+.home-colorful .rycode-hero-source .rycode-hero-title .hero-title-soft {
+  color: rgb(255 255 255 / 72%);
+}
+.home-colorful .rycode-hero-source .rycode-hero-title .hero-title-accent {
+  color: var(--ui-blue);
+}
+.home-colorful .rycode-hero-source .rycode-hero-subtitle,
+.home-colorful .rycode-hero-source .hero-subtitle {
+  color: rgb(255 255 255 / 85%);
+}
+.home-colorful .rycode-hero-source .hero .hero-cta {
+  background: #ff1b0b;
+  border-color: #ff1b0b;
+  color: #fff;
+  box-shadow: 0 12px 28px rgb(255 27 11 / 26%);
+  transition:
+    background-color 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.home-colorful .rycode-hero-source .hero .hero-cta:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 16px 30px rgb(26 26 26 / 22%);
+  transform: translateY(-3px);
+}
+@media (max-width: 809px) {
+  .home-colorful .rycode-hero-source .hero {
+    padding: 0;
+  }
+  .home-colorful .rycode-hero-source .hero-frame {
+    min-height: 590px;
+    border-radius: 0 0 28px 28px;
+  }
+}
