@@ -21,7 +21,7 @@ export default async function Page({
   return (
     <main
       data-framer-root=""
-      className="framer-ZFEwM framer-l5lhc contents!"
+      className="blog-colorful framer-ZFEwM framer-l5lhc contents!"
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">{t("Blog")}</h1>

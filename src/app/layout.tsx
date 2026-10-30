@@ -9,6 +9,7 @@ import "./services.css";
 import "./home-theme.css";
 import "./public-theme.css";
 import "./interaction-refinements.css";
+import "./blog-theme.css";
 import { getLocale } from "@/lib/i18n-server";
 import { headers } from "next/headers";
 import { metadataForPath, siteUrl } from "@/lib/seo";
