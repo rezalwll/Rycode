@@ -1,0 +1,124 @@
+.preview {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 100px 32px;
+  background: #f2f2f2;
+  color: #111;
+  scroll-margin-top: 100px;
+}
+.inner {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 24px;
+  font-size: 15px;
+}
+.eyebrow span {
+  color: #ff1a05;
+}
+.header h2 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(32px, 3.8vw, 54px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+.allArticles {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+  border: 1px solid #111;
+  border-radius: 99px;
+  padding: 6px;
+  padding-inline-start: 20px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+.allArticles span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 24px;
+}
+.allArticles:hover {
+  background: #ff1a05;
+  border-color: #ff1a05;
+}
+.allArticles:focus-visible {
+  outline: 2px solid #ff1a05;
+  outline-offset: 4px;
+}
+.preview:global(.framer-ZFEwM) :global(.framer-1yqm1dg) {
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+.empty {
+  margin: 0;
+  padding-block: 36px;
+  font-size: 16px;
+  color: #555;
+}
+@media (max-width: 809px) {
+  .preview {
+    padding: 64px 24px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .header h2 {
+    font-size: clamp(30px, 5vw, 40px);
+  }
+  .eyebrow {
+    margin-bottom: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .allArticles {
+    transition: none;
+  }
+}
+
+.preview {
+  background: #fff;
+}
+.eyebrow span {
+  color: var(--ui-purple, #c4b5fd);
+}
+.allArticles,
+.allArticles:hover {
+  color: #1a1a1a;
+  border-color: transparent;
+  background: var(--ui-purple, #c4b5fd);
+}
+.allArticles:hover {
+  background: var(--ui-blue, #a8d8ff);
+}
+.allArticles:focus-visible {
+  outline-color: var(--ui-purple, #c4b5fd);
+}

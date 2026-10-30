@@ -6,6 +6,9 @@ import "./hover.css";
 import "./line-trace.css";
 import "./locale.css";
 import "./services.css";
+import "./home-theme.css";
+import "./public-theme.css";
+import "./interaction-refinements.css";
 import { getLocale } from "@/lib/i18n-server";
 import { headers } from "next/headers";
 import { metadataForPath, siteUrl } from "@/lib/seo";
@@ -16,10 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(siteUrl()),
     ...metadataForPath((await headers()).get("x-rycode-path") || "/", locale),
     title: {
-      default: t("RYCODE Studio — Modern Creative Studio"),
-      template: t("%s | RYCODE Studio"),
+      default: t("RYCODE"),
+      template: t("%s | RYCODE"),
     },
-    applicationName: "RYCODE Studio",
+    applicationName: "RYCODE",
   };
 }
 export default async function Layout({

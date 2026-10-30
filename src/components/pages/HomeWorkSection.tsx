@@ -17,7 +17,9 @@ export async function HomeWorkSection() {
             data-framer-name="Tag & Title"
             style={referenceStyles.s5916c9ffdd}
             as="div"
-            from="translateY(200px)"
+            from="translateY(24px)"
+            duration={1200}
+            easing="cubic-bezier(.22,1,.36,1)"
           >
             <div className="ssr-variant">
               <div className="framer-1q5rzir-container">

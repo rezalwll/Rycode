@@ -7,7 +7,7 @@ import { secret, HttpError } from "./security";
 
 function createAuthentication() {
   return betterAuth({
-    appName: "RYCODE Studio",
+    appName: "RYCODE",
     baseURL:
       process.env.SITE_URL ||
       process.env.NEXT_PUBLIC_SITE_URL ||

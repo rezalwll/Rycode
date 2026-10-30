@@ -107,6 +107,35 @@
   transition: color 0.4s linear;
 }
 
+/* Reuse the header's four-dot burst on every CTA variant that has the compact
+   dot slot, so cards, hero actions and process CTAs share the same gesture. */
+.framer-obWCA:not(.framer-v-18sfddm) .framer-1glyh7l::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brand-accent, #ff1a05);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 0 var(--brand-accent, #ff1a05);
+  transition:
+    opacity 0.2s linear,
+    box-shadow 0.4s linear;
+}
+.framer-obWCA:not(.framer-v-18sfddm):is(:hover, :focus-visible)
+  .framer-1glyh7l::before {
+  opacity: 1;
+  box-shadow:
+    -5px -5px 0 0 var(--brand-accent, #ff1a05),
+    5px -5px 0 0 var(--brand-accent, #ff1a05),
+    -5px 5px 0 0 var(--brand-accent, #ff1a05),
+    5px 5px 0 0 var(--brand-accent, #ff1a05);
+}
+
 /* Arrow and social icons leave the clipped button as their duplicate enters. */
 .framer-ez4Wr .framer-g86u4c,
 .framer-ez4Wr .framer-tnk03u,

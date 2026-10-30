@@ -77,10 +77,10 @@ for (const locale of ["en", "fa"]) {
     );
     if (locale === "fa") {
       if (route === "/") {
-        assert.match(
+        assert.doesNotMatch(
           $("main h1").text(),
-          /RYCODE STUDIO/,
-          `${path}: original brand heading`,
+          /\bstudio\b|استودیو/iu,
+          `${path}: concise brand heading`,
         );
       }
       assert.match(
@@ -100,8 +100,8 @@ for (const locale of ["en", "fa"]) {
       $(".framer-text").each((_, element) => {
         const value = $(element).text().trim();
         if (
-          /^[\s\w]*ry(?:code)?(?:\s*studio)?$/i.test(value) ||
-          /^(code(?: studio)?|studio)$/i.test(value)
+          /^[\s\w]*ry(?:code)?$/i.test(value) ||
+          /^code$/i.test(value)
         )
           return;
         assert.ok(

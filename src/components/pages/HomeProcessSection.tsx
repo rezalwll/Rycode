@@ -21,7 +21,7 @@ export async function HomeProcessSection() {
               decoding="async"
               width="1200"
               height="220"
-              src="/brand/rycode-watermark.svg"
+              src="/brand/rycode-watermark.svg?v=3498db"
               alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}

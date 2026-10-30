@@ -399,6 +399,58 @@
 .white .aside a {
   color: #333;
 }
+.projectPage {
+  background: #f4f6f8;
+  color: #111820;
+}
+.projectPage .breadcrumb {
+  color: #68737d;
+}
+.projectPage .breadcrumb a {
+  color: #111820;
+}
+.projectPage .summary {
+  color: #5d6872;
+}
+.projectPage .meta {
+  border-color: #d7dfe5;
+  color: #66727c;
+}
+.projectPage .article {
+  border-top: 1px solid #d7dfe5;
+  padding-top: 42px;
+}
+.projectPage .aside {
+  border-color: #d7dfe5;
+  background: #fff;
+}
+.projectPage .aside a {
+  color: #111820;
+}
+.projectPage .rich a {
+  color: #c51b0b;
+}
+.projectPage .rich blockquote {
+  background: #e8edf0;
+  border-color: #ff1a05;
+}
+.projectPage .rich pre {
+  background: #18232b;
+  border-color: #263944;
+}
+.projectPage .faq {
+  border-color: #d7dfe5;
+}
+.projectPage .faq p {
+  color: #5d6872;
+}
+.projectPage .service {
+  background: #fff;
+  border-color: #d7dfe5;
+}
+.projectPage .service:hover {
+  border-color: #ff1a05;
+}
 
 /* Premium service detail treatment: editorial hero + conversion-focused content. */
 .servicePage {
@@ -504,7 +556,9 @@
   border-radius: 50%;
   background: #b84e34;
   color: #fff;
-  transition: transform 0.35s, background 0.35s;
+  transition:
+    transform 0.35s,
+    background 0.35s;
 }
 .servicePage .primary:hover,
 .servicePage .primary:focus-visible {
@@ -688,4 +742,82 @@
   .card:hover img {
     transform: none;
   }
+}
+
+/* Palette shared by public content pages, with no tinted page/card canvases. */
+.page,
+.page.white,
+.page.projectPage,
+.page.servicePage {
+  background: #fff;
+  color: var(--ui-ink, #1a1a1a);
+}
+.page.servicePage::after {
+  background: none;
+}
+.page
+  :is(
+    .panel,
+    .service,
+    .aside,
+    .specialties,
+    .rich blockquote,
+    .rich pre,
+    .search input,
+    .search select
+  ),
+.page.servicePage :is(.service, .aside, .specialties) {
+  background: #fff;
+  color: var(--ui-ink, #1a1a1a);
+  border: 1px solid var(--ui-line, #e7e7e7);
+  box-shadow: none;
+}
+.page
+  :is(.summary, .meta, .breadcrumb, .empty, .card p, .aside a, .mobileToc a),
+.page.servicePage
+  :is(
+    .summary,
+    .meta,
+    .breadcrumb,
+    .breadcrumb a,
+    .specialties > p:not(.eyebrow)
+  ) {
+  color: var(--ui-muted, #666);
+}
+.page.servicePage :is(h1, h2, .rich h2, .service, .aside) {
+  color: var(--ui-ink, #1a1a1a);
+}
+.page :is(.rich a, .aside a:hover, .mobileToc a:hover),
+.page.servicePage .service::after {
+  color: var(--ui-ink, #1a1a1a);
+  text-decoration-color: var(--ui-purple, #c4b5fd);
+}
+.page :is(.eyebrow::before, .rich li::marker),
+.page.servicePage :is(.eyebrow::before, .rich li::marker) {
+  color: var(--ui-purple, #c4b5fd);
+}
+.page :is(.button, .primary, .preview),
+.page.servicePage :is(.primary, .aside .button),
+.page.projectPage .button {
+  background: var(--ui-blue, #a8d8ff);
+  color: #1a1a1a;
+  border-color: var(--ui-blue, #a8d8ff);
+  box-shadow: none;
+}
+.page :is(.button:hover, .button:focus-visible, .card:hover .arrow),
+.page.servicePage :is(.primary:hover, .aside .button:hover) {
+  background: var(--ui-purple, #c4b5fd);
+  color: #1a1a1a;
+  border-color: var(--ui-purple, #c4b5fd);
+}
+.page.servicePage .primary span {
+  background: #fff;
+  color: #1a1a1a;
+}
+.page
+  :is(.service:hover, .service:focus-visible, .faq, .meta, .toc, .mobileToc) {
+  border-color: var(--ui-line, #e7e7e7);
+}
+.page :focus-visible {
+  outline-color: var(--ui-purple, #c4b5fd);
 }

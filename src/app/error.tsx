@@ -11,7 +11,7 @@ export default function ErrorPage({
   const { locale } = useLocale();
   return (
     <main className={styles.page} style={{ minHeight: "100svh" }}>
-      <p className={styles.eyebrow}>RYCODE STUDIO</p>
+      <p className={styles.eyebrow}>RYCODE</p>
       <h1>
         {locale === "fa"
           ? "ارتباط با سایت برقرار نشد"

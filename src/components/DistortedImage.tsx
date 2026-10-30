@@ -267,7 +267,7 @@ export function DistortedImage({
     <div ref={root} className="relative h-full w-full overflow-hidden">
       <img
         src={src}
-        alt={t("Abstract studio artwork")}
+        alt={t("Abstract artwork")}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ opacity: ready ? 0 : 1 }}
       />

@@ -1,6 +1,6 @@
 import { database, databaseConfigured } from "@/server/db";
 import { getTranslations } from "@/lib/i18n-server";
-import styles from "./Content.module.css";
+import { FaqSection } from "./FaqSection";
 export async function ManagedFaq({
   scope,
   children,
@@ -17,17 +17,8 @@ export async function ManagedFaq({
   });
   if (!rows.length) return children;
   return (
-    <section className={styles.page} style={{ paddingBlock: 70 }}>
-      <p className={styles.eyebrow}>FAQ</p>
-      <h2>
-        {locale === "fa" ? "پرسش‌های متداول" : "Frequently asked questions"}
-      </h2>
-      {rows.map((row) => (
-        <details className={styles.faq} key={row.id}>
-          <summary>{row.question}</summary>
-          <p>{row.answer}</p>
-        </details>
-      ))}
-    </section>
+    <FaqSection
+      entries={rows.map(({ question, answer }) => ({ question, answer }))}
+    />
   );
 }

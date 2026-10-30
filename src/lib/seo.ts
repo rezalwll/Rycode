@@ -82,7 +82,7 @@ export function pageMetadata({
       title,
       description,
       url: canonical,
-      siteName: "RYCODE Studio",
+      siteName: "RYCODE",
       locale: locale === "fa" ? "fa_IR" : "en_US",
       type: "website",
       images: [
@@ -115,7 +115,7 @@ export function metadataForPath(path: string, locale: Locale) {
         ? "Work"
         : normalized === "/blog"
           ? "Blog"
-          : "RYCODE Studio — Modern Creative Studio",
+          : "RYCODE",
     locale,
   );
   return pageMetadata({

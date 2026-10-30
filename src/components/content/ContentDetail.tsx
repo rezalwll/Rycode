@@ -145,7 +145,8 @@ export async function ContentDetail({
       className={
         styles.page +
         (content.kind === "ARTICLE" ? " " + styles.white : "") +
-        (content.kind === "SERVICE" ? " " + styles.servicePage : "")
+        (content.kind === "SERVICE" ? " " + styles.servicePage : "") +
+        (content.kind === "PROJECT" ? " " + styles.projectPage : "")
       }
     >
       {preview && (
@@ -173,7 +174,7 @@ export async function ContentDetail({
       <p className={styles.summary}>{content.summary}</p>
       {content.kind === "SERVICE" && (
         <div className={styles.actions}>
-          <Link
+          <Link data-fill-button
             className={styles.button + " " + styles.primary}
             href={inquiryHref}
           >
@@ -263,7 +264,7 @@ export async function ContentDetail({
               ? "مسئله و هدفت را بگو تا قدم بعدی را با هم مشخص کنیم"
               : "Share your goals and we will work out the next step."}
           </p>
-          <Link className={styles.button} href={inquiryHref}>
+          <Link data-fill-button className={styles.button} href={inquiryHref}>
             {fa ? "شروع همکاری" : "Get started"}{" "}
             <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
           </Link>

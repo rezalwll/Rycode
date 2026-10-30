@@ -10,7 +10,7 @@ export async function StructuredData() {
       {
         "@type": "Organization",
         "@id": absoluteUrl("/#organization"),
-        name: "RYCODE Studio",
+        name: "RYCODE",
         url: absoluteUrl("/"),
         logo: absoluteUrl("/icon.png"),
         telephone: String(settings["contact.phone"] || "09981222022"),
@@ -21,7 +21,7 @@ export async function StructuredData() {
       {
         "@type": "WebSite",
         "@id": absoluteUrl("/#website"),
-        name: "RYCODE Studio",
+        name: "RYCODE",
         url: absoluteUrl("/"),
         inLanguage: locale,
         publisher: { "@id": absoluteUrl("/#organization") },

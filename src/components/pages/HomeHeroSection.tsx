@@ -106,17 +106,7 @@ export async function HomeHeroSection() {
                     <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
-                  <span
-                    className="brand-studio"
-                    style={referenceStyles.sa20496458d}
-                  >
-                    <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"I"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
-                  </span>
+
                 </SplitText>
               </Reveal>
             </div>
@@ -155,17 +145,7 @@ export async function HomeHeroSection() {
                     <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
                     <span style={referenceStyles.s1b9115ae2a}>{"E"}</span>
                   </span>{" "}
-                  <span
-                    className="brand-studio"
-                    style={referenceStyles.sa20496458d}
-                  >
-                    <span style={referenceStyles.s1b9115ae2a}>{"S"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"T"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"U"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"D"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"I"}</span>
-                    <span style={referenceStyles.s1b9115ae2a}>{"O"}</span>
-                  </span>
+
                 </SplitText>
               </Reveal>
             </div>
@@ -434,9 +414,7 @@ export async function HomeHeroSection() {
                                               {t("RY")}
                                             </span>
                                             {"CODE "}
-                                            <span className="brand-studio">
-                                              STUDIO
-                                            </span>
+
                                           </>
                                         </h5>
                                       </div>
@@ -556,9 +534,7 @@ export async function HomeHeroSection() {
                                               {t("RY")}
                                             </span>
                                             {"CODE "}
-                                            <span className="brand-studio">
-                                              STUDIO
-                                            </span>
+
                                           </>
                                         </h5>
                                       </div>
@@ -1017,7 +993,7 @@ export async function HomeHeroSection() {
                                       {t("RY")}
                                     </span>
                                     {"CODE "}
-                                    <span className="brand-studio">STUDIO</span>
+
                                   </>
                                 </h5>
                               </div>

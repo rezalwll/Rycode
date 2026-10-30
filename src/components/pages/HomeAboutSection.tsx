@@ -1102,7 +1102,7 @@ export async function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {t("Founder, Nova Studio")}
+                        {t("Founder, Nova")}
                       </p>
                     </div>
                   </div>
@@ -1175,7 +1175,7 @@ export async function HomeAboutSection() {
                         dir="auto"
                         style={referenceStyles.s012fd96313}
                       >
-                        {t("Founder, RYCODE Studio")}
+                        {t("Founder, RYCODE")}
                       </p>
                     </div>
                   </div>

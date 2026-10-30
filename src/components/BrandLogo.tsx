@@ -1,3 +1,5 @@
+import { BRAND_MARK_SRC } from "@/lib/brand-assets";
+
 type BrandLogoProps = {
   tone?: "light" | "dark";
   variant?: "header" | "ticker" | "footer";
@@ -12,10 +14,10 @@ export function BrandLogo({
       className={`brand-logo brand-logo--${variant} brand-logo--${tone}`}
       dir="ltr"
       role="img"
-      aria-label="RYCODE Studio"
+      aria-label="RYCODE"
     >
       <img
-        src={`/brand/rycode-${tone === "dark" ? "white" : "charcoal"}.webp`}
+        src={BRAND_MARK_SRC}
         width={96}
         height={128}
         alt=""
@@ -24,9 +26,10 @@ export function BrandLogo({
       />
       <span className="brand-logo__type" aria-hidden="true">
         <span className="brand-logo__name">
-          <span className="brand-accent">RY</span>CODE
+          <span className="brand-letter-r">R</span>
+          <span className="brand-letter-y">Y</span>
+          <span className="brand-logo__code brand-code">CODE</span>
         </span>
-        <span className="brand-logo__studio">STUDIO</span>
       </span>
     </span>
   );

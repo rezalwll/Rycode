@@ -1,3 +1,14 @@
+/* Variable Latin face supplied with the previous RYCODE project (300–700). */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/space-grotesk/space-grotesk-variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-english: "Space Grotesk", "IRANYekan", Arial, sans-serif;
+}
 @font-face {
   font-family: "IRANYekan";
   src:
@@ -41,6 +52,15 @@
 .framer-ATxvc .framer-uk7nae {
   gap: 12px;
 }
+html[lang="en"] body,
+html[lang="en"] body * {
+  font-family: var(--font-english) !important;
+}
+/* Explicit English fragments also retain their Latin face on Persian pages. */
+html[lang="fa"] [lang="en"],
+html[lang="fa"] [lang="en"] * {
+  font-family: var(--font-english) !important;
+}
 html[lang="fa"] body,
 html[lang="fa"] body * {
   font-family: "IRANYekan", Tahoma, sans-serif !important;
@@ -79,9 +99,14 @@ html[lang="fa"] input[type="email"] {
 html[lang="fa"] :is(.rycode-slide, .ticker-item) {
   direction: rtl;
 }
-html[lang="fa"] :is(.brand-logo, .brand-wordmark),
-html[lang="fa"] :is(.brand-logo, .brand-wordmark) * {
-  font-family: "Geist", sans-serif !important;
+html[lang="fa"] :is(
+  .brand-logo, .brand-wordmark, .rycode-wordmark, .rycode-brand-name,
+  .feature-card-tag, .coorda-footer-identity small, .framer-N5z0F h5,
+  .moments-status, a[href^="tel:"], a[href^="mailto:"],
+  input[type="email"], input[type="url"], input[type="tel"]
+),
+html[lang="fa"] :is(.brand-logo, .brand-wordmark, .rycode-wordmark, .framer-N5z0F h5, .moments-status) * {
+  font-family: var(--font-english) !important;
 }
 html[lang="fa"] .brand-wordmark {
   direction: ltr;

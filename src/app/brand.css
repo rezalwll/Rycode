@@ -1,5 +1,7 @@
 :root {
-  --brand-accent: #ff1a05;
+  --brand-blue: #3498db;
+  --brand-purple: #8b6bda;
+  --brand-accent: var(--brand-blue);
 }
 
 .brand-accent {
@@ -13,7 +15,7 @@
   gap: 0.22em;
   width: 100%;
   height: 100%;
-  font-family: "Geist", sans-serif;
+  font-family: var(--font-english);
   font-size: 30px;
   line-height: 1;
   white-space: nowrap;
@@ -42,14 +44,19 @@
 .brand-logo__name {
   font-weight: 600;
 }
-.brand-logo__studio,
-.brand-studio {
-  color: #aaa;
+.brand-logo .brand-logo__name .brand-accent { color: var(--brand-blue); }
+.brand-logo__code { color: #000; }
+.brand-letter-r {
+  color: var(--brand-blue) !important;
+  -webkit-text-fill-color: var(--brand-blue) !important;
 }
-.brand-logo__studio {
-  opacity: 1;
-  font-weight: 400;
-  letter-spacing: -0.065em;
+.brand-letter-y {
+  color: var(--brand-blue) !important;
+  -webkit-text-fill-color: var(--brand-blue) !important;
+}
+.brand-code {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 .brand-logo--header {
@@ -57,20 +64,10 @@
   height: 42px;
   font-size: 29px;
 }
-.brand-logo--header .brand-logo__emblem {
-  transform: translateY(-6px);
-}
 
 .brand-logo--header .brand-logo__type {
   flex-direction: column;
   gap: 3px;
-}
-.brand-logo--header .brand-logo__studio {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-  padding-left: 2px;
 }
 
 .brand-logo--ticker {
@@ -89,7 +86,7 @@
   width: 0.85em;
 }
 .framer-N5z0F h5 {
-  font-family: "Geist", sans-serif !important;
+  font-family: var(--font-english) !important;
   direction: ltr;
   unicode-bidi: isolate;
 }

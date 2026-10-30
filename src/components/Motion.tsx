@@ -114,10 +114,12 @@ export function SplitText({
     let animations: Animation[] = [];
     if (scrollLinked) {
       let frame = 0;
+      const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
       const update = () => {
         frame = 0;
         const box = root.getBoundingClientRect();
-        const progress = reduced()
+        const reduceMotion = motionPreference.matches;
+        const progress = reduceMotion
           ? 1
           : Math.max(
               0,
@@ -126,13 +128,19 @@ export function SplitText({
                 (innerHeight - box.top) / ((innerHeight + box.height) / 2),
               ),
             );
-        const count = Math.ceil(progress * chars.length);
         chars.forEach((span, index) => {
-          span.style.transition = reduced()
+          // Overlapping fades avoid snapping an entire word on at a scroll
+          // threshold. Normalized spacing also works for the English letters.
+          const start = (index / Math.max(1, chars.length - 1)) * 0.72;
+          const phase = reduceMotion
+            ? 1
+            : Math.max(0, Math.min(1, (progress - start) / 0.28));
+          const opacity = phase * phase * (3 - 2 * phase);
+          span.style.transition = reduceMotion
             ? "none"
-            : "opacity .15s ease-out, transform .15s ease-out";
-          span.style.opacity = index < count ? "1" : "0";
-          span.style.transform = index < count ? "none" : "translateY(3px)";
+            : "opacity 420ms cubic-bezier(.22,1,.36,1), transform 600ms cubic-bezier(.22,1,.36,1)";
+          span.style.opacity = String(opacity);
+          span.style.transform = `translateY(${(1 - opacity) * 4}px)`;
           span.style.filter = "none";
         });
       };
@@ -142,10 +150,12 @@ export function SplitText({
       update();
       window.addEventListener("scroll", schedule, { passive: true });
       window.addEventListener("resize", schedule);
+      motionPreference.addEventListener("change", schedule);
       return () => {
         cancelAnimationFrame(frame);
         window.removeEventListener("scroll", schedule);
         window.removeEventListener("resize", schedule);
+        motionPreference.removeEventListener("change", schedule);
       };
     }
     const observer = new IntersectionObserver(
@@ -316,7 +326,7 @@ export function Carousel({
       className={`${className} relative! overflow-hidden!`}
       style={style}
       aria-roledescription="carousel"
-      aria-label={t(kind === "hero" ? "Studio showcase" : "Studio statistics")}
+      aria-label={t(kind === "hero" ? "RYCODE showcase" : "RYCODE statistics")}
       tabIndex={0}
       data-active-slide={active}
       onDragStart={(event) => event.preventDefault()}

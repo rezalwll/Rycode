@@ -1,0 +1,266 @@
+/* Original RYCODE video hero; selectors are isolated from the existing site. */
+.rycode-hero-source {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 100%;
+  background: #f2f2f2;
+  --accent-blue: #66c0ff;
+  --coorda-font: "IRANYekan", ui-sans-serif, system-ui, sans-serif;
+  --action: #ff9c52;
+  --action-hover: #ffad70;
+  --action-foreground: #1a1a1a;
+}
+.rycode-hero-source * {
+  box-sizing: border-box;
+}
+.rycode-hero-source a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* coorda-reference.css */
+
+.rycode-hero-source .hero {
+  padding: 8px;
+}
+.rycode-hero-source .hero-frame {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+  min-height: 600px;
+  padding: 40px;
+  overflow: clip;
+  border-radius: 24px;
+  color: white;
+}
+.rycode-hero-source .hero-scene {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: #556471 url("/brand/source-hero/rycode-hero-poster.jpg") center /
+    cover;
+  filter: blur(3px) brightness(0.6);
+}
+.rycode-hero-source .hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.rycode-hero-source .hero-cta:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+.rycode-hero-source .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  text-align: center;
+}
+.rycode-hero-source .hero-title {
+  margin: 0;
+  max-width: 900px;
+  font-size: 78px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.rycode-hero-source .hero-title-line {
+  display: block;
+  white-space: nowrap;
+}
+.rycode-hero-source .hero-subtitle {
+  margin: 0;
+  max-width: 350px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.rycode-hero-source .hero-cta {
+  position: relative;
+  display: block;
+  padding: 12px 22px;
+  overflow: hidden;
+  border-radius: 100px;
+  background: white;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  transition: transform 0.25s;
+}
+.rycode-hero-source .hero-cta:hover {
+  transform: translateY(-2px);
+}
+.rycode-hero-source .hero-cta-label {
+  display: block;
+  transition:
+    transform 0.35s,
+    opacity 0.35s,
+    filter 0.35s;
+}
+.rycode-hero-source .hero-cta-label-copy {
+  position: absolute;
+  inset: 12px 22px;
+  transform: translateY(32px);
+  opacity: 0;
+  filter: blur(4px);
+}
+.rycode-hero-source .hero-cta:hover .hero-cta-label {
+  transform: translateY(-32px);
+  opacity: 0;
+  filter: blur(4px);
+}
+.rycode-hero-source .hero-cta:hover .hero-cta-label-copy {
+  transform: translateY(0);
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (min-width: 810px) and (max-width: 1199px) {
+  .rycode-hero-source .hero {
+    padding: 0;
+  }
+  .rycode-hero-source .hero-frame {
+    border-radius: 0 0 24px 24px;
+    padding: 30px;
+  }
+}
+@media (max-width: 809px) {
+  .rycode-hero-source .hero {
+    padding: 0;
+  }
+  .rycode-hero-source .hero-frame {
+    min-height: 560px;
+    padding: 20px;
+    border-radius: 0 0 24px 24px;
+  }
+  .rycode-hero-source .hero-content {
+    gap: 24px;
+  }
+  .rycode-hero-source .hero-title {
+    max-width: 500px;
+    margin-bottom: -8px;
+    font-size: 50px;
+    line-height: 1.1;
+  }
+  .rycode-hero-source .hero-title-desktop {
+    display: none;
+  }
+  .rycode-hero-source .hero-subtitle {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+@media (max-width: 359px) {
+  .rycode-hero-source .hero-title {
+    font-size: 44px;
+  }
+  .rycode-hero-source .hero-subtitle {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-hero-source .hero-video {
+    visibility: hidden;
+  }
+}
+.rycode-hero-source .insights-heading .hero-cta {
+  flex-shrink: 0;
+}
+.rycode-hero-source .testimonials-founder .hero-cta {
+  flex-shrink: 0;
+}
+.rycode-hero-source .site-footer .hero-cta:hover {
+  color: #1a1a1a;
+}
+/* coorda-reference-overrides.css */
+
+.rycode-hero-source .hero-cta-label {
+  transition-duration: 320ms;
+  transition-timing-function: var(--ui-ease);
+}
+.rycode-hero-source .hero-scene {
+  background-image: url("/brand/source-hero/rycode-hero-poster.jpg");
+  filter: brightness(0.6);
+}
+.rycode-hero-source .hero-title-line {
+  font-family: var(--coorda-font);
+}
+.rycode-hero-source .rycode-hero-title {
+  max-width: 1120px;
+  margin: 0;
+  font-size: clamp(2.15rem, 5vw, 4.9rem);
+  font-weight: 300;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+.rycode-hero-source .rycode-hero-title .hero-title-desktop {
+  display: block;
+}
+.rycode-hero-source .rycode-hero-title .hero-title-line {
+  white-space: normal;
+  text-wrap: balance;
+}
+.rycode-hero-source .rycode-hero-title .hero-title-soft {
+  color: rgb(255 255 255 / 48%);
+}
+.rycode-hero-source .rycode-hero-title .hero-title-accent {
+  color: var(--accent-blue);
+}
+.rycode-hero-source .rycode-hero-subtitle {
+  max-width: 42rem;
+  font-size: 14px;
+  line-height: 2rem;
+  color: rgb(255 255 255 / 68%);
+  text-wrap: wrap;
+}
+@media (min-width: 640px) {
+  .rycode-hero-source .rycode-hero-subtitle {
+    font-size: 16px;
+  }
+}
+@media (max-width: 809px) {
+  .rycode-hero-source .rycode-hero-title {
+    max-width: 100%;
+  }
+}
+/* coorda-palette.css */
+
+.rycode-hero-source :is(.hero-cta, .pricing-cta) {
+  background-color: var(--action);
+  color: var(--action-foreground);
+  border-color: var(--action);
+}
+.rycode-hero-source :is(.hero-cta, .pricing-cta):hover {
+  background-color: var(--action-hover);
+}
+.rycode-hero-source .hero .hero-cta {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #1a1a1a;
+}
+.rycode-hero-source .hero .hero-cta:hover {
+  background-color: color-mix(in srgb, var(--accent-blue) 90%, #fff);
+  border-color: color-mix(in srgb, var(--accent-blue) 90%, #fff);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-hero-source *,
+  .rycode-hero-source *::before,
+  .rycode-hero-source *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

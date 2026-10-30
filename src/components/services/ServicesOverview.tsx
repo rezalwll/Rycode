@@ -44,7 +44,7 @@ export function ServicesOverview({
               : "The right solution for the challenge ahead. From design and development to automation and growth, we turn your idea into something that works."}
           </p>
           <div className={styles.heroActions}>
-            <Link className={styles.button} href={href("/contact")}>
+            <Link data-fill-button className={styles.button} href={href("/contact")}>
               <span>
                 {fa ? "دربارهٔ پروژه‌ات بگو" : "Tell us about your project"}
               </span>
@@ -169,7 +169,7 @@ export function ServicesOverview({
                 ? "از مسئله‌ات بگو؛ با هم نقطهٔ شروع درست را پیدا می‌کنیم"
                 : "Tell us what you’re working through. We’ll find the right starting point together."}
             </p>
-            <Link className={styles.button} href={href("/contact")}>
+            <Link data-fill-button className={styles.button} href={href("/contact")}>
               <span>{fa ? "بیایید صحبت کنیم" : "Let’s talk it through"}</span>
               <span className={styles.buttonArrow} aria-hidden="true">
                 {arrow}

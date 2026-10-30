@@ -322,7 +322,7 @@ export async function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {t("Founder, Nova Studio")}
+                                        {t("Founder, Nova")}
                                       </p>
                                     </div>
                                   </div>
@@ -616,7 +616,7 @@ export async function HomeTestimonialsSection() {
                                         dir="auto"
                                         style={referenceStyles.s0c39c3123b}
                                       >
-                                        {t("Founder, Nova Studio")}
+                                        {t("Founder, Nova")}
                                       </p>
                                     </div>
                                   </div>
@@ -3658,7 +3658,7 @@ export async function HomeTestimonialsSection() {
                                   dir="auto"
                                   style={referenceStyles.s0c39c3123b}
                                 >
-                                  {t("Founder, Nova Studio")}
+                                  {t("Founder, Nova")}
                                 </p>
                               </div>
                             </div>

@@ -35,7 +35,7 @@ export async function PublishedListing({
         aria-label={fa ? "صفحه‌بندی" : "Pagination"}
       >
         {page > 1 && (
-          <Link
+          <Link data-fill-button
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page - 1, filters))}
           >
@@ -46,7 +46,7 @@ export async function PublishedListing({
           {page.toLocaleString(fa ? "fa-IR" : "en-US")}
         </span>
         {page * 12 < result.total && (
-          <Link
+          <Link data-fill-button
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page + 1, filters))}
           >
@@ -76,15 +76,7 @@ export async function PublishedListing({
                 defaultValue={filters.q}
                 maxLength={100}
               />
-              <input
-                name="category"
-                dir={fa ? "rtl" : "ltr"}
-                aria-label={fa ? "دسته‌بندی" : "Category"}
-                placeholder={fa ? "دسته‌بندی" : "Category"}
-                defaultValue={filters.category}
-                maxLength={100}
-              />
-              <button>{fa ? "جست‌وجو" : "Search"}</button>
+              <button data-fill-button>{fa ? "جست‌وجو" : "Search"}</button>
               {(filters.q || filters.category) && (
                 <Link href={href("/blog")}>
                   {fa ? "پاک کردن فیلترها" : "Clear filters"}

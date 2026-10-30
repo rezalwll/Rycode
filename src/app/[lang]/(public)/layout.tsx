@@ -26,7 +26,7 @@ export default async function PublicLayout({
   return (
     <>
       <ScrollEffects />
-      <div id="main">
+      <div id="main" className="rycode-public">
         <div
           className="framer-ZUZaS framer-uxe76n"
           data-layout-template="true"

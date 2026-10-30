@@ -3,6 +3,21 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @source "../";
 @import "./interaction.css";
+/* Source-header utilities use private variables scoped to its wrapper. */
+@custom-variant dark (&:where(.dark, .dark *));
+@theme inline {
+  --color-background: var(--source-header-background);
+  --color-foreground: var(--source-header-foreground);
+  --color-surface: var(--source-header-surface);
+  --color-surface-2: var(--source-header-surface-2);
+  --color-muted-foreground: var(--source-header-muted);
+  --color-border: var(--source-header-border);
+  --color-brand: var(--source-header-brand);
+  --color-brand-soft: var(--source-header-brand-soft);
+  --color-brand-foreground: var(--source-header-brand-foreground);
+  --color-ink: var(--source-header-ink);
+  --font-latin: var(--font-english);
+}
 /* cyrillic-ext */
 @font-face {
   font-family: "Geist";

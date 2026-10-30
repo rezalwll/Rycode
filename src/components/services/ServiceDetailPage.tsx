@@ -323,7 +323,7 @@ export async function ServiceDetailPage({
           )}
           <p className={styles.summary}>{content.summary}</p>
           <div className={styles.heroActions}>
-            <Link className={styles.primary} href={inquiryHref}>
+            <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>
               {fa ? "شروع پروژه" : "Start a project"}
               <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
             </Link>
@@ -421,14 +421,14 @@ export async function ServiceDetailPage({
           <div className={styles.growthSearchVisual} role="img" aria-label={fa ? "نمایش نتیجهٔ جست‌وجو و رتبهٔ سایت" : "Search result and ranking preview"}>
             <div className={styles.growthSearchTop}><span>RYCODE / SEARCH CONSOLE</span><b><i /> LIVE QUERY</b></div>
             <div className={styles.growthQuery}><span>⌕</span><strong>{fa ? "طراحی سایت برای کسب‌وکار" : "website design for business"}</strong><small>⌘ K</small></div>
-            <div className={styles.growthResult}><span className={styles.growthResultRank}>#01</span><div><small>rycode.studio / services</small><h3>{fa ? "طراحی سایت که برایت مشتری می‌آورد" : "Website design that brings the right clients"}</h3><p>{fa ? "ساختار، محتوا و تجربه‌ای که دیده‌شدن را به اقدام تبدیل می‌کند." : "A structure, story and experience that turns visibility into action."}</p></div><b>↗</b></div>
+            <div className={styles.growthResult}><span className={styles.growthResultRank}>#01</span><div><small>rycode.ir / services</small><h3>{fa ? "طراحی سایت که برایت مشتری می‌آورد" : "Website design that brings the right clients"}</h3><p>{fa ? "ساختار، محتوا و تجربه‌ای که دیده‌شدن را به اقدام تبدیل می‌کند." : "A structure, story and experience that turns visibility into action."}</p></div><b>↗</b></div>
             <div className={styles.growthRankLadder}><span>50</span><i style={{width:"28%"}} /><span>20</span><i style={{width:"52%"}} /><span>05</span><i style={{width:"77%"}} /><strong>#01</strong><i style={{width:"100%"}} /></div>
             <div className={styles.growthArtwork}><Image src="/brand/services/grow.webp" alt="" fill sizes="280px" /></div>
           </div>
         ) : (
           <figure className={styles.heroMedia}>
             {content.image && <img src={content.image} alt={content.imageAlt} />}
-            <figcaption><span>RYCODE</span><span>{fa ? "استودیو دیجیتال" : "DIGITAL STUDIO"}</span></figcaption>
+            <figcaption><span>RYCODE</span><span>{fa ? "راهکارهای دیجیتال" : "DIGITAL SOLUTIONS"}</span></figcaption>
           </figure>
         )}
       </section>
@@ -656,7 +656,7 @@ export async function ServiceDetailPage({
               <p className={styles.kicker}><span>✦</span>{fa ? "از خطا تا انتشار" : "FROM INCIDENT TO RELEASE"}</p>
               <h2 id="rescue-incident-title">{fa ? "نجات پروژه یعنی هر تغییر، یک دلیل داشته باشد." : "Rescuing a project means every change has a reason."}</h2>
               <p>{fa ? "مشکل را بازتولید می‌کنیم، ریسک را محدود می‌کنیم و بعد اصلاح را با آزمون همان سناریو جلو می‌بریم." : "We reproduce the issue, limit the risk, then repair it by testing the same scenario that failed."}</p>
-              <Link className={styles.primary} href={inquiryHref}>{fa ? "درخواست بررسی پروژه" : "Request a project audit"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
+              <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "درخواست بررسی پروژه" : "Request a project audit"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
             </div>
             <div className={styles.incidentTimeline}>
               <span className={styles.timelineStatus}>INCIDENT / 001 <b>● OPEN</b></span>
@@ -711,7 +711,7 @@ export async function ServiceDetailPage({
               <p className={styles.kicker}><span>✦</span>{fa ? "قبل و بعد" : "BEFORE / AFTER"}</p>
               <h2 id="connect-before-after-title">{fa ? "زمان آدم‌ها برای تصمیم است، نه کپی‌کردن اطلاعات." : "People should spend time deciding, not copying information."}</h2>
               <p>{fa ? "کارهای تکراری را از مسیر تیم بیرون می‌کشیم تا سرعت بیشتر شود و خطای انسانی کمتر." : "We remove repetitive work from the team’s path so work gets faster and errors become rarer."}</p>
-              <Link className={styles.primary} href={inquiryHref}>{fa ? "پیدا کردن اولین اتوماسیون" : "Find the first automation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
+              <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "پیدا کردن اولین اتوماسیون" : "Find the first automation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
             </div>
             <div className={styles.beforeAfterTable}>
               <div className={styles.beforeAfterHead}><span>{fa ? "دستی" : "MANUAL"}</span><span>{fa ? "خودکار" : "AUTOMATED"}</span></div>
@@ -841,7 +841,7 @@ export async function ServiceDetailPage({
             <div className={styles.growthChannelGrid}>{growthChannels.map((item) => <article key={item.number}><span>{item.number}</span><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p><b>↗</b></article>)}</div>
           </section>
 
-          <section className={styles.growthAudit} aria-labelledby="growth-audit-title"><div><p className={styles.kicker}><span>✦</span>{fa ? "شروع با یک audit" : "START WITH AN AUDIT"}</p><h2 id="growth-audit-title">{fa ? "اول ببینیم چرا دیده نمی‌شوی." : "First, let’s see why you are not being found."}</h2><p>{fa ? "یک بررسی کوتاه از وضعیت فعلی سایت، صفحه‌ها و فرصت‌های سریع رشد." : "A focused review of the current site, pages and quickest growth opportunities."}</p></div><Link className={styles.primary} href={inquiryHref}>{fa ? "درخواست بررسی سئو" : "Request an SEO audit"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link></section>
+          <section className={styles.growthAudit} aria-labelledby="growth-audit-title"><div><p className={styles.kicker}><span>✦</span>{fa ? "شروع با یک audit" : "START WITH AN AUDIT"}</p><h2 id="growth-audit-title">{fa ? "اول ببینیم چرا دیده نمی‌شوی." : "First, let’s see why you are not being found."}</h2><p>{fa ? "یک بررسی کوتاه از وضعیت فعلی سایت، صفحه‌ها و فرصت‌های سریع رشد." : "A focused review of the current site, pages and quickest growth opportunities."}</p></div><Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "درخواست بررسی سئو" : "Request an SEO audit"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link></section>
 
           <section className={styles.growthProcess} aria-labelledby="growth-process-title"><div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "فرایند رشد" : "THE GROWTH LOOP"}</p><h2 id="growth-process-title">{fa ? "می‌سنجیم، بهتر می‌کنیم، دوباره می‌سنجیم." : "Measure, improve, measure again."}</h2></div></div><ol className={styles.growthProcessList}>{growthProcess.map((item) => <li key={item.number}><span>{item.number}</span><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p></li>)}</ol></section>
         </>
@@ -890,7 +890,7 @@ export async function ServiceDetailPage({
       <section className={styles.cta}>
         <p className={styles.kicker}><span>✦</span>{fa ? "قدم بعدی" : "NEXT STEP"}</p>
         <h2>{fa ? "بیایید پروژه‌ات را از جای درست شروع کنیم." : "Let’s start your project from the right place."}</h2>
-        <Link className={styles.primary} href={inquiryHref}>{fa ? "شروع گفت‌وگو" : "Start a conversation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
+        <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "شروع گفت‌وگو" : "Start a conversation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
       </section>
     </main>
   );

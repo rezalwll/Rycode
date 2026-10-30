@@ -130,7 +130,12 @@ export const listPublishedContent = cache(
   async (
     kind: ContentKind,
     locale: Locale,
-    options: { page?: number; search?: string; category?: string } = {},
+    options: {
+      page?: number;
+      search?: string;
+      category?: string;
+      latestFirst?: boolean;
+    } = {},
   ) => {
     if (!databaseConfigured())
       return { items: [] as PublicContent[], total: 0 };
@@ -173,7 +178,7 @@ export const listPublishedContent = cache(
         where,
         include,
         orderBy: [
-          { position: "asc" },
+          ...(options.latestFirst ? [] : [{ position: "asc" as const }]),
           { publishedAt: "desc" },
           { createdAt: "desc" },
         ],

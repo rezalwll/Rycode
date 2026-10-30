@@ -1,0 +1,257 @@
+/* Public-site palette; brand colors are shared with the app icons and emblem. */
+.rycode-public {
+  --ui-blue: #a8d8ff;
+  --ui-purple: #c4b5fd;
+  --ui-ink: #1a1a1a;
+  --ui-muted: #666;
+  --ui-line: #e7e7e7;
+  --button-surface: #fff;
+  --button-primary: #f2eefb;
+  --button-hover: #edf6fc;
+  --button-line: #e1dfea;
+  --brand-accent: var(--ui-purple);
+  --token-a4939ea0-2e23-4fba-bab4-5bfe558782d8: var(--ui-purple);
+  --token-9df62c7f-29af-4d93-bd59-13a740083fae: #fff;
+  color: var(--ui-ink);
+  background: #fff;
+  color-scheme: light;
+}
+.rycode-public :is(main, section[data-framer-name], [data-layout-template]) {
+  background-color: #fff;
+}
+.rycode-public main .framer-text {
+  color: var(--ui-ink) !important;
+  --framer-text-color: var(--ui-ink);
+}
+.rycode-public :is(a, button, input, select, textarea):focus-visible {
+  outline-color: var(--ui-purple);
+}
+.rycode-public .brand-accent {
+  color: var(--brand-blue);
+}
+
+/* The header stays white at the top, on scroll, and inside the mobile menu. */
+.rycode-public .rycode-source-header,
+.dark .rycode-public .rycode-source-header {
+  --background: #fff;
+  --foreground: var(--ui-ink);
+  --surface: #fff;
+  --surface-2: #fff;
+  --muted-foreground: var(--ui-muted);
+  --border: var(--ui-line);
+  --brand: var(--ui-purple);
+  --brand-foreground: #fff;
+  --brand-soft: #fff;
+}
+.rycode-public .rycode-header.reference-overlay-header {
+  background: #fff;
+  border-color: var(--ui-line);
+  color: var(--ui-ink);
+}
+.rycode-public
+  .rycode-header
+  :is(
+    .rycode-header-tools,
+    .rycode-primary-link,
+    .rycode-header-tools a,
+    button[aria-controls="site-mobile-menu"]
+  ) {
+  color: var(--ui-ink);
+  border-color: var(--ui-line);
+  background: #fff;
+}
+.rycode-public
+  .rycode-header
+  .rycode-primary-link:is(:hover, [aria-current="page"]) {
+  color: var(--ui-ink);
+  background: #fff;
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-header
+  .rycode-logo
+  .rycode-wordmark-prefix {
+  color: var(--brand-blue) !important;
+  -webkit-text-fill-color: var(--brand-blue);
+}
+.rycode-public .rycode-brand-name {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+.rycode-public
+  .rycode-source-header
+  :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
+  --submenu-accent: var(--ui-purple);
+  --submenu-wash: #fff;
+  --submenu-edge: var(--ui-line);
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-submenu-link:is(:hover, :focus-visible, [aria-current="page"]) {
+  color: var(--ui-ink);
+  border-color: var(--ui-blue);
+}
+
+/* Footer and introductory section share the white page canvas. */
+.rycode-public .rycode-footer-source {
+  --accent-blue: var(--ui-blue);
+  --accent-purple: var(--ui-purple);
+  --action: var(--ui-purple);
+  --action-hover: var(--ui-blue);
+  --action-foreground: var(--ui-ink);
+  --surface: #fff;
+  --background: #fff;
+  --foreground: var(--ui-ink);
+  --border: var(--ui-line);
+}
+.rycode-public .rycode-footer-source .moments-section {
+  background: #fff;
+  color: var(--ui-ink);
+  border-top: 1px solid var(--ui-line);
+}
+.rycode-public .rycode-footer-source .moments-text {
+  border-color: var(--ui-line);
+}
+.rycode-public .rycode-footer-source .moments-text::after {
+  background: var(--ui-line);
+}
+.rycode-public
+  .rycode-footer-source
+  :is(.footer-fluid-canvas, .coorda-footer-wash) {
+  display: none;
+}
+.rycode-public .rycode-footer-source footer.coorda-legacy-footer {
+  --brand: var(--ui-blue);
+  --brand-hover: var(--ui-purple);
+  --brand-soft: #fff;
+  --detail-blue: var(--ui-ink);
+}
+.rycode-public
+  .rycode-footer-source
+  footer.coorda-legacy-footer
+  .coorda-footer-cta:hover {
+  color: var(--ui-ink);
+}
+
+.rycode-public .rycode-services-source .capability-card {
+  --feature-accent: var(--ui-blue) !important;
+}
+.rycode-public .rycode-services-source .capability-card:nth-child(even) {
+  --feature-accent: var(--ui-purple) !important;
+}
+.rycode-public .framer-kyd25 {
+  background: #fff !important;
+  border: 1px solid var(--ui-line);
+}
+.rycode-public .framer-kyd25 [data-framer-background-image-wrapper]:has(> img) {
+  background: var(--ui-purple);
+  mask: var(--process-icon) center / contain no-repeat;
+}
+.rycode-public .framer-kyd25 [data-framer-background-image-wrapper] img {
+  opacity: 0;
+}
+.rycode-public
+  .framer-kyd25
+  [data-framer-background-image-wrapper]:has(
+    > img[src="/assets/69872f1a957155d3.png"]
+  ) {
+  --process-icon: url("/assets/69872f1a957155d3.png");
+}
+.rycode-public
+  .framer-kyd25
+  [data-framer-background-image-wrapper]:has(
+    > img[src="/assets/84733fda4a52228a.png"]
+  ) {
+  --process-icon: url("/assets/84733fda4a52228a.png");
+}
+.rycode-public
+  .framer-kyd25
+  [data-framer-background-image-wrapper]:has(
+    > img[src="/assets/51387f2546e8ab17.png"]
+  ) {
+  --process-icon: url("/assets/51387f2546e8ab17.png");
+}
+.rycode-public
+  .framer-kyd25
+  [data-framer-background-image-wrapper]:has(
+    > img[src="/assets/11e1d43b7ba9a78a.png"]
+  ) {
+  --process-icon: url("/assets/11e1d43b7ba9a78a.png");
+}
+.rycode-public .framer-kyd25 .framer-text {
+  color: var(--ui-ink) !important;
+}
+.rycode-public [data-rycode-accordion="faq"] {
+  background: #fff;
+  border: 1px solid var(--ui-line);
+}
+.rycode-public main :is(input, select, textarea) {
+  color: var(--ui-ink);
+  background: #fff;
+  border-color: var(--ui-line);
+}
+.rycode-public
+  .rycode-source-header
+  .reference-overlay-header
+  :is(a, button):focus-visible {
+  outline-color: var(--ui-purple);
+}
+.rycode-public .framer-obWCA {
+  background-color: var(--button-surface) !important;
+  box-shadow: inset 0 0 0 1px var(--button-line);
+}
+.rycode-public .framer-obWCA .framer-text {
+  color: var(--ui-ink) !important;
+}
+.rycode-public .framer-obWCA .framer-1glyh7l {
+  background-color: var(--button-hover) !important;
+}
+.rycode-public .framer-obWCA .framer-1oado6a {
+  background-color: #fff !important;
+}
+.rycode-public .framer-obWCA svg {
+  --szd5nr: var(--ui-ink) !important;
+}
+.rycode-public
+  .rycode-source-header
+  .rycode-primary-link:is(:hover, [aria-current="page"]) {
+  box-shadow: inset 0 -2px var(--ui-purple);
+}
+.rycode-public [data-framer-name="Contact Card"] .framer-text {
+  color: #fff !important;
+  --framer-text-color: #fff;
+}
+.rycode-public main :is(input, textarea)::placeholder {
+  color: var(--ui-muted);
+  opacity: 1;
+}
+.rycode-public
+  main
+  :is(input[type="text"], input[type="email"], input[type="tel"], textarea) {
+  border-bottom: 1px solid var(--ui-line);
+}
+/* Tint only decorative service illustrations; photos and logos retain their colors. */
+.rycode-public
+  img:is([src*="/brand/services/"], [src*="%2Fbrand%2Fservices%2F"]) {
+  filter: hue-rotate(220deg) saturate(0.35) brightness(1.05) !important;
+}
+@media (max-width: 639px) {
+  .rycode-public .rycode-header .rycode-header-tools {
+    display: none;
+  }
+}
+.rycode-public [data-rycode-accordion="faq"] button {
+  background: var(--ui-purple) !important;
+}
+.rycode-public
+  [data-rycode-accordion="faq"]
+  button
+  :is([data-framer-name="Line 1"], [data-framer-name="Line 2"]) {
+  background: var(--ui-ink) !important;
+}
+.rycode-public main :is(h1, h2, h3):not(.hero-title) {
+  color: var(--ui-ink) !important;
+}
+.rycode-public [data-framer-name="Contact Card"] :is(h1, h2, h3) {
+  color: #fff !important;
+}

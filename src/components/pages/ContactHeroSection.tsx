@@ -143,7 +143,7 @@ export async function ContactHeroSection() {
                   dir="auto"
                   style={referenceStyles.s5a374ddac4}
                 >
-                  {t("RYCODE Studio")}
+                  {t("RYCODE")}
                 </h5>
               </div>
               <div
@@ -436,7 +436,7 @@ export async function ContactHeroSection() {
                 as="div"
                 from="translateY(150px)"
               >
-                <FormSubmit
+                <FormSubmit data-fill-button="primary"
                   type="submit"
                   className="framer-Irrnf framer-P2lQE framer-9qjuV framer-1wjqi8p framer-v-1wjqi8p"
                   data-framer-name="Default"
