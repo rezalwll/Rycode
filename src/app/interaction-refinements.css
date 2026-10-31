@@ -298,6 +298,14 @@
 .rycode-public .home-colorful .framer-nc16a8 .framer-obWCA .framer-text {
   color: #fff !important;
 }
+.rycode-public
+  .home-colorful
+  .framer-nc16a8
+  .framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
 .rycode-public .home-colorful .framer-nc16a8 .framer-obWCA .framer-1glyh7l {
   background-color: #1a1a1a !important;
   transition: background-color 360ms cubic-bezier(0.22, 1, 0.36, 1);
