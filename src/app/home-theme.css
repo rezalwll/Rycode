@@ -1,11 +1,14 @@
-/* White sections with blue and purple accents; the video hero is preserved. */
+/* Home backgrounds follow the supplied RYCODE reference page. */
 .home-colorful {
+  --home-canvas: #f2f2f2;
+  --home-dark: #1a1a1a;
+  --home-surface: #fff;
   --home-ink: var(--ui-ink);
   --home-muted: var(--ui-muted);
   color: var(--home-ink);
-  background: #fff;
+  background: var(--home-canvas);
 }
-.home-colorful
+.rycode-public .home-colorful
   :is(
     .rycode-services-source,
     .framer-1udbsna,
@@ -13,41 +16,43 @@
     .framer-g3n3eu,
     #blog-preview
   ) {
-  background: #fff;
+  background: var(--home-canvas);
   color: var(--home-ink);
 }
-.home-colorful .rycode-services-source :is(.features, .feature-card),
-.home-colorful .rycode-services-source .features::before {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .features {
+  background: var(--home-dark);
 }
-.home-colorful .rycode-services-source .feature-card {
+.rycode-public .home-colorful .rycode-services-source .features::before {
+  background: var(--home-canvas);
+}
+.rycode-public .home-colorful .rycode-services-source .feature-card {
   position: relative;
   isolation: isolate;
-  background: #fff;
+  background: var(--home-surface);
   border: 1px solid #e8e8e8;
   box-shadow: none;
   transition:
     border-color 280ms ease,
     box-shadow 280ms ease;
 }
-.home-colorful .rycode-services-source .feature-card:nth-child(even) {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(even) {
+  background: var(--home-surface);
   border-color: #e8e8e8;
 }
-.home-colorful .rycode-services-source .feature-card:nth-child(3n) {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(3n) {
+  background: var(--home-surface);
   border-color: #e8e8e8;
 }
-.home-colorful .rycode-services-source .feature-card:nth-child(4n) {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(4n) {
+  background: var(--home-surface);
   border-color: #e8e8e8;
 }
-.home-colorful .rycode-services-source .feature-card:nth-child(5n) {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(5n) {
+  background: var(--home-surface);
   border-color: #e8e8e8;
 }
-.home-colorful .rycode-services-source .feature-card:nth-child(6n) {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n) {
+  background: var(--home-surface);
   border-color: #e8e8e8;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(6n + 1) {
@@ -103,29 +108,29 @@
   color: var(--feature-accent);
   border-color: color-mix(in srgb, var(--feature-accent) 38%, #e8e8e8);
 }
-.home-colorful .rycode-services-source .features-heading :is(h2, mark) {
+.rycode-public .home-colorful .rycode-services-source .features-heading :is(h2, mark) {
   color: var(--home-ink);
-  background: #fff;
+  background: var(--home-surface);
 }
-.home-colorful .rycode-services-source .features-about-link {
-  background: #1a1a1a;
+.rycode-public .home-colorful .rycode-services-source .features-about-link {
+  background: var(--home-dark);
   color: #fff;
   box-shadow: 0 10px 24px rgb(26 26 26 / 18%);
 }
-.home-colorful .rycode-services-source .features-about-link:hover {
+.rycode-public .home-colorful .rycode-services-source .features-about-link:hover {
   background: #ff1b0b;
   color: #fff;
 }
-.home-colorful .rycode-services-source .feature-foot-arrow {
-  background: #fff;
+.rycode-public .home-colorful .rycode-services-source .feature-foot-arrow {
+  background: var(--home-surface);
   color: var(--feature-accent, #ff1b0b);
 }
 
-/* Preserve the video layout without the pastel wash obscuring the footage. */
-.home-colorful .rycode-hero-source {
+/* Preserve the video layout while using the reference canvas around it. */
+.rycode-public .home-colorful .rycode-hero-source {
   --home-ink: #17233d;
   --home-muted: #5f6d84;
-  background: linear-gradient(135deg, #fff7ed 0%, #eef7ff 48%, #f6efff 100%);
+  background: var(--home-canvas);
 }
 .home-colorful .rycode-hero-source .hero {
   padding: 18px;
@@ -185,4 +190,18 @@
     min-height: 590px;
     border-radius: 0 0 28px 28px;
   }
+}
+
+/* The reference uses the same canvas for the work, process, journal and FAQ
+   bands, with white reserved for cards and controls. */
+.rycode-public .home-colorful > .home-intro,
+.rycode-public .home-colorful .framer-1udbsna,
+.rycode-public .home-colorful .framer-nc16a8,
+.rycode-public .home-colorful #blog-preview,
+.rycode-public .home-colorful #home-faq > section {
+  background: var(--home-canvas);
+}
+.rycode-public .home-colorful .framer-g3n3eu,
+.rycode-public .home-colorful .framer-y8np0u {
+  background: var(--home-dark);
 }
