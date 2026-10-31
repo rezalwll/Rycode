@@ -88,10 +88,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         <header
           ref={headerRef}
           className={cn(
-            "rycode-header fixed z-50 border-b transition-[background-color,border-color,box-shadow,top,inset] duration-300",
-            scrolled
-              ? "rycode-header--scrolled inset-x-0 top-0 rounded-none"
-              : "inset-x-3 top-3 rounded-[18px] sm:inset-x-4 sm:top-4",
+            "rycode-header fixed z-50 inset-x-3 top-3 rounded-[18px] sm:inset-x-4 sm:top-4 border-b transition-[background-color,border-color,box-shadow,color] duration-300",
+            scrolled && "rycode-header--scrolled",
             overlay
               ? "reference-overlay-header border-transparent bg-transparent text-white"
               : "border-border bg-surface text-foreground",
@@ -744,7 +742,9 @@ function MobileMenu({
                 className="rycode-language-link"
               >
                 <Languages size={17} strokeWidth={1.6} aria-hidden />
-                <span lang={isFa ? "en" : "fa"}>{isFa ? "English" : "فارسی"}</span>
+                <span lang={isFa ? "en" : "fa"}>
+                  {isFa ? "English" : "فارسی"}
+                </span>
               </Link>
             </div>
             <Link

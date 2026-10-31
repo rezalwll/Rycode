@@ -24,7 +24,7 @@
   gap: 28px 22px;
 }
 .blog-colorful [data-blog-card] {
-  display: block;
+  display: flex;
   overflow: hidden;
   border: 1px solid var(--blog-line);
   border-radius: 24px;
@@ -107,6 +107,33 @@
 }
 .blog-colorful :is(a, button):focus-visible {
   outline-color: var(--blog-purple);
+}
+
+/* The featured stories sit on photography, independently of the light canvas. */
+.rycode-public .blog-colorful .framer-lQ8Q4 .framer-text {
+  color: #fff !important;
+  --framer-text-color: #fff;
+}
+.rycode-public .blog-colorful .framer-lQ8Q4 .framer-16c1a6a .framer-text {
+  color: #d2dfeb !important;
+}
+.rycode-public .blog-colorful .framer-lQ8Q4 a:focus-visible {
+  outline-color: #a8d8ff;
+}
+.rycode-public .blog-colorful .framer-lQ8Q4 [data-blog-images] img {
+  filter: brightness(0.65);
+}
+.rycode-public .blog-colorful [data-blog-card] .framer-1o9ixez {
+  background-color: #17233d;
+}
+.rycode-public .blog-colorful [data-blog-card] .framer-p08vs7 .framer-text {
+  color: #1a1a1a !important;
+}
+.rycode-public .blog-colorful [data-blog-card] .framer-ef2y83 .framer-text {
+  color: #596576 !important;
+}
+.rycode-public .blog-colorful [data-blog-card] .framer-1l76jpf .framer-text {
+  color: #66529b !important;
 }
 
 @media (max-width: 767px) {

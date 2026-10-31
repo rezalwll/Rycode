@@ -9,9 +9,6 @@
 .rycode-public .rycode-header .rycode-header-inner {
   height: 74px;
 }
-.rycode-public .rycode-header--scrolled .rycode-header-inner {
-  height: 60px;
-}
 .rycode-public .rycode-header .rycode-primary-link {
   font-size: 16px;
   padding: 10px 14px;
@@ -244,9 +241,6 @@
 @media (max-width: 639px) {
   .rycode-public .rycode-header .rycode-header-inner {
     height: 64px;
-  }
-  .rycode-public .rycode-header--scrolled .rycode-header-inner {
-    height: 56px;
   }
   .rycode-public .rycode-header .rycode-wordmark {
     font-size: 24px;
