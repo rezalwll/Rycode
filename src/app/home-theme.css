@@ -23,7 +23,7 @@
   color: var(--home-ink);
 }
 .rycode-public .home-colorful .rycode-services-source .features {
-  background: var(--home-dark);
+  background: var(--home-canvas);
 }
 .rycode-public .home-colorful .rycode-services-source .features::before {
   background: var(--home-canvas);
