@@ -110,6 +110,8 @@
 }
 .rycode-public .home-colorful .rycode-services-source .features-heading :is(h2, mark) {
   color: var(--home-ink);
+}
+.rycode-public .home-colorful .rycode-services-source .features-heading mark {
   background: var(--home-surface);
 }
 .rycode-public .home-colorful .rycode-services-source .features-about-link {
