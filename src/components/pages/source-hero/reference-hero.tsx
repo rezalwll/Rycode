@@ -101,7 +101,7 @@ export default function ReferenceHero() {
               className="hero-subtitle rycode-hero-subtitle"
             >
               {text(
-                "برای کسب‌وکارهایی که بزرگ فکر می‌کنند، فضای دیجیتال می‌سازیم؛ از سایت و فروشگاه تا نرم‌افزار اختصاصی با تمرکز، دقت و مهندسی.",
+                "برای کسب‌وکارهایی که بزرگ فکر می‌کنند، فضای دیجیتال می‌سازیم؛ از سایت و فروشگاه تا نرم‌افزار اختصاصی با تمرکز، دقت و مهندسی",
                 "We build digital experiences for businesses that think big, from websites and stores to custom software with focus, care and engineering.",
               )}
             </motion.p>
