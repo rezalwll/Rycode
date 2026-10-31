@@ -78,23 +78,24 @@
   box-shadow: none;
 }
 
-/* Keep the section boundary clear of the hero's rounded corners. */
+/* Let the services sheet cover the video as the hero gently recedes. */
 .home-intro {
   position: relative;
   width: 100%;
   flex: none;
 }
 .home-intro > .rycode-hero-source {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1;
 }
 .home-intro > .rycode-services-source {
   position: relative;
   z-index: 2;
-  margin-top: 0;
-  border-radius: 0;
+  margin-top: -36px;
+  border-radius: 36px 36px 0 0;
   overflow: clip;
-  box-shadow: none;
+  box-shadow: 0 -12px 36px rgb(0 0 0 / 9%);
 }
 .home-intro .hero-frame {
   transform-origin: center top;
@@ -269,6 +270,12 @@
 @media (prefers-reduced-motion: reduce) {
   .rycode-public .rycode-source-header .rycode-header {
     transition: none;
+  }
+  .home-intro > .rycode-hero-source {
+    position: relative;
+  }
+  .home-intro > .rycode-services-source {
+    margin-top: 0;
   }
   .rycode-public :is(a, button)[data-fill-button]::before,
   .rycode-public .framer-obWCA .framer-1glyh7l {
