@@ -85,6 +85,9 @@
   --submenu-wash: #fff;
   --submenu-edge: var(--ui-line);
 }
+.rycode-public .rycode-source-header .rycode-services-menu .rycode-submenu-icon {
+  color: var(--brand-blue);
+}
 .rycode-public
   .rycode-source-header
   .rycode-submenu-link:is(:hover, :focus-visible, [aria-current="page"]) {
