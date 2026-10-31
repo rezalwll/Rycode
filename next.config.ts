@@ -9,7 +9,10 @@ const config: NextConfig = {
     ],
   },
   reactStrictMode: true,
-  experimental: { globalNotFound: true },
+  experimental: {
+    globalNotFound: true,
+    turbopackFileSystemCacheForDev: false,
+  },
   turbopack: { root: process.cwd() },
   async headers() {
     return [
