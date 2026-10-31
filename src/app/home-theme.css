@@ -11,12 +11,15 @@
 .rycode-public .home-colorful
   :is(
     .rycode-services-source,
-    .framer-1udbsna,
     .framer-nc16a8,
     .framer-g3n3eu,
     #blog-preview
   ) {
   background: var(--home-canvas);
+  color: var(--home-ink);
+}
+.rycode-public .home-colorful .framer-1udbsna {
+  background: var(--home-surface);
   color: var(--home-ink);
 }
 .rycode-public .home-colorful .rycode-services-source .features {
@@ -196,7 +199,6 @@
 /* The reference uses the same canvas for the work, process, journal and FAQ
    bands, with white reserved for cards and controls. */
 .rycode-public .home-colorful > .home-intro,
-.rycode-public .home-colorful .framer-1udbsna,
 .rycode-public .home-colorful .framer-nc16a8,
 .rycode-public .home-colorful #blog-preview,
 .rycode-public .home-colorful #home-faq > section {
