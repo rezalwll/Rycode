@@ -29,7 +29,6 @@
   border-block-end: 1px solid var(--ui-line);
 }
 .rycode-public .rycode-header .rycode-primary-link {
-  font-size: 16px;
   padding: 10px 14px;
 }
 .rycode-public .rycode-header .rycode-wordmark {
@@ -45,9 +44,6 @@
 }
 .rycode-public .rycode-header .rycode-header-tools a {
   font-size: 13px;
-}
-.rycode-public .rycode-source-header .rycode-submenu-link {
-  font-size: 15px;
 }
 .rycode-public .rycode-source-header .rycode-header.reference-overlay-header {
   background: transparent;

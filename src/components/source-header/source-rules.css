@@ -86,7 +86,9 @@
   border-radius: 0 !important;
   background: transparent !important;
   padding-inline: 8px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
 }
 .rycode-public
   .rycode-source-header
@@ -116,7 +118,7 @@
   max-height: min(70vh, 560px);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid var(--submenu-edge);
   border-radius: 16px;
   background: var(--surface);
@@ -126,10 +128,16 @@
     0 4px 12px -4px #102b4610;
   scrollbar-width: thin;
 }
+.rycode-source-header .rycode-services-menu:not(.rycode-services-menu-mobile) {
+  width: min(384px, calc(100vw - 48px));
+}
+.rycode-source-header .rycode-desktop-submenu[dir="ltr"] .rycode-services-menu {
+  width: min(416px, calc(100vw - 48px));
+}
 .rycode-source-header :is(.rycode-services-menu-list, .rycode-submenu-list) {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -137,30 +145,32 @@
 .rycode-source-header .rycode-header .rycode-submenu-link,
 .rycode-source-header #site-mobile-menu .rycode-submenu-link {
   display: grid;
-  grid-template-columns: 30px minmax(0, 1fr) 14px;
+  grid-template-columns: 32px minmax(0, 1fr) 14px;
   width: 100%;
   align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 6px 8px;
+  gap: 12px;
+  min-height: 48px;
+  padding: 7px 10px;
   border: 1px solid transparent;
   border-radius: 12px;
   text-align: start;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.8;
-}
-.rycode-public
-  .rycode-source-header
-  :is(.rycode-header .rycode-submenu-link, #site-mobile-menu .rycode-submenu-link) {
-  font-size: 16px !important;
+  line-height: 24px;
 }
 .rycode-public .rycode-source-header .rycode-submenu-surface > div > p {
   font-size: 16px !important;
 }
 .rycode-public .rycode-source-header #site-mobile-menu nav button:hover {
   background: transparent !important;
+}
+.rycode-source-header #site-mobile-menu nav > ul > li > div:first-child > :is(a, button) {
+  min-height: 52px;
+  padding-block: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
 }
 .rycode-public .rycode-source-header #site-mobile-menu .rycode-mobile-submenu > div > p {
   font-size: 16px !important;
@@ -171,8 +181,8 @@
 }
 .rycode-source-header .rycode-submenu-icon {
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   border: 1px solid var(--submenu-edge);
   border-radius: 9px;
