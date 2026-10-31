@@ -578,27 +578,6 @@ export async function HomeProcessSection() {
                         {t("Contact Us")}
                       </p>
                     </div>
-                    <div className="framer-1glyh7l">
-                      <div
-                        className="framer-1oado6a"
-                        data-framer-name="Dot 01"
-                        style={referenceStyles.s21236d14f5}
-                      ></div>
-                    </div>
-                    <div
-                      className="framer-vweyvw"
-                      data-framer-name="Icon"
-                      style={referenceStyles.s51915ca83d}
-                    >
-                      <svg
-                        className="framer-VdeRv framer-7wq510"
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                        style={referenceStyles.se7fe9d8969}
-                      >
-                        <use href="#2430009286"></use>
-                      </svg>
-                    </div>
                   </Link>
                 </div>
               </div>

@@ -353,6 +353,16 @@
 .rycode-public .home-colorful .process-contact-button {
   isolation: isolate;
   overflow: visible !important;
+  width: 112px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 .rycode-public .home-colorful .process-contact-filter {
   position: absolute;
