@@ -52,7 +52,6 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const isFa = locale === "fa";
   const nav = getPrimaryNav(locale);
   const isHome = pathname === "/";
-  const elevated = scrolled || !isHome;
   const overlay = isHome && !scrolled;
   const menuPath = `${locale}:${pathname}`;
   const mobileOpen = mobilePath === menuPath;
@@ -90,12 +89,12 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           data-header-page={isHome ? "home" : "inner"}
           data-header-surface={overlay ? "overlay" : "solid"}
           className={cn(
-            "rycode-header fixed z-50 inset-x-3 top-3 rounded-[18px] sm:inset-x-4 sm:top-4 border-b transition-[background-color,border-color,box-shadow,color] duration-300",
+            "rycode-header fixed z-50 inset-x-0 top-0 border-b transition-[background-color,border-color,box-shadow,color] duration-300",
             scrolled && "rycode-header--scrolled",
             overlay
               ? "reference-overlay-header border-transparent bg-transparent text-white"
               : "border-border bg-surface text-foreground",
-            elevated ? "shadow-[0_5px_20px_rgba(0,0,0,0.04)]" : "shadow-none",
+            scrolled ? "shadow-[0_5px_20px_rgba(0,0,0,0.04)]" : "shadow-none",
           )}
         >
           <a

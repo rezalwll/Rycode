@@ -206,9 +206,9 @@
   }
 }
 
-/* Keep the public header clear of the hero edge while preserving its overlay mode. */
+/* One full-width navigation bar across every public page. */
 .rycode-public .rycode-source-header .rycode-header {
-  border-radius: 18px;
+  border-radius: 0;
   overflow: visible;
 }
 
@@ -228,8 +228,3 @@
   -webkit-text-fill-color: var(--ui-ink, #1a1a1a) !important;
 }
 
-@media (max-width: 639px) {
-  .rycode-public .rycode-source-header .rycode-header {
-    border-radius: 14px;
-  }
-}
