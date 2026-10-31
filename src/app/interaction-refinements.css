@@ -1,10 +1,15 @@
 /* Transparent over the video, solid white after scrolling. */
 .rycode-public .rycode-source-header .rycode-header {
   background: #fff;
+  padding-top: 0;
   transition:
     background-color 320ms ease,
     border-color 320ms ease,
-    box-shadow 320ms ease;
+    box-shadow 320ms ease,
+    padding-top 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rycode-public .rycode-source-header .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
+  padding-top: 18px;
 }
 .rycode-public .rycode-header .rycode-header-inner {
   height: 74px;
@@ -253,6 +258,9 @@
 }
 
 @media (max-width: 639px) {
+  .rycode-public .rycode-source-header .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
+    padding-top: 12px;
+  }
   .rycode-public .rycode-header .rycode-header-inner {
     height: 64px;
   }
@@ -264,6 +272,9 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .rycode-public .rycode-source-header .rycode-header {
+    transition: none;
+  }
   .home-intro > .rycode-hero-source {
     position: relative;
   }
