@@ -349,6 +349,112 @@
   transform: rotate(45deg) !important;
 }
 
+/* Uiverse button treatment, adapted to the process CTA and its existing link. */
+.rycode-public .home-colorful .process-contact-button {
+  isolation: isolate;
+  overflow: visible !important;
+}
+.rycode-public .home-colorful .process-contact-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.rycode-public .home-colorful .process-contact-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 0,
+      transparent 20%,
+      rgb(17 17 17 / 67%) 50%
+    ),
+    radial-gradient(ellipse 100% 100%, #fff, transparent);
+  background-size: 3px 3px, auto;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.rycode-public .home-colorful .process-contact-edge {
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  --edge-width: 2px;
+  --edge-spread: -40px;
+  --edge-start: calc(var(--edge-spread) * -1);
+  --edge-end: calc(100% + var(--edge-spread));
+  --edge-gradient:
+    transparent,
+    rgb(255 255 255 / 20%) var(--edge-start),
+    rgb(255 255 255 / 67%) var(--edge-start),
+    #fff,
+    rgb(255 255 255 / 67%) var(--edge-end),
+    rgb(255 255 255 / 20%) var(--edge-end),
+    transparent;
+}
+.rycode-public .home-colorful .process-contact-edge::before,
+.rycode-public .home-colorful .process-contact-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(4px) url(#process-contact-unopaq);
+  z-index: -1;
+}
+.rycode-public .home-colorful .process-contact-edge::after {
+  filter: blur(10px) url(#process-contact-unopaq);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.rycode-public .home-colorful .process-contact-edge-l {
+  left: -2px;
+  top: var(--edge-spread);
+  bottom: var(--edge-spread);
+  width: var(--edge-width);
+  background: linear-gradient(var(--edge-gradient));
+}
+.rycode-public .home-colorful .process-contact-edge-r {
+  right: -2px;
+  top: var(--edge-spread);
+  bottom: var(--edge-spread);
+  width: var(--edge-width);
+  background: linear-gradient(var(--edge-gradient));
+}
+.rycode-public .home-colorful .process-contact-edge-t {
+  top: -2px;
+  left: var(--edge-spread);
+  right: var(--edge-spread);
+  height: var(--edge-width);
+  background: linear-gradient(90deg, var(--edge-gradient));
+}
+.rycode-public .home-colorful .process-contact-edge-b {
+  bottom: -2px;
+  left: var(--edge-spread);
+  right: var(--edge-spread);
+  height: var(--edge-width);
+  background: linear-gradient(90deg, var(--edge-gradient));
+}
+.rycode-public
+  .home-colorful
+  .process-contact-button:is(:hover, :focus-visible)::before {
+  opacity: 0.3;
+}
+.rycode-public
+  .home-colorful
+  .process-contact-button:is(:hover, :focus-visible)
+  .process-contact-edge::after {
+  opacity: 1;
+}
+.rycode-public
+  .home-colorful
+  .process-contact-button
+  :is(.framer-14jkp0r, .framer-1glyh7l, .framer-vweyvw) {
+  z-index: 3;
+}
+
 /* The service canvas stays white; only the individual cards carry color. */
 .home-colorful .rycode-services-source,
 .home-colorful .rycode-services-source .features,
