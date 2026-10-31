@@ -86,9 +86,10 @@
   border-radius: 0 !important;
   background: transparent !important;
   padding-inline: 8px;
-  font-size: 15px;
+  font-family: inherit;
+  font-size: 15px !important;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 24px !important;
 }
 .rycode-public
   .rycode-source-header
