@@ -194,7 +194,7 @@
   color: var(--muted-foreground);
   opacity: 0.45;
   transition:
-    transform var(--ui-duration) var(--ui-ease),
+    translate var(--ui-duration) var(--ui-ease),
     opacity var(--ui-duration) var(--ui-ease);
 }
 .rycode-source-header .rycode-submenu-link:dir(rtl) .rycode-submenu-arrow {
@@ -215,12 +215,12 @@
   .rycode-submenu-link:is(:hover, :focus-visible)
   .rycode-submenu-arrow {
   opacity: 1;
-  transform: translateX(3px);
+  translate: 3px 0;
 }
 .rycode-source-header
   .rycode-submenu-link:dir(rtl):is(:hover, :focus-visible)
   .rycode-submenu-arrow {
-  transform: translateX(-3px);
+  translate: -3px 0;
 }
 .rycode-source-header .rycode-submenu-link:focus-visible {
   outline: 2px solid var(--submenu-accent);
@@ -235,7 +235,7 @@
     [dir]
     .rycode-submenu-link:is(:hover, :focus-visible)
     .rycode-submenu-arrow {
-    transform: none;
+    translate: none;
   }
 }
 .rycode-source-header .rycode-services-menu-mobile {
