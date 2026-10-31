@@ -349,67 +349,6 @@
   transform: rotate(45deg) !important;
 }
 
-/* Uiverse-inspired hover texture and soft edge glow, scoped to this CTA. */
-.rycode-public .home-colorful .framer-nc16a8 .framer-obWCA {
-  isolation: isolate;
-  overflow: visible !important;
-}
-.rycode-public .home-colorful .framer-nc16a8 .framer-obWCA::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  opacity: 0;
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      transparent 0,
-      transparent 20%,
-      rgb(255 255 255 / 40%) 50%
-    ),
-    radial-gradient(ellipse 100% 100%, #fff, transparent);
-  background-size: 3px 3px, auto;
-  transition: opacity 320ms ease;
-  pointer-events: none;
-}
-.rycode-public .home-colorful .framer-nc16a8 .framer-obWCA::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgb(255 255 255 / 72%),
-    transparent
-  );
-  filter: blur(4px);
-  transition: opacity 320ms ease;
-  pointer-events: none;
-}
-.rycode-public
-  .home-colorful
-  .framer-nc16a8
-  .framer-obWCA
-  :is(.framer-14jkp0r, .framer-1glyh7l, .framer-vweyvw) {
-  z-index: 1;
-}
-.rycode-public
-  .home-colorful
-  .framer-nc16a8
-  .framer-obWCA:is(:hover, :focus-visible)::before {
-  opacity: 0.22;
-}
-.rycode-public
-  .home-colorful
-  .framer-nc16a8
-  .framer-obWCA:is(:hover, :focus-visible)::after {
-  opacity: 0.8;
-}
-
 /* The service canvas stays white; only the individual cards carry color. */
 .home-colorful .rycode-services-source,
 .home-colorful .rycode-services-source .features,
