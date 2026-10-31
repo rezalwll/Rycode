@@ -9,6 +9,19 @@
 .rycode-public .rycode-header .rycode-header-inner {
   height: 74px;
 }
+/* Inner pages reserve their own header row instead of overlaying their hero. */
+.rycode-public .rycode-source-header .rycode-header[data-header-page="inner"] {
+  position: sticky;
+  flex: none;
+  align-self: center;
+  width: calc(100% - 32px);
+  margin: 16px;
+  inset-inline: auto;
+  top: 16px;
+  background: #fff;
+  color: var(--ui-ink);
+  border: 1px solid var(--ui-line);
+}
 .rycode-public .rycode-header .rycode-primary-link {
   font-size: 16px;
   padding: 10px 14px;
@@ -239,6 +252,11 @@
 }
 
 @media (max-width: 639px) {
+  .rycode-public .rycode-source-header .rycode-header[data-header-page="inner"] {
+    width: calc(100% - 24px);
+    margin: 12px;
+    top: 12px;
+  }
   .rycode-public .rycode-header .rycode-header-inner {
     height: 64px;
   }

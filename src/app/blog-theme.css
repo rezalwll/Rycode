@@ -110,17 +110,17 @@
 }
 
 /* The featured stories sit on photography, independently of the light canvas. */
-.rycode-public .blog-colorful .framer-lQ8Q4 .framer-text {
+.rycode-public .blog-colorful :is(.framer-lQ8Q4, .framer-aQ9vY, .framer-sPdYw) .framer-text {
   color: #fff !important;
   --framer-text-color: #fff;
 }
-.rycode-public .blog-colorful .framer-lQ8Q4 .framer-16c1a6a .framer-text {
+.rycode-public .blog-colorful :is(.framer-lQ8Q4, .framer-aQ9vY, .framer-sPdYw) .framer-16c1a6a .framer-text {
   color: #d2dfeb !important;
 }
-.rycode-public .blog-colorful .framer-lQ8Q4 a:focus-visible {
+.rycode-public .blog-colorful :is(.framer-lQ8Q4, .framer-aQ9vY, .framer-sPdYw) a:focus-visible {
   outline-color: #a8d8ff;
 }
-.rycode-public .blog-colorful .framer-lQ8Q4 [data-blog-images] img {
+.rycode-public .blog-colorful :is(.framer-lQ8Q4, .framer-aQ9vY, .framer-sPdYw) [data-blog-images] img {
   filter: brightness(0.65);
 }
 .rycode-public .blog-colorful [data-blog-card] .framer-1o9ixez {

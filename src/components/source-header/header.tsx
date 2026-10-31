@@ -62,7 +62,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const closeOutside = (event: PointerEvent) => {
@@ -87,6 +87,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       <>
         <header
           ref={headerRef}
+          data-header-page={isHome ? "home" : "inner"}
+          data-header-surface={overlay ? "overlay" : "solid"}
           className={cn(
             "rycode-header fixed z-50 inset-x-3 top-3 rounded-[18px] sm:inset-x-4 sm:top-4 border-b transition-[background-color,border-color,box-shadow,color] duration-300",
             scrolled && "rycode-header--scrolled",
