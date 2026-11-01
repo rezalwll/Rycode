@@ -17,9 +17,9 @@
   padding-block: 12px !important;
   padding-inline: 60px 20px !important;
   overflow: hidden !important;
-  border: 1px solid #d3e6f3 !important;
+  border: 1px solid var(--cta-border, #d3e6f3) !important;
   border-radius: 999px !important;
-  background: #edf6fc !important;
+  background: var(--cta-surface, #edf6fc) !important;
   color: var(--ui-ink) !important;
   box-shadow: none !important;
   font-family: inherit;
@@ -43,7 +43,7 @@
   height: auto !important;
   border: 0 !important;
   border-radius: inherit !important;
-  background: var(--brand-blue) !important;
+  background: var(--cta-accent, var(--brand-blue)) !important;
   opacity: 1 !important;
   transform: none !important;
   pointer-events: none;
@@ -91,20 +91,28 @@
 }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible) {
   color: #fff !important;
-  border-color: var(--brand-blue) !important;
-  background: #edf6fc !important;
+  border-color: var(--cta-accent, var(--brand-blue)) !important;
+  background: var(--cta-surface, #edf6fc) !important;
   box-shadow: none !important;
   transform: none !important;
 }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::before {
   width: calc(100% - 6px) !important;
-  background: color-mix(in srgb, var(--brand-blue) 70%, var(--ui-ink)) !important;
+  background: var(--cta-fill, color-mix(in srgb, var(--brand-blue) 70%, var(--ui-ink))) !important;
 }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::after { translate: 4px 0; }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):dir(rtl):is(:hover, :focus-visible)::after { translate: -4px 0; }
-.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--brand-blue) !important; outline-offset: 4px; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--cta-accent, var(--brand-blue)) !important; outline-offset: 4px; }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active:not(:disabled) { scale: .98; }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):disabled { opacity: .6; cursor: wait; }
+
+/* Warm accent for the process section's contact action. */
+.home-colorful .framer-nc16a8 a.framer-obWCA {
+  --cta-accent: #e36e1d;
+  --cta-surface: #fff2e5;
+  --cta-border: #f2ceac;
+  --cta-fill: #b95d17;
+}
 
 /* Pagination keeps its reading direction: previous goes back, next goes forward. */
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)[rel="prev"]::after { rotate: 180deg; }
@@ -117,4 +125,3 @@
   .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::after { translate: none !important; }
   .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active { scale: none; }
 }
-
