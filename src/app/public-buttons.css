@@ -106,12 +106,12 @@
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active:not(:disabled) { scale: .98; }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):disabled { opacity: .6; cursor: wait; }
 
-/* Warm accent for the process section's contact action. */
+/* Purple accent matches the process section's icons. */
 .home-colorful .framer-nc16a8 a.framer-obWCA {
-  --cta-accent: #e36e1d;
-  --cta-surface: #fff2e5;
-  --cta-border: #f2ceac;
-  --cta-fill: #b95d17;
+  --cta-accent: var(--brand-purple);
+  --cta-surface: #f3effc;
+  --cta-border: #ddd1f3;
+  --cta-fill: #6f4db3;
 }
 
 /* Pagination keeps its reading direction: previous goes back, next goes forward. */
