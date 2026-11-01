@@ -22,6 +22,43 @@ export async function ContactHeroSection() {
       dir={fa ? "rtl" : "ltr"}
       aria-labelledby="contact-heading"
     >
+      <div className={styles.portrait}>
+        <img
+          src="/assets/c9e087c0e10f7761.png"
+          width={960}
+          height={1200}
+          alt=""
+          fetchPriority="high"
+          className={styles.portraitImage}
+        />
+        <div className={styles.portraitBrand}>
+          <BrandLogo />
+        </div>
+        <div className={styles.portraitCopy}>
+          <span className={styles.eyebrow}>
+            ✦{" "}
+            {fa ? "از یک گفت‌وگو شروع می‌شود" : "It starts with a conversation"}
+          </span>
+          <p>
+            {fa ? (
+              <>
+                ایده از تو،
+                <br />
+                قدم بعدی با هم
+              </>
+            ) : (
+              <>
+                Your idea.
+                <br />
+                Our next chapter.
+              </>
+            )}
+          </p>
+        </div>
+        <span className={styles.photoTab}>
+          {fa ? "فضایی برای ایده‌های تازه" : "Room for new ideas"}
+        </span>
+      </div>
       <div className={styles.content}>
         <div className={styles.formCard}>
           <div className={styles.intro}>
@@ -98,40 +135,6 @@ export async function ContactHeroSection() {
             </FormSubmit>
           </ContactForm>
         </div>
-      </div>
-      <div className={styles.portrait}>
-        <img
-          src="/assets/c9e087c0e10f7761.png"
-          width={960}
-          height={1200}
-          alt=""
-          fetchPriority="high"
-          className={styles.portraitImage}
-        />
-        <div className={styles.portraitBrand}>
-          <BrandLogo />
-        </div>
-        <div className={styles.portraitCopy}>
-          <span className={styles.eyebrow}>
-            ✦{" "}
-            {fa ? "از یک گفت‌وگو شروع می‌شود" : "It starts with a conversation"}
-          </span>
-          <p>
-            {fa ? (
-              <>
-                ایده از تو،
-                <br />
-                قدم بعدی با هم
-              </>
-            ) : (
-              <>
-                Your idea.
-                <br />
-                Our next chapter.
-              </>
-            )}
-          </p>
-        </div>
         <div className={styles.details}>
           <div className={styles.phoneCard}>
             <Phone size={24} strokeWidth={1.5} aria-hidden />
@@ -145,6 +148,15 @@ export async function ContactHeroSection() {
                 ? "دربارهٔ قدم بعدی حرف بزنیم"
                 : "Let’s talk about the next step"}
             </span>
+          </div>
+          <div className={styles.detailPhoto}>
+            <img
+              src="/assets/13dc8d5e7fa13d30.png"
+              width={2208}
+              height={1912}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <nav
             className={styles.socials}

@@ -2,15 +2,11 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "portrait form";
   gap: 16px;
   max-width: 1600px;
   margin: 24px auto 64px;
   padding-inline: 24px;
   color: var(--ui-ink, #303b48);
-}
-.contact:dir(rtl) {
-  grid-template-areas: "form portrait";
 }
 .contact *,
 .contact *::before,
@@ -18,13 +14,10 @@
   box-sizing: border-box;
 }
 .portrait {
-  grid-area: portrait;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 28px;
-  min-height: max(600px, calc(100svh - 123px));
+  position: sticky;
+  top: 99px;
+  height: calc(100svh - 123px);
+  min-height: 520px;
   overflow: hidden;
   isolation: isolate;
   border-radius: 20px;
@@ -37,22 +30,22 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgb(23 37 53 / 45%) 0%,
-    rgb(23 37 53 / 10%) 50%,
+    rgb(230 237 244 / 10%) 30%,
     rgb(23 37 53 / 72%) 100%
   );
 }
 .portraitImage {
   position: absolute;
   z-index: -2;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 52% center;
 }
 .portraitBrand {
-  align-self: flex-start;
+  position: absolute;
+  inset-block-start: 28px;
+  inset-inline-start: 28px;
   padding: 12px 16px;
   border-radius: 12px;
   background: rgb(255 255 255 / 90%);
@@ -62,6 +55,9 @@
   font-size: 26px;
 }
 .portraitCopy {
+  position: absolute;
+  bottom: 64px;
+  inset-inline: 32px;
   color: #fff;
 }
 .eyebrow {
@@ -75,7 +71,7 @@
 }
 .portraitCopy p {
   margin: 12px 0 0;
-  font-size: clamp(32px, 3.1vw, 46px);
+  font-size: clamp(32px, 3.9vw, 58px);
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.02em;
@@ -83,17 +79,23 @@
 .portraitCopy:dir(rtl) p {
   letter-spacing: normal;
 }
+.photoTab {
+  position: absolute;
+  bottom: 0;
+  inset-inline-end: 0;
+  padding: 14px 22px;
+  border-start-start-radius: 20px;
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.6;
+}
 .content {
-  grid-area: form;
   display: flex;
   flex-direction: column;
   gap: 16px;
   min-width: 0;
 }
 .formCard {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   padding: clamp(24px, 2.7vw, 42px);
   border-radius: 20px;
   background: #f4f5f7;
@@ -122,14 +124,6 @@
   flex-direction: column;
   gap: 14px;
   position: relative;
-  flex: 1;
-}
-.form > .field {
-  flex: 1;
-}
-.form > .field textarea {
-  flex: 1;
-  min-height: 180px;
 }
 .fieldRow {
   display: grid;
@@ -208,42 +202,34 @@
 }
 .details {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 12px;
-  margin-top: auto;
+  min-height: 210px;
 }
 .phoneCard {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
-  padding: 18px 20px;
-  border-radius: 14px;
-  background: rgb(247 244 255 / 93%);
-  backdrop-filter: blur(16px);
+  padding: 24px 20px;
+  border-radius: 18px;
+  background: #f0ecfa;
 }
 .phoneCard > svg {
   color: #8b6bda;
-  position: absolute;
-  inset-block-start: 20px;
-  inset-inline-start: 20px;
-  width: 20px;
-  height: 20px;
 }
 .phoneCard h2 {
   font-size: 19px;
   font-weight: 500;
   line-height: 1.65;
-  margin: 0 0 8px;
-  padding-inline-start: 30px;
+  margin: 16px 0 20px;
 }
 .phone {
-  margin-top: 0;
+  margin-top: auto;
   color: inherit;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.8;
   font-weight: 500;
   transition: color 180ms;
@@ -262,10 +248,21 @@
   font-size: 13px;
   line-height: 1.8;
 }
+.detailPhoto {
+  overflow: hidden;
+  border-radius: 18px;
+  min-width: 0;
+}
+.detailPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+}
 .socials {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px;
   min-width: 0;
 }
 .social {
@@ -274,8 +271,7 @@
   gap: 9px;
   padding: 16px 12px;
   border-radius: 14px;
-  background: rgb(255 255 255 / 93%);
-  backdrop-filter: blur(16px);
+  background: #f4f5f7;
   color: inherit;
   font-size: 13px;
   line-height: 1.7;
@@ -318,20 +314,20 @@ a.social:hover {
 }
 @media (max-width: 1099px) and (min-width: 761px) {
   .contact {
+    grid-template-columns: 0.85fr 1.15fr;
     padding-inline: 20px;
   }
   .formCard {
     padding: 24px;
   }
-  .portrait {
-    padding: 24px;
+  .details {
+    grid-template-columns: 1.15fr 1fr;
   }
-  .social {
-    flex-direction: column;
-    padding: 12px 6px;
+  .detailPhoto {
+    display: none;
   }
-  .socialArrow {
-    margin: 0;
+  .portraitCopy {
+    inset-inline: 24px;
   }
   .fieldRow {
     grid-template-columns: 1fr 1fr;
@@ -342,23 +338,29 @@ a.social:hover {
 }
 @media (max-width: 760px) {
   .contact {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 16px;
     margin-block: 16px 40px;
     padding-inline: 16px;
   }
   .portrait {
-    min-height: 620px;
-    padding: 24px 20px;
-    gap: 20px;
+    position: relative;
+    top: auto;
+    height: 390px;
+    min-height: 0;
     border-radius: 16px;
   }
   .portraitImage {
     object-position: center 60%;
   }
   .portraitBrand {
+    inset-block-start: 20px;
+    inset-inline-start: 20px;
     padding: 10px 12px;
+  }
+  .portraitCopy {
+    bottom: 54px;
+    inset-inline: 24px;
   }
   .portraitCopy p {
     font-size: 36px;
@@ -380,15 +382,21 @@ a.social:hover {
   .fieldRow > :last-child {
     grid-column: 1 / -1;
   }
+  .details {
+    grid-template-columns: 1.1fr 1fr;
+    min-height: 230px;
+  }
+  .detailPhoto {
+    display: none;
+  }
+  .phoneCard {
+    padding: 22px 16px;
+  }
   .phoneCard h2 {
     font-size: 19px;
   }
   .social {
-    flex-direction: column;
-    padding: 12px 6px;
-  }
-  .socialArrow {
-    margin: 0;
+    padding: 14px 12px;
   }
 }
 @media (max-width: 380px) {
