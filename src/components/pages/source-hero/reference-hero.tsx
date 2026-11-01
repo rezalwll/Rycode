@@ -102,17 +102,9 @@ export default function ReferenceHero() {
             <motion.a
               {...appear(0.34)}
               href={href("/contact")}
-              className="hero-cta"
+              className="hero-comic-button"
             >
-              <span className="hero-cta-label">
-                {text("شروع یک گفت‌وگو", "Start a conversation")}
-              </span>
-              <span
-                className="hero-cta-label hero-cta-label-copy"
-                aria-hidden="true"
-              >
-                {text("شروع یک گفت‌وگو", "Start a conversation")}
-              </span>
+              {text("شروع یک گفت‌وگو", "Start a conversation")}
             </motion.a>
           </div>
         </div>
