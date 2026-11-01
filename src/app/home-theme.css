@@ -116,47 +116,85 @@
 .rycode-public .home-colorful .rycode-services-source .features-heading mark {
   background: var(--home-surface);
 }
+/* Expanding-circle interaction adapted from cssbuttons-io on Uiverse.
+   Source and MIT notice: THIRD_PARTY_NOTICES.md. */
 .rycode-public .home-colorful .rycode-services-source .features-about-link {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.6;
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding-block: 12px;
+  padding-inline: 60px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
   letter-spacing: normal;
   text-align: center;
   text-decoration: none;
-  background: var(--ui-blue);
+  white-space: nowrap;
+  background: #edf6fc;
   color: var(--ui-ink);
-  border: 2px solid var(--ui-ink);
-  border-radius: 10px;
-  box-shadow: 5px 5px 0 var(--ui-ink);
+  border: 1px solid #d3e6f3;
+  border-radius: 999px;
+  box-shadow: none;
   cursor: pointer;
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    translate 0.3s ease;
+    color 360ms ease,
+    border-color 360ms ease,
+    transform 180ms ease;
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-circle {
+  position: absolute;
+  z-index: -1;
+  inset-block: 3px;
+  inset-inline-start: 3px;
+  width: 44px;
+  border-radius: inherit;
+  background: var(--brand-blue);
+  color: #fff;
+  transition:
+    width 440ms cubic-bezier(0.65, 0, 0.076, 1),
+    background-color 360ms ease;
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-circle svg {
+  position: absolute;
+  top: calc(50% - 10px);
+  inset-inline-start: 12px;
+  transition: translate 440ms cubic-bezier(0.65, 0, 0.076, 1);
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-label {
+  position: relative;
 }
 .rycode-public .home-colorful .rycode-services-source .features-about-link:is(:hover, :focus-visible) {
-  background: #fff;
-  color: var(--brand-blue);
+  background: #edf6fc;
+  color: #fff;
   border-color: var(--brand-blue);
-  box-shadow: 5px 5px 0 var(--brand-blue);
+  box-shadow: none;
   transform: none;
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-link:is(:hover, :focus-visible) .features-about-circle {
+  width: calc(100% - 6px);
+  background: color-mix(in srgb, var(--brand-blue) 70%, var(--ui-ink));
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-link:is(:hover, :focus-visible) .features-about-circle svg {
+  translate: 4px 0;
+}
+.rycode-public .home-colorful .rycode-services-source .features-about-link:dir(rtl):is(:hover, :focus-visible) .features-about-circle svg {
+  translate: -4px 0;
 }
 .rycode-public .home-colorful .rycode-services-source .features-about-link:focus-visible {
   outline-color: var(--brand-blue);
 }
 .rycode-public .home-colorful .rycode-services-source .features-about-link:active {
-  background: var(--ui-purple);
-  color: var(--ui-ink);
-  box-shadow: none;
-  translate: 0 4px;
+  transform: scale(0.98);
 }
 @media (prefers-reduced-motion: reduce) {
-  .rycode-public .home-colorful .rycode-services-source .features-about-link {
+  .rycode-public .home-colorful .rycode-services-source :is(.features-about-link, .features-about-circle, .features-about-circle svg) {
     transition: none;
+  }
+  .rycode-public .home-colorful .rycode-services-source .features-about-circle svg {
+    translate: none !important;
   }
 }
 .rycode-public .home-colorful .rycode-services-source .feature-foot-arrow {
