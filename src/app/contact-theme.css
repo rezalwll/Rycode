@@ -10,21 +10,52 @@
   .framer-UUxDN
   :is(.framer-1lxnfwb, .framer-101bh9k, .framer-1etwmq0) {
   width: 22px;
-  top: -11px;
+  top: -10.5px;
+  z-index: 3;
+  pointer-events: none;
   background-color: var(--brand-blue);
   mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
 }
 .rycode-public .framer-UUxDN .framer-1lxnfwb {
-  left: -11px;
+  left: -11.5px;
 }
 .rycode-public .framer-UUxDN .framer-1etwmq0 {
-  right: -11px;
+  right: -11.5px;
 }
 .rycode-public
   .framer-UUxDN
   :is(.framer-1lxnfwb, .framer-101bh9k, .framer-1etwmq0)
   img {
   visibility: hidden;
+}
+/* Let the thicker moving accents straddle the one-pixel tracks. */
+.rycode-public
+  .framer-UUxDN
+  :is(
+    .framer-1pmlejd,
+    .framer-5dmamn,
+    .framer-1ggja40,
+    .framer-1ilmqib,
+    .framer-ekdjfg
+  ) {
+  overflow: visible;
+}
+.rycode-public .framer-UUxDN [data-line-trace] {
+  z-index: 2;
+  background-color: var(--brand-blue);
+  border-radius: 999px;
+}
+.rycode-public .framer-UUxDN [data-line-trace="x"] {
+  width: 40px;
+  height: 3px;
+  top: -1px;
+  bottom: auto;
+}
+.rycode-public .framer-UUxDN [data-line-trace="y"] {
+  width: 3px;
+  height: 40px;
+  left: -1px;
+  right: auto;
 }
 .rycode-public .framer-UUxDN .framer-pqxl1p {
   background-color: rgb(16 29 48 / 20%);
