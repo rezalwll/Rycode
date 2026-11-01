@@ -301,7 +301,7 @@ export default function ReferenceFeatures() {
                 )}
               </span>
             </h2>
-            <a data-fill-button href={href("/services")} className="features-about-link">
+            <a href={href("/services")} className="features-about-link">
               {text("همهٔ خدمات رایکد", "All RYCODE services")}
             </a>
           </motion.div>
