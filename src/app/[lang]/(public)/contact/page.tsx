@@ -3,6 +3,7 @@ import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { ContactBlock0 } from "@/components/pages/ContactBlock0";
 import { ContactHeroSection } from "@/components/pages/ContactHeroSection";
+import "@/app/contact-theme.css";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return { title: t("Contact") };
