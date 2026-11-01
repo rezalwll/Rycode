@@ -75,6 +75,11 @@
   background-color: #edf6fc;
   border-color: #cbdfee;
 }
+@media (min-width: 768px) {
+  html[lang="fa"] .rycode-public .framer-UUxDN .framer-1h20kp {
+    flex-direction: row-reverse;
+  }
+}
 @media (min-width: 768px) and (max-width: 1199.98px) {
   .rycode-public .framer-UUxDN .framer-zh7igo {
     padding-top: 6px;
