@@ -86,13 +86,7 @@ export default function ReferenceHero() {
                   </span>
                 </span>
                 <span className="hero-title-line">
-                  <span className="hero-title-soft">
-                    {text("به ", "become ")}
-                  </span>
-                  <span className="hero-title-accent">
-                    {text("واقعیت", "reality")}
-                  </span>
-                  <span>{text(" می‌رسند", "")}</span>
+                  {text("به واقعیت می‌رسند", "become reality")}
                 </span>
               </span>
             </motion.h1>

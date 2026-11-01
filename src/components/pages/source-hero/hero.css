@@ -215,10 +215,12 @@
   text-wrap: balance;
 }
 .rycode-hero-source .rycode-hero-title .hero-title-soft {
-  color: rgb(255 255 255 / 48%);
+  /* Fade the whole phrase once so joined Persian glyphs stay even in color. */
+  color: #fff;
+  opacity: 0.72;
 }
-.rycode-hero-source .rycode-hero-title .hero-title-accent {
-  color: var(--accent-blue);
+html[lang="fa"] .rycode-hero-source .rycode-hero-title {
+  letter-spacing: normal;
 }
 .rycode-hero-source .rycode-hero-subtitle {
   max-width: 42rem;

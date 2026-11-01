@@ -159,12 +159,6 @@
   color: #fff;
   text-shadow: none;
 }
-.home-colorful .rycode-hero-source .rycode-hero-title .hero-title-soft {
-  color: rgb(255 255 255 / 72%);
-}
-.home-colorful .rycode-hero-source .rycode-hero-title .hero-title-accent {
-  color: var(--ui-blue);
-}
 .home-colorful .rycode-hero-source .rycode-hero-subtitle,
 .home-colorful .rycode-hero-source .hero-subtitle {
   color: rgb(255 255 255 / 85%);
