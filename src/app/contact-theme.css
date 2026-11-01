@@ -1,105 +1,48 @@
-/* Polish the original photo-and-form composition without changing its layout. */
+/* Keep Covix's captured layout, breakpoints and controls in globals.css.
+   Only the palette changes; the existing in-flow header replaces its fixed one. */
+.rycode-public .framer-UUxDN {
+  --token-7b28ac9f-5add-4a4d-85f4-4841d99bfe0b: #dde3eb;
+}
 .rycode-public .framer-UUxDN .framer-zh7igo {
-  padding-block: 72px 80px;
-}
-.rycode-public .framer-UUxDN .framer-1h20kp {
-  gap: 48px;
-  padding: 28px 24px;
-}
-.rycode-public .framer-UUxDN .framer-v5sqzd {
-  padding: 28px 28px 36px;
-  gap: 280px;
-  border-radius: 20px;
-  overflow: hidden;
-  isolation: isolate;
+  padding-top: 45px;
 }
 .rycode-public .framer-UUxDN .framer-pqxl1p {
-  background: linear-gradient(180deg, rgb(16 29 48 / 25%), rgb(16 29 48 / 80%));
-}
-.rycode-public .framer-UUxDN .framer-7whc3i {
-  gap: 36px;
-  min-width: 0;
-}
-.rycode-public .framer-UUxDN .framer-4ent3p h2 {
-  font-size: clamp(30px, 3.3vw, 42px);
-  font-weight: 500;
-  line-height: 1.55;
-  letter-spacing: normal;
-}
-.rycode-public .framer-UUxDN #project-inquiry {
-  gap: 26px;
-}
-.rycode-public .framer-UUxDN #project-inquiry label {
-  gap: 10px;
-}
-.rycode-public .framer-UUxDN #project-inquiry label .framer-text {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.8;
+  background-color: rgb(16 29 48 / 20%);
 }
 .rycode-public .framer-UUxDN #project-inquiry .framer-form-input-wrapper {
-  padding: 0;
-  background: transparent;
+  --framer-input-background: #f2f3f6;
+  --framer-input-font-color: var(--ui-ink);
+  --framer-input-placeholder-color: var(--ui-muted);
+  --framer-input-focused-border-color: var(--brand-blue);
 }
 .rycode-public
   .framer-UUxDN
   #project-inquiry
   :is(input:not([name="website"]), textarea) {
-  min-height: 52px;
-  padding: 14px 16px;
-  border: 0;
-  border-bottom: 1px solid #cbd3dd;
-  border-radius: 8px 8px 0 0;
-  background: #fafbfd;
   color: var(--ui-ink);
-  font: inherit;
-  font-size: 15px;
-  line-height: 1.8;
-  text-align: start;
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-.rycode-public .framer-UUxDN #project-inquiry textarea {
-  min-height: 150px;
-  resize: vertical;
+  background: transparent;
+  border: 0;
 }
 .rycode-public
   .framer-UUxDN
   #project-inquiry
-  :is(input, textarea)::placeholder {
-  color: #758291;
-  opacity: 1;
+  .framer-form-input-wrapper:focus-within {
+  outline: 1px solid var(--brand-blue);
+  outline-offset: 0;
 }
-.rycode-public .framer-UUxDN #project-inquiry :is(input, textarea):hover {
-  border-bottom-color: #9cb9cf;
+.rycode-public .framer-UUxDN .framer-Irrnf {
+  background-color: #edf6fc !important;
+  color: var(--ui-ink);
+  border: 0;
 }
-.rycode-public .framer-UUxDN #project-inquiry :is(input, textarea):focus {
-  border-bottom-color: var(--brand-blue);
-  outline: 2px solid #a8d8ff;
-  outline-offset: 2px;
-  background: #fff;
+.rycode-public
+  .framer-UUxDN
+  .framer-Irrnf
+  :is(.framer-6vonoc, .framer-1akqox4) {
+  background-color: var(--brand-blue) !important;
 }
-.rycode-public .framer-UUxDN #project-inquiry > [role="status"] {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #cbdfee;
-  border-radius: 12px;
-  background: #edf6fc;
-  color: var(--ui-ink) !important;
-  font-size: 14px;
-  line-height: 1.9;
-  overflow-wrap: anywhere;
-}
-.rycode-public .framer-UUxDN [data-social-network] {
-  background: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 22%);
-  border-radius: 50%;
-}
-.rycode-public .framer-UUxDN a[data-social-network]:hover {
-  background: rgb(168 216 255 / 24%);
-  border-color: var(--ui-blue);
+.rycode-public .framer-UUxDN .framer-Irrnf:is(:hover, :focus-visible) {
+  outline-color: var(--brand-blue);
 }
 .rycode-public
   .framer-UUxDN
@@ -107,38 +50,18 @@
   .framer-text {
   color: var(--ui-blue) !important;
 }
+.rycode-public .framer-UUxDN #project-inquiry > [role="status"] {
+  color: var(--ui-ink);
+  background-color: #edf6fc;
+  border-color: #cbdfee;
+}
 @media (min-width: 768px) and (max-width: 1199.98px) {
-  .rycode-public .framer-UUxDN .framer-1h20kp {
-    gap: 28px;
-    padding-inline: 16px;
-  }
-  .rycode-public .framer-UUxDN .framer-v5sqzd {
-    padding: 24px 22px 32px;
-    gap: 230px;
+  .rycode-public .framer-UUxDN .framer-zh7igo {
+    padding-top: 6px;
   }
 }
 @media (max-width: 767.98px) {
   .rycode-public .framer-UUxDN .framer-zh7igo {
-    padding: 40px 20px 56px;
-  }
-  .rycode-public .framer-UUxDN .framer-1h20kp {
-    gap: 36px;
-    padding: 8px;
-  }
-  .rycode-public .framer-UUxDN .framer-v5sqzd {
-    padding: 24px 22px 30px;
-    gap: 110px;
-    border-radius: 16px;
-  }
-  .rycode-public .framer-UUxDN .framer-7whc3i {
-    gap: 28px;
-  }
-  .rycode-public .framer-UUxDN .framer-4ent3p h2 {
-    font-size: clamp(28px, 7.4vw, 36px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rycode-public .framer-UUxDN #project-inquiry :is(input, textarea) {
-    transition: none;
+    padding-top: 16px;
   }
 }

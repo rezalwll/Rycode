@@ -357,41 +357,9 @@ export async function ContactHeroSection() {
                   <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
                     <FormField
                       type="email"
-                      required={false}
+                      required={true}
                       name="Email"
                       placeholder={t("e.g info@mail.com")}
-                      className="framer-form-input framer-form-input-empty"
-                      as="input"
-                    ></FormField>
-                  </div>
-                </Reveal>
-                <Reveal
-                  className="framer-1yitcnd rycode-phone-field"
-                  data-framer-appear-id="rycode-phone-field"
-                  style={referenceStyles.sd26cd70eb9}
-                  as="label"
-                  from="translateY(150px)"
-                >
-                  <div
-                    className="framer-uemtml"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.se120e01975}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-1e46qyy"
-                      data-styles-preset="l8F5L_1Ss"
-                      dir="auto"
-                      style={referenceStyles.s5a374ddac4}
-                    >
-                      {locale === "fa" ? "شمارهٔ تماس" : "Phone number"}
-                    </p>
-                  </div>
-                  <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
-                    <FormField
-                      type="tel"
-                      required={false}
-                      name="Phone"
-                      placeholder={"09xxxxxxxxx"}
                       className="framer-form-input framer-form-input-empty"
                       as="input"
                     ></FormField>
@@ -436,7 +404,7 @@ export async function ContactHeroSection() {
                 as="div"
                 from="translateY(150px)"
               >
-                <FormSubmit data-fill-button="primary"
+                <FormSubmit
                   type="submit"
                   className="framer-Irrnf framer-P2lQE framer-9qjuV framer-1wjqi8p framer-v-1wjqi8p"
                   data-framer-name="Default"
