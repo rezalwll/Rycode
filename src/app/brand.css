@@ -1,4 +1,5 @@
 :root {
+  --brand-ink: #303b48;
   --brand-blue: #3498db;
   --brand-purple: #8b6bda;
   --brand-accent: var(--brand-blue);
@@ -26,7 +27,7 @@
   color: #fff;
 }
 .brand-logo--light {
-  color: #171717;
+  color: var(--ui-ink, #303b48);
 }
 
 .brand-logo__emblem {
@@ -45,7 +46,7 @@
   font-weight: 600;
 }
 .brand-logo .brand-logo__name .brand-accent { color: var(--brand-blue); }
-.brand-logo__code { color: #000; }
+.brand-logo__code { color: var(--ui-ink, #303b48); }
 .brand-letter-r {
   color: var(--brand-blue) !important;
   -webkit-text-fill-color: var(--brand-blue) !important;
@@ -55,8 +56,8 @@
   -webkit-text-fill-color: var(--brand-blue) !important;
 }
 .brand-code {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
+  color: var(--brand-ink) !important;
+  -webkit-text-fill-color: var(--brand-ink) !important;
 }
 
 .brand-logo--header {

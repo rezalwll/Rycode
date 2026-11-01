@@ -1,0 +1,120 @@
+/* Shared Uiverse expanding-circle interaction. See THIRD_PARTY_NOTICES.md.
+   Service routes retain their original controls, including the shared header/footer.
+   Important declarations normalize the captured Framer inline styles. */
+.public-service-boundary { display: contents; }
+
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) {
+  position: relative !important;
+  isolation: isolate;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  width: auto !important;
+  max-width: 100%;
+  min-height: 52px !important;
+  height: auto !important;
+  padding-block: 12px !important;
+  padding-inline: 60px 20px !important;
+  overflow: hidden !important;
+  border: 1px solid #d3e6f3 !important;
+  border-radius: 999px !important;
+  background: #edf6fc !important;
+  color: var(--ui-ink) !important;
+  box-shadow: none !important;
+  font-family: inherit;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 26px !important;
+  letter-spacing: normal !important;
+  text-align: center;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 360ms ease, border-color 360ms ease, scale 180ms ease !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  inset: 3px !important;
+  inset-inline-end: auto !important;
+  width: 44px !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  background: var(--brand-blue) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: none;
+  transition: width 440ms cubic-bezier(.65,0,.076,1), background-color 360ms ease !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 1;
+  inset: auto !important;
+  inset-inline-start: 15px !important;
+  top: calc(50% - 10px) !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14m-7-7 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: none;
+  transition: translate 440ms cubic-bezier(.65,0,.076,1) !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):dir(rtl)::after { rotate: 180deg; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) :is(.framer-text, .hero-cta-label) {
+  position: relative;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  font: inherit !important;
+  margin: 0 !important;
+  transform: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) :is(.framer-14jkp0r, .framer-1uu97bw) {
+  position: relative !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) > :is(svg, [aria-hidden="true"]),
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) :is(.hero-cta-label-copy, .framer-1glyh7l, [data-framer-name="Icon"], [data-framer-name="Dot"]) {
+  display: none !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible) {
+  color: #fff !important;
+  border-color: var(--brand-blue) !important;
+  background: #edf6fc !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::before {
+  width: calc(100% - 6px) !important;
+  background: color-mix(in srgb, var(--brand-blue) 70%, var(--ui-ink)) !important;
+}
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::after { translate: 4px 0; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):dir(rtl):is(:hover, :focus-visible)::after { translate: -4px 0; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--brand-blue) !important; outline-offset: 4px; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active:not(:disabled) { scale: .98; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):disabled { opacity: .6; cursor: wait; }
+
+/* Pagination keeps its reading direction: previous goes back, next goes forward. */
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)[rel="prev"]::after { rotate: 180deg; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)[rel="prev"]:dir(rtl)::after { rotate: 0deg; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)[rel="prev"]:is(:hover, :focus-visible)::after { translate: -4px 0; }
+.rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)[rel="prev"]:dir(rtl):is(:hover, :focus-visible)::after { translate: 4px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link), .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::before, .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::after { transition: none !important; }
+  .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link)::after { translate: none !important; }
+  .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active { scale: none; }
+}
+

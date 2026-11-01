@@ -301,13 +301,8 @@ export default function ReferenceFeatures() {
                 )}
               </span>
             </h2>
-            <a href={href("/services")} className="features-about-link">
-              <span className="features-about-circle" aria-hidden="true">
-                {locale === "fa" ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
-              </span>
-              <span className="features-about-label">
-                {text("همهٔ خدمات رایکد", "All RYCODE services")}
-              </span>
+            <a data-fill-button href={href("/services")} className="features-about-link">
+              {text("همهٔ خدمات رایکد", "All RYCODE services")}
             </a>
           </motion.div>
           <div id="features-cards" className="features-gallery">

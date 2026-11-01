@@ -2,8 +2,8 @@
 .rycode-public {
   --ui-blue: #a8d8ff;
   --ui-purple: #c4b5fd;
-  --ui-ink: #1a1a1a;
-  --ui-muted: #666;
+  --ui-ink: var(--brand-ink);
+  --ui-muted: #5f6d7b;
   --ui-line: #e7e7e7;
   --button-surface: #fff;
   --button-primary: #f2eefb;

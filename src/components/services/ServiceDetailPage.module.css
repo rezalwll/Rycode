@@ -14,12 +14,12 @@
   overflow: clip;
 }
 :global(body:has(.serviceDetailPage) header .framer-ATxvc) {
-  color: #111 !important;
+  color: var(--ui-ink, #303b48) !important;
 }
 :global(body:has(.serviceDetailPage) header .framer-ATxvc .framer-text),
 :global(body:has(.serviceDetailPage) header .framer-ATxvc button),
 :global(body:has(.serviceDetailPage) header .framer-ATxvc a) {
-  color: #111 !important;
+  color: var(--ui-ink, #303b48) !important;
 }
 .breadcrumb {
   display: flex;
@@ -712,7 +712,7 @@
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
   font-size: 20px;
   transition:
     background 0.3s,
@@ -767,7 +767,7 @@
 }
 .capability:hover {
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .capability > span,
 .processList li > span {
@@ -850,7 +850,7 @@
 }
 .buildPage .specialty:hover {
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .buildPage .specialty:hover p {
   color: #5e5a55;
@@ -870,10 +870,10 @@
 }
 .buildPage .cta {
   background: #f5f3ef;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .buildPage .cta h2 {
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .buildPage .cta .kicker {
   color: #68635d;
@@ -1454,7 +1454,7 @@
 }
 .softwarePage .specialty:hover {
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .softwarePage .specialty:hover p {
   color: #5d625f;
@@ -2770,7 +2770,7 @@
 }
 .rescuePage .specialty:hover {
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .rescuePage .specialty:hover p {
   color: #5f6761;

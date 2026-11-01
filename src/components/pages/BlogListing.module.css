@@ -1,5 +1,5 @@
 .listing {
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .listing:global(.framer-1yqm1dg) :global(.framer-kjvge1),
 .listing:global(.framer-1yqm1dg) :global(.framer-pqpzn7) {
@@ -11,7 +11,7 @@
   top: -84px;
   margin: 0;
   padding: 0;
-  color: #111;
+  color: var(--ui-ink, #303b48);
   direction: rtl;
   z-index: 2;
   font-size: 15px;
@@ -80,7 +80,7 @@
   flex: 1 1 180px;
   border: 1px solid #d4d4d4;
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
   transition:
     border-color 0.25s,
     box-shadow 0.25s;
@@ -164,7 +164,7 @@
 .pagination a {
   background: var(--ui-purple, #c4b5fd);
   border-color: transparent;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .search button:hover,
 .pagination a:hover {

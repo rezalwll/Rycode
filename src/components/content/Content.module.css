@@ -79,7 +79,7 @@
 }
 .primary {
   background: #fff;
-  color: #000;
+  color: var(--ui-ink, #303b48);
   border-color: #fff;
 }
 .grid {
@@ -122,7 +122,7 @@
   display: grid;
   place-items: center;
   background: #fff;
-  color: #000;
+  color: var(--ui-ink, #303b48);
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -379,7 +379,7 @@
 }
 .white {
   background: #f2f2f2;
-  color: #111;
+  color: var(--ui-ink, #303b48);
 }
 .white .summary {
   color: #444;
@@ -800,19 +800,19 @@
 .page.servicePage :is(.primary, .aside .button),
 .page.projectPage .button {
   background: var(--ui-blue, #a8d8ff);
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
   border-color: var(--ui-blue, #a8d8ff);
   box-shadow: none;
 }
 .page :is(.button:hover, .button:focus-visible, .card:hover .arrow),
 .page.servicePage :is(.primary:hover, .aside .button:hover) {
   background: var(--ui-purple, #c4b5fd);
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
   border-color: var(--ui-purple, #c4b5fd);
 }
 .page.servicePage .primary span {
   background: #fff;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .page
   :is(.service:hover, .service:focus-visible, .faq, .meta, .toc, .mobileToc) {

@@ -124,7 +124,7 @@
 .rycode-public .rycode-source-header .rycode-language-link:hover {
   border-color: #d2cbdc;
   background: #f8f6fc;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .rycode-source-header .rycode-theme-toggle {
   display: inline-flex;

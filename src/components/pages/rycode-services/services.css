@@ -5,7 +5,7 @@
   z-index: 2;
   flex: none;
   width: 100%;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
   background: #f2f2f2;
   color-scheme: light;
   scroll-margin-top: 100px;
@@ -486,7 +486,7 @@
   gap: 14px;
   padding-block: 2px;
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .rycode-services-source .capability-card-link-copy {
   display: flex;

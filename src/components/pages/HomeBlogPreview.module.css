@@ -4,7 +4,7 @@
   width: 100%;
   padding: 100px 32px;
   background: #f2f2f2;
-  color: #111;
+  color: var(--ui-ink, #303b48);
   scroll-margin-top: 100px;
 }
 .inner {
@@ -59,7 +59,7 @@
   height: 36px;
   border-radius: 50%;
   background: #fff;
-  color: #111;
+  color: var(--ui-ink, #303b48);
   font-size: 24px;
 }
 .allArticles:hover {
@@ -112,7 +112,7 @@
 }
 .allArticles,
 .allArticles:hover {
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
   border-color: transparent;
   background: var(--ui-purple, #c4b5fd);
 }

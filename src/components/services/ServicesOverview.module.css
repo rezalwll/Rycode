@@ -86,7 +86,7 @@
   border-radius: 60px;
   padding: 4px 4px 4px 20px;
   background: #fff;
-  color: #101010;
+  color: var(--ui-ink, #303b48);
   text-decoration: none;
   font-size: 14px;
   line-height: 1.6;
@@ -480,11 +480,11 @@
 }
 .closing .button {
   background: #f6f6f6;
-  color: #101010;
+  color: var(--ui-ink, #303b48);
 }
 .closing .buttonArrow {
   background: #ff1a05;
-  color: #101010;
+  color: var(--ui-ink, #303b48);
 }
 .closing .button:hover {
   background: #f6f6f6;
@@ -734,7 +734,7 @@
     .row:is(:hover, :focus-visible) .detailArrow
   ) {
   background: var(--ui-blue, #a8d8ff);
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
   border-color: var(--ui-blue, #a8d8ff);
   box-shadow: none;
 }
@@ -742,11 +742,11 @@
   background: var(--ui-purple, #c4b5fd);
 }
 .page .button:is(:hover, :focus-visible) {
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .page .button:is(:hover, :focus-visible) .buttonArrow {
   background: #fff;
-  color: #1a1a1a;
+  color: var(--ui-ink, #303b48);
 }
 .page .artwork {
   background: #fff;

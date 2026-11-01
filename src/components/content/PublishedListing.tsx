@@ -35,7 +35,7 @@ export async function PublishedListing({
         aria-label={fa ? "صفحه‌بندی" : "Pagination"}
       >
         {page > 1 && (
-          <Link data-fill-button
+          <Link data-fill-button rel="prev"
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page - 1, filters))}
           >
@@ -46,7 +46,7 @@ export async function PublishedListing({
           {page.toLocaleString(fa ? "fa-IR" : "en-US")}
         </span>
         {page * 12 < result.total && (
-          <Link data-fill-button
+          <Link data-fill-button rel="next"
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page + 1, filters))}
           >

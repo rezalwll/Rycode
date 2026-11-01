@@ -1,8 +1,8 @@
 # Third-party notices
 
-## Expanding-circle services button
+## Expanding-circle public buttons
 
-The services call-to-action interaction is adapted from “Button” by cssbuttons-io:
+The public call-to-action interaction is adapted from “Button” by cssbuttons-io:
 https://uiverse.io/cssbuttons-io/massive-mayfly-74
 
 MIT License
