@@ -1,10 +1,30 @@
 /* Keep Covix's captured layout, breakpoints and controls in globals.css.
-   Only the palette changes; the existing in-flow header replaces its fixed one. */
+   Apply Rycode's palette and star accents; account for the in-flow header. */
 .rycode-public .framer-UUxDN {
   --token-7b28ac9f-5add-4a4d-85f4-4841d99bfe0b: #dde3eb;
 }
 .rycode-public .framer-UUxDN .framer-zh7igo {
   padding-top: 45px;
+}
+.rycode-public
+  .framer-UUxDN
+  :is(.framer-1lxnfwb, .framer-101bh9k, .framer-1etwmq0) {
+  width: 22px;
+  top: -11px;
+  background-color: var(--brand-blue);
+  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+}
+.rycode-public .framer-UUxDN .framer-1lxnfwb {
+  left: -11px;
+}
+.rycode-public .framer-UUxDN .framer-1etwmq0 {
+  right: -11px;
+}
+.rycode-public
+  .framer-UUxDN
+  :is(.framer-1lxnfwb, .framer-101bh9k, .framer-1etwmq0)
+  img {
+  visibility: hidden;
 }
 .rycode-public .framer-UUxDN .framer-pqxl1p {
   background-color: rgb(16 29 48 / 20%);
