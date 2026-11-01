@@ -350,6 +350,31 @@
   direction: ltr;
   text-align: left;
 }
+.editor :global(.tiptap) pre {
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  overflow-x: auto;
+  tab-size: 2;
+  background: #17232f;
+  padding: 16px;
+  border-radius: 8px;
+}
+.editor :global(.tiptap) :is(pre, code, pre *, code *) {
+  font-family: ui-monospace, Consolas, monospace !important;
+}
+.editor :global(.tiptap) table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.editor :global(.tiptap) :is(th, td) {
+  border: 1px solid #64748b;
+  padding: 10px;
+  min-width: 80px;
+}
+.editor :global(.tiptap) th {
+  background: #273444;
+}
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;

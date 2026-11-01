@@ -16,6 +16,9 @@ async function resolve(slug: string) {
   return {
     id: service.id,
     kind: "SERVICE",
+    featured: false,
+    sample: false,
+    readingTime: 1,
     locale,
     slug: service.id,
     title: service.title[locale],

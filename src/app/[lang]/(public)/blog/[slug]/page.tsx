@@ -11,17 +11,29 @@ export async function generateMetadata({
   const { slug } = await params;
   const { locale } = await getTranslations();
   const { content } = await lookupContent("ARTICLE", slug, locale);
-  return content
-    ? pageMetadata({
-        path: "/blog/" + slug,
-        locale,
-        title: content.seoTitle,
-        description: content.seoDescription,
-        image: content.image || undefined,
-        locales: content.locales,
-        noIndex: content.noIndex,
-      })
-    : {};
+  if (!content) return {};
+  const metadata = pageMetadata({
+    path: "/blog/" + slug,
+    locale,
+    title: content.seoTitle,
+    description: content.seoDescription,
+    image: content.image?.endsWith(".svg")
+      ? "/brand/og-card.png"
+      : content.image || undefined,
+    locales: content.locales,
+    noIndex: content.noIndex,
+  });
+  return {
+    ...metadata,
+    openGraph: {
+      ...metadata.openGraph,
+      type: "article",
+      publishedTime: content.publishedAt,
+      modifiedTime: content.updatedAt,
+      tags: content.tags,
+      authors: [content.author],
+    },
+  };
 }
 export default async function Article({
   params,

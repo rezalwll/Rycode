@@ -15,7 +15,7 @@ export async function contentMetadata(
   const item = legacy.find((item) => item.kind === kind && item.slug === slug);
   const path =
     (await headers()).get("x-rycode-path") || contentPath({ kind, slug });
-  return pageMetadata({
+  const metadata = pageMetadata({
     path,
     locale,
     title: content?.seoTitle || t(fallbackTitle),
@@ -24,8 +24,24 @@ export async function contentMetadata(
       item?.summary[locale] ||
       fallbackDescription ||
       t(fallbackTitle),
-    image: content?.image || item?.image,
+    image:
+      kind === "ARTICLE" && content?.image?.endsWith(".svg")
+        ? "/brand/og-card.png"
+        : content?.image || item?.image,
     locales: content?.locales,
     noIndex: content?.noIndex,
   });
+  return kind === "ARTICLE" && content
+    ? {
+        ...metadata,
+        openGraph: {
+          ...metadata.openGraph,
+          type: "article" as const,
+          publishedTime: content.publishedAt,
+          modifiedTime: content.updatedAt,
+          authors: [content.author],
+          tags: content.tags,
+        },
+      }
+    : metadata;
 }

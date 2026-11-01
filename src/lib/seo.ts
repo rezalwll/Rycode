@@ -34,8 +34,8 @@ const descriptions: Record<string, Record<Locale, string>> = {
     en: "Explore RYCODE's digital projects, design approaches and delivery process.",
   },
   "/blog": {
-    fa: "مطالب رایکد دربارهٔ طراحی سایت، نرم‌افزار، سئو و راهکارهای کاربردی برای رشد کسب‌وکار",
-    en: "RYCODE articles about websites, software, SEO and practical business tools.",
+    fa: "مجله برنامه‌نویسی رایکد؛ آموزش و یادداشت‌های تخصصی JavaScript، React، Next.js، Python، توسعه وب و ابزارهای توسعه نرم‌افزار",
+    en: "The RYCODE developer journal: JavaScript, React, Next.js, Python, web development and practical software engineering guides.",
   },
   "/services": {
     fa: "خدمات رایکد؛ طراحی سایت و فروشگاه، نرم‌افزار، رفع باگ، ربات، سئو، اکسل و پشتیبانی",
@@ -108,16 +108,21 @@ export function metadataForPath(path: string, locale: Locale) {
     : normalized.startsWith("/work/")
       ? "/work"
       : normalized;
-  const title = translate(
-    normalized === "/contact"
-      ? "Contact"
-      : normalized === "/work"
-        ? "Work"
-        : normalized === "/blog"
-          ? "Blog"
-          : "RYCODE",
-    locale,
-  );
+  const title =
+    normalized === "/blog"
+      ? locale === "fa"
+        ? "مجله برنامه‌نویسی"
+        : "Developer journal"
+      : translate(
+          normalized === "/contact"
+            ? "Contact"
+            : normalized === "/work"
+              ? "Work"
+              : normalized === "/blog"
+                ? "Blog"
+                : "RYCODE",
+          locale,
+        );
   return pageMetadata({
     path: normalized,
     locale,

@@ -45,6 +45,10 @@ const nodeTypes = new Set([
   "horizontalRule",
   "hardBreak",
   "image",
+  "table",
+  "tableRow",
+  "tableHeader",
+  "tableCell",
 ]);
 export function validateDocument(value: unknown): value is RichNode {
   let count = 0;
@@ -133,6 +137,8 @@ export const contentSchema = z
     relatedIds: z.array(z.string().uuid()).max(12).default([]),
     serviceId: z.string().max(160).optional(),
     noIndex: z.boolean().default(false),
+    featured: z.boolean().default(false),
+    sample: z.boolean().default(false),
     position: z.number().int().min(0).max(9999).default(0),
     scheduledAt: z.string().datetime().optional(),
     translations: z.array(translationSchema).min(1).max(2),

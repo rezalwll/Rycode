@@ -15,6 +15,9 @@ export async function listingMetadata(
     absoluteUrl(localizedHref(path, language) + query);
   return {
     ...metadata,
+    ...(path === "/blog"
+      ? { title: locale === "fa" ? "مجله برنامه‌نویسی" : "Developer journal" }
+      : {}),
     alternates: {
       canonical: canonical(locale),
       languages: {

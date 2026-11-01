@@ -13,6 +13,7 @@ import { database, databaseConfigured } from "@/server/db";
 import { localizedHref, type Locale } from "@/lib/i18n";
 import { absoluteUrl, jsonLd } from "@/lib/seo";
 import styles from "./Content.module.css";
+import { ArticleDetail } from "@/components/blog/ArticleDetail";
 export async function ContentDetail({
   content,
   locale,
@@ -22,25 +23,25 @@ export async function ContentDetail({
   locale: Locale;
   preview?: boolean;
 }) {
+  if (content.kind === "ARTICLE")
+    return (
+      <ArticleDetail content={content} locale={locale} preview={preview} />
+    );
   const fa = locale === "fa";
   const segment = contentSegments[content.kind];
   const sectionPath = content.kind === "PAGE" ? "/" : "/" + segment;
   const section =
-    content.kind === "ARTICLE"
+    content.kind === "SERVICE"
       ? fa
-        ? "بلاگ"
-        : "Journal"
-      : content.kind === "SERVICE"
+        ? "خدمات"
+        : "Services"
+      : content.kind === "PROJECT"
         ? fa
-          ? "خدمات"
-          : "Services"
-        : content.kind === "PROJECT"
-          ? fa
-            ? "نمونه‌کارها"
-            : "Work"
-          : fa
-            ? "رایکد"
-            : "RYCODE";
+          ? "نمونه‌کارها"
+          : "Work"
+        : fa
+          ? "رایکد"
+          : "RYCODE";
   const related = await relatedContent(content, locale);
   const hierarchy = await serviceHierarchy(content, locale);
   const headings =
@@ -87,12 +88,7 @@ export async function ContentDetail({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type":
-          content.kind === "ARTICLE"
-            ? "BlogPosting"
-            : content.kind === "SERVICE"
-              ? "Service"
-              : "CreativeWork",
+        "@type": content.kind === "SERVICE" ? "Service" : "CreativeWork",
         ...(content.kind === "SERVICE"
           ? {
               serviceType: content.title,
@@ -144,7 +140,6 @@ export async function ContentDetail({
     <main
       className={
         styles.page +
-        (content.kind === "ARTICLE" ? " " + styles.white : "") +
         (content.kind === "SERVICE" ? " " + styles.servicePage : "") +
         (content.kind === "PROJECT" ? " " + styles.projectPage : "")
       }
@@ -174,7 +169,8 @@ export async function ContentDetail({
       <p className={styles.summary}>{content.summary}</p>
       {content.kind === "SERVICE" && (
         <div className={styles.actions}>
-          <Link data-fill-button
+          <Link
+            data-fill-button
             className={styles.button + " " + styles.primary}
             href={inquiryHref}
           >

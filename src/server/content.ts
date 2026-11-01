@@ -6,6 +6,7 @@ import type { RichNode } from "@/lib/content-rules";
 import { services, type Service } from "@/content/services";
 import { documentText } from "@/lib/content-rules";
 import { listingPage } from "@/lib/listing-params";
+import { articleReadingTime } from "@/lib/article";
 
 export const contentSegments = {
   ARTICLE: "blog",
@@ -35,6 +36,9 @@ export type PublicContent = {
   relatedIds: string[];
   noIndex: boolean;
   legacy: boolean;
+  featured: boolean;
+  sample: boolean;
+  readingTime: number;
   publishedAt: string;
   updatedAt: string;
   locales: Locale[];
@@ -63,7 +67,7 @@ export function visibleContent(
     record.translations.some((t) => t.locale === locale && t.approved)
   );
 }
-function publicDto(
+export function publicDto(
   record: RecordWithTranslations,
   locale: Locale,
 ): PublicContent {
@@ -83,8 +87,11 @@ function publicDto(
     tags: record.tags,
     relatedIds: record.relatedIds,
     serviceId: record.serviceId,
-    noIndex: record.noIndex,
+    noIndex: record.noIndex || record.sample,
     legacy: record.legacy,
+    featured: record.featured,
+    sample: record.sample,
+    readingTime: articleReadingTime(text.body as RichNode),
     publishedAt: (
       record.publishedAt ||
       record.scheduledAt ||
@@ -142,6 +149,7 @@ export const listPublishedContent = cache(
     const now = new Date();
     const where: Prisma.ContentWhereInput = {
       kind,
+      sample: false,
       OR: [
         { status: "PUBLISHED" },
         { status: "SCHEDULED", scheduledAt: { lte: now } },
@@ -334,6 +342,7 @@ export async function publishedSitemapRecords() {
   const rows = await database().content.findMany({
     where: {
       noIndex: false,
+      sample: false,
       OR: [
         { status: "PUBLISHED" },
         { status: "SCHEDULED", scheduledAt: { lte: new Date() } },

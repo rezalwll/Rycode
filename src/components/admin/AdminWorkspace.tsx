@@ -31,6 +31,8 @@ type ContentRow = {
   serviceId?: string;
   sourceKey?: string | null;
   noIndex?: boolean;
+  featured?: boolean;
+  sample?: boolean;
   position?: number;
   scheduledAt?: string;
   translations: Translation[];
@@ -216,6 +218,8 @@ function ContentEditor({
               relatedIds: f.getAll("relatedIds").map(String),
               serviceId: String(f.get("serviceId") || ""),
               noIndex: f.get("noIndex") === "on",
+              featured: f.get("featured") === "on",
+              sample: f.get("sample") === "on",
               position: Number(f.get("position") || 0),
               ...(f.get("scheduledAt")
                 ? {
@@ -360,6 +364,26 @@ function ContentEditor({
             />
             عدم ایندکس در موتورهای جست‌وجو
           </label>
+          {record.kind === "ARTICLE" && (
+            <>
+              <label className={styles.check}>
+                <input
+                  name="featured"
+                  type="checkbox"
+                  defaultChecked={record.featured}
+                />
+                مقالهٔ منتخب بلاگ
+              </label>
+              <label className={styles.check}>
+                <input
+                  name="sample"
+                  type="checkbox"
+                  defaultChecked={record.sample}
+                />
+                محتوای نمونه (برچسب نمونه و عدم ایندکس)
+              </label>
+            </>
+          )}
           <label>
             تصویر شاخص
             <input

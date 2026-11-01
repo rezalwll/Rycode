@@ -60,6 +60,7 @@ export function ScrollEffects() {
       if (
         url.origin !== location.origin ||
         url.pathname !== location.pathname ||
+        url.search !== location.search ||
         !url.hash
       )
         return;

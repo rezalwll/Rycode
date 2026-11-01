@@ -327,7 +327,9 @@ export async function POST(request: Request, context: Context) {
           serviceId: existing?.sourceKey?.startsWith("service:")
             ? existing.sourceKey.slice("service:".length)
             : input.serviceId || null,
-          noIndex: input.noIndex,
+          noIndex: input.noIndex || input.sample,
+          featured: input.featured,
+          sample: input.sample,
           position: input.position,
           scheduledAt:
             input.status === "SCHEDULED" ? new Date(input.scheduledAt!) : null,

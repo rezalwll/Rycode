@@ -1,0 +1,210 @@
+.reader {
+  position: sticky;
+  top: 110px;
+  min-width: 0;
+  max-height: calc(100svh - 140px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.desktopToc {
+  border-inline-end: 1px solid var(--journal-line);
+  padding-inline-end: 20px;
+}
+.desktopToc h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin: 0 0 18px;
+  line-height: 1.8;
+  font-weight: 600;
+}
+.reader ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.reader li {
+  margin: 0;
+}
+.reader a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--journal-muted);
+  text-decoration: none;
+  border-inline-start: 2px solid transparent;
+  border-radius: 4px;
+}
+.reader a:hover {
+  color: var(--journal-blue);
+}
+.reader a[aria-current="location"] {
+  color: var(--journal-blue);
+  background: var(--journal-panel);
+  border-inline-start-color: #3498db;
+}
+.subheading {
+  padding-inline-start: 12px;
+}
+.desktopToc > p {
+  margin: 20px 10px 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--journal-line);
+  font-size: 11px;
+  color: var(--journal-muted);
+}
+.progress {
+  position: fixed;
+  z-index: 45;
+  top: 75px;
+  inset-inline: 0;
+  height: 3px;
+  background: transparent;
+  pointer-events: none;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: #3498db;
+}
+.mobileToc {
+  display: none;
+}
+.code {
+  margin: 26px 0;
+  border: 1px solid #344553;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #17232f;
+  color: #dce7f1;
+  text-align: left;
+  min-width: 0;
+  max-width: 100%;
+}
+.code figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #202f3e;
+  border-bottom: 1px solid #344553;
+  padding: 10px 16px;
+}
+.language {
+  font-size: 12px;
+  color: #b7cbdf;
+}
+.copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.8;
+  background: transparent;
+  border: 1px solid #506276;
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: #dce7f1;
+  cursor: pointer;
+}
+.copy:hover {
+  background: #2d4357;
+}
+.copy:focus-visible {
+  outline: 2px solid #a8d8ff;
+  outline-offset: 3px;
+}
+.code .pre {
+  margin: 0;
+  padding: 22px 20px;
+  background: #17232f;
+  color: #dce7f1;
+  overflow-x: auto;
+  white-space: pre;
+  direction: ltr;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.95;
+  tab-size: 2;
+  border: 0;
+  border-radius: 0;
+}
+.code .pre code {
+  display: block;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  white-space: pre;
+  unicode-bidi: isolate;
+  font-size: inherit;
+}
+.code :global(.hljs-comment),
+.code :global(.hljs-quote) {
+  color: #94a5b7;
+}
+.code :global(.hljs-keyword),
+.code :global(.hljs-selector-tag),
+.code :global(.hljs-literal) {
+  color: #c4b5fd;
+}
+.code :global(.hljs-string),
+.code :global(.hljs-attr),
+.code :global(.hljs-regexp) {
+  color: #9cdec9;
+}
+.code :global(.hljs-number),
+.code :global(.hljs-attribute),
+.code :global(.hljs-symbol) {
+  color: #e7c58f;
+}
+.code :global(.hljs-title),
+.code :global(.hljs-built_in),
+.code :global(.hljs-type),
+.code :global(.hljs-name) {
+  color: #91caff;
+}
+.code :global(.hljs-variable),
+.code :global(.hljs-params) {
+  color: #dce7f1;
+}
+@media (max-width: 767px) {
+  .reader {
+    position: relative;
+    top: auto;
+    max-height: none;
+    width: 100%;
+    overflow: visible;
+  }
+  .desktopToc {
+    display: none;
+  }
+  .mobileToc {
+    display: block;
+    border: 1px solid var(--journal-line);
+    border-radius: 9px;
+    padding: 14px;
+    background: var(--journal-panel);
+  }
+  .mobileToc summary {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .mobileToc nav {
+    margin-top: 14px;
+  }
+  .code .pre {
+    padding: 18px 16px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 639px) {
+  .progress {
+    top: 65px;
+  }
+}

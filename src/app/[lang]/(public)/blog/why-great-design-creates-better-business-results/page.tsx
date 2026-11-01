@@ -24,7 +24,7 @@ export default async function Page() {
     locale,
   );
   if (managed.owned && !managed.content) notFound();
-  if (managed.content && !managed.content.legacy)
+  if (managed.content)
     return <ContentDetail content={managed.content} locale={locale} />;
   return (
     <main

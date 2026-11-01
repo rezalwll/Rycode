@@ -2,6 +2,7 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
+import { TableKit } from "@tiptap/extension-table";
 import { useState } from "react";
 import type { RichNode } from "@/lib/content-rules";
 import styles from "./Admin.module.css";
@@ -15,8 +16,12 @@ export function RichEditor({
   const [value, setValue] = useState(JSON.stringify(initial));
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [2, 3, 4] } }),
+      StarterKit.configure({
+        heading: { levels: [2, 3, 4] },
+        codeBlock: { enableTabIndentation: true, tabSize: 2 },
+      }),
       Image.configure({ allowBase64: false }),
+      TableKit,
     ],
     content: initial,
     immediatelyRender: false,
@@ -84,6 +89,77 @@ export function RichEditor({
         >
           کد
         </button>
+        <button
+          type="button"
+          aria-pressed={editor?.isActive("code") || false}
+          onClick={() => editor?.chain().focus().toggleCode().run()}
+        >
+          کد درون‌متنی
+        </button>
+        {editor?.isActive("codeBlock") && (
+          <select
+            aria-label="زبان بلوک کد"
+            value={String(editor.getAttributes("codeBlock").language || "text")}
+            onChange={(event) =>
+              editor
+                .chain()
+                .focus()
+                .updateAttributes("codeBlock", { language: event.target.value })
+                .run()
+            }
+          >
+            {[
+              "text",
+              "javascript",
+              "typescript",
+              "tsx",
+              "python",
+              "bash",
+              "json",
+              "html",
+              "css",
+              "sql",
+            ].map((language) => (
+              <option key={language} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+        )}
+        <button
+          type="button"
+          onClick={() =>
+            editor
+              ?.chain()
+              .focus()
+              .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+              .run()
+          }
+        >
+          جدول
+        </button>
+        {editor?.isActive("table") && (
+          <>
+            <button
+              type="button"
+              onClick={() => editor.chain().focus().addRowAfter().run()}
+            >
+              ردیف جدید
+            </button>
+            <button
+              type="button"
+              onClick={() => editor.chain().focus().addColumnAfter().run()}
+            >
+              ستون جدید
+            </button>
+            <button
+              type="button"
+              onClick={() => editor.chain().focus().deleteTable().run()}
+            >
+              حذف جدول
+            </button>
+          </>
+        )}
         <button
           type="button"
           onClick={() => {
