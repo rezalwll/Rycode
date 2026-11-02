@@ -116,8 +116,8 @@
   will-change: transform;
 }
 
-/* Project labels sit on photography; keep their original white contrast. */
-.rycode-public main .framer-7wCKM .framer-1oq7wyn .framer-text {
+/* Both the resting caption and alternate hover preview sit on photography. */
+.rycode-public main .framer-7wCKM .framer-text {
   color: #fff !important;
   --framer-text-color: #fff;
   text-shadow: 0 2px 14px rgb(0 0 0 / 35%);
