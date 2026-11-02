@@ -10,6 +10,7 @@ export default async function AdminSection({
   if (
     ![
       "leads",
+      "comments",
       "content",
       "media",
       "faqs",

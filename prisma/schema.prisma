@@ -30,6 +30,31 @@ enum LeadStatus {
   SPAM
   ARCHIVED
 }
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SPAM
+}
+model Comment {
+  id String @id @default(uuid())
+  articleId String
+  article Content @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  locale String @default("fa")
+  name String
+  email String?
+  body String
+  status CommentStatus @default(PENDING)
+  reply String?
+  requestKey String @unique
+  fingerprint String @unique
+  moderatedBy String?
+  moderatedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([articleId, locale, status, createdAt])
+  @@index([status, createdAt])
+}
 model User {
   id String @id
   name String
@@ -130,6 +155,7 @@ model Content {
   updatedAt DateTime @updatedAt
   translations ContentTranslation[]
   revisions ContentRevision[]
+  comments Comment[]
   @@unique([kind, slug])
   @@index([kind, status, publishedAt])
   @@index([status, scheduledAt])

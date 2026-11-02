@@ -9,6 +9,8 @@ import { RichContent } from "@/components/content/RichContent";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleReader } from "./ArticleReader";
 import { CopyButton } from "./CopyButton";
+import { Comments } from "./Comments";
+import { publicComments } from "@/server/comments";
 import styles from "./Journal.module.css";
 
 export async function ArticleDetail({
@@ -23,6 +25,9 @@ export async function ArticleDetail({
   const fa = locale === "fa";
   const href = (path: string) => localizedHref(path, locale);
   const related = await relatedBlogArticles(content, locale);
+  const comments = preview
+    ? null
+    : await publicComments(content.id, locale).catch(() => null);
   const path = href("/blog/" + content.slug);
   const breadcrumbs = [
     { name: fa ? "خانه" : "Home", path: href("/") },
@@ -158,6 +163,14 @@ export async function ArticleDetail({
           </div>
         </article>
       </div>
+      {!preview && (
+        <Comments
+          key={content.id + locale}
+          articleId={content.id}
+          fa={fa}
+          initial={comments}
+        />
+      )}
       {related.length > 0 && (
         <section className={styles.section} aria-labelledby="related-title">
           <div className={styles.sectionHeading}>

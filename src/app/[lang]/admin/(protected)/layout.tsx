@@ -7,6 +7,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 const sections = [
   ["", "نمای کلی"],
   ["leads", "درخواست‌ها"],
+  ["comments", "دیدگاه‌های بلاگ"],
   ["content", "محتوا و انتشار"],
   ["media", "رسانه‌ها"],
   ["faqs", "پرسش‌های متداول"],

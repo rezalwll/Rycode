@@ -5,6 +5,7 @@ import type { RichNode } from "@/lib/content-rules";
 import { textDocument } from "@/lib/content-rules";
 import { RichEditor } from "./RichEditor";
 import { MediaLibrary } from "./MediaLibrary";
+import { AdminComments } from "./AdminComments";
 import styles from "./Admin.module.css";
 
 type Row = Record<string, unknown>;
@@ -41,6 +42,7 @@ type ContentRow = {
 const titles: Record<string, string> = {
   overview: "مدیریت رایکد",
   leads: "درخواست‌های همکاری",
+  comments: "دیدگاه‌های بلاگ",
   content: "محتوا و انتشار",
   media: "کتابخانهٔ رسانه",
   faqs: "پرسش‌های متداول",
@@ -525,7 +527,7 @@ export function AdminWorkspace({
           ? "analytics"
           : "content"
         : section;
-    if (section === "media") return;
+    if (section === "media" || section === "comments") return;
     const params = new URLSearchParams({
       page: String(page),
       q: query,
@@ -568,6 +570,7 @@ export function AdminWorkspace({
     <>
       <h1>{titles[section]}</h1>
       <p className={styles.muted}>سایت و درخواست‌ها را از اینجا مدیریت کنید.</p>
+      {section === "comments" && <AdminComments />}
       {message && (
         <p role="status" className={styles.message}>
           {message}

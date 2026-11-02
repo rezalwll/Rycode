@@ -17,9 +17,12 @@ import {
   consumeLimit,
 } from "@/server/security";
 import type { Prisma } from "@/generated/prisma/client";
+import { commentStatusSchema } from "@/lib/comments";
+import { moderateComment } from "@/server/comments";
 
 type Context = { params: Promise<{ resource: string }> };
 const adminOnly = new Set([
+  "comments",
   "leads",
   "settings",
   "redirects",
@@ -63,6 +66,60 @@ export async function GET(request: Request, context: Context) {
     const page = listingPage(url.searchParams.get("page"));
     const take = 30,
       skip = (page - 1) * take;
+    if (resource === "comments") {
+      const status = url.searchParams.get("status");
+      const where: Prisma.CommentWhereInput = {
+        ...(status ? { status: commentStatusSchema.parse(status) } : {}),
+        ...(search
+          ? {
+              OR: [
+                { name: { contains: search, mode: "insensitive" } },
+                { body: { contains: search, mode: "insensitive" } },
+                {
+                  article: {
+                    translations: {
+                      some: {
+                        title: { contains: search, mode: "insensitive" },
+                      },
+                    },
+                  },
+                },
+              ],
+            }
+          : {}),
+      };
+      const [items, total, pending] = await database().$transaction([
+        database().comment.findMany({
+          where,
+          take,
+          skip,
+          orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            body: true,
+            locale: true,
+            status: true,
+            reply: true,
+            createdAt: true,
+            updatedAt: true,
+            article: {
+              select: {
+                slug: true,
+                translations: { select: { locale: true, title: true } },
+              },
+            },
+          },
+        }),
+        database().comment.count({ where }),
+        database().comment.count({ where: { status: "PENDING" } }),
+      ]);
+      return Response.json(
+        { items, total, pending },
+        { headers: { "Cache-Control": "no-store" } },
+      );
+    }
     if (resource === "content") {
       if (url.searchParams.get("choices") === "1")
         return Response.json(
@@ -250,6 +307,8 @@ export async function POST(request: Request, context: Context) {
     const actor = await requireStaff(adminOnly.has(resource));
     await consumeLimit("admin:" + actor.id, 300, 300);
     const raw = await boundedJson(request, 800000);
+    if (resource === "comments")
+      return Response.json(await moderateComment(actor, raw));
     let entityId = "";
     if (resource === "content") {
       const input = contentSchema.parse(raw);

@@ -78,6 +78,11 @@
 .root p {
   margin: 0 0 12px;
 }
+.commentText {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-block: 20px !important;
+}
 .root small {
   color: #aaa;
 }
