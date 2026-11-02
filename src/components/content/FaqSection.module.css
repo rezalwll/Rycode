@@ -70,7 +70,7 @@
   display: none;
 }
 .item summary:focus-visible {
-  outline: 2px solid var(--brand-blue);
+  outline: 2px solid var(--brand-purple);
   outline-offset: 4px;
 }
 .number {
@@ -92,10 +92,20 @@
   display: grid;
   place-items: center;
   flex: none;
-  border: 1px solid #e5e3ea;
+  border: 1px solid #ddd1f3;
   border-radius: 10px;
-  background: #fff;
-  color: #55505f;
+  background: #f3effc;
+  color: #6f4db3;
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
+}
+.item[open] .toggle,
+.item summary:is(:hover, :focus-visible) .toggle {
+  background: var(--brand-purple);
+  border-color: var(--brand-purple);
+  color: #fff;
 }
 .toggle svg {
   transform: rotate(90deg);
@@ -161,6 +171,10 @@
   line-height: 1.8;
 }
 .contact {
+  --cta-accent: var(--brand-purple);
+  --cta-surface: #f3effc;
+  --cta-border: #ddd1f3;
+  --cta-fill: #6f4db3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -234,6 +248,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .item,
+  .toggle,
   .toggle svg,
   .item::details-content {
     transition: none;
