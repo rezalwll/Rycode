@@ -72,3 +72,67 @@
 .heading {
   color: #1a1a1a;
 }
+
+/* The six project details share this frame, including their responsive layouts. */
+.detailFrame.detailFrame
+  :is(
+    :global(.framer-ntstlc),
+    :global(.framer-5ky9c1),
+    :global(.framer-1cv6bak)
+  ) {
+  width: 22px;
+  height: 22px;
+  top: -10.5px;
+  z-index: 3;
+  pointer-events: none;
+  background-color: var(--brand-blue);
+  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+}
+.detailFrame.detailFrame :global(.framer-ntstlc) {
+  left: -11.5px;
+}
+.detailFrame.detailFrame :global(.framer-1cv6bak) {
+  right: -11.5px;
+}
+.detailFrame.detailFrame
+  :is(
+    :global(.framer-ntstlc),
+    :global(.framer-5ky9c1),
+    :global(.framer-1cv6bak)
+  )
+  img {
+  visibility: hidden;
+}
+.detailFrame.detailFrame
+  :is(
+    :global(.framer-128jpv2),
+    :global(.framer-120dbed),
+    :global(.framer-1qyk8s3),
+    :global(.framer-kp5642)
+  ) {
+  --border-color: #dde3eb;
+  overflow: visible;
+}
+.detailFrame.detailFrame :global(.framer-120dbed) {
+  left: -1px;
+}
+.detailFrame.detailFrame :global(.framer-kp5642) {
+  right: -1px;
+}
+.detailFrame.detailFrame [data-line-trace] {
+  z-index: 2;
+  background-color: var(--brand-blue);
+  border-radius: 999px;
+}
+.detailFrame.detailFrame [data-line-trace="x"] {
+  width: 20px;
+  height: 1.5px;
+  top: -0.25px;
+  bottom: auto;
+}
+.detailFrame.detailFrame [data-line-trace="y"] {
+  width: 1.5px;
+  height: 20px;
+  left: -0.25px;
+  right: auto;
+}

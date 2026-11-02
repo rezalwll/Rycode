@@ -1,3 +1,4 @@
+import styles from "./Work.module.css";
 import { LineTrace } from "@/components/LineTrace";
 import { getTranslations } from "@/lib/i18n-server";
 import { ProjectReveal } from "@/components/ProjectReveal";
@@ -7,8 +8,12 @@ export async function WorkCreativeAgencyDetailsSection() {
   const { t, href } = await getTranslations();
   return (
     <section className="framer-1ucgqp2" data-framer-name="Details Section">
-      <div className="framer-14hxjb7" data-framer-name="Container">
-        <div className="framer-ntstlc">
+      <div
+        className={`framer-14hxjb7 ${styles.detailFrame}`}
+        data-framer-name="Container"
+        data-project-frame
+      >
+        <div className="framer-ntstlc" aria-hidden="true">
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
@@ -26,6 +31,7 @@ export async function WorkCreativeAgencyDetailsSection() {
         </div>
         <div
           className="framer-5ky9c1 hidden-1xydt6v"
+          aria-hidden="true"
           style={referenceStyles.s4317ba2255}
         >
           <div
@@ -43,7 +49,7 @@ export async function WorkCreativeAgencyDetailsSection() {
             />
           </div>
         </div>
-        <div className="framer-1cv6bak">
+        <div className="framer-1cv6bak" aria-hidden="true">
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
