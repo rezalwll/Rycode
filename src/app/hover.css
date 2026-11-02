@@ -254,29 +254,16 @@ a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-10vim37 {
    so keyboard focus belongs to the outer anchor, not the preview div. */
 .framer-X0SPq :is(.framer-1o9ixez, .framer-1jl6no1) {
   pointer-events: none;
-  transition:
-    opacity 0.4s linear,
-    top 0.4s linear,
-    left 0.4s linear,
-    transform 0.4s linear;
+  transition: opacity 0.4s linear;
 }
+/* Keep the cover still instead of flying a duplicate image over it on hover. */
 .framer-X0SPq .framer-1jl6no1 {
-  bottom: auto;
-  top: 30%;
+  display: none;
 }
 a:is(:hover, :focus-visible)
   .framer-X0SPq:is(.framer-v-o0znmx, .framer-v-1tgtv73)
-  :is(.framer-1o9ixez, .framer-1jl6no1) {
+  .framer-1o9ixez {
   opacity: 1 !important;
-}
-a:is(:hover, :focus-visible) .framer-X0SPq.framer-v-o0znmx .framer-1jl6no1 {
-  top: 15.1393%;
-  left: 15.1377%;
-}
-a:is(:hover, :focus-visible) .framer-X0SPq.framer-v-1tgtv73 .framer-1jl6no1 {
-  width: 70%;
-  top: 15%;
-  left: 14.6978%;
 }
 
 a:focus-visible,
