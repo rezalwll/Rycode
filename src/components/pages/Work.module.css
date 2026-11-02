@@ -5,6 +5,70 @@
   direction: rtl;
 }
 
+/* Match Contact's 22px blue stars and 20px moving accents.
+   Place the center of each star on the one-pixel frame intersection. */
+.page.page [data-work-frame] {
+  --work-frame-top: 80px;
+}
+.page.page [data-work-frame-line] {
+  background-color: #dde3eb;
+  overflow: visible;
+}
+.page.page [data-work-frame-line="top"] {
+  top: var(--work-frame-top);
+}
+.page.page [data-work-frame-line="left"] {
+  left: -1px;
+}
+.page.page [data-work-frame-line="right"] {
+  right: -1px;
+}
+.page.page [data-work-frame-star] {
+  width: 22px;
+  height: 22px;
+  z-index: 3;
+  pointer-events: none;
+  background-color: var(--brand-blue);
+  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+}
+.page.page [data-work-frame-star] img {
+  visibility: hidden;
+}
+.page.page [data-work-frame-star^="top-"] {
+  top: calc(var(--work-frame-top) - 10.5px);
+}
+.page.page [data-work-frame-star^="bottom-"] {
+  bottom: -10.5px;
+}
+.page.page [data-work-frame-star$="-left"] {
+  left: -11.5px;
+}
+.page.page [data-work-frame-star$="-right"] {
+  right: -11.5px;
+}
+.page.page [data-work-frame] [data-line-trace] {
+  z-index: 2;
+  background-color: var(--brand-blue);
+  border-radius: 999px;
+}
+.page.page [data-work-frame] [data-line-trace="x"] {
+  width: 20px;
+  height: 1.5px;
+  top: -0.25px;
+  bottom: auto;
+}
+.page.page [data-work-frame] [data-line-trace="y"] {
+  width: 1.5px;
+  height: 20px;
+  left: -0.25px;
+  right: auto;
+}
+@media (max-width: 1199.98px) {
+  .page.page [data-work-frame] {
+    --work-frame-top: 81px;
+  }
+}
+
 .heading {
   color: #1a1a1a;
 }

@@ -8,20 +8,44 @@ export async function WorkHeroSection() {
   const { t, locale } = await getTranslations();
   return (
     <section className="framer-tv7fdn" data-framer-name="Hero Section">
-      <div className="framer-ug79fj" data-framer-name="Container">
-        <div className="framer-1qyvljh" data-framer-name="Line Top">
+      <div
+        className="framer-ug79fj"
+        data-framer-name="Container"
+        data-work-frame
+      >
+        <div
+          className="framer-1qyvljh"
+          data-framer-name="Line Top"
+          data-work-frame-line="top"
+        >
           <LineTrace className="framer-piet4b" axis="x" distance={1093} />
         </div>
-        <div className="framer-1ynebvx" data-framer-name="Line Botton">
+        <div
+          className="framer-1ynebvx"
+          data-framer-name="Line Botton"
+          data-work-frame-line="bottom"
+        >
           <LineTrace className="framer-1szfrtd" axis="x" distance={1093} />
         </div>
-        <div className="framer-569kmd" data-framer-name="Line Left">
+        <div
+          className="framer-569kmd"
+          data-framer-name="Line Left"
+          data-work-frame-line="left"
+        >
           <LineTrace className="framer-2y5gkq" axis="y" distance={464} />
         </div>
-        <div className="framer-dkrwus" data-framer-name="Line Right">
+        <div
+          className="framer-dkrwus"
+          data-framer-name="Line Right"
+          data-work-frame-line="right"
+        >
           <LineTrace className="framer-1k6vkmt" axis="y" distance={464} />
         </div>
-        <div className="framer-1xa203k">
+        <div
+          className="framer-1xa203k"
+          data-work-frame-star="top-left"
+          aria-hidden="true"
+        >
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
@@ -31,13 +55,17 @@ export async function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt={t("Icon")}
+              alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
           </div>
         </div>
-        <div className="framer-1r31o5d">
+        <div
+          className="framer-1r31o5d"
+          data-work-frame-star="top-right"
+          aria-hidden="true"
+        >
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
@@ -47,13 +75,17 @@ export async function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt={t("Icon")}
+              alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
           </div>
         </div>
-        <div className="framer-1q0pufk">
+        <div
+          className="framer-1q0pufk"
+          data-work-frame-star="bottom-left"
+          aria-hidden="true"
+        >
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
@@ -63,13 +95,17 @@ export async function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt={t("Icon")}
+              alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
           </div>
         </div>
-        <div className="framer-1srqefr">
+        <div
+          className="framer-1srqefr"
+          data-work-frame-star="bottom-right"
+          aria-hidden="true"
+        >
           <div
             data-framer-background-image-wrapper="true"
             style={referenceStyles.s8a54025f8d}
@@ -79,7 +115,7 @@ export async function WorkHeroSection() {
               width="13"
               height="13"
               src="/assets/44648efdb77196fa.svg"
-              alt={t("Icon")}
+              alt=""
               className="w-full! h-full!"
               style={referenceStyles.s1100a320a2}
             />
