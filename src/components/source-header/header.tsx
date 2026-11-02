@@ -239,7 +239,7 @@ function DesktopNavItem({
   return (
     <BrandText>
       <li
-        className="relative flex h-[72px] items-center"
+        className="rycode-desktop-nav-item relative flex h-[72px] items-center"
         onPointerEnter={(event) => {
           if (event.pointerType === "mouse" && item.menu) onOpen();
         }}

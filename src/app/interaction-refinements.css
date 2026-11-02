@@ -1,18 +1,31 @@
 /* Transparent over the video, solid white after scrolling. */
 .rycode-public .rycode-source-header .rycode-header {
+  --header-rest-height: 74px;
+  --header-row-height: var(--header-rest-height);
   background: #fff;
   padding-top: 0;
   transition:
     background-color 320ms ease,
     border-color 320ms ease,
     box-shadow 320ms ease,
-    padding-top 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    padding-top 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin-bottom 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.rycode-public .rycode-source-header .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
+.rycode-public
+  .rycode-source-header
+  .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
   padding-top: 18px;
 }
 .rycode-public .rycode-header .rycode-header-inner {
-  height: 74px;
+  height: var(--header-row-height);
+  transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rycode-public .rycode-header .rycode-desktop-nav-item {
+  height: calc(var(--header-row-height) - 2px);
+  transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rycode-public .rycode-source-header .rycode-header--scrolled {
+  --header-row-height: 60px;
 }
 /* Inner pages reserve their own header row instead of overlaying their hero. */
 .rycode-public .rycode-source-header .rycode-header[data-header-page="inner"] {
@@ -27,6 +40,8 @@
   color: var(--ui-ink);
   border: 0;
   border-block-end: 1px solid var(--ui-line);
+  /* Keep the document's header space stable while the sticky surface shrinks. */
+  margin-bottom: calc(var(--header-rest-height) - var(--header-row-height));
 }
 .rycode-public .rycode-header .rycode-primary-link {
   padding: 10px 14px;
@@ -224,40 +239,69 @@
   color: #fff !important;
 }
 .rycode-public
-  :is(.hero-cta, .features-about-link)[data-fill-button]:is(:hover, :focus-visible) {
+  :is(.hero-cta, .features-about-link)[data-fill-button]:is(
+    :hover,
+    :focus-visible
+  ) {
   color: #fff !important;
   transform: translateY(-3px);
   box-shadow: 0 16px 30px rgb(26 26 26 / 18%);
 }
 .rycode-public .capability-card-link:hover .capability-card-link-copy > strong,
-.rycode-public .capability-card-link:focus-visible .capability-card-link-copy > strong {
+.rycode-public
+  .capability-card-link:focus-visible
+  .capability-card-link-copy
+  > strong {
   color: var(--feature-accent);
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 1) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n + 1) {
   --feature-accent: #2f9df4 !important;
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 2) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n + 2) {
   --feature-accent: #ff1b0b !important;
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 3) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n + 3) {
   --feature-accent: #8c5cff !important;
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 4) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n + 4) {
   --feature-accent: #18a86b !important;
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n + 5) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n + 5) {
   --feature-accent: #e4a600 !important;
 }
-.rycode-public .home-colorful .rycode-services-source .feature-card:nth-child(6n) {
+.rycode-public
+  .home-colorful
+  .rycode-services-source
+  .feature-card:nth-child(6n) {
   --feature-accent: #e85d9e !important;
 }
 
 @media (max-width: 639px) {
-  .rycode-public .rycode-source-header .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
+  .rycode-public
+    .rycode-source-header
+    .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
     padding-top: 12px;
   }
-  .rycode-public .rycode-header .rycode-header-inner {
-    height: 64px;
+  .rycode-public .rycode-source-header .rycode-header {
+    --header-rest-height: 64px;
+  }
+  .rycode-public .rycode-source-header .rycode-header--scrolled {
+    --header-row-height: 56px;
   }
   .rycode-public .rycode-header .rycode-wordmark {
     font-size: 24px;
@@ -268,6 +312,11 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .rycode-public .rycode-source-header .rycode-header {
+    transition: none;
+  }
+  .rycode-public
+    .rycode-header
+    :is(.rycode-header-inner, .rycode-desktop-nav-item) {
     transition: none;
   }
   .rycode-public :is(a, button)[data-fill-button]::before,
