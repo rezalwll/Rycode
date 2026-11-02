@@ -14,7 +14,7 @@
   z-index: 3;
   pointer-events: none;
   background-color: var(--brand-blue);
-  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+  mask: url("/brand/frame-star.svg") center / contain no-repeat;
 }
 .rycode-public .framer-UUxDN .framer-1lxnfwb {
   left: -11.5px;
@@ -38,7 +38,21 @@
     .framer-1ilmqib,
     .framer-ekdjfg
   ) {
+  background-color: #dde3eb;
   overflow: visible;
+}
+/* A border on both edges makes a 1px track render 2px wide. Paint its
+   actual box instead, so the visible intersection matches the star center. */
+.rycode-public
+  .framer-UUxDN
+  :is(
+    .framer-1pmlejd,
+    .framer-5dmamn,
+    .framer-1ggja40,
+    .framer-1ilmqib,
+    .framer-ekdjfg
+  )::after {
+  border: 0;
 }
 .rycode-public .framer-UUxDN [data-line-trace] {
   z-index: 2;

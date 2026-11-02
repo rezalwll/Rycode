@@ -29,7 +29,7 @@
   z-index: 3;
   pointer-events: none;
   background-color: var(--brand-blue);
-  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+  mask: url("/brand/frame-star.svg") center / contain no-repeat;
 }
 .page.page [data-work-frame-star] img {
   visibility: hidden;
@@ -86,7 +86,7 @@
   z-index: 3;
   pointer-events: none;
   background-color: var(--brand-blue);
-  mask: url("/assets/44648efdb77196fa.svg") center / contain no-repeat;
+  mask: url("/brand/frame-star.svg") center / contain no-repeat;
 }
 .detailFrame.detailFrame :global(.framer-ntstlc) {
   left: -11.5px;
@@ -110,8 +110,17 @@
     :global(.framer-1qyk8s3),
     :global(.framer-kp5642)
   ) {
-  --border-color: #dde3eb;
+  background-color: #dde3eb;
   overflow: visible;
+}
+.detailFrame.detailFrame
+  :is(
+    :global(.framer-128jpv2),
+    :global(.framer-120dbed),
+    :global(.framer-1qyk8s3),
+    :global(.framer-kp5642)
+  )::after {
+  border: 0;
 }
 .detailFrame.detailFrame :global(.framer-120dbed) {
   left: -1px;
