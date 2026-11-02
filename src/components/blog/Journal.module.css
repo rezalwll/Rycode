@@ -208,6 +208,33 @@
 .terminalStatus svg {
   margin-left: auto;
 }
+.briefBody {
+  padding: 23px 24px 18px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+:global(html[lang]) .journal .businessBrief.businessBrief {
+  font-family: inherit !important;
+}
+.briefBody p {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding-block: 10px;
+}
+.briefBody p > span {
+  color: #bfaeea;
+  font-size: 12px;
+}
+:global(html[lang]) .journal .businessBrief .briefBody,
+:global(html[lang]) .journal .businessBrief .briefBody * {
+  font-family: inherit !important;
+}
+.businessBrief .terminalStatus svg {
+  margin-left: 0;
+  margin-inline-start: auto;
+}
 :global(html[lang])
   .journal
   :is(.terminal, .terminal *, pre, code, pre *, code *, kbd) {

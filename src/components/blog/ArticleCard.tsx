@@ -52,6 +52,9 @@ export function ArticleCard({
           </span>
         </div>
         <div className={styles.cardCopy}>
+          <span className={styles.category}>
+            {fa ? "راهنمای کسب‌وکار" : "Business guide"}
+          </span>
           <h3>{article.title}</h3>
           <p>{article.summary}</p>
           <div className={styles.cardMeta}>

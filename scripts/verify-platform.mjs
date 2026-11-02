@@ -286,8 +286,8 @@ try {
     "no replacement generic hero heading",
   );
   assert.ok(
-    managedBlog("#journal-consult-title").length > 0,
-    "business journal retains its project inquiry path",
+    managedBlog("form[role='search']").length > 0,
+    "journal retains its article search",
   );
   assert.equal(
     $("a.language-switch").length,

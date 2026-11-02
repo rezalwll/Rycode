@@ -21,7 +21,7 @@ for (const prefix of ["", "/en"]) {
     0,
   );
   assert.doesNotMatch($("h1").text(), /برنامه‌نویسی|developer/i);
-  assert.ok($("#journal-consult-title").length);
+  assert.ok($("#featured-title").length);
   for (const guide of businessGuides) {
     const article = await page(prefix + "/blog/" + guide.slug);
     assert.equal(
