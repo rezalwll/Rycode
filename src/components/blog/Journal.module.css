@@ -601,6 +601,14 @@
   justify-content: center;
   margin-top: 20px;
 }
+.serviceLink {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--journal-blue) !important;
+  font-size: 12px;
+  border-bottom: 1px solid var(--journal-line);
+  padding-bottom: 5px;
+}
 .articleTags a {
   padding: 4px 9px;
   border-radius: 4px;

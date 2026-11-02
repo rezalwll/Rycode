@@ -1,9 +1,14 @@
 import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import { load } from "cheerio";
+import { businessGuides } from "../src/content/business-guides.ts";
+import { legacyArticleDates } from "../src/content/legacy-article-dates.ts";
 
 const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
-const routes = JSON.parse(await readFile(".reference/routes.json", "utf8"));
+const routes = [
+  ...JSON.parse(await readFile(".reference/routes.json", "utf8")),
+  ...businessGuides.map((guide) => "/blog/" + guide.slug),
+];
 const results = [];
 for (const locale of ["en", "fa"]) {
   for (const route of [...routes, "/missing-test-page"]) {
@@ -11,7 +16,11 @@ for (const locale of ["en", "fa"]) {
     const response = await fetch(base + path);
     const $ = load(await response.text());
     const expected =
-      route === "/404" || route === "/missing-test-page" ? 404 : 200;
+      route === "/404" ||
+      route === "/missing-test-page" ||
+      Object.keys(legacyArticleDates).some((slug) => route === "/blog/" + slug)
+        ? 404
+        : 200;
     assert.equal(response.status, expected, `${path}: status`);
     assert.equal($("html").attr("lang"), locale, `${path}: lang`);
     assert.equal(
@@ -36,9 +45,10 @@ for (const locale of ["en", "fa"]) {
       );
     });
     $("input[type='text'], textarea").each((_, element) => {
-      assert.equal(
-        $(element).attr("dir"),
-        locale === "fa" ? "rtl" : "ltr",
+      assert.ok(
+        [locale === "fa" ? "rtl" : "ltr", "auto"].includes(
+          $(element).attr("dir"),
+        ),
         `${path}: empty field and placeholder direction`,
       );
     });
@@ -69,10 +79,19 @@ for (const locale of ["en", "fa"]) {
           `${path}: process steps stay in reading order`,
         );
     }
-    assert.ok($("header .language-switch").length, `${path}: language switch`);
+    const languageSwitch = $(
+      "header .language-switch, header a[aria-label='Switch to English'], header a[aria-label='تغییر زبان به فارسی']",
+    );
+    assert.ok(languageSwitch.length, `${path}: language switch`);
     assert.equal(
-      $("header .language-switch").first().attr("href"),
-      locale === "fa" ? `/en${route === "/" ? "" : route}` : route,
+      languageSwitch.first().attr("href"),
+      Object.keys(legacyArticleDates).some((slug) => route === "/blog/" + slug)
+        ? locale === "fa"
+          ? "/en/404"
+          : "/404"
+        : locale === "fa"
+          ? `/en${route === "/" ? "" : route}`
+          : route,
       `${path}: switch destination`,
     );
     if (locale === "fa") {
@@ -89,7 +108,7 @@ for (const locale of ["en", "fa"]) {
         `${path}: localized title`,
       );
       $("a[href^='/']")
-        .not(".language-switch")
+        .not(".language-switch, [aria-label='Switch to English']")
         .each((_, element) => {
           const href = $(element).attr("href");
           assert.ok(
@@ -99,14 +118,16 @@ for (const locale of ["en", "fa"]) {
         });
       $(".framer-text").each((_, element) => {
         const value = $(element).text().trim();
-        if (
-          /^[\s\w]*ry(?:code)?$/i.test(value) ||
-          /^code$/i.test(value)
-        )
+        if (/^[\s\w]*ry(?:code)?$/i.test(value) || /^code$/i.test(value))
           return;
         assert.ok(
           // Technical product names remain meaningful inside Persian service copy.
-          !/[A-Za-z]{3}/.test(value.replace(/\b(?:CRM|API|SEO|CMS|WordPress|WooCommerce|Excel|B2B|Power BI)\b/g, "")),
+          !/[A-Za-z]{3}/.test(
+            value.replace(
+              /\b(?:CRM|API|SEO|CMS|WordPress|WooCommerce|Excel|B2B|Power BI)\b/g,
+              "",
+            ),
+          ),
           `${path}: untranslated text: ${value}`,
         );
       });

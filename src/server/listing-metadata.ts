@@ -16,7 +16,12 @@ export async function listingMetadata(
   return {
     ...metadata,
     ...(path === "/blog"
-      ? { title: locale === "fa" ? "مجله برنامه‌نویسی" : "Developer journal" }
+      ? {
+          title:
+            locale === "fa"
+              ? "بلاگ رایکد؛ راهنمای تصمیم‌های دیجیتال کسب‌وکار"
+              : "RYCODE journal; digital decisions for your business",
+        }
       : {}),
     alternates: {
       canonical: canonical(locale),

@@ -1,0 +1,413 @@
+.business.business {
+  padding-top: 48px;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  align-items: center;
+  gap: 70px;
+  padding: 22px 0 60px;
+}
+.copy {
+  min-width: 0;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--journal-blue);
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+.eyebrow > span {
+  font-size: 22px;
+}
+.copy h1 {
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 600;
+  line-height: 1.75;
+  margin: 0 0 22px;
+  letter-spacing: -0.035em;
+}
+.copy h1 span {
+  color: var(--journal-blue);
+}
+.intro {
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--journal-muted);
+  margin: 0 0 28px;
+}
+.heroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  font-size: 12px;
+}
+.heroLinks a,
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.business .primary,
+.articleConsult .primary {
+  background: #2878ab;
+  border: 1px solid #2878ab;
+  color: #fff;
+  border-radius: 999px;
+  padding: 14px 21px;
+  font-size: 12px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.business .primary:hover,
+.articleConsult .primary:hover {
+  background: #225f87;
+}
+.primary svg:dir(ltr),
+.spotlightCopy svg:dir(ltr),
+.shortcuts svg:dir(ltr) {
+  transform: scaleX(-1);
+}
+.heroLinks > a:last-child {
+  border-bottom: 1px solid var(--journal-line);
+  padding-block: 8px;
+}
+.note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 11px;
+  color: var(--journal-muted);
+}
+.note > span {
+  color: var(--journal-purple);
+  font-size: 28px;
+}
+.spotlight {
+  display: block;
+  min-width: 0;
+  border: 1px solid var(--journal-line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--journal-bg);
+}
+.spotlightImage {
+  aspect-ratio: 1.75;
+  background: #edf1f8;
+  position: relative;
+}
+.spotlightImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.spotlightImage > span {
+  position: absolute;
+  top: 15px;
+  inset-inline-start: 15px;
+  padding: 6px 12px;
+  background: #fff;
+  color: #3c5672;
+  font-size: 10px;
+  border-radius: 999px;
+  border: 1px solid #e2e8ef;
+}
+.spotlightCopy {
+  padding: 24px 26px;
+}
+.spotlightCopy h2 {
+  font-size: 23px;
+  line-height: 1.85;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+.spotlightCopy p {
+  color: var(--journal-muted);
+  font-size: 12px;
+  line-height: 2;
+  margin: 0 0 20px;
+}
+.spotlightCopy > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--journal-line);
+  font-size: 12px;
+  color: var(--journal-blue);
+}
+.spotlight:hover {
+  border-color: #99c8e6;
+}
+.manifesto {
+  padding: 45px;
+  background: var(--journal-panel);
+  border-radius: 24px;
+}
+.manifesto > span {
+  color: var(--journal-purple);
+  font-size: 70px;
+}
+.manifesto p {
+  font-size: 30px;
+  line-height: 1.9;
+}
+.manifesto a {
+  color: var(--journal-blue);
+  font-size: 13px;
+}
+.shortcuts {
+  display: grid;
+  grid-template-columns: 0.65fr 1fr 1fr;
+  gap: 30px;
+  border-block: 1px solid var(--journal-line);
+  padding: 26px 0;
+  margin-bottom: 65px;
+}
+.shortcuts > p {
+  font-size: 12px;
+  color: var(--journal-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.shortcuts > p span {
+  color: var(--journal-purple);
+  font-size: 28px;
+}
+.shortcuts a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-inline-start: 25px;
+  border-inline-start: 1px solid var(--journal-line);
+}
+.shortcuts strong {
+  font-size: 13px;
+  line-height: 1.9;
+  font-weight: 500;
+  flex: 1;
+}
+.shortcuts a > svg {
+  flex-shrink: 0;
+  color: var(--journal-blue);
+}
+.number {
+  font-size: 22px;
+  color: var(--journal-purple);
+}
+.articles {
+  scroll-margin-top: 110px;
+}
+.articlesHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.articlesHeader .eyebrow {
+  margin-bottom: 10px;
+}
+.articlesHeader h2 {
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.8;
+  font-weight: 600;
+  margin: 0;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--journal-line);
+  border-radius: 999px;
+  padding: 6px 13px 6px 6px;
+  width: 340px;
+  max-width: 100%;
+  background: var(--journal-bg);
+}
+.search:dir(ltr) {
+  padding: 6px 6px 6px 13px;
+}
+.search > svg {
+  color: var(--journal-muted);
+  flex-shrink: 0;
+}
+:global(.rycode-public) .business .search input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--journal-ink);
+  font: inherit;
+  font-size: 12px;
+  padding: 5px;
+  outline-offset: 0;
+}
+:global(.rycode-public) .business .search input::placeholder {
+  color: var(--journal-muted);
+}
+.search button {
+  background: var(--journal-panel);
+  color: var(--journal-ink);
+  cursor: pointer;
+  border: 0;
+  padding: 11px 15px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 11px;
+}
+.search button:hover {
+  color: var(--journal-blue);
+}
+.consult {
+  display: flex;
+  position: relative;
+  gap: 35px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--journal-panel);
+  border: 1px solid var(--journal-line);
+  padding: 40px;
+  margin-top: 65px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+.consult > div,
+.consult > a {
+  position: relative;
+  z-index: 1;
+}
+.consult h2 {
+  font-size: 28px;
+  margin: 0 0 10px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.consult .eyebrow {
+  margin-bottom: 12px;
+}
+.consult > div > p:not(.eyebrow) {
+  font-size: 13px;
+  color: var(--journal-muted);
+  line-height: 2.1;
+  max-width: 580px;
+  margin: 0;
+}
+.consultStar {
+  position: absolute;
+  font-size: 230px;
+  line-height: 1;
+  opacity: 0.09;
+  color: var(--journal-purple);
+  inset-inline-end: 20%;
+  top: -60px;
+  pointer-events: none;
+}
+.articleConsult {
+  max-width: 960px;
+  margin-inline: auto;
+  margin-bottom: 60px;
+}
+@media (max-width: 1000px) {
+  .hero {
+    gap: 30px;
+  }
+  .copy h1 {
+    font-size: 38px;
+  }
+  .heroLinks {
+    gap: 15px;
+  }
+  .shortcuts {
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .shortcuts > p {
+    grid-column: 1/-1;
+    justify-content: flex-start;
+  }
+  .shortcuts a {
+    padding-inline-start: 0;
+    border: 0;
+  }
+  .consult {
+    padding: 28px;
+  }
+}
+@media (max-width: 700px) {
+  .business.business {
+    padding-top: 30px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 0 35px;
+    gap: 32px;
+  }
+  .copy h1 {
+    font-size: 35px;
+    margin-bottom: 18px;
+  }
+  .intro {
+    font-size: 14px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+  .spotlightCopy {
+    padding: 20px;
+  }
+  .spotlightCopy h2 {
+    font-size: 20px;
+  }
+  .shortcuts {
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+  .shortcuts a + a {
+    border-top: 1px solid var(--journal-line);
+    padding-top: 18px;
+  }
+  .articlesHeader {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .search {
+    width: 100%;
+  }
+  .consult {
+    flex-direction: column;
+    align-items: start;
+    padding: 26px 22px;
+    margin-top: 40px;
+  }
+  .consult h2 {
+    font-size: 24px;
+  }
+  .consultStar {
+    inset-inline-end: -50px;
+    top: auto;
+    bottom: -30px;
+  }
+  .articleConsult {
+    margin-bottom: 35px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .business .primary {
+    transition: none;
+  }
+}

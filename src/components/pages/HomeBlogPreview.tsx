@@ -37,12 +37,16 @@ export async function HomeBlogPreview() {
               scrollLinked
               localizedText={
                 fa
-                  ? "ایده‌هایی برای ساختن و رشد کردن"
-                  : "Ideas for building and growing"
+                  ? "پیش از قدم بعدی، آگاهانه انتخاب کن"
+                  : "Make your next business decision with clarity"
               }
             />
           </div>
-          <Link data-fill-button className={styles.allArticles} href={href("/blog")}>
+          <Link
+            data-fill-button
+            className={styles.allArticles}
+            href={href("/blog")}
+          >
             {fa ? "همهٔ مقاله‌ها" : "All articles"}
             <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
           </Link>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpLeft, Clock3 } from "lucide-react";
+import { ArrowUpLeft, Clock3, Compass } from "lucide-react";
 import type { PublicContent } from "@/server/content";
 import { localizedHref, type Locale } from "@/lib/i18n";
 import { articleDate } from "@/lib/article";
@@ -19,6 +19,8 @@ export function ArticleCard({
   const fa = locale === "fa";
   return (
     <article
+      data-blog-card
+      data-article-id={article.id}
       className={`${styles.card} ${featured ? styles.featureCard : ""} ${lead ? styles.leadCard : ""}`}
     >
       <Link
@@ -37,7 +39,7 @@ export function ArticleCard({
             />
           ) : (
             <div className={styles.coverFallback} aria-hidden>
-              <span>{"</>"}</span>
+              <Compass size={42} />
             </div>
           )}
           {article.sample && (
@@ -50,9 +52,6 @@ export function ArticleCard({
           </span>
         </div>
         <div className={styles.cardCopy}>
-          <span className={styles.category}>
-            <bdi>{article.category || (fa ? "یادداشت‌ها" : "Notes")}</bdi>
-          </span>
           <h3>{article.title}</h3>
           <p>{article.summary}</p>
           <div className={styles.cardMeta}>
@@ -65,15 +64,6 @@ export function ArticleCard({
               {fa ? "دقیقه" : "min"}
             </span>
           </div>
-          {article.tags.length > 0 && (
-            <div className={styles.cardTags}>
-              {article.tags.slice(0, 3).map((tag) => (
-                <span key={tag}>
-                  <bdi>{tag}</bdi>
-                </span>
-              ))}
-            </div>
-          )}
         </div>
       </Link>
     </article>

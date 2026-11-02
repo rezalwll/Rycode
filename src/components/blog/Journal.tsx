@@ -1,18 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  Search,
-  ArrowLeft,
-  ArrowRight,
-  Terminal,
-  Code2,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpLeft, Search, X } from "lucide-react";
 import { blogListing } from "@/server/blog";
 import { getTranslations } from "@/lib/i18n-server";
 import { listingHref, type ListingSearchParams } from "@/lib/listing-params";
 import { ArticleCard } from "./ArticleCard";
-import styles from "./Journal.module.css";
+import journal from "./Journal.module.css";
+import styles from "./BusinessJournal.module.css";
 
 export async function Journal({
   searchParams,
@@ -21,7 +15,7 @@ export async function Journal({
 }) {
   const { locale, href } = await getTranslations();
   const fa = locale === "fa";
-  const { items, total, featured, categories, filters } = await blogListing(
+  const { items, total, featured, filters } = await blogListing(
     locale,
     searchParams,
   );
@@ -29,144 +23,125 @@ export async function Journal({
   const pages = Math.max(1, Math.ceil(total / 12));
   if (filters.page > pages)
     redirect(href(listingHref("ARTICLE", pages, filters)) + "#articles");
-  const categoryUrl = (category: string) => {
-    const q = new URLSearchParams();
-    if (category) q.set("category", category);
-    if (filters.q) q.set("q", filters.q);
-    return href("/blog" + (q.size ? "?" + q : "") + "#articles");
-  };
+  const lead = featured[0];
   return (
-    <main className={styles.journal} dir={fa ? "rtl" : "ltr"}>
+    <main
+      className={`${journal.journal} ${styles.business}`}
+      dir={fa ? "rtl" : "ltr"}
+    >
       <header className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>
-            <span aria-hidden>✦</span> RYCODE JOURNAL
-          </span>
-          <h1>{fa ? "مجله برنامه‌نویسی" : "The developer journal"}</h1>
-          <p>
+        <div className={styles.copy}>
+          <p className={styles.eyebrow}>
+            <span aria-hidden>✦</span>{" "}
             {fa
-              ? "از اولین خط کد تا ساختن محصول بهتر؛ یادداشت‌ها، آموزش‌ها و تجربه‌هایی برای توسعه‌دهنده‌های کنجکاو"
-              : "From your first line of code to a better product. Practical guides, engineering notes and ideas for curious developers."}
+              ? "بلاگ رایکد / برای کسب‌وکار تو"
+              : "RYCODE JOURNAL / FOR YOUR BUSINESS"}
           </p>
-          <form
-            key={filters.q + filters.category}
-            action={href("/blog") + "#articles"}
-            className={styles.search}
-            role="search"
-          >
-            <Search size={21} aria-hidden />
-            <input
-              type="search"
-              name="q"
-              defaultValue={filters.q}
-              maxLength={100}
-              aria-label={fa ? "جست‌وجو در مقالات" : "Search articles"}
-              placeholder={
-                fa ? "عنوان، موضوع یا تکنولوژی…" : "Title, topic or technology…"
-              }
-            />
-            {filters.category && (
-              <input type="hidden" name="category" value={filters.category} />
+          <h1>
+            {fa ? (
+              <>
+                تصمیم روشن‌تر،
+                <br />
+                <span>کسب‌وکار جلوتر</span>
+              </>
+            ) : (
+              <>
+                Clearer decisions.
+                <br />
+                <span>A better next step.</span>
+              </>
             )}
-            <button type="submit">
-              {fa ? "جست‌وجو" : "Search"}
-              <span aria-hidden>{fa ? "↖" : "↗"}</span>
-            </button>
-          </form>
-        </div>
-        <div className={styles.terminal} aria-hidden="true" dir="ltr" lang="en">
-          <div className={styles.terminalTop}>
-            <span>
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>
-              <Terminal size={13} /> rycode / journal
-            </span>
+          </h1>
+          <p className={styles.intro}>
+            {fa
+              ? "قبل از سفارش سایت، نرم‌افزار یا سئو، گزینه‌هایت را بشناس. اینجا دربارهٔ هزینه، انتخاب راه‌حل و بهتر کارکردن کسب‌وکارت می‌خوانی؛ ساده و کاربردی."
+              : "Understand your options before investing in a website, software or SEO. Practical reading on budgets, choosing a solution and improving the way your business works."}
+          </p>
+          <div className={styles.heroLinks}>
+            <a href="#articles" data-fill-button className={styles.primary}>
+              {fa ? "راهنمای تصمیم بعدی تو" : "Find your next step"}
+              <ArrowUpLeft size={18} aria-hidden />
+            </a>
+            <Link href={href("/contact")}>
+              {fa
+                ? "دربارهٔ پروژه‌ات حرف بزنیم"
+                : "Let's talk about your project"}
+              <span aria-hidden>{fa ? "←" : "→"}</span>
+            </Link>
           </div>
-          <div className={styles.terminalBody}>
-            <span className={styles.terminalComment}>
-              {"// Learn. Build. Share."}
-            </span>
-            <p>
-              <span className={styles.codeKeyword}>const</span> developer ={" "}
-              {"{"}
-            </p>
-            <p>
-              &nbsp; curiosity:{" "}
-              <span className={styles.codeString}>{'"always on"'}</span>,
-            </p>
-            <p>
-              &nbsp; ideas: [
-              <span className={styles.codeString}>{'"code"'}</span>,{" "}
-              <span className={styles.codeString}>{'"create"'}</span>],
-            </p>
-            <p>
-              &nbsp; nextStep:{" "}
-              <span className={styles.codeString}>{'"keep learning"'}</span>
-            </p>
-            <p>{"}"};</p>
-            <div className={styles.terminalStatus}>
-              <span /> Ready for your next idea <Code2 size={16} />
+          <div className={styles.note}>
+            <span aria-hidden>↳</span>
+            {fa
+              ? "از سؤال‌های واقعی، تا انتخابی که به کارت می‌آید"
+              : "Real questions. Useful answers. A more informed choice."}
+          </div>
+        </div>
+        {lead ? (
+          <Link className={styles.spotlight} href={href("/blog/" + lead.slug)}>
+            <div className={styles.spotlightImage}>
+              {lead.image && (
+                <img
+                  src={lead.image}
+                  alt={lead.imageAlt || lead.title}
+                  width={1200}
+                  height={750}
+                  fetchPriority="high"
+                />
+              )}
+              <span>{fa ? "پیشنهاد برای شروع" : "A GOOD PLACE TO START"}</span>
             </div>
-          </div>
-        </div>
-      </header>
-      <nav
-        className={styles.categories}
-        aria-label={fa ? "دسته‌بندی مقالات" : "Article categories"}
-      >
-        {["", ...categories].map((category) => (
-          <Link
-            key={category}
-            href={categoryUrl(category)}
-            className={
-              filters.category === category ? styles.selectedCategory : ""
-            }
-            aria-current={filters.category === category ? "page" : undefined}
-          >
-            <bdi>{category || (fa ? "همه مقالات" : "All articles")}</bdi>
+            <div className={styles.spotlightCopy}>
+              <h2>{lead.title}</h2>
+              <p>{lead.summary}</p>
+              <span>
+                {fa ? "راهنما را بخوان" : "Read the guide"}
+                <ArrowUpLeft size={20} aria-hidden />
+              </span>
+            </div>
           </Link>
-        ))}
-      </nav>
-      {featured.length > 0 && (
-        <section className={styles.section} aria-labelledby="featured-title">
-          <div className={styles.sectionHeading}>
-            <div>
-              <p className={styles.eyebrow}>
-                {fa ? "برای شروع" : "START HERE"}
-              </p>
-              <h2 id="featured-title">
-                {fa ? "انتخاب سردبیر" : "Featured reads"}
-              </h2>
-            </div>
-            <span>
-              {fa ? "چند ایده برای عمیق‌تر شدن" : "A few ideas worth exploring"}
-            </span>
+        ) : (
+          <div className={styles.manifesto}>
+            <span aria-hidden>✦</span>
+            <p>
+              {fa
+                ? "راه‌حل خوب، از فهم درست مسئله شروع می‌شود"
+                : "A useful solution starts with understanding the problem."}
+            </p>
+            <Link href={href("/services")}>
+              {fa ? "خدمات رایکد" : "Explore our services"} ↗
+            </Link>
           </div>
-          <div className={styles.featured}>
-            {featured.map((article, i) => (
-              <ArticleCard
-                key={article.id}
-                article={article}
-                locale={locale}
-                featured
-                lead={i === 0}
-              />
-            ))}
-          </div>
+        )}
+      </header>
+      {!filtered && featured.length > 1 && (
+        <section
+          className={styles.shortcuts}
+          aria-label={fa ? "پیشنهاد مطالعه" : "Suggested reading"}
+        >
+          <p>
+            {fa ? "شاید سؤال تو هم باشد" : "IS THIS ON YOUR MIND?"}
+            <span aria-hidden>↙</span>
+          </p>
+          {featured.slice(1).map((article, i) => (
+            <Link key={article.id} href={href("/blog/" + article.slug)}>
+              <span className={styles.number}>
+                {(i + 1).toLocaleString(fa ? "fa-IR" : "en-US")}
+              </span>
+              <strong>{article.title}</strong>
+              <ArrowUpLeft size={20} aria-hidden />
+            </Link>
+          ))}
         </section>
       )}
       <section
-        className={styles.section}
         id="articles"
+        className={styles.articles}
         aria-labelledby="all-articles-title"
       >
-        <div className={styles.sectionHeading}>
+        <div className={styles.articlesHeader}>
           <div>
             <p className={styles.eyebrow}>
-              {fa ? "بخوان و بساز" : "READ & BUILD"}
+              {fa ? "بخوان، بسنج، انتخاب کن" : "READ. COMPARE. DECIDE."}
             </p>
             <h2 id="all-articles-title">
               {filtered
@@ -174,55 +149,60 @@ export async function Journal({
                   ? "نتیجهٔ جست‌وجو"
                   : "Search results"
                 : fa
-                  ? "همه مقالات"
-                  : "All articles"}
+                  ? "برای قدم بعدی کسب‌وکارت"
+                  : "For your next business decision"}
             </h2>
           </div>
-          <span aria-live="polite">
-            {total.toLocaleString(fa ? "fa-IR" : "en-US")}{" "}
-            {fa ? "مقاله" : "articles"}
-          </span>
+          <form
+            key={filters.q}
+            action={href("/blog") + "#articles"}
+            className={styles.search}
+            role="search"
+          >
+            <Search size={18} aria-hidden />
+            <input
+              name="q"
+              type="search"
+              defaultValue={filters.q}
+              maxLength={100}
+              aria-label={fa ? "جست‌وجو در راهنماها" : "Search guides"}
+              placeholder={fa ? "چه سؤالی داری؟" : "What is on your mind?"}
+            />
+            <button type="submit">{fa ? "جست‌وجو" : "Search"}</button>
+          </form>
         </div>
         {filtered && (
-          <div className={styles.activeFilters}>
-            <span>
-              {[
-                filters.q && `${fa ? "جست‌وجو" : "Search"}: ${filters.q}`,
-                filters.category,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-            </span>
+          <div className={journal.activeFilters}>
+            <span>{filters.q || filters.category}</span>
             <Link href={href("/blog") + "#articles"}>
               <X size={14} aria-hidden />
-              {fa ? "پاک‌کردن فیلترها" : "Clear filters"}
+              {fa ? "همهٔ راهنماها" : "All guides"}
             </Link>
           </div>
         )}
         {items.length ? (
-          <div className={styles.grid}>
+          <div className={journal.grid}>
             {items.map((article) => (
               <ArticleCard key={article.id} article={article} locale={locale} />
             ))}
           </div>
         ) : (
-          <div className={styles.empty}>
+          <div className={journal.empty}>
             <Search size={32} aria-hidden />
-            <h3>{fa ? "مقاله‌ای پیدا نشد" : "No articles found"}</h3>
+            <h3>{fa ? "راهنمایی پیدا نشد" : "No guides found"}</h3>
             <p>
               {fa
-                ? "عبارت کوتاه‌تری جست‌وجو کن یا دسته‌بندی دیگری را ببین"
-                : "Try a shorter search or explore another category."}
+                ? "عبارت کوتاه‌تری امتحان کن یا همهٔ راهنماها را ببین"
+                : "Try a shorter search or browse all guides."}
             </p>
             <Link href={href("/blog") + "#articles"}>
-              {fa ? "دیدن همه مقالات" : "View all articles"}
-              <span aria-hidden>↗</span>
+              {fa ? "دیدن همهٔ راهنماها" : "View all guides"} ↗
             </Link>
           </div>
         )}
-        {(pages > 1 || filters.page > 1) && (
+        {pages > 1 && (
           <nav
-            className={styles.pagination}
+            className={journal.pagination}
             aria-label={fa ? "صفحه‌بندی مقالات" : "Article pagination"}
           >
             {filters.page > 1 ? (
@@ -260,6 +240,35 @@ export async function Journal({
             )}
           </nav>
         )}
+      </section>
+      <section
+        className={styles.consult}
+        aria-labelledby="journal-consult-title"
+      >
+        <div>
+          <p className={styles.eyebrow}>
+            {fa ? "حالا دربارهٔ مسئلهٔ خودت" : "NOW, YOUR OWN CHALLENGE"}
+          </p>
+          <h2 id="journal-consult-title">
+            {fa ? "هنوز بین چند راه مرددی؟" : "Still weighing your options?"}
+          </h2>
+          <p>
+            {fa
+              ? "بگو الان کجای کاری و چه نتیجه‌ای می‌خواهی. از همین‌جا مسیر مناسب پروژه‌ات را بررسی کنیم."
+              : "Tell us where you are now and what needs to work better. Let's look at the right path for your project."}
+          </p>
+        </div>
+        <Link
+          data-fill-button
+          className={styles.primary}
+          href={href("/contact?topic=project-review")}
+        >
+          {fa ? "دربارهٔ پروژه‌ام صحبت کنیم" : "Discuss my project"}
+          <ArrowUpLeft size={20} aria-hidden />
+        </Link>
+        <span className={styles.consultStar} aria-hidden>
+          ✳
+        </span>
       </section>
     </main>
   );

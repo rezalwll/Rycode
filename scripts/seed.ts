@@ -1,6 +1,7 @@
 import { serviceDocument } from "../src/content/service-document";
 import { seedSpecialtyServices } from "./seed-specialty-services";
 import { legacyArticleDates } from "../src/content/legacy-article-dates";
+import { seedBusinessJournal } from "./lib/seed-business-journal";
 import nextEnv from "@next/env";
 import { database } from "../src/server/db";
 import { services } from "../src/content/services";
@@ -113,6 +114,7 @@ for (const item of legacy.filter((entry) => entry.kind === "ARTICLE")) {
   });
 }
 await seedSpecialtyServices(db);
+await seedBusinessJournal(db);
 console.log(
   "Seed complete. Existing content was preserved; articles, seven service groups and four Persian specialty pages are editable.",
 );

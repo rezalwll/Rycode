@@ -1,6 +1,8 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { load } from "cheerio";
 import { specialtyServices } from "../src/content/specialty-services.ts";
+import { businessGuides } from "../src/content/business-guides.ts";
+import { legacyArticleDates } from "../src/content/legacy-article-dates.ts";
 const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
 const referenceRoutes = JSON.parse(
   await readFile(".reference/routes.json", "utf8"),
@@ -26,6 +28,10 @@ const routes = [
     "/services/" + service.slug,
     "/en/services/" + service.slug,
   ]),
+  ...businessGuides.flatMap((guide) => [
+    "/blog/" + guide.slug,
+    "/en/blog/" + guide.slug,
+  ]),
   "/this-page-does-not-exist",
   "/en/this-page-does-not-exist",
 ];
@@ -44,6 +50,9 @@ for (const route of routes) {
   const $ = load(html);
   const expected =
     /\/(404|this-page-does-not-exist)$/.test(route) ||
+    Object.keys(legacyArticleDates).some(
+      (slug) => route === "/blog/" + slug || route === "/en/blog/" + slug,
+    ) ||
     specialtyServices.some(
       (service) => route === "/en/services/" + service.slug,
     )
@@ -114,11 +123,17 @@ for (const path of await files("src")) {
     [
       "src/components/StructuredData.tsx",
       "src/components/content/ContentDetail.tsx",
+      "src/components/blog/ArticleDetail.tsx",
     ].includes(path) &&
     source.includes('type="application/ld+json"') &&
     source.includes("jsonLd(");
+  const safeHighlightedCode =
+    path === "src/components/blog/CodeBlock.tsx" &&
+    source.includes("hljs.highlight(code,");
   if (
-    (source.includes("dangerouslySetInnerHTML") && !safeJsonLd) ||
+    (source.includes("dangerouslySetInnerHTML") &&
+      !safeJsonLd &&
+      !safeHighlightedCode) ||
     /<iframe|eval\(/.test(source)
   )
     errors.push(`Unacceptable runtime markup: ${path}`);

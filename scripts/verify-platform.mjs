@@ -271,14 +271,14 @@ try {
   assert.ok($("script[type='application/ld+json']").length >= 1);
   const managedBlog = load(await (await fetch(base + "/blog")).text());
   assert.equal(
-    managedBlog("[data-framer-name='Blog Section']").length,
+    managedBlog("#articles").length,
     1,
-    "CMS publication retains the reference blog layout",
+    "CMS publication appears in the business journal",
   );
   assert.equal(
     managedBlog("[data-blog-card][data-article-id='" + record.id + "']").length,
     1,
-    "CMS article uses the original card template",
+    "CMS article appears once in the article grid",
   );
   assert.equal(
     managedBlog("h1").length,
@@ -286,8 +286,8 @@ try {
     "no replacement generic hero heading",
   );
   assert.ok(
-    managedBlog("[data-blog-images]").length > 0,
-    "reference slideshow survives editorial changes",
+    managedBlog("#journal-consult-title").length > 0,
+    "business journal retains its project inquiry path",
   );
   assert.equal(
     $("a.language-switch").length,
@@ -443,9 +443,9 @@ try {
     lastBlogId,
   );
   assert.equal(
-    secondBlog("[data-framer-name='Blog Section']").length,
+    secondBlog("#articles").length,
     1,
-    "pagination retains reference layout",
+    "pagination retains the journal grid",
   );
   // Exercise both pages of a real project listing; noIndex controls indexing, not visibility.
   for (let index = 0; index < 13; index++) {

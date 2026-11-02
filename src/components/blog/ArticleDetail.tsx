@@ -12,6 +12,8 @@ import { CopyButton } from "./CopyButton";
 import { Comments } from "./Comments";
 import { publicComments } from "@/server/comments";
 import styles from "./Journal.module.css";
+import business from "./BusinessJournal.module.css";
+import { services } from "@/content/services";
 
 export async function ArticleDetail({
   content,
@@ -23,6 +25,7 @@ export async function ArticleDetail({
   preview?: boolean;
 }) {
   const fa = locale === "fa";
+  const service = services.find((item) => item.id === content.serviceId);
   const href = (path: string) => localizedHref(path, locale);
   const related = await relatedBlogArticles(content, locale);
   const comments = preview
@@ -32,7 +35,7 @@ export async function ArticleDetail({
   const breadcrumbs = [
     { name: fa ? "خانه" : "Home", path: href("/") },
     {
-      name: fa ? "مجله برنامه‌نویسی" : "Developer journal",
+      name: fa ? "بلاگ رایکد" : "RYCODE journal",
       path: href("/blog"),
     },
     { name: content.title, path },
@@ -103,10 +106,16 @@ export async function ArticleDetail({
         </nav>
         <Link
           className={styles.articleCategory}
-          href={href("/blog?category=" + encodeURIComponent(content.category))}
+          href={href(service ? "/services/" + service.id : "/blog")}
         >
           <span aria-hidden>✦</span>
-          <bdi>{content.category || (fa ? "یادداشت‌ها" : "Notes")}</bdi>
+          <bdi>
+            {service
+              ? service.title[locale]
+              : fa
+                ? "راهنمای کسب‌وکار"
+                : "Business guide"}
+          </bdi>
         </Link>
         <h1>{content.title}</h1>
         <p className={styles.articleSummary}>{content.summary}</p>
@@ -122,13 +131,6 @@ export async function ArticleDetail({
             {fa ? "دقیقه مطالعه" : "min read"}
           </span>
           <CopyButton fa={fa} share className={styles.share} />
-        </div>
-        <div className={styles.articleTags}>
-          {content.tags.map((tag) => (
-            <Link key={tag} href={href("/blog?q=" + encodeURIComponent(tag))}>
-              <bdi>#{tag}</bdi>
-            </Link>
-          ))}
         </div>
         {content.sample && (
           <p className={styles.sampleNotice}>
@@ -157,12 +159,51 @@ export async function ArticleDetail({
             <span>
               {fa
                 ? "این مقاله را با بقیه به اشتراک بگذار"
-                : "Share this article with another developer"}
+                : "Share this guide with your team"}
             </span>
             <CopyButton fa={fa} share className={styles.share} />
           </div>
         </article>
       </div>
+      {!preview && (
+        <section
+          className={`${business.consult} ${business.articleConsult}`}
+          aria-labelledby="article-consult-title"
+        >
+          <div>
+            <p className={business.eyebrow}>
+              {fa ? "برای شرایط کسب‌وکار تو" : "FOR YOUR BUSINESS"}
+            </p>
+            <h2 id="article-consult-title">
+              {fa
+                ? "این موضوع به پروژهٔ تو هم مربوط است؟"
+                : "How does this apply to your project?"}
+            </h2>
+            <p>
+              {fa
+                ? "شرایط و هدفت را بگو تا مسیر مناسب را برای همان مسئله بررسی کنیم"
+                : "Tell us about your situation and goals so we can assess the right next step."}
+            </p>
+            {service && (
+              <Link
+                className={styles.serviceLink}
+                href={href("/services/" + service.id)}
+              >
+                {fa ? "بیشتر دربارهٔ " : "Explore "}
+                {service.title[locale]} ↗
+              </Link>
+            )}
+          </div>
+          <Link
+            data-fill-button
+            className={business.primary}
+            href={href("/contact" + (service ? "?service=" + service.id : ""))}
+          >
+            {fa ? "بررسی پروژهٔ من" : "Discuss my project"}{" "}
+            <span aria-hidden>{fa ? "↖" : "↗"}</span>
+          </Link>
+        </section>
+      )}
       {!preview && (
         <Comments
           key={content.id + locale}
@@ -176,7 +217,7 @@ export async function ArticleDetail({
           <div className={styles.sectionHeading}>
             <div>
               <p className={styles.eyebrow}>
-                {fa ? "مسیر یادگیری ادامه دارد" : "KEEP EXPLORING"}
+                {fa ? "برای تصمیم کامل‌تر" : "ANOTHER USEFUL PERSPECTIVE"}
               </p>
               <h2 id="related-title">
                 {fa ? "برای ادامهٔ مطالعه" : "Related reading"}
