@@ -51,6 +51,21 @@
 .heroCopy {
   min-width: 0;
 }
+.heroVisual {
+  margin: 0;
+  min-width: 0;
+  aspect-ratio: 3 / 2;
+  border-radius: 16px;
+  border: 1px solid var(--journal-line);
+  overflow: hidden;
+  background: #efedf4;
+}
+.heroVisual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .eyebrow {
   display: flex;
   align-items: center;

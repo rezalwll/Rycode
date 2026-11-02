@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  Search,
-  ArrowLeft,
-  ArrowRight,
-  Compass,
-  ArrowUpRight,
-  X,
-} from "lucide-react";
+import { Search, ArrowLeft, ArrowRight, X } from "lucide-react";
 import { blogListing } from "@/server/blog";
 import { getTranslations } from "@/lib/i18n-server";
 import { listingHref, type ListingSearchParams } from "@/lib/listing-params";
@@ -70,42 +63,19 @@ export async function Journal({
             </button>
           </form>
         </div>
-        <div className={`${styles.terminal} ${styles.businessBrief}`}>
-          <div className={styles.terminalTop} dir="ltr" lang="en">
-            <span>
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>
-              <Compass size={13} /> rycode / journal
-            </span>
-          </div>
-          <div className={styles.briefBody}>
-            <span className={styles.terminalComment}>
-              {fa
-                ? "برای تصمیم بعدی کسب‌وکارت"
-                : "For your next business decision"}
-            </span>
-            <p>
-              <span>01</span>
-              {fa ? "گزینه‌ها را بشناس" : "Understand your options"}
-            </p>
-            <p>
-              <span>02</span>
-              {fa ? "هزینه و نتیجه را بسنج" : "Weigh the costs and outcomes"}
-            </p>
-            <p>
-              <span>03</span>
-              {fa ? "مسیر مناسب را انتخاب کن" : "Choose the right next step"}
-            </p>
-            <div className={styles.terminalStatus}>
-              <span />
-              {fa ? "از سؤال تو شروع می‌کنیم" : "Start with your question"}
-              <ArrowUpRight size={16} />
-            </div>
-          </div>
-        </div>
+        <figure className={styles.heroVisual}>
+          <img
+            src="/brand/journal/journal-hero.webp"
+            alt={
+              fa
+                ? "کتاب باز با مسیری آبی به سوی یک وب‌سایت؛ از آگاهی تا انتخاب راه‌حل دیجیتال"
+                : "An open book with a blue path leading to a website; from insight to a digital solution"
+            }
+            width={1200}
+            height={800}
+            fetchPriority="high"
+          />
+        </figure>
       </header>
       {featured.length > 0 && (
         <section className={styles.section} aria-labelledby="featured-title">
