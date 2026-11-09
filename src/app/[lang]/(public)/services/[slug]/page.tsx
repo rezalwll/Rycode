@@ -6,6 +6,7 @@ import { serviceDocument } from "@/content/service-document";
 import { pageMetadata } from "@/lib/seo";
 import { ContentDetail } from "@/components/content/ContentDetail";
 import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
+import { WebsiteDesignPage } from "@/components/services/WebsiteDesignPage";
 async function resolve(slug: string) {
   const { locale } = await getTranslations();
   const result = await lookupContent("SERVICE", slug, locale);
@@ -68,6 +69,7 @@ export default async function ServiceDetail({
   const content = await resolve(slug);
   if (!content) notFound();
   const { locale } = await getTranslations();
+  if (slug === "build" && locale === "fa") return <WebsiteDesignPage />;
   return content.kind === "SERVICE" ? (
     <ServiceDetailPage content={content} locale={locale} />
   ) : (
