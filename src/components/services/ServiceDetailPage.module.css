@@ -6385,3 +6385,222 @@
   background: #fff;
   box-shadow: 18px 20px 0 var(--ui-blue, #a8d8ff);
 }
+
+/* SEO/growth service: align the long-form page with the public homepage language. */
+.growthPage {
+  --accent: #8c5cff;
+  --cyan: #66c0ff;
+  --coral: #ff1b0b;
+  --ink: #1a1a1a;
+  --muted: #666;
+  --line: #e7e7e7;
+  --paper: #fff;
+  --cream: #fff;
+  background:
+    radial-gradient(ellipse 38% 20% at 88% 3%, #8c5cff12, transparent 72%),
+    radial-gradient(ellipse 34% 24% at 5% 40%, #66c0ff12, transparent 74%),
+    #fff;
+  color: var(--ink);
+}
+.growthPage .breadcrumb,
+.growthPage .breadcrumb a {
+  color: #777;
+}
+.growthPage .breadcrumb a:hover {
+  color: var(--ink);
+}
+.growthPage .hero h1 {
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: 550;
+}
+.growthPage .heroClaim {
+  color: var(--accent);
+}
+.growthPage .summary {
+  color: var(--muted);
+}
+.growthPage .heroMeta {
+  border-color: var(--line);
+  color: #7c7c7c;
+}
+.growthPage .primary {
+  background: var(--ink);
+  color: #fff;
+}
+.growthPage .primary span {
+  background: var(--cyan);
+  color: var(--ink);
+}
+.growthPage .primary:is(:hover, :focus-visible) {
+  background: var(--cyan);
+  color: var(--ink);
+}
+.growthPage .primary:is(:hover, :focus-visible) span {
+  background: var(--ink);
+  color: #fff;
+}
+.growthPage .secondaryAction {
+  color: #666;
+}
+.growthPage .secondaryAction span {
+  color: var(--accent);
+}
+.growthPage .growthSignals,
+.growthPage .growthResults,
+.growthPage .growthChannels,
+.growthPage .growthProcess,
+.growthPage .statement,
+.growthPage .contentSection {
+  border-color: var(--line);
+}
+.growthPage .growthSignals strong,
+.growthPage .growthChannelGrid article > span,
+.growthPage .growthProcessList li > span,
+.growthPage .kicker span {
+  color: var(--accent);
+}
+.growthPage .growthSignals span,
+.growthPage .sectionHeader > p,
+.growthPage .statement p,
+.growthPage .contentAside > p:last-child {
+  color: var(--muted);
+}
+.growthPage .sectionHeader h2,
+.growthPage .statement h2,
+.growthPage .contentAside h2 {
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: 550;
+}
+.growthPage .growthRankTable {
+  border-color: var(--line);
+  background: #fff;
+  box-shadow: 0 14px 34px rgb(20 26 34 / 6%);
+}
+.growthPage .growthRankHeader {
+  border-color: var(--line);
+  color: #777;
+}
+.growthPage .growthRankRow {
+  border-color: var(--line);
+}
+.growthPage .growthRankRow strong {
+  color: var(--ink);
+}
+.growthPage .growthRankRow b {
+  color: var(--accent);
+}
+.growthPage .growthRankRow span {
+  color: #777;
+}
+.growthPage .growthRankRow i {
+  color: #238ac2;
+}
+.growthPage .growthChannelGrid article {
+  border-color: var(--line);
+  background: #fff;
+  box-shadow: 0 10px 28px rgb(20 26 34 / 5%);
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    background-color 280ms ease;
+}
+.growthPage .growthChannelGrid article:hover {
+  border-color: color-mix(in srgb, var(--cyan) 58%, var(--line));
+  background: #f7fbff;
+  box-shadow: 0 18px 40px rgb(20 26 34 / 10%);
+  transform: translateY(-5px);
+}
+.growthPage .growthChannelGrid h3 {
+  color: var(--ink);
+}
+.growthPage .growthChannelGrid p,
+.growthPage .growthProcessList p {
+  color: var(--muted);
+}
+.growthPage .growthChannelGrid b {
+  color: var(--cyan);
+}
+.growthPage .growthAudit {
+  background: linear-gradient(135deg, #66c0ff 0%, #c4b5fd 100%);
+  color: var(--ink);
+  box-shadow: 0 20px 50px rgb(102 192 255 / 18%);
+}
+.growthPage .growthAudit h2 {
+  color: var(--ink);
+}
+.growthPage .growthAudit > div > p:last-child,
+.growthPage .growthAudit .kicker {
+  color: #40546a;
+}
+.growthPage .growthAudit .primary {
+  background: var(--ink);
+  color: #fff;
+}
+.growthPage .growthAudit .primary span {
+  background: var(--coral);
+  color: #fff;
+}
+.growthPage .growthProcessList li {
+  border-color: var(--line);
+}
+.growthPage .growthProcessList li::before {
+  background: var(--line);
+}
+.growthPage .growthProcessList h3 {
+  color: var(--ink);
+}
+.growthPage .specialtyGrid,
+.growthPage .contentSection {
+  border-color: var(--line);
+}
+.growthPage .specialty {
+  border-color: var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+.growthPage .specialty p {
+  color: var(--muted);
+}
+.growthPage .specialty:hover {
+  background: #f7fbff;
+  color: var(--ink);
+  box-shadow: inset 0 -3px var(--cyan);
+}
+.growthPage .specialty:hover p {
+  color: var(--muted);
+}
+.growthPage .contentCard,
+.growthPage .contentCard:nth-child(even) {
+  border-color: var(--line);
+  background: #fff;
+}
+.growthPage .contentCard:nth-child(even) {
+  background: #faf9ff;
+}
+.growthPage .rich {
+  color: #4b4b4b;
+}
+.growthPage .rich :global(h2) {
+  color: var(--ink);
+}
+.growthPage .cta {
+  border-radius: 24px;
+  background: var(--ink);
+  color: #fff;
+}
+.growthPage .cta h2 {
+  color: #fff;
+}
+.growthPage .cta .kicker {
+  color: #cfcfcf;
+}
+.growthPage .cta .primary {
+  background: var(--cyan);
+  color: var(--ink);
+}
+.growthPage .cta .primary:hover {
+  background: #8fd5ff;
+}
