@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { lookupContent } from "@/server/content";
 import { AutomationDemo, AutomationMotion } from "./AutomationMotion";
-import { automationCardImages } from "./automation-card-images";
+import { automationTemplateImages } from "./automation-template-images";
 import {
   automationFaq,
   automationProcess,
@@ -231,13 +231,13 @@ export async function AutomationServicePage() {
                   <div className={`${styles.spec} ${styles.crosshair}`}>
                     <div className={styles.diagram} aria-hidden="true">
                       <Image
-                        src={automationCardImages[index]}
+                        src={automationTemplateImages[index]}
                         alt=""
                         fill
                         sizes="(max-width: 540px) 100vw, 360px"
                       />
                       <span className={styles.code}>{number(index)}</span>
-                      <span className={styles.imageTag}>RYCODE / {number(index + 1)}</span>
+                      <span className={styles.imageTag}>FRAMER / {number(index + 1)}</span>
                     </div>
                     <dl>
                       <div>
