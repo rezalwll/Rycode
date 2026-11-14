@@ -57,6 +57,36 @@
   background-size: 48px 48px;
 }
 
+.hero.blue {
+  --ink: var(--brand-ink, #303b48);
+  --ui-ink: var(--ink);
+  --muted: #687482;
+  --rule: #dce6ef;
+  --grid: rgb(52 152 219 / 12%);
+  color: var(--ink);
+  background-color: #fff;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+}
+.hero.blue .heroCopy h1,
+.hero.blue .heroCopy p,
+.hero.blue .shortcuts a,
+.hero.blue .indexStrip a {
+  color: var(--ink);
+}
+.hero.blue .heroCopy p,
+.hero.blue .shortcuts small,
+.hero.blue .shortcuts .code,
+.hero.blue .indexStrip small {
+  color: var(--muted);
+}
+.hero.blue .shortcuts a:hover,
+.hero.blue .indexStrip a:hover {
+  background: rgb(52 152 219 / 10%);
+  color: var(--brand-blue, #3498db);
+}
+
 .hero,
 .sheet {
   position: relative;
