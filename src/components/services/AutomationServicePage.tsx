@@ -2,40 +2,50 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  ArrowDownLeft,
+  ArrowDown,
   ArrowUpLeft,
   Bot,
-  Check,
   ClipboardList,
-  Gauge,
-  MessageCircle,
   PackageOpen,
   Plus,
   ShieldCheck,
-  Workflow,
 } from "lucide-react";
 import { lookupContent } from "@/server/content";
 import { AutomationDemo, AutomationMotion } from "./AutomationMotion";
-import { automationFaq, automationProcess, automationServices } from "./automation-copy";
 import { automationTemplateImages } from "./automation-template-images";
+import {
+  automationFaq,
+  automationProcess,
+  automationServices,
+} from "./automation-copy";
 import styles from "./AutomationServicePage.module.css";
 
 const inquiryHref = "/contact?service=connect#project-inquiry";
 const shortcuts = [
-  ["telegram", "ربات تلگرام", "ثبت درخواست"],
-  ["orders", "خودکارسازی سفارش‌ها", "فروشگاه و انبار"],
-  ["integrations", "اتصال سیستم‌ها", "حسابداری و API"],
-  ["spreadsheets", "اکسل و گزارش‌ها", "فایل و داده"],
-] as const;
+  { id: "telegram", title: "ربات تلگرام", label: "ثبت درخواست" },
+  { id: "orders", title: "خودکارسازی سفارش‌ها", label: "فروشگاه و انبار" },
+  { id: "integrations", title: "اتصال سیستم‌ها", label: "حسابداری و API" },
+  { id: "spreadsheets", title: "اکسل و گزارش‌ها", label: "فایل و داده" },
+];
 const connections = [
-  ["پیام‌رسان", "تلگرام"], ["فروش", "فروشگاه"], ["مالی", "حسابداری"],
-  ["موجودی", "انبار"], ["مشتریان", "CRM"], ["اطلاع‌رسانی", "پیامک"],
-  ["اطلاع‌رسانی", "ایمیل"], ["ثبت اطلاعات", "فرم سایت"], ["داده", "Excel و CSV"],
-  ["تبادل داده", "API و Webhook"], ["پرداخت", "درگاه پرداخت"], ["مدیریت", "پنل وب"],
+  ["پیام‌رسان", "تلگرام"],
+  ["فروش", "فروشگاه"],
+  ["مالی", "حسابداری"],
+  ["موجودی", "انبار"],
+  ["مشتریان", "CRM"],
+  ["اطلاع‌رسانی", "پیامک"],
+  ["اطلاع‌رسانی", "ایمیل"],
+  ["ثبت اطلاعات", "فرم سایت"],
+  ["داده", "Excel و CSV"],
+  ["تبادل داده", "API و Webhook"],
+  ["پرداخت", "درگاه پرداخت"],
+  ["مدیریت", "پنل وب"],
 ];
 const related = [
-  ["software", "طراحی نرم‌افزار اختصاصی"], ["build", "طراحی سایت و فروشگاه"],
-  ["data", "داده و ابزارهای کاری"], ["rescue", "رفع باگ و توسعهٔ پروژه"],
+  ["software", "طراحی نرم‌افزار اختصاصی"],
+  ["build", "طراحی سایت و فروشگاه"],
+  ["data", "داده و ابزارهای کاری"],
+  ["rescue", "رفع باگ و توسعهٔ پروژه"],
   ["continue", "پشتیبانی و توسعهٔ مستمر"],
 ];
 
@@ -43,113 +53,366 @@ function number(index: number) {
   return (index + 1).toLocaleString("fa-IR", { minimumIntegerDigits: 2 });
 }
 
-function SectionIntro({
-  number: sectionNumber,
-  eyebrow,
-  title,
-  accent,
-  children,
-}: {
-  number: string;
-  eyebrow: string;
-  title: string;
-  accent: string;
-  children: ReactNode;
-}) {
+function Rail({ index, label }: { index: number; label: string }) {
   return (
-    <div className={styles.sectionIntro} data-reveal>
-      <div className={styles.sectionStamp}><span>{sectionNumber}</span><small>{eyebrow}</small></div>
-      <div><h2>{title} <em>{accent}</em></h2><p>{children}</p></div>
+    <div className={styles.rail} aria-hidden="true">
+      <span>{number(index - 1)}</span>
+      <small>{label}</small>
     </div>
   );
 }
 
+function Section({
+  id,
+  index,
+  label,
+  title,
+  accent,
+  description,
+  blue = false,
+  children,
+}: {
+  id: string;
+  index: number;
+  label: string;
+  title: string;
+  accent: string;
+  description?: string;
+  blue?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      className={`${styles.sheet} ${blue ? styles.blue : ""}`}
+      aria-labelledby={`${id}-title`}
+    >
+      <div className={styles.inner}>
+        <Rail index={index} label={label} />
+        <header className={styles.sectionHead} data-reveal>
+          <h2 id={`${id}-title`}>
+            {title}
+            <br />
+            <em>{accent}</em>
+          </h2>
+          {description && <p>{description}</p>}
+        </header>
+        {children}
+      </div>
+    </section>
+  );
+}
+
 export async function AutomationServicePage() {
-  const { content: telegram } = await lookupContent("SERVICE", "telegram-bot-development", "fa");
+  const { content: telegram } = await lookupContent(
+    "SERVICE",
+    "telegram-bot-development",
+    "fa",
+  );
 
   return (
     <main className={styles.page} data-automation-page dir="rtl">
       <AutomationMotion />
-      <header className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.heroMeta}><span>RYCODE / SERVICE 05</span><span>BOT · FLOW · DATA</span></div>
+      <header className={`${styles.hero} ${styles.blue}`}>
+        <div className={styles.inner}>
+          <Rail index={0} label="خدمات" />
           <div className={styles.heroGrid}>
-            <div className={styles.heroCopy} data-reveal>
-              <p className={styles.eyebrow}>ربات‌ها و خودکارسازی کارها</p>
-              <h1>کارهای تکراری را <em>ساده‌تر</em> کن</h1>
-              <p className={styles.heroLead}>سفارش، پیامک، فایل و اطلاعات بین ابزارها را به یک مسیر روشن و قابل پیگیری وصل می‌کنیم؛ با راهکاری که برای کار واقعی کسب‌وکارت ساخته شده باشد.</p>
+            <div className={styles.heroCopy}>
+              <h1>
+                <span>ربات‌ها و</span> <span>خودکارسازی کارها</span>
+              </h1>
+              <p>
+                ثبت سفارش، ارسال پیامک و جابه‌جایی اطلاعات بین فروشگاه، حسابداری
+                و فایل‌ها رو بسپار به سیستمی که خودش انجامشون می‌ده.
+              </p>
               <div className={styles.actions}>
-                <Link href={inquiryHref} className={styles.primary}>می‌خوام کارهام خودکار بشن <ArrowUpLeft size={17} /></Link>
-                <a href="#automation-services" className={styles.secondary}>مسیرها را ببین <ArrowDownLeft size={17} /></a>
-              </div>
-              <div className={styles.heroStats}>
-                <div><strong>۰۸</strong><span>مسیر آماده برای شروع</span></div>
-                <div><strong>۱۲+</strong><span>ابزار قابل اتصال</span></div>
-                <div><strong>۰۱</strong><span>منبع حقیقت برای هر فرایند</span></div>
+                <Link href={inquiryHref} className={styles.primary}>
+                  می‌خوام کارهام خودکار بشن{" "}
+                  <ArrowUpLeft size={17} aria-hidden="true" />
+                </Link>
+                <a href="#automation-services" className={styles.secondary}>
+                  ببین چه چیزهایی می‌شه ساخت{" "}
+                  <ArrowDown size={17} aria-hidden="true" />
+                </a>
               </div>
             </div>
-            <div className={styles.heroVisual} data-reveal>
-              <div className={styles.visualHeader}><span>LIVE FLOW</span><span>CONNECT / 01</span></div>
-              <div className={styles.flowCanvas}>
-                <div className={`${styles.flowNode} ${styles.flowNodeStart}`}><MessageCircle size={17} /><span>یک اتفاق می‌رسد</span><strong>سفارش جدید</strong></div>
-                <div className={styles.flowLine} aria-hidden="true" />
-                <div className={`${styles.flowNode} ${styles.flowNodeAction}`}><Workflow size={18} /><span>سیستم تصمیم می‌گیرد</span><strong>بررسی و ثبت</strong></div>
-                <div className={styles.flowLine} aria-hidden="true" />
-                <div className={styles.flowOutputs}><span><Check size={14} /> ثبت مالی</span><span><Check size={14} /> به‌روزرسانی انبار</span><span><Check size={14} /> پیامک مشتری</span></div>
-              </div>
-              <div className={styles.visualFooter}><span>INPUT</span><strong>فروشگاه + فرم سایت</strong><span>OUTPUT</span><strong>اطلاعات قابل پیگیری</strong></div>
-            </div>
+            <nav
+              className={`${styles.shortcuts} ${styles.crosshair}`}
+              aria-label="پرش به خدمات خودکارسازی"
+            >
+              {shortcuts.map(({ id, title, label }) => (
+                <a key={id} href={`#automation-${id}`}>
+                  <span className={styles.code}>
+                    {number(
+                      automationServices.findIndex(
+                        (service) => service.id === id,
+                      ),
+                    )}
+                  </span>
+                  <strong>{title}</strong>
+                  <small>{label}</small>
+                  <ArrowDown size={18} aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
           </div>
-          <nav className={styles.heroNav} aria-label="پرش به بخش‌های صفحه">
-            {shortcuts.map(([id, title, label], index) => <a key={id} href={`#automation-${id}`}><span>{number(index)}</span><strong>{title}</strong><small>{label}</small><ArrowDownLeft size={16} /></a>)}
+          <nav className={styles.indexStrip} aria-label="بخش‌های صفحه">
+            <a href="#automation-services">
+              <small>زیرخدمت‌ها</small>
+              <strong>۸ مسیر خودکارسازی</strong>
+            </a>
+            <a href="#automation-examples">
+              <small>کاربردها</small>
+              <strong>دموی تعاملی</strong>
+            </a>
+            <a href="#automation-process">
+              <small>همکاری</small>
+              <strong>مراحل اجرا</strong>
+            </a>
+            <a href="#automation-questions">
+              <small>هزینه و جزئیات</small>
+              <strong>پرسش‌های متداول</strong>
+            </a>
           </nav>
         </div>
       </header>
 
-      <section id="automation-services" className={styles.section}>
-        <div className={styles.container}>
-          <SectionIntro number="۰۱" eyebrow="SERVICE SHEETS" title="از یک ربات" accent="تا یک سیستم کامل">برای هر مسیر، ورودی و خروجی روشن است. چیزی می‌سازیم که تیم بتواند استفاده‌اش کند، نتیجه‌اش را ببیند و بعداً توسعه‌اش بدهد.</SectionIntro>
-          <div className={styles.serviceGrid}>
-            {automationServices.map(({ id, title, intro, items, input, output, tools, condition }, index) => {
-              return <article className={styles.serviceCard} id={`automation-${id}`} key={id} data-reveal>
-                <div className={styles.cardTopline}><span>{number(index)}</span><span>AUTOMATION / {number(index + 1)}</span></div>
-                <div className={styles.cardVisual}>
-                  <Image src={automationTemplateImages[index]} alt="" fill sizes="(max-width: 720px) 100vw, 320px" />
-                  <span className={styles.cardSignal}>FRAMER / {number(index + 1)}</span>
-                </div>
-                <div className={styles.cardBody}>
-                  <h3>{title}</h3><p>{intro}</p>
-                  {id === "telegram" && telegram ? <Link className={styles.textLink} href={`/services/${telegram.slug}`}>جزئیات ساخت ربات تلگرام <ArrowUpLeft size={15} /></Link> : null}
-                  {id === "spreadsheets" ? <Link className={styles.textLink} href="/services/data">داده و ابزارهای کاری <ArrowUpLeft size={15} /></Link> : null}
-                  <ul className={styles.cardList}>{items.map((item) => <li key={item}><Check size={14} />{item}</li>)}</ul>
-                </div>
-                <dl className={styles.cardSpec}><div><dt>ورودی</dt><dd>{input}</dd></div><div><dt>خروجی</dt><dd>{output}</dd></div><div><dt>ابزارها</dt><dd>{tools}</dd></div><div className={styles.cardNote}><dt>NOTE</dt><dd>{condition}</dd></div></dl>
-              </article>;
-            })}
+      <Section
+        id="automation-services"
+        index={1}
+        label="زیرخدمت‌ها"
+        title="چه ابزارهایی"
+        accent="می‌تونیم بسازیم؟"
+        description="از یک ربات تلگرام تا فرآیندی که سفارش، انبار و حسابداری رو به هم وصل می‌کنه. برای هر خدمت ببین چه چیزی وارد می‌شه و چه نتیجه‌ای می‌گیری."
+      >
+        <div className={styles.services}>
+          {automationServices.map(
+            (
+              { id, title, intro, items, input, output, tools, condition },
+              index,
+            ) => {
+              return (
+                <article
+                  id={`automation-${id}`}
+                  className={styles.service}
+                  key={id}
+                  data-reveal
+                >
+                  <div className={styles.serviceCopy}>
+                    <span className={styles.code}>{number(index)}</span>
+                    <h3>{title}</h3>
+                    <p>{intro}</p>
+                    {id === "telegram" && telegram && (
+                      <Link
+                        className={styles.textLink}
+                        href={`/services/${telegram.slug}`}
+                      >
+                        جزئیات ساخت ربات تلگرام{" "}
+                        <ArrowUpLeft size={15} aria-hidden="true" />
+                      </Link>
+                    )}
+                    {id === "spreadsheets" && (
+                      <Link className={styles.textLink} href="/services/data">
+                        داده و ابزارهای کاری{" "}
+                        <ArrowUpLeft size={15} aria-hidden="true" />
+                      </Link>
+                    )}
+                  </div>
+                  <ul className={styles.serviceList}>
+                    {items.map((item, itemIndex) => (
+                      <li key={item}>
+                        <span className={styles.code} aria-hidden="true">
+                          {number(itemIndex)}
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={`${styles.spec} ${styles.crosshair}`}>
+                    <div className={styles.diagram} aria-hidden="true">
+                      <Image
+                        src={automationTemplateImages[index]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 540px) 100vw, 360px"
+                      />
+                      <span className={styles.code}>{number(index)}</span>
+                      <span className={styles.imageTag}>FRAMER / {number(index + 1)}</span>
+                    </div>
+                    <dl>
+                      <div>
+                        <dt>ورودی</dt>
+                        <dd>{input}</dd>
+                      </div>
+                      <div>
+                        <dt>خروجی</dt>
+                        <dd>{output}</dd>
+                      </div>
+                      <div>
+                        <dt>ابزارها</dt>
+                        <dd>{tools}</dd>
+                      </div>
+                    </dl>
+                    <p className={styles.specNote}>{condition}</p>
+                  </div>
+                </article>
+              );
+            },
+          )}
+        </div>
+      </Section>
+
+      <Section
+        id="automation-examples"
+        index={2}
+        label="کاربردها"
+        title="یک اتفاق،"
+        accent="چند کار مرتبط"
+        blue
+        description="یک موقعیت رو انتخاب کن و ببین سیستم از کجا شروع می‌کنه، چی رو بررسی می‌کنه و چه خروجی‌هایی می‌سازه."
+      >
+        <div className={styles.manual} data-reveal>
+          <p>
+            <strong>الان</strong> سفارش رو توی حسابداری وارد می‌کنی، موجودی رو
+            چک می‌کنی و جداگانه پیام می‌فرستی.
+          </p>
+          <p>
+            <strong>بعد از اتصال</strong> ثبت سفارش می‌تونه همین کارها رو
+            به‌ترتیب شروع کنه. مرحله‌هایی که تصمیم‌گیری می‌خوان، برای تأیید به
+            مسئولشون می‌رسن.
+          </p>
+        </div>
+        <div data-reveal>
+          <AutomationDemo />
+        </div>
+        <div className={styles.connectors} data-reveal>
+          <h3>چه ابزارهایی می‌تونن به هم وصل بشن؟</h3>
+          <ul className={`${styles.connectorMap} ${styles.crosshair}`}>
+            {connections.map(([category, name]) => (
+              <li key={name}>
+                <small>{category}</small>
+                <strong>{name}</strong>
+              </li>
+            ))}
+          </ul>
+          <p>
+            امکان هر اتصال به دسترسی‌ها و روش تبادل اطلاعات سرویس بستگی داره.
+          </p>
+        </div>
+      </Section>
+
+      <Section
+        id="automation-process"
+        index={3}
+        label="همکاری"
+        title="از همون کاری شروع کنیم"
+        accent="که بیشتر وقتت رو می‌گیره"
+        description="مثلاً اول انتقال سفارش‌ها به اکسل رو خودکار کنیم. بعد، اگر نیاز بود، اعلان یا اتصال به حسابداری رو اضافه می‌کنیم."
+      >
+        <ol className={`${styles.process} ${styles.crosshair}`} data-reveal>
+          {automationProcess.map(([title, description], index) => (
+            <li key={title}>
+              <span className={styles.code}>{number(index)}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ol>
+        <div className={styles.decision} data-reveal>
+          <article>
+            <Bot size={24} aria-hidden="true" />
+            <h3>ربات تلگرام یا پنل وب؟</h3>
+            <p>
+              ربات برای ثبت و پیگیری سریع مناسبه. پنل برای کار روزانه با
+              جدول‌ها، گزارش‌ها و دسترسی کارکنان جا داره. می‌شه مشتری در ربات
+              درخواست بده و مدیر توی پنل بررسیش کنه.
+            </p>
+          </article>
+          <article>
+            <PackageOpen size={24} aria-hidden="true" />
+            <h3>ابزار آماده یا اختصاصی؟</h3>
+            <p>
+              اگر ابزار آماده نیازت رو پوشش می‌ده، همون رو بررسی می‌کنیم. فرآیند
+              خاص، اتصال به نرم‌افزار داخلی یا کنترل داده‌ها می‌تونه طراحی
+              اختصاصی رو منطقی کنه.
+            </p>
+          </article>
+          <article>
+            <ShieldCheck size={24} aria-hidden="true" />
+            <h3>اطلاعات و دسترسی‌ها</h3>
+            <p>
+              فقط اطلاعات و دسترسی‌های لازم رو مشخص می‌کنیم. برای مراحل حساس
+              می‌شه تأیید انسانی، توقف و ثبت خطا گذاشت. رمز عبور یا توکن ربات رو
+              در فرم عمومی وارد نکن.
+            </p>
+          </article>
+        </div>
+      </Section>
+
+      <Section
+        id="automation-questions"
+        index={4}
+        label="هزینه و جزئیات"
+        title="هزینه، دسترسی‌ها"
+        accent="و سؤال‌های رایج"
+        description="هزینه به تعداد مراحل، اتصال‌ها، امکانات پنل، حجم داده و شرایط نگهداری بستگی داره. هزینهٔ سرویس‌هایی مثل پیامک یا میزبانی جدا مشخص می‌شه."
+      >
+        <div className={styles.faq} data-reveal>
+          {automationFaq.map(([question, answer]) => (
+            <details key={question}>
+              <summary>
+                {question}
+                <Plus size={18} aria-hidden="true" />
+              </summary>
+              <p>{answer}</p>
+            </details>
+          ))}
+        </div>
+        <div className={styles.related} data-reveal>
+          <h3>خدمات مرتبط</h3>
+          <ul>
+            {related.map(([slug, title]) => (
+              <li key={slug}>
+                <Link href={`/services/${slug}`}>
+                  {title}
+                  <ArrowUpLeft size={15} aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link className={styles.textLink} href="/work">
+            مشاهدهٔ نمونه‌کارهای رایکد{" "}
+            <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </Section>
+
+      <section
+        className={`${styles.sheet} ${styles.blue} ${styles.closing}`}
+        aria-labelledby="automation-contact-title"
+      >
+        <div className={styles.inner}>
+          <Rail index={5} label="تماس" />
+          <div className={styles.closingBody} data-reveal>
+            <h2 id="automation-contact-title">
+              بگو کدوم کارت <em>تکراریه</em>
+            </h2>
+            <p>
+              بگو الان کارت چطور انجام می‌شه و دوست داری چه بخشی از اون راحت‌تر
+              بشه. باهم بررسی می‌کنیم از کجا شروع کنیم.
+            </p>
+            <div className={styles.actions}>
+              <Link className={styles.primary} href={inquiryHref}>
+                بیا کارهام رو ساده‌تر کنیم{" "}
+                <ArrowUpLeft size={17} aria-hidden="true" />
+              </Link>
+              <Link className={styles.secondary} href="/services">
+                همهٔ خدمات رایکد <ClipboardList size={17} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-
-      <section id="automation-examples" className={`${styles.section} ${styles.examplesSection}`}>
-        <div className={styles.container}>
-          <SectionIntro number="۰۲" eyebrow="LIVE EXAMPLE" title="یک اتفاق،" accent="چند کار مرتبط">یک سناریو را انتخاب کن و ببین اطلاعات از کجا وارد می‌شود، چه تصمیمی گرفته می‌شود و چه خروجی‌هایی برای تیم می‌سازد.</SectionIntro>
-          <div className={styles.examplesGrid} data-reveal><div className={styles.demoFrame}><div className={styles.frameLabel}>FIG. 01 / WORKFLOW PREVIEW</div><AutomationDemo /></div><aside className={styles.exampleAside}><span className={styles.asideNumber}>01 — 03</span><h3>کار دستی را به یک مسیر قابل اعتماد تبدیل کن.</h3><p>هر مرحله‌ای که تکرار می‌شود، می‌تواند ورودی، تصمیم و خروجی مشخص داشته باشد.</p><ol><li><span>01</span><strong>رویداد را بگیر</strong><small>سفارش، فرم، پیام یا زمان مشخص</small></li><li><span>02</span><strong>قواعد را اجرا کن</strong><small>بررسی، اعتبارسنجی و ارجاع</small></li><li><span>03</span><strong>نتیجه را برسان</strong><small>ثبت، اعلان، گزارش یا پیگیری</small></li></ol></aside></div>
-          <div className={styles.connectorPanel} data-reveal><div><span className={styles.panelKicker}>CONNECTOR MAP</span><h3>با ابزارهایی که همین حالا داری کار می‌کنیم.</h3></div><ul>{connections.map(([category, name]) => <li key={name}><small>{category}</small><strong>{name}</strong></li>)}</ul></div>
-        </div>
-      </section>
-
-      <section id="automation-process" className={styles.section}><div className={styles.container}>
-        <SectionIntro number="۰۳" eyebrow="DELIVERY METHOD" title="از همان کاری" accent="شروع می‌کنیم که وقتت را می‌گیرد">فرایند را با کوچک‌ترین نقطه‌ی قابل اندازه‌گیری شروع می‌کنیم و بعد اتصال‌ها و قابلیت‌های بعدی را روی آن می‌سازیم.</SectionIntro>
-        <ol className={styles.processGrid} data-reveal>{automationProcess.map(([title, description], index) => <li key={title}><span>{number(index)}</span><div><h3>{title}</h3><p>{description}</p></div></li>)}</ol>
-        <div className={styles.principles} data-reveal><article><Bot size={21} /><h3>ربات یا پنل؟</h3><p>برای تعامل سریع ربات، برای کار روزانه و گزارش پنل مناسب‌تر است.</p></article><article><PackageOpen size={21} /><h3>آماده یا اختصاصی؟</h3><p>اول ابزار آماده را بررسی می‌کنیم؛ فقط جایی اختصاصی می‌سازیم که ارزش داشته باشد.</p></article><article><ShieldCheck size={21} /><h3>کنترل و امنیت</h3><p>دسترسی، ثبت خطا و تأیید انسانی از ابتدا بخشی از نقشه‌ی راه است.</p></article></div>
-      </div></section>
-
-      <section id="automation-questions" className={`${styles.section} ${styles.questionsSection}`}><div className={styles.container}>
-        <SectionIntro number="۰۴" eyebrow="DETAILS / FAQ" title="هزینه، دسترسی‌ها" accent="و سؤال‌های رایج">محدوده‌ی پروژه به تعداد مراحل، اتصال‌ها، حجم داده و شرایط نگهداری بستگی دارد. قبل از اجرا، همین موارد را شفاف می‌کنیم.</SectionIntro>
-        <div className={styles.questionsGrid} data-reveal><div className={styles.faq}>{automationFaq.map(([question, answer]) => <details key={question}><summary>{question}<Plus size={18} /></summary><p>{answer}</p></details>)}</div><aside className={styles.relatedPanel}><Gauge size={24} /><h3>از کجا شروع کنیم؟</h3><p>یک کار تکراری را انتخاب کن؛ با همان، اولین نقشه‌ی اتوماسیون را می‌سازیم.</p><Link href={inquiryHref} className={styles.darkLink}>شروع گفت‌وگو <ArrowUpLeft size={16} /></Link><div className={styles.relatedLinks}><span>RELATED</span>{related.map(([slug, title]) => <Link key={slug} href={`/services/${slug}`}>{title}</Link>)}</div></aside></div>
-      </div></section>
-
-      <section className={styles.closing} aria-labelledby="automation-contact-title"><div className={styles.container}><div className={styles.closingMeta}>RYCODE / NEXT MOVE</div><div className={styles.closingGrid} data-reveal><h2 id="automation-contact-title">بگو کدام کارت <em>تکراریه.</em></h2><div><p>فرایند فعلی‌ات را بگو؛ با هم مشخص می‌کنیم کدام بخش را اول ساده و قابل پیگیری کنیم.</p><div className={styles.actions}><Link className={styles.primary} href={inquiryHref}>بیا کارها را ساده‌تر کنیم <ArrowUpLeft size={17} /></Link><Link className={styles.secondary} href="/services">همهٔ خدمات رایکد <ClipboardList size={17} /></Link></div></div></div></div></section>
     </main>
   );
 }
