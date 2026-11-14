@@ -286,7 +286,32 @@
   background-repeat: no-repeat;
 }
 .shortcuts {
+  position: relative;
+  padding: 8px 22px;
+  border: 1px solid var(--rule);
   border-block-start: 1px solid var(--rule);
+  color: var(--ink);
+  background-color: #fff;
+  background-image:
+    linear-gradient(rgb(52 152 219 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(52 152 219 / 10%) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.shortcuts::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 1px 16px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 16px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 1px 16px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 16px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 1px 16px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 16px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 1px 16px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 16px 1px no-repeat;
+  opacity: 0.8;
 }
 .shortcuts a {
   display: grid;
@@ -311,9 +336,9 @@
   animation-delay: 370ms;
 }
 .shortcuts a:hover {
-  background: rgb(52 152 219 / 15%);
-  padding-inline: 9px;
-  color: #b8e0ff;
+  background: rgb(52 152 219 / 10%);
+  padding-inline: 14px;
+  color: var(--brand-blue, #3498db);
 }
 .shortcuts strong {
   font-size: clamp(1.14rem, 2.1vw, 1.9rem);
