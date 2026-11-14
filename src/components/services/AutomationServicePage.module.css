@@ -43,7 +43,7 @@
 }
 
 .blue {
-  --blueprint: #1e3fe0;
+  --blueprint: var(--brand-blue, #3498db);
   --ink: #fff;
   --ui-ink: var(--ink);
   --muted: rgb(255 255 255 / 76%);
