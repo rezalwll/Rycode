@@ -3,21 +3,15 @@ import Link from "next/link";
 import {
   ArrowDown,
   ArrowUpLeft,
-  Bell,
   Bot,
-  CalendarClock,
   ClipboardList,
-  FileSpreadsheet,
-  GitBranch,
-  Layers3,
-  Network,
   PackageOpen,
   Plus,
   ShieldCheck,
-  ShoppingCart,
 } from "lucide-react";
 import { lookupContent } from "@/server/content";
 import { AutomationDemo, AutomationMotion } from "./AutomationMotion";
+import { automationIllustrations } from "./AutomationIllustrations";
 import {
   automationFaq,
   automationProcess,
@@ -26,16 +20,6 @@ import {
 import styles from "./AutomationServicePage.module.css";
 
 const inquiryHref = "/contact?service=connect#project-inquiry";
-const serviceIcons = [
-  Bot,
-  Bell,
-  ShoppingCart,
-  Network,
-  FileSpreadsheet,
-  GitBranch,
-  CalendarClock,
-  Layers3,
-];
 const shortcuts = [
   { id: "telegram", title: "ربات تلگرام", label: "ثبت درخواست" },
   { id: "orders", title: "خودکارسازی سفارش‌ها", label: "فروشگاه و انبار" },
@@ -206,7 +190,7 @@ export async function AutomationServicePage() {
               { id, title, intro, items, input, output, tools, condition },
               index,
             ) => {
-              const Icon = serviceIcons[index];
+              const Icon = automationIllustrations[index];
               return (
                 <article
                   id={`automation-${id}`}
