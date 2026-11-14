@@ -72,10 +72,11 @@
   width: min(100%, 1600px);
   position: relative;
   margin-inline: auto;
-  padding-inline: var(--gutter) var(--far-gutter);
+  padding-inline: var(--far-gutter);
 }
 
 .rail {
+  display: none;
   position: absolute;
   inset-inline-start: calc(var(--gutter) / 2);
   inset-block: 0;
