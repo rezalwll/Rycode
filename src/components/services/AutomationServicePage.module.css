@@ -43,17 +43,18 @@
 }
 
 .blue {
+  --blueprint: #1e3fe0;
   --ink: #fff;
   --ui-ink: var(--ink);
-  --muted: rgb(255 255 255 / 72%);
-  --rule: rgb(255 255 255 / 18%);
-  --grid: rgb(140 190 255 / 10%);
+  --muted: rgb(255 255 255 / 76%);
+  --rule: rgb(255 255 255 / 28%);
+  --grid: rgb(255 255 255 / 9%);
   color: var(--ink);
-  background-color: #252d38;
+  background-color: var(--blueprint);
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 56px 56px;
+  background-size: 48px 48px;
 }
 
 .hero,
@@ -61,7 +62,7 @@
   position: relative;
 }
 .hero {
-  padding-block: clamp(90px, 8vw, 132px) 74px;
+  padding-block: clamp(100px, 10vw, 160px) 90px;
   overflow: hidden;
 }
 .sheet {
