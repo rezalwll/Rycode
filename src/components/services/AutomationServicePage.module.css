@@ -219,13 +219,13 @@
   box-shadow: 0 10px 24px rgb(52 152 219 / 20%);
 }
 .actions .primary:hover {
-  background: var(--brand-purple, #8b6bda);
-  border-color: var(--brand-purple, #8b6bda);
-  box-shadow: 0 12px 26px rgb(139 107 218 / 28%);
+  background: color-mix(in srgb, var(--brand-blue, #3498db) 78%, #fff);
+  border-color: color-mix(in srgb, var(--brand-blue, #3498db) 78%, #fff);
+  box-shadow: 0 12px 26px rgb(52 152 219 / 28%);
 }
 .actions .secondary:hover {
-  background: rgb(139 107 218 / 17%);
-  border-color: var(--brand-purple, #8b6bda);
+  background: rgb(52 152 219 / 17%);
+  border-color: var(--brand-blue, #3498db);
 }
 
 .crosshair {
@@ -281,9 +281,9 @@
   animation-delay: 370ms;
 }
 .shortcuts a:hover {
-  background: rgb(139 107 218 / 15%);
+  background: rgb(52 152 219 / 15%);
   padding-inline: 9px;
-  color: #bcaaf4;
+  color: #b8e0ff;
 }
 .shortcuts strong {
   font-size: clamp(1.14rem, 2.1vw, 1.9rem);
