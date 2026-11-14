@@ -115,7 +115,7 @@ export async function AutomationServicePage() {
       <AutomationMotion />
       <header className={`${styles.hero} ${styles.blue}`}>
         <div className={styles.inner}>
-          <Rail index={0} label="خدمات" />
+          <Rail index={0} label="SERVICES" />
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
               <h1>

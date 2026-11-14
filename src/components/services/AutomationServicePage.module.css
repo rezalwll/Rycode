@@ -142,9 +142,16 @@
 }
 .hero .rail span,
 .motionReady .inner:has(> .revealed) .rail span {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #181b25;
+  background: var(--brand-blue, #3498db);
+  border-color: var(--brand-blue, #3498db);
+  color: #fff;
+}
+.hero .rail small {
+  color: #fff;
+  font-family: var(--font-english, Arial), sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-orientation: mixed;
 }
 
 .heroGrid,
