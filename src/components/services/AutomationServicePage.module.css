@@ -300,18 +300,18 @@
 .shortcuts::before {
   content: "";
   position: absolute;
-  inset: -9px;
+  inset: -6px;
   pointer-events: none;
   background:
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 1px 16px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 16px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 1px 16px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 16px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 1px 16px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 16px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 1px 16px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 16px 1px no-repeat;
-  opacity: 0.8;
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 10px 1px no-repeat;
+  opacity: 0.48;
 }
 .shortcuts a {
   display: grid;
@@ -319,6 +319,7 @@
   align-items: center;
   gap: clamp(8px, 1.2vw, 18px);
   min-height: 90px;
+  padding-inline: 8px;
   border-block-end: 1px solid var(--rule);
   transition:
     background-color 240ms ease,
@@ -337,8 +338,9 @@
 }
 .shortcuts a:hover {
   background: rgb(52 152 219 / 10%);
-  padding-inline: 14px;
   color: var(--brand-blue, #3498db);
+  transform: translateX(-3px);
+  box-shadow: inset -3px 0 var(--brand-blue, #3498db);
 }
 .shortcuts strong {
   font-size: clamp(1.14rem, 2.1vw, 1.9rem);
