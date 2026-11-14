@@ -1,7 +1,8 @@
-import { serviceCatalog } from "@/server/content";
 import { getTranslations } from "@/lib/i18n-server";
+import { ChannelServicesPage } from "@/components/services/ChannelServicesPage";
 import { pageMetadata } from "@/lib/seo";
-import { ServicesOverview } from "@/components/services/ServicesOverview";
+import { serviceCatalog } from "@/server/content";
+
 export async function generateMetadata() {
   const { locale } = await getTranslations();
   return pageMetadata({
@@ -17,5 +18,5 @@ export async function generateMetadata() {
 export default async function ServicesPage() {
   const { locale } = await getTranslations();
   const services = await serviceCatalog(locale);
-  return <ServicesOverview services={services} locale={locale} />;
+  return <ChannelServicesPage locale={locale} services={services} />;
 }

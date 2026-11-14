@@ -16,6 +16,13 @@ export function BrandLogo({
       role="img"
       aria-label="RYCODE"
     >
+      <span className="brand-logo__type" aria-hidden="true">
+        <span className="brand-logo__name">
+          <span className="brand-letter-r">R</span>
+          <span className="brand-letter-y">Y</span>
+          <span className="brand-logo__code brand-code">CODE</span>
+        </span>
+      </span>
       <img
         src={BRAND_MARK_SRC}
         width={96}
@@ -24,13 +31,6 @@ export function BrandLogo({
         aria-hidden="true"
         className="brand-logo__emblem"
       />
-      <span className="brand-logo__type" aria-hidden="true">
-        <span className="brand-logo__name">
-          <span className="brand-letter-r">R</span>
-          <span className="brand-letter-y">Y</span>
-          <span className="brand-logo__code brand-code">CODE</span>
-        </span>
-      </span>
     </span>
   );
 }

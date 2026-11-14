@@ -19,16 +19,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <FooterFluid />
         <Container className="coorda-footer-content">
           <div className="coorda-footer-brand" dir="ltr">
-            <span className="coorda-footer-wordmark">
-              <LogoWordmark />
-            </span>
-            <span className="coorda-footer-identity">
+            <span className="coorda-footer-lockup">
+              <span className="coorda-footer-wordmark">
+                <LogoWordmark />
+              </span>
               <LogoMark
                 className="coorda-footer-mark"
                 variant="default"
                 alt=""
               />
-              <small>rycode.ir</small>
             </span>
           </div>
           <div className="coorda-footer-body" dir={isFa ? "rtl" : "ltr"}>

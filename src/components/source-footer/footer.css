@@ -748,10 +748,7 @@
   -webkit-text-fill-color: var(--brand-blue);
 }
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-brand {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
+  display: block;
   padding-block: 44px 32px;
   border-bottom: 1px solid var(--border);
 }
@@ -759,30 +756,20 @@
   display: inline-flex;
   min-width: 0;
   justify-self: start;
-  font-size: clamp(2.65rem, 7.5vw, 6.5rem);
+  font-size: inherit;
   line-height: 1;
-  letter-spacing: -0.055em;
+  letter-spacing: var(--brand-lockup-tracking);
 }
-.rycode-footer-source footer.coorda-legacy-footer .coorda-footer-identity {
+.rycode-footer-source footer.coorda-legacy-footer .coorda-footer-lockup {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-self: end;
-  gap: 8px;
+  font-size: clamp(2.65rem, 7.5vw, 6.5rem);
+  gap: calc(1em * var(--brand-lockup-gap-ratio));
   min-width: 0;
 }
-.rycode-footer-source
-  footer.coorda-legacy-footer
-  .coorda-footer-identity
-  > small {
-  color: #4b5563;
-  font-size: 11px;
-  line-height: 1.5;
-  opacity: 1;
-}
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-mark {
-  width: clamp(36px, 5vw, 60px);
-  height: clamp(46px, 6.4vw, 77px);
+  width: auto;
+  height: calc(1em * var(--brand-mark-height-ratio));
   object-fit: contain;
 }
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-body {
@@ -941,7 +928,6 @@
 @media (max-width: 639px) {
   .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-brand {
     padding-block: 32px 24px;
-    gap: 16px;
   }
   .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-body {
     padding-block: 24px 32px;

@@ -46,11 +46,16 @@
 .rycode-public .rycode-header .rycode-primary-link {
   padding: 10px 14px;
 }
-.rycode-public .rycode-header .rycode-wordmark {
+.rycode-public .rycode-header .rycode-logo {
   font-size: 27px;
+  gap: calc(1em * var(--brand-lockup-gap-ratio));
+}
+.rycode-public .rycode-header .rycode-wordmark {
+  font-size: inherit;
+  letter-spacing: var(--brand-lockup-tracking);
 }
 .rycode-public .rycode-header .rycode-logo > img {
-  height: 42px;
+  height: calc(1em * var(--brand-mark-height-ratio));
   width: auto;
 }
 .rycode-public .rycode-header a[aria-label="RYCODE"] {
@@ -303,11 +308,8 @@
   .rycode-public .rycode-source-header .rycode-header--scrolled {
     --header-row-height: 56px;
   }
-  .rycode-public .rycode-header .rycode-wordmark {
+  .rycode-public .rycode-header .rycode-logo {
     font-size: 24px;
-  }
-  .rycode-public .rycode-header .rycode-logo > img {
-    height: 36px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

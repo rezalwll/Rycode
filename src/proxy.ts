@@ -4,6 +4,10 @@ import { lookupContent } from "@/server/content";
 import legacy from "@/content/legacy-content.json";
 import { services } from "@/content/services";
 import { contentRoute } from "@/lib/content-route";
+import {
+  automationServiceId,
+  automationServiceSlug,
+} from "@/lib/automation-route";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -30,9 +34,25 @@ export async function proxy(request: NextRequest) {
       new URL(target.destination, request.url),
       target.permanent ? 308 : 307,
     );
+  const isEnglish = localized?.[1] === "en";
+  const servicePath = headers.get("x-rycode-path");
+  if (
+    (!isEnglish && servicePath === `/services/${automationServiceId}`) ||
+    (isEnglish && servicePath === `/services/${automationServiceSlug}`)
+  ) {
+    const canonical = request.nextUrl.clone();
+    canonical.pathname = isEnglish
+      ? `/en/services/${automationServiceId}`
+      : `/services/${automationServiceSlug}`;
+    return NextResponse.redirect(canonical, 308);
+  }
   const contentPath = contentRoute(headers.get("x-rycode-path") || "");
   if (contentPath) {
-    const { kind, slug } = contentPath;
+    const { kind } = contentPath;
+    const slug =
+      kind === "SERVICE" && contentPath.slug === automationServiceSlug
+        ? automationServiceId
+        : contentPath.slug;
     const result = await lookupContent(
       kind,
       slug,

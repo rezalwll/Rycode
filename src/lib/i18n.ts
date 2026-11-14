@@ -1,4 +1,5 @@
 import persian from "@/locales/fa.json";
+import { automationServiceId, automationServiceSlug } from "./automation-route";
 
 export type Locale = "en" | "fa";
 const dictionary: Record<string, string> = persian;
@@ -26,6 +27,11 @@ export function translate(source: string, locale: Locale): string {
 export function localizedHref(href: string, locale: Locale): string {
   if (!href.startsWith("/") || href.startsWith("//")) return href;
   const unprefixed = href.replace(/^\/(?:fa|en)(?=\/|$|[?#])/, "");
-  const plain = unprefixed.startsWith("/") ? unprefixed : `/${unprefixed}`;
+  const plain = (
+    unprefixed.startsWith("/") ? unprefixed : `/${unprefixed}`
+  ).replace(
+    /^\/services\/(?:connect|integrations-bots)(?=\/?(?:[?#]|$))/,
+    `/services/${locale === "en" ? automationServiceId : automationServiceSlug}`,
+  );
   return locale === "en" ? `/en${plain === "/" ? "" : plain}` : plain;
 }

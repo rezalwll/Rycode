@@ -101,7 +101,7 @@ html[lang="fa"] :is(.rycode-slide, .ticker-item) {
 }
 html[lang="fa"] :is(
   .brand-logo, .brand-wordmark, .rycode-wordmark, .rycode-brand-name,
-  .feature-card-tag, .coorda-footer-identity small, .framer-N5z0F h5,
+  .feature-card-tag, .framer-N5z0F h5,
   .moments-status, a[href^="tel:"], a[href^="mailto:"],
   input[type="email"], input[type="url"], input[type="tel"]
 ),

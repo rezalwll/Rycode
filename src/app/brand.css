@@ -3,6 +3,16 @@
   --brand-blue: #3498db;
   --brand-purple: #8b6bda;
   --brand-accent: var(--brand-blue);
+  --brand-mark-height-ratio: calc(42 / 27);
+  --brand-lockup-gap-ratio: calc(8 / 27);
+  --brand-lockup-tracking: -0.04em;
+}
+
+@media (max-width: 639px) {
+  :root {
+    --brand-mark-height-ratio: calc(36 / 24);
+    --brand-lockup-gap-ratio: calc(8 / 24);
+  }
 }
 
 .brand-accent {
@@ -11,7 +21,7 @@
 
 .brand-logo {
   display: inline-flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   gap: 0.22em;
   width: 100%;

@@ -1,5 +1,8 @@
 "use client";
 import { BrandText } from "@/components/pages/rycode-services/brand-text";
+import { BRAND_MARK_SRC } from "@/lib/brand-assets";
+import { localizedHref } from "@/lib/i18n";
+import { usePathname } from "next/navigation";
 
 import { useReferenceLocale } from "./reference-locale";
 import { useRef } from "react";
@@ -34,6 +37,21 @@ function Cursor({ reverse = false }: { reverse?: boolean }) {
 }
 export default function Moments() {
   const { copyText } = useReferenceLocale();
+  const isSoftwarePage =
+    localizedHref(usePathname(), "fa") === "/services/software";
+  const photos = isSoftwarePage
+    ? {
+        profile: BRAND_MARK_SRC,
+        city: "/brand/software-service/web-workspace.webp",
+        trip: "/brand/software-service/phone-and-notebook.webp",
+        friends: "/brand/software-service/desktop-workspace.webp",
+      }
+    : {
+        profile: "/brand/source-footer/moment-profile.png",
+        city: "/brand/source-footer/moment-city.png",
+        trip: "/brand/source-footer/moment-trip.png",
+        friends: "/brand/source-footer/moment-friends.png",
+      };
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -136,7 +154,7 @@ export default function Moments() {
                 <div className="moments-phone-content">
                   <div className="moments-phone-top">
                     <img
-                      src="/brand/source-footer/moment-profile.png"
+                      src={photos.profile}
                       width={30}
                       height={30}
                       alt=""
@@ -155,7 +173,7 @@ export default function Moments() {
                     <div className="moments-photos">
                       <img
                         className="moments-photo-city"
-                        src="/brand/source-footer/moment-city.png"
+                        src={photos.city}
                         width={130}
                         height={160}
                         alt=""
@@ -163,7 +181,7 @@ export default function Moments() {
                       />
                       <img
                         className="moments-photo-trip"
-                        src="/brand/source-footer/moment-trip.png"
+                        src={photos.trip}
                         width={130}
                         height={160}
                         alt=""
@@ -171,7 +189,7 @@ export default function Moments() {
                       />
                       <img
                         className="moments-photo-friends"
-                        src="/brand/source-footer/moment-friends.png"
+                        src={photos.friends}
                         width={131}
                         height={160}
                         alt=""

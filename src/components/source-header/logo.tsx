@@ -50,11 +50,11 @@ export function Logo({
         className,
       )}
     >
+      <LogoWordmark className="font-logo text-[1.35rem] font-extrabold leading-none tracking-[-0.04em]" />
       <LogoImage
         variant={variant}
         className="h-[2em] w-auto shrink-0 object-contain"
       />
-      <LogoWordmark className="font-logo text-[1.35rem] font-extrabold leading-none tracking-[-0.04em]" />
     </span>
   );
 }
