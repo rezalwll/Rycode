@@ -137,7 +137,7 @@ export async function AutomationServicePage() {
               </div>
             </div>
             <nav
-              className={`${styles.shortcuts} ${styles.crosshair}`}
+              className={styles.shortcuts}
               aria-label="پرش به خدمات خودکارسازی"
             >
               {shortcuts.map(({ id, title, label }) => (

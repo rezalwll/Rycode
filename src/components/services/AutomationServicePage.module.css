@@ -339,8 +339,6 @@
 .shortcuts a:hover {
   background: rgb(52 152 219 / 10%);
   color: var(--brand-blue, #3498db);
-  transform: translateX(-3px);
-  box-shadow: inset -3px 0 var(--brand-blue, #3498db);
 }
 .shortcuts strong {
   font-size: clamp(1.14rem, 2.1vw, 1.9rem);
