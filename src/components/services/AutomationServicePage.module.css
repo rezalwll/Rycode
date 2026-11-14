@@ -1,12 +1,13 @@
 .page {
-  --blueprint: #1e3fe0;
-  --paper: #f4f4ee;
-  --ink: #0c1640;
+  --blueprint: var(--brand-blue, #3498db);
+  --paper: #ffffff;
+  --ink: var(--brand-ink, #303b48);
   --ui-ink: var(--ink);
-  --muted: #505a73;
-  --accent: #ffdb52;
-  --rule: #c0c9df;
-  --grid: rgb(30 63 224 / 8%);
+  --muted: #687482;
+  --accent: var(--brand-purple, #8b6bda);
+  --rule: #e4e8ee;
+  --grid: rgb(52 152 219 / 10%);
+  --soft: #f7f8fb;
   --gutter: clamp(72px, 10vw, 144px);
   --far-gutter: clamp(22px, 3.34vw, 48px);
   width: 100%;
@@ -44,15 +45,15 @@
 .blue {
   --ink: #fff;
   --ui-ink: var(--ink);
-  --muted: #e0e6ff;
-  --rule: rgb(224 232 255 / 36%);
-  --grid: rgb(255 255 255 / 8%);
+  --muted: rgb(255 255 255 / 72%);
+  --rule: rgb(255 255 255 / 18%);
+  --grid: rgb(140 190 255 / 10%);
   color: var(--ink);
-  background-color: var(--blueprint);
+  background-color: #252d38;
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: 56px 56px;
 }
 
 .hero,
@@ -60,10 +61,11 @@
   position: relative;
 }
 .hero {
-  padding-block: clamp(80px, 7vw, 102px) 80px;
+  padding-block: clamp(90px, 8vw, 132px) 74px;
+  overflow: hidden;
 }
 .sheet {
-  padding-block: clamp(72px, 11.15vw, 160px);
+  padding-block: clamp(76px, 10vw, 148px);
 }
 .inner {
   width: min(100%, 1600px);
@@ -160,7 +162,9 @@
   line-height: 1.19;
 }
 .heroCopy h1 {
-  font-size: clamp(3.5rem, 7vw, 7.5rem);
+  max-width: 8ch;
+  font-size: clamp(3.25rem, 7.3vw, 7.4rem);
+  letter-spacing: -0.055em;
 }
 .heroCopy h1 span {
   display: block;
@@ -200,17 +204,19 @@
     border-color 230ms ease;
 }
 .actions .primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #181b25;
+  background: var(--brand-blue, #3498db);
+  border-color: var(--brand-blue, #3498db);
+  color: #fff;
+  box-shadow: 0 10px 24px rgb(52 152 219 / 20%);
 }
 .actions .primary:hover {
-  background: #fff;
-  border-color: #fff;
+  background: var(--brand-purple, #8b6bda);
+  border-color: var(--brand-purple, #8b6bda);
+  box-shadow: 0 12px 26px rgb(139 107 218 / 28%);
 }
 .actions .secondary:hover {
-  background: rgb(255 255 255 / 15%);
-  border-color: #fff;
+  background: rgb(139 107 218 / 17%);
+  border-color: var(--brand-purple, #8b6bda);
 }
 
 .crosshair {
@@ -266,9 +272,9 @@
   animation-delay: 370ms;
 }
 .shortcuts a:hover {
-  background: rgb(255 255 255 / 10%);
+  background: rgb(139 107 218 / 15%);
   padding-inline: 9px;
-  color: var(--accent);
+  color: #bcaaf4;
 }
 .shortcuts strong {
   font-size: clamp(1.14rem, 2.1vw, 1.9rem);
@@ -290,6 +296,8 @@
   grid-template-columns: 1.3fr repeat(3, 1fr);
   margin-block-start: 80px;
   border: 1px solid var(--rule);
+  background: rgb(255 255 255 / 3%);
+  backdrop-filter: blur(8px);
 }
 .indexStrip a {
   display: grid;
@@ -333,15 +341,35 @@
   font-size: clamp(0.98rem, 1.3vw, 1.15rem);
 }
 .services {
-  border-block-start: 1px solid var(--rule);
+  display: grid;
+  gap: 18px;
 }
 .service {
+  --service-accent: var(--brand-blue, #3498db);
   display: grid;
   grid-template-columns: 1.02fr 0.95fr 1.16fr;
   gap: clamp(22px, 3.45vw, 50px);
   align-items: start;
-  padding-block: 56px;
-  border-block-end: 1px solid var(--rule);
+  padding: clamp(28px, 4vw, 58px);
+  border: 1px solid var(--rule);
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: 0 16px 42px rgb(48 59 72 / 5%);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    translate 220ms ease;
+}
+.service:nth-child(3n + 2) {
+  --service-accent: var(--brand-purple, #8b6bda);
+}
+.service:nth-child(3n) {
+  --service-accent: #5aa7a1;
+}
+.service:hover {
+  translate: 0 -3px;
+  border-color: color-mix(in srgb, var(--service-accent) 45%, var(--rule));
+  box-shadow: 0 20px 48px rgb(48 59 72 / 9%);
 }
 .service:target .spec {
   box-shadow: 0 0 0 1px var(--blueprint);
@@ -355,6 +383,7 @@
   font-size: clamp(1.65rem, 2.85vw, 3.25rem);
   line-height: 1.3;
   font-weight: 760;
+  letter-spacing: -0.035em;
 }
 .serviceCopy p,
 .decision p,
@@ -365,7 +394,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--blueprint) !important;
+  color: var(--service-accent, var(--blueprint)) !important;
   font-weight: 750;
   font-size: 0.9rem;
 }
@@ -386,17 +415,20 @@
 }
 .spec {
   border: 1px solid var(--rule);
-  color: var(--blueprint);
+  color: var(--service-accent);
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--soft);
 }
 .diagram {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: clamp(150px, 15vw, 216px);
-  background-color: #eaecf5;
+  min-height: clamp(164px, 16vw, 236px);
+  background-color: color-mix(in srgb, var(--service-accent) 8%, var(--soft));
   background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--service-accent) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--service-accent) 18%, transparent) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 .diagram > span {
@@ -435,6 +467,10 @@
 
 .demo {
   border: 1px solid var(--rule);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgb(48 59 72 / 6%);
+  overflow: hidden;
 }
 .manual {
   display: grid;
@@ -499,7 +535,9 @@
 .demoResults li {
   padding: 12px 14px;
   border: 1px solid var(--rule);
-  background: #2444dc;
+  border-radius: 12px;
+  background: var(--soft);
+  color: var(--ink);
 }
 .demoNode {
   display: grid;
@@ -514,11 +552,12 @@
   color: var(--muted);
 }
 .demoAction {
-  border-color: var(--accent);
+  border-color: var(--brand-purple, #8b6bda);
+  background: color-mix(in srgb, var(--brand-purple, #8b6bda) 10%, #fff);
   animation-delay: 190ms;
 }
 .demoAction svg {
-  color: var(--accent);
+  color: var(--brand-purple, #8b6bda);
 }
 .demoConnector {
   position: relative;
@@ -547,6 +586,7 @@
 .demoResults li {
   font-size: 0.9rem;
   animation: enter 420ms 390ms both;
+  border-inline-start: 3px solid var(--brand-blue, #3498db);
 }
 .demoResults li:nth-child(2) {
   animation-delay: 470ms;
@@ -591,10 +631,16 @@
   padding: 10px 12px;
   border-block-end: 1px solid var(--rule);
   border-inline-end: 1px solid var(--rule);
-  transition: background-color 200ms ease;
+  background: #fff;
+  transition:
+    background-color 200ms ease,
+    translate 200ms ease,
+    border-color 200ms ease;
 }
 .connectorMap li:hover {
-  background: rgb(255 255 255 / 10%);
+  background: color-mix(in srgb, var(--brand-blue, #3498db) 7%, #fff);
+  border-color: color-mix(in srgb, var(--brand-blue, #3498db) 35%, var(--rule));
+  translate: 0 -2px;
 }
 .connectorMap small {
   color: var(--muted);
@@ -610,6 +656,8 @@
   border-block-start: 1px solid var(--rule);
   border-inline-start: 1px solid var(--rule);
   color: var(--blueprint);
+  border-radius: 18px;
+  overflow: hidden;
 }
 .process li {
   display: grid;
@@ -619,6 +667,11 @@
   border-inline-end: 1px solid var(--rule);
   padding: clamp(18px, 2.4vw, 32px);
   color: var(--ink);
+  background: #fff;
+  transition: background-color 200ms ease;
+}
+.process li:hover {
+  background: var(--soft);
 }
 .process h3,
 .decision h3 {
@@ -640,9 +693,12 @@
   gap: 8px;
   padding-block-start: 16px;
   border-block-start: 1px solid var(--rule);
+  padding: 22px 18px 0;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(180deg, var(--soft), transparent);
 }
 .decision svg {
-  color: var(--blueprint);
+  color: var(--brand-purple, #8b6bda);
 }
 .sheet:has(.faq) {
   border-block-start: 1px solid var(--rule);
@@ -655,6 +711,7 @@
 }
 .faq details {
   border-block-start: 1px solid var(--rule);
+  background: #fff;
 }
 .faq summary {
   display: flex;
@@ -700,10 +757,17 @@
   border: 1px solid var(--rule);
   padding: 7px 11px;
   font-size: 0.86rem;
+  border-radius: 999px;
+  background: #fff;
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background-color 200ms ease;
 }
 .related li a:hover {
-  border-color: var(--blueprint);
-  color: var(--blueprint);
+  border-color: var(--brand-purple, #8b6bda);
+  color: var(--brand-purple, #8b6bda);
+  background: color-mix(in srgb, var(--brand-purple, #8b6bda) 8%, #fff);
 }
 .closing h2 {
   font-size: clamp(3rem, 8.65vw, 8.5rem);
@@ -720,6 +784,46 @@
   transition:
     opacity 660ms ease,
     translate 700ms cubic-bezier(0.18, 0.7, 0.28, 1);
+}
+
+/* The reference's blueprint sheet becomes a smaller accent in the RYCODE
+   system: dark hero and CTA, airy surfaces everywhere else. */
+:global(#automation-services) {
+  background: #fff;
+}
+:global(#automation-examples).blue {
+  --ink: var(--brand-ink, #303b48);
+  --ui-ink: var(--ink);
+  --muted: #687482;
+  --rule: #e4e8ee;
+  --grid: rgb(52 152 219 / 8%);
+  color: var(--ink);
+  background-color: #f7f8fb;
+  background-image: none;
+}
+:global(#automation-examples).blue .rail {
+  color: var(--brand-blue, #3498db);
+}
+:global(#automation-examples).blue .rail span,
+:global(#automation-examples).blue .rail small {
+  background: #f7f8fb;
+}
+:global(#automation-examples).blue .sectionHead h2 em {
+  color: var(--brand-purple, #8b6bda);
+}
+:global(#automation-examples).blue .manual,
+:global(#automation-examples).blue .demo,
+:global(#automation-examples).blue .connectorMap {
+  border-color: var(--rule);
+}
+:global(#automation-questions) {
+  background: #f8f6fc;
+}
+:global(#automation-questions) .faq details {
+  background: transparent;
+}
+.closing.blue {
+  background-color: #252d38;
 }
 .motionReady :is(.revealed, :target, :focus-within)[data-reveal] {
   opacity: 1;
