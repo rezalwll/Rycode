@@ -820,9 +820,7 @@
 /* The reference's blueprint sheet becomes a smaller accent in the RYCODE
    system: dark hero and CTA, airy surfaces everywhere else. */
 :global(#automation-services) {
-  background:
-    radial-gradient(circle at 88% 4%, rgb(52 152 219 / 10%), transparent 30%),
-    linear-gradient(180deg, #f2f7fb 0%, #ffffff 68%);
+  background: #fff;
 }
 :global(#automation-examples).blue {
   --ink: var(--brand-ink, #303b48);
