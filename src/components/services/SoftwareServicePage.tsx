@@ -148,7 +148,7 @@ export function SoftwareServicePage() {
                   {service.id === "windows" && (
                     <Link
                       className={styles.inlineLink}
-                      href="/services/windows-software-development"
+                      href="/services/software/windows-software"
                     >
                       جزئیات ساخت نرم‌افزار ویندوز{" "}
                       <ArrowUpLeft size={15} aria-hidden="true" />
