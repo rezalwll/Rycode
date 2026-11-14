@@ -1,11 +1,11 @@
-// Local copies of preview images from the public Framer Marketplace templates page.
+// Local copies of internal dashboard and data visuals from live Framer templates.
 export const automationTemplateImages = [
-  "/brand/services/automation/01-saasbright.webp",
-  "/brand/services/automation/02-platform.webp",
-  "/brand/services/automation/03-sift.webp",
-  "/brand/services/automation/04-accrue.webp",
-  "/brand/services/automation/05-reflex.webp",
-  "/brand/services/automation/06-verity.webp",
-  "/brand/services/automation/07-aovix.webp",
-  "/brand/services/automation/08-zenflo.webp",
+  "/brand/services/automation/01-mobile-insights.webp",
+  "/brand/services/automation/02-data-dashboard.webp",
+  "/brand/services/automation/03-analytics-dashboard.webp",
+  "/brand/services/automation/04-reporting-dashboard.webp",
+  "/brand/services/automation/05-metric-cards.webp",
+  "/brand/services/automation/06-trend-analysis.webp",
+  "/brand/services/automation/07-performance-chart.webp",
+  "/brand/services/automation/08-data-visualization.webp",
 ] as const;
