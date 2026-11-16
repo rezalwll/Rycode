@@ -323,7 +323,7 @@ export function WebsiteDesignPage() {
                     </div>
                     <div className={styles.projectMockupBody}>
                       <div className={styles.projectMockupCopy}>
-                        <small>پیش‌نمایش طراحی</small>
+                        <small>طراحی پروژه</small>
                         <strong>{project.title}</strong>
                         <span>
                           مشاهدهٔ پروژه <ArrowUpLeft size={12} />

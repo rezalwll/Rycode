@@ -240,7 +240,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
         <Section
           id="support-scenarios"
           title="رسیدگی توی عمل چه شکلیه؟"
-          intro="نوع پروژه رو انتخاب کن تا یک نمونهٔ نمایشی از مشکل و مسیر بررسیش ببینی."
+          intro="نوع پروژه رو انتخاب کن تا مسیر بررسی مشکل و اولویت‌بندی درخواست رو ببینی."
         >
           <SupportScenarios />
         </Section>

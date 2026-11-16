@@ -92,12 +92,8 @@ export function WordPressRepairFlow({ children }: { children: ReactNode }) {
             aria-atomic="true"
           >
             <div className={styles.browserBar}>
-              <span className={styles.dots} aria-hidden="true">
-                <i />
-                <i />
-                <i />
-              </span>
-              <bdi dir="ltr">example.com{issue.route}</bdi>
+              <span>وضعیت صفحه</span>
+              <bdi dir="ltr">{issue.route}</bdi>
             </div>
             <div
               key={issue.id}
@@ -118,7 +114,7 @@ export function WordPressRepairFlow({ children }: { children: ReactNode }) {
             <p className={styles.review}>{issue.review}</p>
           </div>
           <div className={styles.triageFooter}>
-            <p>پیش‌نمایش نمونه</p>
+            <p>جزئیات مشکل</p>
             <a href="#wp-inquiry" onClick={() => setChoice(choice ?? 0)}>
               ثبت درخواست برای این مشکل{" "}
               <ArrowUpLeft size={15} aria-hidden="true" />
@@ -209,7 +205,7 @@ export function WordPressRepairFlow({ children }: { children: ReactNode }) {
               maxLength={240}
               value={site}
               onChange={(event) => setSite(event.target.value)}
-              placeholder="example.com"
+              placeholder="site.ir"
             />
           </label>
           <label>

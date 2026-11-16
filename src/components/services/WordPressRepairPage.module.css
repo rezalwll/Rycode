@@ -151,10 +151,7 @@
 
 .triage {
   min-width: 0;
-  padding: clamp(13px, 2.3vw, 27px);
-  border: 1px solid light-dark(#cfe1ef, #405064);
-  border-radius: 21px;
-  background: var(--tint);
+  padding: 0;
 }
 .triage h2 {
   font-size: clamp(1.16rem, 2.2vw, 1.63rem);
@@ -213,9 +210,7 @@
 .preview {
   overflow: hidden;
   margin-block-start: 14px;
-  border: 1px solid light-dark(#ccddea, #405064);
-  border-radius: 11px;
-  background: var(--ui-surface, #fff);
+  border-block: 1px solid light-dark(#ccddea, #405064);
 }
 .browserBar {
   position: relative;
@@ -224,7 +219,7 @@
   align-items: center;
   gap: 7px;
   min-height: 37px;
-  padding: 4px 37px;
+  padding: 4px 0;
   border-block-end: 1px solid var(--line);
   background: light-dark(#f5f9fc, #202833);
   color: light-dark(#41617c, #9fcdf0);

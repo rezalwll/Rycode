@@ -146,7 +146,6 @@ export function DataToolsPage() {
                 <figure className={styles.sample}>
                   <figcaption>
                     <span>{service.output}</span>
-                    <small>نمونهٔ نمایشی</small>
                   </figcaption>
                   <div className={styles.sampleBody}>
                     {"rows" in service ? (
@@ -233,7 +232,7 @@ export function DataToolsPage() {
             <ShieldCheck size={26} aria-hidden="true" />
             <div>
               <h3 id="data-privacy-title">
-                برای بررسی اولیه، نمونهٔ بدون اطلاعات حساس کافیه
+                برای بررسی اولیه، فایل بدون اطلاعات حساس کافیه
               </h3>
               <p>
                 دسترسی به داده‌ها، کار روی نسخهٔ کپی و شیوهٔ تحویل رو متناسب با

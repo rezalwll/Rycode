@@ -131,51 +131,23 @@
 .productStage {
   --preview-line: light-dark(#dae7f0, #405064);
   min-width: 0;
-  padding: clamp(11px, 2.2vw, 30px);
-  border: 1px solid var(--line);
-  border-radius: 25px;
-  background-color: light-dark(#eef7fd, #253447);
-  background-image: radial-gradient(#829eb548 1px, transparent 1px);
-  background-size: 16px 16px;
-}
-.productStage figcaption {
-  margin-block-start: 12px;
-  font-size: 0.76rem;
-  color: var(--muted);
+  padding: 0;
 }
 .window {
-  overflow: hidden;
-  border: 1px solid light-dark(#c8dce8, #405064);
-  border-radius: 14px;
-  background: light-dark(#f7fafd, #202833);
-  box-shadow: 0 12px 30px #23465b1a;
+  overflow: visible;
+  background: transparent;
 }
 .windowBar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 13px;
+  padding: 0 0 12px;
   color: var(--blue-dark);
-  background: var(--ui-surface, #fff);
+  background: transparent;
   border-block-end: 1px solid var(--preview-line);
   font-size: 0.75rem;
 }
-.windowBar strong {
-  flex: 1;
-}
-.windowDots {
-  display: flex;
-  gap: 4px;
-}
-.windowDots i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #a0bed3;
-}
-.windowDots i:first-child {
-  background: #3498db;
-}
+.windowBar strong { flex: 1; }
 .windowBody {
   display: grid;
   grid-template-columns: minmax(98px, 0.28fr) minmax(0, 1fr);

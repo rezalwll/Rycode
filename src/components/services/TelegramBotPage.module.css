@@ -151,12 +151,7 @@
 .demo {
   min-width: 0;
   position: relative;
-  padding: clamp(10px, 2vw, 22px);
-  border: 1px solid light-dark(#c8dfed, #405064);
-  border-radius: 22px;
-  background-color: light-dark(#edf7ff, #253447);
-  background-image: radial-gradient(#73a1c242 1px, transparent 1px);
-  background-size: 17px 17px;
+  padding: 0;
 }
 .demoHeader {
   display: grid;

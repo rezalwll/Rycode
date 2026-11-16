@@ -69,7 +69,7 @@ export function TelegramBotDemo() {
         </span>
         <div>
           <h2 id="telegram-demo-title">رباتت از نگاه مشتری</h2>
-          <p>دمو با داده‌های نمونه، داخل همین صفحه</p>
+          <p>مسیر سفارش و پیگیری مشتری</p>
         </div>
         <button
           type="button"
@@ -104,7 +104,7 @@ export function TelegramBotDemo() {
           ref={history}
           className={styles.history}
           role="region"
-          aria-label="مکالمهٔ نمونه"
+          aria-label="مکالمهٔ سفارش و پیگیری"
           tabIndex={0}
         >
           {answers.map((answer, index) => (
@@ -167,7 +167,7 @@ export function TelegramBotDemo() {
               نمای مدیر · {scenario.manager.title}، {scenario.manager.status}
             </>
           ) : (
-            "یکی از گزینه‌ها رو بزن و مسیر ربات رو امتحان کن."
+            "یکی از گزینه‌ها رو انتخاب کن تا مسیر ربات رو ببینی."
           )}
         </p>
         <a

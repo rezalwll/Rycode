@@ -342,18 +342,19 @@ export async function WindowsSoftwarePage() {
                 </a>
               </div>
             </div>
-            <figure className={styles.productStage}>
-              <div className={styles.window} aria-hidden="true">
+            <figure
+              className={styles.productStage}
+              aria-label={text(
+                "داشبورد مدیریت سفارش‌ها",
+                "Order management dashboard",
+              )}
+            >
+              <div className={styles.window}>
                 <div className={styles.windowBar}>
                   <Monitor size={15} />
                   <strong>
-                    {text("داشبورد عملیات", "Operations dashboard")}
+                    {text("مدیریت سفارش‌ها", "Order management")}
                   </strong>
-                  <span className={styles.windowDots}>
-                    <i />
-                    <i />
-                    <i />
-                  </span>
                 </div>
                 <div className={styles.windowBody}>
                   <aside className={styles.windowSidebar}>
@@ -406,12 +407,6 @@ export async function WindowsSoftwarePage() {
                   </div>
                 </div>
               </div>
-              <figcaption>
-                {text(
-                  "پیش‌نمایش رابط نرم‌افزار با داده‌های نمونه",
-                  "Application preview with sample data",
-                )}
-              </figcaption>
             </figure>
           </div>
           <div className={styles.quickPaths}>

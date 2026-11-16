@@ -66,13 +66,12 @@ export function CorporateWebsitePage() {
             <div className={styles.heroImage}>
               <Image
                 src={corporateWebsiteMeta.image}
-                alt="ماکاپ یک سایت شرکتی صنعتی در نمای دسکتاپ و موبایل"
+                alt="نمای دسکتاپ و موبایل یک سایت شرکتی صنعتی"
                 fill
                 loading="eager"
                 sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 850px) calc(100vw - 64px), (max-width: 1300px) 53vw, 670px"
               />
             </div>
-            <figcaption>پیش‌نمایش طراحی · دسکتاپ و موبایل</figcaption>
           </figure>
         </section>
       </div>
@@ -195,7 +194,7 @@ export function CorporateWebsitePage() {
             </div>
             <ServicePhoto
               src="/brand/capabilities/landing-redesign.webp"
-              alt="طرح اولیهٔ چیدمان صفحات سایت در کنار پیش‌نمایش طراحی روی تبلت"
+              alt="چیدمان صفحات سایت شرکتی روی تبلت"
             />
           </div>
           <ol className={styles.process}>

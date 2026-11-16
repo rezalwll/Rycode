@@ -16,7 +16,6 @@
 .frame {
   width: min(1320px, calc(100% - 48px));
   margin-inline: auto;
-  border-inline: 1px dashed var(--data-line);
 }
 
 .page :is(h1, h2, h3, p, figure, ul, ol) {
@@ -155,9 +154,11 @@
   background: var(--ui-surface, #fff);
 }
 .demo {
-  box-shadow:
-    0 20px 46px -26px #32618439,
-    0 3px 12px #19344b0c;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+  box-shadow: none;
   animation: enter 690ms 110ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
 }
 .demoTop,

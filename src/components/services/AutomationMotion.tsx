@@ -54,7 +54,7 @@ export function AutomationDemo() {
       <div
         className={styles.demoControls}
         role="group"
-        aria-label="مثال‌های خودکارسازی"
+        aria-label="مسیرهای خودکارسازی"
       >
         {automationScenarios.map(({ title }, index) => (
           <button
@@ -95,8 +95,7 @@ export function AutomationDemo() {
       </div>
       <div className={styles.demoFooter}>
         <p>
-          نمونهٔ نمایشی. اجرای هر مسیر به سیستم‌ها و دسترسی‌های پروژه بستگی
-          داره.
+          این مسیر بر اساس سیستم‌ها و دسترسی‌های موردنیاز پروژه تنظیم می‌شه.
         </p>
         <button type="button" onClick={() => setRun((value) => value + 1)}>
           <Play size={15} aria-hidden="true" /> اجرای دوباره

@@ -552,11 +552,11 @@
 }
 
 .demo {
-  border: 1px solid var(--rule);
-  border-radius: 22px;
-  background: var(--ui-surface, #fff);
-  box-shadow: 0 18px 45px rgb(48 59 72 / 6%);
-  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 .manual {
   display: grid;

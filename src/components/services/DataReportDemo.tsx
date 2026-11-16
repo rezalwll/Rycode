@@ -113,14 +113,13 @@ export function DataReportDemo() {
   return (
     <figure
       className={styles.demo}
-      aria-label="دموی تبدیل فایل‌ها به گزارش فروش"
+      aria-label="گزارش فروش و یکپارچه‌سازی فایل‌ها"
     >
       <div className={styles.demoTop}>
         <span className={styles.demoTitle}>
           <ChartNoAxesColumnIncreasing size={19} aria-hidden="true" /> گزارش
           فروش
         </span>
-        <span className={styles.demoLabel}>نمونهٔ نمایشی</span>
       </div>
       <div className={styles.demoGrid}>
         <aside className={styles.sources} aria-label="فایل‌های ورودی">
@@ -223,10 +222,6 @@ export function DataReportDemo() {
           </div>
         </div>
       </div>
-      <figcaption>
-        با تغییر ماه، تعداد فروش و نمودار بر اساس داده‌های همان ماه به‌روز
-        می‌شن.
-      </figcaption>
     </figure>
   );
 }

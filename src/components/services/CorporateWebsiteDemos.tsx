@@ -49,7 +49,6 @@ export function CorporateSiteTypes() {
               fill
               sizes="(max-width: 850px) 94vw, (max-width: 1200px) 52vw, 750px"
             />
-            <figcaption>پیش‌نمایش طراحی</figcaption>
           </figure>
           <div className={styles.typeDetails}>
             <h3>{type.title}</h3>
