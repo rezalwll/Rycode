@@ -15,6 +15,7 @@ import { getLocale } from "@/lib/i18n-server";
 import { headers } from "next/headers";
 import { metadataForPath, siteUrl } from "@/lib/seo";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { initializeTheme } from "@/lib/theme-preference";
 export async function generateMetadata(): Promise<Metadata> {
   const { t, locale } = await getTranslations();
   return {
@@ -34,7 +35,14 @@ export default async function Layout({
 }) {
   const locale = await getLocale();
   return (
-    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
+    <html
+      lang={locale}
+      dir={locale === "fa" ? "rtl" : "ltr"}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: initializeTheme }} />
+      </head>
       <body>
         <LocaleProvider locale={locale}>{children}</LocaleProvider>
       </body>

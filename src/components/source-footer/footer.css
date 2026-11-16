@@ -724,20 +724,20 @@
 
 .rycode-footer-source footer.coorda-legacy-footer,
 .dark .rycode-footer-source footer.coorda-legacy-footer {
-  --background: #fff;
-  --foreground: #1a1a1a;
-  --surface: #fff;
-  --surface-2: #f8fafc;
-  --muted-foreground: #4b5563;
-  --border: #e5e7eb;
+  --background: var(--ui-canvas, #fff);
+  --foreground: light-dark(#1a1a1a, #edf2f8);
+  --surface: var(--ui-surface, #fff);
+  --surface-2: light-dark(#f8fafc, #202833);
+  --muted-foreground: light-dark(#4b5563, #b7c4d3);
+  --border: light-dark(#e5e7eb, #354354);
   --brand: #66c0ff;
   --brand-foreground: #1a1a1a;
   --brand-hover: #52b6fa;
-  --brand-soft: #f1f8fe;
+  --brand-soft: light-dark(#f1f8fe, #29435b);
   --ring: #286ca8;
-  --detail-blue: #286ca8;
-  --detail-blue-on-dark: #286ca8;
-  background: #fff;
+  --detail-blue: light-dark(#286ca8, #9ed4fc);
+  --detail-blue-on-dark: #9ed4fc;
+  background: var(--background);
   color: var(--ui-ink, #303b48);
 }
 .rycode-footer-source
@@ -797,7 +797,7 @@
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-body p {
   max-width: 650px;
   margin-top: 10px;
-  color: #4b5563;
+  color: var(--muted-foreground);
   font-size: 13px;
   font-weight: 400;
   line-height: 1.95;
@@ -852,7 +852,7 @@
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-body li a {
   display: inline-block;
   padding-block: 2px;
-  color: #4b5563;
+  color: var(--muted-foreground);
   font-size: 13px;
   line-height: 1.8;
   overflow-wrap: anywhere;
@@ -893,10 +893,14 @@
   gap: 10px 24px;
   border-top: 1px solid var(--border);
   padding-block: 20px;
-  color: #4b5563;
+  color: var(--ui-muted, #4b5563);
   font-size: 11px;
   line-height: 1.8;
   opacity: 1;
+}
+.dark .rycode-footer-source .coorda-footer-wordmark .brand-code {
+  color: var(--ui-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
 }
 .rycode-footer-source footer.coorda-legacy-footer .coorda-footer-bottom p {
   margin: 0;

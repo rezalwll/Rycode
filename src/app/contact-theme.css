@@ -1,7 +1,7 @@
 /* Keep Covix's captured layout, breakpoints and controls in globals.css.
    Apply Rycode's palette and star accents; account for the in-flow header. */
 .rycode-public .framer-UUxDN {
-  --token-7b28ac9f-5add-4a4d-85f4-4841d99bfe0b: #dde3eb;
+  --token-7b28ac9f-5add-4a4d-85f4-4841d99bfe0b: var(--ui-rule);
 }
 .rycode-public .framer-UUxDN .framer-zh7igo {
   padding-top: 45px;
@@ -38,7 +38,7 @@
     .framer-1ilmqib,
     .framer-ekdjfg
   ) {
-  background-color: #dde3eb;
+  background-color: light-dark(#dde3eb, #253447);
   overflow: visible;
 }
 /* A border on both edges makes a 1px track render 2px wide. Paint its
@@ -75,7 +75,7 @@
   background-color: rgb(16 29 48 / 20%);
 }
 .rycode-public .framer-UUxDN #project-inquiry .framer-form-input-wrapper {
-  --framer-input-background: #f2f3f6;
+  --framer-input-background: var(--ui-field);
   --framer-input-font-color: var(--ui-ink);
   --framer-input-placeholder-color: var(--ui-muted);
   --framer-input-focused-border-color: var(--brand-blue);
@@ -96,7 +96,7 @@
   outline-offset: 0;
 }
 .rycode-public .framer-UUxDN .framer-Irrnf {
-  background-color: #edf6fc !important;
+  background-color: light-dark(#edf6fc, #253447) !important;
   color: var(--ui-ink);
   border: 0;
 }
@@ -117,8 +117,8 @@
 }
 .rycode-public .framer-UUxDN #project-inquiry > [role="status"] {
   color: var(--ui-ink);
-  background-color: #edf6fc;
-  border-color: #cbdfee;
+  background-color: light-dark(#edf6fc, #253447);
+  border-color: light-dark(#cbdfee, #405064);
 }
 @media (min-width: 768px) {
   html[lang="fa"] .rycode-public .framer-UUxDN .framer-1h20kp {

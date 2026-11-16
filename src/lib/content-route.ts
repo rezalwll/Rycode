@@ -15,3 +15,18 @@ export function contentRoute(path: string) {
     policy: false,
   };
 }
+
+export function contentCollectionPath(path: string) {
+  switch (contentRoute(path)?.kind) {
+    case "ARTICLE":
+      return "/blog";
+    case "PROJECT":
+      return "/work";
+    case "SERVICE":
+      return "/services";
+    case "PAGE":
+      return "/";
+    default:
+      return null;
+  }
+}

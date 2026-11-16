@@ -15,8 +15,11 @@ import { useLocale } from "./LocaleProvider";
 const SubmissionState = createContext({ busy: false, complete: false });
 export function ContactForm({
   children,
+  messageContext = { field: "Support model", label: "مدل پشتیبانی" },
   ...props
-}: FormHTMLAttributes<HTMLFormElement>) {
+}: FormHTMLAttributes<HTMLFormElement> & {
+  messageContext?: { field: string; label: string };
+}) {
   const { locale } = useLocale();
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
@@ -37,6 +40,20 @@ export function ContactForm({
           if (busy || complete || !event.currentTarget.reportValidity()) return;
           const form = event.currentTarget;
           const data = new FormData(form);
+          const message = data.get("Message") || data.get("Massege");
+          const contextValue = data.get(messageContext.field);
+          if (
+            contextValue &&
+            typeof message === "string" &&
+            message.trim().length < 10
+          ) {
+            setStatus(
+              locale === "fa"
+                ? "شرح درخواست باید دست‌کم ۱۰ نویسه داشته باشه."
+                : "Write at least 10 characters in the message.",
+            );
+            return;
+          }
           setBusy(true);
           setStatus("");
           try {
@@ -47,12 +64,17 @@ export function ContactForm({
                 name: data.get("Name"),
                 email: data.get("Email"),
                 phone: data.get("Phone") || "",
-                message: data.get("Message") || data.get("Massege"),
+                message:
+                  contextValue && typeof message === "string"
+                    ? `${messageContext.label}: ${contextValue}\n\n${message}`
+                    : message,
                 website: data.get("website") || "",
                 locale,
                 sourcePath: location.pathname,
                 service:
-                  new URLSearchParams(location.search).get("service") || "",
+                  data.get("Service") ||
+                  new URLSearchParams(location.search).get("service") ||
+                  "",
                 requestKey: key.current,
                 startedAt: started.current,
               }),

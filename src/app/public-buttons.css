@@ -19,7 +19,7 @@
   overflow: hidden !important;
   border: 1px solid var(--cta-border, #d3e6f3) !important;
   border-radius: 999px !important;
-  background: var(--cta-surface, #edf6fc) !important;
+  background: var(--cta-surface, light-dark(#edf6fc, #24394e)) !important;
   color: var(--ui-ink) !important;
   box-shadow: none !important;
   font-family: inherit;
@@ -92,13 +92,13 @@
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible) {
   color: #fff !important;
   border-color: var(--cta-accent, var(--brand-blue)) !important;
-  background: var(--cta-surface, #edf6fc) !important;
+  background: var(--cta-surface, light-dark(#edf6fc, #24394e)) !important;
   box-shadow: none !important;
   transform: none !important;
 }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::before {
   width: calc(100% - 6px) !important;
-  background: var(--cta-fill, color-mix(in srgb, var(--brand-blue) 70%, var(--ui-ink))) !important;
+  background: var(--cta-fill, color-mix(in srgb, var(--brand-blue) 70%, var(--brand-ink))) !important;
 }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):is(:hover, :focus-visible)::after { translate: 4px 0; }
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):dir(rtl):is(:hover, :focus-visible)::after { translate: -4px 0; }
@@ -109,8 +109,8 @@
 /* Purple accent matches the process section's icons. */
 .home-colorful .framer-nc16a8 a.framer-obWCA {
   --cta-accent: var(--brand-purple);
-  --cta-surface: #f3effc;
-  --cta-border: #ddd1f3;
+  --cta-surface: light-dark(#f3effc, #302841);
+  --cta-border: light-dark(#ddd1f3, #59466e);
   --cta-fill: #6f4db3;
 }
 

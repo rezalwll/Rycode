@@ -9,8 +9,8 @@ export async function generateMetadata() {
     locale,
     title:
       locale === "fa"
-        ? "ساخت نرم‌افزار ویندوز اختصاصی؛ امکانات و مراحل تحویل | رایکد"
-        : "Custom Windows software development | RYCODE",
+        ? "ساخت نرم‌افزار ویندوز اختصاصی؛ امکانات و مراحل تحویل"
+        : "Custom Windows software development",
     description:
       locale === "fa"
         ? "توسعهٔ نرم‌افزار ویندوز برای ثبت اطلاعات، محاسبات، گزارش‌گیری، پردازش فایل و اتصال به تجهیزات؛ از بررسی نیاز تا نصب و پشتیبانی با رایکد."

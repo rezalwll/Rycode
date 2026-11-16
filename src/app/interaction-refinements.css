@@ -1,8 +1,8 @@
-/* Transparent over the video, solid white after scrolling. */
+/* Transparent over the video, solid after scrolling. */
 .rycode-public .rycode-source-header .rycode-header {
   --header-rest-height: 74px;
   --header-row-height: var(--header-rest-height);
-  background: #fff;
+  background: var(--ui-canvas);
   padding-top: 0;
   transition:
     background-color 320ms ease,
@@ -36,7 +36,7 @@
   margin: 0;
   inset-inline: 0;
   top: 0;
-  background: #fff;
+  background: var(--ui-canvas);
   color: var(--ui-ink);
   border: 0;
   border-block-end: 1px solid var(--ui-line);
@@ -170,7 +170,7 @@
   display: none;
 }
 .rycode-public .framer-obWCA .framer-14jkp0r .framer-text {
-  color: #1a1a1a !important;
+  color: light-dark(#1a1a1a, var(--ui-ink)) !important;
 }
 
 /* Shared sweeping fill for native and module-based calls to action. */
@@ -340,9 +340,9 @@
   background-color: var(--button-hover) !important;
 }
 
-/* The service canvas stays white; only the individual cards carry color. */
+/* The service cards sit on the shared page canvas. */
 .home-colorful .rycode-services-source,
 .home-colorful .rycode-services-source .features,
 .home-colorful .rycode-services-source .features::before {
-  background: #fff;
+  background: var(--ui-canvas);
 }

@@ -9,11 +9,6 @@ export function sourceHref(path: string) {
   const routes: Record<string, string> = {
     "/projects": "/work",
     "/start-project": "/contact",
-    "/about": "/#About%20Section",
-    "/about#approach": "/#expertise",
-    "/about#process": "/#Process%20Section",
-    "/about#technology": "/services/software",
-    "/faq": "/#home-faq",
     "/installment-purchase": "/contact?topic=installments",
     "/services#solutions": "/services#services-list",
     "/services#industries": "/services#services-list",

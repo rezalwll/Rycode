@@ -1,13 +1,13 @@
 .page[data-project-rescue-page] {
-  --rescue-ink: #253346;
-  --rescue-muted: #526175;
-  --rescue-blue: #215e8d;
-  --rescue-purple: #674c9a;
-  --rescue-line: #dce5ee;
-  --rescue-blue-tint: #edf6fd;
-  --rescue-purple-tint: #f3effb;
+  --rescue-ink: light-dark(#253346, #edf2f8);
+  --rescue-muted: light-dark(#526175, #b7c4d3);
+  --rescue-blue: light-dark(#215e8d, #a1d4f6);
+  --rescue-purple: light-dark(#674c9a, #cfb9fa);
+  --rescue-line: light-dark(#dce5ee, #405064);
+  --rescue-blue-tint: light-dark(#edf6fd, #253447);
+  --rescue-purple-tint: light-dark(#f3effb, #253447);
   width: 100%;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--rescue-ink);
   font-family: "IRANYekan", sans-serif;
   font-size: 1rem;
@@ -124,7 +124,7 @@
 .urgentAction {
   min-height: 46px;
   padding: 8px 15px;
-  border: 1px solid #cfe2f1;
+  border: 1px solid light-dark(#cfe2f1, #405064);
   border-radius: 999px;
   line-height: 1.55;
   text-align: center;
@@ -139,17 +139,17 @@
 }
 
 .secondary {
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .urgentAction {
-  border-color: #eed8bc;
-  background: #fff4e5;
-  color: #874510;
+  border-color: light-dark(#eed8bc, #405064);
+  background: light-dark(#fff4e5, #202833);
+  color: light-dark(#874510, #f7c08f);
 }
 
 :is(.primary, .secondary, .urgentAction):is(:hover, :focus-visible) {
-  border-color: #d7caee;
+  border-color: light-dark(#d7caee, #405064);
   background: var(--rescue-purple-tint);
   color: var(--rescue-purple);
 }
@@ -182,7 +182,7 @@
 .cardImage {
   position: relative;
   overflow: hidden;
-  background: #f4f5f6;
+  background: light-dark(#f4f5f6, #202833);
 }
 
 .cardImage img {
@@ -214,7 +214,7 @@
   place-items: center;
   border: 1px solid var(--rescue-line);
   border-radius: 12px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .situationCopy {
@@ -232,7 +232,7 @@
   width: 36px;
   height: 36px;
   place-items: center;
-  border: 1px solid #e2e5e8;
+  border: 1px solid light-dark(#e2e5e8, #405064);
   border-radius: 50%;
   transition:
     background-color 200ms ease,
@@ -242,7 +242,7 @@
 
 .situation:is(:hover, :focus-visible) .situationArrow {
   border-color: var(--rescue-blue);
-  background: var(--rescue-blue);
+  background: light-dark(var(--rescue-blue), #245b80);
   color: #fff;
 }
 
@@ -275,7 +275,7 @@
   gap: clamp(12px, 1.8vw, 24px);
   min-width: 0;
   padding: clamp(14px, 2vw, 24px) 5px;
-  border-block-start: 1px solid #e2e5e8;
+  border-block-start: 1px solid light-dark(#e2e5e8, #405064);
 }
 
 .service:target {
@@ -286,7 +286,7 @@
 
 .service .cardImage {
   aspect-ratio: 4 / 3;
-  border: 1px solid #e2e5e8;
+  border: 1px solid light-dark(#e2e5e8, #405064);
   border-radius: 10px;
 }
 
@@ -378,7 +378,7 @@
   padding: 16px;
   border: 1px solid var(--rescue-line);
   border-radius: 14px;
-  background: #f7fbfe;
+  background: light-dark(#f7fbfe, #202833);
 }
 
 .timeline h3 {
@@ -401,12 +401,12 @@
   padding: clamp(17px, 2.7vw, 34px);
   border: 1px solid var(--rescue-line);
   border-radius: 20px;
-  background: #f5faff;
+  background: light-dark(#f5faff, #253447);
 }
 
 .inquiryCard:nth-child(2) {
   --inquiry-accent: var(--rescue-purple);
-  background: #faf8fd;
+  background: light-dark(#faf8fd, #202833);
 }
 
 .inquiryIcon {
@@ -416,7 +416,7 @@
   place-items: center;
   border: 1px solid var(--rescue-line);
   border-radius: 13px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--inquiry-accent);
 }
 
@@ -503,7 +503,7 @@
   overflow: clip;
   border: 1px solid var(--rescue-line);
   border-radius: clamp(16px, 2.4vw, 30px);
-  background: linear-gradient(135deg, #f6fbff, #f6f2fc);
+  background: linear-gradient(135deg, light-dark(#f6fbff, #253447), light-dark(#f6f2fc, #253447));
 }
 
 .closingCopy {

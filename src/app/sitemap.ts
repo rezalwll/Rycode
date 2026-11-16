@@ -19,10 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const redirectedPaths = new Set(redirects.map((redirect) => redirect.source));
   const paths = [
     "/",
+    "/about",
     "/contact",
     "/work",
     "/blog",
     "/services",
+    "/services/software/windows-software",
     ...["/privacy", "/terms"].filter(
       (path) =>
         !owned.some((o) => o.kind === "PAGE" && o.slug === path.slice(1)),

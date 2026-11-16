@@ -744,12 +744,12 @@
   }
 }
 
-/* Palette shared by public content pages, with no tinted page/card canvases. */
+/* Palette shared by public content pages. */
 .page,
 .page.white,
 .page.projectPage,
 .page.servicePage {
-  background: #fff;
+  background: var(--ui-canvas, #fff);
   color: var(--ui-ink, #1a1a1a);
 }
 .page.servicePage::after {
@@ -767,7 +767,7 @@
     .search select
   ),
 .page.servicePage :is(.service, .aside, .specialties) {
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--ui-ink, #1a1a1a);
   border: 1px solid var(--ui-line, #e7e7e7);
   box-shadow: none;
@@ -787,7 +787,7 @@
 .page.servicePage :is(h1, h2, .rich h2, .service, .aside) {
   color: var(--ui-ink, #1a1a1a);
 }
-.page :is(.rich a, .aside a:hover, .mobileToc a:hover),
+.page :is(.rich a:not(.button), .aside a:hover, .mobileToc a:hover),
 .page.servicePage .service::after {
   color: var(--ui-ink, #1a1a1a);
   text-decoration-color: var(--ui-purple, #c4b5fd);
@@ -800,18 +800,18 @@
 .page.servicePage :is(.primary, .aside .button),
 .page.projectPage .button {
   background: var(--ui-blue, #a8d8ff);
-  color: var(--ui-ink, #303b48);
+  color: var(--brand-ink, #303b48);
   border-color: var(--ui-blue, #a8d8ff);
   box-shadow: none;
 }
 .page :is(.button:hover, .button:focus-visible, .card:hover .arrow),
 .page.servicePage :is(.primary:hover, .aside .button:hover) {
   background: var(--ui-purple, #c4b5fd);
-  color: var(--ui-ink, #303b48);
+  color: var(--brand-ink, #303b48);
   border-color: var(--ui-purple, #c4b5fd);
 }
 .page.servicePage .primary span {
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--ui-ink, #303b48);
 }
 .page

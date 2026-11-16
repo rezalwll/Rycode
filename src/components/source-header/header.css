@@ -162,6 +162,37 @@
   border-color: #e6e3eb;
   box-shadow: 0 1px 3px rgb(20 15 30 / 7%);
 }
+.dark .rycode-public .rycode-source-header
+  :is(.rycode-language-link, .rycode-theme-toggle) {
+  color: var(--ui-ink);
+  background: var(--ui-surface);
+  border-color: var(--ui-line);
+}
+.dark .rycode-public .rycode-source-header .rycode-theme-option {
+  color: var(--ui-muted);
+}
+.dark .rycode-public .rycode-source-header .rycode-theme-option:hover {
+  color: var(--ui-ink);
+  background: var(--button-hover);
+}
+.dark .rycode-public .rycode-source-header
+  .rycode-theme-option[aria-pressed="true"] {
+  color: var(--ui-ink);
+  background: var(--button-hover);
+  border-color: var(--ui-rule);
+}
+.dark .rycode-public .rycode-source-header .rycode-language-link:hover {
+  background: var(--button-hover);
+}
+.dark .rycode-public .rycode-source-header
+  .rycode-theme-toggle[data-variant="light"] {
+  background: transparent;
+  border-color: rgb(255 255 255 / 30%);
+}
+.dark .rycode-public .rycode-source-header
+  .rycode-theme-toggle[data-variant="light"] .rycode-theme-option {
+  color: #fff;
+}
 .rycode-public
   .rycode-source-header
   .rycode-header-tools[data-overlay="true"]

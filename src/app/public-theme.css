@@ -1,9 +1,16 @@
 /* Public-site palette; brand colors are shared with the app icons and emblem. */
 .rycode-public {
+  --ui-canvas: #fff;
+  --ui-surface: #fff;
+  --ui-surface-muted: #f2f2f2;
+  --ui-field: #f2f3f6;
+  --ui-rule: #dde3eb;
   --ui-blue: #a8d8ff;
   --ui-purple: #c4b5fd;
   --ui-ink: var(--brand-ink);
   --ui-muted: #5f6d7b;
+  --ui-link: #28638b;
+  --ui-on-accent: #142235;
   --ui-line: #e7e7e7;
   --button-surface: #fff;
   --button-primary: #f2eefb;
@@ -13,11 +20,32 @@
   --token-a4939ea0-2e23-4fba-bab4-5bfe558782d8: var(--ui-purple);
   --token-9df62c7f-29af-4d93-bd59-13a740083fae: #fff;
   color: var(--ui-ink);
-  background: #fff;
+  background: var(--ui-canvas);
   color-scheme: light;
 }
+html.dark:has(.rycode-public) {
+  background: #131922;
+  color-scheme: dark;
+}
+.dark .rycode-public {
+  --ui-canvas: #131922;
+  --ui-surface: #202a37;
+  --ui-surface-muted: #19222e;
+  --ui-field: #253243;
+  --ui-rule: #536780;
+  --ui-ink: #f0f5fb;
+  --ui-muted: #bdcadb;
+  --ui-link: #a4d6ff;
+  --ui-line: #3b4b60;
+  --button-surface: var(--ui-surface);
+  --button-primary: #302841;
+  --button-hover: #29435b;
+  --button-line: var(--ui-line);
+  --token-9df62c7f-29af-4d93-bd59-13a740083fae: var(--ui-canvas);
+  color-scheme: dark;
+}
 .rycode-public :is(main, section[data-framer-name], [data-layout-template]) {
-  background-color: #fff;
+  background-color: var(--ui-canvas);
 }
 .rycode-public main .framer-text {
   color: var(--ui-ink) !important;
@@ -30,21 +58,20 @@
   color: var(--brand-blue);
 }
 
-/* The header stays white at the top, on scroll, and inside the mobile menu. */
-.rycode-public .rycode-source-header,
-.dark .rycode-public .rycode-source-header {
-  --background: #fff;
+/* Shared colors for the header and its menus. */
+.rycode-public .rycode-source-header {
+  --background: var(--ui-canvas);
   --foreground: var(--ui-ink);
-  --surface: #fff;
-  --surface-2: #fff;
+  --surface: var(--ui-surface);
+  --surface-2: var(--ui-surface);
   --muted-foreground: var(--ui-muted);
   --border: var(--ui-line);
   --brand: var(--ui-purple);
   --brand-foreground: #fff;
-  --brand-soft: #fff;
+  --brand-soft: var(--ui-surface);
 }
 .rycode-public .rycode-header.reference-overlay-header {
-  background: #fff;
+  background: var(--ui-canvas);
   border-color: var(--ui-line);
   color: var(--ui-ink);
 }
@@ -58,13 +85,13 @@
   ) {
   color: var(--ui-ink);
   border-color: var(--ui-line);
-  background: #fff;
+  background: var(--ui-canvas);
 }
 .rycode-public
   .rycode-header
   .rycode-primary-link:is(:hover, [aria-current="page"]) {
   color: var(--ui-ink);
-  background: #fff;
+  background: var(--ui-canvas);
 }
 .rycode-public
   .rycode-source-header
@@ -82,7 +109,7 @@
   .rycode-source-header
   :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
   --submenu-accent: var(--ui-purple);
-  --submenu-wash: #fff;
+  --submenu-wash: var(--ui-surface);
   --submenu-edge: var(--ui-line);
 }
 .rycode-public .rycode-source-header .rycode-services-menu .rycode-submenu-icon {
@@ -95,20 +122,20 @@
   border-color: var(--ui-blue);
 }
 
-/* Footer and introductory section share the white page canvas. */
+/* Footer and introductory section use the shared palette. */
 .rycode-public .rycode-footer-source {
   --accent-blue: var(--ui-blue);
   --accent-purple: var(--ui-purple);
   --action: var(--ui-purple);
   --action-hover: var(--ui-blue);
   --action-foreground: var(--ui-ink);
-  --surface: #fff;
-  --background: #fff;
+  --surface: var(--ui-surface);
+  --background: var(--ui-canvas);
   --foreground: var(--ui-ink);
   --border: var(--ui-line);
 }
 .rycode-public .rycode-footer-source .moments-section {
-  background: #fff;
+  background: var(--ui-canvas);
   color: var(--ui-ink);
   border-top: 1px solid var(--ui-line);
 }
@@ -126,7 +153,7 @@
 .rycode-public .rycode-footer-source footer.coorda-legacy-footer {
   --brand: var(--ui-blue);
   --brand-hover: var(--ui-purple);
-  --brand-soft: #fff;
+  --brand-soft: var(--ui-surface);
   --detail-blue: var(--ui-ink);
 }
 .rycode-public
@@ -143,7 +170,7 @@
   --feature-accent: var(--ui-purple) !important;
 }
 .rycode-public .framer-kyd25 {
-  background: #fff !important;
+  background: var(--ui-surface) !important;
   border: 1px solid var(--ui-line);
 }
 .rycode-public .framer-kyd25 [data-framer-background-image-wrapper]:has(> img) {
@@ -185,12 +212,12 @@
   color: var(--ui-ink) !important;
 }
 .rycode-public [data-rycode-accordion="faq"] {
-  background: #fff;
+  background: var(--ui-surface);
   border: 1px solid var(--ui-line);
 }
 .rycode-public main :is(input, select, textarea) {
   color: var(--ui-ink);
-  background: #fff;
+  background: var(--ui-surface);
   border-color: var(--ui-line);
 }
 .rycode-public
@@ -210,7 +237,7 @@
   background-color: var(--button-hover) !important;
 }
 .rycode-public .framer-obWCA .framer-1oado6a {
-  background-color: #fff !important;
+  background-color: var(--ui-surface) !important;
 }
 .rycode-public .framer-obWCA svg {
   --szd5nr: var(--ui-ink) !important;
@@ -250,7 +277,7 @@
   [data-rycode-accordion="faq"]
   button
   :is([data-framer-name="Line 1"], [data-framer-name="Line 2"]) {
-  background: var(--ui-ink) !important;
+  background: var(--brand-ink) !important;
 }
 .rycode-public main :is(h1, h2, h3):not(.hero-title) {
   color: var(--ui-ink) !important;

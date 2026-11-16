@@ -4,10 +4,7 @@ import { lookupContent } from "@/server/content";
 import legacy from "@/content/legacy-content.json";
 import { services } from "@/content/services";
 import { contentRoute } from "@/lib/content-route";
-import {
-  automationServiceId,
-  automationServiceSlug,
-} from "@/lib/automation-route";
+import { canonicalServiceId, localizedServicePath } from "@/lib/service-routes";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -34,30 +31,23 @@ export async function proxy(request: NextRequest) {
       new URL(target.destination, request.url),
       target.permanent ? 308 : 307,
     );
-  const isEnglish = localized?.[1] === "en";
-  const servicePath = headers.get("x-rycode-path");
-  if (
-    (!isEnglish && servicePath === `/services/${automationServiceId}`) ||
-    (isEnglish && servicePath === `/services/${automationServiceSlug}`)
-  ) {
+  const locale = localized?.[1] === "en" ? "en" : "fa";
+  const servicePath = headers.get("x-rycode-path") || "";
+  const canonicalPath = localizedServicePath(servicePath, locale);
+  if (canonicalPath !== servicePath) {
     const canonical = request.nextUrl.clone();
-    canonical.pathname = isEnglish
-      ? `/en/services/${automationServiceId}`
-      : `/services/${automationServiceSlug}`;
+    canonical.pathname =
+      locale === "en" ? `/en${canonicalPath}` : canonicalPath;
     return NextResponse.redirect(canonical, 308);
   }
-  const contentPath = contentRoute(headers.get("x-rycode-path") || "");
+  const contentPath = contentRoute(servicePath);
   if (contentPath) {
     const { kind } = contentPath;
     const slug =
-      kind === "SERVICE" && contentPath.slug === automationServiceSlug
-        ? automationServiceId
+      kind === "SERVICE"
+        ? canonicalServiceId(contentPath.slug)
         : contentPath.slug;
-    const result = await lookupContent(
-      kind,
-      slug,
-      localized?.[1] === "en" ? "en" : "fa",
-    );
+    const result = await lookupContent(kind, slug, locale);
     const fallback =
       contentPath.policy ||
       (kind === "SERVICE"

@@ -1,4 +1,6 @@
 .preview {
+  --journal-surface: var(--ui-surface, #fff);
+  --journal-muted: var(--ui-muted, #5f6d7b);
   position: relative;
   z-index: 2;
   width: 100%;
@@ -23,11 +25,11 @@
   align-items: center;
   gap: 8px;
   margin: 0 0 9px;
-  color: #5d6470;
+  color: var(--journal-muted);
   font-size: 13px;
 }
 .eyebrow span {
-  color: #8c6bc8;
+  color: light-dark(#8c6bc8, var(--ui-purple));
   font-size: 16px;
 }
 .header h2 {
@@ -39,7 +41,7 @@
 }
 .description {
   margin: 9px 0 0;
-  color: #5d6470;
+  color: var(--journal-muted);
   font-size: 15px;
   line-height: 1.85;
 }
@@ -52,9 +54,9 @@
   min-height: 44px;
   padding: 0 17px;
   border-radius: 999px;
-  border: 1px solid #dfe3eb;
-  color: inherit;
-  background: #fff;
+  border: 1px solid light-dark(#dfe3eb, var(--ui-line));
+  color: var(--ui-link, #28638b);
+  background: var(--journal-surface);
   font-size: 14px;
   text-decoration: none;
   transition:
@@ -62,8 +64,8 @@
     border-color 200ms ease;
 }
 .allArticles:is(:hover, :focus-visible) {
-  border-color: #c2d9eb;
-  background: #edf6fd;
+  border-color: light-dark(#c2d9eb, var(--ui-link));
+  background: var(--button-hover, #edf6fd);
 }
 .cards {
   display: grid;
@@ -80,9 +82,9 @@
   height: 100%;
   box-sizing: border-box;
   overflow: hidden;
-  border: 1px solid #e3e5eb;
+  border: 1px solid light-dark(#e3e5eb, var(--ui-line));
   border-radius: 20px;
-  background: #fff;
+  background: var(--journal-surface);
   text-decoration: none;
   color: inherit;
   transition:
@@ -90,12 +92,12 @@
     box-shadow 240ms ease;
 }
 .card:is(:hover, :focus-visible) {
-  border-color: #a7c9e3;
-  box-shadow: 0 8px 24px rgb(39 71 102 / 7%);
+  border-color: light-dark(#a7c9e3, var(--ui-link));
+  box-shadow: 0 8px 24px light-dark(rgb(39 71 102 / 7%), rgb(0 0 0 / 24%));
 }
 .card:focus-visible,
 .allArticles:focus-visible {
-  outline: 2px solid var(--brand-blue, #3498db);
+  outline: 2px solid var(--ui-link, #28638b);
   outline-offset: 4px;
 }
 .featured .card {
@@ -104,7 +106,7 @@
 .media {
   position: relative;
   overflow: hidden;
-  background: #eaf1fb;
+  background: light-dark(#eaf1fb, #24394e);
 }
 .featured .media {
   aspect-ratio: 2.1;
@@ -121,15 +123,18 @@
 .card:is(:hover, :focus-visible) img {
   transform: scale(1.035);
 }
+:global(html.dark) .media img {
+  filter: brightness(0.86);
+}
 .latest {
   position: absolute;
   inset-block-start: 12px;
   inset-inline-start: 12px;
   padding: 6px 11px;
-  background: #fff;
-  border: 1px solid #dfe5ef;
+  background: var(--journal-surface);
+  border: 1px solid light-dark(#dfe5ef, var(--ui-line));
   border-radius: 999px;
-  color: #465167;
+  color: var(--ui-ink, #303b48);
   font-size: 12px;
 }
 .body {
@@ -147,7 +152,7 @@
   align-items: center;
   column-gap: 8px;
   row-gap: 2px;
-  color: #646c78;
+  color: var(--journal-muted);
   font-size: 12px;
   line-height: 1.6;
 }
@@ -169,7 +174,7 @@
 }
 .summary {
   margin: 0;
-  color: #5d6470;
+  color: var(--journal-muted);
   font-size: 14px;
   line-height: 1.85;
 }
@@ -179,7 +184,7 @@
   gap: 7px;
   margin-top: auto;
   padding-top: 6px;
-  color: #346686;
+  color: var(--ui-link, #28638b);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -210,10 +215,10 @@
 .empty {
   margin: 0;
   padding: 28px;
-  border: 1px solid #e3e5eb;
+  border: 1px solid light-dark(#e3e5eb, var(--ui-line));
   border-radius: 20px;
-  color: #5d6470;
-  background: #fff;
+  color: var(--journal-muted);
+  background: var(--journal-surface);
 }
 @media (min-width: 800px) {
   .cards:not([data-count="1"]) {

@@ -1,8 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowDown,
   ArrowLeft,
+  ArrowRight,
   ArrowUpLeft,
+  ArrowUpRight,
   BarChart3,
   Boxes,
   Check,
@@ -11,266 +14,676 @@ import {
   Gauge,
   HardDrive,
   Monitor,
+  Network,
   PackageCheck,
   Plus,
   Printer,
-  ShieldCheck,
-  Workflow,
   Wrench,
-  type LucideIcon,
 } from "lucide-react";
 import { specialtyServices } from "@/content/specialty-services";
+import { getTranslations } from "@/lib/i18n-server";
 import styles from "./WindowsSoftwarePage.module.css";
 
-const inquiryHref = "/contact?service=software";
+const inquiryHref = "/contact?service=software#project-inquiry";
+
+const orderTrend = [
+  [{ fa: "شنبه", en: "Sat" }, 38],
+  [{ fa: "یکشنبه", en: "Sun" }, 55],
+  [{ fa: "دوشنبه", en: "Mon" }, 46],
+  [{ fa: "سه‌شنبه", en: "Tue" }, 72],
+  [{ fa: "چهارشنبه", en: "Wed" }, 62],
+  [{ fa: "پنجشنبه", en: "Thu" }, 88],
+  [{ fa: "جمعه", en: "Fri" }, 76],
+] as const;
+
+const systemOptions = [
+  {
+    icon: HardDrive,
+    title: { fa: "آفلاین و محلی", en: "Local and offline" },
+    description: {
+      fa: "ثبت و مشاهدهٔ اطلاعات روی همان رایانه، با مسیر مشخص پشتیبان‌گیری.",
+      en: "Enter and view data on the same computer with a clear way to back it up.",
+    },
+  },
+  {
+    icon: Network,
+    title: {
+      fa: "شبکهٔ داخلی و چندکاربره",
+      en: "Shared access on a local network",
+    },
+    description: {
+      fa: "دادهٔ مشترک برای چند رایانه، با دسترسی متناسب با نقش هر کاربر.",
+      en: "Share data across computers, with access tailored to each user's role.",
+    },
+  },
+  {
+    icon: Printer,
+    title: { fa: "چاپ و تجهیزات", en: "Printing and equipment" },
+    description: {
+      fa: "چاپ فاکتور و لیبل، یا دریافت اطلاعات از دستگاه پس از بررسی رابط و مدل آن.",
+      en: "Print invoices and labels, or read data from equipment after checking the model and interface.",
+    },
+  },
+  {
+    icon: FileSpreadsheet,
+    title: { fa: "ورود و خروجی فایل", en: "File imports and exports" },
+    description: {
+      fa: "خواندن و بررسی داده‌های اکسل و CSV و تهیهٔ خروجی متناسب با کار.",
+      en: "Read and validate Excel and CSV data, then export it in the format your work requires.",
+    },
+  },
+];
 
 const quickPaths = [
   {
-    label: "یک نرم‌افزار جدید می‌خوام",
-    detail: "ثبت اطلاعات، سفارش، محاسبه یا مدیریت داخلی",
+    label: { fa: "یک نرم‌افزار جدید می‌خوام", en: "I need new software" },
+    detail: {
+      fa: "ثبت اطلاعات، سفارش، محاسبه یا مدیریت داخلی",
+      en: "Data entry, orders, calculations or internal operations",
+    },
     href: "#windows-solutions",
     icon: Monitor,
   },
   {
-    label: "برنامه باید به دستگاه وصل بشه",
-    detail: "بارکدخوان، چاپگر، اسکنر یا تجهیزات دارای رابط",
+    label: {
+      fa: "برنامه باید به دستگاه وصل بشه",
+      en: "My software needs to talk to a device",
+    },
+    detail: {
+      fa: "بارکدخوان، چاپگر، اسکنر یا تجهیزات دارای رابط",
+      en: "Barcode readers, printers, scanners and other supported equipment",
+    },
     href: "#windows-equipment",
     icon: PackageCheck,
   },
   {
-    label: "نرم‌افزار قدیمی دارم",
-    detail: "رفع باگ، توسعه امکانات یا بازسازی مرحله‌ای",
+    label: { fa: "نرم‌افزار قدیمی دارم", en: "I have an older application" },
+    detail: {
+      fa: "رفع باگ، توسعه امکانات یا بازسازی مرحله‌ای",
+      en: "Bug fixes, new features or a rebuild in stages",
+    },
     href: "#windows-existing",
     icon: Wrench,
   },
-] satisfies { label: string; detail: string; href: string; icon: LucideIcon }[];
+];
 
 const solutionCards = [
   {
-    number: "01",
-    title: "اداری و مدیریتی",
-    text: "فرم‌ها، پرونده‌ها، مشتریان و وضعیت کارها را در یک برنامه‌ی مشخص جمع کن.",
+    title: { fa: "اداری و مدیریتی", en: "Office and operations" },
+    text: {
+      fa: "فرم‌ها، پرونده‌ها، مشتریان و وضعیت کارها را در یک برنامه‌ی مشخص جمع کن.",
+      en: "Bring forms, records, customers and task status into one application.",
+    },
     icon: ClipboardList,
-    tags: ["فرم و جست‌وجو", "سطح دسترسی", "گزارش و چاپ"],
+    tags: {
+      fa: ["فرم و جست‌وجو", "سطح دسترسی", "گزارش و چاپ"],
+      en: ["Forms and search", "Access control", "Reports and printing"],
+    },
   },
   {
-    number: "02",
-    title: "محاسبات و ابزار تخصصی",
-    text: "قواعد محاسبه‌ی قیمت، هزینه یا نتیجه را یک‌بار تعریف کن و خروجی قابل پیگیری بگیر.",
+    title: {
+      fa: "محاسبات و ابزار تخصصی",
+      en: "Calculators and specialist tools",
+    },
+    text: {
+      fa: "قواعد محاسبه‌ی قیمت، هزینه یا نتیجه را یک‌بار تعریف کن و خروجی قابل پیگیری بگیر.",
+      en: "Define pricing, cost or calculation rules once and keep a record of the results.",
+    },
     icon: Gauge,
-    tags: ["فرمول اختصاصی", "اعتبارسنجی ورودی", "ذخیره‌ی سابقه"],
+    tags: {
+      fa: ["فرمول اختصاصی", "اعتبارسنجی ورودی", "ذخیره‌ی سابقه"],
+      en: ["Custom formulas", "Input validation", "Calculation history"],
+    },
   },
   {
-    number: "03",
-    title: "ثبت و مدیریت اطلاعات",
-    text: "داده‌های پراکنده را به رکوردهایی تبدیل کن که سریع پیدا، اصلاح و خروجی گرفته می‌شوند.",
+    title: { fa: "ثبت و مدیریت اطلاعات", en: "Data entry and records" },
+    text: {
+      fa: "داده‌های پراکنده را به رکوردهایی تبدیل کن که سریع پیدا، اصلاح و خروجی گرفته می‌شوند.",
+      en: "Turn scattered data into records your team can find, edit and export quickly.",
+    },
     icon: Boxes,
-    tags: ["دسته‌بندی", "پیوست فایل", "Excel و CSV"],
+    tags: {
+      fa: ["دسته‌بندی", "پیوست فایل", "Excel و CSV"],
+      en: ["Categories", "Attachments", "Excel and CSV"],
+    },
   },
   {
-    number: "04",
-    title: "انبار، سفارش و عملیات",
-    text: "ورود و خروج کالا، مراحل سفارش و مسئول هر مرحله را قابل مشاهده کن.",
+    title: { fa: "انبار، سفارش و عملیات", en: "Inventory and order tracking" },
+    text: {
+      fa: "ورود و خروج کالا، مراحل سفارش و مسئول هر مرحله را قابل مشاهده کن.",
+      en: "See stock movements, order stages and who is responsible for each step.",
+    },
     icon: PackageCheck,
-    tags: ["موجودی", "رهگیری سفارش", "چاپ لیبل"],
+    tags: {
+      fa: ["موجودی", "رهگیری سفارش", "چاپ لیبل"],
+      en: ["Stock levels", "Order tracking", "Label printing"],
+    },
   },
   {
-    number: "05",
-    title: "گزارش و داشبورد",
-    text: "از فایل یا پایگاه داده به یک تصویر روشن از فروش، موجودی و عملکرد برس.",
+    title: { fa: "گزارش و داشبورد", en: "Reports and dashboards" },
+    text: {
+      fa: "از فایل یا پایگاه داده به یک تصویر روشن از فروش، موجودی و عملکرد برس.",
+      en: "Turn files and databases into a clear view of sales, stock and performance.",
+    },
     icon: BarChart3,
-    tags: ["نمودار", "فیلتر تاریخ", "خروجی PDF"],
+    tags: {
+      fa: ["نمودار", "فیلتر تاریخ", "خروجی PDF"],
+      en: ["Charts", "Date filters", "PDF export"],
+    },
   },
   {
-    number: "06",
-    title: "فایل‌ها و Excel",
-    text: "ترکیب، پاک‌سازی، تبدیل و پردازش انبوه فایل‌ها را از کار دستی جدا کن.",
+    title: { fa: "فایل‌ها و Excel", en: "Files and Excel" },
+    text: {
+      fa: "ترکیب، پاک‌سازی، تبدیل و پردازش انبوه فایل‌ها را از کار دستی جدا کن.",
+      en: "Automate merging, cleaning and converting files in batches.",
+    },
     icon: FileSpreadsheet,
-    tags: ["پردازش انبوه", "تبدیل فرمت", "خروجی استاندارد"],
+    tags: {
+      fa: ["پردازش انبوه", "تبدیل فرمت", "خروجی استاندارد"],
+      en: ["Batch processing", "Format conversion", "Standard exports"],
+    },
   },
-] satisfies {
-  number: string;
-  title: string;
-  text: string;
-  icon: LucideIcon;
-  tags: string[];
-}[];
+];
 
 const processSteps = [
-  ["01", "شناخت کار واقعی", "یک یا چند کار روزمره را قدم‌به‌قدم بررسی می‌کنیم."],
-  ["02", "طراحی نسخه‌ی اول", "ورودی، خروجی، نقش‌ها و صفحه‌های ضروری را مشخص می‌کنیم."],
-  ["03", "ساخت و اتصال", "برنامه، داده، فایل‌ها و تجهیزات موردنیاز را به هم وصل می‌کنیم."],
-  ["04", "آزمون روی محیط واقعی", "نصب، چاپ، ورود فایل، دسترسی و سناریوهای خطا را می‌سنجیم."],
-  ["05", "تحویل و آموزش", "روش نصب، پشتیبان‌گیری و استفاده‌ی تیم را روشن می‌کنیم."],
-  ["06", "نگهداری و توسعه", "بعد از راه‌اندازی، مسیر اصلاح و قابلیت‌های بعدی مشخص می‌شود."],
+  [
+    "01",
+    "شناخت کار واقعی",
+    "یک یا چند کار روزمره را قدم‌به‌قدم بررسی می‌کنیم.",
+    "Understand the work",
+    "We walk through one or more everyday tasks with your team.",
+  ],
+  [
+    "02",
+    "طراحی نسخه‌ی اول",
+    "ورودی، خروجی، نقش‌ها و صفحه‌های ضروری را مشخص می‌کنیم.",
+    "Design the first version",
+    "We define the inputs, outputs, roles and screens the first version needs.",
+  ],
+  [
+    "03",
+    "ساخت و اتصال",
+    "برنامه، داده، فایل‌ها و تجهیزات موردنیاز را به هم وصل می‌کنیم.",
+    "Build and connect",
+    "We connect the application to the data, files and equipment your workflow depends on.",
+  ],
+  [
+    "04",
+    "آزمون روی محیط واقعی",
+    "نصب، چاپ، ورود فایل، دسترسی و سناریوهای خطا را می‌سنجیم.",
+    "Test in your environment",
+    "We test installation, printing, imports, access and common failure scenarios.",
+  ],
+  [
+    "05",
+    "تحویل و آموزش",
+    "روش نصب، پشتیبان‌گیری و استفاده‌ی تیم را روشن می‌کنیم.",
+    "Hand over and train",
+    "We show your team how to install, back up and use the software.",
+  ],
+  [
+    "06",
+    "نگهداری و توسعه",
+    "بعد از راه‌اندازی، مسیر اصلاح و قابلیت‌های بعدی مشخص می‌شود.",
+    "Maintain and improve",
+    "After launch, we agree how to handle fixes and plan the next features.",
+  ],
 ] as const;
 
 const fallbackFaq = [
-  ["نرم‌افزار بدون اینترنت هم کار می‌کند؟", "اگر کار آفلاین جزو نیاز باشد، ذخیره‌سازی محلی و روش پشتیبان‌گیری از ابتدا طراحی می‌شود. اتصال به سرویس بیرونی همچنان به اینترنت نیاز دارد."],
-  ["می‌شود چند نفر هم‌زمان از برنامه استفاده کنند؟", "بله؛ تعداد کاربران، محل ذخیره‌ی داده و شرایط شبکه در معماری و آزمون پذیرش لحاظ می‌شوند."],
-  ["اطلاعات Excel یا برنامه‌ی قبلی قابل انتقال است؟", "بعد از بررسی ساختار فایل، کیفیت داده و دسترسی به خروجی، محدوده‌ی انتقال و پاک‌سازی مشخص می‌شود."],
-  ["برنامه روی چه نسخه‌ای از ویندوز نصب می‌شود؟", "نسخه‌های هدف و پیش‌نیازهای نصب برای همان پروژه اعلام و روی محیط‌های توافق‌شده آزمایش می‌شوند."],
+  [
+    "نرم‌افزار بدون اینترنت هم کار می‌کند؟",
+    "اگر کار آفلاین جزو نیاز باشد، ذخیره‌سازی محلی و روش پشتیبان‌گیری از ابتدا طراحی می‌شود. اتصال به سرویس بیرونی همچنان به اینترنت نیاز دارد.",
+  ],
+  [
+    "می‌شود چند نفر هم‌زمان از برنامه استفاده کنند؟",
+    "بله؛ تعداد کاربران، محل ذخیره‌ی داده و شرایط شبکه در معماری و آزمون پذیرش لحاظ می‌شوند.",
+  ],
+  [
+    "اطلاعات Excel یا برنامه‌ی قبلی قابل انتقال است؟",
+    "بعد از بررسی ساختار فایل، کیفیت داده و دسترسی به خروجی، محدوده‌ی انتقال و پاک‌سازی مشخص می‌شود.",
+  ],
+  [
+    "برنامه روی چه نسخه‌ای از ویندوز نصب می‌شود؟",
+    "نسخه‌های هدف و پیش‌نیازهای نصب برای همان پروژه اعلام و روی محیط‌های توافق‌شده آزمایش می‌شوند.",
+  ],
 ] as const;
 
 const specialty = specialtyServices.find(
   (item) => item.slug === "windows-software-development",
 );
-const faq = specialty?.faqs.map((item) => [item.question, item.answer] as const) ?? fallbackFaq;
+const faq = {
+  fa:
+    specialty?.faqs.map((item) => [item.question, item.answer] as const) ??
+    fallbackFaq,
+  en: [
+    [
+      "Can the software work offline?",
+      "If you need offline access, we design local storage and offline features from the start. Connections to external services and data synchronization still need a network, so we plan how the app should behave when that connection drops.",
+    ],
+    [
+      "Can several people use it at the same time?",
+      "Yes, with a multi-user setup, clear roles and the right infrastructure. The number of users, where the data lives and the network setup all inform the estimate and acceptance testing.",
+    ],
+    [
+      "Can you move my existing data from Excel or another app?",
+      "We scope the migration after reviewing how you can export the data, its structure and quality, and how incomplete or duplicate records should be handled.",
+    ],
+    [
+      "Which versions of Windows will it run on?",
+      "We agree on supported Windows versions and installation requirements for your project. We check your computers before estimating and test the installer in the agreed environment.",
+    ],
+  ],
+} as const;
 
-function PrimaryLink({ children }: { children: React.ReactNode }) {
+function PrimaryLink({
+  href,
+  arrow: Arrow,
+  children,
+}: {
+  href: string;
+  arrow: typeof ArrowUpLeft;
+  children: React.ReactNode;
+}) {
   return (
-    <Link className={styles.primary} href={inquiryHref}>
+    <Link className={styles.primary} href={href}>
       {children}
-      <ArrowUpLeft size={17} aria-hidden="true" />
+      <Arrow size={17} aria-hidden="true" />
     </Link>
   );
 }
 
-export function WindowsSoftwarePage() {
+export async function WindowsSoftwarePage() {
+  const { locale, href } = await getTranslations();
+  const fa = locale === "fa";
+  const text = (persian: string, english: string) => (fa ? persian : english);
+  const Arrow = fa ? ArrowLeft : ArrowRight;
+  const PrimaryArrow = fa ? ArrowUpLeft : ArrowUpRight;
+  const format = new Intl.NumberFormat(locale, { useGrouping: false });
   return (
-    <main className={styles.page} dir="rtl" data-windows-software-page>
+    <main
+      className={styles.page}
+      dir={fa ? "rtl" : "ltr"}
+      data-windows-software-page
+    >
       <div className={styles.container}>
         <header className={styles.hero}>
           <div className={styles.breadcrumb}>
-            <Link href="/services/software">نرم‌افزار اختصاصی</Link>
+            <Link href={href("/services/software")}>
+              {text("نرم‌افزار اختصاصی", "Custom software")}
+            </Link>
             <span>/</span>
-            <span>نرم‌افزار ویندوز</span>
+            <span>{text("نرم‌افزار ویندوز", "Windows software")}</span>
           </div>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>WINDOWS DESKTOP SOFTWARE DEVELOPMENT</p>
-              <h1>بعضی کارها، یه نرم‌افزار مخصوص خودشون می‌خوان.</h1>
+              <h1>
+                {text("نرم‌افزار ویندوز،", "Windows software")}{" "}
+                <span>
+                  {text("متناسب با کار شما", "built around your work")}
+                </span>
+              </h1>
               <p className={styles.lead}>
-                از ثبت اطلاعات و محاسبه تا گزارش‌گیری، پردازش فایل و ارتباط با تجهیزات؛ برنامه‌ای می‌سازیم که با روش واقعی کار مجموعه‌ات جور باشد.
-              </p>
-              <p className={styles.heroNote}>
-                لازم نیست از قبل بدانی چه زبان یا ساختاری مناسب پروژه‌ات است. بگو الان کارت چطور انجام می‌شود و دوست داری چه چیزی راحت‌تر شود.
+                {text(
+                  "ثبت سفارش، محاسبات، گزارش‌گیری یا کار با تجهیزات رو در برنامه‌ای جمع کن که برای روال کاری مجموعه‌ات ساخته شده.",
+                  "Bring orders, calculations, reports or equipment into a desktop application designed around how your team works.",
+                )}
               </p>
               <div className={styles.actions}>
-                <PrimaryLink>می‌خوام نرم‌افزار ویندوز بسازم</PrimaryLink>
+                <PrimaryLink href={href(inquiryHref)} arrow={PrimaryArrow}>
+                  {text(
+                    "می‌خوام نرم‌افزار ویندوز بسازم",
+                    "Discuss a Windows app",
+                  )}
+                </PrimaryLink>
                 <a className={styles.secondary} href="#windows-solutions">
-                  ببین چه نرم‌افزارهایی می‌سازیم <ArrowDown size={16} aria-hidden="true" />
+                  {text("ببین چه نرم‌افزارهایی می‌سازیم", "See what we build")}{" "}
+                  <ArrowDown size={16} aria-hidden="true" />
                 </a>
               </div>
             </div>
-            <div className={styles.productStage} aria-label="نمونه‌ی رابط نرم‌افزار ویندوز">
-              <div className={styles.stageTopline}>
-                <span>RYCODE / WINDOWS TOOLKIT</span>
-                <i aria-hidden="true" />
-                <b>BUILD 01.24</b>
-              </div>
-              <div className={styles.window}>
+            <figure className={styles.productStage}>
+              <div className={styles.window} aria-hidden="true">
                 <div className={styles.windowBar}>
-                  <span className={styles.windowDots}><i /><i /><i /></span>
-                  <strong>داشبورد عملیات</strong>
-                  <span className={styles.windowStatus}><Check size={13} /> همگام‌سازی شد</span>
+                  <Monitor size={15} />
+                  <strong>
+                    {text("داشبورد عملیات", "Operations dashboard")}
+                  </strong>
+                  <span className={styles.windowDots}>
+                    <i />
+                    <i />
+                    <i />
+                  </span>
                 </div>
                 <div className={styles.windowBody}>
                   <aside className={styles.windowSidebar}>
-                    <span className={styles.appMark}>R</span>
-                    <b>نمای کلی</b>
-                    <span>سفارش‌ها</span>
-                    <span>موجودی</span>
-                    <span>گزارش‌ها</span>
-                    <span>تنظیمات</span>
+                    <b>
+                      <BarChart3 size={15} /> {text("نمای کلی", "Overview")}
+                    </b>
+                    <span>
+                      <ClipboardList size={15} /> {text("سفارش‌ها", "Orders")}
+                    </span>
+                    <span>
+                      <Boxes size={15} /> {text("موجودی", "Inventory")}
+                    </span>
+                    <span>
+                      <FileSpreadsheet size={15} />{" "}
+                      {text("گزارش‌ها", "Reports")}
+                    </span>
                   </aside>
                   <div className={styles.windowMain}>
                     <div className={styles.windowHeading}>
-                      <div><small>امروز، ۲۴ آبان</small><h2>وضعیت کارها</h2></div>
-                      <button type="button">+ ثبت مورد جدید</button>
+                      <strong>{text("وضعیت سفارش‌ها", "Order status")}</strong>
+                      <span>{text("۷ روز اخیر", "Last 7 days")}</span>
                     </div>
                     <div className={styles.metrics}>
-                      <div><span>سفارش‌های باز</span><strong>۲۴۸</strong><em>+۱۲٪</em></div>
-                      <div><span>در انتظار بررسی</span><strong>۳۶</strong><em>+۴٪</em></div>
-                      <div><span>موجودی بحرانی</span><strong>۰۸</strong><em className={styles.warning}>نیازمند توجه</em></div>
+                      <div>
+                        <strong>{format.format(248)}</strong>
+                        <span>{text("سفارش ثبت‌شده", "Orders received")}</span>
+                      </div>
+                      <div>
+                        <strong>{format.format(36)}</strong>
+                        <span>{text("در حال انجام", "In progress")}</span>
+                      </div>
+                      <div>
+                        <strong>{format.format(8)}</strong>
+                        <span>{text("هشدار موجودی", "Stock alerts")}</span>
+                      </div>
                     </div>
                     <div className={styles.chartPanel}>
-                      <div className={styles.chartLabel}><b>روند سفارش‌ها</b><span>۷ روز اخیر⌄</span></div>
-                      <div className={styles.chartBars}><i style={{ height: "38%" }} /><i style={{ height: "56%" }} /><i style={{ height: "44%" }} /><i style={{ height: "72%" }} /><i style={{ height: "61%" }} /><i style={{ height: "88%" }} /><i style={{ height: "78%" }} /><i style={{ height: "96%" }} /></div>
-                      <div className={styles.chartAxis}><span>شنبه</span><span>یکشنبه</span><span>دوشنبه</span><span>سه‌شنبه</span><span>چهارشنبه</span><span>پنجشنبه</span><span>جمعه</span></div>
-                    </div>
-                    <div className={styles.tablePanel}>
-                      <span>آخرین فعالیت‌ها</span><div><b>ثبت سفارش جدید</b><small>فروشگاه مرکزی · همین حالا</small><em>تکمیل شد</em></div><div><b>گزارش موجودی</b><small>انبار · ۱۲ دقیقه پیش</small><em>در حال بررسی</em></div>
+                      <b>{text("روند سفارش‌ها", "Order trend")}</b>
+                      <div className={styles.chartBars}>
+                        {orderTrend.map(([day, height]) => (
+                          <i key={day.en} style={{ height: `${height}%` }} />
+                        ))}
+                      </div>
+                      <div className={styles.chartAxis}>
+                        {orderTrend.map(([day]) => (
+                          <span key={day.en}>{day[locale]}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <span className={styles.stageTag}>OFFLINE READY / ROLE-BASED / EXPORTABLE</span>
-            </div>
+              <figcaption>
+                {text(
+                  "پیش‌نمایش رابط نرم‌افزار با داده‌های نمونه",
+                  "Application preview with sample data",
+                )}
+              </figcaption>
+            </figure>
           </div>
           <div className={styles.quickPaths}>
-            {quickPaths.map(({ label, detail, href, icon: Icon }, index) => (
-              <a href={href} key={label}>
-                <span className={styles.quickNumber}>۰{index + 1}</span>
+            {quickPaths.map(({ label, detail, href, icon: Icon }) => (
+              <a href={href} key={href}>
                 <Icon size={20} aria-hidden="true" />
-                <span><b>{label}</b><small>{detail}</small></span>
-                <ArrowUpLeft size={17} aria-hidden="true" />
+                <span>
+                  <b>{label[locale]}</b>
+                  <small>{detail[locale]}</small>
+                </span>
+                <ArrowDown size={17} aria-hidden="true" />
               </a>
             ))}
           </div>
         </header>
 
-        <section className={styles.problem} aria-labelledby="windows-problem-title">
+        <section
+          className={styles.problem}
+          aria-labelledby="windows-problem-title"
+        >
           <div className={styles.sectionIntro}>
-            <p className={styles.eyebrow}>THE REAL BOTTLENECK</p>
-            <h2 id="windows-problem-title">هنوز برای انجام یه کار ساده، چند تا برنامه باز می‌کنی؟</h2>
-            <p>مشکل همیشه از روش کارت نیست؛ گاهی ابزار مناسبی برای همان روش وجود ندارد.</p>
+            <h2 id="windows-problem-title">
+              {text(
+                "هنوز برای انجام یه کار ساده، چند تا برنامه باز می‌کنی؟",
+                "Still opening several apps to do one simple job?",
+              )}
+            </h2>
+            <p>
+              {text(
+                "مشکل همیشه از روش کارت نیست؛ گاهی ابزار مناسبی برای همان روش وجود ندارد.",
+                "Sometimes the workflow is fine and you just need a tool that fits it.",
+              )}
+            </p>
           </div>
-          <div className={styles.problemList}>
-            {["اطلاعات کاری بین چند فایل Excel پخش شده.", "هر روز محاسبات مشابه را چند بار انجام می‌دهی.", "برای چاپ فاکتور، لیبل یا گزارش چند مرحله طی می‌کنی.", "نرم‌افزار آماده با فرایند واقعی مجموعه هماهنگ نیست.", "باید اطلاعات یک دستگاه را دریافت و ثبت کنی.", "بخشی از کار باید بدون اینترنت انجام شود."].map((item, index) => (
-              <div key={item}><span>۰{index + 1}</span><p>{item}</p><Check size={17} aria-hidden="true" /></div>
+          <ul className={styles.problemList}>
+            {[
+              text(
+                "اطلاعات کاری بین چند فایل Excel پخش شده.",
+                "Business data is scattered across spreadsheets.",
+              ),
+              text(
+                "هر روز محاسبات مشابه را چند بار انجام می‌دهی.",
+                "You repeat the same calculations several times a day.",
+              ),
+              text(
+                "برای چاپ فاکتور، لیبل یا گزارش چند مرحله طی می‌کنی.",
+                "Printing an invoice, label or report takes several steps.",
+              ),
+              text(
+                "نرم‌افزار آماده با فرایند واقعی مجموعه هماهنگ نیست.",
+                "Off-the-shelf tools do not fit your team's workflow.",
+              ),
+              text(
+                "باید اطلاعات یک دستگاه را دریافت و ثبت کنی.",
+                "You need to capture and save data from a device.",
+              ),
+              text(
+                "بخشی از کار باید بدون اینترنت انجام شود.",
+                "Part of the work needs to happen offline.",
+              ),
+            ].map((item) => (
+              <li key={item}>
+                <Check size={17} aria-hidden="true" />
+                <p>{item}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
-        <section className={styles.solutions} id="windows-solutions" aria-labelledby="windows-solutions-title">
+        <section
+          className={styles.solutions}
+          id="windows-solutions"
+          aria-labelledby="windows-solutions-title"
+        >
           <div className={styles.sectionHeader}>
-            <div><p className={styles.eyebrow}>WHAT WE CAN BUILD</p><h2 id="windows-solutions-title">از یه ابزار کوچک تا برنامه‌ی کامل شرکت.</h2></div>
-            <p>نوع نرم‌افزار، امکانات و شیوه‌ی ذخیره‌ی اطلاعات را بر اساس کاری که واقعاً انجام می‌دهی مشخص می‌کنیم.</p>
+            <h2 id="windows-solutions-title">
+              {text("چه نرم‌افزارهایی می‌سازیم؟", "What can we build for you?")}
+            </h2>
+            <p>
+              {text(
+                "نوع نرم‌افزار، امکانات و شیوه‌ی ذخیره‌ی اطلاعات را بر اساس کاری که واقعاً انجام می‌دهی مشخص می‌کنیم.",
+                "We choose the application, its features and the way it stores data based on the work you do every day.",
+              )}
+            </p>
           </div>
           <div className={styles.solutionGrid}>
-            {solutionCards.map(({ number, title, text, icon: Icon, tags }) => (
-              <article key={number}>
-                <div className={styles.cardHead}><span>{number}</span><Icon size={21} aria-hidden="true" /></div>
-                <h3>{title}</h3><p>{text}</p>
-                <ul>{tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+            {solutionCards.map(({ title, text, icon: Icon, tags }) => (
+              <article key={title.en}>
+                <div className={styles.cardHead}>
+                  <Icon size={22} aria-hidden="true" />
+                </div>
+                <h3>{title[locale]}</h3>
+                <p>{text[locale]}</p>
+                <ul>
+                  {tags[locale].map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <section className={styles.architecture} id="windows-equipment" aria-labelledby="windows-architecture-title">
+        <section
+          className={styles.architecture}
+          id="windows-equipment"
+          aria-labelledby="windows-architecture-title"
+        >
           <div className={styles.architectureCopy}>
-            <p className={styles.eyebrow}>A DESKTOP SYSTEM THAT FITS</p>
-            <h2 id="windows-architecture-title">برنامه فقط یک پنجره نیست؛ بخشی از مسیر کار توست.</h2>
-            <p>می‌توانیم نرم‌افزار را برای کار آفلاین، شبکه‌ی داخلی، چندکاربره‌بودن، چاپ، ورود فایل یا ارتباط با تجهیزات آماده کنیم؛ هرکدام فقط وقتی که واقعاً به مسئله کمک کند.</p>
-            <div className={styles.capabilities}><span><HardDrive size={17} /> آفلاین و محلی</span><span><ShieldCheck size={17} /> نقش و دسترسی</span><span><Printer size={17} /> چاپ و خروجی</span><span><Workflow size={17} /> گردش کار روشن</span></div>
+            <h2 id="windows-architecture-title">
+              {text(
+                "برنامه کجا و چطور کار می‌کند؟",
+                "Where and how will the application run?",
+              )}
+            </h2>
+            <p>
+              {text(
+                "از یک رایانهٔ آفلاین تا چند کاربر روی شبکهٔ داخلی، شیوهٔ نصب رو بر اساس محل ذخیرهٔ داده، دستگاه‌ها و نیاز تیم مشخص می‌کنیم.",
+                "From one offline computer to multiple users on a local network, we plan the setup around your data, devices and team.",
+              )}
+            </p>
           </div>
-          <div className={styles.systemMap}>
-            <div className={styles.mapNode}><Monitor size={21} /><b>نرم‌افزار ویندوز</b><small>ثبت / پردازش / گزارش</small></div>
-            <div className={styles.mapLine}><i /><i /><i /></div>
-            <div className={styles.mapNodes}><span><FileSpreadsheet size={18} /> Excel و CSV</span><span><PackageCheck size={18} /> سفارش و انبار</span><span><Printer size={18} /> چاپگر و دستگاه</span></div>
+          <ul className={styles.systemOptions}>
+            {systemOptions.map(({ icon: Icon, title, description }) => (
+              <li key={title.en}>
+                <Icon size={21} aria-hidden="true" />
+                <div>
+                  <h3>{title[locale]}</h3>
+                  <p>{description[locale]}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          className={styles.existing}
+          id="windows-existing"
+          aria-labelledby="windows-existing-title"
+        >
+          <div className={styles.existingCopy}>
+            <h2 id="windows-existing-title">
+              {text(
+                "نرم‌افزار فعلی رو می‌شه بهتر کرد؟",
+                "Can we improve your existing software?",
+              )}
+            </h2>
+            <p>
+              {text(
+                "کد، داده‌ها و مشکلات برنامه رو بررسی می‌کنیم تا معلوم بشه چه بخش‌هایی رو می‌شه حفظ کرد و کجا به اصلاح یا بازسازی نیاز داریم.",
+                "We review the code, data and known issues to see what can stay and what needs a fix or a rebuild.",
+              )}
+            </p>
+            <ul>
+              {[
+                text(
+                  "رفع باگ و بهبود رابط کاربری",
+                  "Bug fixes and interface improvements",
+                ),
+                text(
+                  "سازگاری با نسخهٔ هدف ویندوز",
+                  "Compatibility with the target Windows version",
+                ),
+                text(
+                  "اضافه کردن قابلیت یا خروجی جدید",
+                  "New features and export formats",
+                ),
+              ].map((item) => (
+                <li key={item}>
+                  <Check size={17} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link className={styles.textLink} href={href("/services/rescue")}>
+              {text(
+                "رفع باگ و توسعهٔ پروژه‌های موجود",
+                "Fix and improve an existing project",
+              )}{" "}
+              <Arrow size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className={styles.existingPhoto}>
+            <Image
+              src="/brand/software-service/desktop-workspace.webp"
+              alt=""
+              fill
+              sizes="(max-width: 980px) 92vw, (max-width: 1400px) 49vw, 700px"
+            />
           </div>
         </section>
 
-        <section className={styles.existing} id="windows-existing" aria-labelledby="windows-existing-title">
-          <div><p className={styles.eyebrow}>HAVE AN EXISTING APP?</p><h2 id="windows-existing-title">لازم نیست همیشه از صفر شروع کنی.</h2><p>اگر نرم‌افزار قدیمی داری، اول وضعیت کد، فناوری، داده و مشکل‌های واقعی‌اش را بررسی می‌کنیم. بعد مشخص می‌شود اصلاح، توسعه یا بازسازی مرحله‌ای کدام مسیر منطقی‌تری است.</p></div>
-          <ul>{["رفع باگ و اصلاح بخش‌های مشکل‌دار", "بازطراحی رابط کاربری و گزارش‌ها", "سازگاری با نسخه‌ی هدف ویندوز", "اضافه‌کردن قابلیت و خروجی جدید", "بررسی مسیر نصب و نگهداری"].map((item) => <li key={item}><Check size={17} />{item}</li>)}</ul>
-        </section>
-
-        <section className={styles.process} aria-labelledby="windows-process-title">
-          <div className={styles.sectionHeader}><div><p className={styles.eyebrow}>THE DELIVERY PATH</p><h2 id="windows-process-title">از سناریوی کاری تا اجرای آزمایشی.</h2></div><p>نسخه‌ی اول را طوری تعریف می‌کنیم که بشود با آن کار کرد، آزمود و درباره‌ی قدم بعدی تصمیم گرفت.</p></div>
-          <ol>{processSteps.map(([number, title, text]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+        <section
+          className={styles.process}
+          aria-labelledby="windows-process-title"
+        >
+          <div className={styles.sectionHeader}>
+            <h2 id="windows-process-title">
+              {text(
+                "از شناخت کار تا نصب و تحویل",
+                "From discovery to installation and handover",
+              )}
+            </h2>
+            <p>
+              {text(
+                "نسخهٔ اول رو با کارهای روزمرهٔ تیمت می‌سنجیم. قبل از تحویل، نصب و مسیرهای اصلی رو در محیط توافق‌شده آزمایش می‌کنیم.",
+                "We check the first version against your team's daily tasks, then test installation and core workflows in the agreed environment before handover.",
+              )}
+            </p>
+          </div>
+          <ol>
+            {processSteps.map(
+              ([number, faTitle, faDescription, enTitle, enDescription]) => (
+                <li key={number}>
+                  <span>{number}</span>
+                  <div>
+                    <h3>{text(faTitle, enTitle)}</h3>
+                    <p>{text(faDescription, enDescription)}</p>
+                  </div>
+                </li>
+              ),
+            )}
+          </ol>
         </section>
 
         <section className={styles.faq} aria-labelledby="windows-faq-title">
-          <h2 id="windows-faq-title">سؤال‌هایی که قبل از شروع پیش می‌آیند.</h2>
-          <div>{faq.slice(0, 6).map(([question, answer]) => <details key={question}><summary>{question}<Plus size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>
+          <h2 id="windows-faq-title">
+            {text("سؤال‌های متداول", "Frequently asked questions")}
+          </h2>
+          <div>
+            {faq[locale].map(([question, answer]) => (
+              <details key={question} name="windows-faq">
+                <summary>
+                  {question}
+                  <Plus size={18} aria-hidden="true" />
+                </summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         <section className={styles.closing}>
-          <div><p className={styles.eyebrow}>START WITH THE REAL WORK</p><h2>بگو هر روز پشت کامپیوتر چه کاری انجام می‌دی.</h2><p>شاید یک نرم‌افزار کامل لازم داشته باشی، شاید یک ابزار محاسباتی کوچک. باهم مشخص می‌کنیم چه چیزی واقعاً باید ساخته شود.</p></div>
-          <div className={styles.actions}><PrimaryLink>بیا درباره‌ی نرم‌افزارم حرف بزنیم</PrimaryLink><Link className={styles.secondary} href="/services/software">همه‌ی نرم‌افزارها <ArrowLeft size={16} aria-hidden="true" /></Link></div>
+          <div>
+            <h2>
+              {text(
+                "کدوم کار رو می‌خوای ساده‌تر کنی؟",
+                "Which task would you like to simplify?",
+              )}
+            </h2>
+            <p>
+              {text(
+                "بگو امروز چطور انجامش می‌دی و چه خروجی‌ای لازم داری. از همین‌جا محدودهٔ نسخهٔ اول رو مشخص می‌کنیم.",
+                "Tell us how you do it today and what result you need. We can use that to scope the first version.",
+              )}
+            </p>
+          </div>
+          <div className={styles.actions}>
+            <PrimaryLink href={href(inquiryHref)} arrow={PrimaryArrow}>
+              {text(
+                "بیا درباره‌ی نرم‌افزارم حرف بزنیم",
+                "Talk about my software",
+              )}
+            </PrimaryLink>
+            <Link
+              className={styles.secondary}
+              href={href("/services/software")}
+            >
+              {text("همه‌ی نرم‌افزارها", "All software services")}{" "}
+              <Arrow size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </section>
       </div>
     </main>

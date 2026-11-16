@@ -3,25 +3,28 @@ import { BrandText } from "@/components/pages/rycode-services/brand-text";
 
 import {
   ArrowRight,
-  Blocks,
   Bot,
   ChartNoAxesCombined,
   ChevronDown,
-  CircleHelp,
   CodeXml,
   FileSpreadsheet,
   Languages,
   Headset,
   Menu,
-  Route,
   ScanLine,
-  ShieldCheck,
-  UsersRound,
   Wrench,
   X,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
+import { useSearchParams } from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -29,8 +32,9 @@ import {
   useReducedMotion,
 } from "motion/react";
 
-import { Link, usePathname } from "./navigation";
-import type { Locale } from "@/lib/i18n";
+import { Link, sourceHref, usePathname } from "./navigation";
+import { localizedHref, type Locale } from "@/lib/i18n";
+import { contentCollectionPath } from "@/lib/content-route";
 import { getPrimaryNav, type PrimaryNavItem } from "./nav-content";
 import { useHeaderServices } from "./services";
 import { cn } from "./utils";
@@ -39,7 +43,13 @@ import { Logo } from "./logo";
 import { Container } from "./primitives";
 import { ThemeToggle } from "./theme-toggle";
 
-export function SiteHeader({ locale }: { locale: Locale }) {
+export function SiteHeader({
+  locale,
+  unavailablePath,
+}: {
+  locale: Locale;
+  unavailablePath?: string;
+}) {
   const pathname = usePathname();
   const [mobilePath, setMobilePath] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -55,6 +65,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const overlay = isHome && !scrolled;
   const menuPath = `${locale}:${pathname}`;
   const mobileOpen = mobilePath === menuPath;
+  const languageLink = (
+    <LanguageLink
+      locale={locale}
+      pathname={pathname}
+      unavailablePath={unavailablePath}
+    />
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 72);
@@ -106,7 +123,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Container className="rycode-header-inner relative grid h-14 grid-cols-[1fr_auto_1fr] items-center gap-4 [direction:ltr] sm:h-[72px] xl:max-w-[1440px] xl:gap-5">
             <HeaderActions
               locale={locale}
-              pathname={pathname}
+              languageLink={languageLink}
               overlay={overlay}
               className="hidden min-w-0 justify-self-start sm:flex"
             />
@@ -196,6 +213,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               locale={locale}
               nav={nav}
               pathname={pathname}
+              languageLink={languageLink}
               onClose={() => setMobilePath(null)}
               returnFocusRef={mobileTrigger}
             />
@@ -401,11 +419,6 @@ const submenuIcons: Record<string, LucideIcon> = {
   "/services/api-integration": Bot,
   "/services/data-analytics": FileSpreadsheet,
   "/services/ongoing-support": Headset,
-  "/about": UsersRound,
-  "/about#approach": ShieldCheck,
-  "/about#process": Route,
-  "/about#technology": Blocks,
-  "/faq": CircleHelp,
 };
 
 function SubmenuLink({
@@ -481,17 +494,15 @@ function ServicesMenu({
 
 function HeaderActions({
   locale,
-  pathname,
+  languageLink,
   overlay,
   className,
 }: {
   locale: Locale;
-  pathname: string;
+  languageLink: ReactNode;
   overlay: boolean;
   className?: string;
 }) {
-  const isFa = locale === "fa";
-
   return (
     <BrandText>
       <div
@@ -499,20 +510,70 @@ function HeaderActions({
         data-overlay={overlay}
         dir="ltr"
       >
-        <Link
-          href={pathname}
-          locale={isFa ? "en" : "fa"}
-          hrefLang={isFa ? "en" : "fa"}
-          aria-label={isFa ? "Switch to English" : "تغییر زبان به فارسی"}
-          title={isFa ? "Switch to English" : "تغییر زبان به فارسی"}
-          className="rycode-language-link"
-        >
-          <Languages size={17} strokeWidth={1.6} aria-hidden />
-          <span lang={isFa ? "en" : "fa"}>{isFa ? "English" : "فارسی"}</span>
-        </Link>
+        {languageLink}
         <ThemeToggle locale={locale} variant={overlay ? "light" : "default"} />
       </div>
     </BrandText>
+  );
+}
+
+function LanguageLink({
+  locale,
+  pathname,
+  unavailablePath,
+}: {
+  locale: Locale;
+  pathname: string;
+  unavailablePath?: string;
+}) {
+  const language = locale === "fa" ? "en" : "fa";
+  const label = language === "en" ? "Switch to English" : "تغییر زبان به فارسی";
+  const path = sourceHref(pathname);
+  const translatedPath = localizedHref(path, language);
+  const collection = contentCollectionPath(path);
+  const fallback = collection ? localizedHref(collection, language) : null;
+  const initialFallback =
+    unavailablePath &&
+    localizedHref(unavailablePath, locale) === localizedHref(path, locale)
+      ? fallback
+      : null;
+  const search = useSearchParams().toString();
+
+  function prepareNavigation(event: MouseEvent<HTMLAnchorElement>) {
+    const { pathname: current, search, hash } = window.location;
+    const canonical = document.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]',
+    );
+    const alternate = document.querySelector(
+      language === "en"
+        ? 'link[rel="alternate"][hreflang="en"]'
+        : 'link[rel="alternate"][hreflang="fa-IR"], link[rel="alternate"][hreflang="fa"]',
+    );
+    // The shared header survives navigation between pages in the same locale.
+    const currentFallback =
+      canonical && new URL(canonical.href).pathname === current
+        ? (alternate ? null : fallback)
+        : initialFallback;
+    event.currentTarget.href =
+      currentFallback ?? `${translatedPath}${search}${hash}`;
+  }
+
+  return (
+    <a
+      href={
+        initialFallback ?? (search ? `${translatedPath}?${search}` : translatedPath)
+      }
+      hrefLang={language}
+      lang={language}
+      aria-label={label}
+      title={label}
+      onClick={prepareNavigation}
+      onAuxClick={prepareNavigation}
+      className="rycode-language-link"
+    >
+      <Languages size={17} strokeWidth={1.6} aria-hidden />
+      <span>{language === "en" ? "English" : "فارسی"}</span>
+    </a>
   );
 }
 
@@ -520,12 +581,14 @@ function MobileMenu({
   locale,
   nav,
   pathname,
+  languageLink,
   onClose,
   returnFocusRef,
 }: {
   locale: Locale;
   nav: PrimaryNavItem[];
   pathname: string;
+  languageLink: ReactNode;
   onClose: () => void;
   returnFocusRef: React.RefObject<HTMLButtonElement | null>;
 }) {
@@ -734,19 +797,7 @@ function MobileMenu({
               dir="ltr"
             >
               <ThemeToggle locale={locale} />
-              <Link
-                href={pathname}
-                locale={isFa ? "en" : "fa"}
-                hrefLang={isFa ? "en" : "fa"}
-                onClick={onClose}
-                aria-label={isFa ? "Switch to English" : "تغییر زبان به فارسی"}
-                className="rycode-language-link"
-              >
-                <Languages size={17} strokeWidth={1.6} aria-hidden />
-                <span lang={isFa ? "en" : "fa"}>
-                  {isFa ? "English" : "فارسی"}
-                </span>
-              </Link>
+              {languageLink}
             </div>
             <Link
               data-fill-button

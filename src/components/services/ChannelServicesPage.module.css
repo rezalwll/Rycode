@@ -1,9 +1,11 @@
 .page {
   --ink: var(--ui-ink, #303b48);
   --muted: var(--ui-muted, #5f6d7b);
-  --surface: #f2f2f2;
+  --surface: light-dark(#f2f2f2, #253447);
   --light: #fff;
   --light-muted: #d5deea;
+  --capability-surface: light-dark(#3e4955, #202a37);
+  --capability-active: light-dark(#314864, #293e58);
   --transition: cubic-bezier(0.7, 0, 0.2, 1);
   --hero-size: clamp(49px, 6.3vw, 82px);
   --heading-size: clamp(30px, 3.8vw, 52px);
@@ -132,7 +134,7 @@
 }
 .capabilityPanel {
   border-radius: var(--panel-radius);
-  background: var(--ink);
+  background: light-dark(var(--ink), #202833);
   color: var(--light);
   padding: 84px 28px;
   overflow: clip;
@@ -160,7 +162,7 @@
   min-height: 0;
   border: 1px solid rgb(255 255 255 / 13%);
   border-radius: 20px;
-  background: color-mix(in srgb, var(--ink) 93%, white);
+  background: var(--capability-surface);
   transition:
     flex-grow 0.8s var(--transition),
     flex-basis 0.8s var(--transition),
@@ -170,7 +172,7 @@
 .capability[data-active="true"] {
   flex: 1 1 0;
   border-color: rgb(168 216 255 / 28%);
-  background: color-mix(in srgb, var(--ink) 86%, var(--brand-blue));
+  background: var(--capability-active);
 }
 .capability:hover {
   border-color: rgb(168 216 255 / 48%);
@@ -273,7 +275,7 @@
   top: 0;
   inset-inline-start: 0;
   height: 2px;
-  background: var(--ui-blue);
+  background: light-dark(var(--ui-blue), #245b80);
   pointer-events: none;
   animation: progress 5s linear;
 }
@@ -313,7 +315,7 @@
   padding-inline-start: 26px;
   border: 1px solid var(--ui-line);
   border-radius: 20px;
-  background: var(--light);
+  background: var(--ui-surface);
 }
 .detailIndex {
   flex: 0 0 42px;
@@ -383,7 +385,7 @@
   overflow: hidden;
   min-width: 0;
   min-height: 0;
-  background: #dbe3ea;
+  background: light-dark(#dbe3ea, #253447);
 }
 .tilePhoto {
   position: absolute;
@@ -404,7 +406,7 @@
   align-items: baseline;
   gap: 14px;
   border-radius: 16px;
-  background: var(--light);
+  background: var(--ui-surface);
   color: var(--ink);
   padding: 18px 20px;
   transition:
@@ -412,7 +414,7 @@
     color 0.5s;
 }
 .step[data-active="true"] {
-  background: var(--ink);
+  background: light-dark(var(--ink), #202833);
   color: var(--light);
 }
 .page:global(#channel-services) .step[data-active="true"] h3 {
@@ -457,7 +459,7 @@
   border-radius: var(--panel-radius);
   overflow: hidden;
   padding: 54px;
-  background: #edf3fa;
+  background: light-dark(#edf3fa, #253447);
 }
 .callToActionPanel::before {
   content: "";

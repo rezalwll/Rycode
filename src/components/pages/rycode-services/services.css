@@ -7,7 +7,6 @@
   width: 100%;
   color: var(--ui-ink, #303b48);
   background: #f2f2f2;
-  color-scheme: light;
   scroll-margin-top: 100px;
   --foreground: #1a1a1a;
   --accent-blue: #66c0ff;
@@ -363,7 +362,7 @@
   line-height: 1.5;
 }
 .rycode-services-source .feature-card .feature-card-summary {
-  color: #666;
+  color: light-dark(#666, var(--ui-muted));
   font-size: 13px;
   font-weight: 400;
   line-height: 1.8;
@@ -446,7 +445,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: #777;
+  color: light-dark(#777, var(--ui-muted));
   font-size: 10px;
   line-height: 1.8;
 }
@@ -496,7 +495,7 @@
   text-align: start;
 }
 .rycode-services-source .capability-card-link-copy > span {
-  color: #777;
+  color: light-dark(#777, var(--ui-muted));
   font-size: 10px;
   line-height: 1.6;
 }

@@ -8,18 +8,7 @@ export function getFooterNav(locale: Locale) {
   return [
     {
       title: fa ? "رایکد" : "Company",
-      items: [
-        { label: fa ? "درباره رایکد" : "About RYCODE", href: "/" },
-        { label: fa ? "چرا رایکد" : "Why RYCODE", href: "/#expertise" },
-        {
-          label: fa ? "فرایند همکاری" : "Our process",
-          href: "/#Process%20Section",
-        },
-        {
-          label: fa ? "ابزار و تکنولوژی" : "Our technology",
-          href: "/services/software",
-        },
-      ],
+      items: [{ label: fa ? "درباره ما" : "About us", href: "/about" }],
     },
     {
       title: fa ? "خدمات" : "Services",

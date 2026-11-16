@@ -6343,18 +6343,18 @@
   }
 }
 
-/* Keep all service surfaces white, including hover and closing panels. */
+/* Shared palette for the service pages and their closing panels. */
 .page {
   --accent: var(--ui-purple, #c4b5fd);
-  --cream: #fff;
-  --ink: #1a1a1a;
-  --line: #e7e7e7;
-  background: #fff;
+  --cream: var(--ui-canvas);
+  --ink: light-dark(#1a1a1a, var(--ui-ink));
+  --line: var(--ui-line);
+  background: var(--ui-canvas);
 }
 .page .contentCard:nth-child(even),
 .page .cta,
 .page .specialty:hover {
-  background: #fff;
+  background: var(--ui-surface);
   color: var(--ink);
 }
 .page .specialty:hover {
@@ -6367,22 +6367,22 @@
 .page .primary,
 .page .cta .primary {
   background: var(--ui-blue, #a8d8ff);
-  color: var(--ink);
+  color: #1a1a1a;
 }
 .page .primary span {
-  background: #fff;
+  background: var(--ui-surface);
   color: var(--ink);
 }
 .page .primary:is(:hover, :focus-visible),
 .page .cta .primary:hover {
   background: var(--accent);
-  color: var(--ink);
+  color: #1a1a1a;
 }
 .page .primary:is(:hover, :focus-visible) span {
-  background: #fff;
+  background: var(--ui-surface);
 }
 .page .heroMedia {
-  background: #fff;
+  background: var(--ui-surface);
   box-shadow: 18px 20px 0 var(--ui-blue, #a8d8ff);
 }
 
@@ -6603,4 +6603,118 @@
 }
 .growthPage .cta .primary:hover {
   background: #8fd5ff;
+}
+
+:global(.dark) .page {
+  --paper: var(--ui-surface);
+  --line: var(--ui-line);
+  --muted: var(--ui-muted);
+  background: var(--ui-canvas);
+  color: var(--ui-ink);
+}
+:global(.dark) .page :is(.breadcrumb, .breadcrumb a, .kicker, .heroMeta, .rich) {
+  color: var(--ui-muted);
+}
+:global(.dark) .page :is(.contentCard, .contentCard:nth-child(even), .cta) {
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+}
+:global(.dark) .page :is(.specialty, .specialty:hover, .capability:hover) {
+  background: var(--ui-surface);
+}
+:global(.dark) .page :is(.specialty, .capability) p {
+  color: var(--ui-muted);
+}
+:global(.dark) .growthPage :is(.growthRankTable, .growthChannelGrid article) {
+  background: var(--ui-surface);
+}
+:global(.dark) .growthPage :is(.growthAudit, .growthChannelGrid article:hover) {
+  background: var(--button-hover);
+}
+:global(.dark) .growthPage :is(.growthRankHeader, .growthRankRow span, .secondaryAction),
+:global(.dark) .growthPage .growthAudit > div > p:last-child,
+:global(.dark) .growthPage .growthAudit .kicker {
+  color: var(--ui-muted);
+}
+:global(.dark) .growthPage .cta .primary {
+  color: #1a1a1a;
+}
+
+/* Local service layouts share the site's dark surfaces and text roles. */
+:global(.dark) .page :is(.heroClaim, .growthRankRow strong) {
+  color: var(--ui-ink);
+}
+:global(.dark) .page :is(.secondaryAction, .summary, .heroFloatLabel, .rescueLabel) {
+  color: var(--ui-muted);
+}
+:global(.dark) .growthPage {
+  --accent: var(--ui-purple);
+}
+:global(.dark) .growthPage .growthRankRow i {
+  color: var(--ui-link);
+}
+:global(.dark) .growthPage .growthQuery small {
+  color: #4b5d79;
+}
+:global(.dark) .rescuePage .rescueFinding i,
+:global(.dark) .brutalistPage .connectNodeTrigger :is(span, b, strong, small),
+:global(.dark) .brutalistPage .connectProof b {
+  color: var(--ui-on-accent);
+}
+
+:global(.dark) .currentPage :is(.systemFlow li, .processList li, .moduleCard, .planCard),
+:global(.dark) .currentPage .moduleCard:hover {
+  border-color: var(--ui-line);
+  background: var(--ui-surface);
+}
+:global(.dark) .currentPage .planCardFeatured {
+  border-color: var(--ui-rule);
+  background: var(--button-primary);
+}
+:global(.dark) .currentPage :is(.sectionHeader p, .statement p, .contentAside > p:last-child, .softwareStats span, .systemFlow p, .processList p, .moduleCard p, .planCard p, .planCard ul) {
+  color: var(--ui-muted);
+}
+:global(.dark) .currentPage .softwareTag {
+  color: #496257;
+}
+:global(.dark) .currentPage .softwarePanelTop b {
+  color: var(--ui-muted);
+}
+:global(.dark) .currentPage .planCardFeatured .planLabel {
+  color: var(--ui-purple);
+}
+:global(.dark) .currentPage .planCard > a {
+  color: var(--ui-link);
+}
+
+:global(.dark) .brutalistPage .connectBeforeAfter,
+:global(.dark) .ledgerPage .continueCadence {
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+}
+:global(.dark) .brutalistPage .beforeAfterCopy > p,
+:global(.dark) .ledgerPage :is(.continueCadenceIntro > p:last-child, .continueCadenceGrid p) {
+  color: var(--ui-muted);
+}
+
+:global(.dark) .fintlyPage {
+  --coral: #ff9d89;
+}
+:global(.dark) .fintlyPage :is(.dataBento, .dataFeatureStack) > article {
+  background: var(--ui-surface);
+  border-color: var(--ui-line);
+}
+:global(.dark) .fintlyPage :is(.dataBentoDark, .dataFeatureAccent) {
+  background: #17332f !important;
+  border-color: #35594e !important;
+}
+:global(.dark) .fintlyPage :is(.dataBentoMetric, .dataBentoNote) {
+  background: var(--button-primary) !important;
+  border-color: var(--ui-line) !important;
+}
+:global(.dark) .fintlyPage :is(.dataBentoMetric p, .dataBentoNote p, .dataStats span, .dataChart > span) {
+  color: var(--ui-muted);
+}
+:global(.dark) .fintlyPage .dataToolGrid b {
+  background: var(--ui-field);
 }

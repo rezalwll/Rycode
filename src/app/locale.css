@@ -65,6 +65,9 @@ html[lang="fa"] body,
 html[lang="fa"] body * {
   font-family: "IRANYekan", Tahoma, sans-serif !important;
 }
+.rycode-public .rycode-language-link[lang="fa"] span {
+  font-family: "IRANYekan", Tahoma, sans-serif !important;
+}
 html[lang="fa"] body,
 html[lang="fa"] .framer-text,
 html[lang="fa"] input,

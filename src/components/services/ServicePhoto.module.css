@@ -1,0 +1,33 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(18px, 4vw, 60px);
+  margin-block-end: clamp(20px, 3.5vw, 42px);
+}
+
+.layout > .copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 11px;
+  margin-block-end: 0;
+}
+
+.photo {
+  position: relative;
+  min-inline-size: 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: clamp(12px, 1.5vw, 22px);
+  background: #e7edf2;
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,12 +1,12 @@
 :global(.rycode-public) .page[data-website-design-page] {
-  --ink: var(--brand-ink, #303b48);
-  --muted: #586474;
-  --line: #e2e1ea;
-  --panel: #f2f2f8;
-  --primary: #24587d;
+  --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
+  --muted: light-dark(#586474, #b7c4d3);
+  --line: light-dark(#e2e1ea, #405064);
+  --panel: light-dark(#f2f2f8, #202833);
+  --primary: light-dark(#24587d, var(--ui-link));
   --purple: var(--brand-purple, #8b6bda);
   width: 100%;
-  background: #faf9fc;
+  background: light-dark(#faf9fc, #202833);
   color: var(--ink);
   font-family: "IRANYekan", sans-serif;
   font-size: 16px;
@@ -167,8 +167,8 @@
 }
 
 .primary {
-  border-color: var(--primary);
-  background: var(--primary);
+  border-color: light-dark(var(--primary), #527a9a);
+  background: light-dark(var(--primary), #245b80);
   color: #fff;
 }
 
@@ -180,13 +180,13 @@
 
 .secondary {
   border-color: var(--line);
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--ink);
 }
 
 .secondary:is(:hover, :focus-visible) {
   border-color: var(--ui-purple, #c4b5fd);
-  background: #f0eafb;
+  background: light-dark(#f0eafb, #253447);
   color: var(--ink);
 }
 
@@ -236,8 +236,8 @@
       #5e59a41f 14px,
       #ffffff40 18px
     ),
-    radial-gradient(ellipse at 74% 6%, #f2eaff 0, transparent 63%),
-    linear-gradient(125deg, #b2d5f5, #e0dcf4 53%, #c3b5f1);
+    radial-gradient(ellipse at 74% 6%, light-dark(#f2eaff, #253447) 0, transparent 63%),
+    linear-gradient(125deg, #b2d5f5, light-dark(#e0dcf4, #253447) 53%, #c3b5f1);
 }
 
 .templatePreview {
@@ -253,7 +253,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  background: #eae4f8;
+  background: light-dark(#eae4f8, #253447);
 }
 
 .templateImage img,
@@ -294,7 +294,7 @@
 }
 
 .dashboardArtwork {
-  background: linear-gradient(125deg, #dcecfb, #e9e0f9);
+  background: linear-gradient(125deg, light-dark(#dcecfb, #253447), light-dark(#e9e0f9, #253447));
 }
 
 .dashboardArtwork img {
@@ -348,7 +348,7 @@
 .typeList details {
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .typeList details[open] {
@@ -399,12 +399,12 @@
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  background: #f2ebfd;
-  color: #6547a8;
+  background: light-dark(#f2ebfd, #253447);
+  color: light-dark(#6547a8, #9fcdf0);
 }
 
 .number {
-  color: #6547a8;
+  color: light-dark(#6547a8, #9fcdf0);
   font-size: 0.8rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -493,7 +493,7 @@
   padding: 17px 18px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--ink);
   text-decoration: none;
 }
@@ -504,7 +504,7 @@
 }
 
 .comparisonGrid article:nth-child(2) {
-  background: #f6f1ff;
+  background: light-dark(#f6f1ff, #253447);
 }
 
 .qualityGrid p,
@@ -556,7 +556,7 @@
       #6376ba24 15px,
       #fff5 19px
     ),
-    linear-gradient(135deg, #d6c8f7, #e8edfc 55%, #aecfec);
+    linear-gradient(135deg, #d6c8f7, light-dark(#e8edfc, #253447) 55%, #aecfec);
 }
 
 .projectWindow {
@@ -564,7 +564,7 @@
   inset: 13% 8%;
   border: 1px solid #ffffffb8;
   border-radius: 10px;
-  background: #e6e6ef;
+  background: light-dark(#e6e6ef, #253447);
   box-shadow: 0 12px 28px #2e31503b;
 }
 
@@ -575,7 +575,7 @@
 .projectMockup {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .projectToolbar {
@@ -601,7 +601,7 @@
   gap: 2cqw;
   min-height: 0;
   padding: 3cqw;
-  background: #fafafd;
+  background: light-dark(#fafafd, #202833);
 }
 
 .projectMockupCopy {
@@ -623,7 +623,7 @@
   gap: 4px;
   padding: 0.65cqw 1.2cqw;
   border-radius: 4px;
-  background: #e6f3fe;
+  background: light-dark(#e6f3fe, #253447);
   color: var(--primary);
 }
 
@@ -670,7 +670,7 @@
   padding: 15px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .steps p {
@@ -689,7 +689,7 @@
 .costFactors li {
   padding: 5px 10px;
   border-radius: 8px;
-  background: #efebf9;
+  background: light-dark(#efebf9, #253447);
   color: var(--ink);
   font-size: 0.875rem;
 }
@@ -721,7 +721,7 @@
 
 .relatedGrid a:is(:hover, :focus-visible) {
   border-color: var(--ui-purple, #c4b5fd);
-  background: #f6f1ff;
+  background: light-dark(#f6f1ff, #253447);
 }
 
 .relatedGrid h3 {

@@ -1,13 +1,13 @@
 .page {
-  --blueprint: var(--brand-blue, #3498db);
-  --paper: #ffffff;
-  --ink: var(--brand-ink, #303b48);
+  --blueprint: light-dark(var(--brand-blue, #3498db), var(--ui-link));
+  --paper: var(--ui-canvas, #fff);
+  --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --ui-ink: var(--ink);
-  --muted: #687482;
-  --accent: var(--brand-purple, #8b6bda);
-  --rule: #e4e8ee;
+  --muted: light-dark(#687482, #b7c4d3);
+  --accent: light-dark(var(--brand-purple, #8b6bda), var(--ui-purple));
+  --rule: light-dark(#e4e8ee, #405064);
   --grid: rgb(52 152 219 / 10%);
-  --soft: #f7f8fb;
+  --soft: light-dark(#f7f8fb, #253447);
   --gutter: clamp(72px, 10vw, 144px);
   --far-gutter: clamp(22px, 3.34vw, 48px);
   width: 100%;
@@ -58,13 +58,13 @@
 }
 
 .hero.blue {
-  --ink: var(--brand-ink, #303b48);
+  --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --ui-ink: var(--ink);
-  --muted: #687482;
-  --rule: #dce6ef;
+  --muted: light-dark(#687482, #b7c4d3);
+  --rule: light-dark(#dce6ef, #405064);
   --grid: rgb(52 152 219 / 12%);
   color: var(--ink);
-  background-color: #fff;
+  background-color: var(--ui-surface, #fff);
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
@@ -243,14 +243,14 @@
     border-color 230ms ease;
 }
 .actions .primary {
-  background: var(--brand-blue, #3498db);
-  border-color: var(--brand-blue, #3498db);
-  color: #fff;
+  background: var(--ui-link);
+  border-color: var(--ui-link);
+  color: light-dark(#fff, var(--ui-on-accent));
   box-shadow: 0 10px 24px rgb(52 152 219 / 20%);
 }
-.actions .primary:hover {
-  background: color-mix(in srgb, var(--brand-blue, #3498db) 78%, #fff);
-  border-color: color-mix(in srgb, var(--brand-blue, #3498db) 78%, #fff);
+.actions .primary:is(:hover, :focus-visible) {
+  background: light-dark(#194e73, var(--ui-purple));
+  border-color: light-dark(#194e73, var(--ui-purple));
   box-shadow: 0 12px 26px rgb(52 152 219 / 28%);
 }
 .actions .secondary:hover {
@@ -291,7 +291,7 @@
   border: 1px solid var(--rule);
   border-block-start: 1px solid var(--rule);
   color: var(--ink);
-  background-color: #fff;
+  background-color: var(--ui-surface, #fff);
   background-image:
     linear-gradient(rgb(52 152 219 / 10%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(52 152 219 / 10%) 1px, transparent 1px);
@@ -409,7 +409,7 @@
   gap: 18px;
 }
 .service {
-  --service-accent: var(--brand-blue, #3498db);
+  --service-accent: light-dark(var(--brand-blue, #3498db), var(--ui-link));
   display: grid;
   grid-template-columns: 1.02fr 0.95fr 1.16fr;
   gap: clamp(22px, 3.45vw, 50px);
@@ -425,7 +425,7 @@
     translate 220ms ease;
 }
 .service:nth-child(3n + 2) {
-  --service-accent: var(--brand-purple, #8b6bda);
+  --service-accent: var(--accent);
 }
 .service:nth-child(3n) {
   --service-accent: #5aa7a1;
@@ -554,7 +554,7 @@
 .demo {
   border: 1px solid var(--rule);
   border-radius: 22px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   box-shadow: 0 18px 45px rgb(48 59 72 / 6%);
   overflow: hidden;
 }
@@ -603,8 +603,8 @@
   background: rgb(255 255 255 / 15%);
 }
 .demo button[aria-pressed="true"] {
-  background: var(--accent);
-  color: #181b25;
+  background: var(--ui-purple);
+  color: var(--ui-on-accent);
   border-color: var(--accent);
 }
 .demoBody {
@@ -638,8 +638,8 @@
   color: var(--muted);
 }
 .demoAction {
-  border-color: var(--brand-purple, #8b6bda);
-  background: color-mix(in srgb, var(--brand-purple, #8b6bda) 10%, #fff);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--ui-surface));
   animation-delay: 190ms;
 }
 .demoAction svg {
@@ -717,7 +717,7 @@
   padding: 10px 12px;
   border-block-end: 1px solid var(--rule);
   border-inline-end: 1px solid var(--rule);
-  background: #fff;
+  background: var(--ui-surface, #fff);
   transition:
     background-color 200ms ease,
     translate 200ms ease,
@@ -753,7 +753,7 @@
   border-inline-end: 1px solid var(--rule);
   padding: clamp(18px, 2.4vw, 32px);
   color: var(--ink);
-  background: #fff;
+  background: var(--ui-surface, #fff);
   transition: background-color 200ms ease;
 }
 .process li:hover {
@@ -797,7 +797,7 @@
 }
 .faq details {
   border-block-start: 1px solid var(--rule);
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 .faq summary {
   display: flex;
@@ -844,16 +844,16 @@
   padding: 7px 11px;
   font-size: 0.86rem;
   border-radius: 999px;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   transition:
     border-color 200ms ease,
     color 200ms ease,
     background-color 200ms ease;
 }
-.related li a:hover {
-  border-color: var(--brand-purple, #8b6bda);
-  color: var(--brand-purple, #8b6bda);
-  background: color-mix(in srgb, var(--brand-purple, #8b6bda) 8%, #fff);
+.related li a:is(:hover, :focus-visible) {
+  border-color: var(--accent);
+  color: light-dark(#65509b, var(--ui-purple));
+  background: color-mix(in srgb, var(--accent) 8%, var(--ui-surface));
 }
 .closing h2 {
   font-size: clamp(3rem, 8.65vw, 8.5rem);
@@ -875,16 +875,16 @@
 /* The reference's blueprint sheet becomes a smaller accent in the RYCODE
    system: dark hero and CTA, airy surfaces everywhere else. */
 :global(#automation-services) {
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 :global(#automation-examples).blue {
-  --ink: var(--brand-ink, #303b48);
+  --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --ui-ink: var(--ink);
-  --muted: #687482;
-  --rule: #e4e8ee;
+  --muted: light-dark(#687482, #b7c4d3);
+  --rule: light-dark(#e4e8ee, #405064);
   --grid: rgb(52 152 219 / 8%);
   color: var(--ink);
-  background-color: #f7f8fb;
+  background-color: light-dark(#f7f8fb, #202833);
   background-image: none;
 }
 :global(#automation-examples).blue .rail {
@@ -892,7 +892,7 @@
 }
 :global(#automation-examples).blue .rail span,
 :global(#automation-examples).blue .rail small {
-  background: #f7f8fb;
+  background: light-dark(#f7f8fb, #202833);
 }
 :global(#automation-examples).blue .sectionHead h2 em {
   color: var(--brand-purple, #8b6bda);
@@ -903,7 +903,7 @@
   border-color: var(--rule);
 }
 :global(#automation-questions) {
-  background: #f8f6fc;
+  background: light-dark(#f8f6fc, #202833);
 }
 :global(#automation-questions) .faq details {
   background: transparent;

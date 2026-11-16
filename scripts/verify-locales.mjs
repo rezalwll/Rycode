@@ -3,16 +3,26 @@ import { readFile, writeFile } from "node:fs/promises";
 import { load } from "cheerio";
 import { businessGuides } from "../src/content/business-guides.ts";
 import { legacyArticleDates } from "../src/content/legacy-article-dates.ts";
+import { services } from "../src/content/services.ts";
+import { localizedServicePath } from "../src/lib/service-routes.ts";
 
 const base = process.env.VERIFY_URL || "http://127.0.0.1:3014";
 const routes = [
   ...JSON.parse(await readFile(".reference/routes.json", "utf8")),
   ...businessGuides.map((guide) => "/blog/" + guide.slug),
+  "/about",
+  "/services",
+  ...services.map(({ id }) => `/services/${id}`),
+  "/services/software/windows-software",
 ];
+function localePath(route, locale) {
+  const path = localizedServicePath(route, locale);
+  return locale === "en" ? `/en${path === "/" ? "" : path}` : path;
+}
 const results = [];
 for (const locale of ["en", "fa"]) {
   for (const route of [...routes, "/missing-test-page"]) {
-    const path = locale === "en" ? `/en${route === "/" ? "" : route}` : route;
+    const path = localePath(route, locale);
     const response = await fetch(base + path);
     const $ = load(await response.text());
     const expected =
@@ -89,11 +99,19 @@ for (const locale of ["en", "fa"]) {
         ? locale === "fa"
           ? "/en/404"
           : "/404"
-        : locale === "fa"
-          ? `/en${route === "/" ? "" : route}`
-          : route,
+        : localePath(route, locale === "fa" ? "en" : "fa"),
       `${path}: switch destination`,
     );
+    if (route === "/services/software/windows-software") {
+      const main = $("main[data-windows-software-page]");
+      assert.equal(main.attr("dir"), locale === "fa" ? "rtl" : "ltr");
+      if (locale === "en")
+        assert.doesNotMatch(
+          main.text(),
+          /\p{Script=Arabic}/u,
+          `${path}: English page copy`,
+        );
+    }
     if (locale === "fa") {
       if (route === "/") {
         assert.doesNotMatch(

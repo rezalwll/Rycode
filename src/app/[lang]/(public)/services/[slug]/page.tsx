@@ -7,20 +7,47 @@ import { pageMetadata } from "@/lib/seo";
 import { ContentDetail } from "@/components/content/ContentDetail";
 import { ServiceDetailPage } from "@/components/services/ServiceDetailPage";
 import { WebsiteDesignPage } from "@/components/services/WebsiteDesignPage";
+import { CorporateWebsitePage } from "@/components/services/CorporateWebsitePage";
+import {
+  corporateWebsiteMeta,
+  corporateWebsiteSlug,
+} from "@/components/services/corporate-website-copy";
 import { SeoGrowthPage } from "@/components/services/SeoGrowthPage";
 import { SoftwareServicePage } from "@/components/services/SoftwareServicePage";
 import { ProjectRescuePage } from "@/components/services/ProjectRescuePage";
 import { AutomationServicePage } from "@/components/services/AutomationServicePage";
-import { automationMeta } from "@/components/services/automation-copy";
+import { DataToolsPage } from "@/components/services/DataToolsPage";
+import { SupportServicePage } from "@/components/services/SupportServicePage";
+import { WindowsSoftwarePage } from "@/components/services/WindowsSoftwarePage";
+import { TelegramBotPage } from "@/components/services/TelegramBotPage";
+import { WordPressRepairPage } from "@/components/services/WordPressRepairPage";
 import {
-  automationServiceId,
+  wordpressRepairMeta,
+  wordpressRepairSlug,
+} from "@/components/services/wordpress-repair-copy";
+import {
+  telegramBotMeta,
+  telegramBotSlug,
+} from "@/components/services/telegram-bot-copy";
+import { automationMeta } from "@/components/services/automation-copy";
+import { dataToolsMeta } from "@/components/services/data-tools-copy";
+import { supportMeta } from "@/components/services/support-copy";
+import {
   automationServiceSlug,
-} from "@/lib/automation-route";
+  canonicalServiceId,
+  dataServiceSlug,
+  supportServiceSlug,
+} from "@/lib/service-routes";
 
 const persianMetadata: Partial<
   Record<string, { title: string; description: string; image?: string }>
 > = {
+  [corporateWebsiteSlug]: corporateWebsiteMeta,
+  [wordpressRepairSlug]: wordpressRepairMeta,
+  [telegramBotSlug]: telegramBotMeta,
   [automationServiceSlug]: automationMeta,
+  [dataServiceSlug]: dataToolsMeta,
+  [supportServiceSlug]: supportMeta,
   grow: {
     title: "خدمات سئو سایت و فروشگاه اینترنتی، سئو تکنیکال و محتوا",
     description:
@@ -33,6 +60,12 @@ const persianMetadata: Partial<
       "به نرم‌افزار مخصوص کسب‌وکارت نیاز داری؟ رایکد در طراحی نرم‌افزار تحت وب، ویندوز، اپلیکیشن اندروید، CRM، داشبورد و سامانه‌های اختصاصی کمکت می‌کنه.",
     image: "/brand/journal/business/software.png",
   },
+  "windows-software-development": {
+    title: "ساخت نرم‌افزار ویندوز اختصاصی؛ امکانات و مراحل تحویل",
+    description:
+      "توسعهٔ نرم‌افزار ویندوز برای ثبت اطلاعات، محاسبات، گزارش‌گیری، پردازش فایل و اتصال به تجهیزات؛ از بررسی نیاز تا نصب و پشتیبانی با رایکد.",
+    image: "/brand/og-card.png",
+  },
   rescue: {
     title: "رفع باگ سایت و نرم‌افزار، نجات پروژه نیمه‌کاره و توسعه کد",
     description:
@@ -43,7 +76,7 @@ const persianMetadata: Partial<
 
 async function resolve(slug: string) {
   const { locale } = await getTranslations();
-  const serviceId = slug === automationServiceSlug ? automationServiceId : slug;
+  const serviceId = canonicalServiceId(slug);
   const result = await lookupContent("SERVICE", serviceId, locale);
   const service = services.find((s) => s.id === serviceId);
   // Keep the seven canonical service pages on the curated product copy. CMS
@@ -98,19 +131,31 @@ export async function generateMetadata({
 }
 export default async function ServiceDetail({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ model?: string | string[] }>;
 }) {
   const { slug } = await params;
   const content = await resolve(slug);
   if (!content) notFound();
   const { locale } = await getTranslations();
   if (slug === "build" && locale === "fa") return <WebsiteDesignPage />;
+  if (slug === corporateWebsiteSlug && locale === "fa")
+    return <CorporateWebsitePage />;
+  if (slug === telegramBotSlug && locale === "fa") return <TelegramBotPage />;
+  if (slug === wordpressRepairSlug && locale === "fa")
+    return <WordPressRepairPage />;
   if (slug === "grow" && locale === "fa") return <SeoGrowthPage />;
   if (slug === "software" && locale === "fa") return <SoftwareServicePage />;
+  if (slug === "windows-software-development" && locale === "fa")
+    return <WindowsSoftwarePage />;
   if (slug === "rescue" && locale === "fa") return <ProjectRescuePage />;
   if (slug === automationServiceSlug && locale === "fa")
     return <AutomationServicePage />;
+  if (slug === dataServiceSlug && locale === "fa") return <DataToolsPage />;
+  if (slug === supportServiceSlug && locale === "fa")
+    return <SupportServicePage model={(await searchParams).model} />;
   return content.kind === "SERVICE" ? (
     <ServiceDetailPage content={content} locale={locale} />
   ) : (

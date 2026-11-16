@@ -1,13 +1,13 @@
 :global(.rycode-public) .page[data-software-service-page] {
-  --ink: var(--brand-ink, #303b48);
-  --muted: #536275;
-  --blue: #245c89;
-  --purple: #674ca0;
-  --line: #dce6f0;
-  --blue-tint: #edf6fd;
-  --purple-tint: #f3effb;
+  --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
+  --muted: light-dark(#536275, #b7c4d3);
+  --blue: light-dark(#245c89, #a1d4f6);
+  --purple: light-dark(#674ca0, #cfb9fa);
+  --line: light-dark(#dce6f0, #405064);
+  --blue-tint: light-dark(#edf6fd, #253447);
+  --purple-tint: light-dark(#f3effb, #302841);
   width: 100%;
-  background: #fff;
+  background: var(--ui-surface, #fff);
   color: var(--ink);
   font-family: "IRANYekan", sans-serif;
   font-size: 1rem;
@@ -110,7 +110,7 @@
   justify-content: center;
   min-height: 46px;
   padding: 9px 15px;
-  border: 1px solid #cfe3f3;
+  border: 1px solid light-dark(#cfe3f3, #405064);
   border-radius: 999px;
   line-height: 1.6;
   text-align: center;
@@ -124,13 +124,13 @@
   background: var(--blue-tint);
 }
 .secondary {
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 
 .primary:is(:hover, :focus-visible),
 .secondary:is(:hover, :focus-visible),
 .related a:is(:hover, :focus-visible) {
-  border-color: #cfbfed;
+  border-color: light-dark(#cfbfed, #405064);
   background: var(--purple-tint);
   color: var(--purple);
 }
@@ -206,18 +206,18 @@
 
 .serviceCard {
   align-self: start;
-  background: #fff;
+  background: var(--ui-surface, #fff);
 }
 .serviceCard:nth-child(4) {
   grid-column: span 2;
 }
 .serviceCard:nth-child(4) {
-  border-color: #d6e6f4;
-  background: #f7fbff;
+  border-color: light-dark(#d6e6f4, #405064);
+  background: light-dark(#f7fbff, #253447);
 }
 .serviceCard:nth-child(8) {
-  border-color: #e4dbf4;
-  background: #fbf9ff;
+  border-color: light-dark(#e4dbf4, #405064);
+  background: light-dark(#fbf9ff, #202833);
 }
 
 .serviceIcon {
@@ -303,7 +303,7 @@
   margin-block: 8px;
 }
 .decisions article + article {
-  border-color: #e1d8f2;
+  border-color: light-dark(#e1d8f2, #405064);
 }
 
 .timeline {
@@ -312,10 +312,10 @@
   list-style: none;
 }
 .timeline li {
-  border-block-start: 2px solid #c9e2f4;
+  border-block-start: 2px solid light-dark(#c9e2f4, #405064);
 }
 .timeline li:nth-child(even) {
-  border-block-start-color: #d9caf1;
+  border-block-start-color: light-dark(#d9caf1, #405064);
 }
 .timeline span {
   color: var(--purple);

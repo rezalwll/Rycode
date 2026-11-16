@@ -138,16 +138,16 @@
   border: 0;
   padding: 13px 17px;
   border-radius: 9px;
-  background: #3498db;
-  color: #fff;
+  background: light-dark(#17659b, var(--ui-link));
+  color: light-dark(#fff, var(--ui-on-accent));
   font: inherit;
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   transition: background-color 180ms;
 }
-.search button:hover {
-  background: #267caf;
+.search button:is(:hover, :focus-visible) {
+  background: light-dark(#194e73, var(--ui-purple));
 }
 .terminal {
   overflow: hidden;

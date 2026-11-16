@@ -2,18 +2,18 @@
 
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useSyncExternalStore } from "react";
+import { themeStorageKey } from "@/lib/theme-preference";
 
 import { cn } from "./utils";
 
 type Mode = "light" | "dark" | "system";
 
-const KEY = "rycode-theme";
 const CHANGE_EVENT = "rycode-theme-change";
 let memoryMode: Mode = "light";
 
 function getMode(): Mode {
   try {
-    const stored = localStorage.getItem(KEY);
+    const stored = localStorage.getItem(themeStorageKey);
     return stored === "dark" || stored === "system" ? stored : "light";
   } catch {
     return memoryMode;
@@ -32,7 +32,7 @@ function subscribe(onChange: () => void) {
 function setMode(next: Mode) {
   memoryMode = next;
   try {
-    localStorage.setItem(KEY, next);
+    localStorage.setItem(themeStorageKey, next);
   } catch {
     // Keep the preference in memory when browser storage is unavailable.
   }
@@ -61,10 +61,10 @@ export function ThemeToggle({
   const mode = useSyncExternalStore(subscribe, getMode, () => "light" as const);
 
   useEffect(() => {
-    apply(mode);
+    apply(getMode());
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = () => {
-      if (mode === "system") apply(mode);
+      if (getMode() === "system") apply("system");
     };
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);

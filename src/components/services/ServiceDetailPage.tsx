@@ -400,8 +400,8 @@ export async function ServiceDetailPage({
           <div className={styles.dataDashboardVisual} role="img" aria-label={fa ? "داشبورد داده و گزارش مدیریتی" : "Data and reporting dashboard"}>
             <div className={styles.dataDashboardTop}><span>RYCODE / DATA DESK</span><b><i /> SYNCED</b></div>
             <div className={styles.dataDashboardBody}>
-              <div className={styles.dataBalance}><small>{fa ? "وضعیت این ماه" : "THIS MONTH"}</small><strong>۸۴٪</strong><span><i /> ۱۲٪ بهتر از ماه قبل</span></div>
-              <div className={styles.dataChart}><small>{fa ? "روند عملکرد" : "PERFORMANCE"}</small><div><i /><i /><i /><i /><i /><i /><i /></div><span>فروردین&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اردیبهشت&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; خرداد</span></div>
+              <div className={styles.dataBalance}><small>{fa ? "وضعیت این ماه" : "THIS MONTH"}</small><strong>{fa ? "۸۴٪" : "84%"}</strong><span><i /> {fa ? "۱۲٪ بهتر از ماه قبل" : "12% above last month"}</span></div>
+              <div className={styles.dataChart}><small>{fa ? "روند عملکرد" : "PERFORMANCE"}</small><div><i /><i /><i /><i /><i /><i /><i /></div><span>{fa ? "فروردین       اردیبهشت       خرداد" : "April       May       June"}</span></div>
               <div className={styles.dataMini}><span>{fa ? "گزارش‌های آماده" : "READY REPORTS"}</span><strong>24</strong><b>↗</b></div>
             </div>
             <div className={styles.dataDashboardFoot}><span>LAST UPDATE / 14:32</span><b>{fa ? "همه‌چیز مرتب است" : "Everything is in order"}</b></div>
@@ -604,10 +604,10 @@ export async function ServiceDetailPage({
             <div className={styles.architecturePanel} aria-label={fa ? "نقشهٔ فنی سیستم" : "System architecture map"}>
               <div className={styles.architectureToolbar}><span>RYCODE / ARCHITECTURE</span><b>● ● ●</b></div>
               <div className={styles.architectureRows}>
-                <div><span>01</span><b>INPUT</b><em>فرم، فایل، API</em></div>
-                <div><span>02</span><b>RULES</b><em>نقش‌ها، وضعیت‌ها، منطق</em></div>
-                <div><span>03</span><b>INTERFACE</b><em>پنل، داشبورد، اعلان</em></div>
-                <div><span>04</span><b>OUTCOME</b><em>تصمیم، گزارش، اقدام</em></div>
+                <div><span>01</span><b>{fa ? "ورودی" : "INPUT"}</b><em>{fa ? "فرم، فایل، API" : "Forms, files, APIs"}</em></div>
+                <div><span>02</span><b>{fa ? "قواعد" : "RULES"}</b><em>{fa ? "نقش‌ها، وضعیت‌ها، منطق" : "Roles, states, logic"}</em></div>
+                <div><span>03</span><b>{fa ? "رابط" : "INTERFACE"}</b><em>{fa ? "پنل، داشبورد، اعلان" : "Panels, dashboards, notifications"}</em></div>
+                <div><span>04</span><b>{fa ? "خروجی" : "OUTCOME"}</b><em>{fa ? "تصمیم، گزارش، اقدام" : "Decisions, reports, actions"}</em></div>
               </div>
               <div className={styles.architectureLine}><i /><i /><i /><i /></div>
             </div>
@@ -760,8 +760,8 @@ export async function ServiceDetailPage({
             </div>
             <div className={styles.dataBento}>
               <article className={styles.dataBentoWide}><span>01 / OVERVIEW</span><h3>{fa ? "وضعیت کسب‌وکار در یک نگاه" : "The business at a glance"}</h3><div className={styles.bentoBars}><i style={{height:"34%"}}/><i style={{height:"48%"}}/><i style={{height:"41%"}}/><i style={{height:"69%"}}/><i style={{height:"57%"}}/><i style={{height:"82%"}}/><i style={{height:"73%"}}/><i style={{height:"94%"}}/></div><small>{fa ? "روند رشد ماهانه" : "Monthly growth trend"}</small></article>
-              <article className={styles.dataBentoMetric}><span>02 / KPI</span><strong>+۳۲٪</strong><p>{fa ? "بهبود سرعت گزارش‌گیری" : "Faster reporting"}</p><b>↗</b></article>
-              <article className={styles.dataBentoDark}><span>03 / CLEANUP</span><strong>۱۲,۸۴۰</strong><p>{fa ? "ردیف دادهٔ مرتب‌شده" : "Rows organized"}</p><div className={styles.bentoLine}><i /></div></article>
+              <article className={styles.dataBentoMetric}><span>02 / KPI</span><strong>{fa ? "+۳۲٪" : "+32%"}</strong><p>{fa ? "بهبود سرعت گزارش‌گیری" : "Faster reporting"}</p><b>↗</b></article>
+              <article className={styles.dataBentoDark}><span>03 / CLEANUP</span><strong>{fa ? "۱۲٬۸۴۰" : "12,840"}</strong><p>{fa ? "ردیف دادهٔ مرتب‌شده" : "Rows organized"}</p><div className={styles.bentoLine}><i /></div></article>
               <article className={styles.dataBentoNote}><span>04 / NEXT</span><h3>{fa ? "تصمیم بعدی واضح است." : "The next decision is clear."}</h3><p>{fa ? "گزارش خوب، جلسه را کوتاه‌تر می‌کند." : "A good report makes the meeting shorter."}</p></article>
             </div>
           </section>
@@ -833,7 +833,26 @@ export async function ServiceDetailPage({
 
           <section className={styles.growthResults} id="growth-results" aria-labelledby="growth-results-title">
             <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "نتیجه‌ای که دیده می‌شود" : "THE RESULT"}</p><h2 id="growth-results-title">{fa ? "از صفحهٔ پنجاه تا جایی که مشتری تو را می‌بیند." : "From page fifty to where the right customer sees you."}</h2></div><p>{fa ? "رشد را با یک عدد تزئینی تعریف نمی‌کنیم؛ مسیر رتبه، صفحه و اقدام را کنار هم می‌خوانیم." : "Growth is not a decorative number. We read ranking, page and action as one path."}</p></div>
-            <div className={styles.growthRankTable}><div className={styles.growthRankHeader}><span>{fa ? "عبارت جست‌وجو" : "QUERY"}</span><span>{fa ? "رتبه" : "RANK"}</span><span>{fa ? "صفحه" : "PAGE"}</span><span>{fa ? "حرکت" : "MOTION"}</span></div><div className={styles.growthRankRow}><strong>{fa ? "طراحی سایت شرکتی" : "corporate website design"}</strong><b>#01</b><span>/services/build</span><i>↑ ۴۹ رتبه</i></div><div className={styles.growthRankRow}><strong>{fa ? "سئوی فروشگاه" : "ecommerce SEO"}</strong><b>#04</b><span>/services/grow</span><i>↑ ۲۳ رتبه</i></div><div className={styles.growthRankRow}><strong>{fa ? "ساخت داشبورد مدیریتی" : "management dashboard"}</strong><b>#08</b><span>/services/software</span><i>↑ ۱۶ رتبه</i></div></div>
+            <div className={styles.growthRankTable}>
+              <div className={styles.growthRankHeader}>
+                <span>{fa ? "عبارت جست‌وجو" : "QUERY"}</span>
+                <span>{fa ? "رتبه" : "RANK"}</span>
+                <span>{fa ? "صفحه" : "PAGE"}</span>
+                <span>{fa ? "تغییر" : "CHANGE"}</span>
+              </div>
+              {[
+                [fa ? "طراحی سایت شرکتی" : "corporate website design", "01", "build", fa ? "۴۹ رتبه" : "49 places"],
+                [fa ? "سئوی فروشگاه" : "ecommerce SEO", "04", "grow", fa ? "۲۳ رتبه" : "23 places"],
+                [fa ? "ساخت داشبورد مدیریتی" : "management dashboard", "08", "software", fa ? "۱۶ رتبه" : "16 places"],
+              ].map(([query, rank, service, movement]) => (
+                <div className={styles.growthRankRow} key={service}>
+                  <strong>{query}</strong>
+                  <b>#{rank}</b>
+                  <span dir="ltr">/services/{service}</span>
+                  <i>↑ {movement}</i>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className={styles.growthChannels} aria-labelledby="growth-channels-title">
