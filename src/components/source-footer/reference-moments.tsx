@@ -22,19 +22,6 @@ import {
   UsersRound,
   Wifi,
 } from "lucide-react";
-function Cursor({ reverse = false }: { reverse?: boolean }) {
-  return (
-    <BrandText>
-      <svg viewBox="0 0 34 34" aria-hidden="true">
-        <path
-          d="M8 6v20c0 2 2 3 3 1l5-6 8-1c2 0 3-2 1-3L11 6c-1-1-3-1-3 0Z"
-          fill="currentColor"
-          transform={reverse ? "rotate(60 17 17)" : "rotate(-10 17 17)"}
-        />
-      </svg>
-    </BrandText>
-  );
-}
 export default function Moments() {
   const { copyText } = useReferenceLocale();
   const isSoftwarePage =
@@ -115,16 +102,6 @@ export default function Moments() {
                 <path d="M25.437 6.09s-4.695 21.667 0 56M5.984 36.257c14.087-3 31.361 0 31.361 0M12.506 54.285c11.59-28.528 38.757-51.528 38.757-51.528M2.965 13.257c11.907 17.833 45.317 45.94 45.317 45.94" />
               </g>
             </motion.svg>
-          </motion.div>
-
-          <motion.div
-            className="moments-notice moments-notice-in"
-            aria-hidden="true"
-            {...(reduceMotion ? {} : { animate: { y: [0, -6, 0] } })}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Cursor reverse />
-            <span>{copyText("You're in")}</span>
           </motion.div>
 
           <motion.div
@@ -224,16 +201,6 @@ export default function Moments() {
                 </div>
               </div>
             </div>
-          </motion.div>
-
-          <motion.div
-            className="moments-notice moments-notice-events"
-            aria-hidden="true"
-            {...(reduceMotion ? {} : { animate: { y: [0, 6, 0] } })}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Cursor />
-            <span>{copyText("2 new events")}</span>
           </motion.div>
 
           <motion.div

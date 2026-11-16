@@ -511,55 +511,6 @@
   border-radius: 100px;
   background: #fff;
 }
-.rycode-footer-source .moments-notice {
-  position: absolute;
-  z-index: 3;
-  width: 52px;
-  height: 52px;
-}
-.rycode-footer-source .moments-notice svg {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  top: 0;
-  left: 0;
-}
-.rycode-footer-source .moments-notice > span {
-  position: absolute;
-  display: block;
-  width: max-content;
-  padding: 6px 20px;
-  border-radius: 100px;
-  background: #fff;
-  color: var(--ui-ink, #303b48);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.03em;
-}
-.rycode-footer-source .moments-notice-in {
-  bottom: 32px;
-  left: -86px;
-  width: 56px;
-  height: 55px;
-}
-.rycode-footer-source .moments-notice-in svg {
-  left: auto;
-  right: 0;
-}
-.rycode-footer-source .moments-notice-in > span {
-  top: 40px;
-  right: 24px;
-  background: #f2f2f2;
-}
-.rycode-footer-source .moments-notice-events {
-  top: 78px;
-  right: -66px;
-}
-.rycode-footer-source .moments-notice-events > span {
-  top: 38px;
-  left: 32px;
-}
 .rycode-footer-source .moments-star {
   position: absolute;
   z-index: 3;
@@ -632,8 +583,7 @@
     font-size: 80px;
   }
   .rycode-footer-source .moments-star,
-  .rycode-footer-source .moments-eyes,
-  .rycode-footer-source .moments-notice {
+  .rycode-footer-source .moments-eyes {
     display: none;
   }
 }
@@ -717,7 +667,7 @@
 .dark .rycode-footer-source .coorda-footer-body nav a:hover {
   color: var(--detail-blue-on-dark);
 }
-.rycode-footer-source :is(.moments-star, .moments-notice > svg) {
+.rycode-footer-source .moments-star {
   color: var(--action);
 }
 /* footer-fluid.css */
