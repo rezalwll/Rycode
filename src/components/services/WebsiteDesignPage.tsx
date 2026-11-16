@@ -52,7 +52,7 @@ type TemplateArtwork = {
 const templateArtwork = {
   website: {
     src: "/brand/website-design/pane-wayline.webp",
-    alt: "پیش‌نمایش سایت رزرو سفر Wayline روی زمینهٔ آبی و نارنجی",
+    alt: "سایت رزرو سفر Wayline روی زمینهٔ آبی و نارنجی",
     source: "pane",
   },
   shop: {

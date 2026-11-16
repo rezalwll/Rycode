@@ -1,7 +1,7 @@
 // The original copy used by the transplanted pre-footer section.
 export const referenceCopy: Record<string, string> = {
-  "RYCODE mobile app preview: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.":
-    "پیش‌نمایش اپلیکیشن رایکد؛ پشتیبانی و توسعهٔ مستمر برای ادامهٔ مسیر محصولت",
+  "RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.":
+    "اپلیکیشن رایکد؛ پشتیبانی و توسعهٔ مستمر برای ادامهٔ مسیر محصولت",
   "Your product’s next chapter": "قدم بعدی محصولت",
   "Design, engineering and growth for your business":
     "طراحی، مهندسی و رشد برای کسب‌وکار تو",

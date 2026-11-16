@@ -343,7 +343,7 @@ export async function ServiceDetailPage({
           <div
             className={styles.buildHeroVisual}
             role="img"
-            aria-label={fa ? "نمونه‌ای از طراحی رابط سایت" : "Website interface design preview"}
+            aria-label={fa ? "نمایی از طراحی رابط سایت" : "Website interface design"}
           >
             <div className={styles.buildHeroGlow} />
             <figure className={`${styles.heroScreen} ${styles.heroScreenBack}`}>
@@ -360,7 +360,7 @@ export async function ServiceDetailPage({
             <span className={styles.heroFloatLabel}>{fa ? "ساختن برای حرکت" : "BUILT TO MOVE"}</span>
           </div>
         ) : isSoftwareService ? (
-          <div className={styles.softwareHeroVisual} role="img" aria-label={fa ? "نمایی انتزاعی از یک نرم‌افزار اختصاصی" : "Abstract custom software system preview"}>
+          <div className={styles.softwareHeroVisual} role="img" aria-label={fa ? "نمایی انتزاعی از یک نرم‌افزار اختصاصی" : "Abstract custom software system"}>
             <div className={styles.softwareGrid} />
             <div className={styles.softwareGlow} />
             <div className={styles.softwareOrb}><Image src="/brand/services/software.webp" alt="" fill sizes="(max-width: 850px) 75vw, 490px" priority /></div>
@@ -376,7 +376,7 @@ export async function ServiceDetailPage({
             <span className={styles.softwareTag}>BUILT AROUND YOUR WORK</span>
           </div>
         ) : isRescueService ? (
-          <div className={styles.rescueHeroVisual} role="img" aria-label={fa ? "نمایی از اسکن و تشخیص پروژه" : "Project scan and diagnosis preview"}>
+          <div className={styles.rescueHeroVisual} role="img" aria-label={fa ? "نمایی از اسکن و تشخیص پروژه" : "Project scan and diagnosis"}>
             <div className={styles.rescueScanBeam} />
             <div className={styles.rescueImage}><Image src="/brand/services/rescue.webp" alt="" fill sizes="(max-width: 850px) 80vw, 560px" priority /></div>
             <div className={styles.rescueScore}><span>RISK SCORE</span><strong>42</strong><small>{fa ? "قابل اصلاح" : "ACTIONABLE"}</small></div>
@@ -384,7 +384,7 @@ export async function ServiceDetailPage({
             <span className={styles.rescueLabel}>RYCODE / INCIDENT 01</span>
           </div>
         ) : isConnectService ? (
-          <div className={styles.connectWorkflowVisual} role="img" aria-label={fa ? "نمایش یک مسیر خودکارسازی" : "Live automation workflow preview"}>
+          <div className={styles.connectWorkflowVisual} role="img" aria-label={fa ? "نمایش یک مسیر خودکارسازی" : "Live automation workflow"}>
             <div className={styles.connectVisualTop}><span>RYCODE / AUTOMATION LAB</span><b><i /> LIVE RUN</b></div>
             <div className={styles.connectFlowCanvas}>
               <div className={`${styles.connectNode} ${styles.connectNodeTrigger}`}><span>01</span><b>TRIGGER</b><strong>{fa ? "سفارش جدید" : "New order"}</strong><small>{fa ? "فروشگاه آنلاین" : "Online store"}</small></div>
@@ -418,7 +418,7 @@ export async function ServiceDetailPage({
             <div className={styles.continueNote}><small>{fa ? "وضعیت پروژه" : "PROJECT HEALTH"}</small><strong>{fa ? "پایدار و رو به رشد" : "Stable & growing"}</strong><i>↗</i></div>
           </div>
         ) : isGrowthService ? (
-          <div className={styles.growthSearchVisual} role="img" aria-label={fa ? "نمایش نتیجهٔ جست‌وجو و رتبهٔ سایت" : "Search result and ranking preview"}>
+          <div className={styles.growthSearchVisual} role="img" aria-label={fa ? "نمایش نتیجهٔ جست‌وجو و رتبهٔ سایت" : "Search result and ranking"}>
             <div className={styles.growthSearchTop}><span>RYCODE / SEARCH CONSOLE</span><b><i /> LIVE QUERY</b></div>
             <div className={styles.growthQuery}><span>⌕</span><strong>{fa ? "طراحی سایت برای کسب‌وکار" : "website design for business"}</strong><small>⌘ K</small></div>
             <div className={styles.growthResult}><span className={styles.growthResultRank}>#01</span><div><small>rycode.ir / services</small><h3>{fa ? "طراحی سایت که برایت مشتری می‌آورد" : "Website design that brings the right clients"}</h3><p>{fa ? "ساختار، محتوا و تجربه‌ای که دیده‌شدن را به اقدام تبدیل می‌کند." : "A structure, story and experience that turns visibility into action."}</p></div><b>↗</b></div>

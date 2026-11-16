@@ -163,7 +163,7 @@ export async function AutomationServicePage() {
             </a>
             <a href="#automation-examples">
               <small>کاربردها</small>
-              <strong>دموی تعاملی</strong>
+              <strong>مسیر تعاملی</strong>
             </a>
             <a href="#automation-process">
               <small>همکاری</small>

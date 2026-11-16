@@ -65,7 +65,7 @@ export function SeoGrowthPage() {
         <div className={styles.cover}>
           <Image
             src="/brand/seo-growth/search-analysis.webp"
-            alt="لپ‌تاپ با پیش‌نمایش تحلیل جست‌وجو کنار نقشهٔ صفحات سایت"
+            alt="لپ‌تاپ با تحلیل جست‌وجو کنار نقشهٔ صفحات سایت"
             fill
             sizes="(max-width: 1300px) 94vw, 1220px"
             preload
