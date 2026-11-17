@@ -100,7 +100,7 @@ export default function Moments() {
             </motion.svg>
           </motion.div>
 
-          <motion.div
+          <div
             className="moments-phone"
             role="img"
             aria-label={copyText("RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.")}
@@ -179,7 +179,7 @@ export default function Moments() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
             className="moments-eyes"
