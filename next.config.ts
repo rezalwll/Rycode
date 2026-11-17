@@ -10,8 +10,8 @@ const config: NextConfig = {
   },
   reactStrictMode: true,
   experimental: {
+    agentUpgrade: "security",
     globalNotFound: true,
-    agentUpgrade: false,
     turbopackFileSystemCacheForDev: false,
   },
   turbopack: { root: process.cwd() },
