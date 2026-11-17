@@ -29,15 +29,11 @@ export default function Moments() {
   const photos = isSoftwarePage
     ? {
         profile: BRAND_MARK_SRC,
-        city: "/brand/software-service/web-workspace.webp",
-        trip: "/brand/software-service/phone-and-notebook.webp",
-        friends: "/brand/software-service/desktop-workspace.webp",
+        product: "/brand/source-footer/moment-dashboard.jpg",
       }
     : {
         profile: "/brand/source-footer/moment-profile.png",
-        city: "/brand/source-footer/moment-city.png",
-        trip: "/brand/source-footer/moment-trip.png",
-        friends: "/brand/source-footer/moment-friends.png",
+        product: "/brand/source-footer/moment-dashboard.jpg",
       };
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
@@ -149,26 +145,10 @@ export default function Moments() {
                   <div className="moments-phone-main">
                     <div className="moments-photos">
                       <img
-                        className="moments-photo-city"
-                        src={photos.city}
-                        width={130}
-                        height={160}
-                        alt=""
-                        loading="lazy"
-                      />
-                      <img
-                        className="moments-photo-trip"
-                        src={photos.trip}
-                        width={130}
-                        height={160}
-                        alt=""
-                        loading="lazy"
-                      />
-                      <img
-                        className="moments-photo-friends"
-                        src={photos.friends}
-                        width={131}
-                        height={160}
+                        className="moments-photo-product"
+                        src={photos.product}
+                        width={180}
+                        height={190}
                         alt=""
                         loading="lazy"
                       />

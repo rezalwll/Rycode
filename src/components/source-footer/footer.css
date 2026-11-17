@@ -426,30 +426,15 @@
 }
 .rycode-footer-source .moments-photos img {
   position: absolute;
-  width: 130px;
-  height: 160px;
-  border: 2px solid #fff;
-  border-radius: 12px;
+  width: 180px;
+  height: 190px;
+  border: 0;
+  border-radius: 14px;
   object-fit: cover;
 }
-.rycode-footer-source .moments-photos .moments-photo-city {
-  z-index: 1;
-  top: 2px;
-  left: 16px;
-  transform: rotate(-6deg);
-}
-.rycode-footer-source .moments-photos .moments-photo-trip {
-  z-index: 0;
-  top: 11px;
-  left: 51px;
-  transform: rotate(13deg);
-}
-.rycode-footer-source .moments-photos .moments-photo-friends {
-  z-index: 2;
-  bottom: 8px;
-  left: 34.5px;
-  width: 131px;
-  transform: rotate(6deg);
+.rycode-footer-source .moments-photos .moments-photo-product {
+  inset: 0 auto auto 10px;
+  object-position: 52% 54%;
 }
 .rycode-footer-source .moments-phone-copy {
   display: flex;
