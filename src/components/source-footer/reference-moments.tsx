@@ -104,8 +104,6 @@ export default function Moments() {
             className="moments-phone"
             role="img"
             aria-label={copyText("RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.")}
-            {...(reduceMotion ? {} : { animate: { y: [0, -8, 0] } })}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           >
             <div aria-hidden="true">
               <span className="moments-side-button moments-side-silent" />
