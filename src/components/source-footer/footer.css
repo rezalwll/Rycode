@@ -621,6 +621,9 @@
   gap: clamp(24px, 3vw, 48px);
   padding: 36px clamp(0px, 3vw, 48px);
 }
+.rycode-footer-source[dir="rtl"] .rycode-footer-brand {
+  justify-content: space-between;
+}
 .rycode-footer-source .rycode-footer-lockup {
   display: inline-flex;
   align-items: center;
@@ -645,7 +648,7 @@
   padding-left: clamp(22px, 3vw, 48px);
   border-left: 1px solid var(--footer-rule);
   color: var(--footer-muted);
-  text-align: left;
+  text-align: start;
   font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.8;
 }
@@ -938,7 +941,6 @@
   .rycode-footer-source .rycode-footer-brand-copy {
     padding-left: 0;
     border: 0;
-    text-align: start;
   }
   .rycode-footer-source .rycode-footer-inquiry {
     padding: 23px 19px;
