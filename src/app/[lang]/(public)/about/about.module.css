@@ -393,41 +393,56 @@
 }
 
 .closing {
+  --closing-stroke: light-dark(rgb(23 108 175 / 28%), rgb(131 203 255 / 28%));
+  --closing-wash: light-dark(rgb(97 180 244 / 14%), rgb(93 177 245 / 12%));
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 10px;
+  place-items: center;
   margin-block: 6px clamp(36px, 4.8vw, 64px);
-  padding: 10px;
+  padding: clamp(35px, 5vw, 66px) clamp(16px, 5vw, 56px);
   scroll-margin-block-start: 84px;
-  border: 1px solid light-dark(#d5e8f6, #345066);
+  border: 1px solid light-dark(#d0e5f5, #345269);
   border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    light-dark(#f8fcff, #1c2a38),
-    light-dark(#eaf5fe, #203649)
-  );
+  background:
+    radial-gradient(ellipse at 9% 110%, var(--closing-wash), transparent 62%),
+    radial-gradient(ellipse at 96% -4%, var(--closing-wash), transparent 56%),
+    light-dark(#eff7ff, #192a3a);
 }
 
 .closingBody {
-  align-self: center;
+  width: min(100%, 760px);
   min-inline-size: 0;
-  padding: clamp(18px, 3.2vw, 42px);
+  text-align: center;
 }
 
 .closing .label {
+  justify-content: center;
+  gap: 7px;
   color: var(--about-accent);
 }
 
+.closing .label::before {
+  flex-basis: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
 .closing .heading h2 {
-  max-inline-size: 25ch;
-  font-size: clamp(1.55rem, 3vw, 2.65rem);
+  max-inline-size: 100%;
+  margin-inline: auto;
+  font-size: clamp(1.5rem, 3vw, 2.65rem);
 }
 
 .closing .description {
-  max-inline-size: 52ch;
+  max-inline-size: 620px;
+  margin-inline: auto;
+  text-wrap: pretty;
 }
 
 .closingActions {
+  justify-content: center;
   gap: 8px 12px;
   margin-block-start: 22px;
 }
@@ -456,102 +471,86 @@
   background: var(--about-soft);
 }
 
-.closingArt {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  min-block-size: 260px;
-  border: 1px solid #356590;
-  border-radius: 16px;
-  background:
-    radial-gradient(ellipse at 72% 18%, #225c98 0%, transparent 58%),
-    radial-gradient(ellipse at 20% 82%, #125780 0%, transparent 51%), #0b2540;
-}
-
-.closingArt::before {
+.closingShapes {
   position: absolute;
   z-index: -1;
   inset: 0;
+  overflow: clip;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 12%,
+    transparent 39%,
+    transparent 61%,
+    #000 88%,
+    #000 100%
+  );
+}
+
+.closingShapes::before {
+  position: absolute;
+  inset: 0;
   background-image:
-    linear-gradient(rgb(144 204 255 / 14%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(144 204 255 / 14%) 1px, transparent 1px);
-  background-size: 25px 25px;
-  mask-image: radial-gradient(ellipse, #000 20%, transparent 78%);
+    linear-gradient(var(--closing-wash) 1px, transparent 1px),
+    linear-gradient(90deg, var(--closing-wash) 1px, transparent 1px);
+  background-size: 24px 24px;
   content: "";
 }
 
-.closingOrbit {
+.closingRings,
+.closingDiamonds {
   position: absolute;
-  inset: 50% auto auto 50%;
-  width: 83%;
-  height: 44%;
-  border: 1px solid rgb(146 222 255 / 80%);
+  width: clamp(170px, 24vw, 330px);
+  aspect-ratio: 1;
+}
+
+.closingRings {
+  inset-block-start: -38%;
+  inset-inline-start: -6%;
+  border: 1px solid var(--closing-stroke);
   border-radius: 50%;
-  box-shadow: 0 0 20px rgb(66 185 255 / 28%);
-  transform: translate(-50%, -50%) rotate(-24deg);
+  background: radial-gradient(var(--closing-wash), transparent 71%);
+  box-shadow: 0 0 0 16px var(--closing-wash);
 }
 
-.closingOrbit::after {
+.closingRings::before,
+.closingRings::after,
+.closingDiamonds::before,
+.closingDiamonds::after {
   position: absolute;
-  inset: 7px;
-  border: 1px dashed rgb(146 222 255 / 35%);
+  border: 1px solid var(--closing-stroke);
+  content: "";
+}
+
+.closingRings::before {
+  inset: 12%;
   border-radius: inherit;
-  content: "";
 }
 
-.closingMark {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  place-items: center;
-  width: clamp(82px, 10vw, 132px);
-  aspect-ratio: 1;
-  border: 1px solid rgb(157 217 255 / 65%);
-  border-radius: 24%;
-  background: linear-gradient(145deg, #4c98ce, #143f71 78%);
-  box-shadow:
-    0 18px 42px rgb(2 14 36 / 44%),
-    0 0 28px rgb(81 181 255 / 25%),
-    inset 0 0 18px rgb(157 227 255 / 20%);
-  transform: translate(-50%, -50%) rotate(-10deg);
+.closingRings::after {
+  inset: 26%;
+  border-radius: inherit;
 }
 
-.closingMark::before {
-  width: 57%;
-  height: 65%;
-  background: linear-gradient(150deg, #fff 5%, #b2e7ff 55%, #61c2ff 100%);
-  mask: url("/brand/rycode-mark.svg") center / contain no-repeat;
-  transform: rotate(10deg);
-  content: "";
+.closingDiamonds {
+  inset-inline-end: -9%;
+  inset-block-end: -43%;
+  rotate: 36deg;
+  border: 1px solid var(--closing-stroke);
+  border-radius: 20%;
+  background: var(--closing-wash);
 }
 
-.closingNode {
-  position: absolute;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: clamp(36px, 4.2vw, 54px);
-  aspect-ratio: 1;
-  border: 1px solid #5ea4d5;
-  border-radius: 26%;
-  background: #153b62;
-  color: #bfe9ff;
-  box-shadow: 0 8px 20px rgb(1 17 37 / 25%);
-  transform: translate(-50%, -50%);
+.closingDiamonds::before {
+  inset: 14%;
+  border-radius: inherit;
 }
 
-.closingIdea {
-  top: 68%;
-  left: 15%;
-}
-
-.closingLaunch {
-  top: 32%;
-  left: 85%;
-  background: #bfe9ff;
-  color: #153b62;
+.closingDiamonds::after {
+  inset: 29%;
+  border-radius: inherit;
+  background: var(--closing-wash);
 }
 
 @media (max-width: 900px) {
@@ -571,23 +570,26 @@
   }
 
   .closing {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2px;
-    padding: 7px;
+    padding: 28px 16px;
     border-radius: 19px;
-  }
-
-  .closingBody {
-    padding: 16px 13px 18px;
-  }
-
-  .closingArt {
-    min-block-size: clamp(154px, 43vw, 220px);
-    border-radius: 13px;
   }
 
   .closingActions {
     margin-block-start: 16px;
+  }
+
+  .closingShapes {
+    opacity: 0.68;
+  }
+
+  .closingRings {
+    inset-block-start: -85px;
+    inset-inline-start: -58px;
+  }
+
+  .closingDiamonds {
+    inset-block-end: -84px;
+    inset-inline-end: -68px;
   }
 
   .mainPhoto {

@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Lightbulb } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
@@ -251,15 +251,9 @@ export default async function AboutPage() {
               </Link>
             </div>
           </div>
-          <div className={styles.closingArt} aria-hidden="true">
-            <span className={styles.closingOrbit} />
-            <span className={styles.closingMark} />
-            <span className={`${styles.closingNode} ${styles.closingIdea}`}>
-              <Lightbulb size={21} strokeWidth={1.6} />
-            </span>
-            <span className={`${styles.closingNode} ${styles.closingLaunch}`}>
-              <ArrowUpRight size={22} strokeWidth={1.6} />
-            </span>
+          <div className={styles.closingShapes} aria-hidden="true">
+            <span className={styles.closingRings} />
+            <span className={styles.closingDiamonds} />
           </div>
         </section>
       </div>
