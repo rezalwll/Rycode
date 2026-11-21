@@ -769,92 +769,120 @@
   background: var(--footer-blue-soft);
   transform: translateY(-2px);
 }
-.rycode-footer-source[dir="rtl"]
-  :is(.rycode-footer-button-secondary, .rycode-footer-group a)
-  svg {
+.rycode-footer-source[dir="rtl"] .rycode-footer-button-secondary svg,
+.rycode-footer-source[dir="rtl"] .rycode-footer-contact-arrow {
   transform: scaleX(-1);
 }
 .rycode-footer-source .rycode-footer-nav {
   display: grid;
-  grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.2fr) repeat(
-      2,
-      minmax(0, 1.02fr)
-    );
-  margin-top: 38px;
-  padding-block: 26px 38px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.35fr);
+  align-items: start;
+  gap: 24px clamp(20px, 4vw, 64px);
+  margin-top: 30px;
+  padding-block: 27px 30px;
   border-block-start: 1px solid var(--footer-rule);
 }
-.rycode-footer-source .rycode-footer-group {
-  min-width: 0;
-  position: relative;
-  padding-inline: clamp(10px, 3.25vw, 54px) clamp(10px, 2vw, 32px);
-}
-.rycode-footer-source .rycode-footer-group:first-child {
-  padding-inline-start: 0;
-}
-.rycode-footer-source .rycode-footer-group + .rycode-footer-group::before {
-  position: absolute;
-  inset-block: 58px 0;
-  inset-inline-start: 0;
-  width: 1px;
-  background: var(--footer-rule);
-  content: "";
-}
-.rycode-footer-source .rycode-footer-group h3 {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  margin: 0 0 14px;
-  font-size: clamp(16px, 1.36vw, 21px);
-  font-weight: 800;
-  line-height: 1.45;
-}
-.rycode-footer-source .rycode-footer-group-icon {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
-  background: var(--footer-blue-soft);
-  color: var(--footer-blue);
-}
-.rycode-footer-source .rycode-footer-group-icon svg {
-  width: 24px;
-  height: 24px;
-}
-.rycode-footer-source .rycode-footer-group ul {
-  display: grid;
-  gap: 3px;
+.rycode-footer-source .rycode-footer-nav ul,
+.rycode-footer-source .rycode-footer-secondary-links {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.rycode-footer-source .rycode-footer-group a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 2px 3px;
-  font-size: 14px;
-  line-height: 1.65;
-  transition: color var(--ui-duration) var(--ui-ease);
+.rycode-footer-source .rycode-footer-link-group h3 {
+  margin: 0 0 9px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.55;
 }
-.rycode-footer-source .rycode-footer-group a:is(:hover, :focus-visible) {
+.rycode-footer-source .rycode-footer-link-group a {
+  display: inline-block;
+  padding-block: 5px;
+  color: var(--footer-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.rycode-footer-source .rycode-footer-link-group a:hover {
   color: var(--footer-blue);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-.rycode-footer-source .rycode-footer-group a svg {
-  align-self: flex-start;
+.rycode-footer-source .rycode-footer-contact-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 88px;
+  padding: 14px;
+  border: 1px solid var(--footer-rule);
+  border-radius: 16px;
+  background: light-dark(#f5faff, #192635);
+  transition:
+    border-color var(--ui-duration) var(--ui-ease),
+    background-color var(--ui-duration) var(--ui-ease);
+}
+.rycode-footer-source .rycode-footer-contact-card:hover {
+  border-color: var(--footer-blue);
+  background: var(--footer-blue-soft);
+}
+.rycode-footer-source[dir="rtl"] .rycode-footer-contact-card {
+  direction: rtl;
+}
+.rycode-footer-source[dir="rtl"] .rycode-footer-contact-copy {
+  font-family: "IRANYekan", ui-sans-serif, system-ui, sans-serif;
+}
+.rycode-footer-source .rycode-footer-contact-icon {
+  display: grid;
   flex: none;
-  width: 15px;
-  height: 15px;
-  margin-top: 4px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--footer-blue-soft);
+  color: var(--footer-blue);
+}
+.rycode-footer-source .rycode-footer-contact-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.rycode-footer-source .rycode-footer-contact-copy {
+  display: grid;
+  justify-items: start;
+  gap: 3px;
+  color: var(--footer-muted);
+  font-size: 13px;
+}
+.rycode-footer-source .rycode-footer-contact-copy bdi {
+  color: var(--footer-ink);
+  font-family: var(--font-english);
+  font-size: clamp(15px, 1.7vw, 21px);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.rycode-footer-source .rycode-footer-contact-arrow {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  margin-inline-start: auto;
   color: var(--footer-blue);
 }
 .rycode-footer-source .rycode-footer a:focus-visible {
   outline: 2px solid var(--footer-blue);
-  outline-offset: 4px;
+  outline-offset: 3px;
+}
+.rycode-footer-source .rycode-footer-secondary-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 16px;
+}
+.rycode-footer-source .rycode-footer-secondary-links a {
+  display: block;
+  padding-block: 6px;
+}
+.rycode-footer-source .rycode-footer-secondary-links a:hover {
+  color: var(--footer-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .rycode-footer-source .rycode-footer-bottom {
   display: flex;
@@ -887,19 +915,24 @@
   color: var(--footer-ink);
 }
 @media (max-width: 899px) {
-  .rycode-footer-source .rycode-footer-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+  .rycode-footer-source .rycode-footer-bottom nav {
+    order: -1;
+    flex-basis: 100%;
   }
-  .rycode-footer-source .rycode-footer-group {
-    padding-inline: 0;
-  }
-  .rycode-footer-source .rycode-footer-group + .rycode-footer-group::before {
-    display: none;
+  .rycode-footer-source .rycode-footer-secondary-links {
+    justify-content: flex-start;
   }
   .rycode-footer-source .rycode-footer-inquiry {
     grid-template-columns: minmax(0, 1fr);
     padding-inline: clamp(24px, 3.4vw, 36px);
+  }
+}
+@media (max-width: 740px) {
+  .rycode-footer-source .rycode-footer-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rycode-footer-source .rycode-footer-contact-card {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 620px) {
@@ -923,24 +956,17 @@
     border-radius: 18px;
   }
   .rycode-footer-source .rycode-footer-nav {
-    margin-top: 28px;
-    padding-block: 22px 28px;
+    gap: 18px 14px;
+    margin-top: 20px;
+    padding-block: 20px 22px;
   }
-  .rycode-footer-source .rycode-footer-group h3 {
-    gap: 8px;
-    margin-bottom: 8px;
+  .rycode-footer-source .rycode-footer-contact-card {
+    min-height: 72px;
+    padding: 11px;
   }
-  .rycode-footer-source .rycode-footer-group-icon {
-    width: 34px;
-    height: 34px;
-  }
-  .rycode-footer-source .rycode-footer-group-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-  .rycode-footer-source .rycode-footer-group a {
-    gap: 4px;
-    font-size: 13px;
+  .rycode-footer-source .rycode-footer-bottom {
+    gap: 12px;
+    padding-block: 14px 24px;
   }
 }
 @media (max-width: 420px) {
