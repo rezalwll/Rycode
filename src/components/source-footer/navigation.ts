@@ -3,14 +3,6 @@ import { services } from "@/content/services";
 
 export const inquiryHref = "/contact#project-inquiry";
 
-const featuredServices = new Set([
-  "build",
-  "grow",
-  "software",
-  "rescue",
-  "connect",
-]);
-
 export function getFooterNav(locale: Locale) {
   const fa = locale === "fa";
   return [
@@ -27,12 +19,10 @@ export function getFooterNav(locale: Locale) {
     {
       id: "services",
       title: fa ? "خدمات" : "Services",
-      items: services
-        .filter(({ id }) => featuredServices.has(id))
-        .map((service) => ({
-          label: service.title[locale],
-          href: `/services/${service.id}`,
-        })),
+      items: services.map((service) => ({
+        label: service.title[locale],
+        href: `/services/${service.id}`,
+      })),
     },
     {
       id: "start",
