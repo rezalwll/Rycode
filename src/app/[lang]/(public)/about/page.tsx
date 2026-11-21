@@ -57,12 +57,7 @@ export default async function AboutPage() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div className={styles.heroIntro}>
-            <div>
-              <p className={styles.label}>{copy.title}</p>
-              <p className={styles.tagline} lang="en" dir="ltr">
-                BUILD. FIX. GROW.
-              </p>
-            </div>
+            <p className={styles.label}>{copy.title}</p>
             <Reveal duration={700} initialOpacity={0.55}>
               <h1>
                 {copy.headline[0]} <em>{copy.headline[1]}</em>
@@ -94,36 +89,39 @@ export default async function AboutPage() {
                 alt={copy.photoAlts[0]}
                 fill
                 fetchPriority="high"
-                sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1520px) 64vw, 960px"
+                sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1200px) 44vw, 510px"
               />
             </div>
-            <div className={styles.gallerySide}>
-              <div className={`${styles.photo} ${styles.detailPhoto}`}>
-                <Image
-                  src="/brand/project-rescue/code-workspace.webp"
-                  alt={copy.photoAlts[1]}
-                  fill
-                  sizes="(max-width: 640px) 48vw, (max-width: 1520px) 32vw, 480px"
-                />
-              </div>
-              <a className={styles.galleryNote} href="#approach">
-                <span>{copy.photoNote}</span>
-                <ArrowDown size={18} aria-hidden="true" />
-              </a>
-            </div>
+            <a className={styles.galleryNote} href="#approach">
+              <span>{copy.photoNote}</span>
+              <ArrowDown size={15} aria-hidden="true" />
+            </a>
           </div>
         </header>
 
-        <section className={styles.section} aria-labelledby="about-identity">
-          <SectionHeading
-            id="about-identity"
-            label={copy.identity.label}
-            title={copy.identity.title}
-          />
-          <div className={styles.identityCopy}>
-            {copy.identity.description.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+        <section
+          className={`${styles.section} ${styles.identity}`}
+          aria-labelledby="about-identity"
+        >
+          <div>
+            <SectionHeading
+              id="about-identity"
+              label={copy.identity.label}
+              title={copy.identity.title}
+            />
+            <div className={styles.identityCopy}>
+              {copy.identity.description.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <div className={`${styles.photo} ${styles.detailPhoto}`}>
+            <Image
+              src="/brand/project-rescue/code-workspace.webp"
+              alt={copy.photoAlts[1]}
+              fill
+              sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1200px) 36vw, 430px"
+            />
           </div>
         </section>
 
@@ -157,19 +155,26 @@ export default async function AboutPage() {
             title={copy.capabilities.title}
           />
           <ul className={styles.capabilities}>
-            {capabilityLinks.map(({ label, path }, index) => {
+            {capabilityLinks.map(({ image, path }, index) => {
               const [title, description] = copy.capabilities.items[index];
               return (
-                <li key={label}>
+                <li key={path}>
                   <Link href={href(path)} className={styles.capability}>
-                    <span className={styles.capabilityLabel} lang="en">
-                      {label}
-                    </span>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                    <span className={styles.linkIcon} aria-hidden="true">
-                      <ArrowUpRight className={styles.arrow} size={20} />
-                    </span>
+                    <div className={styles.capabilityPhoto}>
+                      <Image
+                        src={image}
+                        alt=""
+                        fill
+                        sizes="(max-width: 560px) 30vw, (max-width: 900px) 46vw, (max-width: 1200px) 23vw, 275px"
+                      />
+                    </div>
+                    <div className={styles.capabilityCopy}>
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                      <span className={styles.linkIcon} aria-hidden="true">
+                        <ArrowUpRight className={styles.arrow} size={16} />
+                      </span>
+                    </div>
                   </Link>
                 </li>
               );

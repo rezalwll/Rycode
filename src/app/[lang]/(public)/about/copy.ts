@@ -1,8 +1,20 @@
 const capabilityLinks = [
-  { label: "BUILD", path: "/services/build" },
-  { label: "FIX", path: "/services/rescue" },
-  { label: "CONNECT", path: "/services/connect" },
-  { label: "GROW", path: "/services/grow" },
+  {
+    image: "/brand/channel-services/capabilities/build.webp",
+    path: "/services/build",
+  },
+  {
+    image: "/brand/channel-services/capabilities/rescue.webp",
+    path: "/services/rescue",
+  },
+  {
+    image: "/brand/channel-services/capabilities/connect.webp",
+    path: "/services/connect",
+  },
+  {
+    image: "/brand/channel-services/capabilities/grow.webp",
+    path: "/services/grow",
+  },
 ] as const;
 
 type Entry = readonly [title: string, description: string];
