@@ -13,10 +13,7 @@ export function Link({
   return (
     <NextLink
       {...props}
-      href={localizedHref(
-        href === "/start-project" ? "/contact" : href,
-        locale,
-      )}
+      href={href === "/sitemap.xml" ? href : localizedHref(href, locale)}
     />
   );
 }

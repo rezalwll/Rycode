@@ -224,12 +224,6 @@
   color: #fff !important;
   box-shadow: 0 12px 28px rgb(255 27 11 / 24%);
 }
-.rycode-public .coorda-footer-cta[data-fill-button] {
-  --fill-base: #1a1a1a;
-  --button-hover: #66c0ff;
-  --button-line: #1a1a1a;
-  color: #fff !important;
-}
 .rycode-public
   :is(.hero-cta, .features-about-link)[data-fill-button]:is(
     :hover,

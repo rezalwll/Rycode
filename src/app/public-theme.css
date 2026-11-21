@@ -139,19 +139,6 @@ html.dark:has(.rycode-public) {
   :is(.footer-fluid-canvas, .coorda-footer-wash) {
   display: none;
 }
-.rycode-public .rycode-footer-source footer.coorda-legacy-footer {
-  --brand: var(--ui-blue);
-  --brand-hover: var(--ui-purple);
-  --brand-soft: var(--ui-surface);
-  --detail-blue: var(--ui-ink);
-}
-.rycode-public
-  .rycode-footer-source
-  footer.coorda-legacy-footer
-  .coorda-footer-cta:hover {
-  color: var(--ui-ink);
-}
-
 .rycode-public .rycode-services-source .capability-card {
   --feature-accent: var(--ui-blue) !important;
 }

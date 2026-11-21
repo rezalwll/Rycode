@@ -1,87 +1,137 @@
-import { ArrowUpLeft } from "lucide-react";
-import { BrandText } from "@/components/pages/rycode-services/brand-text";
+import {
+  BookOpen,
+  ChevronRight,
+  Handshake,
+  House,
+  Layers,
+  MapPin,
+  MessageCircleMore,
+} from "lucide-react";
+import type { Locale } from "@/lib/i18n";
 
+import { FooterFluid } from "./footer-fluid";
 import { Link } from "./link";
+import { LogoMark } from "./logo";
+import { getFooterNav, inquiryHref } from "./navigation";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
-import { LogoMark } from "./logo";
-import { FooterFluid } from "./footer-fluid";
 
-import { getFooterNav } from "./navigation";
-import type { Locale } from "@/lib/i18n";
+const groupIcons = {
+  company: House,
+  services: Layers,
+  start: Handshake,
+  resources: BookOpen,
+};
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const isFa = locale === "fa";
   const groups = getFooterNav(locale);
+  const year = new Date().getFullYear();
+
   return (
-    <BrandText>
-      <footer id="site-footer" className="coorda-legacy-footer">
-        <FooterFluid />
-        <Container className="coorda-footer-content">
-          <div className="coorda-footer-brand" dir="ltr">
-            <span className="coorda-footer-lockup">
-              <span className="coorda-footer-wordmark">
-                <LogoWordmark />
-              </span>
-              <LogoMark
-                className="coorda-footer-mark"
-                variant="default"
-                alt=""
-              />
-            </span>
-          </div>
-          <div className="coorda-footer-body" dir={isFa ? "rtl" : "ltr"}>
-            <div className="coorda-footer-intro">
-              <div className="coorda-footer-intro-copy">
-                <h2>
-                  {isFa ? "بگو کجای کار هستی" : "Tell us where you are today"}
-                </h2>
-                <p>
-                  {isFa
-                    ? "یک ایدهٔ تازه داری، پروژه‌ات متوقف شده یا سایتت نیاز به بهبود دارد؟ از همین‌جا دربارهٔ قدم بعدی حرف بزنیم"
-                    : "A new idea, an unfinished project or a site that needs improvement? Let’s talk about the next step."}
-                </p>
-              </div>
-              <Link data-fill-button
-                href="/start-project"
-                className="coorda-button coorda-footer-cta"
-                locale={locale}
-              >
-                {isFa ? "شروع یک گفت‌وگو" : "Start a conversation"}
-                <ArrowUpLeft
-                  className="size-4 rtl:rotate-0 ltr:rotate-90"
-                  aria-hidden
-                />
-              </Link>
-            </div>
-            <nav
-              aria-label={isFa ? "پیوندهای پایین سایت" : "Footer navigation"}
-            >
-              {groups.map((group) => (
-                <div className="coorda-footer-nav-group" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <ul>
-                    {group.items.map((item) => (
-                      <li key={item.label}>
-                        <Link href={item.href} locale={locale}>
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </nav>
-          </div>
-          <div className="coorda-footer-bottom" dir={isFa ? "rtl" : "ltr"}>
+    <footer id="site-footer" className="rycode-footer">
+      <FooterFluid />
+      <Container className="rycode-footer-inner">
+        <div className="rycode-footer-brand">
+          <Link
+            href="/"
+            locale={locale}
+            className="rycode-footer-lockup"
+            dir="ltr"
+          >
+            <LogoWordmark />
+            <LogoMark className="rycode-footer-mark" variant="default" alt="" />
+          </Link>
+          <div className="rycode-footer-brand-copy" dir={isFa ? "rtl" : "ltr"}>
+            <p className="rycode-footer-name">{isFa ? "رایکد" : "RYCODE"}</p>
             <p>
-              © {new Date().getFullYear()} RYCODE —{" "}
-              {isFa ? "تمام حقوق محفوظ است" : "All rights reserved"}
+              {isFa
+                ? "طراحی، توسعه و رشد راه‌حل‌های دیجیتال برای کسب‌وکارهایی که می‌خواهند جدی‌تر دیده شوند."
+                : "Digital design, development and growth for businesses ready to stand out."}
             </p>
-            <p>{isFa ? "ساخته‌شده در ایران" : "Built in Iran"}</p>
           </div>
-        </Container>
-      </footer>
-    </BrandText>
+        </div>
+
+        <section
+          className="rycode-footer-inquiry"
+          aria-labelledby="footer-inquiry-title"
+        >
+          <div className="rycode-footer-inquiry-copy">
+            <h2 id="footer-inquiry-title">
+              {isFa ? "بگو کجای مسیر کاری هستی" : "Tell us where you are today"}
+            </h2>
+            <p>
+              {isFa
+                ? "از ایده و طراحی سایت تا توسعه، بهبود و رفع باگ. اگر می‌خواهی قدم بعدی را درست برداری، با هم مسیرش را پیدا می‌کنیم."
+                : "From an idea or a new site to development and bug fixes, let’s find the next step for your project."}
+            </p>
+          </div>
+          <div className="rycode-footer-actions">
+            <Link
+              href={inquiryHref}
+              locale={locale}
+              className="rycode-footer-button rycode-footer-button-primary"
+            >
+              <MessageCircleMore aria-hidden="true" />
+              {isFa ? "شروع یک گفت‌وگو" : "Start a conversation"}
+            </Link>
+            <Link
+              href="/services"
+              locale={locale}
+              className="rycode-footer-button rycode-footer-button-secondary"
+            >
+              {isFa ? "مشاهده خدمات" : "Explore services"}
+              <ChevronRight aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+
+        <nav
+          className="rycode-footer-nav"
+          aria-label={isFa ? "پیوندهای پایین سایت" : "Footer navigation"}
+        >
+          {groups.map(({ id, title, items }) => {
+            const Icon = groupIcons[id];
+
+            return (
+              <div className="rycode-footer-group" key={id}>
+                <h3>
+                  <span className="rycode-footer-group-icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  {title}
+                </h3>
+                <ul>
+                  {items.map(({ label, href }) => (
+                    <li key={label}>
+                      <Link href={href} locale={locale}>
+                        <ChevronRight aria-hidden="true" />
+                        <span>{label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </nav>
+
+        <div className="rycode-footer-bottom">
+          <p className="rycode-footer-copyright">
+            <span aria-hidden="true">©</span>
+            <bdi dir="ltr">
+              {isFa ? `RYCODE ${year}` : `${year} RYCODE`}
+            </bdi>
+            <span>
+              {isFa ? " — تمام حقوق محفوظ است" : " — All rights reserved"}
+            </span>
+          </p>
+          <p className="rycode-footer-location">
+            <MapPin aria-hidden="true" />
+            {isFa ? "ساخته‌شده در ایران" : "Built in Iran"}
+          </p>
+        </div>
+      </Container>
+    </footer>
   );
 }
