@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Lightbulb } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Motion";
@@ -222,28 +222,44 @@ export default async function AboutPage() {
           </ul>
         </section>
 
-        <section className={styles.closing} aria-labelledby="about-closing">
-          <SectionHeading
-            id="about-closing"
-            label={copy.closing.label}
-            title={copy.closing.title}
-            description={copy.closing.description}
-          />
-          <div className={styles.closingActions}>
-            <Link
-              className={styles.button}
-              href={href("/contact#project-inquiry")}
-            >
-              {copy.closing.action}
-              <ArrowUpRight
-                size={16}
-                className={styles.arrow}
-                aria-hidden="true"
-              />
-            </Link>
-            <Link className={styles.textLink} href={href("/services")}>
-              {copy.services}
-            </Link>
+        <section
+          id="next-step"
+          className={styles.closing}
+          aria-labelledby="about-closing"
+        >
+          <div className={styles.closingBody}>
+            <SectionHeading
+              id="about-closing"
+              label={copy.closing.label}
+              title={copy.closing.title}
+              description={copy.closing.description}
+            />
+            <div className={styles.closingActions}>
+              <Link
+                className={styles.button}
+                href={href("/contact#project-inquiry")}
+              >
+                {copy.closing.action}
+                <ArrowUpRight
+                  size={16}
+                  className={styles.arrow}
+                  aria-hidden="true"
+                />
+              </Link>
+              <Link className={styles.closingServices} href={href("/services")}>
+                {copy.services}
+              </Link>
+            </div>
+          </div>
+          <div className={styles.closingArt} aria-hidden="true">
+            <span className={styles.closingOrbit} />
+            <span className={styles.closingMark} />
+            <span className={`${styles.closingNode} ${styles.closingIdea}`}>
+              <Lightbulb size={21} strokeWidth={1.6} />
+            </span>
+            <span className={`${styles.closingNode} ${styles.closingLaunch}`}>
+              <ArrowUpRight size={22} strokeWidth={1.6} />
+            </span>
           </div>
         </section>
       </div>
