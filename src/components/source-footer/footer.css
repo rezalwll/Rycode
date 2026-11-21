@@ -770,99 +770,97 @@
   transform: translateY(-2px);
 }
 .rycode-footer-source[dir="rtl"] .rycode-footer-button-secondary svg,
-.rycode-footer-source[dir="rtl"] .rycode-footer-contact-arrow {
-  transform: scaleX(-1);
+.rycode-footer-source[dir="rtl"] .rycode-footer-shortcut-arrow {
+  scale: -1 1;
 }
 .rycode-footer-source .rycode-footer-nav {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.35fr);
-  align-items: start;
-  gap: 24px clamp(20px, 4vw, 64px);
-  margin-top: 30px;
-  padding-block: 27px 30px;
-  border-block-start: 1px solid var(--footer-rule);
+  margin-block: 24px 26px;
 }
-.rycode-footer-source .rycode-footer-nav ul,
+.rycode-footer-source .rycode-footer-shortcuts,
 .rycode-footer-source .rycode-footer-secondary-links {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.rycode-footer-source .rycode-footer-link-group h3 {
-  margin: 0 0 9px;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.55;
+.rycode-footer-source .rycode-footer-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.14fr);
+  gap: 12px;
 }
-.rycode-footer-source .rycode-footer-link-group a {
-  display: inline-block;
-  padding-block: 5px;
-  color: var(--footer-muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-.rycode-footer-source .rycode-footer-link-group a:hover {
-  color: var(--footer-blue);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.rycode-footer-source .rycode-footer-contact-card {
+.rycode-footer-source .rycode-footer-shortcut {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 13px;
-  min-height: 88px;
-  padding: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  height: 100%;
+  min-height: 108px;
+  padding: 14px 17px;
   border: 1px solid var(--footer-rule);
   border-radius: 16px;
-  background: light-dark(#f5faff, #192635);
+  background: light-dark(#f9fbfd, #182330);
+  color: var(--footer-ink);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.45;
   transition:
-    border-color var(--ui-duration) var(--ui-ease),
-    background-color var(--ui-duration) var(--ui-ease);
+    background-color var(--ui-duration) var(--ui-ease),
+    border-color var(--ui-duration) var(--ui-ease);
 }
-.rycode-footer-source .rycode-footer-contact-card:hover {
-  border-color: var(--footer-blue);
+.rycode-footer-source .rycode-footer-shortcut-phone {
   background: var(--footer-blue-soft);
+  border-color: light-dark(#c2ddf4, #3b5876);
 }
-.rycode-footer-source[dir="rtl"] .rycode-footer-contact-card {
+.rycode-footer-source .rycode-footer-shortcut:hover {
+  border-color: var(--footer-blue);
+  background-color: var(--footer-blue-soft);
+}
+.rycode-footer-source .rycode-footer-shortcut-phone:hover {
+  background-color: light-dark(#cae8ff, #294965);
+}
+.rycode-footer-source[dir="rtl"] .rycode-footer-shortcut-phone {
   direction: rtl;
 }
-.rycode-footer-source[dir="rtl"] .rycode-footer-contact-copy {
-  font-family: "IRANYekan", ui-sans-serif, system-ui, sans-serif;
-}
-.rycode-footer-source .rycode-footer-contact-icon {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--footer-blue-soft);
-  color: var(--footer-blue);
-}
-.rycode-footer-source .rycode-footer-contact-icon svg {
+.rycode-footer-source .rycode-footer-shortcut-icon,
+.rycode-footer-source .rycode-footer-shortcut-arrow {
   width: 20px;
   height: 20px;
+  color: var(--footer-blue);
 }
-.rycode-footer-source .rycode-footer-contact-copy {
-  display: grid;
-  justify-items: start;
-  gap: 3px;
-  color: var(--footer-muted);
-  font-size: 13px;
-}
-.rycode-footer-source .rycode-footer-contact-copy bdi {
-  color: var(--footer-ink);
-  font-family: var(--font-english);
-  font-size: clamp(15px, 1.7vw, 21px);
-  font-weight: 700;
-  white-space: nowrap;
-}
-.rycode-footer-source .rycode-footer-contact-arrow {
-  flex: none;
+.rycode-footer-source .rycode-footer-shortcut-arrow {
+  position: absolute;
+  inset-block-start: 15px;
+  inset-inline-end: 16px;
   width: 17px;
   height: 17px;
-  margin-inline-start: auto;
-  color: var(--footer-blue);
+  opacity: 0.72;
+  transition:
+    transform var(--ui-duration) var(--ui-ease),
+    opacity var(--ui-duration) var(--ui-ease);
+}
+.rycode-footer-source
+  .rycode-footer-shortcut:is(:hover, :focus-visible)
+  .rycode-footer-shortcut-arrow {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+.rycode-footer-source .rycode-footer-shortcut-contact {
+  display: grid;
+  gap: 3px;
+  color: var(--footer-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.rycode-footer-source[dir="rtl"] .rycode-footer-shortcut-contact {
+  font-family: "IRANYekan", ui-sans-serif, system-ui, sans-serif;
+}
+.rycode-footer-source .rycode-footer-shortcut-contact bdi {
+  color: var(--footer-ink);
+  font-family: var(--font-english);
+  font-size: clamp(13px, 2vw, 20px);
+  font-weight: 750;
+  overflow-wrap: anywhere;
 }
 .rycode-footer-source .rycode-footer a:focus-visible {
   outline: 2px solid var(--footer-blue);
@@ -928,11 +926,8 @@
   }
 }
 @media (max-width: 740px) {
-  .rycode-footer-source .rycode-footer-nav {
+  .rycode-footer-source .rycode-footer-shortcuts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .rycode-footer-source .rycode-footer-contact-card {
-    grid-column: 1 / -1;
   }
 }
 @media (max-width: 620px) {
@@ -956,13 +951,20 @@
     border-radius: 18px;
   }
   .rycode-footer-source .rycode-footer-nav {
-    gap: 18px 14px;
-    margin-top: 20px;
-    padding-block: 20px 22px;
+    margin-block: 16px 20px;
   }
-  .rycode-footer-source .rycode-footer-contact-card {
-    min-height: 72px;
-    padding: 11px;
+  .rycode-footer-source .rycode-footer-shortcuts {
+    gap: 8px;
+  }
+  .rycode-footer-source .rycode-footer-shortcut {
+    min-height: 96px;
+    gap: 9px;
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+  .rycode-footer-source .rycode-footer-shortcut-arrow {
+    inset-block-start: 12px;
+    inset-inline-end: 11px;
   }
   .rycode-footer-source .rycode-footer-bottom {
     gap: 12px;
@@ -972,6 +974,10 @@
 @media (max-width: 420px) {
   .rycode-footer-source .rycode-footer-actions > a {
     width: 100%;
+  }
+  .rycode-footer-source .rycode-footer-shortcut-contact bdi {
+    font-size: clamp(11px, 3.35vw, 14px);
+    letter-spacing: -0.02em;
   }
 }
 @media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
