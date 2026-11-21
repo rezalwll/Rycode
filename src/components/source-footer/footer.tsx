@@ -12,6 +12,7 @@ import type { Locale } from "@/lib/i18n";
 import { Link } from "./link";
 import { LogoMark } from "./logo";
 import { getFooterNav, inquiryHref } from "./navigation";
+import { FooterPointerGlow } from "./pointer-glow";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
 
@@ -29,6 +30,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
   return (
     <footer id="site-footer" className="rycode-footer">
+      <FooterPointerGlow />
       <Container className="rycode-footer-inner">
         <div className="rycode-footer-brand">
           <Link
