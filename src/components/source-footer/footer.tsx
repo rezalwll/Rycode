@@ -9,10 +9,10 @@ import {
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 
+import { FooterFluid } from "./footer-fluid";
 import { Link } from "./link";
 import { LogoMark } from "./logo";
 import { getFooterNav, inquiryHref } from "./navigation";
-import { FooterPointerGlow } from "./pointer-glow";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
 
@@ -30,7 +30,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
   return (
     <footer id="site-footer" className="rycode-footer">
-      <FooterPointerGlow />
+      <FooterFluid />
       <Container className="rycode-footer-inner">
         <div className="rycode-footer-brand">
           <Link

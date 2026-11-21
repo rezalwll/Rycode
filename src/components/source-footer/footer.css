@@ -600,22 +600,14 @@
   mask: url("/brand/rycode-mark.svg") right center / contain no-repeat;
   opacity: 0.53;
 }
-.rycode-footer-source .rycode-footer-pointer-glow {
+.rycode-footer-source .coorda-footer-fluid {
   position: absolute;
   inset: 0;
   z-index: -1;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse 430px 310px at var(--footer-glow-x, 50%) var(--footer-glow-y, 50%),
-    color-mix(in srgb, var(--brand-blue) 24%, transparent),
-    color-mix(in srgb, var(--brand-purple) 17%, transparent) 42%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 260ms ease;
-}
-.rycode-footer-source .rycode-footer-pointer-glow[data-active] {
-  opacity: 1;
+  opacity: 0.3;
 }
 .rycode-footer-source .rycode-footer-inner {
   max-width: 1312px;
@@ -998,10 +990,12 @@
     width: 100%;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .rycode-footer-source .rycode-footer-pointer-glow {
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .rycode-footer-source .coorda-footer-fluid {
     display: none;
   }
+}
+@media (prefers-reduced-motion: reduce) {
   .rycode-footer-source *,
   .rycode-footer-source *::before,
   .rycode-footer-source *::after {
