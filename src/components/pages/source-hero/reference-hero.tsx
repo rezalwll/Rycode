@@ -107,12 +107,6 @@ export default function ReferenceHero() {
               <span className="hero-cta-label">
                 {text("شروع یک گفت‌وگو", "Start a conversation")}
               </span>
-              <span
-                className="hero-cta-label hero-cta-label-copy"
-                aria-hidden="true"
-              >
-                {text("شروع یک گفت‌وگو", "Start a conversation")}
-              </span>
             </motion.a>
           </div>
         </div>

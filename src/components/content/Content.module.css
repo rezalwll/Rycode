@@ -112,7 +112,6 @@
 }
 .card:hover img,
 .card:focus-visible img {
-  transform: scale(1.06);
   filter: brightness(0.85);
 }
 .arrow {
@@ -296,7 +295,6 @@
 }
 .service:hover {
   border-color: #ff1a05;
-  transform: translateY(-4px);
 }
 .service h2 {
   margin: 0 0 18px;
@@ -568,7 +566,6 @@
 .servicePage .primary:hover span,
 .servicePage .primary:focus-visible span {
   background: #211e1b;
-  transform: rotate(45deg);
 }
 .servicePage .meta {
   max-width: 840px;
@@ -618,9 +615,6 @@
   color: #b84e34;
   font-size: 22px;
   transition: transform 0.35s;
-}
-.servicePage .service:hover::after {
-  transform: translate(4px, -4px);
 }
 .servicePage .article {
   gap: 72px;
@@ -737,10 +731,6 @@
   .page * {
     transition: none !important;
     scroll-behavior: auto !important;
-  }
-  .service:hover,
-  .card:hover img {
-    transform: none;
   }
 }
 

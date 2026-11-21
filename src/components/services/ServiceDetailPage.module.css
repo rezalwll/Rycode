@@ -103,12 +103,10 @@
 .primary:hover,
 .primary:focus-visible {
   background: var(--accent);
-  transform: translateY(-2px);
 }
 .primary:hover span,
 .primary:focus-visible span {
   background: var(--ink);
-  transform: rotate(45deg);
 }
 .heroMeta {
   display: flex;
@@ -252,9 +250,6 @@
   color: var(--accent);
   font-size: 24px;
   transition: transform 0.3s;
-}
-.specialty:hover .cardArrow {
-  transform: translate(4px, -4px);
 }
 .contentSection {
   display: grid;
@@ -485,10 +480,6 @@
 .secondaryAction:focus-visible {
   color: #fff;
 }
-.secondaryAction:hover span,
-.secondaryAction:focus-visible span {
-  transform: translateY(4px);
-}
 .buildPage .heroMeta {
   border-color: var(--line);
   color: #85817c;
@@ -561,12 +552,6 @@
   inset: 0;
   background: linear-gradient(135deg, #ff1a0550, transparent 45%);
   pointer-events: none;
-}
-.buildHeroVisual:hover .heroScreenMain {
-  transform: rotate(-2deg) translateY(-8px) scale(1.02);
-}
-.buildHeroVisual:hover .heroScreenFront {
-  transform: rotate(4deg) translate(8px, -9px);
 }
 .heroCursor {
   position: absolute;
@@ -698,7 +683,6 @@
 }
 .projectCard:hover .projectImage img,
 .projectCard:focus-visible .projectImage img {
-  transform: scale(1.07);
   filter: saturate(1.12) contrast(1.04);
 }
 .projectArrow {
@@ -723,7 +707,6 @@
 .projectCard:focus-visible .projectArrow {
   background: var(--accent);
   color: #fff;
-  transform: rotate(45deg);
 }
 .projectInfo {
   display: flex;
@@ -1262,7 +1245,6 @@
 .moduleCard:hover {
   border-color: #ff1a0580;
   background: #171b1b;
-  transform: translateY(-5px);
 }
 .moduleCard > span {
   color: var(--accent);
@@ -1296,7 +1278,6 @@
 }
 .moduleCard:hover i {
   color: var(--accent);
-  transform: translate(4px, -4px);
 }
 .softwareArchitecture {
   display: grid;
@@ -1917,9 +1898,6 @@
   color: var(--accent);
   font-size: 18px;
   transition: transform 0.3s;
-}
-.planCard > a:hover span {
-  transform: translate(4px, -4px);
 }
 .planCardFeatured > a {
   color: #fff;
@@ -2602,7 +2580,6 @@
 .findingCard:hover {
   border-color: #ff3b1f88;
   background: #171b19;
-  transform: translateY(-6px);
 }
 .findingCard > span {
   color: var(--accent);
@@ -3264,7 +3241,6 @@
     border-color 0.35s;
 }
 .connectFlowGrid article:hover {
-  transform: translateY(-7px);
   border-color: #afb8ff;
   box-shadow: 0 24px 45px #4c5a7d1d;
 }
@@ -3400,7 +3376,6 @@
     transform 0.35s;
 }
 .connectServiceGrid article:hover {
-  transform: translateY(-6px);
   background: var(--blue);
   color: #fff;
 }
@@ -3734,7 +3709,6 @@
 .brutalistPage .primary:focus-visible span {
   background: var(--accent);
   color: #fff;
-  transform: none;
 }
 .brutalistPage .secondaryAction {
   color: #a9aaa4;
@@ -3925,7 +3899,6 @@
   box-shadow: none;
 }
 .brutalistPage .connectFlowGrid article:hover {
-  transform: none;
   border-color: var(--line);
   background: var(--accent);
 }
@@ -4016,7 +3989,6 @@
   background: transparent;
 }
 .brutalistPage .connectServiceGrid article:hover {
-  transform: none;
   background: var(--accent);
 }
 .brutalistPage .connectServiceGrid article > span {
@@ -4728,7 +4700,6 @@
     background 0.35s;
 }
 .dataFeatureStack article:hover {
-  transform: translateX(-7px);
   background: #d6ebdf;
 }
 .dataFeatureStack article > span {
@@ -5335,7 +5306,6 @@
 .continueServiceRows article:hover {
   background: var(--ink);
   color: #fff;
-  transform: translateX(-8px);
 }
 .continueServiceRows article > span {
   align-self: start;
@@ -6044,7 +6014,6 @@
     border-color 0.35s;
 }
 .growthChannelGrid article:hover {
-  transform: translateY(-7px);
   border-color: #75d8ff77;
   background: #1b2f58;
 }
@@ -6357,9 +6326,6 @@
   background: var(--ui-surface);
   color: var(--ink);
 }
-.page .specialty:hover {
-  box-shadow: inset 0 -3px var(--accent);
-}
 .page .specialty:hover p,
 .page .cta .kicker {
   color: var(--muted);
@@ -6511,7 +6477,6 @@
   border-color: color-mix(in srgb, var(--cyan) 58%, var(--line));
   background: #f7fbff;
   box-shadow: 0 18px 40px rgb(20 26 34 / 10%);
-  transform: translateY(-5px);
 }
 .growthPage .growthChannelGrid h3 {
   color: var(--ink);
@@ -6567,7 +6532,6 @@
 .growthPage .specialty:hover {
   background: #f7fbff;
   color: var(--ink);
-  box-shadow: inset 0 -3px var(--cyan);
 }
 .growthPage .specialty:hover p {
   color: var(--muted);

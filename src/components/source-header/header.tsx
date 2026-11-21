@@ -302,13 +302,7 @@ function DesktopNavItem({
             )}
           >
             <span>{item.label}</span>
-            <ChevronDown
-              className={cn(
-                "size-3.5 transition-transform",
-                open && "rotate-180",
-              )}
-              aria-hidden
-            />
+            <ChevronDown className="size-3.5" aria-hidden />
           </button>
         ) : (
           <Link

@@ -98,34 +98,9 @@
   line-height: 1.4;
   text-decoration: none;
   letter-spacing: -0.03em;
-  transition: transform 0.25s;
-}
-.rycode-hero-source .hero-cta:hover {
-  transform: translateY(-2px);
 }
 .rycode-hero-source .hero-cta-label {
   display: block;
-  transition:
-    transform 0.35s,
-    opacity 0.35s,
-    filter 0.35s;
-}
-.rycode-hero-source .hero-cta-label-copy {
-  position: absolute;
-  inset: 12px 22px;
-  transform: translateY(32px);
-  opacity: 0;
-  filter: blur(4px);
-}
-.rycode-hero-source .hero-cta:hover .hero-cta-label {
-  transform: translateY(-32px);
-  opacity: 0;
-  filter: blur(4px);
-}
-.rycode-hero-source .hero-cta:hover .hero-cta-label-copy {
-  transform: translateY(0);
-  opacity: 1;
-  filter: blur(0);
 }
 
 @media (min-width: 810px) and (max-width: 1199px) {

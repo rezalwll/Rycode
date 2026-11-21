@@ -1,4 +1,25 @@
-/* Restore the reference's gesture variants with native hover and keyboard focus. */
+/* Hover keeps link text, icons and layouts stationary. */
+a:hover,
+span.framer-text[data-nested-link]:hover {
+  text-decoration-line: none !important;
+}
+
+.framer-fR17n .framer-zvnvf1,
+.framer-ez4Wr .framer-tnk03u,
+.framer-Asbdw .framer-cnaow8,
+.framer-rlCr3 .framer-1x99mq8 {
+  display: none;
+}
+
+.framer-ez4Wr.framer-v-c40k20:is(:hover, :focus-visible) .framer-g86u4c {
+  --szd5nr: #fff !important;
+}
+
+.framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-2zyqfl):is(:hover, :focus-visible),
+.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) {
+  background-color: var(--brand-blue) !important;
+}
+/* Color feedback for captured components. */
 .framer-hFcgW,
 .framer-hFcgW .framer-text,
 .framer-ez4Wr,
@@ -17,58 +38,19 @@
 .framer-hFcgW:is(:hover, :focus-visible) .framer-text {
   color: #1b1b1b !important;
 }
-
-/* Four red dots spread around the white center dot. */
-.framer-obWCA
-  :is(.framer-d6q9x7, .framer-qtebog, .framer-tvyhl2, .framer-1kar949) {
-  transition:
-    top 0.4s linear,
-    left 0.4s linear,
-    transform 0.4s linear;
-}
-.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-d6q9x7 {
-  top: 12.5%;
-  left: 12.5%;
-  transform: translate(-50%, -50%) scale(1) !important;
-}
-.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-qtebog {
-  top: 12.5%;
-  left: 87.5%;
-  transform: translate(-50%, -50%) scale(1) !important;
-}
-.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-tvyhl2 {
-  top: 87.5%;
-  left: 12.5%;
-  transform: translate(-50%, -50%) scale(1) !important;
-}
-.framer-obWCA.framer-v-18sfddm:is(:hover, :focus-visible) .framer-1kar949 {
-  top: 87.5%;
-  left: 87.5%;
-  transform: translate(-50%, -50%) scale(1) !important;
-}
-
-/* Logical insets keep the expanding fill beside the icon in either language. */
 .framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-ymklat, .framer-v-1d5fd42)
   .framer-1glyh7l {
-  /* The fill widens independently; a square ratio makes it overflow vertically. */
+  /* Keep the icon fill within the button. */
   aspect-ratio: auto;
   left: auto;
   right: auto;
   inset-inline-start: calc(100% - 44px);
   inset-inline-end: 4px;
   width: auto;
-  transition: inset-inline-start 0.4s linear;
 }
 .framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42) .framer-1glyh7l {
   inset-inline-start: calc(100% - 42px);
   inset-inline-end: 2px;
-}
-.framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-1glyh7l {
-  inset-inline-start: 4px;
-}
-.framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42):is(:hover, :focus-visible)
-  .framer-1glyh7l {
-  inset-inline-start: 2px;
 }
 .framer-obWCA:is(.framer-v-5x2t3t, .framer-v-2zyqfl) .framer-1glyh7l {
   aspect-ratio: auto;
@@ -77,26 +59,11 @@
   right: auto;
   inset-inline-start: calc(100% + 16px);
   inset-inline-end: -17px;
-  transition: inset-inline-start 0.4s linear;
-}
-.framer-obWCA:is(.framer-v-5x2t3t, .framer-v-2zyqfl):is(:hover, :focus-visible)
-  .framer-1glyh7l {
-  inset-inline-start: -17px;
 }
 .framer-obWCA:not(.framer-v-18sfddm) .framer-1oado6a {
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
-}
-.framer-obWCA .framer-7wq510 {
-  transition: transform 0.4s linear;
-}
-.framer-obWCA.framer-v-1fa7o3w:is(:hover, :focus-visible) .framer-7wq510 {
-  transform: rotate(45deg) !important;
-}
-.framer-obWCA:is(.framer-v-ymklat, .framer-v-1d5fd42):is(:hover, :focus-visible)
-  .framer-7wq510 {
-  transform: rotate(0deg) !important;
 }
 .framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-2zyqfl):is(:hover, :focus-visible)
   .framer-14jkp0r
@@ -106,98 +73,11 @@
 .framer-obWCA .framer-14jkp0r .framer-text {
   transition: color 0.4s linear;
 }
-
-/* Reuse the header's four-dot burst on every CTA variant that has the compact
-   dot slot, so cards, hero actions and process CTAs share the same gesture. */
-.framer-obWCA:not(.framer-v-18sfddm) .framer-1glyh7l::before {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--brand-accent, #ff1a05);
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 0 var(--brand-accent, #ff1a05);
-  transition:
-    opacity 0.2s linear,
-    box-shadow 0.4s linear;
-}
-.framer-obWCA:not(.framer-v-18sfddm):is(:hover, :focus-visible)
-  .framer-1glyh7l::before {
-  opacity: 1;
-  box-shadow:
-    -5px -5px 0 0 var(--brand-accent, #ff1a05),
-    5px -5px 0 0 var(--brand-accent, #ff1a05),
-    -5px 5px 0 0 var(--brand-accent, #ff1a05),
-    5px 5px 0 0 var(--brand-accent, #ff1a05);
-}
-
-/* Arrow and social icons leave the clipped button as their duplicate enters. */
-.framer-ez4Wr .framer-g86u4c,
-.framer-ez4Wr .framer-tnk03u,
-.framer-Asbdw .framer-gw8dsj,
-.framer-Asbdw .framer-cnaow8,
-.framer-rlCr3 .framer-8hgace,
-.framer-rlCr3 .framer-1x99mq8 {
-  transition: transform 0.4s linear;
-}
-.framer-ez4Wr .framer-tnk03u,
-.framer-Asbdw .framer-cnaow8,
-.framer-rlCr3 .framer-1x99mq8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  bottom: auto;
-  transform: translate(-50%, calc(-50% + 48px));
-}
-.framer-ez4Wr .framer-tnk03u {
-  transform: translate(calc(-50% - 42px), calc(-50% + 42px));
-}
-.framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-g86u4c {
-  transform: translate(42px, -42px);
-}
-.framer-ez4Wr:not(.framer-v-18y86te):is(:hover, :focus-visible) .framer-tnk03u,
-.framer-Asbdw:is(:hover, :focus-visible) .framer-cnaow8,
-.framer-rlCr3:is(:hover, :focus-visible) .framer-1x99mq8 {
-  transform: translate(-50%, -50%);
-}
-.framer-Asbdw:is(:hover, :focus-visible) .framer-gw8dsj {
-  transform: translateY(-48px) !important;
-}
-.framer-Asbdw :is(.framer-gw8dsj, .framer-cnaow8) {
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.framer-rlCr3 .framer-1x99mq8 {
-  transform: translate(-50%, calc(-50% + 40px));
-}
-.framer-rlCr3:is(:hover, :focus-visible) .framer-8hgace {
-  transform: translateY(-40px) !important;
-}
 .framer-ez4Wr.framer-v-c40k20:is(:hover, :focus-visible) {
   background-color: #000 !important;
 }
 .framer-ez4Wr.framer-v-12429e3:is(:hover, :focus-visible) {
   background-color: #fff !important;
-}
-.framer-ez4Wr.framer-v-c40k20 .framer-tnk03u {
-  --szd5nr: #fff !important;
-}
-
-/* Footer underline follows each label's actual width, including translated labels. */
-.framer-fR17n .framer-zvnvf1 {
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.4s linear;
-}
-.framer-fR17n:is(:hover, :focus-visible) .framer-zvnvf1 {
-  transform: scaleX(1);
 }
 .framer-fR17n:is(:hover, :focus-visible) .framer-text,
 .framer-rlt6y:is(:hover, :focus-visible) .framer-text {
@@ -229,7 +109,7 @@ a:is(:hover, :focus-visible)
 .framer-7wCKM .framer-hrddsa {
   pointer-events: none;
   bottom: auto;
-  top: 35%;
+  top: 17.608%;
 }
 .framer-7wCKM
   :is(
@@ -240,9 +120,7 @@ a:is(:hover, :focus-visible)
     .framer-6aujbd
   ) {
   transition:
-    transform 0.4s linear,
     opacity 0.4s linear,
-    top 0.4s linear,
     backdrop-filter 0.4s linear,
     background-color 0.4s linear;
 }
@@ -276,29 +154,16 @@ a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-1oq7wyn {
 }
 a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-hrddsa {
   opacity: 1 !important;
-  bottom: auto;
-  top: 17.608%;
 }
 a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-6aujbd {
   background-color: rgb(0 0 0 / 30%) !important;
 }
-a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1vmciqn .framer-1qqezkx {
-  transform: scale(1.05) !important;
-}
-
-/* Contact submit uses the same expanding red fill and rotating arrow. */
 .framer-Irrnf.framer-v-1wjqi8p .framer-6vonoc {
   left: auto;
   right: auto;
   inset-inline-start: calc(100% - 44px);
   inset-inline-end: 4px;
   width: auto;
-  transition:
-    inset-inline-start 0.4s linear,
-    background-color 0.4s linear;
-}
-.framer-Irrnf .framer-bhgblo {
-  transition: transform 0.4s linear;
 }
 .framer-Irrnf .framer-1uu97bw {
   z-index: 1;
@@ -307,11 +172,7 @@ a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1vmciqn .framer-1qqezkx {
   transition: color 0.4s linear;
 }
 .framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-6vonoc {
-  inset-inline-start: 2px;
   background-color: var(--brand-accent) !important;
-}
-.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-bhgblo {
-  transform: rotate(45deg) !important;
 }
 .framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-text {
   color: #fff !important;
@@ -325,11 +186,5 @@ a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1vmciqn .framer-1qqezkx {
   .framer-wqubC *,
   .framer-fR17n * {
     transition: none !important;
-  }
-  /* Keep color/focus feedback while removing travel and duplicate-icon motion. */
-  .framer-ez4Wr :is(.framer-g86u4c, .framer-tnk03u),
-  .framer-Asbdw :is(.framer-gw8dsj, .framer-cnaow8),
-  .framer-rlCr3 :is(.framer-8hgace, .framer-1x99mq8) {
-    transition: none;
   }
 }

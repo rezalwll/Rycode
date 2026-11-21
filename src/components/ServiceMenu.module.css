@@ -26,15 +26,9 @@
     background 0.25s,
     color 0.25s;
 }
-.trigger svg {
-  transition: transform 0.25s;
-}
 .trigger[aria-expanded="true"] {
   background: #fff;
   color: #151515;
-}
-.trigger[aria-expanded="true"] svg {
-  transform: rotate(180deg);
 }
 .trigger:focus-visible,
 .panel a:focus-visible {

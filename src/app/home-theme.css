@@ -79,23 +79,7 @@
   --feature-accent: #e85d9e !important;
 }
 .home-colorful .rycode-services-source .feature-card:hover {
-  border-color: light-dark(#e8e8e8, #405064);
-  box-shadow: inset 0 -3px 0 var(--feature-accent);
-}
-.home-colorful .rycode-services-source .feature-card::before {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 0;
-  width: auto;
-  height: 3px;
-  border-radius: 0 0 24px 24px;
-  background: var(--feature-accent);
-  opacity: 0;
-  transition: opacity 280ms ease;
-}
-.home-colorful .rycode-services-source .feature-card:hover::before {
-  opacity: 1;
+  border-color: color-mix(in srgb, var(--feature-accent) 32%, var(--ui-line));
 }
 .home-colorful .rycode-services-source .capability-card-label > span:first-child {
   color: var(--feature-accent);
@@ -175,7 +159,6 @@
   border-color: #8fd5ff;
   color: var(--ui-ink, #303b48);
   box-shadow: 0 16px 30px rgb(102 192 255 / 30%);
-  transform: translateY(-3px);
 }
 @media (max-width: 809px) {
   .home-colorful .rycode-hero-source .hero {

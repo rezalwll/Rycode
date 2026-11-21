@@ -99,12 +99,8 @@
   inset: 0;
   border-radius: inherit;
   background: #ff1a05;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.button:dir(rtl)::before {
-  transform-origin: right center;
+  opacity: 0;
+  transition: opacity 0.28s ease;
 }
 .button > span:first-child {
   position: relative;
@@ -125,9 +121,7 @@
   background: #ff1a05;
   color: #fff;
   font-size: 25px;
-  transition:
-    transform 0.35s,
-    background 0.35s;
+  transition: background 0.35s;
 }
 .button:hover,
 .button:focus-visible {
@@ -135,12 +129,11 @@
 }
 .button:hover::before,
 .button:focus-visible::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 .button:hover .buttonArrow,
 .button:focus-visible .buttonArrow {
   background: #000;
-  transform: rotate(45deg);
 }
 .textLink {
   display: inline-flex;
@@ -154,13 +147,9 @@
 }
 .textLink span {
   font-size: 20px;
-  transition: transform 0.25s;
 }
 .textLink:hover {
   color: #ff4a39;
-}
-.textLink:hover span {
-  transform: translateY(4px);
 }
 .heroVisual {
   position: relative;
@@ -353,8 +342,7 @@
   font-size: 20px;
   transition:
     background 0.35s,
-    border-color 0.35s,
-    transform 0.35s;
+    border-color 0.35s;
 }
 .artwork {
   position: relative;
@@ -365,9 +353,7 @@
 }
 .serviceImage {
   object-fit: cover;
-  transition:
-    transform 0.7s cubic-bezier(0.2, 0.75, 0.3, 1),
-    filter 0.7s;
+  transition: filter 0.7s;
 }
 .artworkLabel {
   position: absolute;
@@ -379,13 +365,11 @@
   direction: ltr;
 }
 .row:is(:hover, :focus-visible) .serviceImage {
-  transform: scale(1.055);
   filter: brightness(1.12);
 }
 .row:is(:hover, :focus-visible) .detailArrow {
   background: #ff1a05;
   border-color: #ff1a05;
-  transform: rotate(45deg);
 }
 .row:is(:hover, :focus-visible) .number {
   color: #ff4a39;

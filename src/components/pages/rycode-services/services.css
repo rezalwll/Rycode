@@ -96,7 +96,6 @@
     background 0.2s;
 }
 .rycode-services-source .features-about-link:hover {
-  transform: translateY(-2px);
   background: #e7e7e7;
 }
 .rycode-services-source .features-about-link:focus-visible,
@@ -527,19 +526,6 @@
   background: color-mix(in srgb, var(--feature-accent) 12%, #fff);
   border-color: color-mix(in srgb, var(--feature-accent) 45%, #e7e7e7);
 }
-.rycode-services-source
-  .capability-card-link:is(:hover, :focus-visible)
-  .capability-card-link-arrow
-  svg {
-  transform: translateX(2px);
-}
-.rycode-services-source
-  .capability-card[dir="rtl"]
-  .capability-card-link:is(:hover, :focus-visible)
-  .capability-card-link-arrow
-  svg {
-  transform: translateX(-2px);
-}
 @media (max-width: 809px) {
   .rycode-services-source .features-expanded .capability-card {
     width: 100%;
@@ -561,13 +547,6 @@
   .rycode-services-source .capability-card-link-arrow svg {
     transition: none;
   }
-  .rycode-services-source
-    .capability-card[dir]
-    .capability-card-link:is(:hover, :focus-visible)
-    .capability-card-link-arrow
-    svg {
-    transform: none;
-  }
 }
 .rycode-services-source .features-ticker,
 .rycode-services-source .features-slider-track {
@@ -586,9 +565,6 @@
 }
 .rycode-services-source :is(.feature-card-4, .feature-card-7) {
   --feature-accent: var(--accent-orange);
-}
-.rycode-services-source .feature-card:hover {
-  box-shadow: inset 0 -3px 0 var(--feature-accent);
 }
 .rycode-services-source
   :is(

@@ -91,9 +91,6 @@
   color: var(--brand-blue);
   transition: transform 220ms;
 }
-.textLink:hover span {
-  transform: translateY(3px);
-}
 .eyebrow {
   display: flex;
   align-items: center;

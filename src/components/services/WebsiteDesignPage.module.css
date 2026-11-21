@@ -101,10 +101,6 @@
   color: var(--primary);
 }
 
-.textLink:is(:hover, :focus-visible) svg {
-  translate: -3px 0;
-}
-
 .introGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.54fr);
@@ -434,8 +430,7 @@
 }
 
 .moreCopy summary:is(:hover, :focus-visible) {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink);
 }
 
 .moreCopy > div {
@@ -633,10 +628,6 @@
   border-radius: 6px;
 }
 
-.project:is(:hover, :focus-visible) img {
-  scale: 1.045;
-}
-
 .projectMeta {
   display: flex;
   align-items: center;
@@ -648,11 +639,6 @@
 
 .project h3 {
   font-size: clamp(1.1rem, 2.1vw, 1.55rem);
-}
-
-.project:is(:hover, :focus-visible) svg,
-.relatedGrid a:is(:hover, :focus-visible) svg {
-  translate: -3px -3px;
 }
 
 .steps {

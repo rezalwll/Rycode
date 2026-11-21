@@ -600,25 +600,34 @@
   mask: url("/brand/rycode-mark.svg") right center / contain no-repeat;
   opacity: 0.53;
 }
-.rycode-footer-source .coorda-footer-fluid {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.3;
+@media (hover: hover) and (pointer: fine) {
+  .rycode-footer-source .rycode-footer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 24% 68%, rgb(137 103 226 / 12%), transparent 48%),
+      radial-gradient(ellipse at 80% 32%, rgb(77 169 246 / 14%), transparent 46%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+  }
+  .rycode-footer-source .rycode-footer:hover::after {
+    opacity: 1;
+  }
 }
 .rycode-footer-source .rycode-footer-inner {
   max-width: 1312px;
   padding-inline: clamp(20px, 3vw, 36px);
 }
 .rycode-footer-source .rycode-footer-brand {
+  --footer-brand-gap: clamp(24px, 3vw, 48px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   direction: ltr;
-  gap: clamp(24px, 3vw, 48px);
+  gap: var(--footer-brand-gap);
   padding: 36px clamp(0px, 3vw, 48px);
 }
 .rycode-footer-source[dir="rtl"] .rycode-footer-brand {
@@ -658,6 +667,25 @@
   font-size: clamp(22px, 1.9vw, 28px);
   font-weight: 800;
   line-height: 1.35;
+}
+@media (width > 620px) {
+  .rycode-footer-source[dir="rtl"] .rycode-footer-lockup {
+    position: relative;
+  }
+  .rycode-footer-source[dir="rtl"] .rycode-footer-lockup::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + var(--footer-brand-gap));
+    width: 1px;
+    height: 76px;
+    background: var(--footer-rule);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .rycode-footer-source[dir="rtl"] .rycode-footer-brand-copy {
+    border-left: 0;
+  }
 }
 .rycode-footer-source .rycode-footer-inquiry {
   --footer-inquiry-title-gap: 12px;
@@ -765,7 +793,6 @@
 .rycode-footer-source .rycode-footer-button-primary:is(:hover, :focus-visible) {
   background: #005892;
   box-shadow: 0 8px 16px rgb(0 111 191 / 34%);
-  transform: translateY(-2px);
 }
 .rycode-footer-source .rycode-footer-button-secondary {
   background: light-dark(#fcfeff, #172433);
@@ -774,7 +801,6 @@
 .rycode-footer-source
   .rycode-footer-button-secondary:is(:hover, :focus-visible) {
   background: var(--footer-blue-soft);
-  transform: translateY(-2px);
 }
 .rycode-footer-source[dir="rtl"]
   :is(.rycode-footer-button-secondary, .rycode-footer-group a)
@@ -860,8 +886,6 @@
 }
 .rycode-footer-source .rycode-footer-group a:is(:hover, :focus-visible) {
   color: var(--footer-blue);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 .rycode-footer-source .rycode-footer-group a svg {
   justify-self: center;
@@ -974,12 +998,10 @@
     width: 100%;
   }
 }
-@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
-  .rycode-footer-source .coorda-footer-fluid {
-    display: none;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
+  .rycode-footer-source .rycode-footer::after {
+    transition: none;
+  }
   .rycode-footer-source *,
   .rycode-footer-source *::before,
   .rycode-footer-source *::after {

@@ -65,8 +65,7 @@
   text-decoration: none;
 }
 .breadcrumb a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink);
 }
 .heroGrid {
   display: grid;
@@ -455,8 +454,7 @@
   text-decoration: none;
 }
 .textLink:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink);
 }
 .existingPhoto {
   position: relative;

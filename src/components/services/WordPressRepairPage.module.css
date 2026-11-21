@@ -70,8 +70,7 @@
 .breadcrumb a:hover,
 .related a:hover,
 .callouts a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink);
 }
 .hero {
   display: grid;
@@ -307,8 +306,7 @@
   font-weight: 750;
 }
 .triageFooter a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink);
 }
 
 .section {

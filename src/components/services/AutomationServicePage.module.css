@@ -431,7 +431,6 @@
   --service-accent: #5aa7a1;
 }
 .service:hover {
-  translate: 0 -3px;
   border-color: color-mix(in srgb, var(--service-accent) 45%, var(--rule));
   box-shadow: 0 20px 48px rgb(48 59 72 / 9%);
 }
@@ -463,8 +462,7 @@
   font-size: 0.9rem;
 }
 .textLink:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--ui-ink) !important;
 }
 .serviceList li {
   display: grid;
@@ -511,7 +509,6 @@
 }
 .service:hover .diagram img {
   filter: saturate(1.08);
-  transform: scale(1.06);
 }
 .diagram > span {
   position: absolute;
@@ -726,7 +723,6 @@
 .connectorMap li:hover {
   background: color-mix(in srgb, var(--brand-blue, #3498db) 7%, #fff);
   border-color: color-mix(in srgb, var(--brand-blue, #3498db) 35%, var(--rule));
-  translate: 0 -2px;
 }
 .connectorMap small {
   color: var(--muted);

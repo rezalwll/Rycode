@@ -156,8 +156,6 @@
 
 :is(.back, .textLink):is(:hover, :focus-visible) {
   color: var(--rescue-purple);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .situations {

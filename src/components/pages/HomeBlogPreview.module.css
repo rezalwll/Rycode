@@ -120,9 +120,6 @@
   object-fit: cover;
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.card:is(:hover, :focus-visible) img {
-  transform: scale(1.035);
-}
 :global(html.dark) .media img {
   filter: brightness(0.86);
 }
@@ -191,12 +188,6 @@
 .read svg {
   flex: none;
   transition: transform 240ms ease;
-}
-.card:is(:hover, :focus-visible) .read svg {
-  transform: translate(2px, -2px);
-}
-.card:dir(rtl):is(:hover, :focus-visible) .read svg {
-  transform: translate(-2px, -2px);
 }
 .compact .card {
   display: grid;
@@ -280,9 +271,5 @@
   .allArticles,
   .read svg {
     transition: none;
-  }
-  .card:is(:hover, :focus-visible) img,
-  .card:is(:hover, :focus-visible) .read svg {
-    transform: none;
   }
 }

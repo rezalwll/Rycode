@@ -643,8 +643,7 @@
   font-size: 0.86rem;
 }
 .related a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: var(--ui-ink);
 }
 
 @keyframes rise {

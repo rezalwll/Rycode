@@ -41,31 +41,22 @@
   width: max-content;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
-  transform-origin: top right;
   transition:
     opacity 200ms var(--ui-ease),
-    transform 240ms var(--ui-ease),
     visibility 0s;
-}
-.rycode-source-header .rycode-desktop-submenu[dir="ltr"] {
-  transform-origin: top left;
 }
 .rycode-source-header .rycode-desktop-submenu[data-state="closed"] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-6px);
   transition:
     opacity 140ms ease-out,
-    transform 180ms var(--ui-ease),
-    visibility 0s linear 180ms;
+    visibility 0s linear 140ms;
 }
 @media (prefers-reduced-motion: reduce) {
   .rycode-source-header
     :is(.rycode-desktop-submenu, .rycode-desktop-submenu[data-state="closed"]) {
     transition: none;
-    transform: none;
   }
 }
 .rycode-source-header .rycode-primary-link:hover,
@@ -216,12 +207,6 @@
   .rycode-submenu-link:is(:hover, :focus-visible)
   .rycode-submenu-arrow {
   opacity: 1;
-  translate: 3px 0;
-}
-.rycode-source-header
-  .rycode-submenu-link:dir(rtl):is(:hover, :focus-visible)
-  .rycode-submenu-arrow {
-  translate: -3px 0;
 }
 .rycode-source-header .rycode-submenu-link:focus-visible {
   outline: 2px solid var(--submenu-accent);
@@ -231,12 +216,6 @@
   .rycode-source-header .rycode-submenu-link,
   .rycode-source-header .rycode-submenu-arrow {
     transition: none;
-  }
-  .rycode-source-header
-    [dir]
-    .rycode-submenu-link:is(:hover, :focus-visible)
-    .rycode-submenu-arrow {
-    translate: none;
   }
 }
 .rycode-source-header .rycode-services-menu-mobile {

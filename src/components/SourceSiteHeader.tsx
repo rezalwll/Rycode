@@ -468,13 +468,7 @@ function DesktopNavItem({
           )}
         >
           <span>{item.label}</span>
-          <ChevronDown
-            className={cn(
-              "size-3.5 transition-transform",
-              open && "rotate-180",
-            )}
-            aria-hidden
-          />
+          <ChevronDown className="size-3.5" aria-hidden />
         </button>
       ) : (
         <Link
@@ -712,7 +706,7 @@ function HeaderActions({
         )}
       >
         <Globe2
-          className="size-3.5 transition-transform duration-200 group-hover:rotate-12"
+          className="size-3.5"
           aria-hidden
         />
         {isFa ? "EN" : "FA"}

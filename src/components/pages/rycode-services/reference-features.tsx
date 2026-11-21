@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { BrandText } from "./brand-text";
 import { serviceCards } from "@/content/service-cards";
 import { useReferenceLocale } from "./reference-locale";
-import { advanceFeatureMarquee, FEATURE_SPEED } from "./feature-marquee-motion";
+import { advanceFeatureMarquee } from "./feature-marquee-motion";
 
 const FeatureCard = memo(function FeatureCard({
   index,
@@ -88,7 +88,7 @@ export function FeatureTicker({
   const trackRef = useRef<HTMLDivElement>(null);
   const groupRef = useRef<HTMLDivElement>(null);
   const hovered = useRef(false);
-  const motionState = useRef({ offset: 0, speed: FEATURE_SPEED });
+  const offset = useRef(0);
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export function FeatureTicker({
     let previousTime: number | null = null;
     let period = group.getBoundingClientRect().width;
     const paint = () => {
-      track.style.transform = `translate3d(-${motionState.current.offset}px, 0, 0)`;
+      track.style.transform = `translate3d(-${offset.current}px, 0, 0)`;
     };
     const stop = () => {
       if (frame !== null) window.cancelAnimationFrame(frame);
@@ -110,8 +110,8 @@ export function FeatureTicker({
     const tick = (now: number) => {
       const elapsed = previousTime === null ? 0 : now - previousTime;
       previousTime = now;
-      motionState.current = advanceFeatureMarquee(
-        motionState.current,
+      offset.current = advanceFeatureMarquee(
+        offset.current,
         elapsed,
         period,
         hovered.current,
@@ -123,10 +123,10 @@ export function FeatureTicker({
       stop();
       period = group.getBoundingClientRect().width;
       if (reducedMotion || !desktop.matches) {
-        motionState.current.offset = 0;
+        offset.current = 0;
         track.style.transform = "none";
       }
-      // Focus pauses for keyboard reading; pointer hover only lowers velocity.
+      // Pause while the visitor reads or interacts with a card.
       if (
         visible &&
         !reducedMotion &&
@@ -135,7 +135,7 @@ export function FeatureTicker({
         !document.hidden &&
         period > 0
       ) {
-        motionState.current.offset %= period;
+        offset.current %= period;
         paint();
         frame = window.requestAnimationFrame(tick);
       }
@@ -181,8 +181,8 @@ export function FeatureTicker({
         ) {
           const left = card.getBoundingClientRect().left;
           const groupLeft = groupRef.current.getBoundingClientRect().left;
-          motionState.current.offset = Math.max(0, left - groupLeft - 24);
-          trackRef.current.style.transform = `translate3d(-${motionState.current.offset}px, 0, 0)`;
+          offset.current = Math.max(0, left - groupLeft - 24);
+          trackRef.current.style.transform = `translate3d(-${offset.current}px, 0, 0)`;
           event.currentTarget.scrollLeft = 0;
         }
       }}
@@ -247,13 +247,13 @@ export default function ReferenceFeatures() {
     };
     const sync = () => {
       stop();
-      if (reduceMotion || paused || !visible || !mobile.matches) return;
+      if (reduceMotion || paused || hovered || !visible || !mobile.matches) return;
       timer = window.setInterval(
         () => {
           if (!document.hidden)
             setIndex((current) => (current + 1) % serviceCards.length);
         },
-        hovered ? 20000 : 5000,
+        5000,
       );
     };
     mobile.addEventListener("change", sync);
