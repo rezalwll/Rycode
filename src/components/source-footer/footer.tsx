@@ -1,12 +1,9 @@
 import {
   ArrowUpRight,
-  BookOpen,
-  BriefcaseBusiness,
   ChevronRight,
   MapPin,
   MessageCircleMore,
   Phone,
-  UsersRound,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 
@@ -17,12 +14,6 @@ import { getFooterNav, inquiryHref } from "./navigation";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
 
-const quickLinkIcons = {
-  "/work": BriefcaseBusiness,
-  "/about": UsersRound,
-  "/blog": BookOpen,
-};
-
 export function SiteFooter({
   locale,
   phone,
@@ -31,7 +22,7 @@ export function SiteFooter({
   phone: string;
 }) {
   const isFa = locale === "fa";
-  const { quickLinks, secondary } = getFooterNav(locale);
+  const { groups, secondary } = getFooterNav(locale);
   const year = new Date().getFullYear();
   const dial = phone.replace(/[^+0-9]/g, "");
 
@@ -97,50 +88,33 @@ export function SiteFooter({
           className="rycode-footer-nav"
           aria-label={isFa ? "پیوندهای پایین سایت" : "Footer navigation"}
         >
-          <ul className="rycode-footer-shortcuts">
-            {quickLinks.map(({ label, href }) => {
-              const Icon = quickLinkIcons[href];
-
-              return (
-                <li key={href}>
-                  <Link
-                    className="rycode-footer-shortcut"
-                    href={href}
-                    locale={locale}
-                  >
-                    <Icon
-                      className="rycode-footer-shortcut-icon"
-                      aria-hidden="true"
-                    />
-                    <span>{label}</span>
-                    <ArrowUpRight
-                      className="rycode-footer-shortcut-arrow"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <a
-                className="rycode-footer-shortcut rycode-footer-shortcut-phone"
-                href={`tel:${dial}`}
-              >
-                <Phone
-                  className="rycode-footer-shortcut-icon"
-                  aria-hidden="true"
-                />
-                <span className="rycode-footer-shortcut-contact">
-                  <span>{isFa ? "تماس مستقیم" : "Call us"}</span>
-                  <bdi dir="ltr">{phone}</bdi>
-                </span>
-                <ArrowUpRight
-                  className="rycode-footer-shortcut-arrow"
-                  aria-hidden="true"
-                />
-              </a>
-            </li>
-          </ul>
+          {groups.map(({ title, items }) => (
+            <div className="rycode-footer-link-group" key={title}>
+              <h3>{title}</h3>
+              <ul>
+                {items.map(({ label, href }) => (
+                  <li key={href}>
+                    <Link href={href} locale={locale}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <a className="rycode-footer-contact-card" href={`tel:${dial}`}>
+            <span className="rycode-footer-contact-icon">
+              <Phone aria-hidden="true" />
+            </span>
+            <span className="rycode-footer-contact-copy">
+              <span>{isFa ? "تماس مستقیم" : "Call us"}</span>
+              <bdi dir="ltr">{phone}</bdi>
+            </span>
+            <ArrowUpRight
+              className="rycode-footer-contact-arrow"
+              aria-hidden="true"
+            />
+          </a>
         </nav>
 
         <div className="rycode-footer-bottom">
