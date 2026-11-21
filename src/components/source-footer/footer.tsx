@@ -58,12 +58,12 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         >
           <div className="rycode-footer-inquiry-copy">
             <h2 id="footer-inquiry-title">
-              {isFa ? "بگو کجای مسیر کاری هستی" : "Tell us where you are today"}
+              {isFa ? "برای پروژه‌ات چه کمکی لازم داری؟" : "What do you need help with?"}
             </h2>
             <p>
               {isFa
-                ? "از ایده و طراحی سایت تا توسعه، بهبود و رفع باگ. اگر می‌خواهی قدم بعدی را درست برداری، با هم مسیرش را پیدا می‌کنیم."
-                : "From an idea or a new site to development and bug fixes, let’s find the next step for your project."}
+                ? "برای طراحی سایت، توسعهٔ نرم‌افزار یا رفع باگ، توی فرم درخواست بگو چه کمکی لازم داری."
+                : "Tell us whether you need a new site, custom software, or help fixing an existing project."}
             </p>
           </div>
           <div className="rycode-footer-actions">
@@ -73,7 +73,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               className="rycode-footer-button rycode-footer-button-primary"
             >
               <MessageCircleMore aria-hidden="true" />
-              {isFa ? "شروع یک گفت‌وگو" : "Start a conversation"}
+              {isFa ? "ارسال شرح پروژه" : "Share your project brief"}
             </Link>
             <Link
               href="/services"

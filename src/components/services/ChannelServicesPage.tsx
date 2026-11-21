@@ -212,8 +212,8 @@ export function ChannelServicesPage({
             title={fa ? "پروژه چطور پیش می‌رود؟" : "How a project runs"}
             note={
               fa
-                ? "از شناخت مسئله تا تحویل و قدم بعدی."
-                : "From the first conversation to launch and what comes next."
+                ? "از شناخت نیاز تا تحویل پروژه و پشتیبانی پس از آن."
+                : "From discussing requirements to delivery and ongoing support."
             }
             id="channel-process-title"
           />

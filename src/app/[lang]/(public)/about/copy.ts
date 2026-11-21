@@ -67,7 +67,7 @@ export const aboutCopy = {
       title: "یه برند مستقل برای ساختن، درست کردن و بهتر کردن",
       description: [
         "رایکد یک برند مستقل در زمینهٔ طراحی سایت، توسعهٔ نرم‌افزار و راه‌حل‌های دیجیتاله. گاهی نقطهٔ شروع یک ایدهٔ تازه‌ست، گاهی یک سایت قدیمی یا پروژه‌ای که وسط راه به مشکل خورده.",
-        "مهم اینه که بفهمیم الان کجایی و منطقی‌ترین قدم بعدی چیه. راه‌حل می‌تونه یک سایت وردپرسی، یک نرم‌افزار اختصاصی، ربات یا فایل اکسل باشه. گاهی هم همون چیزی که داری به اصلاح نیاز داره.",
+        "اول وضعیت پروژه و چیزی رو که باید تغییر کنه بررسی می‌کنیم. راه‌حل می‌تونه یک سایت وردپرسی، یک نرم‌افزار اختصاصی، ربات یا فایل اکسل باشه. گاهی هم همون چیزی که داری به اصلاح نیاز داره.",
       ],
     },
     principles: {
@@ -144,7 +144,7 @@ export const aboutCopy = {
         ],
         [
           "دربارهٔ ادامهٔ مسیر تصمیم می‌گیریم",
-          "اگر پروژه به نگهداری، تغییر یا توسعه نیاز داشته باشه، دربارهٔ قدم بعدی حرف می‌زنیم.",
+          "اگر پروژه به نگهداری یا امکانات تازه نیاز داشته باشه، محدودهٔ پشتیبانی و توسعه رو مشخص می‌کنیم.",
         ],
       ],
     },
@@ -169,11 +169,11 @@ export const aboutCopy = {
       ],
     },
     closing: {
-      label: "قدم بعدی",
-      title: "ایده‌ات رو بگو، راهش رو با هم پیدا می‌کنیم",
+      label: "همکاری با رایکد",
+      title: "پروژه‌ات رو برامون تعریف کن",
       description:
-        "یه سایت جدید، یک نرم‌افزار اختصاصی، پروژه‌ای نیمه‌کاره یا کاری تکراری که دوست داری ساده‌تر بشه. بگو چه نتیجه‌ای برات مهمه و از همون‌جا گفت‌وگو رو شروع می‌کنیم.",
-      action: "شروع یک گفت‌وگو",
+        "بگو چه چیزی می‌خوای بسازی یا کدوم کار رو می‌خوای ساده‌تر کنی. اگه سایت یا نرم‌افزاری داری که درست کار نمی‌کنه، لینک و شرح کوتاهی از مشکل رو بفرست.",
+      action: "ثبت درخواست پروژه",
     },
   },
   en: {
@@ -270,8 +270,8 @@ export const aboutCopy = {
           "We plan design, development, review, and delivery to suit the project.",
         ],
         [
-          "Decide what comes next",
-          "If the product needs maintenance, changes, or further development, we can discuss the next step.",
+          "Plan support after delivery",
+          "If the product needs maintenance or new features, we agree on the scope of ongoing support.",
         ],
       ],
     },
@@ -296,11 +296,11 @@ export const aboutCopy = {
       ],
     },
     closing: {
-      label: "Next steps",
-      title: "Tell us your idea. We’ll find a way forward together.",
+      label: "Work with RYCODE",
+      title: "Tell us about your project",
       description:
-        "A new site, custom software, an unfinished project, or a repetitive task you’d like to simplify. Tell us what outcome matters to you, and we’ll start there.",
-      action: "Start a conversation",
+        "Tell us what you want to build or which task you want to simplify. If an existing website or application has a problem, share a link and a short description.",
+      action: "Submit a project inquiry",
     },
   },
 } satisfies Record<"fa" | "en", AboutCopy>;

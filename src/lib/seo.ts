@@ -27,7 +27,7 @@ const descriptions: Record<string, Record<Locale, string>> = {
   },
   "/contact": {
     fa: "برای طراحی سایت، توسعه نرم‌افزار یا بررسی پروژهٔ فعلی با رایکد تماس بگیرید و درخواست خود را ثبت کنید",
-    en: "Talk to RYCODE about your website, software or existing project. Submit an inquiry and discuss the next step.",
+    en: "Send RYCODE a project inquiry for website design, custom software or help with an existing project.",
   },
   "/work": {
     fa: "نمونه‌کارهای رایکد در طراحی و توسعهٔ تجربه‌های دیجیتال؛ جزئیات پروژه‌ها، رویکرد طراحی و روند اجرا",

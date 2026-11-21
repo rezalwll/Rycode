@@ -623,7 +623,7 @@ export const businessGuides: BusinessGuide[] = [
       en: {
         title: "Is Excel enough, or do you need a business dashboard?",
         summary:
-          "Choose the next step based on data ownership, shared work and the decisions your reports support.",
+          "Base your choice on who owns the data, who needs to work on it together, and which decisions the reports must support.",
         content: [
           p(
             "Excel remains useful for many business tasks. Row count alone is not a reason to replace it. Investigate when teams disagree about the correct version, people overwrite changes or managers rely on manually assembled reports.",

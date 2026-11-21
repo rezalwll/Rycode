@@ -257,8 +257,8 @@ export async function ContentDetail({
           </h2>
           <p>
             {fa
-              ? "مسئله و هدفت را بگو تا قدم بعدی را با هم مشخص کنیم"
-              : "Share your goals and we will work out the next step."}
+              ? "بگو چه مشکلی داری و چه نتیجه‌ای می‌خوای تا گزینه‌های اجرا رو بررسی کنیم"
+              : "Describe the problem and the result you want so we can review the available options."}
           </p>
           <Link data-fill-button className={styles.button} href={inquiryHref}>
             {fa ? "شروع همکاری" : "Get started"}{" "}

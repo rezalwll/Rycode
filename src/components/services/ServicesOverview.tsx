@@ -146,7 +146,7 @@ export function ServicesOverview({
         <div className={styles.closingInner}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true">✦</span>
-            {fa ? "قدم بعدی" : "YOUR NEXT MOVE"}
+            {fa ? "انتخاب خدمت" : "CHOOSING A SERVICE"}
           </p>
           <h2 id="services-contact-title">
             {fa ? (

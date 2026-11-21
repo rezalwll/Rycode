@@ -38,7 +38,7 @@ export default function Moments() {
         aria-labelledby="moments-title"
       >
         <h2 id="moments-title" className="sr-only">
-          {copyText("Your product\u2019s next chapter")}
+          {copyText("Support after launch")}
         </h2>
         <div className="moments-text" aria-hidden="true">
           <motion.div
@@ -55,7 +55,7 @@ export default function Moments() {
           >
             <p dir="auto">
               {copyText(
-                "From your first idea to your product\u2019s next chapter",
+                "From design to ongoing maintenance",
               )}
             </p>
           </motion.div>
@@ -91,7 +91,7 @@ export default function Moments() {
             className="moments-phone"
             role="img"
             aria-label={copyText(
-              "RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.",
+              "Illustration of product support: a dashboard for monitoring and maintaining a live product.",
             )}
           >
             <div aria-hidden="true">
@@ -147,11 +147,11 @@ export default function Moments() {
                     </div>
                     <div className="moments-phone-copy">
                       <p className="moments-phone-heading">
-                        {copyText("Your product\u2019s next chapter")}
+                        {copyText("Support after launch")}
                       </p>
                       <p>
                         {copyText(
-                          "Support and continuous development for a product you can keep moving forward.",
+                          "Fix bugs, keep your product running and add features as needs change.",
                         )}
                       </p>
                     </div>

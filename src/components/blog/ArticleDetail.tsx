@@ -182,7 +182,7 @@ export async function ArticleDetail({
             <p>
               {fa
                 ? "شرایط و هدفت را بگو تا مسیر مناسب را برای همان مسئله بررسی کنیم"
-                : "Tell us about your situation and goals so we can assess the right next step."}
+                : "Tell us what you are trying to achieve and where you are stuck so we can review your options."}
             </p>
             {service && (
               <Link

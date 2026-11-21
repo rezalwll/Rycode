@@ -67,7 +67,7 @@ const websiteCapabilities = [
     title: { fa: "تحویل قابل مدیریت", en: "A manageable handover" },
     body: {
       fa: "محتوا، دسترسی‌ها و مسیر ادامهٔ کار روشن تحویل می‌شوند تا سایت بعداً هم قابل استفاده بماند.",
-      en: "Content, access and next steps are handed over clearly so the site stays useful.",
+      en: "We hand over the site content and access and explain how to manage the site.",
     },
   },
 ] as const;
@@ -218,7 +218,7 @@ const continueSteps = [
   { number: "01", title: { fa: "شناخت وضعیت", en: "Know the state" }, body: { fa: "می‌دانیم چه چیزی سالم است و کدام بخش نیاز به توجه دارد.", en: "Know what is healthy and what needs attention." } },
   { number: "02", title: { fa: "اولویت‌بندی", en: "Prioritize" }, body: { fa: "درخواست‌ها را با اثر و فوریت واقعی مرتب می‌کنیم.", en: "Order requests by their real impact and urgency." } },
   { number: "03", title: { fa: "اجرا و گزارش", en: "Do & report" }, body: { fa: "کار را انجام می‌دهیم و نتیجه را طوری تحویل می‌دهیم که دیده شود.", en: "Do the work and hand over a result people can see." } },
-  { number: "04", title: { fa: "قدم بعدی", en: "Next step" }, body: { fa: "پروژه همیشه یک مسیر روشن برای ادامه دارد.", en: "The project always has a clear path forward." } },
+  { number: "04", title: { fa: "تحویل و نگهداری", en: "Handover and maintenance" }, body: { fa: "تغییرات انجام‌شده و کارهای باقی‌مانده را مشخص می‌کنیم.", en: "We document what changed and what still needs attention." } },
 ] as const;
 
 const continueCadence = [
@@ -235,7 +235,7 @@ const growthSignals = [
 
 const growthChannels = [
   { number: "01", title: { fa: "سئوی تکنیکال", en: "Technical SEO" }, body: { fa: "ساختار، سرعت و ایندکس را برای موتور جست‌وجو و آدم‌ها قابل فهم می‌کنیم.", en: "Make structure, speed and indexing clear for search engines and people." } },
-  { number: "02", title: { fa: "صفحه‌های هدف", en: "Landing pages" }, body: { fa: "هر صفحه را برای یک جست‌وجو و یک قدم بعدی دقیق طراحی می‌کنیم.", en: "Shape every page around one search intent and one next action." } },
+  { number: "02", title: { fa: "صفحه‌های هدف", en: "Landing pages" }, body: { fa: "هر صفحه برای یک نیاز مشخص طراحی می‌شود و اقدام‌هایی مثل تماس یا خرید را ساده‌تر می‌کند.", en: "Give each landing page a clear purpose, such as helping visitors call or buy." } },
   { number: "03", title: { fa: "محتوای ماندگار", en: "Durable content" }, body: { fa: "موضوع‌هایی می‌سازیم که فقط امروز کلیک نگیرند؛ فردا هم جواب بدهند.", en: "Build topics that keep answering people beyond today’s click." } },
   { number: "04", title: { fa: "سئوی محلی", en: "Local SEO" }, body: { fa: "کسب‌وکارت را در جایی که مشتری واقعاً دنبالت می‌گردد، پیدا کردنی می‌کنیم.", en: "Make the business findable where customers are actually looking." } },
 ] as const;
@@ -244,7 +244,7 @@ const growthProcess = [
   { number: "01", title: { fa: "کشف", en: "Discover" }, body: { fa: "جست‌وجو، رقیب و وضعیت فعلی را می‌خوانیم.", en: "Read search intent, competitors and the current state." } },
   { number: "02", title: { fa: "اولویت", en: "Prioritize" }, body: { fa: "صفحه‌هایی را انتخاب می‌کنیم که بیشترین اثر را دارند.", en: "Choose the pages with the highest potential impact." } },
   { number: "03", title: { fa: "بهینه‌سازی", en: "Optimize" }, body: { fa: "ساختار، محتوا و تجربه را با هم بهتر می‌کنیم.", en: "Improve structure, content and experience together." } },
-  { number: "04", title: { fa: "اندازه‌گیری", en: "Measure" }, body: { fa: "می‌بینیم چه چیزی جلو رفت و قدم بعدی را دقیق‌تر می‌چینیم.", en: "See what moved and make the next step more precise." } },
+  { number: "04", title: { fa: "اندازه‌گیری", en: "Measure" }, body: { fa: "نتیجهٔ تغییرات را با داده‌ها مقایسه می‌کنیم و اولویت اصلاحات را به‌روز می‌کنیم.", en: "Compare results with the baseline and prioritize changes using the data." } },
 ] as const;
 
 export async function ServiceDetailPage({
@@ -492,7 +492,7 @@ export async function ServiceDetailPage({
             <div className={styles.sectionHeader}>
               <div>
                 <p className={styles.kicker}><span>✦</span>{fa ? "مسیر همکاری" : "THE PROCESS"}</p>
-                <h2 id="process-title">{fa ? "قدم بعدی همیشه روشن است." : "You always know what comes next."}</h2>
+                <h2 id="process-title">{fa ? "از بررسی نیازها تا تحویل سایت" : "From requirements to website handover"}</h2>
               </div>
             </div>
             <ol className={styles.processList}>
@@ -577,7 +577,7 @@ export async function ServiceDetailPage({
                 <ul>
                   <li>{fa ? "محدودهٔ کوچک و قابل تحویل" : "Focused, shippable scope"}</li>
                   <li>{fa ? "سناریوهای اصلی کاربران" : "Core user scenarios"}</li>
-                  <li>{fa ? "پایهٔ آماده برای توسعهٔ بعدی" : "A foundation for what comes next"}</li>
+                  <li>{fa ? "پایهٔ آماده برای توسعهٔ بعدی" : "A codebase ready for further development"}</li>
                 </ul>
                 <Link href={inquiryHref}>{fa ? "بررسی نسخهٔ اول" : "Discuss the first version"}<span aria-hidden="true">↗</span></Link>
               </article>
@@ -676,7 +676,7 @@ export async function ServiceDetailPage({
             <div className={styles.sectionHeader}>
               <div>
                 <p className={styles.kicker}><span>✦</span>{fa ? "خروجی بررسی" : "AUDIT OUTPUT"}</p>
-                <h2 id="rescue-checklist-title">{fa ? "در پایان می‌دانی چه چیزی سالم است و قدم بعدی چیست." : "You leave knowing what is healthy and what comes next."}</h2>
+                <h2 id="rescue-checklist-title">{fa ? "گزارش تحویل می‌گه چه چیزی اصلاح و آزمایش شده" : "Your handover report shows what was fixed and tested"}</h2>
               </div>
             </div>
             <div className={styles.checklistGrid}>
@@ -756,7 +756,7 @@ export async function ServiceDetailPage({
                 <p className={styles.kicker}><span>✦</span>{fa ? "یک نگاه کافی است" : "ONE CLEAR VIEW"}</p>
                 <h2 id="data-dashboard-title">{fa ? "از چند فایل پراکنده تا یک تصویر روشن." : "From scattered files to one clear picture."}</h2>
               </div>
-              <p>{fa ? "داشبورد فقط نمودار نیست؛ راهی است برای اینکه تیم بداند الان چه خبر است و قدم بعدی چیست." : "A dashboard is more than a chart. It helps the team see what is happening and what comes next."}</p>
+              <p>{fa ? "داشبورد وضعیت کار را یک‌جا نشان می‌دهد تا تیم ببیند کدام مورد نیاز به پیگیری دارد." : "A dashboard brings work status into one place so the team can see what needs attention."}</p>
             </div>
             <div className={styles.dataBento}>
               <article className={styles.dataBentoWide}><span>01 / OVERVIEW</span><h3>{fa ? "وضعیت کسب‌وکار در یک نگاه" : "The business at a glance"}</h3><div className={styles.bentoBars}><i style={{height:"34%"}}/><i style={{height:"48%"}}/><i style={{height:"41%"}}/><i style={{height:"69%"}}/><i style={{height:"57%"}}/><i style={{height:"82%"}}/><i style={{height:"73%"}}/><i style={{height:"94%"}}/></div><small>{fa ? "روند رشد ماهانه" : "Monthly growth trend"}</small></article>
@@ -819,7 +819,7 @@ export async function ServiceDetailPage({
           </section>
 
           <section className={styles.continueSteps} aria-labelledby="continue-steps-title">
-            <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "خط همراهی" : "THE CARE LINE"}</p><h2 id="continue-steps-title">{fa ? "هر درخواست، یک قدم قابل مشاهده دارد." : "Every request has a visible next step."}</h2></div></div>
+            <div className={styles.sectionHeader}><div><p className={styles.kicker}><span>✦</span>{fa ? "خط همراهی" : "THE CARE LINE"}</p><h2 id="continue-steps-title">{fa ? "وضعیت هر درخواست پشتیبانی مشخصه" : "Track the status of each support request"}</h2></div></div>
             <ol className={styles.continueStepList}>{continueSteps.map((item) => <li key={item.number}><span>{item.number}</span><div><h3>{item.title[locale]}</h3><p>{item.body[locale]}</p></div></li>)}</ol>
           </section>
         </>
@@ -895,7 +895,7 @@ export async function ServiceDetailPage({
         <div className={styles.contentAside}>
           <p className={styles.kicker}><span>✦</span>{fa ? "چطور جلو می‌رویم" : "THE APPROACH"}</p>
           <h2>{fa ? "شفاف، مرحله‌به‌مرحله، بدون پیچیدگی اضافه" : "Clear, considered and built in stages."}</h2>
-          <p>{fa ? "هر مرحله خروجی مشخص دارد؛ می‌دانید الان کجا هستیم و قدم بعدی چیست." : "Every stage has a clear outcome, so you always know where we are and what comes next."}</p>
+          <p>{fa ? "در هر مرحله می‌دونی چه کاری انجام شده و چه خروجی‌ای تحویل می‌گیری." : "At each stage, you can see what is complete and what you will receive."}</p>
         </div>
         <div className={styles.contentCards}>
           {contentSections.map((section, index) => (
@@ -907,8 +907,8 @@ export async function ServiceDetailPage({
       </section>
 
       <section className={styles.cta}>
-        <p className={styles.kicker}><span>✦</span>{fa ? "قدم بعدی" : "NEXT STEP"}</p>
-        <h2>{fa ? "بیایید پروژه‌ات را از جای درست شروع کنیم." : "Let’s start your project from the right place."}</h2>
+        <p className={styles.kicker}><span>✦</span>{fa ? "درخواست پروژه" : "PROJECT INQUIRY"}</p>
+        <h2>{fa ? "بگو برای پروژه‌ات چه کمکی لازم داری" : "Tell us what you need for your project"}</h2>
         <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "شروع گفت‌وگو" : "Start a conversation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
       </section>
     </main>

@@ -33,7 +33,7 @@ export async function Journal({
           <p>
             {fa
               ? "راهنماهایی برای انتخاب آگاهانهٔ سایت، نرم‌افزار و مسیر رشد کسب‌وکار؛ از مقایسهٔ راه‌حل‌ها تا هزینه و نگهداری"
-              : "Practical guides to choosing websites, business software and your next step for growth. Compare solutions, costs and ongoing care."}
+              : "Practical guides to choosing a website, business software or SEO service. Compare requirements, costs and maintenance options."}
           </p>
           <form
             key={filters.q + filters.category}
