@@ -21,6 +21,18 @@ export function getFooterNav(locale: Locale) {
             label: fa ? "سئو و رشد سایت" : "SEO & growth",
             href: "/services/grow",
           },
+          {
+            label: fa ? "رفع باگ و تکمیل پروژه" : "Bug fixes & project rescue",
+            href: "/services/rescue",
+          },
+          {
+            label: fa ? "ربات‌ها و خودکارسازی" : "Bots & automation",
+            href: "/services/connect",
+          },
+          {
+            label: fa ? "پشتیبانی و توسعه" : "Ongoing support",
+            href: "/services/continue",
+          },
         ],
       },
       {
@@ -29,6 +41,7 @@ export function getFooterNav(locale: Locale) {
           { label: fa ? "نمونه‌کارها" : "Our work", href: "/work" },
           { label: fa ? "درباره ما" : "About us", href: "/about" },
           { label: fa ? "وبلاگ" : "Blog", href: "/blog" },
+          { label: fa ? "تماس با ما" : "Contact us", href: "/contact" },
         ],
       },
     ],
