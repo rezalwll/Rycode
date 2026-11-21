@@ -1,9 +1,11 @@
 import {
-  ArrowUpRight,
+  BookOpen,
   ChevronRight,
+  Handshake,
+  House,
+  Layers,
   MapPin,
   MessageCircleMore,
-  Phone,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 
@@ -14,17 +16,17 @@ import { getFooterNav, inquiryHref } from "./navigation";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
 
-export function SiteFooter({
-  locale,
-  phone,
-}: {
-  locale: Locale;
-  phone: string;
-}) {
+const groupIcons = {
+  company: House,
+  services: Layers,
+  start: Handshake,
+  resources: BookOpen,
+};
+
+export function SiteFooter({ locale }: { locale: Locale }) {
   const isFa = locale === "fa";
-  const { groups, secondary } = getFooterNav(locale);
+  const groups = getFooterNav(locale);
   const year = new Date().getFullYear();
-  const dial = phone.replace(/[^+0-9]/g, "");
 
   return (
     <footer id="site-footer" className="rycode-footer">
@@ -88,54 +90,42 @@ export function SiteFooter({
           className="rycode-footer-nav"
           aria-label={isFa ? "پیوندهای پایین سایت" : "Footer navigation"}
         >
-          {groups.map(({ title, items }) => (
-            <div className="rycode-footer-link-group" key={title}>
-              <h3>{title}</h3>
-              <ul>
-                {items.map(({ label, href }) => (
-                  <li key={href}>
-                    <Link href={href} locale={locale}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <a className="rycode-footer-contact-card" href={`tel:${dial}`}>
-            <span className="rycode-footer-contact-icon">
-              <Phone aria-hidden="true" />
-            </span>
-            <span className="rycode-footer-contact-copy">
-              <span>{isFa ? "تماس مستقیم" : "Call us"}</span>
-              <bdi dir="ltr">{phone}</bdi>
-            </span>
-            <ArrowUpRight
-              className="rycode-footer-contact-arrow"
-              aria-hidden="true"
-            />
-          </a>
+          {groups.map(({ id, title, items }) => {
+            const Icon = groupIcons[id];
+
+            return (
+              <div className="rycode-footer-group" key={id}>
+                <h3>
+                  <span className="rycode-footer-group-icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  {title}
+                </h3>
+                <ul>
+                  {items.map(({ label, href }) => (
+                    <li key={label}>
+                      <Link href={href} locale={locale}>
+                        <ChevronRight aria-hidden="true" />
+                        <span>{label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </nav>
 
         <div className="rycode-footer-bottom">
           <p className="rycode-footer-copyright">
             <span aria-hidden="true">©</span>
-            <bdi dir="ltr">{isFa ? `RYCODE ${year}` : `${year} RYCODE`}</bdi>
+            <bdi dir="ltr">
+              {isFa ? `RYCODE ${year}` : `${year} RYCODE`}
+            </bdi>
             <span>
               {isFa ? " — تمام حقوق محفوظ است" : " — All rights reserved"}
             </span>
           </p>
-          <nav aria-label={isFa ? "راهنما و قوانین" : "Help and legal"}>
-            <ul className="rycode-footer-secondary-links">
-              {secondary.map(({ label, href }) => (
-                <li key={href}>
-                  <Link href={href} locale={locale}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
           <p className="rycode-footer-location">
             <MapPin aria-hidden="true" />
             {isFa ? "ساخته‌شده در ایران" : "Built in Iran"}

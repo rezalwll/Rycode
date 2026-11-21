@@ -10,5 +10,10 @@ export function Link({
   href: string;
   locale: Locale;
 }) {
-  return <NextLink {...props} href={localizedHref(href, locale)} />;
+  return (
+    <NextLink
+      {...props}
+      href={href === "/sitemap.xml" ? href : localizedHref(href, locale)}
+    />
+  );
 }
