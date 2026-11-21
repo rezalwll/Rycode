@@ -225,36 +225,43 @@
 /* coorda-reference.css */
 
 .rycode-footer-source .moments-section {
+  --moments-blue: #079dff;
+  --moments-rule: rgb(249 251 255 / 20%);
   position: relative;
   isolation: isolate;
   display: flex;
   justify-content: center;
-  padding: 120px 40px;
-  background: #1a1a1a;
-  color: #fff;
+  padding: clamp(70px, 5.5vw, 100px) 20px;
+  background: radial-gradient(
+    ellipse at 50% 51%,
+    #151b23 0%,
+    #111316 33%,
+    #101113 72%
+  );
+  color: #f9fbff;
   overflow: clip;
-  scroll-margin-top: 20px;
+  scroll-margin-top: 58px;
 }
 .rycode-footer-source .moments-stage {
   position: relative;
   z-index: 2;
-  width: 300px;
-  height: 625px;
+  width: clamp(220px, 65vw, 264px);
+  aspect-ratio: 264 / 536;
   flex-shrink: 0;
 }
 .rycode-footer-source .moments-text {
   position: absolute;
   z-index: 1;
-  top: 323px;
+  top: 37.5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  width: 90%;
-  max-width: 1440px;
-  padding: 8px 0;
-  border-block: 1px solid rgb(255 255 255 / 25%);
+  gap: 0;
+  width: min(84%, 1230px);
+  height: 32%;
+  direction: ltr;
+  border-block: 1px solid var(--moments-rule);
 }
 .rycode-footer-source .moments-text::after {
   content: "";
@@ -263,46 +270,84 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: rgb(255 255 255 / 25%);
+  background: var(--moments-rule);
 }
 .rycode-footer-source .moments-text-row {
   display: flex;
-  padding-left: 100px;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50%;
+  padding-right: 53%;
 }
 .rycode-footer-source .moments-text-row-reverse {
-  justify-content: flex-end;
-  padding-left: 0;
-  padding-right: 100px;
+  justify-content: flex-start;
+  padding-left: 53%;
+  padding-right: 0;
 }
 .rycode-footer-source .moments-text-row p {
   margin: 0;
   white-space: nowrap;
-  font-size: 100px;
+  font-size: clamp(44px, 4.55vw, 90px);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: 0;
   text-transform: uppercase;
 }
+.rycode-footer-source .moments-orbit {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  width: 211%;
+  height: 31%;
+  border: 1px solid var(--moments-blue);
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px rgb(0 132 255 / 16%),
+    inset 0 0 16px rgb(0 132 255 / 8%);
+  transform: translate(-50%, -50%) rotate(-30deg);
+  pointer-events: none;
+}
+.rycode-footer-source .moments-orbit::before,
+.rycode-footer-source .moments-orbit::after {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #83d0ff;
+  box-shadow:
+    0 0 9px #2caaff,
+    0 0 24px 5px rgb(0 138 255 / 49%);
+  content: "";
+}
+.rycode-footer-source .moments-orbit::before {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.rycode-footer-source .moments-orbit::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
 .rycode-footer-source .moments-phone {
   position: relative;
-  width: 300px;
-  height: 625px;
-  border: 2px solid #515151;
-  border-radius: 49px;
-  background: #080808;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #626873;
+  border-radius: 18% / 9%;
+  background: #08090a;
   box-shadow:
-    inset 0 0 0 2px #202020,
-    inset 0 0 0 5px #050505;
+    inset 0 0 0 2px #252932,
+    inset 0 0 0 4px #060608,
+    0 18px 46px rgb(0 0 0 / 55%);
 }
 .rycode-footer-source .moments-phone-screen {
   position: absolute;
-  top: 7px;
-  left: 7px;
-  width: 285px;
-  height: 607px;
+  inset: 6px;
   overflow: hidden;
-  border-radius: 38.5px;
-  background: #1a1a1a;
+  border-radius: 16% / 8%;
+  container-type: inline-size;
+  background: radial-gradient(ellipse at 58% 39%, #112136, #101214 55%);
 }
 .rycode-footer-source .moments-side-button {
   position: absolute;
@@ -312,19 +357,19 @@
   background: linear-gradient(90deg, #888, #111);
 }
 .rycode-footer-source .moments-side-silent {
-  top: 98px;
+  top: 16%;
   height: 20px;
 }
 .rycode-footer-source .moments-side-volume-one {
-  top: 150px;
+  top: 24%;
   height: 38px;
 }
 .rycode-footer-source .moments-side-volume-two {
-  top: 198px;
+  top: 32%;
   height: 38px;
 }
 .rycode-footer-source .moments-side-power {
-  top: 174px;
+  top: 28%;
   left: auto;
   right: -4px;
   height: 62px;
@@ -332,14 +377,14 @@
 }
 .rycode-footer-source .moments-status {
   position: absolute;
-  top: 16px;
-  left: 40px;
-  right: 28px;
+  top: 13px;
+  left: 13%;
+  right: 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 14px;
-  font-size: 12px;
+  font-size: 4.6cqw;
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -347,22 +392,26 @@
 .rycode-footer-source .moments-status > div {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 1px;
+}
+.rycode-footer-source .moments-status svg {
+  width: 5.5cqw;
+  height: 5.5cqw;
 }
 .rycode-footer-source .moments-island {
   position: absolute;
-  top: 10px;
+  top: 9px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 23px;
+  width: 29cqw;
+  height: 8cqw;
   border-radius: 100px;
   background: #000;
 }
 .rycode-footer-source .moments-island > span {
   position: absolute;
-  top: 7px;
-  right: 9px;
+  top: 5px;
+  right: 8px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -379,82 +428,213 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 64px 16px 12px;
+  padding: 21cqw 5cqw 4cqw;
 }
 .rycode-footer-source .moments-phone-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
   width: 100%;
-  height: 30px;
-  flex-shrink: 0;
 }
-.rycode-footer-source .moments-phone-top > img {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border: 1px solid #e8e8e8;
-  border-radius: 50%;
-}
-.rycode-footer-source .moments-phone-top > div {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.rycode-footer-source .moments-phone-top > div > span {
+.rycode-footer-source .moments-phone-top > span {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #303030;
+  width: 12.5cqw;
+  aspect-ratio: 1;
+  border: 1px solid #273342;
   border-radius: 50%;
-  color: rgb(255 255 255 / 55%);
+  background: linear-gradient(140deg, #18222e, #11161d);
+  color: var(--moments-blue);
+}
+.rycode-footer-source .moments-phone-top svg,
+.rycode-footer-source .moments-phone-tabs svg {
+  width: 6.7cqw;
+  height: 6.7cqw;
 }
 .rycode-footer-source .moments-phone-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 6cqw;
   width: 100%;
-  margin-top: 42px;
+  margin-top: 9cqw;
 }
-.rycode-footer-source .moments-photos {
+.rycode-footer-source .moments-dashboard {
   position: relative;
-  width: 200px;
-  height: 198px;
+  width: 78cqw;
+  aspect-ratio: 1.08;
+  perspective: 460px;
 }
-.rycode-footer-source .moments-photos img {
+.rycode-footer-source .moments-dashboard-back,
+.rycode-footer-source .moments-dashboard-front {
   position: absolute;
-  width: 180px;
-  height: 190px;
-  border: 0;
-  border-radius: 14px;
-  object-fit: cover;
+  border: 1px solid #2875ba;
+  border-radius: 11px;
+  background: linear-gradient(
+    150deg,
+    #1c4267 0%,
+    #10263d 26%,
+    #071727 65%,
+    #092847 100%
+  );
+  box-shadow:
+    inset 0 0 17px #009dff3d,
+    0 5px 24px #007fee22;
 }
-.rycode-footer-source .moments-photos .moments-photo-product {
-  inset: 0 auto auto 10px;
-  object-position: 52% 54%;
+.rycode-footer-source .moments-dashboard-back {
+  inset: 3% 3% 12% 29%;
+  transform: rotateY(-20deg) rotateX(6deg) skewY(-6deg);
+}
+.rycode-footer-source .moments-dashboard-back::after {
+  position: absolute;
+  inset: 7% 9% auto 7%;
+  height: 6%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #76b9ff8c, #4b7ab046);
+  content: "";
+}
+.rycode-footer-source .moments-dashboard-front {
+  inset: 16% 13% 4% 6%;
+  display: grid;
+  grid-template-columns: 0.85fr 1.55fr;
+  gap: 6%;
+  padding: 8% 7% 6%;
+  transform: rotateY(-24deg) rotateX(8deg) skewX(-6deg);
+}
+.rycode-footer-source .moments-dashboard-rows {
+  display: grid;
+  align-content: start;
+  gap: 5%;
+}
+.rycode-footer-source .moments-dashboard-rows i {
+  position: relative;
+  height: 9cqw;
+  border: 1px solid #3e6c943d;
+  border-radius: 5px;
+  background: linear-gradient(120deg, #294c6d, #112438);
+}
+.rycode-footer-source .moments-dashboard-rows i::before,
+.rycode-footer-source .moments-dashboard-rows i::after {
+  position: absolute;
+  content: "";
+}
+.rycode-footer-source .moments-dashboard-rows i::before {
+  inset: 24% auto 24% 12%;
+  width: 16%;
+  border-radius: 50%;
+  background: #149eff;
+  box-shadow: 0 0 8px #11a6ff73;
+}
+.rycode-footer-source .moments-dashboard-rows i::after {
+  top: 30%;
+  left: 41%;
+  width: 43%;
+  height: 2px;
+  border-radius: 2px;
+  background: #bfddfa;
+  box-shadow: -2px 5px #5884a7;
+}
+.rycode-footer-source .moments-dashboard-chart {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 4%;
+  min-width: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 21%,
+    #69bcff24 22%,
+    transparent 23%
+  );
+}
+.rycode-footer-source .moments-dashboard-trend {
+  position: relative;
+  filter: drop-shadow(0 0 4px #069effa8);
+}
+.rycode-footer-source .moments-dashboard-trend::before {
+  position: absolute;
+  inset: 0;
+  background: #18a6ff;
+  clip-path: polygon(
+    6% 83%,
+    38% 49%,
+    61% 64%,
+    94% 26%,
+    95% 30%,
+    61% 69%,
+    38% 54%,
+    6% 88%
+  );
+  content: "";
+}
+.rycode-footer-source .moments-dashboard-trend i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1.5px solid #18a6ff;
+  border-radius: 50%;
+  background: #0c3d70;
+  transform: translate(-50%, -50%);
+}
+.rycode-footer-source .moments-dashboard-trend i:nth-child(1) {
+  left: 6%;
+  top: 86%;
+}
+.rycode-footer-source .moments-dashboard-trend i:nth-child(2) {
+  left: 38%;
+  top: 51%;
+}
+.rycode-footer-source .moments-dashboard-trend i:nth-child(3) {
+  left: 61%;
+  top: 66%;
+}
+.rycode-footer-source .moments-dashboard-trend i:nth-child(4) {
+  left: 94%;
+  top: 28%;
+}
+.rycode-footer-source .moments-dashboard-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10%;
+  border-bottom: 1px solid #0c83ed5e;
+}
+.rycode-footer-source .moments-dashboard-bars i {
+  flex: 1 1 0;
+  height: 25%;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(165deg, #159fff, #1366d8 58%, #0a4ca4);
+  box-shadow:
+    0 0 8px #008fff44,
+    inset 1px 0 #56bdff80;
+}
+.rycode-footer-source .moments-dashboard-bars i:nth-child(2) {
+  height: 48%;
+}
+.rycode-footer-source .moments-dashboard-bars i:nth-child(3) {
+  height: 72%;
+}
+.rycode-footer-source .moments-dashboard-bars i:nth-child(4) {
+  height: 100%;
 }
 .rycode-footer-source .moments-phone-copy {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4cqw;
   width: 100%;
-  padding-inline: 16px;
+  padding-inline: 6cqw;
   text-align: center;
 }
 .rycode-footer-source .moments-phone-copy p {
   margin: 0;
-  font-size: 16px;
+  font-size: 5.65cqw;
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: -0.03em;
-  color: rgb(255 255 255 / 80%);
+  color: #c9d2df;
 }
 .rycode-footer-source .moments-phone-copy .moments-phone-heading {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 7.7cqw;
+  font-weight: 650;
   line-height: 1.2;
   letter-spacing: 0;
   color: #fff;
@@ -464,7 +644,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 8cqw;
   width: 100%;
   margin-top: auto;
 }
@@ -472,26 +652,27 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  width: 101px;
-  height: 34px;
+  width: 39cqw;
+  height: 13cqw;
   padding: 2px;
-  border: 1px solid #303030;
+  border: 1px solid #273342;
   border-radius: 100px;
+  background: #171e26;
 }
 .rycode-footer-source .moments-phone-tabs > span {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 28px;
-  color: rgb(255 255 255 / 40%);
+  flex: 1;
+  height: 100%;
+  color: var(--moments-blue);
 }
-.rycode-footer-source .moments-phone-tabs > span:first-child {
+.rycode-footer-source .moments-phone-tabs > span:last-child {
   border-radius: 100px;
-  background: #2b2b2b;
-  color: #fff;
+  background: #252e39;
+  color: #e4eaf4;
 }
 .rycode-footer-source .moments-home-indicator {
-  width: 95px;
+  width: 35cqw;
   height: 4px;
   border-radius: 100px;
   background: #fff;
@@ -500,9 +681,10 @@
   position: absolute;
   z-index: 3;
   top: 32px;
-  right: 500px;
+  right: calc(100% + clamp(70px, 9vw, 162px));
   width: 54px;
   height: 66px;
+  color: #53aaff;
   cursor: grab;
   touch-action: none;
 }
@@ -514,8 +696,8 @@
 .rycode-footer-source .moments-eyes {
   position: absolute;
   z-index: 3;
-  bottom: 40px;
-  left: 500px;
+  bottom: 30px;
+  left: calc(100% + clamp(76px, 9vw, 164px));
   display: flex;
   cursor: grab;
   touch-action: none;
@@ -527,45 +709,38 @@
 .rycode-footer-source .moments-eye {
   display: grid;
   place-items: center;
-  width: 55px;
-  height: 55px;
+  width: 48px;
+  height: 48px;
 }
 .rycode-footer-source .moments-eye > span {
   position: relative;
   display: block;
-  width: 49px;
-  height: 49px;
+  width: 43px;
+  height: 43px;
+  border: 1.5px solid var(--moments-blue);
   border-radius: 50%;
   background: #fff;
   box-shadow:
-    0 0 0 2px rgb(255 255 255 / 30%),
-    0 0 30px rgb(0 0 0 / 45%);
+    0 0 14px rgb(2 149 255 / 24%),
+    0 0 22px rgb(0 0 0 / 45%);
 }
 .rycode-footer-source .moments-eye i {
   position: absolute;
-  bottom: 18px;
-  right: 15px;
+  bottom: 10px;
+  right: 16px;
   display: block;
-  width: 27px;
-  height: 27px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: #1a1a1a;
-}
-@media (min-width: 810px) and (max-width: 1199px) {
-  .rycode-footer-source .moments-section {
-    padding: 100px 30px 100px 39px;
-  }
-  .rycode-footer-source .moments-star,
-  .rycode-footer-source .moments-eyes {
-    display: none;
-  }
+  background: #0e1d2c;
 }
 @media (max-width: 809px) {
-  .rycode-footer-source .moments-section {
-    padding: 80px 20px;
+  .rycode-footer-source .moments-text {
+    width: 100%;
+    opacity: 0.34;
   }
-  .rycode-footer-source .moments-text-row p {
-    font-size: 80px;
+  .rycode-footer-source .moments-orbit {
+    width: min(190%, calc(100vw - 18px));
   }
   .rycode-footer-source .moments-star,
   .rycode-footer-source .moments-eyes {
@@ -575,14 +750,6 @@
 @media (max-width: 339px) {
   .rycode-footer-source .moments-section {
     padding-inline: 10px;
-  }
-  .rycode-footer-source .moments-stage {
-    width: 280px;
-    height: 583.34px;
-  }
-  .rycode-footer-source .moments-phone {
-    transform-origin: top left;
-    scale: 0.933333;
   }
 }
 /* coorda-reference-overrides.css */
@@ -651,9 +818,6 @@
 }
 .dark .rycode-footer-source .coorda-footer-body nav a:hover {
   color: var(--detail-blue-on-dark);
-}
-.rycode-footer-source .moments-star {
-  color: var(--action);
 }
 /* footer-fluid.css */
 

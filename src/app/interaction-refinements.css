@@ -147,19 +147,6 @@
   opacity: 0.16;
 }
 
-/* Preserve the black community section above the white footer. */
-.rycode-public .rycode-footer-source .moments-section {
-  background: #1a1a1a;
-  color: #fff;
-  border-color: #1a1a1a;
-}
-.rycode-public .rycode-footer-source .moments-text {
-  border-color: rgb(255 255 255 / 25%);
-}
-.rycode-public .rycode-footer-source .moments-text::after {
-  background: rgb(255 255 255 / 25%);
-}
-
 /* Keep the reference fill expansion, with eased timing and a readable label. */
 .rycode-public .framer-obWCA .framer-1glyh7l {
   transition:

@@ -134,17 +134,6 @@ html.dark:has(.rycode-public) {
   --foreground: var(--ui-ink);
   --border: var(--ui-line);
 }
-.rycode-public .rycode-footer-source .moments-section {
-  background: var(--ui-canvas);
-  color: var(--ui-ink);
-  border-top: 1px solid var(--ui-line);
-}
-.rycode-public .rycode-footer-source .moments-text {
-  border-color: var(--ui-line);
-}
-.rycode-public .rycode-footer-source .moments-text::after {
-  background: var(--ui-line);
-}
 .rycode-public
   .rycode-footer-source
   :is(.footer-fluid-canvas, .coorda-footer-wash) {

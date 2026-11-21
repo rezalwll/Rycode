@@ -1,8 +1,5 @@
 "use client";
 import { BrandText } from "@/components/pages/rycode-services/brand-text";
-import { BRAND_MARK_SRC } from "@/lib/brand-assets";
-import { localizedHref } from "@/lib/i18n";
-import { usePathname } from "next/navigation";
 
 import { useReferenceLocale } from "./reference-locale";
 import { useRef } from "react";
@@ -24,25 +21,14 @@ import {
 } from "lucide-react";
 export default function Moments() {
   const { copyText } = useReferenceLocale();
-  const isSoftwarePage =
-    localizedHref(usePathname(), "fa") === "/services/software";
-  const photos = isSoftwarePage
-    ? {
-        profile: BRAND_MARK_SRC,
-        product: "/brand/source-footer/moment-dashboard.jpg",
-      }
-    : {
-        profile: "/brand/source-footer/moment-profile.png",
-        product: "/brand/source-footer/moment-dashboard.jpg",
-      };
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const firstLineX = useTransform(scrollYProgress, [0, 1], [-300, -850]);
-  const secondLineX = useTransform(scrollYProgress, [0, 1], [300, 850]);
+  const firstLineX = useTransform(scrollYProgress, [0, 1], [60, -130]);
+  const secondLineX = useTransform(scrollYProgress, [0, 1], [-60, 130]);
   return (
     <BrandText>
       <section
@@ -57,17 +43,17 @@ export default function Moments() {
         <div className="moments-text" aria-hidden="true">
           <motion.div
             className="moments-text-row"
-            style={{ x: reduceMotion ? -550 : firstLineX }}
+            style={{ x: reduceMotion ? 0 : firstLineX }}
           >
-            <p>
+            <p dir="auto">
               {copyText("Design, engineering and growth for your business")}
             </p>
           </motion.div>
           <motion.div
             className="moments-text-row moments-text-row-reverse"
-            style={{ x: reduceMotion ? 550 : secondLineX }}
+            style={{ x: reduceMotion ? 0 : secondLineX }}
           >
-            <p>
+            <p dir="auto">
               {copyText(
                 "From your first idea to your product\u2019s next chapter",
               )}
@@ -76,6 +62,7 @@ export default function Moments() {
         </div>
 
         <div className="moments-stage">
+          <div className="moments-orbit" aria-hidden="true" />
           <motion.div
             className="moments-star"
             aria-hidden="true"
@@ -95,7 +82,7 @@ export default function Moments() {
                 strokeWidth="2"
                 strokeLinecap="round"
               >
-                <path d="M25.437 6.09s-4.695 21.667 0 56M5.984 36.257c14.087-3 31.361 0 31.361 0M12.506 54.285c11.59-28.528 38.757-51.528 38.757-51.528M2.965 13.257c11.907 17.833 45.317 45.94 45.317 45.94" />
+                <path d="M9 6c4 15 12 32 22 55M31 8C21 23 15 37 11 54M3 26c10 3 19 6 27 12M2 43C16 29 28 20 53 14" />
               </g>
             </motion.svg>
           </motion.div>
@@ -103,7 +90,9 @@ export default function Moments() {
           <div
             className="moments-phone"
             role="img"
-            aria-label={copyText("RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.")}
+            aria-label={copyText(
+              "RYCODE mobile app: Your product’s next chapter. Support and continuous development for a product you can keep moving forward.",
+            )}
           >
             <div aria-hidden="true">
               <span className="moments-side-button moments-side-silent" />
@@ -123,33 +112,38 @@ export default function Moments() {
                   <span />
                 </div>
                 <div className="moments-phone-content">
-                  <div className="moments-phone-top">
-                    <img
-                      src={photos.profile}
-                      width={30}
-                      height={30}
-                      alt=""
-                      loading="lazy"
-                    />
-                    <div>
-                      <span>
-                        <MapPin size={16} strokeWidth={1.5} />
-                      </span>
-                      <span>
-                        <Share2 size={16} strokeWidth={1.5} />
-                      </span>
-                    </div>
+                  <div className="moments-phone-top" dir="ltr">
+                    <span>
+                      <Share2 size={16} strokeWidth={1.5} />
+                    </span>
+                    <span>
+                      <MapPin size={16} strokeWidth={1.5} />
+                    </span>
                   </div>
                   <div className="moments-phone-main">
-                    <div className="moments-photos">
-                      <img
-                        className="moments-photo-product"
-                        src={photos.product}
-                        width={180}
-                        height={190}
-                        alt=""
-                        loading="lazy"
-                      />
+                    <div className="moments-dashboard" dir="ltr">
+                      <div className="moments-dashboard-back" />
+                      <div className="moments-dashboard-front">
+                        <div className="moments-dashboard-rows">
+                          <i />
+                          <i />
+                          <i />
+                        </div>
+                        <div className="moments-dashboard-chart">
+                          <div className="moments-dashboard-trend">
+                            <i />
+                            <i />
+                            <i />
+                            <i />
+                          </div>
+                          <div className="moments-dashboard-bars">
+                            <i />
+                            <i />
+                            <i />
+                            <i />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div className="moments-phone-copy">
                       <p className="moments-phone-heading">
@@ -163,15 +157,15 @@ export default function Moments() {
                     </div>
                   </div>
                   <div className="moments-phone-bottom">
-                    <div className="moments-phone-tabs">
+                    <div className="moments-phone-tabs" dir="ltr">
                       <span>
-                        <UsersRound size={18} strokeWidth={1.5} />
+                        <MessagesSquare size={17} strokeWidth={1.5} />
                       </span>
                       <span>
-                        <CalendarDays size={18} strokeWidth={1.5} />
+                        <CalendarDays size={17} strokeWidth={1.5} />
                       </span>
                       <span>
-                        <MessagesSquare size={18} strokeWidth={1.5} />
+                        <UsersRound size={17} strokeWidth={1.5} />
                       </span>
                     </div>
                     <span className="moments-home-indicator" />
