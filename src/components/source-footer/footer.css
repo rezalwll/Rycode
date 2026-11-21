@@ -657,6 +657,7 @@
   line-height: 1.35;
 }
 .rycode-footer-source .rycode-footer-inquiry {
+  --footer-inquiry-title-gap: 12px;
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -697,7 +698,7 @@
 .rycode-footer-source .rycode-footer-inquiry h2 {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--footer-inquiry-title-gap);
   color: var(--footer-ink);
   font-size: clamp(21px, 2.15vw, 28px);
   font-weight: 800;
@@ -713,6 +714,9 @@
 }
 .rycode-footer-source .rycode-footer-inquiry-copy p {
   margin-top: 8px;
+  max-inline-size: 72ch;
+  padding-inline-start: calc(4px + var(--footer-inquiry-title-gap));
+  color: var(--footer-muted);
   font-size: 14px;
   line-height: 1.85;
 }
@@ -775,37 +779,39 @@
   transform: scaleX(-1);
 }
 .rycode-footer-source .rycode-footer-nav {
+  --footer-group-icon-size: 36px;
+  --footer-group-icon-gap: 10px;
+  --footer-group-gutter: clamp(18px, 2.5vw, 36px);
   display: grid;
-  grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.2fr) repeat(
-      2,
-      minmax(0, 1.02fr)
-    );
-  margin-top: 38px;
-  padding-block: 26px 38px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr) minmax(
+      0,
+      1.05fr
+    ) minmax(0, 0.9fr);
+  margin-block-start: 30px;
+  padding-block: 24px 28px;
   border-block-start: 1px solid var(--footer-rule);
 }
 .rycode-footer-source .rycode-footer-group {
   min-width: 0;
-  position: relative;
-  padding-inline: clamp(10px, 3.25vw, 54px) clamp(10px, 2vw, 32px);
+  padding-inline: var(--footer-group-gutter);
 }
 .rycode-footer-source .rycode-footer-group:first-child {
   padding-inline-start: 0;
 }
-.rycode-footer-source .rycode-footer-group + .rycode-footer-group::before {
-  position: absolute;
-  inset-block: 58px 0;
-  inset-inline-start: 0;
-  width: 1px;
-  background: var(--footer-rule);
-  content: "";
+.rycode-footer-source .rycode-footer-group:last-child {
+  padding-inline-end: 0;
+}
+.rycode-footer-source .rycode-footer-group + .rycode-footer-group {
+  border-inline-start: 1px solid
+    color-mix(in srgb, var(--footer-rule) 72%, transparent);
 }
 .rycode-footer-source .rycode-footer-group h3 {
   display: flex;
   align-items: center;
-  gap: 13px;
-  margin: 0 0 14px;
-  font-size: clamp(16px, 1.36vw, 21px);
+  gap: var(--footer-group-icon-gap);
+  margin: 0 0 10px;
+  color: var(--footer-ink);
+  font-size: clamp(16px, 1.33vw, 20px);
   font-weight: 800;
   line-height: 1.45;
 }
@@ -813,31 +819,41 @@
   display: grid;
   place-items: center;
   flex: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
+  width: var(--footer-group-icon-size);
+  height: var(--footer-group-icon-size);
+  border-radius: 10px;
   background: var(--footer-blue-soft);
   color: var(--footer-blue);
 }
 .rycode-footer-source .rycode-footer-group-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 .rycode-footer-source .rycode-footer-group ul {
   display: grid;
-  gap: 3px;
+  gap: 2px;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 .rycode-footer-source .rycode-footer-group a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 2px 3px;
+  display: inline-grid;
+  grid-template-columns: var(--footer-group-icon-size) minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--footer-group-icon-gap);
+  max-inline-size: 100%;
+  min-block-size: 31px;
+  padding-block: 4px;
+  border-radius: 6px;
+  color: var(--footer-muted);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.6;
   transition: color var(--ui-duration) var(--ui-ease);
+}
+.rycode-footer-source .rycode-footer-group a span {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 .rycode-footer-source .rycode-footer-group a:is(:hover, :focus-visible) {
   color: var(--footer-blue);
@@ -845,11 +861,10 @@
   text-underline-offset: 4px;
 }
 .rycode-footer-source .rycode-footer-group a svg {
-  align-self: flex-start;
-  flex: none;
-  width: 15px;
-  height: 15px;
-  margin-top: 4px;
+  justify-self: center;
+  width: 13px;
+  height: 13px;
+  margin-block-start: calc((1lh - 13px) / 2);
   color: var(--footer-blue);
 }
 .rycode-footer-source .rycode-footer a:focus-visible {
@@ -862,10 +877,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px 20px;
-  padding-block: 22px 32px;
+  padding-block: 18px 24px;
   border-block-start: 1px solid var(--footer-rule);
   color: var(--footer-muted);
   font-size: 13px;
+  line-height: 1.7;
 }
 .rycode-footer-source .rycode-footer-copyright bdi {
   margin-inline-start: 5px;
@@ -876,27 +892,33 @@
 .rycode-footer-source .rycode-footer-location {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
 }
 .rycode-footer-source[dir="rtl"] .rycode-footer-location {
   flex-direction: row-reverse;
 }
 .rycode-footer-source .rycode-footer-location svg {
-  width: 20px;
-  height: 20px;
-  color: var(--footer-ink);
+  width: 16px;
+  height: 16px;
+  color: var(--footer-blue);
 }
-@media (max-width: 899px) {
+@media (max-width: 979px) {
   .rycode-footer-source .rycode-footer-nav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 22px 20px;
   }
   .rycode-footer-source .rycode-footer-group {
     padding-inline: 0;
   }
-  .rycode-footer-source .rycode-footer-group + .rycode-footer-group::before {
-    display: none;
+  .rycode-footer-source .rycode-footer-group + .rycode-footer-group {
+    border-inline-start: 0;
   }
+  .rycode-footer-source .rycode-footer-group:nth-child(n + 3) {
+    padding-block-start: 16px;
+    border-block-start: 1px solid var(--footer-rule);
+  }
+}
+@media (max-width: 899px) {
   .rycode-footer-source .rycode-footer-inquiry {
     grid-template-columns: minmax(0, 1fr);
     padding-inline: clamp(24px, 3.4vw, 36px);
@@ -923,24 +945,26 @@
     border-radius: 18px;
   }
   .rycode-footer-source .rycode-footer-nav {
-    margin-top: 28px;
-    padding-block: 22px 28px;
+    --footer-group-icon-size: 30px;
+    --footer-group-icon-gap: 8px;
+    gap: 18px 14px;
+    margin-block-start: 20px;
+    padding-block: 18px 22px;
   }
   .rycode-footer-source .rycode-footer-group h3 {
-    gap: 8px;
     margin-bottom: 8px;
   }
-  .rycode-footer-source .rycode-footer-group-icon {
-    width: 34px;
-    height: 34px;
-  }
   .rycode-footer-source .rycode-footer-group-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
   }
   .rycode-footer-source .rycode-footer-group a {
-    gap: 4px;
+    grid-template-columns: 13px minmax(0, 1fr);
+    column-gap: 5px;
     font-size: 13px;
+  }
+  .rycode-footer-source .rycode-footer-bottom {
+    font-size: 12px;
   }
 }
 @media (max-width: 420px) {
