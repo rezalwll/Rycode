@@ -1,77 +1,195 @@
+import {
+  ArrowDown,
+  ArrowUpRight,
+  ChartNoAxesCombined,
+  Database,
+  ExternalLink,
+  FilePenLine,
+  Inbox,
+  ListChecks,
+  MessagesSquare,
+  ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { policies, type PolicyKind } from "@/content/policies";
 import { getTranslations } from "@/lib/i18n-server";
 import { lookupContent } from "@/server/content";
 import { ContentDetail } from "./ContentDetail";
-import styles from "./Content.module.css";
-export async function PolicyPage({ kind }: { kind: "privacy" | "terms" }) {
+import styles from "./PolicyPage.module.css";
+
+const privacyIcons: Partial<Record<string, LucideIcon>> = {
+  inquiries: Inbox,
+  comments: MessagesSquare,
+  analytics: ChartNoAxesCombined,
+  storage: Database,
+  "external-services": ExternalLink,
+  "data-requests": FilePenLine,
+};
+
+function PrivacyOverview({ fa }: { fa: boolean }) {
+  const links = [
+    { id: "inquiries", label: fa ? "فرم تماس" : "Contact forms", icon: Inbox },
+    {
+      id: "comments",
+      label: fa ? "دیدگاه‌های بلاگ" : "Blog comments",
+      icon: MessagesSquare,
+    },
+    {
+      id: "analytics",
+      label: fa ? "آمار سایت" : "Website analytics",
+      icon: ChartNoAxesCombined,
+    },
+  ];
+
+  return (
+    <nav
+      className={styles.dataMap}
+      aria-label={
+        fa ? "انواع اطلاعات ثبت‌شده" : "Types of information collected"
+      }
+    >
+      <ul>
+        {links.map(({ id, label, icon: Icon }) => (
+          <li key={id}>
+            <a href={`#${id}`}>
+              <Icon size={18} aria-hidden="true" />
+              <span>{label}</span>
+              <ArrowDown size={13} aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div className={styles.dataHub} aria-hidden="true">
+        <div className={styles.hubIcon}>
+          <ShieldCheck strokeWidth={1.25} />
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function ProjectSteps({ fa }: { fa: boolean }) {
+  const steps = [
+    {
+      icon: Inbox,
+      title: fa ? "ثبت درخواست" : "Send an inquiry",
+      summary: fa
+        ? "نیاز پروژه و راه ارتباطی‌تان را می‌فرستید."
+        : "Share what you need and how to reach you.",
+    },
+    {
+      icon: ListChecks,
+      title: fa ? "بررسی نیاز" : "Review the scope",
+      summary: fa
+        ? "جزئیات فنی، هزینه و زمان‌بندی بررسی می‌شود."
+        : "Review technical details, pricing and timing.",
+    },
+    {
+      icon: FilePenLine,
+      title: fa ? "توافق پروژه" : "Agree on the work",
+      summary: fa
+        ? "تحویل، پرداخت و پشتیبانی در توافق مشخص می‌شوند."
+        : "Set deliverables, payment and support in the agreement.",
+    },
+  ];
+
+  return (
+    <ol
+      className={styles.steps}
+      aria-label={fa ? "مسیر شروع همکاری" : "How a project starts"}
+    >
+      {steps.map(({ icon: Icon, title, summary }) => (
+        <li key={title}>
+          <Icon size={21} aria-hidden="true" />
+          <div>
+            <strong>{title}</strong>
+            <p>{summary}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export async function PolicyPage({ kind }: { kind: PolicyKind }) {
   const { locale, href } = await getTranslations();
   const { owned, content } = await lookupContent("PAGE", kind, locale);
   if (owned && !content) notFound();
-  if (owned && content)
-    return <ContentDetail content={content} locale={locale} />;
+  if (content) return <ContentDetail content={content} locale={locale} />;
+
   const fa = locale === "fa";
   const privacy = kind === "privacy";
+  const copy = policies[kind][locale];
+  const related = privacy ? "terms" : "privacy";
+
   return (
-    <main className={styles.page}>
-      <p className={styles.eyebrow}>RYCODE</p>
-      <h1>
-        {fa
-          ? privacy
-            ? "حریم خصوصی"
-            : "استفاده از سایت"
-          : privacy
-            ? "Privacy"
-            : "Using this website"}
-      </h1>
-      <div className={styles.article}>
-        <article className={styles.rich}>
-          <p>
-            {fa
-              ? "این صفحه شیوهٔ فعلی کار وب‌سایت را توضیح می‌دهد. شرایط همکاری و خدمات هر پروژه جداگانه توافق می‌شود."
-              : "This page describes how this website currently works. Each project's services and terms are agreed separately."}
-          </p>
-          {privacy ? (
-            <>
-              <h2>{fa ? "اطلاعات درخواست" : "Inquiry information"}</h2>
-              <p>
-                {fa
-                  ? "نام، راه ارتباطی و توضیحاتی که در فرم می‌فرستی برای بررسی درخواست و تماس با تو در پایگاه دادهٔ سایت ذخیره می‌شود. دسترسی به درخواست‌ها محدود به مدیران مجاز است."
-                  : "The name, contact details and message you submit are stored to review and respond to your inquiry. Access is restricted to authorized administrators."}
-              </p>
-              <h2>{fa ? "آمار بازدید" : "Visit analytics"}</h2>
-              <p>
-                {fa
-                  ? "تعداد بازدید صفحه‌ها و کلیک‌ها به‌صورت تجمیعی ثبت می‌شود. برای این آمار، کوکی یا شناسهٔ بازدیدکننده ذخیره نمی‌شود و اطلاعات فرم، نشانی ارجاع‌دهنده و پارامترهای پیوند در آن وارد نمی‌شوند."
-                  : "Page views and clicks are counted in daily aggregates without analytics cookies or visitor identifiers. Form details, referrers and URL parameters are not included."}
-              </p>
-              <h2>{fa ? "پیگیری اطلاعات" : "Your information"}</h2>
-              <p>
-                {fa
-                  ? "برای پرسش دربارهٔ اطلاعات ارسالی یا درخواست بررسی و حذف آن، از صفحهٔ تماس با ما استفاده کن."
-                  : "Contact us to ask about information you have submitted or to request review and deletion."}
-              </p>
-            </>
-          ) : (
-            <>
-              <h2>{fa ? "ارسال درخواست" : "Sending an inquiry"}</h2>
-              <p>
-                {fa
-                  ? "ثبت فرم شروع یک گفت‌وگوست. محدودهٔ کار، زمان‌بندی و هزینهٔ خدمات پس از بررسی نیاز پروژه مشخص می‌شود."
-                  : "Submitting a form starts a conversation. Scope, timeline and pricing are established after reviewing the project."}
-              </p>
-              <h2>{fa ? "محتوای سایت" : "Website content"}</h2>
-              <p>
-                {fa
-                  ? "مطالب سایت برای معرفی خدمات و ارائهٔ اطلاعات عمومی هستند. برای تصمیم دربارهٔ نیاز پروژهٔ خود، توضیحات و شرایط اختصاصی را با رایکد هماهنگ کن."
-                  : "Website content introduces services and provides general information. Discuss your project's specific requirements with RYCODE."}
-              </p>
-            </>
-          )}
-          <Link className={styles.button} href={href("/contact")}>
-            {fa ? "تماس با ما" : "Contact us"} ↗
-          </Link>
+    <main className={styles.page} data-policy={kind}>
+      <div className={styles.container}>
+        <header className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <h1>{copy.title}</h1>
+            <p>{copy.introduction}</p>
+            <a
+              href={privacy ? "#data-requests" : "#project-request"}
+              className={styles.heroLink}
+            >
+              {privacy
+                ? fa
+                  ? "پیگیری اطلاعات ارسالی"
+                  : "Manage your information"
+                : fa
+                  ? "مشاهدهٔ شرایط شروع همکاری"
+                  : "Read the project terms"}
+              <ArrowDown size={15} aria-hidden="true" />
+            </a>
+          </div>
+          {privacy ? <PrivacyOverview fa={fa} /> : <ProjectSteps fa={fa} />}
+        </header>
+
+        <article className={styles.document}>
+          {copy.sections.map(({ id, title, paragraphs }) => {
+            const Icon = privacy ? privacyIcons[id] : undefined;
+            return (
+              <section
+                key={id}
+                id={id}
+                data-topic={id}
+                className={styles.topic}
+                aria-labelledby={`${id}-title`}
+              >
+                {Icon && (
+                  <div className={styles.topicIcon} aria-hidden="true">
+                    <Icon size={20} />
+                  </div>
+                )}
+                <h2 id={`${id}-title`}>{title}</h2>
+                <div>
+                  {paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </article>
+
+        <section className={styles.contact} aria-labelledby="policy-contact">
+          <div>
+            <h2 id="policy-contact">{copy.contactTitle}</h2>
+            <p>{copy.contactDescription}</p>
+          </div>
+          <div className={styles.actions}>
+            <Link href={href("/contact#project-inquiry")} data-fill-button>
+              {fa ? "تماس با ما" : "Contact us"}
+            </Link>
+            <Link href={href(`/${related}`)} className={styles.related}>
+              {policies[related][locale].title}
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
       </div>
     </main>
   );
