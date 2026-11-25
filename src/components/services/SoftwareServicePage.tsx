@@ -19,9 +19,9 @@ import {
 import {
   softwareFaq,
   softwareProcess,
-  softwareRelated,
   softwareServices,
 } from "./software-copy";
+import { SoftwareServiceClosing } from "./SoftwareServiceClosing";
 import styles from "./SoftwareServicePage.module.css";
 
 const inquiryHref = "/contact?service=software";
@@ -292,37 +292,8 @@ export function SoftwareServicePage() {
             ))}
           </div>
         </section>
-
-        <section
-          className={styles.closing}
-          aria-labelledby="software-contact-title"
-        >
-          <div>
-            <h2 id="software-contact-title">
-              ایده‌ات رو بگو تا راه ساختنش رو پیدا کنیم
-            </h2>
-            <p>
-              بگو نرم‌افزار قراره چه کاری انجام بده و چه کسانی ازش استفاده
-              می‌کنن.
-            </p>
-          </div>
-          <div className={styles.actions}>
-            <InquiryLink label="بیا دربارهٔ نرم‌افزارم حرف بزنیم" />
-            <Link className={styles.secondary} href="/services">
-              همهٔ خدمات <ArrowLeft size={16} aria-hidden="true" />
-            </Link>
-          </div>
-        </section>
-
-        <nav className={styles.related} aria-label="خدمات مرتبط">
-          <strong>خدمات مرتبط</strong>
-          {softwareRelated.map(({ href, title }) => (
-            <Link href={href} key={href}>
-              {title} <ArrowUpLeft size={14} aria-hidden="true" />
-            </Link>
-          ))}
-        </nav>
       </div>
+      <SoftwareServiceClosing inquiryHref={inquiryHref} />
     </main>
   );
 }
