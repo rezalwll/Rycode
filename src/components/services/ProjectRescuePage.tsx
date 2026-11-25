@@ -17,6 +17,13 @@ import {
   Rocket,
   Search,
   ShieldCheck,
+  CalendarDays,
+  Laptop,
+  Layers3,
+  RefreshCw,
+  TriangleAlert,
+  Users,
+  Zap,
 } from "lucide-react";
 import { lookupContent } from "@/server/content";
 import { rescueCopy as copy } from "./rescue-copy";
@@ -235,48 +242,99 @@ export async function ProjectRescuePage() {
           </div>
         </Section>
 
-        <Section id="rescue-checklist" title="شروع بررسی و برآورد هزینه">
+        <section
+          className={`${styles.section} ${styles.estimate}`}
+          id="rescue-checklist"
+          aria-labelledby="rescue-checklist-title"
+        >
+          <header className={styles.estimateHead}>
+            <div>
+              <h2 id="rescue-checklist-title">شروع بررسی و برآورد هزینه</h2>
+              <p>
+                مشکل پروژه‌ات رو برامون بفرست تا بعد از بررسی اولیه، محدوده کار و
+                برآورد هزینه رو بهت اعلام کنیم.
+              </p>
+            </div>
+            <div className={styles.estimateArt}>
+              <Image
+                src="/brand/project-rescue/estimate-checklist.webp"
+                alt=""
+                fill
+                sizes="(max-width: 620px) calc(100vw - 36px), (max-width: 920px) 40vw, 440px"
+              />
+            </div>
+          </header>
           <div className={styles.inquiryGrid}>
             {[
               {
                 id: "rescue-intake",
                 icon: ClipboardCheck,
+                rowIcons: [Laptop, TriangleAlert, CalendarDays],
                 ...copy.gettingStarted,
               },
-              { id: "rescue-cost", icon: Calculator, ...copy.cost },
-            ].map(({ id, icon: Icon, title, summary, items, action }) => (
+              {
+                id: "rescue-cost",
+                icon: Calculator,
+                rowIcons: [Layers3, Laptop, Users],
+                ...copy.cost,
+              },
+            ].map(({ id, icon: Icon, title, summary, items, action, rowIcons }) => (
               <article className={styles.inquiryCard} id={id} key={id}>
-                <span className={styles.inquiryIcon}>
-                  <Icon size={24} aria-hidden="true" />
-                </span>
                 <div className={styles.inquiryHeading}>
-                  <h3>{title}</h3>
-                  <p>{summary}</p>
+                  <span className={styles.inquiryIcon}>
+                    <Icon size={24} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{summary}</p>
+                  </div>
                 </div>
                 <dl className={styles.inquiryList}>
-                  {items.map(({ label, value }) => (
-                    <div key={label}>
-                      <dt>{label}</dt>
-                      <dd>{value}</dd>
-                    </div>
-                  ))}
+                  {items.map(({ label, value }, index) => {
+                    const RowIcon = rowIcons[index];
+
+                    return (
+                      <div key={label}>
+                        <dt>
+                          <span className={styles.inquiryListIcon}>
+                            <RowIcon size={17} aria-hidden="true" />
+                          </span>
+                          {label}
+                        </dt>
+                        <dd>{value}</dd>
+                      </div>
+                    );
+                  })}
                 </dl>
                 <InquiryLink>{action}</InquiryLink>
               </article>
             ))}
           </div>
           <div className={styles.inquiryNotes}>
-            <div id="rescue-rebuild">
-              <h3>{copy.rebuild.title}</h3>
-              <p>{copy.rebuild.summary}</p>
-            </div>
-            <div id="rescue-urgent">
-              <h3>{copy.urgent.title}</h3>
-              <p>{copy.urgent.summary}</p>
+            <article className={styles.inquiryNote} id="rescue-rebuild">
+              <span className={styles.inquiryIcon}>
+                <RefreshCw size={22} aria-hidden="true" />
+              </span>
+              <div>
+                <h3>{copy.rebuild.title}</h3>
+                <p>{copy.rebuild.summary}</p>
+              </div>
+            </article>
+            <article
+              className={`${styles.inquiryNote} ${styles.inquiryUrgent}`}
+              id="rescue-urgent"
+            >
+              <span className={styles.inquiryIcon}>
+                <Zap size={22} aria-hidden="true" />
+              </span>
+              <div>
+                <h3>{copy.urgent.title}</h3>
+                <p>{copy.urgent.summary}</p>
+              </div>
               <InquiryLink urgent>{copy.urgent.action}</InquiryLink>
-            </div>
+            </article>
           </div>
-        </Section>
+        </section>
 
         <Section id="rescue-faq" title={copy.faq.title}>
           <div className={styles.faq}>
