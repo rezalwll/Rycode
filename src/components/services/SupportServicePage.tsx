@@ -1,11 +1,16 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowDown,
   ArrowUpLeft,
   Check,
+  ChevronLeft,
   CircleAlert,
+  FolderOpen,
+  Layers2,
   Plus,
+  Rocket,
   Wrench,
 } from "lucide-react";
 import { ContactForm, FormSubmit } from "@/components/ContactForm";
@@ -44,6 +49,14 @@ const qualities = [
   ],
 ];
 const stepNumber = new Intl.NumberFormat("fa-IR", { minimumIntegerDigits: 2 });
+
+const supportNavigation = [
+  { href: "#support-intro", label: "نمای کلی" },
+  { href: "#support-lifecycle", label: "مسیر پروژه" },
+  { href: "#support-services", label: "خدمات" },
+  { href: "#support-faq", label: "پرسش‌های متداول" },
+] as const;
+const supportRequestLabel = "برای پروژه‌ام پشتیبانی می‌خوام";
 
 function Action({
   href,
@@ -108,38 +121,83 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
   const chosenModel = supportModels.find(({ id }) => id === model);
   return (
     <main dir="rtl" data-support-page className={styles.page}>
-      <div className={styles.shell}>
-        <header className={styles.hero}>
-          <h1 className={styles.eyebrow}>پشتیبانی و توسعهٔ مستمر</h1>
-          <p className={styles.heroTitle}>
-            تحویل پروژه،<span> آخر ماجرا نیست</span>
-          </p>
-          <p className={styles.intro}>
-            از نگهداری و رفع خطا تا اضافه کردن امکانات تازه، برای ادامهٔ مسیر
-            سایت یا نرم‌افزارت هم می‌تونیم برنامه داشته باشیم.
-          </p>
-          <div className={styles.actions}>
-            <Action href="#support-request">
-              برای پروژه‌ام پشتیبانی می‌خوام
-            </Action>
-            <Action href="#support-services" down secondary>
-              ببین چه خدماتی داریم
-            </Action>
+      <header className={styles.hero} id="support-intro">
+        <div className={styles.heroShell}>
+          <div className={styles.heroNav}>
+            <a className={styles.heroBrand} href="#support-intro">
+              <FolderOpen size={32} aria-hidden="true" />
+              تحویل پروژه
+            </a>
+            <nav aria-label="بخش‌های پشتیبانی پروژه">
+              {supportNavigation.map(({ href, label }) => (
+                <a href={href} key={href}>
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <Link className={styles.heroNavAction} href="#support-request">
+              {supportRequestLabel}
+            </Link>
+          </div>
+          <div className={styles.heroLayout}>
+            <div className={styles.heroCopy}>
+              <h1 className={styles.heroTitle}>
+                تحویل پروژه،<span> آخر ماجرا نیست</span>
+              </h1>
+              <p className={styles.intro}>
+                از نگهداری و رفع خطا تا اضافه کردن امکانات تازه، برای ادامه مسیر
+                سایت یا نرم‌افزارت هم می‌تونیم برنامه داشته باشیم.
+              </p>
+              <div className={styles.actions}>
+                <Action href="#support-request">{supportRequestLabel}</Action>
+                <a className={styles.heroSecondary} href="#support-services">
+                  <span>
+                    <ChevronLeft size={19} aria-hidden="true" />
+                  </span>
+                  ببین چه خدماتی داریم
+                </a>
+              </div>
+            </div>
+            <div className={styles.heroVisual} aria-hidden="true">
+              <Image
+                className={styles.heroArtwork}
+                src="/brand/support/hero-handover.webp"
+                alt=""
+                width={1100}
+                height={880}
+                sizes="(max-width: 760px) 90vw, (max-width: 1570px) 47vw, 740px"
+                fetchPriority="high"
+              />
+              <svg
+                className={styles.artAccent}
+                viewBox="0 0 78 73"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M10 26 19 5M32 41 55 24M46 63 71 60" />
+              </svg>
+            </div>
           </div>
           <div className={styles.heroPanels}>
             <section
-              className={styles.heroPanel}
+              className={`${styles.heroPanel} ${styles.lifecyclePanel}`}
+              id="support-lifecycle"
               aria-labelledby="support-lifecycle-title"
             >
-              <h2 id="support-lifecycle-title">مسیر پروژه بعد از راه‌اندازی</h2>
-              <ol className={styles.lifecycle}>
+              <h2 id="support-lifecycle-title">
+                <span className={styles.panelIcon}>
+                  <Rocket aria-hidden="true" />
+                </span>
+                مسیر پروژه بعد از راه‌اندازی
+              </h2>
+              <ol className={styles.lifecycle} role="list">
                 <li>راه‌اندازی</li>
                 <li>نگهداری</li>
                 <li>بهبود</li>
                 <li>توسعه</li>
               </ol>
               <p>
-                بسته به وضعیت پروژه، می‌تونیم از یک اصلاح کوچک یا یک برنامهٔ
+                بسته به وضعیت پروژه، می‌تونیم از یک اصلاح کوچک یا یک برنامه
                 نگهداری شروع کنیم.
               </p>
             </section>
@@ -148,9 +206,12 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
               aria-labelledby="support-projects-title"
             >
               <h2 id="support-projects-title">
+                <span className={styles.panelIcon}>
+                  <Layers2 aria-hidden="true" />
+                </span>
                 چه پروژه‌هایی رو بررسی می‌کنیم؟
               </h2>
-              <ul className={styles.tags}>
+              <ul className={styles.tags} role="list">
                 {[
                   "سایت شرکتی",
                   "فروشگاه اینترنتی",
@@ -167,8 +228,10 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
               </p>
             </section>
           </div>
-        </header>
+        </div>
+      </header>
 
+      <div className={styles.shell}>
         <Section
           id="support-scope"
           title="حل یک مشکل یا برنامه‌ای برای ادامه؟"

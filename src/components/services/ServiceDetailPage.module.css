@@ -426,27 +426,22 @@
 .buildPage::before {
   background: linear-gradient(90deg, transparent, #ffffff2b, transparent);
 }
+.page.buildPage {
+  padding-block-start: 0;
+}
+.buildHeroSlot {
+  margin-inline: calc(-1 * max(24px, (100vw - 1180px) / 2));
+}
+@media (max-width: 560px) {
+  .buildHeroSlot {
+    margin-inline: -20px;
+  }
+}
 :global(body:has(.buildPage) header .framer-ATxvc),
 :global(body:has(.buildPage) header .framer-ATxvc .framer-text),
 :global(body:has(.buildPage) header .framer-ATxvc button),
 :global(body:has(.buildPage) header .framer-ATxvc a) {
   color: #fff !important;
-}
-.buildPage .breadcrumb,
-.buildPage .breadcrumb a {
-  color: #8f8b84;
-}
-.buildPage .breadcrumb a:hover {
-  color: #fff;
-}
-.buildPage .hero {
-  gap: clamp(38px, 7vw, 100px);
-}
-.buildPage .hero h1 {
-  color: #fff;
-  font-family: inherit;
-  font-weight: 500;
-  letter-spacing: -0.065em;
 }
 .heroClaim {
   max-width: 570px;
@@ -479,104 +474,6 @@
 .secondaryAction:hover,
 .secondaryAction:focus-visible {
   color: #fff;
-}
-.buildPage .heroMeta {
-  border-color: var(--line);
-  color: #85817c;
-}
-.buildHeroVisual {
-  position: relative;
-  min-height: 620px;
-  isolation: isolate;
-}
-.buildHeroGlow {
-  position: absolute;
-  inset: 12% 8%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, #ff1a0544, transparent 68%);
-  filter: blur(38px);
-}
-.heroScreen {
-  position: absolute;
-  overflow: hidden;
-  margin: 0;
-  border: 1px solid #ffffff2e;
-  border-radius: 18px;
-  background: #151515;
-  box-shadow: 0 30px 80px #000a;
-  transform: rotate(-5deg);
-  transition:
-    transform 0.7s cubic-bezier(0.2, 0.75, 0.3, 1),
-    filter 0.7s;
-}
-.heroScreen img {
-  object-fit: cover;
-  filter: saturate(0.78) contrast(1.05);
-}
-.heroScreenBack {
-  inset: 10% 18% 10% 4%;
-  transform: rotate(-9deg) translate(-10px, 14px);
-  opacity: 0.55;
-}
-.heroScreenMain {
-  inset: 6% 7% 7% 13%;
-  z-index: 2;
-}
-.heroScreenMain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 45%, #090909c4);
-  pointer-events: none;
-}
-.heroScreenMain figcaption {
-  position: absolute;
-  z-index: 1;
-  inset-inline: 24px;
-  bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  direction: ltr;
-}
-.heroScreenFront {
-  inset: 27% 1% 26% 57%;
-  z-index: 3;
-  transform: rotate(7deg);
-}
-.heroScreenFront::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #ff1a0550, transparent 45%);
-  pointer-events: none;
-}
-.heroCursor {
-  position: absolute;
-  z-index: 4;
-  inset-inline-end: 17%;
-  bottom: 16%;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid #fff8;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 21px;
-  box-shadow: 0 12px 25px #0008;
-}
-.heroFloatLabel {
-  position: absolute;
-  inset-inline-start: 3%;
-  bottom: 3%;
-  color: #76726d;
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  direction: ltr;
 }
 .buildProof {
   display: grid;
@@ -869,9 +766,6 @@
   background: var(--accent);
 }
 @media (max-width: 850px) {
-  .buildHeroVisual {
-    min-height: min(620px, 85vw);
-  }
   .buildProof {
     margin-block: 75px 110px;
   }
@@ -897,22 +791,6 @@
     align-items: start;
     flex-direction: column;
     gap: 18px;
-  }
-  .buildHeroVisual {
-    min-height: 440px;
-  }
-  .heroScreenBack {
-    inset: 10% 15% 12% 0;
-  }
-  .heroScreenMain {
-    inset: 6% 5% 8% 8%;
-  }
-  .heroScreenFront {
-    inset: 28% -4% 24% 56%;
-  }
-  .heroCursor {
-    inset-inline-end: 11%;
-    bottom: 12%;
   }
   .buildProof {
     grid-template-columns: 1fr;
@@ -6608,7 +6486,7 @@
 :global(.dark) .page :is(.heroClaim, .growthRankRow strong) {
   color: var(--ui-ink);
 }
-:global(.dark) .page :is(.secondaryAction, .summary, .heroFloatLabel, .rescueLabel) {
+:global(.dark) .page :is(.secondaryAction, .summary, .rescueLabel) {
   color: var(--ui-muted);
 }
 :global(.dark) .growthPage {

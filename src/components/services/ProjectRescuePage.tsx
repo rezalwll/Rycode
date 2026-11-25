@@ -2,12 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpLeft,
+  Bug,
   Calculator,
+  ChevronLeft,
   ClipboardCheck,
+  CodeXml,
+  Gauge,
+  Layers2,
   PackageCheck,
+  Plus,
+  Puzzle,
+  Rocket,
   Search,
   ShieldCheck,
 } from "lucide-react";
@@ -17,6 +24,13 @@ import styles from "./ProjectRescuePage.module.css";
 
 const inquiryHref = "/contact?service=rescue#project-inquiry";
 const processIcons = [Search, ShieldCheck, PackageCheck];
+const situationIcons = [Bug, Layers2, Plus, Gauge] as const;
+const sectionLinks = [
+  { href: "#rescue-findings", label: "امکانات" },
+  { href: "#rescue-incident", label: "فرآیند کار" },
+  { href: "/work", label: "نمونه پروژه‌ها" },
+  { href: "#rescue-faq", label: "سوالات متداول" },
+] as const;
 const serviceImageSizes =
   "(max-width: 480px) 34vw, (max-width: 760px) 32vw, 210px";
 
@@ -68,67 +82,93 @@ export async function ProjectRescuePage() {
   );
   return (
     <main className={styles.page} dir="rtl" data-project-rescue-page>
-      <div className={styles.container}>
-        <header className={styles.hero}>
-          <Link className={styles.back} href="/services">
-            <ArrowRight size={16} aria-hidden="true" />
-            همهٔ خدمات
-          </Link>
-          <div className={styles.heroHeading}>
-            <h1>{copy.hero.title}</h1>
-            <div className={styles.heroIntro}>
-              <p className={styles.lead}>{copy.hero.lead}</p>
-              <p>{copy.hero.intro}</p>
-              <div className={styles.actions}>
-                <InquiryLink>{copy.hero.primary}</InquiryLink>
-                <a className={styles.secondary} href="#rescue-findings">
-                  {copy.hero.secondary}
-                  <ArrowDown size={16} aria-hidden="true" />
-                </a>
+      <div className={styles.introRegion}>
+        <div className={styles.introContainer}>
+          <header className={styles.hero}>
+            <div className={styles.heroNav}>
+              <nav aria-label="دسترسی سریع به بخش‌های رفع باگ">
+                {sectionLinks.map(({ href, label }) => (
+                  <Link href={href} key={href}>
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+              <Link className={styles.back} href="/services">
+                <ArrowRight size={17} aria-hidden="true" />
+                همه خدمات
+              </Link>
+            </div>
+            <div className={styles.heroLayout}>
+              <div className={styles.heroIntro}>
+                <h1>
+                  <span>{copy.hero.titleStart}</span>{" "}
+                  <span>{copy.hero.titleEnd}</span>
+                </h1>
+                <p className={styles.lead}>{copy.hero.lead}</p>
+                <p>{copy.hero.intro}</p>
+                <div className={styles.actions}>
+                  <InquiryLink>{copy.hero.primary}</InquiryLink>
+                  <a className={styles.heroSecondary} href="#rescue-findings">
+                    <span>
+                      <ChevronLeft size={19} aria-hidden="true" />
+                    </span>
+                    {copy.hero.secondary}
+                  </a>
+                </div>
+              </div>
+              <div className={styles.heroVisual}>
+                <div className={styles.heroFrame}>
+                  <Image
+                    className={styles.heroPhoto}
+                    src="/brand/project-rescue/hero-code-desk.webp"
+                    alt="لپ‌تاپ با ویرایشگر کد روی میز کار"
+                    fill
+                    sizes="(max-width: 820px) 92vw, (max-width: 1560px) 48vw, 740px"
+                    fetchPriority="high"
+                  />
+                </div>
+                <span className={styles.codeIcon}>
+                  <CodeXml aria-hidden="true" />
+                </span>
+                <span className={styles.puzzleIcon}>
+                  <Puzzle aria-hidden="true" />
+                </span>
+                <span className={styles.rocketIcon}>
+                  <Rocket aria-hidden="true" />
+                </span>
               </div>
             </div>
-          </div>
-          <Image
-            className={styles.heroPhoto}
-            src="/brand/project-rescue/code-workspace.webp"
-            alt="لپ‌تاپ با ویرایشگر کد روی میز کار"
-            width={1680}
-            height={760}
-            sizes="(max-width: 1320px) 94vw, 1240px"
-            fetchPriority="high"
-          />
-        </header>
-
-        <section
-          className={styles.situations}
-          id="rescue-signs"
-          aria-labelledby="rescue-situations-title"
-        >
-          <header className={styles.situationHeader}>
-            <div className={styles.sectionHeading}>
-              <h2 id="rescue-situations-title">{copy.situations.title}</h2>
-              <p>{copy.situations.subtitle}</p>
-            </div>
-            <Link className={styles.textLink} href={inquiryHref}>
-              {copy.situations.action}
-              <ArrowUpLeft size={16} aria-hidden="true" />
-            </Link>
           </header>
-          <div className={styles.situationGrid}>
-            {copy.situations.items.map(({ title, description, target }) => (
-              <a className={styles.situation} key={target} href={`#${target}`}>
-                <div className={styles.situationCopy}>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-                <span className={styles.situationArrow}>
-                  <ArrowDown size={17} aria-hidden="true" />
-                </span>
-              </a>
-            ))}
-          </div>
-        </section>
 
+          <section
+            className={styles.situations}
+            id="rescue-signs"
+            aria-labelledby="rescue-situations-title"
+          >
+            <h2 className="sr-only" id="rescue-situations-title">
+              {copy.situations.title}
+            </h2>
+            <div className={styles.situationGrid}>
+              {copy.situations.items.map(({ title, description, target }, index) => {
+                const Icon = situationIcons[index];
+                return (
+                  <a className={styles.situation} key={target} href={`#${target}`}>
+                    <span className={styles.situationIcon}>
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <div className={styles.situationCopy}>
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div className={styles.container}>
         <Section id="rescue-findings" title={copy.services.title}>
           <div className={styles.serviceGrid}>
             {copy.services.items.map(

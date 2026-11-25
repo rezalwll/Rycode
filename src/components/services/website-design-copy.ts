@@ -1,15 +1,37 @@
+export const websiteDesignHeroCopy = {
+  fa: {
+    back: "همه خدمات",
+    titleStart: "طراحی سایت و",
+    titleEnd: "فروشگاه اینترنتی",
+    subtitle: "یه سایت که فقط قشنگ نباشه؛ واقعاً به کارت بیاد.",
+    description:
+      "طراحی و توسعه وب‌سایت‌های حرفه‌ای، سریع و امن با تمرکز بر تجربه کاربری عالی و رشد کسب‌وکار شما.",
+    features: ["واکنش‌گرا (موبایل‌محور)", "امن و پایدار", "سرعت بالا"],
+    primary: "می‌خوام سایتم رو بسازم",
+    secondary: "ببین چه سایت‌هایی می‌سازیم",
+    artworkAlt: "نمونه وب‌سایت یک استودیوی معماری روی لپ‌تاپ و موبایل",
+  },
+  en: {
+    back: "All services",
+    titleStart: "Website design &",
+    titleEnd: "online stores",
+    subtitle: "A website that does more than look good.",
+    description:
+      "We design and build fast, secure websites with a great user experience and room for your business to grow.",
+    features: ["Mobile-first design", "Secure & reliable", "Built for speed"],
+    primary: "Start a project",
+    secondary: "See selected work",
+    artworkAlt: "An architecture studio website displayed on a laptop and phone",
+  },
+} as const;
+
 export const websiteDesignCopy = {
   hero: {
-    title: "طراحی سایت و فروشگاه اینترنتی",
-    tag: "WEB DESIGN & ECOMMERCE",
-    subtitle: "یه سایت که فقط قشنگ نباشه؛ واقعاً به کارت بیاد.",
     paragraphs: [
       "فرقی نمی‌کنه تازه می‌خوای کسب‌وکارت رو وارد دنیای اینترنت کنی، یه فروشگاه آنلاین راه بندازی یا سایت قدیمیت رو از نو بسازی.",
       "توی رای‌کد کمک می‌کنیم سایتی داشته باشی که هم ظاهر خوبی داشته باشه، هم سریع و راحت کار کنه و هم برای چیزی که واقعاً نیاز داری ساخته شده باشه.",
       "**از سایت‌های شرکتی و فروشگاهی تا وب‌سایت‌های اختصاصی و چندزبانه؛ ایده‌ات رو بگو، راهش رو باهم پیدا می‌کنیم.**",
     ],
-    primary: "می‌خوام سایتم رو بسازم",
-    secondary: "ببین چه سایت‌هایی می‌سازیم",
   },
   types: {
     title: "چه سایتی توی ذهنته؟",

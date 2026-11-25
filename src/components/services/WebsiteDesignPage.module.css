@@ -30,11 +30,6 @@
   text-wrap: balance;
 }
 
-.page h1 {
-  font-size: clamp(2.25rem, 4.45vw, 3.9rem);
-  font-weight: 700;
-}
-
 .page h2 {
   font-size: clamp(1.75rem, 3.1vw, 2.8rem);
   font-weight: 650;
@@ -73,10 +68,6 @@
   scroll-margin-block-start: 110px;
 }
 
-.intro {
-  padding-block: 24px clamp(28px, 4.4vw, 56px);
-}
-
 .textLink {
   display: inline-flex;
   align-items: center;
@@ -101,34 +92,8 @@
   color: var(--primary);
 }
 
-.introGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.54fr);
-  gap: clamp(22px, 4vw, 50px);
-  align-items: start;
-  margin-block-start: clamp(22px, 3vw, 36px);
-}
-
-.eyebrow,
 .number {
   font-family: var(--font-english, sans-serif);
-}
-
-.eyebrow {
-  display: block;
-  width: fit-content;
-  margin-block-end: 12px;
-  color: var(--primary);
-  font-size: 0.75rem;
-  font-weight: 650;
-  letter-spacing: 0.11em;
-}
-
-.page .heroLead {
-  margin-block-start: 14px;
-  color: var(--ink);
-  font-size: clamp(1.125rem, 1.65vw, 1.35rem);
-  font-weight: 700;
 }
 
 .actions {
@@ -186,39 +151,6 @@
   color: var(--ink);
 }
 
-.page .facts {
-  margin-block-start: 30px;
-  padding: 8px 22px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--panel);
-  font-size: 0.875rem;
-}
-
-.facts > div {
-  display: grid;
-  grid-template-columns: minmax(74px, 0.5fr) minmax(0, 1fr);
-  gap: 12px;
-  padding-block: 15px;
-}
-
-.facts > div + div {
-  border-block-start: 1px solid var(--line);
-}
-
-.facts dt {
-  color: var(--muted);
-}
-
-.facts a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
 .glass {
   position: relative;
   isolation: isolate;
@@ -269,15 +201,6 @@
   color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-.heroArtwork {
-  aspect-ratio: 2;
-  border-radius: 16px;
-}
-
-.heroArtwork img {
-  object-position: center 94%;
 }
 
 .shopArtwork,
@@ -760,14 +683,9 @@
 }
 
 @media (max-width: 840px) {
-  .introGrid,
   .splitSection,
   .closing {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .page .facts {
-    margin-block-start: 0;
   }
 
   .qualityGrid,
@@ -787,14 +705,6 @@
     width: calc(100% - 32px);
   }
 
-  .page h1 {
-    font-size: clamp(1.95rem, 7.3vw, 2.65rem);
-  }
-
-  .heroArtwork {
-    aspect-ratio: 1.32;
-  }
-
   .workGrid,
   .faqGrid,
   .typeList,
@@ -806,13 +716,6 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .facts {
-    padding-inline: 14px;
-  }
-
-  .facts > div {
-    padding-block: 12px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowUpLeft,
   Blocks,
@@ -13,6 +12,7 @@ import {
   Smartphone,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
+import { WebsiteDesignHero } from "./WebsiteDesignHero";
 import { websiteDesignCopy as copy } from "./website-design-copy";
 import styles from "./WebsiteDesignPage.module.css";
 
@@ -50,11 +50,6 @@ type TemplateArtwork = {
 };
 
 const templateArtwork = {
-  website: {
-    src: "/brand/website-design/pane-wayline.webp",
-    alt: "سایت رزرو سفر Wayline روی زمینهٔ آبی و نارنجی",
-    source: "pane",
-  },
   shop: {
     src: "/brand/website-design/cartelle-shop.webp",
     alt: "صفحهٔ فروشگاه Cartelle با دسته‌بندی، فیلتر و کارت‌های محصول",
@@ -159,12 +154,10 @@ function TemplatePreview({
   artwork,
   frame,
   sizes,
-  eager = false,
 }: {
   artwork: TemplateArtwork;
   frame: string;
   sizes: string;
-  eager?: boolean;
 }) {
   const source = templateSources[artwork.source];
 
@@ -176,7 +169,6 @@ function TemplatePreview({
           alt={artwork.alt}
           fill
           sizes={sizes}
-          loading={eager ? "eager" : "lazy"}
         />
       </div>
       <figcaption>
@@ -193,57 +185,12 @@ function TemplatePreview({
 export function WebsiteDesignPage() {
   return (
     <main className={styles.page} data-website-design-page dir="rtl">
+      <WebsiteDesignHero
+        locale="fa"
+        inquiryHref={inquiryHref}
+        secondaryHref="#website-types"
+      />
       <div className={styles.container}>
-        <section className={styles.intro} aria-labelledby="website-title">
-          <Link href="/services" className={styles.textLink}>
-            همهٔ خدمات <ArrowLeft size={16} aria-hidden="true" />
-          </Link>
-          <div className={styles.introGrid}>
-            <div className={styles.introCopy}>
-              <span className={styles.eyebrow} lang="en" dir="ltr">
-                {copy.hero.tag}
-              </span>
-              <h1 id="website-title">{copy.hero.title}</h1>
-              <p className={styles.heroLead}>{copy.hero.subtitle}</p>
-              <div className={styles.actions}>
-                <Link className={styles.primary} href={inquiryHref}>
-                  {copy.hero.primary}
-                </Link>
-                <a className={styles.secondary} href="#website-types">
-                  {copy.hero.secondary}{" "}
-                  <ArrowDown size={16} aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-            <dl className={styles.facts}>
-              <div>
-                <dt>خروجی</dt>
-                <dd>طراحی، توسعه و راه‌اندازی سایت</dd>
-              </div>
-              <div>
-                <dt>زمان اجرا</dt>
-                <dd>بر اساس امکانات و آماده بودن محتوا</dd>
-              </div>
-              <div>
-                <dt>هزینه</dt>
-                <dd>
-                  <a href="#website-cost">
-                    برآورد پس از بررسی نیاز{" "}
-                    <ArrowDown size={14} aria-hidden="true" />
-                  </a>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </section>
-
-        <TemplatePreview
-          artwork={templateArtwork.website}
-          frame={styles.heroArtwork}
-          sizes="(max-width: 1184px) 94vw, 1120px"
-          eager
-        />
-
         <SplitSection id="website-types" title={copy.types.title} wide>
           <p>{copy.types.subtitle}</p>
           <div className={styles.typeList}>

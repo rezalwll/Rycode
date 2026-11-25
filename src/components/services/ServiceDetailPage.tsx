@@ -8,6 +8,7 @@ import {
 } from "@/server/content";
 import { localizedHref, type Locale } from "@/lib/i18n";
 import type { RichNode } from "@/lib/content-rules";
+import { WebsiteDesignHero } from "./WebsiteDesignHero";
 import styles from "./ServiceDetailPage.module.css";
 
 const websiteProjects = [
@@ -278,19 +279,27 @@ export async function ServiceDetailPage({
     <main
       className={`${styles.page} serviceDetailPage${isWebsiteService ? ` buildPage ${styles.buildPage}` : isSoftwareService ? ` softwarePage softwareLight currentPage ${styles.softwarePage} ${styles.softwareLight} ${styles.currentPage}` : isRescueService ? ` rescuePage ${styles.rescuePage}` : isConnectService ? ` connectPage brutalistPage ${styles.connectPage} ${styles.brutalistPage}` : isDataService ? ` dataPage fintlyPage ${styles.dataPage} ${styles.fintlyPage}` : isContinueService ? ` continuePage ledgerPage ${styles.continuePage} ${styles.ledgerPage}` : isGrowthService ? ` growthPage seoPage ${styles.growthPage} ${styles.seoPage}` : ""}`}
     >
-      <nav className={styles.breadcrumb} aria-label={fa ? "مسیر صفحه" : "Breadcrumb"}>
+      {!isWebsiteService && <nav className={styles.breadcrumb} aria-label={fa ? "مسیر صفحه" : "Breadcrumb"}>
         <Link href={localizedHref("/", locale)}>{fa ? "خانه" : "Home"}</Link>
         <span>/</span>
         <Link href={localizedHref("/services", locale)}>{fa ? "خدمات" : "Services"}</Link>
         <span>/</span>
         <span>{content.title}</span>
-      </nav>
+      </nav>}
 
-      <section className={styles.hero}>
+      {isWebsiteService ? (
+        <div className={styles.buildHeroSlot}>
+          <WebsiteDesignHero
+            locale={locale}
+            inquiryHref={inquiryHref}
+            secondaryHref="#build-work"
+          />
+        </div>
+      ) : <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.kicker}><span>✦</span>{fa ? "خدمات رایکد" : "RYCODE SERVICE"}</p>
           <h1>{content.title}</h1>
-          {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
+          {(isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
             <p className={styles.heroClaim}>
               {isGrowthService
                 ? fa
@@ -312,13 +321,9 @@ export async function ServiceDetailPage({
                 ? fa
                   ? "پروژه‌ات خراب نیست؛ نیاز به تشخیص درست دارد."
                   : "Your project needs a diagnosis, not a guess."
-                : isSoftwareService
-                ? fa
-                  ? "نرم‌افزاری که با روش کار شما شکل می‌گیرد."
-                  : "Software shaped around the way you work."
                 : fa
-                  ? "سایتی که فقط دیده نمی‌شود؛ کار می‌کند."
-                  : "A website that does more than look good."}
+                  ? "نرم‌افزاری که با روش کار شما شکل می‌گیرد."
+                  : "Software shaped around the way you work."}
             </p>
           )}
           <p className={styles.summary}>{content.summary}</p>
@@ -327,9 +332,9 @@ export async function ServiceDetailPage({
               {fa ? "شروع پروژه" : "Start a project"}
               <span aria-hidden="true">{fa ? "↖" : "↗"}</span>
             </Link>
-            {(isWebsiteService || isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
-              <a className={styles.secondaryAction} href={isGrowthService ? "#growth-results" : isContinueService ? "#continue-services" : isDataService ? "#data-dashboard" : isConnectService ? "#connect-flow" : isRescueService ? "#rescue-findings" : isSoftwareService ? "#software-map" : "#build-work"}>
-                {isGrowthService ? (fa ? "دیدن مسیر رشد" : "See the growth path") : isContinueService ? (fa ? "دیدن مسیر پشتیبانی" : "See the support path") : isDataService ? (fa ? "دیدن داشبورد" : "See the dashboard") : isConnectService ? (fa ? "دیدن مسیر خودکارسازی" : "See the workflow") : isRescueService ? (fa ? "دیدن یافته‌های اسکن" : "See the findings") : isSoftwareService ? (fa ? "دیدن معماری راه‌حل" : "See the system map") : fa ? "دیدن نمونه‌کارها" : "See selected work"}
+            {(isSoftwareService || isRescueService || isConnectService || isDataService || isContinueService || isGrowthService) && (
+              <a className={styles.secondaryAction} href={isGrowthService ? "#growth-results" : isContinueService ? "#continue-services" : isDataService ? "#data-dashboard" : isConnectService ? "#connect-flow" : isRescueService ? "#rescue-findings" : "#software-map"}>
+                {isGrowthService ? (fa ? "دیدن مسیر رشد" : "See the growth path") : isContinueService ? (fa ? "دیدن مسیر پشتیبانی" : "See the support path") : isDataService ? (fa ? "دیدن داشبورد" : "See the dashboard") : isConnectService ? (fa ? "دیدن مسیر خودکارسازی" : "See the workflow") : isRescueService ? (fa ? "دیدن یافته‌های اسکن" : "See the findings") : (fa ? "دیدن معماری راه‌حل" : "See the system map")}
                 <span aria-hidden="true">↓</span>
               </a>
             )}
@@ -339,27 +344,7 @@ export async function ServiceDetailPage({
             <span>{content.tags.join(" · ")}</span>
           </div>
         </div>
-        {isWebsiteService ? (
-          <div
-            className={styles.buildHeroVisual}
-            role="img"
-            aria-label={fa ? "نمایی از طراحی رابط سایت" : "Website interface design"}
-          >
-            <div className={styles.buildHeroGlow} />
-            <figure className={`${styles.heroScreen} ${styles.heroScreenBack}`}>
-              <Image src={websiteProjects[1].image} alt="" fill sizes="260px" />
-            </figure>
-            <figure className={`${styles.heroScreen} ${styles.heroScreenMain}`}>
-              <Image src={websiteProjects[0].image} alt="" fill sizes="(max-width: 850px) 80vw, 540px" priority />
-              <figcaption><span>RYCODE / 01</span><span>{fa ? "نمونهٔ منتخب" : "SELECTED WORK"}</span></figcaption>
-            </figure>
-            <figure className={`${styles.heroScreen} ${styles.heroScreenFront}`}>
-              <Image src={websiteProjects[2].image} alt="" fill sizes="220px" />
-            </figure>
-            <span className={styles.heroCursor} aria-hidden="true">↗</span>
-            <span className={styles.heroFloatLabel}>{fa ? "ساختن برای حرکت" : "BUILT TO MOVE"}</span>
-          </div>
-        ) : isSoftwareService ? (
+        {isSoftwareService ? (
           <div className={styles.softwareHeroVisual} role="img" aria-label={fa ? "نمایی انتزاعی از یک نرم‌افزار اختصاصی" : "Abstract custom software system"}>
             <div className={styles.softwareGrid} />
             <div className={styles.softwareGlow} />
@@ -431,7 +416,7 @@ export async function ServiceDetailPage({
             <figcaption><span>RYCODE</span><span>{fa ? "راهکارهای دیجیتال" : "DIGITAL SOLUTIONS"}</span></figcaption>
           </figure>
         )}
-      </section>
+      </section>}
 
       {isWebsiteService && (
         <>
