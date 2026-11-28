@@ -155,7 +155,7 @@ export async function GET(request: Request, context: Context) {
           },
         });
         if (!record)
-          throw new HttpError(404, kind === "PROJECT" ? "نمونه‌کار پیدا نشد" : "نوشته پیدا نشد");
+          throw new HttpError(404, kind === "PROJECT" ? "پروژه پیدا نشد" : "نوشته پیدا نشد");
         return Response.json(record);
       }
       const status = url.searchParams.get("status");
@@ -345,11 +345,11 @@ export async function POST(request: Request, context: Context) {
           where: { id: input.id, kind: "PROJECT", legacy: false },
           include: { translations: { select: { locale: true } } },
         });
-        if (!project) throw new HttpError(404, "نمونه‌کار پیدا نشد");
+        if (!project) throw new HttpError(404, "پروژه پیدا نشد");
         if (actor.role !== "ADMIN" && project.status !== "DRAFT")
           throw new HttpError(
             403,
-            "ویرایش کارت نمونه‌کار منتشرشده به دسترسی مدیر نیاز دارد",
+            "ویرایش کارت پروژه منتشرشده به دسترسی مدیر نیاز دارد",
           );
         await tx.content.update({
           where: { id: project.id },
@@ -365,7 +365,7 @@ export async function POST(request: Request, context: Context) {
           if (!project.translations.some((translation) => translation.locale === locale))
             throw new HttpError(
               409,
-              "زبان‌های نمونه‌کار تغییر کرده‌اند. صفحه را تازه کنید و دوباره ذخیره کنید.",
+              "زبان‌های پروژه تغییر کرده‌اند. صفحه را تازه کنید و دوباره ذخیره کنید.",
             );
           await tx.contentTranslation.update({
             where: { contentId_locale: { contentId: project.id, locale } },
@@ -385,12 +385,12 @@ export async function POST(request: Request, context: Context) {
     let entityId = "";
     if (resource === "content" || resource === "projects") {
       const kind = contentKinds[resource];
-      const notFoundMessage = kind === "PROJECT" ? "نمونه‌کار پیدا نشد" : "نوشته پیدا نشد";
+      const notFoundMessage = kind === "PROJECT" ? "پروژه پیدا نشد" : "نوشته پیدا نشد";
       const input = contentSchema.parse(raw);
       if (input.kind !== kind)
         throw new HttpError(
           422,
-          kind === "PROJECT" ? "این بخش برای مدیریت نمونه‌کارهاست" : "این بخش برای مدیریت نوشته‌های بلاگ است",
+          kind === "PROJECT" ? "این بخش برای مدیریت پروژه‌هاست" : "این بخش برای مدیریت نوشته‌های بلاگ است",
         );
       if (actor.role !== "ADMIN" && input.status !== "DRAFT")
         throw new HttpError(403, "Publishing requires an administrator");
@@ -419,7 +419,7 @@ export async function POST(request: Request, context: Context) {
           existing = current;
         }
         if (kind === "PROJECT" && input.slug !== existing?.slug && reservedProjectSlugs.has(input.slug))
-          throw new HttpError(409, "این نشانی در صفحه نمونه‌کارها استفاده می‌شه. نشانی دیگری انتخاب کنید.");
+          throw new HttpError(409, "این نشانی در صفحه پروژه‌ها استفاده می‌شه. نشانی دیگری انتخاب کنید.");
         if (existing && existing.slug !== input.slug) {
           await tx.faq.updateMany({
             where: { scope: contentPath(existing).slice(1) },

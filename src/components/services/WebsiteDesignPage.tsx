@@ -200,7 +200,7 @@ export function WebsiteDesignPage() {
           <div className={styles.sectionHeading}>
             <h2 id="build-work-title">نمونه‌هایی از طراحی سایت</h2>
             <Link href="/work" data-secondary-action="pill">
-              دیدن همه نمونه‌کارها
+              دیدن همه پروژه‌ها
             </Link>
           </div>
           <div className={styles.workGrid}>

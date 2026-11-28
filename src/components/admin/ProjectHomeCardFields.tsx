@@ -37,7 +37,7 @@ export function ProjectHomeCardFields({
       </legend>
       <p className={styles.muted}>
         {fa
-          ? "این نوشته‌ها فقط روی کارت صفحه اصلی دیده می‌شوند. اگر خالی باشند، عنوان و خلاصه نمونه‌کار روی کارت می‌آید."
+          ? "این نوشته‌ها فقط روی کارت صفحه اصلی دیده می‌شوند. اگر خالی باشند، عنوان و خلاصه پروژه روی کارت می‌آید."
           : "This text appears on the homepage card. Empty fields use the project title and summary."}
       </p>
       <label>

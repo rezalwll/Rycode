@@ -295,13 +295,13 @@ export function SoftwareServicePage() {
             sizes="(max-width: 760px) 90vw, (max-width: 1200px) 46vw, 560px"
           />
           <div className={styles.examplesCopy}>
-            <h2 id="software-examples-title">نمونه‌کارهای رایکد رو ببین</h2>
+            <h2 id="software-examples-title">پروژه‌های رایکد رو ببین</h2>
             <p>
               برای آشنایی با طرح‌های رابط و شیوه ارائه پروژه‌ها، به صفحه
-              نمونه‌کارها برو.
+              پروژه‌ها سر بزن.
             </p>
             <Link data-secondary-action href="/work">
-              دیدن نمونه‌کارها
+              دیدن پروژه‌ها
             </Link>
           </div>
         </section>

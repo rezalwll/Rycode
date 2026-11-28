@@ -51,7 +51,7 @@ export function getPrimaryNav(locale: Locale): PrimaryNavItem[] {
         },
       ],
     },
-    { label: fa ? "نمونه‌کارها" : "Work", href: "/projects" },
+    { label: fa ? "پروژه‌ها" : "Projects", href: "/projects" },
     { label: fa ? "درباره ما" : "About us", href: "/about" },
     { label: fa ? "بلاگ" : "Blog", href: "/blog" },
     { label: fa ? "تماس با ما" : "Contact", href: "/contact" },

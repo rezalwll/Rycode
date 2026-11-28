@@ -38,8 +38,8 @@ export async function ContentDetail({
         : "Services"
       : content.kind === "PROJECT"
         ? fa
-          ? "نمونه‌کارها"
-          : "Work"
+          ? "پروژه‌ها"
+          : "Projects"
         : fa
           ? "رایکد"
           : "RYCODE";

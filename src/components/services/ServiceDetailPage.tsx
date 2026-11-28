@@ -437,7 +437,7 @@ export async function ServiceDetailPage({
                     : "A few visual directions for websites, stores and digital products, each shaped around its own problem."}
                 </p>
                 <Link href={localizedHref("/work", locale)} data-secondary-action="pill">
-                  {fa ? "دیدن همه نمونه‌کارها" : "View all projects"}
+                  {fa ? "دیدن همه پروژه‌ها" : "View all projects"}
                 </Link>
               </div>
             </div>

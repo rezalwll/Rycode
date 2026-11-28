@@ -348,7 +348,7 @@ export async function AutomationServicePage() {
             ))}
           </ul>
           <Link className={styles.textLink} href="/work">
-            مشاهده نمونه‌کارهای رایکد{" "}
+            مشاهده پروژه‌های رایکد{" "}
             <ArrowUpLeft size={15} aria-hidden="true" />
           </Link>
         </div>

@@ -32,7 +32,7 @@ export default async function Page({
       className={`framer-wQzdj framer-3tl24i w-full! ${styles.page}`}
       style={referenceStyles.s430a37b031}
     >
-      <h1 className="sr-only">{t("Work")}</h1>
+      <h1 className="sr-only">{t("Projects")}</h1>
       <WorkBlock0 />
       <WorkHeroSection />
       <PublishedListing kind="PROJECT" searchParams={query} />

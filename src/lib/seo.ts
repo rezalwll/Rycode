@@ -30,7 +30,7 @@ const descriptions: Record<string, Record<Locale, string>> = {
     en: "Send RYCODE a project inquiry for website design, custom software or help with an existing project.",
   },
   "/work": {
-    fa: "نمونه‌کارهای رایکد در طراحی و توسعه تجربه‌های دیجیتال؛ جزئیات پروژه‌ها، رویکرد طراحی و روند اجرا",
+    fa: "پروژه‌های رایکد در طراحی و توسعهٔ تجربه‌های دیجیتال، همراه با جزئیات اجرا و رویکرد طراحی",
     en: "Explore RYCODE's digital projects, design approaches and delivery process.",
   },
   "/blog": {
@@ -117,7 +117,7 @@ export function metadataForPath(path: string, locale: Locale) {
           normalized === "/contact"
             ? "Contact"
             : normalized === "/work"
-              ? "Work"
+              ? "Projects"
               : normalized === "/blog"
                 ? "Blog"
                 : "RYCODE",

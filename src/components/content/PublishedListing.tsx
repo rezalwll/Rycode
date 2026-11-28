@@ -101,7 +101,7 @@ export async function PublishedListing({
       aria-labelledby="published-projects-title"
     >
       <h2 id="published-projects-title">
-        {fa ? "نمونه‌کارهای رایکد" : "RYCODE projects"}
+        {fa ? "پروژه‌های رایکد" : "RYCODE projects"}
       </h2>
       {items.length > 0 && (
         <div className={artworkStyles.grid} data-project-cards>

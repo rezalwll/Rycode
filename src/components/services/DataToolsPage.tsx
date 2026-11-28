@@ -356,7 +356,7 @@ export function DataToolsPage() {
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
             <Link href="/work">
-              مشاهده نمونه‌کارهای رایکد{" "}
+              مشاهده پروژه‌های رایکد{" "}
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
           </nav>

@@ -230,11 +230,11 @@ export function CorporateWebsitePage() {
           <div>
             <h2>نمونه‌های طراحی وب رایکد</h2>
             <p>
-              برای دیدن طراحی‌ها و جزئیات پروژه‌ها به بخش نمونه‌کارها سر بزن.
+              طراحی‌ها و جزئیات اجرا رو در صفحهٔ پروژه‌ها ببین.
             </p>
           </div>
           <Link href="/work" data-secondary-action>
-            مشاهده نمونه‌کارها
+            مشاهده پروژه‌ها
           </Link>
           <ActionBannerArt />
         </div>

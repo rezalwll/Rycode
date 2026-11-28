@@ -35,7 +35,7 @@ const situationIcons = [Bug, Layers2, Plus, Gauge] as const;
 const sectionLinks = [
   { href: "#rescue-findings", label: "امکانات" },
   { href: "#rescue-incident", label: "فرآیند کار" },
-  { href: "/work", label: "نمونه پروژه‌ها" },
+  { href: "/work", label: "پروژه‌های انجام‌شده" },
   { href: "#rescue-faq", label: "سوالات متداول" },
 ] as const;
 const serviceImageSizes =

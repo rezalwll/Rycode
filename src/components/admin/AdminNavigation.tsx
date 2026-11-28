@@ -35,8 +35,8 @@ const groups = [
     label: "محتوای سایت",
     items: [
       { path: "/content", title: "نوشته‌های بلاگ", Icon: FileText },
-      { path: "/projects", title: "صفحه نمونه‌کارها", Icon: BriefcaseBusiness },
-      { path: "/home-projects", title: "نمونه‌کارهای صفحه اصلی", Icon: PanelsTopLeft },
+      { path: "/projects", title: "صفحه پروژه‌ها", Icon: BriefcaseBusiness },
+      { path: "/home-projects", title: "پروژه‌های صفحه اصلی", Icon: PanelsTopLeft },
       {
         path: "/comments",
         title: "دیدگاه‌ها",

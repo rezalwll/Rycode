@@ -72,7 +72,7 @@ const labels: Record<string, string> = {
   tagged: "ورودی برچسب‌دار",
   hero: "بخش اول صفحه",
   services: "خدمات",
-  portfolio: "نمونه‌کارها",
+  portfolio: "پروژه‌ها",
   process: "روند همکاری",
   blog: "بلاگ",
   faq: "پرسش‌های متداول",

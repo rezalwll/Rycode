@@ -269,7 +269,7 @@ export async function WorkAiAutomationPlatformDetailsSection() {
                           dir="auto"
                           style={referenceStyles.s2a1463207d}
                         >
-                          {t("View All Work")}
+                          {t("View all projects")}
                         </p>
                       </div>
                       <div className="framer-1glyh7l">

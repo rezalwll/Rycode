@@ -53,13 +53,13 @@ export function HomeProjectsWorkspace({
   return (
     <>
       <header className={styles.pageHeading}>
-        <h1>نمونه‌کارهای صفحه اصلی</h1>
+        <h1>پروژه‌های صفحه اصلی</h1>
         <p className={styles.muted}>
           در هر زبان، حداکثر سه پروژهٔ منتخب و منتشرشده با ترجمهٔ تأییدشده نمایش
           داده می‌شود. عدد کمتر، اولویت بالاتری دارد.
         </p>
         <Link className={styles.button} href="/admin/projects">
-          مدیریت صفحه نمونه‌کارها
+          مدیریت صفحه پروژه‌ها
         </Link>
       </header>
       {choices.length ? (
@@ -69,10 +69,10 @@ export function HomeProjectsWorkspace({
           method="get"
         >
           <label>
-            نمونه‌کار
+            پروژه
             <select name="project" defaultValue={project?.id ?? ""} required>
               <option value="" disabled>
-                یک نمونه‌کار انتخاب کنید
+                یک پروژه انتخاب کنید
               </option>
               {choices.map((item) => (
                 <option key={item.id} value={item.id}>
@@ -88,7 +88,7 @@ export function HomeProjectsWorkspace({
         </form>
       ) : (
         <p className={styles.empty}>
-          ابتدا یک پروژه در بخش صفحه نمونه‌کارها ایجاد کنید.
+          ابتدا یک پروژه در بخش صفحه پروژه‌ها ایجاد کنید.
         </p>
       )}
 

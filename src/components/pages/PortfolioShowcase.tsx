@@ -100,7 +100,7 @@ export async function PortfolioShowcase({
           </div>
           <p className={styles.lead}>
             {fa
-              ? "نمونه‌کارهای واقعی پس از تأیید مشتری منتشر می‌شوند؛ هر پروژه از مسئله، تصمیم و مسیر تحویلش حرف می‌زند."
+              ? "پروژه‌های واقعی پس از تأیید مشتری منتشر می‌شوند؛ هر پروژه از مسئله، تصمیم و مسیر تحویلش حرف می‌زند."
               : "Real work is published after client approval. Every case study explains the challenge, the decisions and the path to delivery."}
           </p>
         </div>

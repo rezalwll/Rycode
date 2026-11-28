@@ -61,7 +61,7 @@ const titles: Record<string, string> = {
   leads: "درخواست‌های همکاری",
   comments: "دیدگاه‌های بلاگ",
   content: "نوشته‌های بلاگ",
-  projects: "صفحه نمونه‌کارها",
+  projects: "صفحه پروژه‌ها",
   media: "کتابخانه رسانه",
   faqs: "پرسش‌های متداول",
   settings: "تنظیمات سایت",
@@ -72,7 +72,7 @@ const titles: Record<string, string> = {
 const kinds: Record<string, string> = {
   ARTICLE: "مقاله",
   SERVICE: "خدمت",
-  PROJECT: "نمونه‌کار",
+  PROJECT: "پروژه",
   PAGE: "صفحه",
 };
 const blankArticle: ContentRow = {
@@ -201,8 +201,8 @@ function ContentEditor({
         <h2>
           {isProject
             ? record.id
-              ? "ویرایش نمونه‌کار"
-              : "نمونه‌کار جدید"
+              ? "ویرایش پروژه"
+              : "پروژه جدید"
             : record.id
               ? "ویرایش نوشته"
               : "نوشته جدید"}
@@ -302,7 +302,7 @@ function ContentEditor({
               setProjectSlug(updated.slug);
               setSlugEdited(true);
             }
-            setMessage(isProject ? "نمونه‌کار ذخیره شد" : "نوشته ذخیره شد");
+            setMessage(isProject ? "پروژه ذخیره شد" : "نوشته ذخیره شد");
             onSaved();
           } catch (e) {
             setMessage((e as Error).message);
@@ -314,7 +314,7 @@ function ContentEditor({
         <div className={styles.grid}>
           {isProject ? (
             <label>
-              نشانی صفحه نمونه‌کار
+              نشانی صفحه پروژه
               <input
                 name="slug"
                 value={projectSlug}
@@ -426,7 +426,7 @@ function ContentEditor({
             </select>
           </label>
           <Input
-            label={isProject ? "ترتیب در صفحه نمونه‌کارها" : "ترتیب نمایش"}
+            label={isProject ? "ترتیب در صفحه پروژه‌ها" : "ترتیب نمایش"}
             name="position"
             type="number"
             value={record.position || 0}
@@ -456,7 +456,7 @@ function ContentEditor({
               : "محتوای نمونه (برچسب نمونه و عدم ایندکس)"}
           </label>
           <label>
-            {isProject ? "تصویر شاخص نمونه‌کار" : "تصویر شاخص"}
+            {isProject ? "تصویر شاخص پروژه" : "تصویر شاخص"}
             <input
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -514,7 +514,7 @@ function ContentEditor({
                 <label className={styles.wide}>
                   {locale === "fa"
                     ? isProject
-                      ? "خلاصه برای کارت نمونه‌کار"
+                      ? "خلاصه برای کارت پروژه"
                       : "خلاصه"
                     : "Summary"}
                   <textarea
@@ -526,7 +526,7 @@ function ContentEditor({
                 </label>
                 {isProject && (
                   <div className={styles.wide}>
-                    <p className={styles.muted}>{locale === "fa" ? "پیش‌نمایش کارت در فهرست نمونه‌کارها" : "Portfolio listing card preview"}</p>
+                    <p className={styles.muted}>{locale === "fa" ? "پیش‌نمایش کارت در فهرست پروژه‌ها" : "Portfolio listing card preview"}</p>
                     <ProjectCardArtwork
                       image={cover.success ? cover.data : null}
                       title={(projectCopy[locale]?.title ?? text?.title)?.trim() || (locale === "fa" ? "عنوان پروژه" : "Project title")}
@@ -573,7 +573,7 @@ function ContentEditor({
           {busy
             ? "در حال ذخیره…"
             : isProject
-              ? "ذخیره نمونه‌کار"
+              ? "ذخیره پروژه"
               : "ذخیره نوشته"}
         </button>
         {message && (
@@ -780,7 +780,7 @@ export function AdminWorkspace({
       {openingEntry && (
         <BrandLoading
           label={
-            isProject ? "در حال باز کردن نمونه‌کار…" : "در حال باز کردن نوشته…"
+            isProject ? "در حال باز کردن پروژه…" : "در حال باز کردن نوشته…"
           }
         />
       )}
@@ -814,7 +814,7 @@ export function AdminWorkspace({
                   section === "leads"
                     ? "نام، شماره تماس یا کد پیگیری…"
                     : isProject
-                      ? "جست‌وجوی نمونه‌کار…"
+                      ? "جست‌وجوی پروژه…"
                       : "جست‌وجوی نوشته…"
                 }
                 value={query}
@@ -845,7 +845,7 @@ export function AdminWorkspace({
                 onClick={() => setEditing(blankEntry)}
               >
                 <Plus size={17} aria-hidden="true" />{" "}
-                {isProject ? "نمونه‌کار جدید" : "نوشته جدید"}
+                {isProject ? "پروژه جدید" : "نوشته جدید"}
               </button>
             )}
           </div>
@@ -1038,7 +1038,7 @@ export function AdminWorkspace({
             <BrandTableLoading
               label={
                 isProject
-                  ? "در حال دریافت نمونه‌کارها…"
+                  ? "در حال دریافت پروژه‌ها…"
                   : "در حال دریافت نوشته‌ها…"
               }
             />

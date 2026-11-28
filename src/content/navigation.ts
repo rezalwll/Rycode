@@ -16,7 +16,7 @@ export const primaryNavigation: NavigationItem[] = [
   },
   {
     id: "work",
-    label: { fa: "نمونه‌کارها", en: "Work" },
+    label: { fa: "پروژه‌ها", en: "Projects" },
     href: "/work",
   },
   {

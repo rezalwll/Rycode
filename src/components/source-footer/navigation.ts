@@ -9,7 +9,7 @@ export function getFooterNav(locale: Locale) {
       title: fa ? "رایکد" : "Company",
       items: [
         { label: fa ? "درباره ما" : "About us", href: "/about" },
-        { label: fa ? "نمونه‌کارها" : "Work", href: "/work" },
+        { label: fa ? "پروژه‌ها" : "Projects", href: "/work" },
         { label: fa ? "وبلاگ" : "Blog", href: "/blog" },
         { label: fa ? "تماس با ما" : "Contact", href: "/contact" },
       ],

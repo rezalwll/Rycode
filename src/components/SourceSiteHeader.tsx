@@ -185,7 +185,7 @@ function navItems(
         },
       ],
     },
-    { id: "work", label: fa ? "نمونه‌کارها" : "Work", href: "/work" },
+    { id: "work", label: fa ? "پروژه‌ها" : "Projects", href: "/work" },
     {
       id: "about",
       label: fa ? "درباره ما" : "About us",

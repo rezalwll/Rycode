@@ -54,7 +54,7 @@ export function PortfolioDisplayFields({
         />
         {home
           ? "نمایش کارت‌های پیش‌فرض در صورت خالی بودن بخش"
-          : "نمایش کارت‌های پیش‌فرض در فهرست نمونه‌کارها"}
+          : "نمایش کارت‌های پیش‌فرض در فهرست پروژه‌ها"}
       </label>
       <div className={styles.actions}>
         <button type="submit" disabled={busy}>
