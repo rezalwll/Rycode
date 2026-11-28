@@ -5,7 +5,7 @@
   z-index: 2;
   flex: none;
   width: 100%;
-  --accent-blue: #66c0ff;
+  --accent-blue: var(--brand-blue);
   --accent-purple: #6d4cdb;
   --accent-orange: #ff9c52;
   --action: #ff9c52;
@@ -45,7 +45,7 @@
 /* coorda-reference.css */
 
 .rycode-footer-source .moments-section {
-  --moments-blue: #079dff;
+  --moments-blue: var(--brand-blue);
   --moments-rule: rgb(249 251 255 / 20%);
   position: relative;
   isolation: isolate;
@@ -315,7 +315,7 @@
   line-height: 1.12;
 }
 .rycode-footer-source .moments-app-title span {
-  color: #0086d9;
+  color: var(--brand-blue-deep);
 }
 .rycode-footer-source .moments-app-title:dir(ltr) {
   letter-spacing: -0.035em;
@@ -351,7 +351,7 @@
   box-shadow: 0 1cqw 3cqw rgb(56 97 144 / 13%);
 }
 .rycode-footer-source .moments-app-tile:focus-visible {
-  outline: 2px solid #0057a7;
+  outline: 2px solid var(--brand-blue-deep);
   outline-offset: 2px;
 }
 .rycode-footer-source .moments-app-tile-art {
@@ -364,7 +364,7 @@
   object-position: center top;
 }
 .rycode-footer-source .moments-app-tile:nth-child(2) .moments-app-tile-art {
-  background: linear-gradient(135deg, #1049db, #1115a4);
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-deep));
 }
 .rycode-footer-source .moments-app-tile:nth-child(2) img {
   object-fit: contain;
@@ -392,10 +392,10 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: #cde7ff;
-  color: #007cca;
+  color: var(--brand-blue-deep);
 }
 .rycode-footer-source .moments-app-tile:is(:hover, :focus-visible) .moments-app-tile-label > span {
-  background: #0a68b5;
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .rycode-footer-source .moments-app-tile-label svg {
@@ -491,11 +491,11 @@
 .rycode-footer-source .rycode-footer {
   --footer-ink: light-dark(#132742, #edf5ff);
   --footer-muted: light-dark(#53657d, #b8c9df);
-  --footer-blue: light-dark(#006eba, #8ad0ff);
+  --footer-blue: var(--brand-blue-ink);
   --footer-rule: light-dark(#d6e0eb, #35495f);
-  --footer-blue-soft: light-dark(#e1f1fd, #203b53);
-  --accent-blue: #66c0ff;
-  --accent-purple: #3498db;
+  --footer-blue-soft: var(--brand-blue-wash);
+  --accent-blue: var(--brand-blue);
+  --accent-purple: var(--brand-blue);
   position: relative;
   isolation: isolate;
   overflow: clip;

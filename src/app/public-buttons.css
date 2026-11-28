@@ -6,9 +6,9 @@
 }
 
 #main.rycode-public a[data-secondary-action] {
-  --secondary-tile: light-dark(#dce9ff, #334b6d);
-  --secondary-arrow: light-dark(#244e82, #e2eeff);
-  --secondary-focus: light-dark(#4b72ac, #9ac8ff);
+  --secondary-tile: color-mix(in srgb, var(--brand-blue) 21%, var(--ui-surface));
+  --secondary-arrow: var(--brand-blue-ink);
+  --secondary-focus: var(--brand-blue);
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
@@ -19,7 +19,7 @@
   padding-block: 8px;
   padding-inline: 42px 5px;
   background: transparent;
-  color: light-dark(#315371, #d0eaff);
+  color: var(--brand-blue-ink);
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1.55;
@@ -55,24 +55,21 @@
   scale: -1 1;
 }
 #main.rycode-public a[data-secondary-action]:is(:hover, :focus-visible) {
-  --secondary-tile: light-dark(#bcd5fa, #45648e);
+  --secondary-tile: color-mix(in srgb, var(--brand-blue) 34%, var(--ui-surface));
 }
 #main.rycode-public a[data-secondary-action]:focus-visible {
   outline: 2px solid var(--secondary-focus);
   outline-offset: 3px;
 }
 #main.rycode-public a[data-secondary-action="pill"] {
-  --secondary-tile: light-dark(#d4e8ff, #334b6d);
-  border: 1px solid light-dark(#bfd5ed, #496685);
+  border: 1px solid color-mix(in srgb, var(--brand-blue) 32%, var(--ui-rule));
   border-radius: 999px;
   padding-inline-end: 16px;
-  background: light-dark(#f2f7ff, #24394e);
-  color: light-dark(#183c62, #d0eaff);
+  background: var(--brand-blue-wash);
   transition: background-color 280ms ease, border-color 280ms ease;
 }
 #main.rycode-public a[data-secondary-action="pill"]:is(:hover, :focus-visible) {
-  --secondary-tile: light-dark(#bfdaf9, #45648e);
-  background: light-dark(#e6f1ff, #304963);
+  background: color-mix(in srgb, var(--brand-blue) 17%, var(--ui-surface));
 }
 @media (prefers-reduced-motion: reduce) {
   #main.rycode-public a[data-secondary-action],
@@ -106,9 +103,9 @@
   padding-block: 12px !important;
   padding-inline: 60px 20px !important;
   overflow: hidden !important;
-  border: 1px solid var(--cta-border, #d3e6f3) !important;
+  border: 1px solid var(--cta-border, color-mix(in srgb, var(--brand-blue) 23%, var(--ui-rule))) !important;
   border-radius: 999px !important;
-  background: var(--cta-surface, light-dark(#edf6fc, #24394e)) !important;
+  background: var(--cta-surface, var(--brand-blue-wash)) !important;
   color: var(--ui-ink) !important;
   box-shadow: none !important;
   font-family: inherit;
@@ -181,11 +178,11 @@
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):not(:disabled):is(:hover, :focus-visible) {
   color: #fff !important;
   border-color: var(--cta-accent, var(--brand-blue)) !important;
-  background: var(--cta-fill, color-mix(in srgb, var(--brand-blue) 70%, var(--brand-ink))) !important;
+  background: var(--cta-fill, var(--brand-blue-deep)) !important;
   box-shadow: none !important;
 }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):not(:disabled):is(:hover, :focus-visible)::before {
-  background: var(--cta-fill, color-mix(in srgb, var(--brand-blue) 70%, var(--brand-ink))) !important;
+  background: var(--cta-fill, var(--brand-blue-deep)) !important;
 }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--cta-accent, var(--brand-blue)) !important; outline-offset: 4px; }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active:not(:disabled) { scale: .98; }

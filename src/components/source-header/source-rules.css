@@ -97,7 +97,7 @@
   outline-offset: 5px;
 }
 .rycode-source-header :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
-  --submenu-accent: #2871a6;
+  --submenu-accent: var(--brand-blue-ink);
   --submenu-wash: color-mix(in srgb, var(--accent-blue) 12%, var(--surface));
   --submenu-edge: color-mix(in srgb, var(--accent-blue) 24%, var(--border));
 }
@@ -215,7 +215,7 @@
 .rycode-source-header
   :is(.rycode-header, #site-mobile-menu)
   .rycode-services-menu-overview {
-  --submenu-accent: light-dark(#175d92, #9bd8ff);
+  --submenu-accent: var(--brand-blue-ink);
   min-height: 56px;
   margin-block-end: 4px;
   border-color: light-dark(#c8def0, #345774);

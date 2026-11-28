@@ -1,7 +1,7 @@
 :global(.rycode-public) .page[data-software-service-page] {
   --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --muted: light-dark(#536275, #b7c4d3);
-  --blue: light-dark(#245c89, #a1d4f6);
+  --blue: var(--brand-blue-ink);
   --purple: light-dark(#674ca0, #cfb9fa);
   --line: light-dark(#dce6f0, #405064);
   --blue-tint: light-dark(#edf6fd, #253447);
@@ -115,7 +115,7 @@
 }
 
 .heroCopy h1 span {
-  color: light-dark(#066bac, #8bcaff);
+  color: light-dark(var(--brand-blue-deep), #8bcaff);
 }
 
 .heroDescription {
@@ -196,7 +196,7 @@
   rotate: 10deg;
   border: 1px solid light-dark(#245d89, #6996bc);
   border-radius: 12%;
-  background: linear-gradient(145deg, light-dark(#0c4f83, #367eb5), light-dark(#4aa2dc, #214565));
+  background: linear-gradient(145deg, light-dark(#0c4f83, #367eb5), light-dark(var(--brand-blue), #214565));
   content: "";
 }
 

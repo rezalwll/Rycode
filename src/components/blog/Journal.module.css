@@ -4,7 +4,7 @@
   --journal-ink: #303b48;
   --journal-muted: #627080;
   --journal-line: #e2e8ef;
-  --journal-blue: #287db5;
+  --journal-blue: var(--brand-blue-ink);
   --journal-purple: #7155af;
   box-sizing: border-box;
   background: var(--journal-bg) !important;
@@ -544,13 +544,12 @@
   --journal-ink: #e2eaf2;
   --journal-muted: #a7b6c6;
   --journal-line: #334454;
-  --journal-blue: #89cbf6;
   --journal-purple: #c4b5fd;
   color-scheme: dark;
 }
 :global(html.dark) .journal .selectedCategory {
   background: #243c52;
-  color: #a8d8ff;
+  color: var(--brand-blue-light);
   border-color: #3c6582;
 }
 /* Article reading layout shares the listing's palette and rhythm. */

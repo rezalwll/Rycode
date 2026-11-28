@@ -11,7 +11,7 @@
   --brand-foreground: #fff;
   --brand-soft: #e8e8e8;
   --logo-color: var(--brand-blue);
-  --accent-blue: #66c0ff;
+  --accent-blue: var(--brand-blue-light);
   --ui-duration: 280ms;
   --ui-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --source-header-background: var(--background);

@@ -1,7 +1,7 @@
 .page {
   --tg-ink: light-dark(#203244, #edf2f8);
   --tg-muted: light-dark(#516578, #b7c4d3);
-  --tg-blue: light-dark(#13649b, #a1d4f6);
+  --tg-blue: var(--brand-blue-ink);
   --tg-deep: light-dark(#104b75, #a1d4f6);
   --tg-line: light-dark(#d9e6ef, #405064);
   --tg-tint: light-dark(#edf7ff, #253447);

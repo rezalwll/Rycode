@@ -1,7 +1,7 @@
 :global(.rycode-public) .page {
   --ink: light-dark(#303b48, #edf2f8);
   --muted: light-dark(#607080, #b7c4d3);
-  --blue: light-dark(var(--brand-blue, #3498db), var(--ui-link));
+  --blue: var(--brand-blue-ink);
   --line: light-dark(#dce6ef, #405064);
   color: var(--ink);
   background: var(--ui-surface, #fff);

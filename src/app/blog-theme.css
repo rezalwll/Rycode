@@ -3,7 +3,7 @@
   --blog-ink: light-dark(#1a1a1a, var(--ui-ink));
   --blog-muted: light-dark(#666, var(--ui-muted));
   --blog-line: var(--ui-line);
-  --blog-blue: #66c0ff;
+  --blog-blue: var(--brand-blue);
   --blog-purple: #8c5cff;
   width: 100%;
   min-height: 100%;
@@ -125,7 +125,7 @@
   .blog-colorful
   :is(.framer-lQ8Q4, .framer-aQ9vY, .framer-sPdYw)
   a:focus-visible {
-  outline-color: #a8d8ff;
+  outline-color: var(--brand-blue-light);
 }
 .rycode-public
   .blog-colorful

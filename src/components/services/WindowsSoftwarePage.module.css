@@ -2,7 +2,7 @@
   --ink: light-dark(#223345, #edf2f8);
   --muted: light-dark(#526577, #b7c4d3);
   --line: light-dark(#d9e5ef, #405064);
-  --blue: light-dark(#14659b, #a1d4f6);
+  --blue: var(--brand-blue-ink);
   --blue-dark: light-dark(#104d77, #a1d4f6);
   --blue-soft: light-dark(#eef7fe, #253447);
   background: var(--ui-surface, #fff);

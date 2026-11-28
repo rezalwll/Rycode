@@ -48,7 +48,7 @@
 .hero {
   --hero-ink: light-dark(#142e50, #f1f7ff);
   --hero-muted: light-dark(#415772, #bad0e6);
-  --hero-accent: light-dark(#007fcf, #62c7ff);
+  --hero-accent: var(--brand-blue-heading);
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -69,7 +69,7 @@
   background: repeating-radial-gradient(
     ellipse at 13% 5%,
     transparent 0 10px,
-    light-dark(rgb(0 135 237 / 18%), rgb(98 199 255 / 18%)) 11px,
+    color-mix(in srgb, var(--brand-blue) 18%, transparent) 11px,
     transparent 12px 14px
   );
   mask-image: linear-gradient(145deg, #000 14%, transparent 70%);

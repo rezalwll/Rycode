@@ -1,10 +1,8 @@
 .hero {
   --hero-ink: light-dark(#242f45, #f0f5ff);
   --hero-muted: light-dark(#58637a, #b8c8e1);
-  --hero-blue: light-dark(#104bb9, #a1c8ff);
-  --hero-accent: light-dark(#095acb, #8bbbff);
-  --hero-accent-bright: light-dark(#126ddd, #62adff);
-  --hero-tint: light-dark(#eaf0fb, #213551);
+  --hero-blue: var(--brand-blue-ink);
+  --hero-tint: var(--brand-blue-wash);
   --hero-rule: light-dark(#dbe4f5, #344a68);
   position: relative;
   isolation: isolate;
@@ -14,7 +12,7 @@
   min-block-size: clamp(700px, 44vw, 780px);
   padding-block: clamp(30px, 2.15vw, 40px) clamp(52px, 4.65vw, 84px);
   background:
-    radial-gradient(ellipse at 19% 77%, light-dark(#a9c5fa, #1b3d70), transparent 38%),
+    radial-gradient(ellipse at 19% 77%, color-mix(in srgb, var(--brand-blue) 28%, transparent), transparent 38%),
     radial-gradient(ellipse at 68% 1%, light-dark(#f2effa, #22233e), transparent 58%),
     linear-gradient(145deg, light-dark(#f7f9fe, #141d31), light-dark(#e6effd, #152743) 45%, light-dark(#fafafd, #101a2d) 77%);
   color: var(--hero-ink);
@@ -49,7 +47,7 @@
 
 .arc {
   fill: none;
-  stroke: light-dark(#78aeff80, #5d95e068);
+  stroke: color-mix(in srgb, var(--brand-blue) 45%, transparent);
   stroke-width: 2;
   vector-effect: non-scaling-stroke;
 }
@@ -85,7 +83,7 @@
 }
 
 .copy .back:focus-visible {
-  outline: 2px solid var(--hero-accent);
+  outline: 2px solid var(--brand-blue);
   outline-offset: 4px;
 }
 
@@ -112,23 +110,8 @@
 }
 
 .titleAccent {
-  position: relative;
   width: fit-content;
-  color: var(--hero-accent);
-  background: linear-gradient(109deg, var(--hero-accent-bright), var(--hero-accent));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.titleAccent::after {
-  position: absolute;
-  inset-block-start: 100%;
-  inset-inline-end: 10%;
-  width: 34%;
-  height: 0.31em;
-  background: linear-gradient(85deg, var(--hero-accent-bright) 58%, transparent);
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 20'%3E%3Cpath d='M0 15C49 1 102 1 150 9C99 5 45 11 2 20Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-  content: "";
+  color: var(--brand-blue-heading);
 }
 
 .copy .lead {
@@ -197,7 +180,7 @@
 }
 
 .copy .back:hover {
-  border-color: var(--hero-accent-bright);
+  border-color: var(--brand-blue);
   background: var(--hero-tint);
 }
 
@@ -228,7 +211,7 @@
   width: 45%;
   height: 68%;
   border-radius: 15%;
-  background: linear-gradient(149deg, light-dark(#3b85f8, #265bbb), light-dark(#6db4ff, #3879ce) 62%, light-dark(#a8d0ff, #305ea5));
+  background: linear-gradient(149deg, var(--brand-blue-deep), var(--brand-blue) 62%, var(--brand-blue-light));
   box-shadow: inset 0 0 0 1px #b3d7ff45;
   transform: rotate(16deg) skewX(-16deg);
   animation: drift 9500ms ease-in-out infinite alternate;
@@ -339,11 +322,5 @@
 
   .copy .back {
     transition: none;
-  }
-}
-
-@media (forced-colors: active) {
-  .titleAccent {
-    -webkit-text-fill-color: CanvasText;
   }
 }

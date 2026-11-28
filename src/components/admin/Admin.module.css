@@ -2,12 +2,12 @@
   --admin-canvas: #f3f6fb;
   --admin-surface: #fff;
   --admin-field: #f6f9fd;
-  --admin-soft: #eaf4ff;
+  --admin-soft: var(--brand-blue-wash);
   --admin-line: #dbe5f0;
   --admin-ink: #182b46;
   --admin-muted: #53677f;
-  --admin-accent: #17689d;
-  --admin-accent-hover: #105383;
+  --admin-accent: var(--brand-blue-deep);
+  --admin-accent-hover: color-mix(in srgb, var(--brand-blue-deep) 75%, var(--admin-ink));
   --admin-shadow: 0 12px 36px rgb(24 55 100 / 7%);
   color-scheme: light;
   min-height: 100svh;

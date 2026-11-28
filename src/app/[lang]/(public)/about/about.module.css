@@ -3,7 +3,7 @@
   --about-muted: var(--ui-muted, #5f6d7b);
   --about-line: var(--ui-line, #e7e7e7);
   --about-card: #f6f7f8;
-  --about-accent: #176b9e;
+  --about-accent: var(--brand-blue-ink);
   --about-soft: #edf6fc;
   --about-button: #225478;
   --about-button-hover: #184466;
@@ -17,7 +17,6 @@
   --about-muted: #bbc6d3;
   --about-line: #3b4552;
   --about-card: #222830;
-  --about-accent: #a3d3f3;
   --about-soft: #233747;
   --about-button: #245b80;
   --about-button-hover: #2e658a;

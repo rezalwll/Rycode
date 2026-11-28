@@ -5,16 +5,16 @@
   --ui-surface-muted: #f2f2f2;
   --ui-field: #f2f3f6;
   --ui-rule: #dde3eb;
-  --ui-blue: #a8d8ff;
+  --ui-blue: var(--brand-blue-light);
   --ui-purple: #c4b5fd;
   --ui-ink: var(--brand-ink);
   --ui-muted: #5f6d7b;
-  --ui-link: #28638b;
+  --ui-link: var(--brand-blue-ink);
   --ui-on-accent: #142235;
   --ui-line: #e7e7e7;
   --button-surface: #fff;
   --button-primary: #f2eefb;
-  --button-hover: #edf6fc;
+  --button-hover: var(--brand-blue-wash);
   --button-line: #e1dfea;
   --brand-accent: var(--ui-purple);
   --token-a4939ea0-2e23-4fba-bab4-5bfe558782d8: var(--ui-purple);
@@ -28,6 +28,9 @@ html.dark:has(.rycode-public) {
   color-scheme: dark;
 }
 .dark .rycode-public {
+  --brand-blue-heading: var(--brand-blue);
+  --brand-blue-ink: var(--brand-blue-light);
+  --brand-blue-wash: color-mix(in srgb, var(--brand-blue) 24%, #19222e);
   --ui-canvas: #131922;
   --ui-surface: #202a37;
   --ui-surface-muted: #19222e;
@@ -35,11 +38,9 @@ html.dark:has(.rycode-public) {
   --ui-rule: #536780;
   --ui-ink: #f0f5fb;
   --ui-muted: #bdcadb;
-  --ui-link: #a4d6ff;
   --ui-line: #3b4b60;
   --button-surface: var(--ui-surface);
   --button-primary: #302841;
-  --button-hover: #29435b;
   --button-line: var(--ui-line);
   --token-9df62c7f-29af-4d93-bd59-13a740083fae: var(--ui-canvas);
   color-scheme: dark;
@@ -124,7 +125,7 @@ html.dark:has(.rycode-public) {
 
 /* Footer and introductory section use the shared palette. */
 .rycode-public .rycode-footer-source {
-  --accent-blue: var(--ui-blue);
+  --accent-blue: var(--brand-blue);
   --accent-purple: var(--ui-purple);
   --action: var(--ui-purple);
   --action-hover: var(--ui-blue);

@@ -429,7 +429,7 @@
   color: inherit;
 }
 .projectPage .rich a {
-  color: var(--ui-blue, #236896);
+  color: var(--ui-link, var(--brand-blue-ink));
 }
 .projectPage .rich blockquote {
   background: var(--ui-surface-muted, #e8edf0);

@@ -128,7 +128,7 @@
   background: #2d4357;
 }
 .copy:focus-visible {
-  outline: 2px solid #a8d8ff;
+  outline: 2px solid var(--brand-blue-light);
   outline-offset: 3px;
 }
 .code .pre {
@@ -178,7 +178,7 @@
 .code :global(.hljs-built_in),
 .code :global(.hljs-type),
 .code :global(.hljs-name) {
-  color: #91caff;
+  color: var(--brand-blue-light);
 }
 .code :global(.hljs-variable),
 .code :global(.hljs-params) {

@@ -2,7 +2,7 @@
   --data-ink: light-dark(#182735, #edf2f8);
   --ui-ink: var(--data-ink);
   --data-muted: light-dark(#4d6071, #b7c4d3);
-  --data-blue: light-dark(#12649d, #a1d4f6);
+  --data-blue: var(--brand-blue-ink);
   --data-blue-hover: light-dark(#104e7a, #a1d4f6);
   --data-line: light-dark(#dce5ec, #405064);
   --data-soft: light-dark(#f4f8fb, #253447);
@@ -71,7 +71,7 @@
   width: min(79vw, 1160px);
   height: clamp(240px, 35vw, 590px);
   rotate: -31deg;
-  background: linear-gradient(128deg, light-dark(#bbdfff, #27425e) 8%, light-dark(#3c91d7, #316a9b) 57%, transparent 90%);
+  background: linear-gradient(128deg, light-dark(#bbdfff, #27425e) 8%, light-dark(var(--brand-blue), #316a9b) 57%, transparent 90%);
 }
 
 .hero::after {

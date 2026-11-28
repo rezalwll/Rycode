@@ -61,7 +61,7 @@
   border-color: light-dark(#e8e8e8, #405064);
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(6n + 1) {
-  --feature-accent: #2f9df4 !important;
+  --feature-accent: var(--brand-blue) !important;
 }
 .home-colorful .rycode-services-source .feature-card:nth-child(6n + 2) {
   --feature-accent: #ff1b0b !important;
@@ -141,8 +141,8 @@
   color: rgb(255 255 255 / 85%);
 }
 .home-colorful .rycode-hero-source .hero .hero-cta {
-  background: #66c0ff;
-  border-color: #66c0ff;
+  background: var(--brand-blue-light);
+  border-color: var(--brand-blue-light);
   color: var(--ui-ink, #303b48);
   box-shadow: 0 12px 28px rgb(102 192 255 / 26%);
   transition:
@@ -151,8 +151,8 @@
     box-shadow 0.25s;
 }
 .home-colorful .rycode-hero-source .hero .hero-cta:hover {
-  background: #8fd5ff;
-  border-color: #8fd5ff;
+  background: var(--brand-blue-light);
+  border-color: var(--brand-blue-light);
   color: var(--ui-ink, #303b48);
   box-shadow: 0 16px 30px rgb(102 192 255 / 30%);
 }

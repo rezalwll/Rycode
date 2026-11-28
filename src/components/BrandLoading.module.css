@@ -16,7 +16,7 @@
   position: absolute;
   inset: 0;
   border: max(1px, calc(var(--mark-size) / 35)) solid #d1e6f8;
-  border-block-start-color: #3498db;
+  border-block-start-color: var(--brand-blue);
   border-inline-end-color: #a99af7;
   border-radius: inherit;
   animation: orbit 950ms linear infinite;
@@ -120,7 +120,7 @@
   inline-size: 34%;
   block-size: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #76a9f3, #3498db 61%, #b3a3fc);
+  background: linear-gradient(90deg, #76a9f3, var(--brand-blue) 61%, #b3a3fc);
   animation: travel 1150ms ease-in-out infinite alternate;
 }
 

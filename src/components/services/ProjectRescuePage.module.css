@@ -1,7 +1,7 @@
 .page[data-project-rescue-page] {
   --rescue-ink: light-dark(#253346, #edf2f8);
   --rescue-muted: light-dark(#526175, #b7c4d3);
-  --rescue-blue: light-dark(#215e8d, #a1d4f6);
+  --rescue-blue: var(--brand-blue-ink);
   --rescue-purple: light-dark(#674c9a, #cfb9fa);
   --rescue-line: light-dark(#dce5ee, #405064);
   --rescue-blue-tint: light-dark(#edf6fd, #253447);

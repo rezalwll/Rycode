@@ -417,7 +417,7 @@ export function WebsiteDesignPage() {
           </h2>
           <Paragraphs items={copy.closing.paragraphs.slice(-1)} />
           <div className={styles.actions}>
-            <Link href={inquiryHref} data-fill-button className={styles.primary}>
+            <Link href={inquiryHref} data-fill-button>
               <ArrowLeft size={20} aria-hidden="true" />
               {copy.closing.primary}
             </Link>

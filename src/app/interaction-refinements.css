@@ -168,7 +168,7 @@
   .home-colorful
   .rycode-services-source
   .feature-card:nth-child(6n + 1) {
-  --feature-accent: #2f9df4 !important;
+  --feature-accent: var(--brand-blue) !important;
 }
 .rycode-public
   .home-colorful

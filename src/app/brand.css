@@ -1,6 +1,11 @@
 :root {
   --brand-ink: #303b48;
   --brand-blue: #3498db;
+  --brand-blue-light: color-mix(in srgb, var(--brand-blue) 45%, #fff);
+  --brand-blue-deep: color-mix(in srgb, var(--brand-blue) 65%, #142235);
+  --brand-blue-heading: color-mix(in srgb, var(--brand-blue) 90%, #142235);
+  --brand-blue-ink: var(--brand-blue-deep);
+  --brand-blue-wash: color-mix(in srgb, var(--brand-blue) 10%, #fff);
   --brand-purple: #8b6bda;
   --brand-accent: var(--brand-blue);
   --brand-mark-height-ratio: calc(42 / 27);

@@ -1,6 +1,6 @@
 .page {
   --support-ink: light-dark(#243443, #edf2f8);
-  --support-blue: light-dark(#155f93, #a1d4f6);
+  --support-blue: var(--brand-blue-ink);
   --support-brand: #3498db;
   --support-muted: light-dark(#566674, #b7c4d3);
   --support-line: light-dark(#dce7ef, #405064);

@@ -1,7 +1,7 @@
 :global(.rycode-public) .page[data-seo-growth-page] {
   --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --muted: light-dark(#536173, #b7c4d3);
-  --blue: light-dark(#245c89, #a1d4f6);
+  --blue: var(--brand-blue-ink);
   --purple: light-dark(#6e51ac, #cfb9fa);
   --line: light-dark(#dde5ee, #405064);
   --soft: light-dark(#f4f8fc, #253447);

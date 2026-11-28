@@ -189,13 +189,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: #2476ac;
-  border-color: #2476ac;
+  background: var(--brand-blue-deep);
+  border-color: var(--brand-blue-deep);
   color: #fff;
 }
 .submit:hover {
-  background: #1d628f;
-  border-color: #1d628f;
+  background: color-mix(in srgb, var(--brand-blue-deep) 80%, var(--brand-ink));
+  border-color: color-mix(in srgb, var(--brand-blue-deep) 80%, var(--brand-ink));
 }
 .more {
   background: var(--journal-bg);

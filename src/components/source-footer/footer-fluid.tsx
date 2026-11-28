@@ -47,7 +47,7 @@ export function FooterFluid() {
           }
           const style = getComputedStyle(host);
           const palette = [
-            ["--accent-blue", "#ff1b0b"],
+            ["--accent-blue", "#3498db"],
             ["--accent-purple", "#8c5cff"],
           ].map(([token, fallback]): FluidColor => {
             const value = style.getPropertyValue(token!).trim();

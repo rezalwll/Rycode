@@ -1,7 +1,7 @@
 .page {
   --ink: light-dark(#243443, #edf2f8);
   --muted: light-dark(#53687b, #b7c4d3);
-  --blue: light-dark(#145f94, #a1d4f6);
+  --blue: var(--brand-blue-ink);
   --blue-dark: light-dark(#104b75, #a1d4f6);
   --line: light-dark(#d8e5ef, #405064);
   --tint: light-dark(#eff7fd, #253447);

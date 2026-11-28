@@ -44,8 +44,8 @@
 }
 .business .primary,
 .articleConsult .primary {
-  background: #2878ab;
-  border: 1px solid #2878ab;
+  background: var(--brand-blue-deep);
+  border: 1px solid var(--brand-blue-deep);
   color: #fff;
   border-radius: 999px;
   padding: 14px 21px;
@@ -55,7 +55,7 @@
 }
 .business .primary:hover,
 .articleConsult .primary:hover {
-  background: #225f87;
+  background: color-mix(in srgb, var(--brand-blue-deep) 80%, var(--brand-ink));
 }
 .primary svg:dir(ltr),
 .spotlightCopy svg:dir(ltr),

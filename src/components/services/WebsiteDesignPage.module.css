@@ -3,7 +3,7 @@
   --muted: light-dark(#586474, #b7c4d3);
   --line: light-dark(#e2e1ea, #405064);
   --panel: light-dark(#f2f2f8, #202833);
-  --primary: light-dark(#24587d, var(--ui-link));
+  --primary: var(--brand-blue-ink);
   --purple: var(--brand-purple, #8b6bda);
   width: 100%;
   padding-block-end: clamp(48px, 6vw, 76px);
@@ -110,17 +110,6 @@
 
 .actions svg {
   flex: none;
-}
-
-.primary {
-  border-color: #0079ed;
-  background: linear-gradient(120deg, #076bdd, #0057b7);
-  box-shadow: 0 7px 16px rgb(0 96 215 / 22%);
-  color: #fff;
-}
-
-.primary:is(:hover, :focus-visible) {
-  background: #004fae;
 }
 
 .glass {
@@ -722,7 +711,7 @@
 .closing {
   --closing-ink: light-dark(#10284c, #eef6ff);
   --closing-muted: light-dark(#4d5e76, #c6d7eb);
-  --closing-blue: light-dark(#0674dd, #7ec6ff);
+  --closing-blue: var(--brand-blue-ink);
   position: relative;
   isolation: isolate;
   display: grid;
