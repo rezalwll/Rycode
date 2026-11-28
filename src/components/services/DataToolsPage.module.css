@@ -43,8 +43,7 @@
   scroll-margin-block-start: 92px;
 }
 
-.section,
-.closing {
+.section {
   padding-inline: clamp(18px, 4vw, 58px);
 }
 .hero {
@@ -643,19 +642,21 @@
 }
 .closing {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 0.48fr;
-  align-items: center;
-  gap: clamp(20px, 6vw, 70px);
+  align-content: center;
   border-block-start: 1px dashed var(--data-line);
-  padding-block: clamp(40px, 6vw, 90px);
+  padding: var(--closing-banner-padding);
 }
 .closing p {
   margin-block-start: 12px;
 }
-.closing nav {
-  display: grid;
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  width: min(100%, var(--closing-banner-inline-size));
+  margin: 0 auto 18px;
 }
-.closing nav a {
+.related a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -665,7 +666,7 @@
   color: var(--data-blue);
   font-size: 0.86rem;
 }
-.closing nav a:hover {
+.related a:hover {
   color: var(--ui-ink);
 }
 
@@ -721,8 +722,7 @@
   .frame {
     width: calc(100% - 24px);
   }
-  .section,
-  .closing {
+  .section {
     padding-inline: 13px;
   }
   .demoGrid,
@@ -730,8 +730,7 @@
   .compareGrid,
   .process,
   .service,
-  .faq,
-  .closing {
+  .faq {
     grid-template-columns: minmax(0, 1fr);
   }
   .service:nth-child(even) .sample {

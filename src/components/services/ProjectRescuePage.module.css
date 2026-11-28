@@ -789,6 +789,8 @@
 }
 
 .closing {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   overflow: clip;
@@ -802,7 +804,7 @@
   align-content: center;
   gap: 14px;
   min-width: 0;
-  padding: clamp(24px, 4.8vw, 64px);
+  padding: var(--closing-banner-padding);
 }
 
 .page .closing h2 {
@@ -815,7 +817,6 @@
 
 .closingPhoto {
   position: relative;
-  min-height: clamp(265px, 28vw, 370px);
   background: var(--rescue-blue-tint);
 }
 
@@ -873,8 +874,13 @@
   }
 
   .closingPhoto {
-    min-height: 0;
-    aspect-ratio: 16 / 10;
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: 48%;
+    opacity: 0.25;
+    mask-image: linear-gradient(to left, transparent, #000);
   }
 }
 

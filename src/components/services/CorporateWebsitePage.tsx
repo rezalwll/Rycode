@@ -265,6 +265,7 @@ export function CorporateWebsitePage() {
           id="corporate-inquiry"
           aria-labelledby="corporate-inquiry-title"
           data-action-banner="quiet"
+          data-closing-banner="form"
         >
           <div className={styles.contactIntro}>
             <h2 id="corporate-inquiry-title">شرکتت رو بهتر معرفی کنیم؟</h2>

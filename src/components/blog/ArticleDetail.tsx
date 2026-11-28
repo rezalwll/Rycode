@@ -171,6 +171,7 @@ export async function ArticleDetail({
           className={business.articleConsult}
           aria-labelledby="article-consult-title"
           data-action-banner="feature"
+          data-closing-banner="standard"
           data-banner-layout="reserved"
         >
           <div className={business.consultCopy}>

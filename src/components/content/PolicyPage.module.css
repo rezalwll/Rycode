@@ -367,10 +367,11 @@
 .contact {
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
   align-items: center;
   justify-content: space-between;
-  gap: 20px 28px;
-  padding: clamp(18px, 3.5vw, 34px);
+  gap: 10px 28px;
+  padding: var(--closing-banner-padding);
   border: 1px solid var(--ui-line);
   border-radius: 20px;
   background: var(--ui-surface-muted);

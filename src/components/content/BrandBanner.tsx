@@ -25,6 +25,7 @@ export function BrandBanner({
   return (
     <section
       id={id}
+      data-closing-banner="standard"
       className={className ? `${styles.banner} ${className}` : styles.banner}
       aria-labelledby={titleId}
     >

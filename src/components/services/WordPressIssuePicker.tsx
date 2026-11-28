@@ -128,6 +128,7 @@ export function WordPressRepairFlow({ children }: { children: ReactNode }) {
         id="wp-inquiry"
         aria-labelledby="wp-inquiry-title"
         data-action-banner="quiet"
+        data-closing-banner="form"
       >
         <div className={styles.inquiryCopy}>
           <h2 id="wp-inquiry-title">مشکل سایتت رو توضیح بده</h2>

@@ -3,6 +3,15 @@
   --public-title-size: clamp(2rem, 1.5rem + 2.2vw, 3.5rem);
   --public-section-title-size: clamp(1.625rem, 1.275rem + 1.25vw, 2.375rem);
   --public-card-title-size: clamp(1.1875rem, 1.0625rem + 0.45vw, 1.4375rem);
+  --closing-banner-width: 60rem;
+  --closing-banner-height: 18rem;
+  --closing-banner-gutter: 2rem;
+  --closing-banner-inline-size: min(
+    var(--closing-banner-width),
+    calc(100vw - 2 * var(--closing-banner-gutter))
+  );
+  --closing-banner-padding: clamp(1rem, 2.8vw, 1.5rem);
+  --closing-banner-title-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
   --ui-canvas: #fff;
   --ui-surface: #fff;
   --ui-surface-muted: #f2f2f2;
@@ -32,7 +41,7 @@
   font-size: var(--public-title-size);
 }
 #main.rycode-public main h2,
-#main.rycode-public :is(.moments-section h2, #footer-inquiry-title) {
+#main.rycode-public .moments-section h2 {
   font-size: var(--public-section-title-size);
 }
 #main.rycode-public main :is(h3, [data-framer-name="Title Wrapper"] h2) {
@@ -291,6 +300,26 @@ html.dark:has(.rycode-public) {
 :where(.rycode-public [data-action-banner]) {
   position: relative;
   isolation: isolate;
+}
+
+#main.rycode-public [data-closing-banner] {
+  box-sizing: border-box;
+  width: min(100%, var(--closing-banner-inline-size));
+  margin-inline: auto;
+}
+
+#main.rycode-public [data-closing-banner="standard"] {
+  min-block-size: var(--closing-banner-height);
+}
+
+#main.rycode-public [data-closing-banner="standard"] h2 {
+  font-size: var(--closing-banner-title-size);
+}
+
+@media (max-width: 639px) {
+  .rycode-public {
+    --closing-banner-gutter: 1.25rem;
+  }
 }
 
 @media (min-width: 840px) and (forced-colors: none) {

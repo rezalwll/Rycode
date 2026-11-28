@@ -305,14 +305,18 @@
 }
 .cta {
   margin-top: 150px;
-  padding: 75px clamp(28px, 7vw, 100px);
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 20px;
+  padding: var(--closing-banner-padding);
   background: var(--ink);
   color: #fff;
   text-align: center;
 }
 .cta h2 {
   max-width: 720px;
-  margin: 0 auto 34px;
+  margin: 0;
 }
 .cta .primary {
   background: #fff;

@@ -176,6 +176,7 @@ export async function PolicyPage({ kind }: { kind: PolicyKind }) {
           className={styles.contact}
           aria-labelledby="policy-contact"
           data-action-banner="quiet"
+          data-closing-banner="standard"
           data-banner-layout="side"
         >
           <div>

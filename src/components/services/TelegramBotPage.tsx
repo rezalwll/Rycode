@@ -272,6 +272,7 @@ export function TelegramBotPage() {
             className={styles.inquiry}
             aria-labelledby="telegram-inquiry-title"
             data-action-banner="quiet"
+            data-closing-banner="form"
           >
             <ActionBannerArt />
             <div className={styles.inquiryIntro}>

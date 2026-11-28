@@ -496,14 +496,14 @@
 .callToActionPanel {
   position: relative;
   isolation: isolate;
-  min-height: 520px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 26px;
+  justify-content: center;
+  gap: 18px;
   border-radius: var(--panel-radius);
   overflow: hidden;
-  padding: 54px;
+  padding: var(--closing-banner-padding);
   background: light-dark(#edf3fa, #253447);
 }
 .callToActionPanel::before {
@@ -549,10 +549,6 @@
   }
   .processArt {
     height: 620px;
-  }
-  .callToActionPanel {
-    min-height: 460px;
-    padding: 42px 36px;
   }
 }
 @media (max-width: 979px) {
@@ -685,10 +681,6 @@
   }
   .step p {
     font-size: 13px;
-  }
-  .callToActionPanel {
-    min-height: 380px;
-    padding: 30px 24px;
   }
   .callToActionPanel::after {
     background: linear-gradient(

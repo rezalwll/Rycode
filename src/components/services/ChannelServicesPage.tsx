@@ -215,6 +215,7 @@ export function ChannelServicesPage({
           className={styles.callToActionPanel}
           data-channel-reveal="zoom"
           data-action-banner="quiet"
+          data-closing-banner="standard"
         >
           <h2 className={styles.heroTitle} id="channel-project-title">
             <span>{fa ? "ایده‌ای داری؟" : "Have an idea?"}</span>

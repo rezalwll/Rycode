@@ -318,10 +318,32 @@ export function DataToolsPage() {
           </div>
         </section>
 
+        <nav className={styles.related} aria-label="خدمات مرتبط با اکسل و داده">
+          <Link href="/services/software">
+            نرم‌افزار اختصاصی <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+          <Link href="/services/integrations-bots">
+            ربات‌ها و خودکارسازی کارها{" "}
+            <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+          <Link href="/services/rescue">
+            رفع باگ و توسعه پروژه‌ها{" "}
+            <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+          <Link href="/services/continue">
+            پشتیبانی و توسعه مستمر{" "}
+            <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+          <Link href="/work">
+            مشاهده پروژه‌های رایکد{" "}
+            <ArrowUpLeft size={15} aria-hidden="true" />
+          </Link>
+        </nav>
         <section
           className={styles.closing}
           aria-labelledby="data-closing-title"
           data-action-banner="quiet"
+          data-closing-banner="standard"
         >
           <div>
             <h2 id="data-closing-title">بیا کار با داده‌هات رو ساده‌تر کنیم</h2>
@@ -339,27 +361,6 @@ export function DataToolsPage() {
               </Link>
             </div>
           </div>
-          <nav aria-label="خدمات مرتبط با اکسل و داده">
-            <Link href="/services/software">
-              نرم‌افزار اختصاصی <ArrowUpLeft size={15} aria-hidden="true" />
-            </Link>
-            <Link href="/services/integrations-bots">
-              ربات‌ها و خودکارسازی کارها{" "}
-              <ArrowUpLeft size={15} aria-hidden="true" />
-            </Link>
-            <Link href="/services/rescue">
-              رفع باگ و توسعه پروژه‌ها{" "}
-              <ArrowUpLeft size={15} aria-hidden="true" />
-            </Link>
-            <Link href="/services/continue">
-              پشتیبانی و توسعه مستمر{" "}
-              <ArrowUpLeft size={15} aria-hidden="true" />
-            </Link>
-            <Link href="/work">
-              مشاهده پروژه‌های رایکد{" "}
-              <ArrowUpLeft size={15} aria-hidden="true" />
-            </Link>
-          </nav>
           <ActionBannerArt />
         </section>
       </div>

@@ -217,6 +217,7 @@ export default async function AboutPage() {
           className={styles.closing}
           aria-labelledby="about-closing"
           data-action-banner="centered"
+          data-closing-banner="standard"
         >
           <div className={styles.closingBody}>
             <SectionHeading

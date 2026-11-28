@@ -1,8 +1,9 @@
 .banner {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
   align-items: center;
-  min-block-size: clamp(235px, 21vw, 300px);
   overflow: clip;
   scroll-margin-block-start: 104px;
   border: 1px solid light-dark(#d1e3fb, #456384);
@@ -23,8 +24,8 @@
 .copy {
   display: grid;
   gap: clamp(8px, 1.3vw, 17px);
-  padding-block: clamp(23px, 3.5vw, 44px);
-  padding-inline: clamp(22px, 4vw, 56px) 8px;
+  padding-block: var(--closing-banner-padding);
+  padding-inline: var(--closing-banner-padding) 8px;
 }
 
 .banner .copy h2 {
@@ -39,8 +40,8 @@
 .banner .copy p {
   margin: 0;
   color: light-dark(#53657d, #b8c9df);
-  font-size: clamp(0.94rem, 1.52vw, 1.15rem);
-  line-height: 1.85;
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
@@ -122,11 +123,16 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .copy {
-    padding: 25px clamp(20px, 5vw, 38px) 12px;
+    padding: var(--closing-banner-padding);
   }
   .art {
-    min-block-size: 152px;
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: 44%;
     overflow: clip;
+    opacity: 0.35;
   }
   .plate {
     inline-size: 88px;

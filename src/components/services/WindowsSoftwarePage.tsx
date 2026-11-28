@@ -649,6 +649,7 @@ export async function WindowsSoftwarePage() {
 
         <section
           className={styles.closing}
+          data-closing-banner="standard"
           data-action-banner="quiet"
           data-banner-layout="side"
         >

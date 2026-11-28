@@ -326,12 +326,12 @@ export function WebsiteDesignPage() {
         className={styles.closing}
         id="website-closing"
         aria-labelledby="website-closing-title"
+        data-closing-banner="standard"
       >
         <div className={styles.closingCopy}>
           <h2 id="website-closing-title">
             <span className={styles.closingSpark} aria-hidden="true" />
-            {copy.closing.title[0]}
-            <br />
+            {copy.closing.title[0]}{" "}
             {copy.closing.title[1]}{" "}
             <span className={styles.closingHighlight}>{copy.closing.title[2]}</span>
           </h2>
@@ -345,20 +345,22 @@ export function WebsiteDesignPage() {
               {copy.closing.secondary}
             </Link>
           </div>
-          <MoreCopy
-            label="از کجا می‌تونیم شروع کنیم؟"
-            items={copy.closing.paragraphs.slice(0, -1)}
-          />
         </div>
         <div className={styles.closingArt}>
           <Image
             src="/brand/website-design/closing-laptop.webp"
             alt="پیش‌نمایش یک وب‌سایت معماری روی لپ‌تاپ"
             fill
-            sizes="(max-width: 840px) calc(100vw - 32px), (max-width: 1600px) 59vw, 930px"
+            sizes="(max-width: 840px) 50vw, 490px"
           />
         </div>
       </section>
+      <div className={styles.closingNotes}>
+        <MoreCopy
+          label="از کجا می‌تونیم شروع کنیم؟"
+          items={copy.closing.paragraphs.slice(0, -1)}
+        />
+      </div>
     </main>
   );
 }

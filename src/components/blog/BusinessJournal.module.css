@@ -260,8 +260,6 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--banner-art-width);
   align-content: center;
-  min-block-size: 274px;
-  max-width: 960px;
   margin: 65px auto 60px;
   border: 1px solid light-dark(#dfdff2, #465171);
   border-radius: 19px;
@@ -269,20 +267,19 @@
 }
 .consultCopy {
   min-width: 0;
-  padding-block: 26px;
+  padding-block: var(--closing-banner-padding);
   padding-inline: clamp(25px, 4vw, 35px) 16px;
 }
 .consultCopy h2 {
-  font-size: clamp(24px, 2.8vw, 28px);
-  margin: 10px 0 9px;
+  margin: 0 0 7px;
   font-weight: 800;
-  line-height: 1.55;
+  line-height: 1.35;
   scroll-margin-block-start: 148px;
 }
 .consultCopy > p {
   font-size: 14px;
   color: var(--journal-muted);
-  line-height: 1.95;
+  line-height: 1.65;
   max-inline-size: 51ch;
   margin: 0;
 }
@@ -291,7 +288,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 10px 15px;
-  margin-block-start: 19px;
+  margin-block-start: 12px;
 }
 @media (max-width: 1000px) {
   .hero {
@@ -356,22 +353,15 @@
     width: 100%;
   }
   .articleConsult {
-    --banner-art-width: min(100%, 210px);
-    --banner-art-height: 140px;
-    --banner-art-top: 0px;
-    --banner-art-end: calc((100% - var(--banner-art-width)) / 2);
-    --banner-art-translate: none;
-    --banner-art-opacity: 1;
+    --banner-art-width: 138px;
     grid-template-columns: minmax(0, 1fr);
-    min-block-size: auto;
     margin-block: 40px 35px;
-    padding-block-start: var(--banner-art-height);
+  }
+  .articleConsult > [data-banner-art] {
+    opacity: 0.35;
   }
   .consultCopy {
-    padding: 10px 22px 27px;
-  }
-  .consultActions {
-    margin-block-start: 18px;
+    padding: var(--closing-banner-padding);
   }
 }
 @media (prefers-reduced-motion: reduce) {

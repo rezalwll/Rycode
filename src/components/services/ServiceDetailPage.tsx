@@ -819,7 +819,11 @@ export async function ServiceDetailPage({
         </div>
       </section>
 
-      <section className={styles.cta} data-action-banner="centered">
+      <section
+        className={styles.cta}
+        data-action-banner="centered"
+        data-closing-banner="standard"
+      >
         <h2>{fa ? "بگو برای پروژه‌ات چه کمکی لازم داری" : "Tell us what you need for your project"}</h2>
         <Link data-fill-button="primary" className={styles.primary} href={inquiryHref}>{fa ? "شروع گفت‌وگو" : "Start a conversation"}<span aria-hidden="true">{fa ? "↖" : "↗"}</span></Link>
         <ActionBannerArt />

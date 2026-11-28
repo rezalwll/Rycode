@@ -57,6 +57,7 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
         <div
           className={styles.help}
           data-action-banner="quiet"
+          data-closing-banner="standard"
           data-banner-layout="side"
         >
           <span className={styles.helpIcon} aria-hidden="true">

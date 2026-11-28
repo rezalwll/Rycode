@@ -360,6 +360,7 @@ export async function ProjectRescuePage() {
           className={styles.closing}
           id="rescue-work"
           aria-labelledby="rescue-closing-title"
+          data-closing-banner="standard"
         >
           <div className={styles.closingCopy} data-action-banner="quiet">
             <h2 id="rescue-closing-title">{copy.closing.title}</h2>
@@ -377,7 +378,7 @@ export async function ProjectRescuePage() {
               src="/brand/project-rescue/consultation-room.webp"
               alt="میز جلسه کنار پنجره‌های یک دفتر روشن"
               fill
-              sizes="(max-width: 760px) calc(100vw - 36px), (max-width: 1320px) 40vw, 510px"
+              sizes="(max-width: 760px) 48vw, 400px"
             />
           </div>
         </section>

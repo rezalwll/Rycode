@@ -136,9 +136,10 @@
 .help {
   display: flex;
   align-items: center;
+  align-content: center;
   gap: 16px;
   margin-top: 24px;
-  padding: 24px;
+  padding: var(--closing-banner-padding);
   border: 1px solid light-dark(#d7e5f5, #405872);
   border-radius: 18px;
   background: linear-gradient(140deg, light-dark(#fafcff, #1a2634), light-dark(#eef5ff, #22364b));
@@ -225,7 +226,6 @@
   }
   .help {
     flex-wrap: wrap;
-    padding: 20px;
     gap: 12px;
   }
   .helpIcon {
