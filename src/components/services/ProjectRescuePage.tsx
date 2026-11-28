@@ -333,17 +333,6 @@ export async function ProjectRescuePage() {
           </div>
         </Section>
 
-        <Section id="rescue-related" title="خدمات مرتبط">
-          <div className={styles.related}>
-            {copy.related.items.map(({ title, href }) => (
-              <Link key={href} href={href}>
-                {title}
-                <ArrowUpLeft size={16} aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
-        </Section>
-
         <section
           className={styles.closing}
           id="rescue-work"
@@ -370,6 +359,26 @@ export async function ProjectRescuePage() {
             />
           </div>
         </section>
+
+        <nav
+          className={styles.related}
+          id="rescue-related"
+          aria-labelledby="rescue-related-title"
+        >
+          <span className={styles.relatedLabel} id="rescue-related-title">
+            خدمات مرتبط
+          </span>
+          <ul role="list">
+            {copy.related.items.map(({ title, href }) => (
+              <li key={href}>
+                <Link href={href}>
+                  {title}
+                  <ArrowUpLeft size={12} aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </main>
   );
