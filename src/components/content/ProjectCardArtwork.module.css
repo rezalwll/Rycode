@@ -1,3 +1,7 @@
+.websiteSection {
+  scroll-margin-block-start: 110px;
+}
+
 .grid {
   display: grid;
   gap: clamp(14px, 2.2vw, 26px);

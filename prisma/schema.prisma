@@ -143,6 +143,9 @@ model Content {
   featuredImage String?
   homeCardImage String?
   homeCardPosition Int?
+  websiteCardImage String?
+  websiteCardPosition Int?
+  websiteFeatured Boolean @default(false)
   projectYear Int?
   projectClient String @default("")
   projectGallery String[] @default([])
@@ -181,6 +184,8 @@ model ContentTranslation {
   imageAlt String @default("")
   homeCardTitle String @default("")
   homeCardSummary String @default("")
+  websiteCardTitle String @default("")
+  websiteCardSummary String @default("")
   content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
   @@unique([contentId, locale])
 }

@@ -21,7 +21,7 @@ export function PortfolioDisplayFields({
   setting: (typeof portfolioExampleKeys)[number];
   enabled: boolean;
 }) {
-  const home = setting === "portfolio.homeExamples";
+  const isListing = setting === "portfolio.workExamples";
   const [status, setStatus] = useState("");
   const [current, setCurrent] = useState(enabled);
   const [busy, setBusy] = useState(false);
@@ -52,9 +52,9 @@ export function PortfolioDisplayFields({
           checked={current}
           onChange={(event) => setCurrent(event.target.checked)}
         />
-        {home
-          ? "نمایش کارت‌های پیش‌فرض در صورت خالی بودن بخش"
-          : "نمایش کارت‌های پیش‌فرض در فهرست پروژه‌ها"}
+        {isListing
+          ? "نمایش کارت‌های پیش‌فرض در فهرست پروژه‌ها"
+          : "نمایش کارت‌های پیش‌فرض در صورت خالی بودن بخش"}
       </label>
       <div className={styles.actions}>
         <button type="submit" disabled={busy}>

@@ -3,7 +3,7 @@ import { z } from "zod";
 import { locales } from "@/lib/content-rules";
 import { database } from "@/server/db";
 import { siteSettings } from "@/server/content";
-import { HomeProjectsWorkspace } from "@/components/admin/HomeProjectsWorkspace";
+import { PortfolioProjectsWorkspace } from "@/components/admin/PortfolioProjectsWorkspace";
 import { PortfolioDisplayFields } from "@/components/admin/PortfolioDisplayFields";
 import { requireStaffPage } from "@/server/auth";
 import { AdminWorkspace } from "@/components/admin/AdminWorkspace";
@@ -24,6 +24,7 @@ export default async function AdminSection({
       "content",
       "projects",
       "home-projects",
+      "website-projects",
       "media",
       "faqs",
       "settings",
@@ -37,13 +38,24 @@ export default async function AdminSection({
   const staff = await requireStaffPage();
   if (
     staff.role !== "ADMIN" &&
-    !["content", "projects", "home-projects", "media", "faqs"].includes(section)
+    ![
+      "content",
+      "projects",
+      "home-projects",
+      "website-projects",
+      "media",
+      "faqs",
+    ].includes(section)
   )
     redirect("/admin");
   if (section === "analytics") return <InsightsDashboard />;
   const query = await searchParams;
   const isAdmin = staff.role === "ADMIN";
-  if (section === "home-projects") {
+  if (section === "home-projects" || section === "website-projects") {
+    const isWebsite = section === "website-projects";
+    const exampleKey = isWebsite
+      ? "portfolio.websiteExamples"
+      : "portfolio.homeExamples";
     const selected = z.uuid().safeParse(query.project);
     const [choices, project, settings] = await Promise.all([
       database().content.findMany({
@@ -53,9 +65,13 @@ export default async function AdminSection({
           slug: true,
           status: true,
           featured: true,
+          websiteFeatured: true,
           translations: { where: { locale: "fa" }, select: { title: true } },
         },
-        orderBy: [{ featured: "desc" }, { updatedAt: "desc" }],
+        orderBy: [
+          isWebsite ? { websiteFeatured: "desc" } : { featured: "desc" },
+          { updatedAt: "desc" },
+        ],
       }),
       selected.success
         ? database().content.findUnique({
@@ -68,6 +84,9 @@ export default async function AdminSection({
               featuredImage: true,
               homeCardImage: true,
               homeCardPosition: true,
+              websiteFeatured: true,
+              websiteCardImage: true,
+              websiteCardPosition: true,
               position: true,
               translations: {
                 select: {
@@ -77,6 +96,8 @@ export default async function AdminSection({
                   summary: true,
                   homeCardTitle: true,
                   homeCardSummary: true,
+                  websiteCardTitle: true,
+                  websiteCardSummary: true,
                 },
               },
             },
@@ -87,24 +108,58 @@ export default async function AdminSection({
     if (selected.success && !project) notFound();
     return (
       <>
-        <HomeProjectsWorkspace
-          key={project?.id}
+        <PortfolioProjectsWorkspace
+          key={section + ":" + (project?.id ?? "")}
+          section={section}
           project={
             project && {
-              ...project,
+              id: project.id,
+              status: project.status,
+              sample: project.sample,
+              featuredImage: project.featuredImage,
+              featured: isWebsite ? project.websiteFeatured : project.featured,
+              cardImage: isWebsite
+                ? project.websiteCardImage
+                : project.homeCardImage,
+              cardPosition:
+                (isWebsite
+                  ? project.websiteCardPosition
+                  : project.homeCardPosition) ?? project.position,
               translations: locales.flatMap((locale) => {
                 const text = project.translations.find(
                   (entry) => entry.locale === locale,
                 );
-                return text ? [{ ...text, locale }] : [];
+                return text
+                  ? [
+                      {
+                        locale,
+                        approved: text.approved,
+                        title: text.title,
+                        summary: text.summary,
+                        cardTitle: isWebsite
+                          ? text.websiteCardTitle
+                          : text.homeCardTitle,
+                        cardSummary: isWebsite
+                          ? text.websiteCardSummary
+                          : text.homeCardSummary,
+                      },
+                    ]
+                  : [];
               }),
             }
           }
           choices={choices.map(
-            ({ id, slug, status, featured, translations }) => ({
+            ({
               id,
+              slug,
               status,
               featured,
+              websiteFeatured,
+              translations,
+            }) => ({
+              id,
+              status,
+              featured: isWebsite ? websiteFeatured : featured,
               title: translations[0]?.title || slug,
             }),
           )}
@@ -112,8 +167,8 @@ export default async function AdminSection({
         />
         {isAdmin && (
           <PortfolioDisplayFields
-            setting="portfolio.homeExamples"
-            enabled={settings["portfolio.homeExamples"] !== false}
+            setting={exampleKey}
+            enabled={settings[exampleKey] !== false}
           />
         )}
       </>

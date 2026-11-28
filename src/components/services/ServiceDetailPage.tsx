@@ -9,35 +9,9 @@ import {
 } from "@/server/content";
 import { localizedHref, type Locale } from "@/lib/i18n";
 import type { RichNode } from "@/lib/content-rules";
+import { HomeWorkSection } from "@/components/pages/HomeWorkSection";
 import { WebsiteDesignHero } from "./WebsiteDesignHero";
 import styles from "./ServiceDetailPage.module.css";
-
-const websiteProjects = [
-  {
-    slug: "ai-agency-website",
-    title: { fa: "وب‌سایت آژانس هوش مصنوعی", en: "AI agency website" },
-    type: { fa: "سایت خدماتی", en: "Service website" },
-    image: "/assets/79de4a62dbad0012.png",
-  },
-  {
-    slug: "ai-automation-platform",
-    title: { fa: "پلتفرم اتوماسیون هوش مصنوعی", en: "AI automation platform" },
-    type: { fa: "وب‌اپلیکیشن", en: "Web application" },
-    image: "/assets/3bec5082044715be.png",
-  },
-  {
-    slug: "fashion-ecommerce",
-    title: { fa: "فروشگاه اینترنتی مد و پوشاک", en: "Fashion ecommerce" },
-    type: { fa: "فروشگاه اینترنتی", en: "Online store" },
-    image: "/assets/1115c40b7f2ee826.png",
-  },
-  {
-    slug: "finance-saas-website",
-    title: { fa: "وب‌سایت نرم‌افزار مالی ابری", en: "Finance SaaS website" },
-    type: { fa: "محصول دیجیتال", en: "Digital product" },
-    image: "/assets/be48c8e8f72a2f47.png",
-  },
-] as const;
 
 const websiteCapabilities = [
   {
@@ -289,7 +263,7 @@ export async function ServiceDetailPage({
       </nav>}
 
       {isWebsiteService ? (
-        <div className={styles.buildHeroSlot}>
+        <div className={styles.buildFullWidth}>
           <WebsiteDesignHero
             locale={locale}
             inquiryHref={inquiryHref}
@@ -425,41 +399,9 @@ export async function ServiceDetailPage({
             <div><strong>{fa ? "روی هر صفحه‌نمایش" : "On every screen"}</strong><span>{fa ? "موبایل، تبلت و دسکتاپ" : "Mobile, tablet and desktop"}</span></div>
           </section>
 
-          <section className={styles.buildWork} id="build-work" aria-labelledby="build-work-title">
-            <div className={styles.sectionHeader}>
-              <div>
-                <h2 id="build-work-title">{fa ? "چیزی که می‌سازیم، باید دیده شود." : "The work should speak for itself."}</h2>
-              </div>
-              <div className={styles.buildWorkIntro}>
-                <p>
-                  {fa
-                    ? "چند مسیر بصری متفاوت برای سایت، فروشگاه و محصول دیجیتال؛ هرکدام با مسئله و شخصیت خودش."
-                    : "A few visual directions for websites, stores and digital products, each shaped around its own problem."}
-                </p>
-                <Link href={localizedHref("/work", locale)} data-secondary-action="pill">
-                  {fa ? "دیدن همه پروژه‌ها" : "View all projects"}
-                </Link>
-              </div>
-            </div>
-            <div className={styles.projectGrid}>
-              {websiteProjects.map((project, index) => (
-                <Link
-                  key={project.slug}
-                  className={`${styles.projectCard} ${index % 3 === 1 ? styles.projectCardTall : ""}`}
-                  href={localizedHref("/work/" + project.slug, locale)}
-                >
-                  <div className={styles.projectImage}>
-                    <Image src={project.image} alt={project.title[locale]} fill sizes="(max-width: 700px) 100vw, 55vw" />
-                    <span className={styles.projectArrow} aria-hidden="true">{fa ? "↖" : "↗"}</span>
-                  </div>
-                  <div className={styles.projectInfo}>
-                    <span className={styles.projectNumber}>{String(index + 1).padStart(2, "0")}</span>
-                    <span><strong>{project.title[locale]}</strong><small>{project.type[locale]}</small></span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
+          <div className={styles.buildFullWidth}>
+            <HomeWorkSection placement="website" />
+          </div>
 
           <section className={styles.capabilities} aria-labelledby="capabilities-title">
             <div className={styles.sectionHeader}>

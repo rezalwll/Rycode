@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { MediaLibrary } from "./MediaLibrary";
-import { ProjectHomeCardFields } from "./ProjectHomeCardFields";
+import { ProjectCardFields } from "./ProjectCardFields";
 import { savePortfolioSettings } from "./PortfolioDisplayFields";
 import { statusLabels } from "./admin-labels";
 import styles from "./Admin.module.css";
@@ -15,35 +15,39 @@ type ProjectChoice = {
   status: string;
   featured: boolean;
 };
-type HomeProject = {
+type PortfolioProject = {
   id: string;
   status: string;
   sample: boolean;
   featured: boolean;
   featuredImage: string | null;
-  homeCardImage: string | null;
-  homeCardPosition: number | null;
-  position: number;
+  cardImage: string | null;
+  cardPosition: number;
   translations: {
     locale: Locale;
     title: string;
     summary: string;
     approved: boolean;
-    homeCardTitle: string;
-    homeCardSummary: string;
+    cardTitle: string;
+    cardSummary: string;
   }[];
 };
 
-export function HomeProjectsWorkspace({
+export function PortfolioProjectsWorkspace({
+  section,
   choices,
   project,
   isAdmin,
 }: {
+  section: "home-projects" | "website-projects";
   choices: ProjectChoice[];
-  project: HomeProject | null;
+  project: PortfolioProject | null;
   isAdmin: boolean;
 }) {
-  const [image, setImage] = useState(project?.homeCardImage ?? "");
+  const isWebsite = section === "website-projects";
+  const field = isWebsite ? "WebsiteCard" : "HomeCard";
+  const pageName = isWebsite ? "صفحه طراحی سایت" : "صفحه اصلی";
+  const [image, setImage] = useState(project?.cardImage ?? "");
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState("");
@@ -53,7 +57,9 @@ export function HomeProjectsWorkspace({
   return (
     <>
       <header className={styles.pageHeading}>
-        <h1>پروژه‌های صفحه اصلی</h1>
+        <h1>
+          {isWebsite ? "بخش پروژه‌های صفحه طراحی سایت" : "پروژه‌های صفحه اصلی"}
+        </h1>
         <p className={styles.muted}>
           در هر زبان، حداکثر سه پروژهٔ منتخب و منتشرشده با ترجمهٔ تأییدشده نمایش
           داده می‌شود. عدد کمتر، اولویت بالاتری دارد.
@@ -64,7 +70,7 @@ export function HomeProjectsWorkspace({
       </header>
       {choices.length ? (
         <form
-          action="/admin/home-projects"
+          action={"/admin/" + section}
           className={styles.panel}
           method="get"
         >
@@ -103,7 +109,7 @@ export function HomeProjectsWorkspace({
             setStatus("");
             const featured = form.get("featured") === "on";
             try {
-              await savePortfolioSettings("home-projects", {
+              await savePortfolioSettings(section, {
                 id: project.id,
                 featured,
                 image: image.trim(),
@@ -112,8 +118,8 @@ export function HomeProjectsWorkspace({
                   project.translations.map(({ locale }) => [
                     locale,
                     {
-                      title: form.get(locale + "HomeCardTitle"),
-                      summary: form.get(locale + "HomeCardSummary"),
+                      title: form.get(locale + field + "Title"),
+                      summary: form.get(locale + field + "Summary"),
                     },
                   ]),
                 ),
@@ -122,7 +128,7 @@ export function HomeProjectsWorkspace({
                 ...previous,
                 [project.id]: featured,
               }));
-              setStatus("کارت صفحه اصلی ذخیره شد");
+              setStatus(`کارت ${pageName} ذخیره شد`);
             } catch (error) {
               setStatus((error as Error).message);
             } finally {
@@ -130,7 +136,7 @@ export function HomeProjectsWorkspace({
             }
           }}
         >
-          <h2>تنظیم کارت صفحه اصلی</h2>
+          <h2>تنظیم کارت {pageName}</h2>
           <Link
             className={styles.button}
             href={"/admin/projects?project=" + project.id}
@@ -163,7 +169,7 @@ export function HomeProjectsWorkspace({
                   type="checkbox"
                   defaultChecked={project.featured}
                 />
-                نمایش در صفحه اصلی
+                نمایش در {pageName}
               </label>
               <label>
                 اولویت نمایش
@@ -172,7 +178,7 @@ export function HomeProjectsWorkspace({
                   type="number"
                   min={0}
                   max={9999}
-                  defaultValue={project.homeCardPosition ?? project.position}
+                  defaultValue={project.cardPosition}
                   required
                 />
               </label>
@@ -211,10 +217,11 @@ export function HomeProjectsWorkspace({
                         : "This translation is awaiting approval."}
                     </p>
                   )}
-                  <ProjectHomeCardFields
+                  <ProjectCardFields
                     locale={translation.locale}
-                    title={translation.homeCardTitle}
-                    summary={translation.homeCardSummary}
+                    title={translation.cardTitle}
+                    summary={translation.cardSummary}
+                    website={isWebsite}
                     image={image.trim() || project.featuredImage || ""}
                     fallbackTitle={translation.title}
                     fallbackSummary={translation.summary}
@@ -226,7 +233,7 @@ export function HomeProjectsWorkspace({
           {editable && (
             <div className={styles.actions}>
               <button disabled={busy}>
-                {busy ? "در حال ذخیره…" : "ذخیره کارت صفحه اصلی"}
+                {busy ? "در حال ذخیره…" : `ذخیره کارت ${pageName}`}
               </button>
             </div>
           )}

@@ -122,10 +122,11 @@ export const projectGalleryLimit = 12;
 export const projectClientLimit = 160;
 export const portfolioExampleKeys = [
   "portfolio.homeExamples",
+  "portfolio.websiteExamples",
   "portfolio.workExamples",
 ] as const;
 
-export const homeProjectSchema = z.object({
+export const portfolioCardSchema = z.object({
   id: z.uuid(),
   featured: z.boolean(),
   position: z.number().int().min(0).max(9999),

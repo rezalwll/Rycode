@@ -6,7 +6,7 @@ import { listingPage } from "@/lib/listing-params";
 import {
   contentSchema,
   documentText,
-  homeProjectSchema,
+  portfolioCardSchema,
   locales,
   portfolioExampleKeys,
   normalizeDigits,
@@ -337,8 +337,9 @@ export async function POST(request: Request, context: Context) {
     const raw = await boundedJson(request, 800000);
     if (resource === "comments")
       return Response.json(await moderateComment(actor, raw));
-    if (resource === "home-projects") {
-      const input = homeProjectSchema.parse(raw);
+    if (resource === "home-projects" || resource === "website-projects") {
+      const isWebsite = resource === "website-projects";
+      const input = portfolioCardSchema.parse(raw);
       await database().$transaction(async (tx) => {
         await tx.$queryRaw`SELECT id FROM "Content" WHERE id = ${input.id} FOR UPDATE`;
         const project = await tx.content.findUnique({
@@ -353,11 +354,17 @@ export async function POST(request: Request, context: Context) {
           );
         await tx.content.update({
           where: { id: project.id },
-          data: {
-            featured: input.featured,
-            homeCardPosition: input.position,
-            homeCardImage: input.image || null,
-          },
+          data: isWebsite
+            ? {
+                websiteFeatured: input.featured,
+                websiteCardPosition: input.position,
+                websiteCardImage: input.image || null,
+              }
+            : {
+                featured: input.featured,
+                homeCardPosition: input.position,
+                homeCardImage: input.image || null,
+              },
         });
         for (const locale of locales) {
           const copy = input.copy[locale];
@@ -369,13 +376,15 @@ export async function POST(request: Request, context: Context) {
             );
           await tx.contentTranslation.update({
             where: { contentId_locale: { contentId: project.id, locale } },
-            data: { homeCardTitle: copy.title, homeCardSummary: copy.summary },
+            data: isWebsite
+              ? { websiteCardTitle: copy.title, websiteCardSummary: copy.summary }
+              : { homeCardTitle: copy.title, homeCardSummary: copy.summary },
           });
         }
         await tx.auditLog.create({
           data: {
             actorId: actor.id,
-            action: "project.home-card.saved",
+            action: isWebsite ? "project.website-card.saved" : "project.home-card.saved",
             entityId: project.id,
           },
         });

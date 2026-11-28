@@ -398,11 +398,11 @@
 .page.buildPage {
   padding-block-start: 0;
 }
-.buildHeroSlot {
+.buildFullWidth {
   margin-inline: calc(-1 * max(24px, (100vw - 1180px) / 2));
 }
 @media (max-width: 560px) {
-  .buildHeroSlot {
+  .buildFullWidth {
     margin-inline: -20px;
   }
 }
@@ -454,13 +454,10 @@
   font-size: 12px;
   line-height: 1.7;
 }
-.buildWork,
+
 .capabilities,
 .process {
   margin-block: 0 155px;
-}
-.buildWork {
-  scroll-margin-block-start: 110px;
 }
 .sectionHeader {
   display: flex;
@@ -479,110 +476,12 @@
   line-height: 1.18;
   letter-spacing: -0.065em;
 }
-:is(.sectionHeader, .buildWorkIntro) > p {
+.sectionHeader > p {
   max-width: 310px;
   margin: 0;
   color: #99958f;
   font-size: 14px;
   line-height: 1.9;
-}
-.buildWorkIntro {
-  display: grid;
-  gap: 12px;
-}
-.projectGrid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 18px;
-}
-.projectCard {
-  grid-column: span 7;
-  min-width: 0;
-  color: #fff;
-  text-decoration: none;
-}
-.projectCard:nth-child(even),
-.projectCard:nth-child(3) {
-  grid-column: span 5;
-}
-.projectCard:nth-child(4) {
-  grid-column: span 7;
-}
-.projectImage {
-  position: relative;
-  aspect-ratio: 1.5/1;
-  overflow: hidden;
-  border: 1px solid #ffffff20;
-  border-radius: 16px;
-  background: #151515;
-}
-.projectCardTall .projectImage {
-  aspect-ratio: 1/1.13;
-}
-.projectImage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, #050505b8);
-  pointer-events: none;
-}
-.projectImage img {
-  object-fit: cover;
-  transition:
-    transform 0.8s cubic-bezier(0.2, 0.75, 0.3, 1),
-    filter 0.8s;
-}
-.projectCard:hover .projectImage img,
-.projectCard:focus-visible .projectImage img {
-  filter: saturate(1.12) contrast(1.04);
-}
-.projectArrow {
-  position: absolute;
-  z-index: 1;
-  inset-inline-end: 18px;
-  bottom: 18px;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--ui-ink, #303b48);
-  font-size: 20px;
-  transition:
-    background 0.3s,
-    color 0.3s,
-    transform 0.3s;
-}
-.projectCard:hover .projectArrow,
-.projectCard:focus-visible .projectArrow {
-  background: var(--accent);
-  color: #fff;
-}
-.projectInfo {
-  display: flex;
-  align-items: start;
-  gap: 15px;
-  padding: 17px 2px 0;
-}
-.projectNumber {
-  color: var(--accent);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  direction: ltr;
-}
-.projectInfo strong,
-.projectInfo small {
-  display: block;
-}
-.projectInfo strong {
-  font-size: 17px;
-  font-weight: 500;
-}
-.projectInfo small {
-  margin-top: 5px;
-  color: #85817c;
-  font-size: 11px;
 }
 .capabilityGrid {
   display: grid;
@@ -723,7 +622,7 @@
   .sectionHeader {
     display: block;
   }
-  .sectionHeader > :is(p, .buildWorkIntro) {
+  .sectionHeader > p {
     margin-top: 20px;
   }
   .capabilityGrid,
@@ -755,24 +654,10 @@
   .buildProof > div:first-child {
     border-block-start: 0;
   }
-  .buildWork,
+
   .capabilities,
   .process {
     margin-bottom: 100px;
-  }
-  .projectGrid {
-    display: block;
-  }
-  .projectCard,
-  .projectCard:nth-child(even),
-  .projectCard:nth-child(3),
-  .projectCard:nth-child(4) {
-    display: block;
-    margin-bottom: 36px;
-  }
-  .projectCardTall .projectImage,
-  .projectImage {
-    aspect-ratio: 1.18/1;
   }
   .capabilityGrid,
   .processList {

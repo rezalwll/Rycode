@@ -5,18 +5,30 @@ import { referenceStyles } from "@/styles/reference-styles";
 import { listPublishedContent, siteSettings } from "@/server/content";
 import { ProjectCardArtwork } from "@/components/content/ProjectCardArtwork";
 import cardStyles from "@/components/content/ProjectCardArtwork.module.css";
-export async function HomeWorkSection() {
+export async function HomeWorkSection({
+  placement = "home",
+}: {
+  placement?: "home" | "website";
+}) {
   const { t, locale, href } = await getTranslations();
+  const isWebsite = placement === "website";
+  const exampleKey = isWebsite
+    ? "portfolio.websiteExamples"
+    : "portfolio.homeExamples";
   const [{ items }, settings] = await Promise.all([
-    listPublishedContent("PROJECT", locale, { featuredOnly: true }),
+    listPublishedContent("PROJECT", locale, { projectPlacement: placement }),
     siteSettings(),
   ]);
-  if (!items.length && settings["portfolio.homeExamples"] === false) return null;
-  return (
+  if (!items.length && settings[exampleKey] === false) {
+    return isWebsite ? (
+      <div id="build-work" className={cardStyles.websiteSection} />
+    ) : null;
+  }
+  const section = (
     <section
-      className="framer-1udbsna"
+      className={isWebsite ? `framer-1udbsna ${cardStyles.websiteSection}` : "framer-1udbsna"}
       data-framer-name="Work Section"
-      id="Work Section"
+      id={isWebsite ? "build-work" : "Work Section"}
     >
       <div className="framer-1kn21x8" data-framer-name="Container">
         <div className="framer-ol3tf0" data-framer-name="Content">
@@ -265,21 +277,24 @@ export async function HomeWorkSection() {
           </Reveal>
           {items.length > 0 ? (
             <div className={cardStyles.grid} data-project-cards>
-              {items.slice(0, 3).map((item) => (
-                <Link
-                  key={item.id}
-                  className={cardStyles.link}
-                  href={href("/work/" + item.slug)}
-                >
-                  <ProjectCardArtwork
-                    image={item.homeCard?.image ?? item.image}
-                    imageAlt={item.homeCard?.image === item.image ? item.imageAlt : ""}
-                    title={item.homeCard?.title ?? item.title}
-                    summary={item.homeCard?.summary ?? item.summary}
-                    locale={locale}
-                  />
-                </Link>
-              ))}
+              {items.slice(0, 3).map((item) => {
+                const card = isWebsite ? item.websiteCard : item.homeCard;
+                return (
+                  <Link
+                    key={item.id}
+                    className={cardStyles.link}
+                    href={href("/work/" + item.slug)}
+                  >
+                    <ProjectCardArtwork
+                      image={card?.image ?? item.image}
+                      imageAlt={card?.image === item.image ? item.imageAlt : ""}
+                      title={card?.title ?? item.title}
+                      summary={card?.summary ?? item.summary}
+                      locale={locale}
+                    />
+                  </Link>
+                );
+              })}
             </div>
           ) : (
           <Reveal
@@ -2547,4 +2562,7 @@ export async function HomeWorkSection() {
       </div>
     </section>
   );
+  return isWebsite ? (
+    <div className="home-colorful framer-HujZo contents!">{section}</div>
+  ) : section;
 }

@@ -143,6 +143,7 @@ try {
     "/admin/content",
     "/admin/projects",
     "/admin/home-projects",
+    "/admin/website-projects",
     "/admin/preview/" + randomUUID(),
   ]) {
     const anonymous = await fetch(base + path, { redirect: "manual" });
@@ -406,6 +407,40 @@ try {
   assert.deepEqual(managedPaths(await (await fetch(base + "/work")).text()), [
     projectPath, "/work/" + other.slug,
   ]);
+
+  const websiteEditor = await fetch(base + "/admin/website-projects?project=" + managedProjectId, {
+    headers: { Cookie: adminCookie },
+  });
+  assert.equal(websiteEditor.status, 200);
+  const websiteForm = load(await websiteEditor.text());
+  assert.equal(websiteForm("h1").text(), "بخش پروژه‌های صفحه طراحی سایت");
+  assert.equal(websiteForm('input[name="faWebsiteCardTitle"]').length, 1);
+  assert.equal(websiteForm('textarea[name="faWebsiteCardSummary"]').length, 1);
+  const websiteCard = {
+    ...homeProject,
+    position: 4,
+    image: "/brand/home-service-cards/business-site.webp",
+    copy: { fa: { title: "تیتر مخصوص طراحی سایت", summary: "توضیح مخصوص کارت طراحی سایت" } },
+  };
+  assert.equal((await post("/api/admin/website-projects", websiteCard)).status, 401);
+  assert.equal((await post("/api/admin/website-projects", websiteCard, editorCookie)).status, 403);
+  assert.equal((await post("/api/admin/website-projects", websiteCard, adminCookie)).status, 200);
+  assert.equal((await post("/api/admin/website-projects", {
+    ...websiteCard, id: otherProjectId, position: 5,
+  }, adminCookie)).status, 200);
+  const websitePage = load(await (await fetch(base + "/services/build")).text());
+  assert.equal(websitePage("#build-work").attr("data-framer-name"), "Work Section");
+  assert.deepEqual(managedPaths(websitePage.html()), [projectPath, "/work/" + other.slug]);
+  const websiteProject = websitePage("#build-work " + projectCardSelector);
+  assert.equal(websiteProject.find("img").attr("src"), websiteCard.image);
+  assert.equal(websiteProject.find("h3").text(), websiteCard.copy.fa.title);
+  assert.equal(websiteProject.find("p").text(), websiteCard.copy.fa.summary);
+  const untouchedHome = load(await (await fetch(base + "/")).text())(projectCardSelector);
+  assert.equal(untouchedHome.find("h3").text(), newProject.translations[0].title);
+  const englishWebsite = load(await (await fetch(base + "/en/services/build")).text());
+  assert.equal(englishWebsite("#build-work").attr("data-framer-name"), "Work Section");
+  assert.equal(englishWebsite(`#build-work a[href="/en${projectPath}"]`).length, 0);
+
   assert.equal((await post("/api/admin/projects", { ...other, id: otherProjectId, status: "ARCHIVED" }, adminCookie)).status, 200);
 
   const workExamples = { key: "portfolio.workExamples", value: false };
@@ -423,6 +458,24 @@ try {
   }
   assert.equal((await post("/api/admin/projects", { ...publishProject, status: "ARCHIVED" }, adminCookie)).status, 200);
   assert.equal((await fetch(base + projectPath)).status, 404);
+  const websiteExamples = { key: "portfolio.websiteExamples", value: false };
+  const storedWebsiteExamples = await client.query(
+    'SELECT value FROM "SiteSetting" WHERE key = $1', [websiteExamples.key],
+  );
+  try {
+    assert.equal((await post("/api/admin/portfolio-display", websiteExamples, adminCookie)).status, 200);
+    const websiteWithoutCards = load(await (await fetch(base + "/services/build")).text());
+    assert.equal(websiteWithoutCards("section#build-work").length, 0);
+    const homeWithExamples = load(await (await fetch(base + "/")).text());
+    assert.equal(homeWithExamples('section[id="Work Section"]').length, 1);
+  } finally {
+    if (storedWebsiteExamples.rowCount)
+      await client.query(
+        'UPDATE "SiteSetting" SET value = $2::jsonb WHERE key = $1',
+        [websiteExamples.key, JSON.stringify(storedWebsiteExamples.rows[0].value)],
+      );
+    else await client.query('DELETE FROM "SiteSetting" WHERE key = $1', [websiteExamples.key]);
+  }
   let response = await post("/api/admin/content", draft, editorCookie);
   assert.equal(
     response.status,

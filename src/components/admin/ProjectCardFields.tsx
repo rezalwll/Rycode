@@ -10,13 +10,14 @@ import {
 import type { Locale } from "@/lib/i18n";
 import styles from "./Admin.module.css";
 
-export function ProjectHomeCardFields({
+export function ProjectCardFields({
   locale,
   title,
   summary,
   image,
   fallbackTitle,
   fallbackSummary,
+  website = false,
 }: {
   locale: Locale;
   title?: string;
@@ -24,11 +25,20 @@ export function ProjectHomeCardFields({
   image: string;
   fallbackTitle: string;
   fallbackSummary: string;
+  website?: boolean;
 }) {
   const [cardTitle, setCardTitle] = useState(title ?? "");
   const [cardSummary, setCardSummary] = useState(summary ?? "");
   const validImage = contentImagePath.safeParse(image.trim());
   const fa = locale === "fa";
+  const field = website ? "WebsiteCard" : "HomeCard";
+  const page = website
+    ? fa
+      ? "صفحه طراحی سایت"
+      : "website design page"
+    : fa
+      ? "صفحه اصلی"
+      : "homepage";
 
   return (
     <fieldset className={styles.homeCardFields}>
@@ -37,13 +47,13 @@ export function ProjectHomeCardFields({
       </legend>
       <p className={styles.muted}>
         {fa
-          ? "این نوشته‌ها فقط روی کارت صفحه اصلی دیده می‌شوند. اگر خالی باشند، عنوان و خلاصه پروژه روی کارت می‌آید."
-          : "This text appears on the homepage card. Empty fields use the project title and summary."}
+          ? `این نوشته‌ها روی کارت ${page} نمایش داده می‌شوند. اگر خالی باشند، عنوان و خلاصه پروژه روی کارت می‌آید.`
+          : `This text appears on the ${page} card. Empty fields use the project title and summary.`}
       </p>
       <label>
         {fa ? "تیتر روی عکس" : "Title on image"}
         <input
-          name={locale + "HomeCardTitle"}
+          name={locale + field + "Title"}
           value={cardTitle}
           onChange={(event) => setCardTitle(event.target.value)}
           maxLength={homeCardTitleLimit}
@@ -52,7 +62,7 @@ export function ProjectHomeCardFields({
       <label>
         {fa ? "توضیح روی عکس" : "Description on image"}
         <textarea
-          name={locale + "HomeCardSummary"}
+          name={locale + field + "Summary"}
           value={cardSummary}
           onChange={(event) => setCardSummary(event.target.value)}
           maxLength={homeCardSummaryLimit}
@@ -60,7 +70,7 @@ export function ProjectHomeCardFields({
         />
       </label>
       <p className={styles.muted}>
-        {fa ? "پیش‌نمایش کارت صفحه اصلی" : "Homepage card preview"}
+        {fa ? `پیش‌نمایش کارت ${page}` : `Card preview for the ${page}`}
       </p>
       <ProjectCardArtwork
         image={validImage.success ? validImage.data : null}

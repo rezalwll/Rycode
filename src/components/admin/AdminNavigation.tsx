@@ -13,6 +13,7 @@ import {
   HelpCircle,
   Images,
   PanelsTopLeft,
+  PanelsRightBottom,
   Inbox,
   Menu,
   MessageSquare,
@@ -37,6 +38,7 @@ const groups = [
       { path: "/content", title: "نوشته‌های بلاگ", Icon: FileText },
       { path: "/projects", title: "صفحه پروژه‌ها", Icon: BriefcaseBusiness },
       { path: "/home-projects", title: "پروژه‌های صفحه اصلی", Icon: PanelsTopLeft },
+      { path: "/website-projects", title: "بخش پروژه‌های صفحه طراحی سایت", Icon: PanelsRightBottom },
       {
         path: "/comments",
         title: "دیدگاه‌ها",

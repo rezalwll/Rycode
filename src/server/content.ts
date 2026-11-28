@@ -19,6 +19,8 @@ export function contentPath(content: Pick<PublicContent, "kind" | "slug">) {
     ? "/" + content.slug
     : `/${contentSegments[content.kind]}/${content.slug}`;
 }
+type ProjectCard = { image: string | null; title: string; summary: string };
+
 export type PublicContent = {
   id: string;
   kind: ContentKind;
@@ -29,7 +31,8 @@ export type PublicContent = {
   body: RichNode;
   image: string | null;
   imageAlt: string;
-  homeCard?: { image: string | null; title: string; summary: string };
+  homeCard?: ProjectCard;
+  websiteCard?: ProjectCard;
   project?: { year: number | null; client: string; gallery: string[] };
   author: string;
   category: string;
@@ -95,6 +98,11 @@ export function publicDto(
         title: text.homeCardTitle || text.title,
         summary: text.homeCardSummary || text.summary,
       },
+      websiteCard: {
+        image: record.websiteCardImage || record.featuredImage,
+        title: text.websiteCardTitle || text.title,
+        summary: text.websiteCardSummary || text.summary,
+      },
     }),
     author: record.author,
     category: record.category,
@@ -156,17 +164,19 @@ export const listPublishedContent = cache(
       search?: string;
       category?: string;
       latestFirst?: boolean;
-      featuredOnly?: boolean;
+      projectPlacement?: "home" | "website";
     } = {},
   ) => {
     if (!databaseConfigured())
       return { items: [] as PublicContent[], total: 0 };
     const now = new Date();
+    const placement = options.projectPlacement;
     const where: Prisma.ContentWhereInput = {
       kind,
       sample: false,
       ...(kind === "PROJECT" ? { legacy: false } : {}),
-      ...(options.featuredOnly ? { featured: true } : {}),
+      ...(placement === "home" ? { featured: true } : {}),
+      ...(placement === "website" ? { websiteFeatured: true } : {}),
       OR: [
         { status: "PUBLISHED" },
         { status: "SCHEDULED", scheduledAt: { lte: now } },
@@ -198,14 +208,18 @@ export const listPublishedContent = cache(
       ...(options.category ? { category: options.category.slice(0, 100) } : {}),
     };
     const page = listingPage(options.page);
+    const sort = { sort: "asc", nulls: "last" } as const;
+    const orderBy: Prisma.ContentOrderByWithRelationInput[] = placement === "home"
+      ? [{ homeCardPosition: sort }]
+      : placement === "website"
+        ? [{ websiteCardPosition: sort }]
+        : options.latestFirst ? [] : [{ position: "asc" }];
     const [records, total] = await Promise.all([
       database().content.findMany({
         where,
         include,
         orderBy: [
-          ...(kind === "PROJECT" && options.featuredOnly
-            ? [{ homeCardPosition: { sort: "asc" as const, nulls: "last" as const } }]
-            : options.latestFirst ? [] : [{ position: "asc" as const }]),
+          ...orderBy,
           { publishedAt: "desc" },
           { createdAt: "desc" },
         ],

@@ -12,6 +12,7 @@ import {
   Smartphone,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
+import { HomeWorkSection } from "@/components/pages/HomeWorkSection";
 import { WebsiteDesignHero } from "./WebsiteDesignHero";
 import { WebsiteTypePicker } from "./WebsiteTypePicker";
 import { websiteDesignCopy as copy } from "./website-design-copy";
@@ -44,21 +45,6 @@ const websiteArtwork = {
     alt: "نمونه ابزار اختصاصی با جدول داده، محاسبه‌گر و نمودار",
   },
 } satisfies Record<string, Artwork>;
-
-const examples = [
-  {
-    title: "وب‌سایت آژانس هوش مصنوعی",
-    type: "سایت شرکتی",
-    href: "/work/ai-agency-website",
-    image: "/assets/79de4a62dbad0012.png",
-  },
-  {
-    title: "فروشگاه اینترنتی مد و پوشاک",
-    type: "فروشگاه اینترنتی",
-    href: "/work/fashion-ecommerce",
-    image: "/assets/1115c40b7f2ee826.png",
-  },
-];
 
 function InlineCopy({ text }: { text: string }) {
   return text
@@ -187,64 +173,9 @@ export function WebsiteDesignPage() {
             }))}
           />
         </DesignSection>
-
-        <section
-          className={styles.work}
-          id="build-work"
-          aria-labelledby="build-work-title"
-        >
-          <div className={styles.sectionHeading}>
-            <h2 id="build-work-title">نمونه‌هایی از طراحی سایت</h2>
-            <Link href="/work" data-secondary-action="pill">
-              دیدن همه پروژه‌ها
-            </Link>
-          </div>
-          <div className={styles.workGrid}>
-            {examples.map((project) => (
-              <Link
-                key={project.href}
-                href={project.href}
-                className={styles.project}
-              >
-                <div className={`${styles.glass} ${styles.projectArt}`}>
-                  <div
-                    className={`${styles.projectWindow} ${styles.projectMockup}`}
-                    aria-hidden="true"
-                  >
-                    <div className={styles.projectToolbar}>
-                      <b dir="ltr">RYCODE.</b>
-                      <span>خانه</span>
-                      <span>{project.type}</span>
-                    </div>
-                    <div className={styles.projectMockupBody}>
-                      <div className={styles.projectMockupCopy}>
-                        <small>طراحی پروژه</small>
-                        <strong>{project.title}</strong>
-                        <span>
-                          مشاهده پروژه <ArrowUpLeft size={12} />
-                        </span>
-                      </div>
-                      <div className={styles.projectMockupImage}>
-                        <Image
-                          src={project.image}
-                          alt=""
-                          fill
-                          sizes="(max-width: 620px) 45vw, 260px"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.projectMeta}>
-                  <span>{project.type}</span>
-                  <ArrowUpLeft size={18} aria-hidden="true" />
-                </div>
-                <h3>{project.title}</h3>
-              </Link>
-            ))}
-          </div>
-        </section>
-
+      </div>
+      <HomeWorkSection placement="website" />
+      <div className={styles.container}>
         <DesignSection id="website-quality" title={copy.quality.title}>
           <p>{copy.quality.subtitle}</p>
           <div className={styles.qualityGrid}>
