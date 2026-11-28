@@ -42,7 +42,7 @@
   border-radius: 7px;
   background-color: var(--secondary-tile);
   rotate: -9deg;
-  transition: background-color 280ms ease;
+  transition: background-color 280ms ease, rotate 280ms ease;
 }
 #main.rycode-public a[data-secondary-action]::after {
   inset-inline-start: 11px;
@@ -56,6 +56,9 @@
 }
 #main.rycode-public a[data-secondary-action]:is(:hover, :focus-visible) {
   --secondary-tile: color-mix(in srgb, var(--brand-blue) 34%, var(--ui-surface));
+}
+#main.rycode-public a[data-secondary-action]:is(:hover, :focus-visible)::before {
+  rotate: 0deg;
 }
 #main.rycode-public a[data-secondary-action]:focus-visible {
   outline: 2px solid var(--secondary-focus);
