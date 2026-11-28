@@ -296,7 +296,16 @@
 .diagnosis,
 .process {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.diagnosis {
   align-items: center;
+}
+
+.process {
+  --public-section-title-size: clamp(1.375rem, 2.1vw, 1.75rem);
+  --public-card-title-size: clamp(1rem, 1.25vw, 1.125rem);
+  align-items: stretch;
 }
 
 .diagnosisCopy,
@@ -465,13 +474,23 @@
   font-size: 0.85rem;
 }
 
+.processCover {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.processHeading p,
+.timeline p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
 .processHeading p {
   margin-block-start: 6px;
 }
 
 .processImage {
   width: 100%;
-  aspect-ratio: 1.65;
+  min-block-size: 0;
 }
 
 .processImage img {
@@ -494,7 +513,6 @@
 
 .timeline p {
   margin-block-start: 3px;
-  font-size: 0.92rem;
 }
 
 .pricing {
@@ -620,6 +638,9 @@
   }
   .jumpLinks ul {
     justify-content: start;
+  }
+  .processImage {
+    aspect-ratio: 1.65;
   }
   .estimateImage {
     min-height: 0;
