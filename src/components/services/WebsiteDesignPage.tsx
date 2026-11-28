@@ -186,10 +186,6 @@ export function WebsiteDesignPage() {
               ),
             }))}
           />
-          <MoreCopy
-            label="بیشتر درباره طراحی سایت در رایکد"
-            items={[...copy.hero.paragraphs, ...copy.types.paragraphs]}
-          />
         </DesignSection>
 
         <section
