@@ -67,7 +67,7 @@ const serviceIcons: Record<string, LucideIcon> = {
 
 function InquiryLink({ label }: { label: string }) {
   return (
-    <Link className={styles.primary} href={inquiryHref}>
+    <Link data-fill-button className={styles.primary} href={inquiryHref}>
       {label} <ArrowUpLeft size={17} aria-hidden="true" />
     </Link>
   );

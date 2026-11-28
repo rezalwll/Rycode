@@ -103,38 +103,6 @@
   outline: 1px solid var(--brand-blue);
   outline-offset: 0;
 }
-.rycode-public .framer-UUxDN .framer-Irrnf {
-  --submit-surface: light-dark(#edf6fc, #253447);
-  --submit-icon: var(--brand-blue);
-  background-color: var(--submit-surface) !important;
-  color: var(--ui-ink);
-  border: 0;
-  transition: background-color 240ms ease;
-}
-.rycode-public .framer-UUxDN .framer-Irrnf .framer-text {
-  color: inherit !important;
-  -webkit-text-fill-color: currentColor;
-}
-.rycode-public
-  .framer-UUxDN
-  .framer-Irrnf
-  :is(.framer-6vonoc, .framer-1akqox4) {
-  background-color: var(--submit-icon) !important;
-  transition: background-color 240ms ease;
-}
-.rycode-public .framer-UUxDN .framer-Irrnf:not(:disabled):is(:hover, :focus-visible) {
-  --submit-surface: light-dark(#dceefb, #304963);
-  --submit-icon: #2372a7;
-}
-.rycode-public .framer-UUxDN .framer-Irrnf:focus-visible {
-  outline: 2px solid var(--brand-blue);
-  outline-offset: 3px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .rycode-public .framer-UUxDN .framer-Irrnf {
-    transition: none;
-  }
-}
 .rycode-public
   .framer-UUxDN
   .framer-n76Tz:is(:hover, :focus-visible)

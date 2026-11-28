@@ -63,7 +63,7 @@ export function TelegramBotPage() {
                 انجام می‌ده.
               </p>
               <div className={styles.actions}>
-                <a href="#telegram-inquiry" className={styles.primary}>
+                <a href="#telegram-inquiry" data-fill-button className={styles.primary}>
                   درخواست ساخت ربات <ArrowUpLeft size={17} aria-hidden="true" />
                 </a>
                 <a href="#telegram-types" data-secondary-action>

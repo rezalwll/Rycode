@@ -180,39 +180,6 @@
   margin-block-start: clamp(4px, 0.9vw, 16px);
 }
 
-.heroIntro .primary,
-.heroSecondary {
-  min-block-size: 54px;
-  font-size: clamp(0.87rem, 1.12vw, 1.1rem);
-  font-weight: 750;
-}
-
-.heroIntro .primary {
-  padding-inline: 19px;
-}
-
-.heroSecondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--rescue-blue);
-  line-height: 1.5;
-  text-decoration: none;
-}
-
-.heroSecondary > span {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  aspect-ratio: 1;
-  border-radius: 11px;
-  background: light-dark(#e0ecff, #263c5a);
-  transition: translate 180ms ease;
-}
-
-.heroSecondary:hover > span {
-  translate: -3px 0;
-}
 
 .heroVisual {
   position: relative;
@@ -943,8 +910,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page a,
-  .heroSecondary > span {
+  .page a {
     transition: none;
     translate: none;
   }

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpLeft,
-  ChevronLeft,
   CodeXml,
   LayoutGrid,
   Settings,
@@ -32,14 +31,10 @@ export function SoftwareServiceClosing({ inquiryHref }: { inquiryHref: string })
               می‌کنن.
             </p>
             <div className={styles.actions}>
-              <Link className={styles.primary} href={inquiryHref}>
+              <Link data-fill-button href={inquiryHref}>
                 بیا درباره نرم‌افزارم حرف بزنیم
-                <ArrowUpLeft size={20} aria-hidden="true" />
               </Link>
-              <Link className={styles.secondary} href="/services">
-                <span>
-                  <ChevronLeft size={20} aria-hidden="true" />
-                </span>
+              <Link data-secondary-action href="/services">
                 همه خدمات
               </Link>
             </div>

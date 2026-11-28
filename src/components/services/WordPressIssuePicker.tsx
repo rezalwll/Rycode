@@ -50,7 +50,7 @@ export function WordPressRepairFlow({ children }: { children: ReactNode }) {
             رو بررسی می‌کنیم تا معلوم بشه کدوم بخش به اصلاح نیاز داره.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primary} href="#wp-inquiry">
+            <a data-fill-button className={styles.primary} href="#wp-inquiry">
               درخواست بررسی <ArrowUpLeft size={17} aria-hidden="true" />
             </a>
             <a data-secondary-action href="#wp-services">

@@ -286,7 +286,7 @@ function PrimaryLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link className={styles.primary} href={href}>
+    <Link data-fill-button className={styles.primary} href={href}>
       {children}
       <Arrow size={17} aria-hidden="true" />
     </Link>

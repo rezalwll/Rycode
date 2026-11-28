@@ -30,7 +30,7 @@ const pageLinks = [
 
 function InquiryLink({ children }: { children: ReactNode }) {
   return (
-    <Link className={styles.primary} href={inquiryHref}>
+    <Link data-fill-button className={styles.primary} href={inquiryHref}>
       {children}
       <ArrowUpLeft size={17} aria-hidden="true" />
     </Link>

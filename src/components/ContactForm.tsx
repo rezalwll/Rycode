@@ -176,6 +176,7 @@ export function FormSubmit(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...props}
+      data-fill-button
       disabled={props.disabled || state.busy || state.complete}
       aria-busy={state.busy}
     />

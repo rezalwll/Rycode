@@ -54,7 +54,7 @@ export function CorporateWebsitePage() {
               بدن.
             </p>
             <div className={styles.actions}>
-              <a href="#corporate-inquiry" className={styles.primary}>
+              <a href="#corporate-inquiry" data-fill-button className={styles.primary}>
                 درخواست طراحی <ArrowUpLeft size={17} aria-hidden="true" />
               </a>
               <a href="#features" data-secondary-action>

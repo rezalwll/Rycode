@@ -78,7 +78,7 @@
   margin-block-start: clamp(20px, 3vw, 46px);
 }
 
-.end :where(.primary, .secondary, .related a) {
+.end .related a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -91,26 +91,13 @@
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  transition: background-color 180ms ease, border-color 180ms ease, translate 180ms ease;
-}
-
-.end :where(.primary, .related a) {
+  transition: background-color 180ms ease, border-color 180ms ease;
   padding: 9px clamp(13px, 1.5vw, 23px);
   border: 1px solid var(--closing-rule);
   border-radius: 999px;
   background: light-dark(#ffffffb5, #1e344b);
 }
 
-.end .primary {
-  min-height: clamp(49px, 4.2vw, 64px);
-  background: light-dark(#e6f3fd, #284861);
-}
-
-.end .secondary {
-  color: var(--closing-ink);
-}
-
-.secondary > span,
 .relatedIcon {
   display: grid;
   flex: none;
@@ -122,14 +109,9 @@
   color: var(--closing-blue);
 }
 
-.end :is(.primary, .related a):hover {
-  translate: 0 -2px;
+.end .related a:hover {
   border-color: var(--closing-blue);
   background: light-dark(#dcedfb, #31526d);
-}
-
-.end .secondary:hover {
-  color: var(--closing-blue);
 }
 
 .end a:focus-visible {

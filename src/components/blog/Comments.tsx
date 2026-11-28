@@ -271,7 +271,7 @@ export function Comments({
                 autoComplete="off"
               />
             </div>
-            <button className={styles.submit} type="submit">
+            <button className={styles.submit} type="submit" data-fill-button>
               <span>
                 {sending
                   ? fa

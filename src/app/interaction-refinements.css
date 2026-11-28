@@ -154,73 +154,8 @@
   color: light-dark(#1a1a1a, var(--ui-ink)) !important;
 }
 
-/* Shared color feedback for native and module-based calls to action. */
-.rycode-public :is(a, button)[data-fill-button] {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--fill-base, var(--button-surface)) !important;
-  color: var(--ui-ink) !important;
-  border: 1px solid var(--button-line) !important;
-  transition:
-    box-shadow 300ms ease,
-    border-color 300ms ease;
-}
-.rycode-public :is(a, button)[data-fill-button] {
-  --fill-base: #1a1a1a;
-  --button-line: #1a1a1a;
-  --button-hover: #66c0ff;
-  color: #fff !important;
-}
-.rycode-public :is(a, button)[data-fill-button]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--button-hover);
-  opacity: 0;
-  transition: opacity 280ms ease;
-  pointer-events: none;
-}
-.rycode-public
-  :is(a, button)[data-fill-button]:is(:hover, :focus-visible)::before {
-  opacity: 1;
-}
-.rycode-public :is(a, button)[data-fill-button]:is(:hover, :focus-visible) {
-  color: var(--ui-ink) !important;
-  border-color: #caddeb !important;
-  box-shadow: 0 4px 12px rgb(26 26 26 / 4%);
-}
-.rycode-public [data-fill-button="primary"],
-.rycode-public .hero-cta[data-fill-button] {
-  --fill-base: var(--button-primary);
-}
-.rycode-public .features-about-link[data-fill-button] {
-  --fill-base: #1a1a1a;
-  --button-hover: #66c0ff;
-  --button-line: #1a1a1a;
-  color: #fff !important;
-}
 .rycode-public .features-arrow:hover {
   background: var(--button-hover);
-}
-
-/* Branded CTAs use a confident red/ink interaction instead of a muted pastel wash. */
-.rycode-public .hero-cta[data-fill-button] {
-  --fill-base: #ff1b0b;
-  --button-hover: #66c0ff;
-  --button-line: #ff1b0b;
-  color: #fff !important;
-  box-shadow: 0 12px 28px rgb(255 27 11 / 24%);
-}
-.rycode-public
-  :is(.hero-cta, .features-about-link)[data-fill-button]:is(
-    :hover,
-    :focus-visible
-  ) {
-  color: #fff !important;
-  box-shadow: 0 16px 30px rgb(26 26 26 / 18%);
 }
 .rycode-public .capability-card-link:hover .capability-card-link-copy > strong,
 .rycode-public
@@ -289,9 +224,6 @@
   .rycode-public
     .rycode-header
     :is(.rycode-header-inner, .rycode-desktop-nav-item) {
-    transition: none;
-  }
-  .rycode-public :is(a, button)[data-fill-button]::before {
     transition: none;
   }
 }

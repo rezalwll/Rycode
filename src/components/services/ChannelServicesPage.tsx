@@ -1,4 +1,3 @@
-import { ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ActionBannerArt } from "@/components/content/ActionBannerArt";
@@ -88,15 +87,11 @@ export function ChannelServicesPage({
                 : "The right solution for the challenge ahead. From design and development to automation and growth, we turn your idea into something that works."}
             </p>
             <div className={styles.heroActions}>
-              <Link className={styles.heroPrimary} href={href("/contact")}>
-                <span className={styles.heroActionIcon} aria-hidden="true">
-                  <ArrowRight size={21} />
-                </span>
+              <Link data-fill-button href={href("/contact")}>
                 {contactLabel}
               </Link>
               {items.length > 0 && (
-                <a className={styles.heroSecondary} href="#services-list">
-                  <ChevronRight size={17} aria-hidden="true" />
+                <a data-secondary-action href="#services-list">
                   {fa ? "کشف خدمات" : "Explore services"}
                 </a>
               )}

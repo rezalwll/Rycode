@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   ArrowUpLeft,
   Blocks,
-  ChevronLeft,
   Gauge,
   MousePointer2,
   Plus,
@@ -418,12 +417,11 @@ export function WebsiteDesignPage() {
           </h2>
           <Paragraphs items={copy.closing.paragraphs.slice(-1)} />
           <div className={styles.actions}>
-            <Link href={inquiryHref} className={styles.primary}>
+            <Link href={inquiryHref} data-fill-button className={styles.primary}>
               <ArrowLeft size={20} aria-hidden="true" />
               {copy.closing.primary}
             </Link>
-            <Link href="/services" className={styles.closingSecondary}>
-              <ChevronLeft size={18} aria-hidden="true" />
+            <Link href="/services" data-secondary-action>
               {copy.closing.secondary}
             </Link>
           </div>

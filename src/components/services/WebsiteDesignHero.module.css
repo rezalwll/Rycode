@@ -68,9 +68,7 @@
   animation: enter 550ms ease-out both;
 }
 
-.copy .back,
-.copy .primary,
-.copy .secondary {
+.copy .back {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -83,10 +81,10 @@
   text-align: center;
   text-decoration: none;
   transition: background-color 200ms ease, border-color 200ms ease,
-    box-shadow 200ms ease, translate 200ms ease;
+    box-shadow 200ms ease;
 }
 
-.copy :is(.back, .primary, .secondary):focus-visible {
+.copy .back:focus-visible {
   outline: 2px solid var(--hero-accent);
   outline-offset: 4px;
 }
@@ -190,52 +188,17 @@
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: clamp(8px, 0.85vw, 15px);
   width: 100%;
   margin-block-start: clamp(26px, 2.8vw, 50px);
 }
 
-.copy .primary,
-.copy .secondary {
-  min-block-size: clamp(48px, 3.15vw, 57px);
-  padding: 9px clamp(8px, 1vw, 18px);
-}
-
-.copy .primary {
-  background: linear-gradient(105deg, #126bd1, #1344b9 78%);
-  color: #fff;
-}
-
-.copy .secondary {
-  border-color: light-dark(#c7d6f5, #5479ac);
-  background: transparent;
-  color: var(--hero-blue);
-}
-
-.actions svg,
-.back svg {
-  flex: none;
-}
-
-.secondary svg {
-  color: var(--hero-accent-bright);
-}
-
-@media (hover: hover) {
-  .copy :is(.back, .primary, .secondary):hover {
-    translate: 0 -2px;
-  }
-
-  .copy .primary:hover {
-    box-shadow: 0 6px 16px #113f9b38;
-  }
-
-  .copy :is(.back, .secondary):hover {
-    border-color: var(--hero-accent-bright);
-    background: var(--hero-tint);
-  }
+.copy .back:hover {
+  border-color: var(--hero-accent-bright);
+  background: var(--hero-tint);
 }
 
 .visual {
@@ -313,18 +276,6 @@
   height: 60%;
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
-  .actions {
-    grid-template-columns: minmax(0, 0.91fr) minmax(0, 1.09fr);
-  }
-
-  .copy :is(.primary, .secondary) {
-    gap: 7px;
-    padding-inline: 8px;
-    font-size: 0.83rem;
-  }
-}
-
 @media (min-width: 1501px) {
   .shape {
     inset-block-start: -2%;
@@ -378,12 +329,6 @@
   }
 }
 
-@media (max-width: 460px) {
-  .actions {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .copy,
   .visual,
@@ -392,9 +337,8 @@
     animation: none;
   }
 
-  .copy :is(.back, .primary, .secondary) {
+  .copy .back {
     transition: none;
-    translate: none;
   }
 }
 

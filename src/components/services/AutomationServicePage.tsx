@@ -109,7 +109,7 @@ export async function AutomationServicePage() {
                 و فایل‌ها رو بسپار به سیستمی که خودش انجامشون می‌ده.
               </p>
               <div className={styles.actions}>
-                <Link href={inquiryHref} className={styles.primary}>
+                <Link href={inquiryHref} data-fill-button className={styles.primary}>
                   می‌خوام کارهام خودکار بشن{" "}
                   <ArrowUpLeft size={17} aria-hidden="true" />
                 </Link>

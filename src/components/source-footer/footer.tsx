@@ -5,7 +5,6 @@ import {
   House,
   Layers,
   MapPin,
-  MessageCircleMore,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { BrandBanner } from "@/components/content/BrandBanner";
@@ -68,9 +67,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <Link
               href="/contact"
               locale={locale}
-              className="rycode-footer-button rycode-footer-button-primary"
+              data-fill-button
             >
-              <MessageCircleMore aria-hidden="true" />
               {isFa ? "ارسال شرح پروژه" : "Share your project brief"}
             </Link>
             <Link

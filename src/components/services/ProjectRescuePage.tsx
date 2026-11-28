@@ -8,7 +8,6 @@ import {
   Bug,
   Calculator,
   CalendarDays,
-  ChevronLeft,
   ClipboardCheck,
   CodeXml,
   Gauge,
@@ -51,6 +50,7 @@ function InquiryLink({
 }) {
   return (
     <Link
+      data-fill-button
       className={urgent ? styles.urgentAction : styles.primary}
       href={inquiryHref}
     >
@@ -116,10 +116,7 @@ export async function ProjectRescuePage() {
                 <p>{copy.hero.intro}</p>
                 <div className={styles.actions}>
                   <InquiryLink>{copy.hero.primary}</InquiryLink>
-                  <a className={styles.heroSecondary} href="#rescue-findings">
-                    <span>
-                      <ChevronLeft size={19} aria-hidden="true" />
-                    </span>
+                  <a data-secondary-action href="#rescue-findings">
                     {copy.hero.secondary}
                   </a>
                 </div>

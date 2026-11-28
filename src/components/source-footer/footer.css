@@ -600,44 +600,6 @@
   flex-wrap: wrap;
   gap: 12px 20px;
 }
-.rycode-footer-source .rycode-footer-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  border: 1px solid #62bafa;
-  border-radius: 17px;
-  padding: 9px clamp(17px, 1.8vw, 28px);
-  font-size: 14px;
-  font-weight: 750;
-  line-height: 1.5;
-  transition:
-    background-color var(--ui-duration) var(--ui-ease),
-    color var(--ui-duration) var(--ui-ease),
-    box-shadow var(--ui-duration) var(--ui-ease),
-    transform var(--ui-duration) var(--ui-ease);
-}
-.rycode-footer-source .rycode-footer-button svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-}
-.rycode-footer-source .rycode-footer-button-primary {
-  border-color: #0068b3;
-  background: #006fbf;
-  color: #fff;
-  padding-inline: clamp(20px, 2.6vw, 44px);
-  box-shadow: 0 6px 12px rgb(0 111 191 / 28%);
-}
-.rycode-footer-source .rycode-footer-button-primary svg {
-  width: 23px;
-  height: 23px;
-}
-.rycode-footer-source .rycode-footer-button-primary:is(:hover, :focus-visible) {
-  background: #005892;
-  box-shadow: 0 8px 16px rgb(0 111 191 / 34%);
-}
 .rycode-footer-source[dir="rtl"] .rycode-footer-group a svg {
   transform: scaleX(-1);
 }

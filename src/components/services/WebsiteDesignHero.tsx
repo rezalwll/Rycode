@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
-  CirclePlay,
   CodeXml,
   MonitorSmartphone,
   Rocket,
@@ -78,11 +77,10 @@ export function WebsiteDesignHero({
             })}
           </ul>
           <div className={styles.actions}>
-            <Link href={inquiryHref} className={styles.primary}>
+            <Link href={inquiryHref} data-fill-button>
               {copy.primary} <Arrow size={19} aria-hidden="true" />
             </Link>
-            <a href={secondaryHref} className={styles.secondary}>
-              <CirclePlay size={25} strokeWidth={1.5} aria-hidden="true" />
+            <a href={secondaryHref} data-secondary-action>
               {copy.secondary}
             </a>
           </div>

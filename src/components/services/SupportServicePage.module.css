@@ -197,76 +197,6 @@
   align-items: center;
   gap: 11px 16px;
 }
-.hero .heroCopy .action,
-.heroSecondary {
-  font-size: clamp(0.88rem, 1.1vw, 1.04rem);
-}
-.heroCopy .action > span {
-  min-height: 49px;
-}
-.heroCopy .action > .actionIcon {
-  width: 49px;
-}
-.heroSecondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 44px;
-  font-weight: 750;
-}
-.heroSecondary > span {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  aspect-ratio: 1;
-  border-radius: 10px;
-  background: light-dark(#dfedfd, #2a4864);
-  color: var(--support-blue);
-  transition: translate 180ms ease;
-}
-.heroSecondary:hover > span {
-  translate: -3px 0;
-}
-.page .action {
-  display: inline-flex;
-  align-items: stretch;
-  gap: 3px;
-  color: var(--support-blue);
-  font-size: 0.86rem;
-  font-weight: 750;
-  width: fit-content;
-  max-width: 100%;
-}
-.action > span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding-inline: 13px;
-  border: 1px solid var(--support-line);
-  background: var(--ui-surface, #fff);
-  border-radius: 9px;
-  transition:
-    background-color 220ms ease,
-    color 220ms ease,
-    border-color 220ms ease;
-}
-.action > .actionIcon {
-  width: 44px;
-  flex: none;
-  padding: 0;
-  background: #cdeaff;
-  border-color: light-dark(#cdeaff, #405064);
-}
-.action:is(:hover, :focus-visible) > span:first-child {
-  background: var(--support-tint);
-}
-.action:is(:hover, :focus-visible) > .actionIcon {
-  background: light-dark(var(--support-blue), #245b80);
-  color: #fff;
-  border-color: var(--support-blue);
-}
-
 .scopeGrid,
 .process,
 .qualityGrid,
@@ -451,7 +381,7 @@
 .qualityGrid h3 {
   font-size: clamp(1.02rem, 1.6vw, 1.3rem);
 }
-.scopeGrid .action {
+.scopeGrid [data-fill-button] {
   margin-block-start: 7px;
 }
 

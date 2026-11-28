@@ -2,9 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowUpLeft,
   Check,
-  ChevronLeft,
   CircleAlert,
   FolderOpen,
   Layers2,
@@ -64,31 +62,15 @@ function Action({
   children: ReactNode;
   secondary?: boolean;
 }) {
-  const className = secondary ? undefined : styles.action;
-  const label = secondary ? children : (
-    <>
-      <span>{children}</span>
-      <span className={styles.actionIcon}>
-        <ArrowUpLeft size={17} aria-hidden="true" />
-      </span>
-    </>
-  );
-  return href.startsWith("#") ? (
-    <a
-      className={className}
+  const Component = href.startsWith("#") ? "a" : Link;
+  return (
+    <Component
+      data-fill-button={!secondary || undefined}
       data-secondary-action={secondary || undefined}
       href={href}
     >
-      {label}
-    </a>
-  ) : (
-    <Link
-      className={className}
-      data-secondary-action={secondary || undefined}
-      href={href}
-    >
-      {label}
-    </Link>
+      {children}
+    </Component>
   );
 }
 
@@ -138,7 +120,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                 </a>
               ))}
             </nav>
-            <Link className={styles.heroNavAction} href={inquiryHref}>
+            <Link data-fill-button className={styles.heroNavAction} href={inquiryHref}>
               {supportRequestLabel}
             </Link>
           </div>
@@ -153,10 +135,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
               </p>
               <div className={styles.actions}>
                 <Action href={inquiryHref}>{supportRequestLabel}</Action>
-                <a className={styles.heroSecondary} href="#support-services">
-                  <span>
-                    <ChevronLeft size={19} aria-hidden="true" />
-                  </span>
+                <a data-secondary-action href="#support-services">
                   ببین چه خدماتی داریم
                 </a>
               </div>

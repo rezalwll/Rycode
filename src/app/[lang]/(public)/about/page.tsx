@@ -63,6 +63,7 @@ export default async function AboutPage() {
               <p className={styles.heroDescription}>{copy.intro}</p>
               <div className={styles.actions}>
                 <Link
+                  data-fill-button
                   className={styles.button}
                   href={href("/contact")}
                 >
@@ -225,6 +226,7 @@ export default async function AboutPage() {
             />
             <div className={styles.closingActions}>
               <Link
+                data-fill-button
                 className={styles.button}
                 href={href("/contact")}
               >

@@ -145,52 +145,6 @@
   gap: 12px 16px;
   margin-top: 4px;
 }
-.heroActions :is(.heroPrimary, .heroSecondary) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 48px;
-  border: 1px solid;
-  border-radius: 999px;
-  padding: 0 20px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-.heroActions .heroPrimary {
-  padding-inline-start: 2px;
-  border-color: #008bd8;
-  color: #fff;
-  background: linear-gradient(125deg, #0053d9, #0069e7 65%, #006ebc);
-  box-shadow: 0 9px 21px rgb(0 103 222 / 29%);
-}
-.heroPrimary:hover {
-  filter: brightness(1.12);
-}
-.heroActionIcon {
-  display: grid;
-  flex: none;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  background: #007ccb;
-}
-.heroActions .heroSecondary {
-  border-color: light-dark(#bfd3ed, #496685);
-  color: var(--hero-ink);
-  background: light-dark(rgb(255 255 255 / 26%), rgb(255 255 255 / 4%));
-}
-.heroActions .heroSecondary:hover {
-  background: light-dark(#e7f1ff, #21354d);
-}
-.heroSecondary > svg {
-  color: var(--hero-accent);
-}
-.heroActions:dir(rtl) svg {
-  transform: scaleX(-1);
-}
 .detailTags {
   color: var(--muted);
   font-weight: 500;
@@ -762,13 +716,6 @@
   .heroActions {
     justify-content: center;
     gap: 10px;
-  }
-  .heroActions :is(.heroPrimary, .heroSecondary) {
-    gap: 8px;
-    padding-inline-end: 14px;
-  }
-  .heroActions .heroSecondary {
-    padding-inline-start: 14px;
   }
   .heroArt {
     width: min(calc(100% + 16px), 510px);

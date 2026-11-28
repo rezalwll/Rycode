@@ -63,7 +63,7 @@ export function DataToolsPage() {
               ابزارهایی می‌سازیم که هر روز به کارت بیان.
             </p>
             <div className={styles.actions}>
-              <Link href={inquiryHref} className={styles.primary}>
+              <Link href={inquiryHref} data-fill-button className={styles.primary}>
                 می‌خوام کار با اطلاعاتم راحت‌تر بشه{" "}
                 <ArrowUpLeft size={17} aria-hidden="true" />
               </Link>
@@ -330,7 +330,7 @@ export function DataToolsPage() {
               راحت‌تر بشه.
             </p>
             <div className={styles.actions}>
-              <Link href={inquiryHref} className={styles.primary}>
+              <Link href={inquiryHref} data-fill-button className={styles.primary}>
                 درباره کارم توضیح می‌دم{" "}
                 <ArrowUpLeft size={17} aria-hidden="true" />
               </Link>

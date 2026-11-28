@@ -93,7 +93,7 @@ export function AutomationDemo() {
         <p>
           این مسیر بر اساس سیستم‌ها و دسترسی‌های موردنیاز پروژه تنظیم می‌شه.
         </p>
-        <button type="button" onClick={() => setRun((value) => value + 1)}>
+        <button type="button" data-fill-button onClick={() => setRun((value) => value + 1)}>
           <Play size={15} aria-hidden="true" /> اجرای دوباره
         </button>
       </div>

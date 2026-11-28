@@ -807,17 +807,6 @@
   margin-block-start: 2px;
 }
 
-.actions .closingSecondary {
-  border-color: light-dark(#dde7f6, #4c6282);
-  background: light-dark(#fbfcff, #213553);
-  color: var(--closing-ink);
-}
-
-.actions .closingSecondary:is(:hover, :focus-visible) {
-  background: light-dark(#e9f3ff, #2d476a);
-}
-
-.closingSecondary svg,
 .closingCopy .plus {
   color: var(--closing-blue);
 }
