@@ -27,9 +27,6 @@ const qualityIcons = [
   Settings2,
   Blocks,
 ];
-const [comparisonIntro, wordpress, custom, comparisonNote] =
-  copy.comparison.paragraphs;
-
 type Artwork = {
   src: string;
   alt: string;
@@ -208,7 +205,7 @@ export function WebsiteDesignPage() {
                 sizes="(max-width: 620px) 90vw, 520px"
               />
               <h3>وردپرس و ووکامرس</h3>
-              <p>{wordpress}</p>
+              <p>{copy.comparison.wordpress}</p>
             </article>
             <article>
               <ArtworkPreview
@@ -217,13 +214,9 @@ export function WebsiteDesignPage() {
                 sizes="(max-width: 620px) 90vw, 520px"
               />
               <h3>طراحی اختصاصی</h3>
-              <p>{custom}</p>
+              <p>{copy.comparison.custom}</p>
             </article>
           </div>
-          <MoreCopy
-            label="چطور انتخاب می‌کنیم؟"
-            items={[comparisonIntro, comparisonNote]}
-          />
           <Link href={inquiryHref} data-secondary-action>
             {copy.comparison.action}
           </Link>
