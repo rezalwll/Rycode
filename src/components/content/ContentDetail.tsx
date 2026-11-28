@@ -67,6 +67,21 @@ export async function ContentDetail({
         take: 20,
       })
     : [];
+  const projectFacts =
+    content.kind === "PROJECT"
+      ? [
+          {
+            label: fa ? "سال اجرا" : "Year",
+            value: content.project?.year?.toLocaleString(
+              fa ? "fa-IR" : "en-US",
+              { useGrouping: false },
+            ),
+          },
+          { label: fa ? "کارفرما" : "Client", value: content.project?.client },
+          { label: fa ? "حوزه پروژه" : "Industry", value: content.category },
+        ].filter((fact) => fact.value)
+      : [];
+  const projectGallery = content.project?.gallery ?? [];
   const path = localizedHref(contentPath(content), locale);
   const inquiryHref = localizedHref(
     "/contact?service=" +
@@ -179,23 +194,36 @@ export async function ContentDetail({
           </Link>
         </div>
       )}
-      <div className={styles.meta}>
-        <span>{content.author}</span>
-        <time dateTime={content.publishedAt}>
-          {new Date(content.publishedAt).toLocaleDateString(
-            fa ? "fa-IR" : "en-GB",
-          )}
-        </time>
-        {content.category && <span>{content.category}</span>}
-        <span>
-          {fa ? "زمان مطالعه" : "Reading time"}:{" "}
-          {Math.max(
-            1,
-            Math.ceil(JSON.stringify(content.body).split(/\s+/).length / 220),
-          )}{" "}
-          {fa ? "دقیقه" : "min"}
-        </span>
-      </div>
+      {content.kind === "PROJECT" ? (
+        projectFacts.length > 0 && (
+          <dl className={styles.projectFacts}>
+            {projectFacts.map(({ label, value }) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        )
+      ) : (
+        <div className={styles.meta}>
+          <span>{content.author}</span>
+          <time dateTime={content.publishedAt}>
+            {new Date(content.publishedAt).toLocaleDateString(
+              fa ? "fa-IR" : "en-GB",
+            )}
+          </time>
+          {content.category && <span>{content.category}</span>}
+          <span>
+            {fa ? "زمان مطالعه" : "Reading time"}:{" "}
+            {Math.max(
+              1,
+              Math.ceil(JSON.stringify(content.body).split(/\s+/).length / 220),
+            )}{" "}
+            {fa ? "دقیقه" : "min"}
+          </span>
+        </div>
+      )}
       {content.image && (
         <img
           src={content.image}
@@ -247,8 +275,35 @@ export async function ContentDetail({
             />
           )}
           <RichContent document={content.body} />
+          {projectGallery.length > 0 && (
+            <section
+              className={styles.projectGallery}
+              aria-labelledby="project-gallery-title"
+            >
+              <h2 id="project-gallery-title">
+                {fa ? "تصاویر پروژه" : "Project gallery"}
+              </h2>
+              {projectGallery.map((image, index) => (
+                <img
+                  key={image + ":" + index}
+                  src={image}
+                  alt={
+                    fa
+                      ? `نمای ${index + 1} از ${content.title}`
+                      : `${content.title} — view ${index + 1}`
+                  }
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </section>
+          )}
         </article>
-        <aside className={styles.aside} data-lenis-prevent data-action-banner="quiet">
+        <aside
+          className={styles.aside}
+          data-lenis-prevent
+          data-action-banner="quiet"
+        >
           <h2>
             {fa ? "درباره پروژه‌ات حرف بزنیم" : "Tell us about your project"}
           </h2>

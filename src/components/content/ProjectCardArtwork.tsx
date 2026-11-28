@@ -9,6 +9,7 @@ export function ProjectCardArtwork({
   summary,
   locale,
   preview = false,
+  number,
 }: {
   image: string | null;
   imageAlt?: string;
@@ -16,12 +17,14 @@ export function ProjectCardArtwork({
   summary: string;
   locale: Locale;
   preview?: boolean;
+  number?: string;
 }) {
   const Heading = preview ? "p" : "h3";
 
   return (
     <div
       className={styles.artwork}
+      data-work-card={number !== undefined || undefined}
       dir={locale === "fa" ? "rtl" : "ltr"}
       data-card-preview={preview || undefined}
     >
@@ -37,6 +40,11 @@ export function ProjectCardArtwork({
       {!preview && (
         <span className={styles.arrow} aria-hidden="true">
           <ArrowUpRight size={20} />
+        </span>
+      )}
+      {number && (
+        <span className={styles.number} aria-hidden="true">
+          {number}
         </span>
       )}
       <div className={styles.caption}>

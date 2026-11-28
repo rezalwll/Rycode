@@ -1,13 +1,15 @@
 "use client";
 import Link from "next/link";
+import { ProjectCardArtwork } from "@/components/content/ProjectCardArtwork";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Inbox, Plus, Search, X } from "lucide-react";
 import type { RichNode } from "@/lib/content-rules";
-import { normalizeSlug, textDocument } from "@/lib/content-rules";
+import { contentImagePath, normalizeDigits, normalizeSlug, projectClientLimit, textDocument } from "@/lib/content-rules";
 import { RichEditor } from "./RichEditor";
 import { MediaLibrary } from "./MediaLibrary";
-import { ProjectHomeCardFields } from "./ProjectHomeCardFields";
+import { PortfolioDisplayFields } from "./PortfolioDisplayFields";
+import { ProjectGalleryFields } from "./ProjectGalleryFields";
 import { AdminComments } from "./AdminComments";
 import {
   BrandLoading,
@@ -31,8 +33,6 @@ type Translation = {
   seoTitle?: string;
   seoDescription?: string;
   imageAlt?: string;
-  homeCardTitle?: string;
-  homeCardSummary?: string;
 };
 type ContentRow = {
   id?: string;
@@ -40,7 +40,9 @@ type ContentRow = {
   slug: string;
   status: string;
   featuredImage?: string;
-  homeCardImage?: string | null;
+  projectYear?: number | null;
+  projectClient?: string;
+  projectGallery?: string[];
   author?: string;
   category?: string;
   tags?: string[];
@@ -59,7 +61,7 @@ const titles: Record<string, string> = {
   leads: "درخواست‌های همکاری",
   comments: "دیدگاه‌های بلاگ",
   content: "نوشته‌های بلاگ",
-  projects: "نمونه‌کارها",
+  projects: "صفحه نمونه‌کارها",
   media: "کتابخانه رسانه",
   faqs: "پرسش‌های متداول",
   settings: "تنظیمات سایت",
@@ -167,26 +169,20 @@ function ContentEditor({
   const [projectSlug, setProjectSlug] = useState(initial.slug);
   const [slugEdited, setSlugEdited] = useState(Boolean(initial.slug));
   const [image, setImage] = useState(initial.featuredImage || "");
-  const [homeCardImage, setHomeCardImage] = useState(initial.homeCardImage || "");
-  const [homeCardLibraryLoaded, setHomeCardLibraryLoaded] = useState(false);
-  const [projectCopy, setProjectCopy] = useState<
-    Partial<Record<Translation["locale"], { title?: string; summary?: string }>>
-  >({});
-  const [message, setMessage] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [revision, setRevision] = useState(0);
-  const [choices, setChoices] = useState<ContentRow[]>([]);
-  const editorPanel = useRef<HTMLElement>(null);
-  function updateProjectCopy(
-    locale: Translation["locale"],
-    field: "title" | "summary",
-    value: string,
-  ) {
+  const [projectGallery, setProjectGallery] = useState(initial.projectGallery ?? []);
+  const [projectCopy, setProjectCopy] = useState<Partial<Record<Translation["locale"], Partial<Pick<Translation, "title" | "summary">>>>>({});
+  const cover = contentImagePath.safeParse(image.trim());
+  function updateProjectCopy(locale: Translation["locale"], field: "title" | "summary", value: string) {
     setProjectCopy((current) => ({
       ...current,
       [locale]: { ...current[locale], [field]: value },
     }));
   }
+  const [message, setMessage] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [revision, setRevision] = useState(0);
+  const [choices, setChoices] = useState<ContentRow[]>([]);
+  const editorPanel = useRef<HTMLElement>(null);
   useEffect(() => {
     editorPanel.current?.focus();
     let active = true;
@@ -224,6 +220,14 @@ function ContentEditor({
             پیش‌نمایش خصوصی ↗
           </Link>
         )}
+        {isProject && record.id && (
+          <Link
+            className={styles.button}
+            href={"/admin/home-projects?project=" + record.id}
+          >
+            ویرایش کارت صفحه اصلی
+          </Link>
+        )}
         {isProject && record.status === "PUBLISHED" && (
           <Link
             className={styles.button}
@@ -257,10 +261,6 @@ function ContentEditor({
                 seoTitle: String(f.get(locale + "SeoTitle") || ""),
                 seoDescription: String(f.get(locale + "SeoDescription") || ""),
                 imageAlt: String(f.get(locale + "ImageAlt") || ""),
-                ...(isProject && {
-                  homeCardTitle: String(f.get(locale + "HomeCardTitle") || ""),
-                  homeCardSummary: String(f.get(locale + "HomeCardSummary") || ""),
-                }),
               });
             }
             const saved = await api(resource, {
@@ -268,8 +268,12 @@ function ContentEditor({
               kind: initial.kind,
               slug: f.get("slug"),
               status: f.get("status"),
-              ...(image ? { featuredImage: image } : {}),
-              ...(isProject && { homeCardImage: homeCardImage.trim() }),
+              ...(image.trim() ? { featuredImage: image.trim() } : {}),
+              ...(isProject && {
+                projectYear: f.get("projectYear") ? Number(normalizeDigits(String(f.get("projectYear")))) : null,
+                projectClient: f.get("projectClient"),
+                projectGallery,
+              }),
               author: f.get("author"),
               category: f.get("category"),
               tags: String(f.get("tags") || "")
@@ -279,7 +283,7 @@ function ContentEditor({
               relatedIds: f.getAll("relatedIds").map(String),
               serviceId: String(f.get("serviceId") || ""),
               noIndex: f.get("noIndex") === "on",
-              featured: f.get("featured") === "on",
+              ...(!isProject && { featured: f.get("featured") === "on" }),
               sample: f.get("sample") === "on",
               position: Number(f.get("position") || 0),
               ...(f.get("scheduledAt")
@@ -362,7 +366,19 @@ function ContentEditor({
             value={record.author || "RYCODE"}
             required
           />
-          <Input label="دسته‌بندی" name="category" value={record.category} />
+          <Input label={isProject ? "حوزه پروژه (دسته‌بندی)" : "دسته‌بندی"} name="category" value={record.category} />
+          {isProject && (
+            <>
+              <label>
+                سال اجرای پروژه
+                <input name="projectYear" inputMode="numeric" maxLength={4} defaultValue={record.projectYear ?? ""} />
+              </label>
+              <label>
+                نام کارفرما
+                <input name="projectClient" maxLength={projectClientLimit} defaultValue={record.projectClient ?? ""} />
+              </label>
+            </>
+          )}
           <Input
             label="برچسب‌ها، با کاما جدا کنید"
             name="tags"
@@ -410,7 +426,7 @@ function ContentEditor({
             </select>
           </label>
           <Input
-            label="ترتیب نمایش"
+            label={isProject ? "ترتیب در صفحه نمونه‌کارها" : "ترتیب نمایش"}
             name="position"
             type="number"
             value={record.position || 0}
@@ -423,16 +439,12 @@ function ContentEditor({
             />
             عدم ایندکس در موتورهای جست‌وجو
           </label>
-          <label className={styles.check}>
-            <input
-              name="featured"
-              type="checkbox"
-              defaultChecked={record.featured}
-            />
-            {isProject
-              ? "نمایش در نمونه‌کارهای منتخب صفحه اصلی"
-              : "مقاله منتخب بلاگ"}
-          </label>
+          {!isProject && (
+            <label className={styles.check}>
+              <input name="featured" type="checkbox" defaultChecked={record.featured} />
+              مقاله منتخب بلاگ
+            </label>
+          )}
           <label className={styles.check}>
             <input
               name="sample"
@@ -457,41 +469,7 @@ function ContentEditor({
           <summary>انتخاب تصویر شاخص از کتابخانه</summary>
           <MediaLibrary onSelect={setImage} />
         </details>
-        {isProject &&
-          /^\/(assets|media|brand)\/[a-zA-Z0-9_./-]+$/.test(image) &&
-          !image.includes("..") && (
-            <img
-              className={styles.projectCoverPreview}
-              src={image}
-              alt="پیش‌نمایش تصویر شاخص"
-            />
-          )}
-        {isProject && (
-          <fieldset className={styles.homeCardFields}>
-            <legend>عکس کارت صفحه اصلی</legend>
-            <p className={styles.muted}>
-              برای حداکثر سه نمونه‌کار منتخب و منتشرشده در صفحه اصلی نمایش داده
-              می‌شود. اگر عکس جدا انتخاب نکنید، تصویر شاخص روی کارت می‌آید.
-            </p>
-            <label>
-              نشانی عکس کارت
-              <input
-                value={homeCardImage}
-                onChange={(event) => setHomeCardImage(event.target.value)}
-                placeholder="/media/… یا /assets/…"
-                dir="ltr"
-              />
-            </label>
-            <details
-              onToggle={(event) => {
-                if (event.currentTarget.open) setHomeCardLibraryLoaded(true);
-              }}
-            >
-              <summary>آپلود یا انتخاب عکس کارت</summary>
-              {homeCardLibraryLoaded && <MediaLibrary onSelect={setHomeCardImage} />}
-            </details>
-          </fieldset>
-        )}
+        {isProject && <ProjectGalleryFields images={projectGallery} onChange={setProjectGallery} />}
         {(["fa", "en"] as const).map((locale) => {
           const text = record.translations.find((t) => t.locale === locale);
           return (
@@ -542,23 +520,20 @@ function ContentEditor({
                   <textarea
                     name={locale + "Summary"}
                     defaultValue={text?.summary || ""}
-                    onChange={
-                      isProject
-                        ? (event) => updateProjectCopy(locale, "summary", event.target.value)
-                        : undefined
-                    }
+                    onChange={isProject ? (event) => updateProjectCopy(locale, "summary", event.target.value) : undefined}
                     maxLength={700}
                   />
                 </label>
                 {isProject && (
                   <div className={styles.wide}>
-                    <ProjectHomeCardFields
+                    <p className={styles.muted}>{locale === "fa" ? "پیش‌نمایش کارت در فهرست نمونه‌کارها" : "Portfolio listing card preview"}</p>
+                    <ProjectCardArtwork
+                      image={cover.success ? cover.data : null}
+                      title={(projectCopy[locale]?.title ?? text?.title)?.trim() || (locale === "fa" ? "عنوان پروژه" : "Project title")}
+                      summary={(projectCopy[locale]?.summary ?? text?.summary ?? "").trim()}
+                      number={locale === "fa" ? "۰۱" : "01"}
                       locale={locale}
-                      title={text?.homeCardTitle}
-                      summary={text?.homeCardSummary}
-                      image={homeCardImage.trim() || image}
-                      fallbackTitle={(projectCopy[locale]?.title ?? text?.title ?? "").trim()}
-                      fallbackSummary={(projectCopy[locale]?.summary ?? text?.summary ?? "").trim()}
+                      preview
                     />
                   </div>
                 )}
@@ -622,7 +597,7 @@ function ContentEditor({
                     revisions: record.revisions,
                   });
                   setImage(r.snapshot.featuredImage || "");
-                  setHomeCardImage(r.snapshot.homeCardImage || "");
+                  setProjectGallery(r.snapshot.projectGallery ?? []);
                   setProjectCopy({});
                   if (isProject) {
                     setProjectSlug(r.snapshot.slug);
@@ -649,12 +624,14 @@ export function AdminWorkspace({
   initialStatus,
   initialItem,
   newEntry,
+  workExamplesSetting,
 }: {
   section: string;
   role: string;
   initialStatus: string;
   initialItem?: string;
   newEntry: boolean;
+  workExamplesSetting?: boolean;
 }) {
   const router = useRouter();
   const isProject = section === "projects";
@@ -784,11 +761,13 @@ export function AdminWorkspace({
         )}
         {isProject && (
           <p className={styles.muted}>
-            نمونه‌کارهای منتشرشده به‌صورت خودکار در صفحه نمونه‌کارهای سایت نمایش
-            داده می‌شن.
+            کاور، ترتیب فهرست، مشخصات و گالری صفحهٔ هر پروژه را اینجا مدیریت کنید.
           </p>
         )}
       </header>
+      {workExamplesSetting !== undefined && !editing && (
+        <PortfolioDisplayFields setting="portfolio.workExamples" enabled={workExamplesSetting} />
+      )}
       {section === "comments" && <AdminComments />}
       {listError && (
         <p role="alert" className={styles.message}>

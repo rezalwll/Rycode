@@ -30,6 +30,7 @@ export type PublicContent = {
   image: string | null;
   imageAlt: string;
   homeCard?: { image: string | null; title: string; summary: string };
+  project?: { year: number | null; client: string; gallery: string[] };
   author: string;
   category: string;
   tags: string[];
@@ -84,6 +85,11 @@ export function publicDto(
     image: record.featuredImage,
     imageAlt: text.imageAlt || text.title,
     ...(record.kind === "PROJECT" && {
+      project: {
+        year: record.projectYear,
+        client: record.projectClient,
+        gallery: record.projectGallery,
+      },
       homeCard: {
         image: record.homeCardImage || record.featuredImage,
         title: text.homeCardTitle || text.title,
@@ -197,7 +203,9 @@ export const listPublishedContent = cache(
         where,
         include,
         orderBy: [
-          ...(options.latestFirst ? [] : [{ position: "asc" as const }]),
+          ...(kind === "PROJECT" && options.featuredOnly
+            ? [{ homeCardPosition: { sort: "asc" as const, nulls: "last" as const } }]
+            : options.latestFirst ? [] : [{ position: "asc" as const }]),
           { publishedAt: "desc" },
           { createdAt: "desc" },
         ],

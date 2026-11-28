@@ -1,11 +1,12 @@
-import { listPublishedContent } from "@/server/content";
+import { contentPath, listPublishedContent } from "@/server/content";
 import { getTranslations } from "@/lib/i18n-server";
-import { ContentCards } from "./ContentCards";
+import { ProjectCardArtwork } from "./ProjectCardArtwork";
+import artworkStyles from "./ProjectCardArtwork.module.css";
 import { BlogBlogSection } from "@/components/pages/BlogBlogSection";
 import styles from "./Content.module.css";
 import blogStyles from "@/components/pages/BlogListing.module.css";
 import type { ContentKind } from "@/generated/prisma/client";
-import Link from "next/link";
+import { ProgressLink as Link } from "@/components/ProgressLink";
 import {
   listingParams,
   listingHref,
@@ -102,7 +103,32 @@ export async function PublishedListing({
       <h2 id="published-projects-title">
         {fa ? "نمونه‌کارهای رایکد" : "RYCODE projects"}
       </h2>
-      <ContentCards items={items} locale={locale} portfolio heading="h3" />
+      {items.length > 0 && (
+        <div className={artworkStyles.grid} data-project-cards>
+          {items.map((item, index) => (
+            <Link
+              key={item.id}
+              className={artworkStyles.link}
+              href={href(contentPath(item))}
+            >
+              <ProjectCardArtwork
+                image={item.image}
+                imageAlt={item.imageAlt}
+                title={item.title}
+                summary={item.summary}
+                locale={locale}
+                number={((page - 1) * 12 + index + 1).toLocaleString(
+                  fa ? "fa-IR" : "en-US",
+                  {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false,
+                  },
+                )}
+              />
+            </Link>
+          ))}
+        </div>
+      )}
       {items.length === 0 && (
         <p className={styles.empty}>
           {fa ? "مطلبی با این مشخصات پیدا نشد" : "No matching content found"}

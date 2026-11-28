@@ -143,64 +143,10 @@
   font-size: clamp(24px, 3.6vw, 46px);
   font-weight: 760;
   line-height: 1.4;
+  margin-block-end: clamp(16px, 3vw, 30px);
 }
 .projectListing .button {
   border-color: var(--ui-rule);
-}
-.projectGrid {
-  width: 100%;
-  margin-block: clamp(16px, 3vw, 30px) 0;
-}
-.projectGrid .card {
-  color: var(--ui-ink);
-  background: var(--ui-surface, #fff);
-  border: 1px solid var(--ui-rule, #d7dfe5);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: border-color 200ms ease;
-}
-.projectGrid .card:is(:hover, :focus-visible) {
-  border-color: var(--brand-blue);
-}
-.projectGrid .cardImage {
-  aspect-ratio: 16 / 10;
-  border-radius: 0;
-  background: var(--ui-surface-muted, #edf3f9);
-}
-.projectGrid .arrow {
-  width: 38px;
-  height: 38px;
-  background: var(--ui-surface, #fff);
-  color: var(--ui-ink);
-}
-.projectGrid .card:is(:hover, :focus-visible) .arrow {
-  background: var(--brand-blue, #3498db);
-  color: #fff;
-}
-.projectGrid .card :is(h2, h3, p, time),
-.projectCategory {
-  margin-inline: 16px;
-}
-.projectCategory {
-  margin-block-start: 14px;
-  font-size: 12px;
-  color: var(--ui-muted);
-}
-.projectGrid .card :is(h2, h3) {
-  margin-block: 12px 5px;
-  font-size: clamp(16px, 2.1vw, 22px);
-  font-weight: 750;
-}
-.projectGrid .card p {
-  font-size: 14px;
-  color: var(--ui-muted);
-  line-height: 1.8;
-  margin-block-end: 12px;
-}
-.projectGrid .card time {
-  color: var(--ui-muted);
-  font-size: 12px;
-  margin-block: auto 15px;
 }
 .meta {
   display: flex;
@@ -845,4 +791,38 @@
 }
 .page :focus-visible {
   outline-color: var(--ui-purple, #c4b5fd);
+}
+
+.projectFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px clamp(30px, 6vw, 86px);
+  margin: 26px 0;
+  padding-block: 20px;
+  border-block: 1px solid var(--ui-rule);
+}
+
+.projectFacts dt {
+  margin-bottom: 5px;
+  color: var(--ui-muted, #506174);
+  font-size: 0.9rem;
+}
+
+.projectFacts dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+
+.projectGallery {
+  display: grid;
+  gap: clamp(14px, 2vw, 26px);
+  margin-block-start: 36px;
+}
+
+.projectGallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--ui-rule);
 }

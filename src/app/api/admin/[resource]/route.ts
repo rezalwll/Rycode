@@ -6,6 +6,9 @@ import { listingPage } from "@/lib/listing-params";
 import {
   contentSchema,
   documentText,
+  homeProjectSchema,
+  locales,
+  portfolioExampleKeys,
   normalizeDigits,
   type RichNode,
 } from "@/lib/content-rules";
@@ -29,6 +32,7 @@ const adminOnly = new Set([
   "comments",
   "leads",
   "settings",
+  "portfolio-display",
   "redirects",
   "analytics",
   "audit",
@@ -333,6 +337,51 @@ export async function POST(request: Request, context: Context) {
     const raw = await boundedJson(request, 800000);
     if (resource === "comments")
       return Response.json(await moderateComment(actor, raw));
+    if (resource === "home-projects") {
+      const input = homeProjectSchema.parse(raw);
+      await database().$transaction(async (tx) => {
+        await tx.$queryRaw`SELECT id FROM "Content" WHERE id = ${input.id} FOR UPDATE`;
+        const project = await tx.content.findUnique({
+          where: { id: input.id, kind: "PROJECT", legacy: false },
+          include: { translations: { select: { locale: true } } },
+        });
+        if (!project) throw new HttpError(404, "نمونه‌کار پیدا نشد");
+        if (actor.role !== "ADMIN" && project.status !== "DRAFT")
+          throw new HttpError(
+            403,
+            "ویرایش کارت نمونه‌کار منتشرشده به دسترسی مدیر نیاز دارد",
+          );
+        await tx.content.update({
+          where: { id: project.id },
+          data: {
+            featured: input.featured,
+            homeCardPosition: input.position,
+            homeCardImage: input.image || null,
+          },
+        });
+        for (const locale of locales) {
+          const copy = input.copy[locale];
+          if (!copy) continue;
+          if (!project.translations.some((translation) => translation.locale === locale))
+            throw new HttpError(
+              409,
+              "زبان‌های نمونه‌کار تغییر کرده‌اند. صفحه را تازه کنید و دوباره ذخیره کنید.",
+            );
+          await tx.contentTranslation.update({
+            where: { contentId_locale: { contentId: project.id, locale } },
+            data: { homeCardTitle: copy.title, homeCardSummary: copy.summary },
+          });
+        }
+        await tx.auditLog.create({
+          data: {
+            actorId: actor.id,
+            action: "project.home-card.saved",
+            entityId: project.id,
+          },
+        });
+      });
+      return Response.json({ id: input.id });
+    }
     let entityId = "";
     if (resource === "content" || resource === "projects") {
       const kind = contentKinds[resource];
@@ -413,7 +462,13 @@ export async function POST(request: Request, context: Context) {
           relatedIds: input.relatedIds,
           serviceId: input.serviceId || null,
           noIndex: input.noIndex || input.sample,
-          featured: input.featured,
+          featured: input.featured ?? (kind === "PROJECT" && Boolean(existing?.featured)),
+          ...(kind === "PROJECT" && {
+            ...(input.featured && existing?.homeCardPosition == null && { homeCardPosition: existing?.position ?? input.position }),
+            projectYear: input.projectYear,
+            projectClient: input.projectClient,
+            projectGallery: input.projectGallery,
+          }),
           sample: input.sample,
           position: input.position,
           scheduledAt:
@@ -514,6 +569,18 @@ export async function POST(request: Request, context: Context) {
         });
       });
       return Response.json({ id: input.id });
+    }
+    if (resource === "portfolio-display") {
+      const input = z.object({ key: z.enum(portfolioExampleKeys), value: z.boolean() }).parse(raw);
+      await database().$transaction([
+        database().siteSetting.upsert({
+          where: { key: input.key }, create: input, update: { value: input.value },
+        }),
+        database().auditLog.create({
+          data: { actorId: actor.id, action: "portfolio.display.saved", entityId: input.key },
+        }),
+      ]);
+      return Response.json(input);
     }
     if (resource === "settings") {
       const input = z

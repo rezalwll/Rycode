@@ -118,6 +118,27 @@ export const contentImagePath = z
   .regex(/^\/(assets|media|brand)\/[a-zA-Z0-9_./-]+$/)
   .refine((value) => !value.includes(".."), "Invalid image path");
 
+export const projectGalleryLimit = 12;
+export const projectClientLimit = 160;
+export const portfolioExampleKeys = [
+  "portfolio.homeExamples",
+  "portfolio.workExamples",
+] as const;
+
+export const homeProjectSchema = z.object({
+  id: z.uuid(),
+  featured: z.boolean(),
+  position: z.number().int().min(0).max(9999),
+  image: contentImagePath.or(z.literal("")),
+  copy: z.partialRecord(
+    z.enum(locales),
+    z.object({
+      title: z.string().trim().max(homeCardTitleLimit),
+      summary: z.string().trim().max(homeCardSummaryLimit),
+    }),
+  ),
+});
+
 export const translationSchema = z.object({
   locale: z.enum(locales),
   approved: z.boolean().default(false),
@@ -138,13 +159,19 @@ export const contentSchema = z
     status: z.enum(["DRAFT", "PUBLISHED", "SCHEDULED", "ARCHIVED"]),
     featuredImage: contentImagePath.optional(),
     homeCardImage: contentImagePath.or(z.literal("")).optional(),
+    projectYear: z.number().int().min(1000).max(9999).nullable().optional(),
+    projectClient: z.string().trim().max(projectClientLimit).optional(),
+    projectGallery: z
+      .array(contentImagePath)
+      .max(projectGalleryLimit)
+      .optional(),
     author: z.string().trim().min(1).max(120).default("RYCODE"),
     category: z.string().trim().max(100).default(""),
     tags: z.array(z.string().trim().min(1).max(70)).max(15).default([]),
     relatedIds: z.array(z.string().uuid()).max(12).default([]),
     serviceId: z.string().max(160).optional(),
     noIndex: z.boolean().default(false),
-    featured: z.boolean().default(false),
+    featured: z.boolean().optional(),
     sample: z.boolean().default(false),
     position: z.number().int().min(0).max(9999).default(0),
     scheduledAt: z.string().datetime().optional(),

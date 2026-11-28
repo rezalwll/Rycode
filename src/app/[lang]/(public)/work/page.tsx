@@ -9,6 +9,7 @@ import { WorkHeroSection } from "@/components/pages/WorkHeroSection";
 import { WorkWorkSection } from "@/components/pages/WorkWorkSection";
 import { WorkFAQSection } from "@/components/pages/WorkFAQSection";
 import { listingParams, type ListingSearchParams } from "@/lib/listing-params";
+import { siteSettings } from "@/server/content";
 import { listingMetadata } from "@/server/listing-metadata";
 export async function generateMetadata({
   searchParams,
@@ -23,7 +24,7 @@ export default async function Page({
   searchParams: Promise<ListingSearchParams>;
 }) {
   const { t } = await getTranslations();
-  const query = await searchParams;
+  const [query, settings] = await Promise.all([searchParams, siteSettings()]);
   const filters = listingParams(query);
   return (
     <main
@@ -35,9 +36,10 @@ export default async function Page({
       <WorkBlock0 />
       <WorkHeroSection />
       <PublishedListing kind="PROJECT" searchParams={query} />
-      {filters.page === 1 && !filters.q && !filters.category && (
-        <WorkWorkSection />
-      )}
+      {settings["portfolio.workExamples"] !== false &&
+        filters.page === 1 &&
+        !filters.q &&
+        !filters.category && <WorkWorkSection />}
       <ManagedFaq scope="work">
         <WorkFAQSection />
       </ManagedFaq>

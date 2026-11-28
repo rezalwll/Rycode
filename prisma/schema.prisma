@@ -142,6 +142,10 @@ model Content {
   status ContentStatus @default(DRAFT)
   featuredImage String?
   homeCardImage String?
+  homeCardPosition Int?
+  projectYear Int?
+  projectClient String @default("")
+  projectGallery String[] @default([])
   author String @default("RYCODE")
   category String @default("")
   tags String[] @default([])

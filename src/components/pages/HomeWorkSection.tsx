@@ -2,12 +2,16 @@ import { getTranslations } from "@/lib/i18n-server";
 import { ProgressLink as Link } from "@/components/ProgressLink";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
-import { listPublishedContent } from "@/server/content";
+import { listPublishedContent, siteSettings } from "@/server/content";
 import { ProjectCardArtwork } from "@/components/content/ProjectCardArtwork";
 import cardStyles from "@/components/content/ProjectCardArtwork.module.css";
 export async function HomeWorkSection() {
   const { t, locale, href } = await getTranslations();
-  const { items } = await listPublishedContent("PROJECT", locale, { featuredOnly: true });
+  const [{ items }, settings] = await Promise.all([
+    listPublishedContent("PROJECT", locale, { featuredOnly: true }),
+    siteSettings(),
+  ]);
+  if (!items.length && settings["portfolio.homeExamples"] === false) return null;
   return (
     <section
       className="framer-1udbsna"

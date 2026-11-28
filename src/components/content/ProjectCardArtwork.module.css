@@ -103,3 +103,20 @@
 .artwork[data-card-preview] .summary {
   font-size: 0.9rem;
 }
+
+.artwork[data-work-card] {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(12px, 3vw, 36px);
+  align-items: end;
+}
+
+.number {
+  color: #fff;
+  font-size: clamp(2.2rem, 7vw, 6rem);
+  font-weight: 740;
+  line-height: 1;
+}
+
+.artwork[data-work-card][data-card-preview] .number {
+  font-size: 2rem;
+}
