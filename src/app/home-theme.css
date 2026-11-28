@@ -114,11 +114,14 @@
   background: var(--home-canvas);
 }
 .home-colorful .rycode-hero-source .hero {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
   padding: 18px;
 }
 .home-colorful .rycode-hero-source .hero-frame {
   height: auto;
-  min-height: clamp(460px, 82svh, 640px);
+  min-height: 0;
   padding-block-start: clamp(84px, 10svh, 112px);
   color: #fff;
   background: #1a1a1a;
