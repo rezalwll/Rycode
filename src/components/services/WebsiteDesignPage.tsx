@@ -38,8 +38,8 @@ const websiteArtwork = {
     alt: "نمونه فروشگاه لوازم خانه با کارت‌های محصول و سبد خرید",
   },
   customSite: {
-    src: "/brand/website-design/pane-wayline.webp",
-    alt: "پیش‌نمایش وب‌سایت رزرو بلیت سفر با فرم جست‌وجو و کارت مسیر",
+    src: "/brand/website-design/grayscale-site-preview.webp",
+    alt: "پیش‌نمایش سایت Grayscale با منوی بالا و تصویر کوهستان مه‌آلود",
   },
 } satisfies Record<string, Artwork>;
 
