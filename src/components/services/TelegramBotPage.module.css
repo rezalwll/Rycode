@@ -1,8 +1,7 @@
 .page {
   --tg-ink: light-dark(#203244, #edf2f8);
   --tg-muted: light-dark(#516578, #b7c4d3);
-  --tg-blue: var(--brand-blue-ink);
-  --tg-deep: light-dark(#104b75, #a1d4f6);
+  --tg-blue: var(--brand-blue);
   --tg-line: light-dark(#d9e6ef, #405064);
   --tg-tint: light-dark(#edf7ff, #253447);
   color: var(--tg-ink);
@@ -127,12 +126,12 @@
 }
 .page .primary {
   color: #fff;
-  background: light-dark(var(--tg-blue), #245b80);
+  background: light-dark(var(--tg-blue), var(--brand-blue));
   border-color: var(--tg-blue);
 }
 .page .primary:hover {
-  background: light-dark(var(--tg-deep), #245b80);
-  border-color: var(--tg-deep);
+  background: var(--brand-blue-hover);
+  border-color: var(--brand-blue);
 }
 .page .primary:disabled {
   opacity: 0.7;
@@ -172,7 +171,7 @@
 }
 .avatar {
   border-radius: 50%;
-  background: light-dark(var(--tg-blue), #245b80);
+  background: light-dark(var(--tg-blue), var(--brand-blue));
   color: #fff;
 }
 .reset,
@@ -195,7 +194,7 @@
 .reset:hover,
 .demoActions button:hover {
   background: light-dark(#e3f2fd, #253447);
-  border-color: #83b6d6;
+  border-color: var(--brand-blue);
 }
 .scenarios {
   min-inline-size: 0;
@@ -283,7 +282,7 @@
   padding: 3px 8px;
   border-radius: 5px;
   background: light-dark(#e5f4ec, #202833);
-  color: light-dark(#246047, #9fcdf0);
+  color: light-dark(#246047, var(--brand-blue));
   font:
     700 0.75rem/1.65 system-ui,
     sans-serif;
@@ -410,7 +409,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: light-dark(#246047, #9fcdf0);
+  color: light-dark(#246047, var(--brand-blue));
 }
 .section .exampleNote {
   font-size: 0.77rem;
@@ -445,7 +444,7 @@
 .estimate article {
   padding: 14px 18px;
   background: var(--tg-tint);
-  border-inline-start: 3px solid #91c4e4;
+  border-inline-start: 3px solid var(--brand-blue);
 }
 .estimate p {
   margin-block-start: 5px;
@@ -546,7 +545,7 @@
   resize: vertical;
 }
 .form [role="status"] {
-  color: var(--tg-deep);
+  color: var(--brand-blue);
   border-color: var(--tg-line);
 }
 .form .privacy {

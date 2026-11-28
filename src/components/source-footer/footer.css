@@ -134,9 +134,9 @@
   width: 12px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #83d0ff;
+  background: var(--brand-blue);
   box-shadow:
-    0 0 9px #2caaff,
+    0 0 9px var(--brand-blue),
     0 0 24px 5px rgb(0 138 255 / 49%);
   content: "";
 }
@@ -315,7 +315,7 @@
   line-height: 1.12;
 }
 .rycode-footer-source .moments-app-title span {
-  color: var(--brand-blue-deep);
+  color: var(--brand-blue);
 }
 .rycode-footer-source .moments-app-title:dir(ltr) {
   letter-spacing: -0.035em;
@@ -351,7 +351,7 @@
   box-shadow: 0 1cqw 3cqw rgb(56 97 144 / 13%);
 }
 .rycode-footer-source .moments-app-tile:focus-visible {
-  outline: 2px solid var(--brand-blue-deep);
+  outline: 2px solid var(--brand-blue);
   outline-offset: 2px;
 }
 .rycode-footer-source .moments-app-tile-art {
@@ -364,7 +364,7 @@
   object-position: center top;
 }
 .rycode-footer-source .moments-app-tile:nth-child(2) .moments-app-tile-art {
-  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-deep));
+  background: linear-gradient(135deg, var(--brand-blue-light), var(--brand-blue));
 }
 .rycode-footer-source .moments-app-tile:nth-child(2) img {
   object-fit: contain;
@@ -392,11 +392,11 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: #cde7ff;
-  color: var(--brand-blue-deep);
+  color: var(--brand-blue);
 }
 .rycode-footer-source .moments-app-tile:is(:hover, :focus-visible) .moments-app-tile-label > span {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .rycode-footer-source .moments-app-tile-label svg {
   width: 4.5cqw;
@@ -420,7 +420,7 @@
   right: calc(100% + clamp(70px, 9vw, 162px));
   width: 54px;
   height: 66px;
-  color: #53aaff;
+  color: var(--brand-blue);
   cursor: grab;
   touch-action: none;
 }
@@ -491,7 +491,7 @@
 .rycode-footer-source .rycode-footer {
   --footer-ink: light-dark(#132742, #edf5ff);
   --footer-muted: light-dark(#53657d, #b8c9df);
-  --footer-blue: var(--brand-blue-ink);
+  --footer-blue: var(--brand-blue);
   --footer-rule: light-dark(#d6e0eb, #35495f);
   --footer-blue-soft: var(--brand-blue-wash);
   --accent-blue: var(--brand-blue);
@@ -512,7 +512,7 @@
   z-index: -1;
   content: "";
   pointer-events: none;
-  background: linear-gradient(220deg, #69c2f8 8%, transparent 66%);
+  background: linear-gradient(220deg, var(--brand-blue) 8%, transparent 66%);
   mask: url("/brand/rycode-mark.svg") right center / contain no-repeat;
   opacity: 0.53;
 }

@@ -145,20 +145,20 @@
   color: rgb(255 255 255 / 85%);
 }
 .home-colorful .rycode-hero-source .hero .hero-cta {
-  background: var(--brand-blue-light);
-  border-color: var(--brand-blue-light);
-  color: var(--ui-ink, #303b48);
-  box-shadow: 0 12px 28px rgb(102 192 255 / 26%);
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: var(--brand-on-blue);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--brand-blue) 26%, transparent);
   transition:
     background-color 0.25s,
     transform 0.25s,
     box-shadow 0.25s;
 }
 .home-colorful .rycode-hero-source .hero .hero-cta:hover {
-  background: var(--brand-blue-light);
-  border-color: var(--brand-blue-light);
-  color: var(--ui-ink, #303b48);
-  box-shadow: 0 16px 30px rgb(102 192 255 / 30%);
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: var(--brand-on-blue);
+  box-shadow: 0 16px 30px color-mix(in srgb, var(--brand-blue) 30%, transparent);
 }
 @media (max-width: 809px) {
   .home-colorful .rycode-hero-source .hero {

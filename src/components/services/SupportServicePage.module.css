@@ -1,7 +1,7 @@
 .page {
   --support-ink: light-dark(#243443, #edf2f8);
-  --support-blue: var(--brand-blue-ink);
-  --support-brand: #3498db;
+  --support-blue: var(--brand-blue);
+  --support-brand: var(--brand-blue);
   --support-muted: light-dark(#566674, #b7c4d3);
   --support-line: light-dark(#dce7ef, #405064);
   --support-tint: light-dark(#eef7ff, #253447);
@@ -186,7 +186,7 @@
   position: absolute;
   inset: 7% 7% auto auto;
   width: clamp(38px, 5vw, 78px);
-  color: light-dark(#71a9dc, #75b4e7);
+  color: var(--brand-blue);
   stroke: currentColor;
   stroke-width: 8;
   stroke-linecap: round;
@@ -236,8 +236,8 @@
 }
 .lifecyclePanel {
   --ui-ink: #f7fbff;
-  border-color: light-dark(#2a638d, #4a7599);
-  background: linear-gradient(155deg, #2b6893, #153f61 84%);
+  border-color: var(--brand-blue);
+  background: var(--brand-on-blue);
   color: var(--ui-ink);
 }
 .lifecyclePanel::after {
@@ -247,7 +247,7 @@
   width: 39%;
   aspect-ratio: 1.6;
   border-radius: 70% 30% 0 0;
-  background: #83c8ef85;
+  background: color-mix(in srgb, var(--brand-blue) 52%, transparent);
   transform: rotate(-22deg);
   content: "";
 }
@@ -299,7 +299,7 @@
   inset-inline: 12.5%;
   top: 10px;
   height: 3px;
-  background: linear-gradient(90deg, #83d0fa, #e8f7ff 20%);
+  background: linear-gradient(90deg, var(--brand-blue), #e8f7ff 20%);
   transform-origin: right;
   animation: draw 850ms 250ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
@@ -317,7 +317,7 @@
   background: #f7fbff;
 }
 .lifecycle li:last-child::before {
-  background: #83d0fa;
+  background: var(--brand-blue);
 }
 .tags {
   display: flex;
@@ -467,7 +467,7 @@
 .galleryCopy p {
   font-size: 0.9rem;
   max-width: 48ch;
-  color: light-dark(#354c5e, #9fcdf0);
+  color: light-dark(#354c5e, var(--brand-blue));
 }
 .galleryCopy ul {
   display: flex;

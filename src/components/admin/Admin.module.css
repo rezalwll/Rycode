@@ -6,8 +6,7 @@
   --admin-line: #dbe5f0;
   --admin-ink: #182b46;
   --admin-muted: #53677f;
-  --admin-accent: var(--brand-blue-deep);
-  --admin-accent-hover: color-mix(in srgb, var(--brand-blue-deep) 75%, var(--admin-ink));
+  --admin-accent: var(--brand-blue);
   --admin-shadow: 0 12px 36px rgb(24 55 100 / 7%);
   color-scheme: light;
   min-height: 100svh;
@@ -299,12 +298,12 @@
 }
 .root .primary {
   background: var(--admin-accent) !important;
-  color: #fff !important;
+  color: var(--brand-on-blue) !important;
   border-color: var(--admin-accent) !important;
 }
 .root .primary:not(:disabled):is(:hover, :focus-visible) {
-  background: var(--admin-accent-hover) !important;
-  border-color: var(--admin-accent-hover) !important;
+  background: var(--brand-blue-hover) !important;
+  border-color: var(--brand-blue) !important;
 }
 .grid {
   display: grid;
@@ -366,7 +365,7 @@
 .badge:is([data-status="NEW"], [data-status="SCHEDULED"]) {
   background: #e9f4ff;
   border-color: #cae4f9;
-  color: #145685;
+  color: var(--brand-blue);
 }
 .badge:is([data-status="PUBLISHED"], [data-status="WON"]) {
   background: #eaf7ef;
@@ -423,7 +422,7 @@
   position: absolute;
   z-index: -1;
   inset: 18% 18% 24%;
-  background: #70afe5;
+  background: var(--brand-blue);
   mask: url("/brand/rycode-mark.svg") center / contain no-repeat;
   opacity: 0.27;
   content: "";
@@ -629,7 +628,7 @@
   text-align: start;
 }
 .root .leadRow[aria-expanded="true"] {
-  border-color: #93c5eb;
+  border-color: var(--brand-blue);
   background: var(--admin-soft);
 }
 .leadIdentity,

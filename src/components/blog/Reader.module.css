@@ -43,7 +43,7 @@
 .reader a[aria-current="location"] {
   color: var(--journal-blue);
   background: var(--journal-panel);
-  border-inline-start-color: #3498db;
+  border-inline-start-color: var(--brand-blue);
 }
 .subheading {
   padding-inline-start: 12px;
@@ -68,7 +68,7 @@
 .progress > span {
   display: block;
   height: 100%;
-  background: #3498db;
+  background: var(--brand-blue);
 }
 :global(html:has(.rycode-header--scrolled)) .progress {
   top: 61px;

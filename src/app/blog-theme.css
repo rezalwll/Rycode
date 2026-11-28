@@ -103,7 +103,7 @@
   color: var(--blog-muted);
 }
 .blog-colorful :is(a, button):focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }
 
 /* The featured stories sit on photography, independently of the light canvas. */
@@ -141,10 +141,10 @@
   color: light-dark(#1a1a1a, #bdcbd9) !important;
 }
 .rycode-public .blog-colorful [data-blog-card] .framer-ef2y83 .framer-text {
-  color: light-dark(#596576, #9fcdf0) !important;
+  color: light-dark(#596576, var(--brand-blue)) !important;
 }
 .rycode-public .blog-colorful [data-blog-card] .framer-1l76jpf .framer-text {
-  color: light-dark(#66529b, #9fcdf0) !important;
+  color: light-dark(#66529b, var(--brand-blue)) !important;
 }
 
 @media (max-width: 767px) {

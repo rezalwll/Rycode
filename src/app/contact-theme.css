@@ -107,7 +107,7 @@
   .framer-UUxDN
   .framer-n76Tz:is(:hover, :focus-visible)
   .framer-text {
-  color: var(--ui-blue) !important;
+  color: var(--brand-blue) !important;
 }
 .rycode-public .framer-UUxDN #project-inquiry > [role="status"] {
   color: var(--ui-ink);

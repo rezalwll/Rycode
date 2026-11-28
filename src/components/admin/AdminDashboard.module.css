@@ -48,7 +48,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #315e83;
+  color: var(--brand-blue);
   font-size: 13px;
   font-weight: 650;
 }
@@ -111,7 +111,7 @@
 
 .queue strong,
 .publication strong {
-  color: #194e75;
+  color: var(--brand-blue);
 }
 .chevron {
   color: #64809a;
@@ -125,7 +125,7 @@
   flex: none;
   place-items: center;
   border-radius: 11px;
-  color: #196798;
+  color: var(--brand-blue);
   background: #e3f1fd;
 }
 
@@ -179,7 +179,7 @@
   position: absolute;
   inset-block-start: 19px;
   inset-inline-end: 19px;
-  color: #547b9a;
+  color: var(--brand-blue);
 }
 .metricLabel {
   color: #354f67;
@@ -216,7 +216,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #1b6598 !important;
+  color: var(--brand-blue) !important;
   font-size: 12px;
   font-weight: 650;
   text-underline-offset: 4px;
@@ -269,7 +269,7 @@
   font-size: 12px;
 }
 .range a[aria-current] {
-  color: #195e91;
+  color: var(--brand-blue);
   font-weight: 700;
   background: #fff;
   box-shadow: 0 1px 4px #173f711a;
@@ -307,13 +307,13 @@
   inline-size: 75%;
   max-inline-size: 48px;
   border-radius: 7px 7px 0 0;
-  background: linear-gradient(0deg, #7db9e8, #accfed);
+  background: var(--brand-blue-light);
 }
 .chart span[data-latest="true"] {
-  background: linear-gradient(0deg, #22679e, #4097d2);
+  background: var(--brand-blue);
 }
 .chart > div:hover span {
-  background: #3c8cc8;
+  outline: 1px solid var(--brand-on-blue);
 }
 .chartDates {
   display: flex;
@@ -346,7 +346,7 @@
 }
 .empty svg,
 .chartEmpty svg {
-  color: #497a9e;
+  color: var(--brand-blue);
   flex-shrink: 0;
 }
 .rowText {

@@ -518,7 +518,7 @@
   .capability-card-link-arrow {
   background: var(--brand-blue-wash);
   border-color: color-mix(in srgb, var(--brand-blue) 45%, var(--ui-line));
-  color: var(--brand-blue-deep);
+  color: var(--brand-blue);
 }
 @media (max-width: 809px) {
   .rycode-services-source .features-expanded .capability-card {

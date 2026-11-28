@@ -162,7 +162,7 @@
   .capability-card-link:focus-visible
   .capability-card-link-copy
   > strong {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .rycode-public
   .home-colorful

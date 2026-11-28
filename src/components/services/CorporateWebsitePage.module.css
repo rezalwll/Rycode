@@ -1,7 +1,7 @@
 :global(.rycode-public) .page {
   --ink: light-dark(#303b48, #edf2f8);
   --muted: light-dark(#607080, #b7c4d3);
-  --blue: var(--brand-blue-ink);
+  --blue: var(--brand-blue);
   --line: light-dark(#dce6ef, #405064);
   color: var(--ink);
   background: var(--ui-surface, #fff);
@@ -48,7 +48,7 @@
 }
 .heroNav a:hover,
 .related a:hover {
-  color: light-dark(#1f668f, #9fcdf0);
+  color: var(--brand-blue);
 }
 .hero {
   display: grid;
@@ -68,7 +68,7 @@
 }
 .hero h1 span {
   display: block;
-  color: light-dark(#14659b, #a1d4f6);
+  color: var(--brand-blue);
 }
 .heroDescription {
   max-width: 52ch;
@@ -95,17 +95,17 @@
   font-weight: 700;
 }
 .primary {
-  background: #14659b;
-  color: #fff;
-  border-color: light-dark(#14659b, #a1d4f6);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
+  border-color: var(--brand-blue);
 }
 .primary:hover {
   background: light-dark(#edf7fd, #253447);
-  color: light-dark(#1f668f, #9fcdf0);
+  color: var(--brand-blue);
 }
 .primary:hover {
-  background: #1f668f;
-  color: #fff;
+  background: var(--brand-blue-hover);
+  color: var(--brand-on-blue);
 }
 .heroFigure {
   min-width: 0;
@@ -193,12 +193,12 @@
   background: light-dark(#f5f9fc, #202833);
 }
 .typeChoice:has(input:checked) {
-  box-shadow: inset -3px 0 #3498db;
-  color: light-dark(#14659b, #a1d4f6);
+  box-shadow: inset -3px 0 var(--brand-blue);
+  color: var(--brand-blue);
 }
 .typeChoice:has(input:checked),
 .journeyChoices label:has(input:checked) {
-  border-color: #9ccde5;
+  border-color: var(--brand-blue);
   background: light-dark(#edf7fd, #253447);
 }
 .typeChoice input,
@@ -482,7 +482,7 @@
   gap: 10px;
 }
 .form [role="status"] {
-  color: #104973;
+  color: var(--brand-blue);
   border-color: var(--line);
 }
 .page section[id] {
@@ -490,7 +490,7 @@
 }
 .page :is(a, button, summary, input, textarea):focus-visible,
 .page label:has(input[type="radio"]:focus-visible) {
-  outline: 2px solid #14659b;
+  outline: 2px solid var(--brand-blue);
   outline-offset: 3px;
 }
 .faqs summary svg {

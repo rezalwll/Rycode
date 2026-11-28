@@ -429,11 +429,11 @@
   color: inherit;
 }
 .projectPage .rich a {
-  color: var(--ui-link, var(--brand-blue-ink));
+  color: var(--ui-link, var(--brand-blue));
 }
 .projectPage .rich blockquote {
   background: var(--ui-surface-muted, #e8edf0);
-  border-color: var(--brand-blue, #3498db);
+  border-color: var(--brand-blue);
 }
 .projectPage .rich pre {
   background: #18232b;
@@ -764,7 +764,7 @@
   text-decoration-color: var(--ui-purple, #c4b5fd);
 }
 .page :is(.rich a:not(.button), .aside a, .mobileToc a):is(:hover, :focus-visible) {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
   text-decoration-color: var(--brand-blue);
 }
 .page .rich li::marker,
@@ -774,16 +774,16 @@
 .page :is(.button, .primary, .preview),
 .page.servicePage :is(.primary, .aside .button),
 .page.projectPage .button {
-  background: var(--ui-blue, #a8d8ff);
-  color: var(--brand-ink, #303b48);
-  border-color: var(--ui-blue, #a8d8ff);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
+  border-color: var(--brand-blue);
   box-shadow: none;
 }
 .page :is(.button:hover, .button:focus-visible, .card:hover .arrow),
 .page.servicePage :is(.primary:hover, .aside .button:hover) {
-  background: var(--brand-blue-deep);
-  color: #fff;
-  border-color: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
+  border-color: var(--brand-blue);
 }
 .page.servicePage .primary span {
   background: var(--ui-surface, #fff);
@@ -794,7 +794,7 @@
   border-color: var(--ui-line, #e7e7e7);
 }
 .page :focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }
 
 .projectFacts {

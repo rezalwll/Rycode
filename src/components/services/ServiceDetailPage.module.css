@@ -88,7 +88,8 @@
 }
 .primary:hover,
 .primary:focus-visible {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .primary:hover span,
 .primary:focus-visible span {
@@ -323,8 +324,8 @@
   color: var(--ink);
 }
 .cta .primary:hover {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 @media (max-width: 850px) {
   .page {
@@ -617,7 +618,8 @@
   color: #fff;
 }
 .buildPage .cta .primary:hover {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 @media (max-width: 850px) {
   .buildProof {
@@ -742,8 +744,8 @@
 }
 .softwarePage .primary:hover,
 .softwarePage .primary:focus-visible {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .softwarePage .primary:hover span,
 .softwarePage .primary:focus-visible span {
@@ -992,7 +994,7 @@
     transform 0.3s;
 }
 .moduleCard:hover i {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .softwareArchitecture {
   display: grid;
@@ -1180,7 +1182,8 @@
   color: #fff;
 }
 .softwarePage .cta .primary:hover {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 @media (max-width: 850px) {
   .softwareHeroVisual {
@@ -1336,8 +1339,8 @@
 }
 .softwareLight .primary:hover,
 .softwareLight .primary:focus-visible {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .softwareLight .primary:hover span,
 .softwareLight .primary:focus-visible span {
@@ -1399,7 +1402,7 @@
   color: #8a9690;
 }
 .softwareLight .moduleCard:hover i {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .softwareLight .softwareArchitecture {
   border-color: #d7ddd8;
@@ -1479,8 +1482,8 @@
   color: #171918;
 }
 .softwareLight .cta .primary:hover {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 @media (max-width: 850px) {
   .softwareLight .systemFlow li:nth-child(odd) {
@@ -2103,8 +2106,8 @@
 }
 .rescuePage .primary:hover,
 .rescuePage .primary:focus-visible {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .rescuePage .primary:hover span,
 .rescuePage .primary:focus-visible span {
@@ -2476,7 +2479,8 @@
   color: #fff;
 }
 .rescuePage .cta .primary:hover {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 @media (max-width: 850px) {
   .rescuePage .hero {
@@ -3390,8 +3394,8 @@
 }
 .brutalistPage .primary:hover span,
 .brutalistPage .primary:focus-visible span {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .brutalistPage .connectWorkflowVisual {
   min-height: 630px;
@@ -3573,7 +3577,8 @@
 }
 .brutalistPage .connectFlowGrid article:hover {
   border-color: var(--line);
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .brutalistPage .connectFlowGrid article > span {
   color: var(--acid);
@@ -3629,7 +3634,7 @@
   color: #434c3d;
 }
 .brutalistPage .beforeAfterHead span:last-child {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .brutalistPage .beforeAfterRow {
   border-color: #6e863e;
@@ -3638,7 +3643,7 @@
   color: #5a654e;
 }
 .brutalistPage .beforeAfterRow b {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .brutalistPage .beforeAfterRow strong {
   color: #111a15;
@@ -3659,7 +3664,8 @@
   background: transparent;
 }
 .brutalistPage .connectServiceGrid article:hover {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .brutalistPage .connectServiceGrid article > span {
   color: var(--acid);
@@ -3731,8 +3737,8 @@
   color: #a2a49d;
 }
 .brutalistPage .specialty:hover {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .brutalistPage .specialty:hover p {
   color: #fff;
@@ -4744,7 +4750,8 @@
 }
 .ledgerPage .primary:hover,
 .ledgerPage .primary:focus-visible {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .ledgerPage .primary:hover span,
 .ledgerPage .primary:focus-visible span {
@@ -5295,7 +5302,7 @@
   --cream: #0d1731;
   --paper: #152343;
   --accent: #d9ff4f;
-  --cyan: #75d8ff;
+  --cyan: var(--brand-blue);
   --coral: #ff6754;
   background:
     radial-gradient(ellipse 42% 32% at 82% 2%, #416aff31, transparent 70%),
@@ -5314,7 +5321,7 @@
   color: #8493b1;
 }
 .seoPage .breadcrumb a:hover {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .seoPage .hero {
   min-height: 700px;
@@ -5522,7 +5529,7 @@
   height: 5px;
   border-radius: 99px;
   background: linear-gradient(90deg, var(--cyan), var(--accent));
-  box-shadow: 0 0 13px #75d8ff44;
+  box-shadow: 0 0 13px color-mix(in srgb, var(--brand-blue) 27%, transparent);
 }
 .growthArtwork {
   position: absolute;
@@ -5651,7 +5658,7 @@
     border-color 0.35s;
 }
 .growthChannelGrid article:hover {
-  border-color: #75d8ff77;
+  border-color: color-mix(in srgb, var(--brand-blue) 47%, transparent);
   background: #1b2f58;
 }
 .growthChannelGrid article > span {
@@ -5962,7 +5969,7 @@
 }
 .page .primary,
 .page .cta .primary {
-  background: var(--ui-blue, #a8d8ff);
+  background: var(--brand-blue);
   color: #1a1a1a;
 }
 .page .primary span {
@@ -5971,15 +5978,15 @@
 }
 .page .primary:is(:hover, :focus-visible),
 .page .cta .primary:hover {
-  background: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .page .primary:is(:hover, :focus-visible) span {
   background: var(--ui-surface);
 }
 .page .heroMedia {
   background: var(--ui-surface);
-  box-shadow: 18px 20px 0 var(--ui-blue, #a8d8ff);
+  box-shadow: 18px 20px 0 var(--brand-blue);
 }
 
 /* SEO/growth service: align the long-form page with the public homepage language. */
@@ -6084,7 +6091,7 @@
   color: #777;
 }
 .growthPage .growthRankRow i {
-  color: #238ac2;
+  color: var(--brand-blue);
 }
 .growthPage .growthChannelGrid article {
   border-color: var(--line);
@@ -6241,7 +6248,7 @@
 :global(.dark) .rescuePage .rescueFinding i,
 :global(.dark) .brutalistPage .connectNodeTrigger :is(span, b, strong, small),
 :global(.dark) .brutalistPage .connectProof b {
-  color: var(--ui-on-accent);
+  color: var(--brand-on-blue);
 }
 
 :global(.dark) .currentPage :is(.systemFlow li, .processList li, .moduleCard, .planCard),

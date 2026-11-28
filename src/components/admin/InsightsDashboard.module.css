@@ -90,7 +90,7 @@
 
 .tabs > button[aria-pressed="true"] {
   background: var(--admin-soft);
-  color: #125a8c;
+  color: var(--brand-blue);
   border-color: #cadff4;
   font-weight: 720;
 }
@@ -155,7 +155,7 @@
   block-size: 37px;
   border-radius: 12px;
   background: #dcedfc;
-  color: #18699f;
+  color: var(--brand-blue);
   margin-block-end: 3px;
 }
 
@@ -229,7 +229,7 @@
   border-radius: 4px 4px 0 0;
 }
 .viewBar {
-  background: linear-gradient(#368cce, #1c669f);
+  background: var(--brand-blue);
 }
 .leadBar {
   background: #238360;
@@ -258,7 +258,7 @@
   inline-size: 9px;
   block-size: 9px;
   margin-inline-end: 6px;
-  background: #287cbd;
+  background: var(--brand-blue);
 }
 .chartLegend span:nth-child(2)::before {
   background: #238360;
@@ -271,7 +271,7 @@
   color: var(--admin-muted);
 }
 .peak {
-  color: #145d90;
+  color: var(--brand-blue);
   font-size: 13px;
   font-weight: 650;
 }
@@ -306,7 +306,7 @@
   background: #edf3f9;
 }
 .heatmap td:hover {
-  outline: 2px solid #2b84be;
+  outline: 2px solid var(--brand-blue);
 }
 
 .sr {
@@ -336,7 +336,7 @@
 }
 .rank strong {
   font-variant-numeric: tabular-nums;
-  color: #125b89;
+  color: var(--brand-blue);
 }
 .rank small {
   grid-column: 1 / -1;
@@ -353,7 +353,7 @@
   display: block;
   block-size: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #379bd6, #17689d);
+  background: var(--brand-blue);
 }
 .table {
   border-collapse: collapse;
@@ -410,7 +410,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: #155d90 !important;
+  color: var(--brand-blue) !important;
   text-underline-offset: 4px;
 }
 .textLink:hover {
@@ -425,7 +425,7 @@
 .searchTotals strong {
   display: block;
   font-size: 25px;
-  color: #145d90;
+  color: var(--brand-blue);
 }
 .status {
   color: #17654f;
@@ -435,7 +435,7 @@
   padding: 2px 8px;
   border-radius: 7px;
   background: #e8f4ff;
-  color: #175683;
+  color: var(--brand-blue);
   white-space: nowrap;
   font-size: 11px;
 }

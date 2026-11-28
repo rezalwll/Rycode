@@ -43,7 +43,7 @@
   padding: 0 17px;
   border-radius: 999px;
   border: 1px solid light-dark(#dfe3eb, var(--ui-line));
-  color: var(--ui-link, var(--brand-blue-deep));
+  color: var(--ui-link, var(--brand-blue));
   background: var(--journal-surface);
   font-size: 14px;
   text-decoration: none;
@@ -85,7 +85,7 @@
 }
 .card:focus-visible,
 .allArticles:focus-visible {
-  outline: 2px solid var(--ui-link, var(--brand-blue-deep));
+  outline: 2px solid var(--ui-link, var(--brand-blue));
   outline-offset: 4px;
 }
 .featured .card {
@@ -169,7 +169,7 @@
   gap: 7px;
   margin-top: auto;
   padding-top: 6px;
-  color: var(--ui-link, var(--brand-blue-deep));
+  color: var(--ui-link, var(--brand-blue));
   font-size: 13px;
   line-height: 1.6;
 }

@@ -17,12 +17,10 @@
   --ui-surface-muted: #f2f2f2;
   --ui-field: #f2f3f6;
   --ui-rule: #dde3eb;
-  --ui-blue: var(--brand-blue-light);
   --ui-purple: #c4b5fd;
   --ui-ink: var(--brand-ink);
   --ui-muted: #5f6d7b;
-  --ui-link: var(--brand-blue-ink);
-  --ui-on-accent: #142235;
+  --ui-link: var(--brand-blue);
   --ui-line: #e7e7e7;
   --button-surface: #fff;
   --button-primary: #f2eefb;
@@ -68,8 +66,6 @@ html.dark:has(.rycode-public) {
   color-scheme: dark;
 }
 .dark .rycode-public {
-  --brand-blue-heading: var(--brand-blue);
-  --brand-blue-ink: var(--brand-blue-light);
   --brand-blue-wash: color-mix(in srgb, var(--brand-blue) 24%, #19222e);
   --ui-canvas: #131922;
   --ui-surface: #202a37;
@@ -93,7 +89,7 @@ html.dark:has(.rycode-public) {
   --framer-text-color: var(--ui-ink);
 }
 .rycode-public :is(a, button, input, select, textarea):focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }
 .rycode-public .brand-accent {
   color: var(--brand-blue);
@@ -107,7 +103,7 @@ html.dark:has(.rycode-public) {
   --surface-2: var(--ui-surface);
   --muted-foreground: var(--ui-muted);
   --border: var(--ui-line);
-  --brand: var(--brand-blue-ink);
+  --brand: var(--brand-blue);
   --brand-foreground: #fff;
   --brand-soft: var(--ui-surface);
 }
@@ -149,7 +145,7 @@ html.dark:has(.rycode-public) {
 .rycode-public
   .rycode-source-header
   :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
-  --submenu-accent: var(--brand-blue-ink);
+  --submenu-accent: var(--brand-blue);
   --submenu-wash: var(--ui-surface);
   --submenu-edge: var(--ui-line);
 }
@@ -169,7 +165,7 @@ html.dark:has(.rycode-public) {
   --accent-blue: var(--brand-blue);
   --accent-purple: var(--ui-purple);
   --action: var(--ui-purple);
-  --action-hover: var(--ui-blue);
+  --action-hover: var(--brand-blue);
   --action-foreground: var(--ui-ink);
   --surface: var(--ui-surface);
   --background: var(--ui-canvas);
@@ -182,7 +178,7 @@ html.dark:has(.rycode-public) {
   display: none;
 }
 .rycode-public .rycode-services-source .capability-card {
-  --feature-accent: var(--ui-blue) !important;
+  --feature-accent: var(--brand-blue) !important;
 }
 .rycode-public .rycode-services-source .capability-card:nth-child(even) {
   --feature-accent: var(--ui-purple) !important;
@@ -242,7 +238,7 @@ html.dark:has(.rycode-public) {
   .rycode-source-header
   .reference-overlay-header
   :is(a, button):focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }
 .rycode-public .framer-obWCA {
   background-color: var(--button-surface) !important;

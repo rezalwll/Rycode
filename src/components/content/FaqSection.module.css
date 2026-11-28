@@ -58,7 +58,7 @@
   display: none;
 }
 .item summary:focus-visible {
-  outline: 2px solid var(--brand-blue-ink);
+  outline: 2px solid var(--brand-blue);
   outline-offset: 4px;
 }
 .number {
@@ -91,9 +91,9 @@
 }
 .item[open] .toggle,
 .item summary:is(:hover, :focus-visible) .toggle {
-  background: var(--brand-blue-deep);
-  border-color: var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .toggle::before,
 .toggle::after {

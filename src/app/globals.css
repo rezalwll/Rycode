@@ -1969,7 +1969,7 @@
   position: relative;
 }
 .framer-HujZo .framer-1nayp60 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   --framer-text-wrap-override: balance;
   will-change: var(--framer-will-change-effect-override, transform);
@@ -2009,7 +2009,7 @@
 .framer-HujZo .framer-cbwn29,
 .framer-HujZo .framer-1g2fgsz,
 .framer-HujZo .framer-210su5 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   --framer-text-wrap-override: balance;
   flex: none;
@@ -2363,7 +2363,7 @@
 .framer-HujZo .framer-nzqaho,
 .framer-HujZo .framer-11v9pfh,
 .framer-HujZo .framer-24gi9 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   word-break: break-word;
@@ -2419,7 +2419,7 @@
 }
 .framer-HujZo .framer-1r8xfgy,
 .framer-HujZo .framer-1qe5fjj {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre;
   flex: none;
@@ -2911,7 +2911,7 @@
   position: relative;
 }
 .framer-HujZo .framer-swkk2m {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   word-break: break-word;
@@ -11743,7 +11743,7 @@ html body {
 .framer-UUxDN .framer-1e8pes4,
 .framer-UUxDN .framer-lryk23,
 .framer-UUxDN .framer-1b7a1y6 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre;
   flex: none;
@@ -11752,7 +11752,7 @@ html body {
   position: relative;
 }
 .framer-UUxDN .framer-1d753wm {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   --framer-text-wrap-override: balance;
   flex: none;
@@ -11833,7 +11833,7 @@ html body {
   overflow: visible;
 }
 .framer-UUxDN .framer-4ent3p {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   --framer-text-wrap-override: balance;
   will-change: var(--framer-will-change-effect-override, transform);
@@ -13957,7 +13957,7 @@ html body {
 }
 .framer-KWZQu .framer-1hus8nl,
 .framer-KWZQu .framer-1ps20o6 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   will-change: var(--framer-will-change-effect-override, transform);
@@ -14016,7 +14016,7 @@ html body {
 .framer-KWZQu .framer-773cuu,
 .framer-KWZQu .framer-5624k4,
 .framer-KWZQu .framer-s7u1u1 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre;
   flex: none;
@@ -18050,7 +18050,7 @@ NavigationContainer [data-framer-component-type="NavigationContainer"] > *,
   overflow: visible;
 }
 .framer-aLubk .framer-r2eclc {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   will-change: var(--framer-will-change-effect-override, transform);
@@ -18120,7 +18120,7 @@ NavigationContainer [data-framer-component-type="NavigationContainer"] > *,
   overflow: visible;
 }
 .framer-aLubk .framer-1nfrmii {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   word-break: break-word;
@@ -18208,7 +18208,7 @@ NavigationContainer [data-framer-component-type="NavigationContainer"] > *,
   position: relative;
 }
 .framer-aLubk .framer-1ue0kjd {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   --framer-text-wrap-override: balance;
   will-change: var(--framer-will-change-effect-override, transform);
@@ -18272,7 +18272,7 @@ NavigationContainer [data-framer-component-type="NavigationContainer"] > *,
   position: relative;
 }
 .framer-aLubk .framer-1c24cm2 {
-  --framer-link-text-color: #09f;
+  --framer-link-text-color: var(--brand-blue);
   --framer-link-text-decoration: underline;
   white-space: pre-wrap;
   word-break: break-word;

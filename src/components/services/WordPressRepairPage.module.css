@@ -1,8 +1,7 @@
 .page {
   --ink: light-dark(#243443, #edf2f8);
   --muted: light-dark(#53687b, #b7c4d3);
-  --blue: var(--brand-blue-ink);
-  --blue-dark: light-dark(#104b75, #a1d4f6);
+  --blue: var(--brand-blue);
   --line: light-dark(#d8e5ef, #405064);
   --tint: light-dark(#eff7fd, #253447);
   --ui-ink: var(--ink);
@@ -82,7 +81,7 @@
 .intro h1 {
   width: fit-content;
   padding-inline-start: 10px;
-  border-inline-start: 3px solid #3498db;
+  border-inline-start: 3px solid var(--brand-blue);
   color: var(--blue);
   font-size: 0.95rem;
 }
@@ -127,13 +126,13 @@
     border-color 180ms;
 }
 .page .primary {
-  background: light-dark(var(--blue), #245b80);
+  background: light-dark(var(--blue), var(--brand-blue));
   color: #fff;
   border-color: var(--blue);
 }
 .page .primary:not(:disabled):hover {
-  background: light-dark(var(--blue-dark), #245b80);
-  border-color: var(--blue-dark);
+  background: var(--brand-blue-hover);
+  border-color: var(--brand-blue);
 }
 .page .primary:disabled {
   opacity: 0.7;
@@ -182,12 +181,12 @@
   color: var(--blue);
 }
 .choices label:hover span {
-  border-color: #87b6d8;
+  border-color: var(--brand-blue);
 }
 .choices input:checked + span {
-  border-color: #3680b6;
+  border-color: var(--brand-blue);
   background: light-dark(#dceeff, #253447);
-  color: var(--blue-dark);
+  color: var(--brand-blue);
 }
 .visuallyHidden,
 .choices input {
@@ -213,7 +212,7 @@
   padding: 4px 0;
   border-block-end: 1px solid var(--line);
   background: light-dark(#f5f9fc, #202833);
-  color: light-dark(#41617c, #9fcdf0);
+  color: var(--brand-blue);
   font:
     0.75rem system-ui,
     sans-serif;
@@ -231,7 +230,7 @@
   background: #9ab6cb;
 }
 .dots i:first-child {
-  background: #5399cc;
+  background: var(--brand-blue);
 }
 .browserBody {
   --preview-ink: light-dark(#8a492a, #edf2f8);
@@ -351,7 +350,7 @@
   gap: 8px;
   padding: 14px;
   border: 1px solid var(--line);
-  border-block-start: 2px solid #75aad1;
+  border-block-start: 2px solid var(--brand-blue);
   border-radius: 9px;
 }
 .steps li > span {
@@ -486,7 +485,7 @@
   resize: vertical;
 }
 .form [role="status"] {
-  color: var(--blue-dark);
+  color: var(--brand-blue);
   border-color: var(--line);
 }
 .related {

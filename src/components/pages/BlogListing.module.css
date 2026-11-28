@@ -167,7 +167,8 @@
 }
 .search button:hover,
 .pagination a:hover {
-  background: var(--ui-blue, #a8d8ff);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
   border-color: transparent;
 }
 .search input:focus {
@@ -178,5 +179,5 @@
   color: var(--ui-purple, #c4b5fd);
 }
 .listing :focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }

@@ -3,10 +3,8 @@
   --about-muted: var(--ui-muted, #5f6d7b);
   --about-line: var(--ui-line, #e7e7e7);
   --about-card: #f6f7f8;
-  --about-accent: var(--brand-blue-ink);
+  --about-accent: var(--brand-blue);
   --about-soft: #edf6fc;
-  --about-button: #225478;
-  --about-button-hover: #184466;
   width: 100%;
   color: var(--about-ink);
   text-align: start;
@@ -18,8 +16,6 @@
   --about-line: #3b4552;
   --about-card: #222830;
   --about-soft: #233747;
-  --about-button: #245b80;
-  --about-button-hover: #2e658a;
   background: #171b21;
 }
 
@@ -128,15 +124,15 @@
   gap: 10px;
   padding: 8px 16px;
   border-radius: 8px;
-  background: var(--about-button);
-  color: #fff;
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
   font-size: 0.88rem;
   font-weight: 700;
   transition: background-color 220ms ease;
 }
 
 .button:is(:hover, :focus-visible) {
-  background: var(--about-button-hover);
+  background: var(--brand-blue-hover);
 }
 
 .arrow {

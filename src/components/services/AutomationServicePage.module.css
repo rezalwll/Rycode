@@ -1,12 +1,12 @@
 .page {
-  --blueprint: var(--brand-blue-ink);
+  --blueprint: var(--brand-blue);
   --paper: var(--ui-canvas, #fff);
   --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --ui-ink: var(--ink);
   --muted: light-dark(#687482, #b7c4d3);
   --accent: light-dark(var(--brand-purple, #8b6bda), var(--ui-purple));
   --rule: light-dark(#e4e8ee, #405064);
-  --grid: rgb(52 152 219 / 10%);
+  --grid: color-mix(in srgb, var(--brand-blue) 10%, transparent);
   --soft: light-dark(#f7f8fb, #253447);
   --gutter: clamp(72px, 10vw, 144px);
   --far-gutter: clamp(20px, 2.6vw, 32px);
@@ -43,7 +43,7 @@
 }
 
 .blue {
-  --blueprint: var(--brand-blue, #3498db);
+  --blueprint: var(--brand-blue);
   --ink: #fff;
   --ui-ink: var(--ink);
   --muted: rgb(255 255 255 / 76%);
@@ -62,7 +62,7 @@
   --ui-ink: var(--ink);
   --muted: light-dark(#687482, #b7c4d3);
   --rule: light-dark(#dce6ef, #405064);
-  --grid: rgb(52 152 219 / 12%);
+  --grid: color-mix(in srgb, var(--brand-blue) 12%, transparent);
   color: var(--ink);
   background-color: var(--ui-surface, #fff);
   background-image:
@@ -83,8 +83,8 @@
 }
 .hero.blue .shortcuts a:hover,
 .hero.blue .indexStrip a:hover {
-  background: rgb(52 152 219 / 10%);
-  color: var(--brand-blue, #3498db);
+  background: color-mix(in srgb, var(--brand-blue) 10%, transparent);
+  color: var(--brand-blue);
 }
 
 .hero,
@@ -172,9 +172,9 @@
 }
 .hero .rail span,
 .motionReady .inner:has(> .revealed) .rail span {
-  background: var(--brand-blue, #3498db);
-  border-color: var(--brand-blue, #3498db);
-  color: #fff;
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 .hero .rail small {
   color: #fff;
@@ -243,13 +243,13 @@
 .actions .primary {
   background: var(--ui-link);
   border-color: var(--ui-link);
-  color: light-dark(#fff, var(--ui-on-accent));
-  box-shadow: 0 10px 24px rgb(52 152 219 / 20%);
+  color: var(--brand-on-blue);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-blue) 20%, transparent);
 }
 .actions .primary:is(:hover, :focus-visible) {
-  background: var(--brand-blue-deep);
-  border-color: var(--brand-blue-deep);
-  box-shadow: 0 12px 26px rgb(52 152 219 / 28%);
+  background: var(--brand-blue-hover);
+  border-color: var(--brand-blue);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--brand-blue) 28%, transparent);
 }
 
 .crosshair {
@@ -287,8 +287,8 @@
   color: var(--ink);
   background-color: var(--ui-surface, #fff);
   background-image:
-    linear-gradient(rgb(52 152 219 / 10%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(52 152 219 / 10%) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--brand-blue) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand-blue) 10%, transparent) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 .shortcuts::before {
@@ -297,14 +297,14 @@
   inset: -6px;
   pointer-events: none;
   background:
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 1px 10px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 0 / 10px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 1px 10px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 0 / 10px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 1px 10px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 0 100% / 10px 1px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 1px 10px no-repeat,
-    linear-gradient(var(--brand-blue, #3498db), var(--brand-blue, #3498db)) 100% 100% / 10px 1px no-repeat;
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 0 0 / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 0 0 / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 100% 0 / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 100% 0 / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 0 100% / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 0 100% / 10px 1px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 100% 100% / 1px 10px no-repeat,
+    linear-gradient(var(--brand-blue), var(--brand-blue)) 100% 100% / 10px 1px no-repeat;
   opacity: 0.48;
 }
 .shortcuts a {
@@ -331,8 +331,8 @@
   animation-delay: 370ms;
 }
 .shortcuts a:hover {
-  background: rgb(52 152 219 / 10%);
-  color: var(--brand-blue, #3498db);
+  background: color-mix(in srgb, var(--brand-blue) 10%, transparent);
+  color: var(--brand-blue);
 }
 .shortcuts strong {
   font-size: clamp(0.94rem, 1.34vw, 1.2rem);
@@ -402,7 +402,7 @@
   gap: 14px;
 }
 .service {
-  --service-accent: var(--brand-blue-ink);
+  --service-accent: var(--brand-blue);
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.95fr) minmax(0, 1.16fr);
   gap: clamp(14px, 2.1vw, 29px);
@@ -595,7 +595,7 @@
 }
 .demo button[aria-pressed="true"] {
   background: var(--ui-purple);
-  color: var(--ui-on-accent);
+  color: var(--brand-on-blue);
   border-color: var(--accent);
 }
 .demoBody {
@@ -667,7 +667,7 @@
 .demoResults li {
   font-size: 0.9rem;
   animation: enter 420ms 390ms both;
-  border-inline-start: 3px solid var(--brand-blue, #3498db);
+  border-inline-start: 3px solid var(--brand-blue);
 }
 .demoResults li:nth-child(2) {
   animation-delay: 470ms;
@@ -803,7 +803,7 @@
 }
 .related li a:is(:hover, :focus-visible) {
   border-color: var(--brand-blue);
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
   background: var(--button-hover);
 }
 .motionReady [data-reveal] {
@@ -822,13 +822,13 @@
   --ui-ink: var(--ink);
   --muted: light-dark(#687482, #b7c4d3);
   --rule: light-dark(#e4e8ee, #405064);
-  --grid: rgb(52 152 219 / 8%);
+  --grid: color-mix(in srgb, var(--brand-blue) 8%, transparent);
   color: var(--ink);
   background-color: light-dark(#f7f8fb, #202833);
   background-image: none;
 }
 :global(#automation-examples).blue .rail {
-  color: var(--brand-blue, #3498db);
+  color: var(--brand-blue);
 }
 :global(#automation-examples).blue .rail span,
 :global(#automation-examples).blue .rail small {

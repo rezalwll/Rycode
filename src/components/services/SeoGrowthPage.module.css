@@ -1,7 +1,7 @@
 :global(.rycode-public) .page[data-seo-growth-page] {
   --ink: light-dark(var(--brand-ink, #303b48), #edf2f8);
   --muted: light-dark(#536173, #b7c4d3);
-  --blue: var(--brand-blue-ink);
+  --blue: var(--brand-blue);
   --purple: light-dark(#6e51ac, #cfb9fa);
   --line: light-dark(#dde5ee, #405064);
   --soft: light-dark(#f4f8fc, #253447);
@@ -72,7 +72,7 @@
   width: min(43vw, 710px);
   height: 26%;
   rotate: -14deg;
-  background: linear-gradient(105deg, light-dark(#8dbcf2, #365c88), transparent 80%);
+  background: linear-gradient(105deg, light-dark(color-mix(in srgb, var(--brand-blue) 45%, transparent), color-mix(in srgb, var(--brand-blue) 45%, transparent)), transparent 80%);
 }
 
 .intro::after {
@@ -80,7 +80,7 @@
   width: min(49vw, 820px);
   height: 42%;
   rotate: -27deg;
-  background: linear-gradient(155deg, transparent 15%, light-dark(#b4d4f7, #304b6d));
+  background: linear-gradient(155deg, transparent 15%, light-dark(color-mix(in srgb, var(--brand-blue) 30%, transparent), color-mix(in srgb, var(--brand-blue) 30%, transparent)));
 }
 
 .hero {
@@ -158,7 +158,7 @@
 
 .primary {
   background: light-dark(#eaf4fc, #253447);
-  color: light-dark(#1d507c, #9fcdf0);
+  color: var(--brand-blue);
 }
 .primary:is(:hover, :focus-visible) {
   border-color: var(--brand-blue);

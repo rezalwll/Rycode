@@ -11,7 +11,7 @@
   --brand-foreground: #fff;
   --brand-soft: #e8e8e8;
   --logo-color: var(--brand-blue);
-  --accent-blue: var(--brand-blue-light);
+  --accent-blue: var(--brand-blue);
   --ui-duration: 280ms;
   --ui-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --source-header-background: var(--background);
@@ -124,7 +124,7 @@
 .rycode-public .rycode-source-header .rycode-language-link:hover {
   border-color: var(--brand-blue);
   background: var(--button-hover);
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
 }
 .rycode-source-header .rycode-theme-toggle {
   display: inline-flex;
@@ -153,7 +153,7 @@
     box-shadow 200ms ease;
 }
 .rycode-source-header .rycode-theme-option:hover {
-  color: var(--brand-blue-ink);
+  color: var(--brand-blue);
   background: var(--button-hover);
 }
 .rycode-source-header .rycode-theme-option[aria-pressed="true"] {

@@ -3,7 +3,7 @@
   --muted: light-dark(#586474, #b7c4d3);
   --line: light-dark(#e2e1ea, #405064);
   --panel: light-dark(#f2f2f8, #202833);
-  --primary: var(--brand-blue-ink);
+  --primary: var(--brand-blue);
   --purple: var(--brand-purple, #8b6bda);
   width: 100%;
   padding-block-end: clamp(48px, 6vw, 76px);
@@ -306,11 +306,11 @@
   height: 30px;
   border-radius: 8px;
   background: light-dark(#f2ebfd, #253447);
-  color: light-dark(#6547a8, #9fcdf0);
+  color: light-dark(#6547a8, var(--brand-blue));
 }
 
 .number {
-  color: light-dark(#6547a8, #9fcdf0);
+  color: light-dark(#6547a8, var(--brand-blue));
   font-size: 0.8rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -346,7 +346,7 @@
   block-size: 5px;
   margin-block-start: 0.75em;
   border-radius: 1px;
-  background: light-dark(#3876aa, #89b9ea);
+  background: var(--brand-blue);
   rotate: 45deg;
 }
 
@@ -509,7 +509,7 @@
 .closing {
   --closing-ink: light-dark(#10284c, #eef6ff);
   --closing-muted: light-dark(#4d5e76, #c6d7eb);
-  --closing-blue: var(--brand-blue-ink);
+  --closing-blue: var(--brand-blue);
   position: relative;
   isolation: isolate;
   display: grid;

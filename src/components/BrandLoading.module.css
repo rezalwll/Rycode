@@ -110,7 +110,7 @@
   display: block;
   block-size: 3px;
   overflow: hidden;
-  background: light-dark(#dcedfc, #193a55);
+  background: light-dark(#dcedfc, var(--brand-blue));
   direction: ltr;
 }
 
@@ -120,7 +120,7 @@
   inline-size: 34%;
   block-size: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #76a9f3, var(--brand-blue) 61%, #b3a3fc);
+  background: linear-gradient(90deg, var(--brand-blue-light), var(--brand-blue) 61%, #b3a3fc);
   animation: travel 1150ms ease-in-out infinite alternate;
 }
 

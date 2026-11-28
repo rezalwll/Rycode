@@ -2,8 +2,7 @@
   --ink: light-dark(#223345, #edf2f8);
   --muted: light-dark(#526577, #b7c4d3);
   --line: light-dark(#d9e5ef, #405064);
-  --blue: var(--brand-blue-ink);
-  --blue-dark: light-dark(#104d77, #a1d4f6);
+  --blue: var(--brand-blue);
   --blue-soft: light-dark(#eef7fe, #253447);
   background: var(--ui-surface, #fff);
   color: var(--ink);
@@ -110,13 +109,13 @@
     border-color 180ms;
 }
 .page .primary {
-  background: light-dark(var(--blue), #245b80);
+  background: light-dark(var(--blue), var(--brand-blue));
   color: #fff;
   border-color: var(--blue);
 }
 .page .primary:hover {
-  background: light-dark(var(--blue-dark), #245b80);
-  border-color: var(--blue-dark);
+  background: var(--brand-blue-hover);
+  border-color: var(--brand-blue);
 }
 
 .productStage {
@@ -133,7 +132,7 @@
   align-items: center;
   gap: 8px;
   padding: 0 0 12px;
-  color: var(--blue-dark);
+  color: var(--brand-blue);
   background: transparent;
   border-block-end: 1px solid var(--preview-line);
   font-size: 0.75rem;
@@ -199,7 +198,7 @@
   background: var(--ui-surface, #fff);
 }
 .metrics strong {
-  color: var(--blue-dark);
+  color: var(--brand-blue);
   font-size: clamp(0.98rem, 1.7vw, 1.45rem);
 }
 .chartPanel {
@@ -231,10 +230,10 @@
   width: 68%;
   margin-inline: auto;
   border-radius: 4px 4px 0 0;
-  background: #82bbdf;
+  background: var(--brand-blue);
 }
 .chartBars i:nth-child(2n) {
-  background: #368cc1;
+  background: var(--brand-blue);
 }
 .chartAxis {
   text-align: center;
@@ -264,7 +263,7 @@
 }
 .quickPaths a:hover {
   background: var(--blue-soft);
-  border-color: #9cc8e2;
+  border-color: var(--brand-blue);
 }
 .quickPaths svg {
   color: var(--blue);
@@ -381,7 +380,7 @@
   padding-block-start: 7px;
 }
 .solutionGrid li {
-  color: var(--blue-dark);
+  color: var(--brand-blue);
   font-size: 0.76rem;
 }
 

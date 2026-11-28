@@ -7,7 +7,7 @@
   overflow: clip;
   scroll-margin-block-start: 104px;
   border: 1px solid light-dark(#d1e3fb, #456384);
-  border-inline-start-color: light-dark(#72baff, #638ec1);
+  border-inline-start-color: var(--brand-blue);
   border-radius: clamp(18px, 2.1vw, 29px);
   background:
     radial-gradient(ellipse at 13% 58%, light-dark(#d5e6ff, #263d5f), transparent 62%),
@@ -75,7 +75,7 @@
   inset: 7% auto auto 6%;
   inline-size: 41%;
   block-size: 51%;
-  background: radial-gradient(circle at 2px 2px, light-dark(#75b5ff, #6596cd) 1.5px, transparent 2px) 0 0 / 14px 14px;
+  background: radial-gradient(circle at 2px 2px, var(--brand-blue) 1.5px, transparent 2px) 0 0 / 14px 14px;
   mask-image: linear-gradient(135deg, #000b, transparent 89%);
 }
 
@@ -84,7 +84,7 @@
   rotate: 24deg;
   border: 1px solid light-dark(#ffffffcf, #769bc36b);
   border-radius: 50%;
-  background: linear-gradient(145deg, light-dark(#91c5ff99, #4788d362), transparent 67%);
+  background: linear-gradient(145deg, light-dark(color-mix(in srgb, var(--brand-blue) 38%, transparent), color-mix(in srgb, var(--brand-blue) 38%, transparent)), transparent 67%);
 }
 
 .plate {

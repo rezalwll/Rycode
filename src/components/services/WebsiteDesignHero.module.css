@@ -1,7 +1,7 @@
 .hero {
   --hero-ink: light-dark(#242f45, #f0f5ff);
   --hero-muted: light-dark(#58637a, #b8c8e1);
-  --hero-blue: var(--brand-blue-ink);
+  --hero-blue: var(--brand-blue);
   --hero-tint: var(--brand-blue-wash);
   --hero-rule: light-dark(#dbe4f5, #344a68);
   position: relative;
@@ -111,7 +111,7 @@
 
 .titleAccent {
   width: fit-content;
-  color: var(--brand-blue-heading);
+  color: var(--brand-blue);
 }
 
 .copy .lead {
@@ -211,7 +211,7 @@
   width: 45%;
   height: 68%;
   border-radius: 15%;
-  background: linear-gradient(149deg, var(--brand-blue-deep), var(--brand-blue) 62%, var(--brand-blue-light));
+  background: linear-gradient(149deg, var(--brand-blue), var(--brand-blue-light));
   box-shadow: inset 0 0 0 1px #b3d7ff45;
   transform: rotate(16deg) skewX(-16deg);
   animation: drift 9500ms ease-in-out infinite alternate;

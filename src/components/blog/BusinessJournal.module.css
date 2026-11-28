@@ -44,9 +44,9 @@
 }
 .business .primary,
 .articleConsult .primary {
-  background: var(--brand-blue-deep);
-  border: 1px solid var(--brand-blue-deep);
-  color: #fff;
+  background: var(--brand-blue);
+  border: 1px solid var(--brand-blue);
+  color: var(--brand-on-blue);
   border-radius: 999px;
   padding: 14px 21px;
   font-size: 12px;
@@ -55,7 +55,7 @@
 }
 .business .primary:hover,
 .articleConsult .primary:hover {
-  background: color-mix(in srgb, var(--brand-blue-deep) 80%, var(--brand-ink));
+  background: var(--brand-blue-hover);
 }
 .primary svg:dir(ltr),
 .spotlightCopy svg:dir(ltr),
@@ -133,7 +133,7 @@
   color: var(--journal-blue);
 }
 .spotlight:hover {
-  border-color: #99c8e6;
+  border-color: var(--brand-blue);
 }
 .manifesto {
   padding: 45px;

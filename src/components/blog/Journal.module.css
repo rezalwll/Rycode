@@ -4,7 +4,7 @@
   --journal-ink: #303b48;
   --journal-muted: #627080;
   --journal-line: #e2e8ef;
-  --journal-blue: var(--brand-blue-ink);
+  --journal-blue: var(--brand-blue);
   --journal-purple: #7155af;
   box-sizing: border-box;
   background: var(--journal-bg) !important;
@@ -38,7 +38,7 @@
   text-decoration: none;
 }
 .journal :is(a, button, input, summary):focus-visible {
-  outline: 2px solid #3498db;
+  outline: 2px solid var(--brand-blue);
   outline-offset: 4px;
 }
 .hero {
@@ -113,8 +113,8 @@
   outline: none;
 }
 .search:focus-within {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgb(52 152 219 / 10%);
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-blue) 10%, transparent);
 }
 .search button {
   display: flex;
@@ -124,8 +124,8 @@
   border: 0;
   padding: 13px 17px;
   border-radius: 9px;
-  background: light-dark(#17659b, var(--ui-link));
-  color: light-dark(#fff, var(--ui-on-accent));
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
   font: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -133,7 +133,7 @@
   transition: background-color 180ms;
 }
 .search button:is(:hover, :focus-visible) {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue-hover);
 }
 .terminal {
   overflow: hidden;
@@ -168,7 +168,7 @@
   background: #8b6bda;
 }
 .terminalTop i:nth-child(3) {
-  background: #3498db;
+  background: var(--brand-blue);
 }
 .terminalBody {
   padding: 23px 24px 18px;
@@ -265,12 +265,12 @@
     border-color 180ms;
 }
 .categories a:hover {
-  border-color: #3498db;
+  border-color: var(--brand-blue);
 }
 .categories .selectedCategory {
-  background: #e9f3fb;
-  border-color: #c5e0f3;
-  color: #246f9f;
+  background: var(--brand-blue-wash);
+  border-color: var(--brand-blue);
+  color: var(--journal-ink);
 }
 .section {
   margin-top: 56px;
@@ -307,11 +307,11 @@
   transition: border-color 200ms;
 }
 .card:has(a:focus-visible) {
-  outline: 2px solid #3498db;
+  outline: 2px solid var(--brand-blue);
   outline-offset: 3px;
 }
 .card:hover {
-  border-color: #99c8e6;
+  border-color: var(--brand-blue);
 }
 .cardLink {
   display: flex;
@@ -491,7 +491,7 @@
   border-radius: 14px;
 }
 .empty > svg {
-  color: #3498db;
+  color: var(--brand-blue);
 }
 .empty h3 {
   margin: 20px 0 8px;
@@ -535,7 +535,7 @@
   color: var(--journal-muted);
 }
 .pagination a:hover {
-  border-color: #3498db;
+  border-color: var(--brand-blue);
   color: var(--journal-blue);
 }
 :global(html.dark) .journal {
@@ -789,7 +789,7 @@
   cursor: pointer;
 }
 .share:hover {
-  border-color: #3498db;
+  border-color: var(--brand-blue);
 }
 .shareStatus {
   font-size: 12px;

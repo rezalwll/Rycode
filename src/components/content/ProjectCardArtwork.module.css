@@ -92,7 +92,8 @@
 }
 
 .link:is(:hover, :focus-visible) .arrow {
-  background: var(--brand-blue-deep);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
 }
 
 .artwork[data-card-preview] {

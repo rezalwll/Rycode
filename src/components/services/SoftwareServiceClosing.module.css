@@ -1,7 +1,7 @@
 .end {
   --closing-ink: light-dark(#202e43, #edf5ff);
   --closing-text: light-dark(#42536a, #bacbdf);
-  --closing-blue: var(--brand-blue-ink);
+  --closing-blue: var(--brand-blue);
   --closing-rule: light-dark(#bdd8ee, #496983);
   --closing-tile: linear-gradient(154deg, light-dark(#fff, #294563), light-dark(#e9eefc, #1a304a));
   --ui-ink: var(--closing-ink);
@@ -184,7 +184,7 @@
   width: 15%;
   aspect-ratio: 1;
   border-radius: 29%;
-  color: light-dark(#5d94d8, #a5cdf4);
+  color: var(--brand-blue);
 }
 
 .tile svg {

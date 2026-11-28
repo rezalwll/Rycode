@@ -48,7 +48,7 @@
 .hero {
   --hero-ink: light-dark(#142e50, #f1f7ff);
   --hero-muted: light-dark(#415772, #bad0e6);
-  --hero-accent: var(--brand-blue-heading);
+  --hero-accent: var(--brand-blue);
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -245,7 +245,7 @@
   text-align: center;
 }
 .capabilityNumber > span:first-child {
-  color: var(--ui-blue);
+  color: var(--brand-blue);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
@@ -329,7 +329,7 @@
   top: 0;
   inset-inline-start: 0;
   height: 2px;
-  background: light-dark(var(--ui-blue), #245b80);
+  background: var(--brand-blue);
   pointer-events: none;
   animation: progress 5s linear;
 }
@@ -471,7 +471,7 @@
   font-weight: 600;
 }
 .step[data-active="true"] > span {
-  color: var(--ui-blue);
+  color: var(--brand-blue);
 }
 .step h3 {
   font-size: 19px;

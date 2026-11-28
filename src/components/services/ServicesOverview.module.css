@@ -626,9 +626,9 @@
     .visualDot,
     .row:is(:hover, :focus-visible) .detailArrow
   ) {
-  background: var(--ui-blue, #a8d8ff);
-  color: var(--ui-ink, #303b48);
-  border-color: var(--ui-blue, #a8d8ff);
+  background: var(--brand-blue);
+  color: var(--brand-on-blue);
+  border-color: var(--brand-blue);
   box-shadow: none;
 }
 .page .button::before {
@@ -645,7 +645,7 @@
   background: var(--ui-surface, #fff);
 }
 .page a:focus-visible {
-  outline-color: var(--brand-blue-ink);
+  outline-color: var(--brand-blue);
 }
 .page .heroVisual::before,
 .page .row::before,
