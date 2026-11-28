@@ -88,26 +88,6 @@ function DesignSection({
   );
 }
 
-function MoreCopy({
-  label,
-  items,
-}: {
-  label: string;
-  items: readonly string[];
-}) {
-  return (
-    <details className={styles.moreCopy}>
-      <summary>
-        {label}
-        <Plus size={15} className={styles.plus} aria-hidden="true" />
-      </summary>
-      <div>
-        <Paragraphs items={items} />
-      </div>
-    </details>
-  );
-}
-
 function ArtworkPreview({
   artwork,
   frame,
@@ -189,10 +169,6 @@ export function WebsiteDesignPage() {
               );
             })}
           </div>
-          <MoreCopy
-            label="چرا این ویژگی‌ها مهم‌اند؟"
-            items={copy.quality.paragraphs}
-          />
         </DesignSection>
 
         <DesignSection id="website-platform" title={copy.comparison.title}>
@@ -248,7 +224,7 @@ export function WebsiteDesignPage() {
                 <h3>{copy.cost.subtitle}</h3>
                 <ul
                   className={styles.costFactors}
-                  aria-label={copy.cost.paragraphs[1]}
+                  aria-label={copy.cost.factorsLabel}
                 >
                   {copy.cost.features.map((feature) => (
                     <li key={feature}>{feature}</li>
@@ -259,32 +235,6 @@ export function WebsiteDesignPage() {
                 {copy.cost.action}
               </Link>
             </div>
-            <details className={styles.moreCopy}>
-              <summary>
-                جزئیات برآورد و پرداخت
-                <Plus size={15} className={styles.plus} aria-hidden="true" />
-              </summary>
-              <div className={styles.costNotes}>
-                <div>
-                  <h4>محدوده پروژه</h4>
-                  <p>
-                    <InlineCopy text={copy.cost.paragraphs[0]} />
-                  </p>
-                </div>
-                <div>
-                  <h4>اولویت امکانات</h4>
-                  <p>
-                    <InlineCopy text={copy.cost.notes[0]} />
-                  </p>
-                </div>
-                <div>
-                  <h4>شرایط پرداخت</h4>
-                  <p>
-                    <InlineCopy text={copy.cost.notes[1]} />
-                  </p>
-                </div>
-              </div>
-            </details>
           </div>
         </DesignSection>
 
@@ -335,7 +285,7 @@ export function WebsiteDesignPage() {
             {copy.closing.title[1]}{" "}
             <span className={styles.closingHighlight}>{copy.closing.title[2]}</span>
           </h2>
-          <Paragraphs items={copy.closing.paragraphs.slice(-1)} />
+          <p>{copy.closing.description}</p>
           <div className={styles.actions}>
             <Link href={inquiryHref} data-fill-button>
               <ArrowLeft size={20} aria-hidden="true" />
@@ -355,12 +305,6 @@ export function WebsiteDesignPage() {
           />
         </div>
       </section>
-      <div className={styles.closingNotes}>
-        <MoreCopy
-          label="از کجا می‌تونیم شروع کنیم؟"
-          items={copy.closing.paragraphs.slice(0, -1)}
-        />
-      </div>
     </main>
   );
 }

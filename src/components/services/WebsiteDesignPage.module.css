@@ -283,7 +283,6 @@
   cursor: pointer;
 }
 
-.moreCopy summary::-webkit-details-marker,
 .faqGrid summary::-webkit-details-marker {
   display: none;
 }
@@ -315,33 +314,6 @@
   font-size: 0.8rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-}
-
-.moreCopy {
-  max-width: 72ch;
-  font-size: 0.875rem;
-}
-
-.moreCopy summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  min-height: 44px;
-  list-style: none;
-  color: var(--primary);
-  cursor: pointer;
-}
-
-.moreCopy summary:is(:hover, :focus-visible) {
-  color: var(--ui-ink);
-}
-
-.moreCopy > div {
-  display: grid;
-  gap: 8px;
-  padding: 10px 14px;
-  border-inline-start: 2px solid var(--ui-purple, #c4b5fd);
 }
 
 .page .detailLead {
@@ -477,37 +449,6 @@
 
 .costCopy .costFactors {
   margin-block-start: 12px;
-}
-
-.costPanel > .moreCopy {
-  max-width: none;
-  padding-inline: var(--cost-inset);
-  border-block-start: 1px solid var(--line);
-  border-radius: 0 0 15px 15px;
-  background: light-dark(#f8f8fd, #222c3a);
-}
-
-.costPanel > .moreCopy summary {
-  width: 100%;
-  justify-content: space-between;
-  min-block-size: 50px;
-}
-
-.costPanel .costNotes {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  padding: 0 0 var(--cost-inset);
-  border: 0;
-}
-
-.costNotes > div {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--ui-surface, #fff);
 }
 
 .costFactors {
@@ -650,12 +591,6 @@
   margin-block-start: 2px;
 }
 
-.closingNotes {
-  width: min(100%, var(--closing-banner-inline-size));
-  margin: 6px auto 0;
-  padding-inline: var(--closing-banner-padding);
-}
-
 .closingArt {
   position: absolute;
   z-index: -1;
@@ -708,8 +643,7 @@
 }
 
 @media (max-width: 740px) {
-  .typePicker,
-  .costPanel .costNotes {
+  .typePicker {
     grid-template-columns: minmax(0, 1fr);
   }
 
