@@ -20,7 +20,7 @@
   padding-inline: 42px 5px;
   background: transparent;
   color: var(--brand-blue-ink);
-  font-size: 0.9375rem;
+  font-size: var(--public-action-size);
   font-weight: 700;
   line-height: 1.55;
   text-align: start;
@@ -101,10 +101,10 @@
   gap: 0 !important;
   width: auto !important;
   max-width: 100%;
-  min-height: 52px !important;
+  min-height: 46px !important;
   height: auto !important;
-  padding-block: 12px !important;
-  padding-inline: 60px 20px !important;
+  padding-block: 10px !important;
+  padding-inline: 52px 18px !important;
   overflow: hidden !important;
   border: 1px solid var(--cta-border, color-mix(in srgb, var(--brand-blue) 23%, var(--ui-rule))) !important;
   border-radius: 999px !important;
@@ -112,9 +112,9 @@
   color: var(--ui-ink) !important;
   box-shadow: none !important;
   font-family: inherit;
-  font-size: 16px !important;
+  font-size: var(--public-action-size) !important;
   font-weight: 600 !important;
-  line-height: 26px !important;
+  line-height: 24px !important;
   letter-spacing: normal !important;
   text-align: center;
   text-decoration: none !important;
@@ -129,7 +129,7 @@
   z-index: -1 !important;
   inset: 3px !important;
   inset-inline-end: auto !important;
-  width: 44px !important;
+  width: 38px !important;
   height: auto !important;
   border: 0 !important;
   border-radius: inherit !important;
@@ -144,10 +144,10 @@
   position: absolute !important;
   z-index: 1;
   inset: auto !important;
-  inset-inline-start: 15px !important;
-  top: calc(50% - 10px) !important;
-  width: 20px !important;
-  height: 20px !important;
+  inset-inline-start: 13px !important;
+  top: calc(50% - 9px) !important;
+  width: 18px !important;
+  height: 18px !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;

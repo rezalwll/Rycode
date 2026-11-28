@@ -99,7 +99,7 @@
   padding-block: clamp(34px, 5vw, 72px);
 }
 .inner {
-  width: min(1220px, calc(100% - var(--far-gutter) * 2));
+  width: var(--public-container);
   position: relative;
   margin-inline: auto;
 }

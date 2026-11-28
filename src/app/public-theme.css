@@ -1,5 +1,14 @@
 /* Public-site palette; brand colors are shared with the app icons and emblem. */
 .rycode-public {
+  --public-title-size: clamp(1.875rem, 1.35rem + 2.15vw, 3.25rem);
+  --public-section-title-size: clamp(1.5rem, 1.15rem + 1.25vw, 2.25rem);
+  --public-card-title-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  --public-body-size: 1rem;
+  --public-action-size: 0.9375rem;
+  --public-content-width: 72rem;
+  --public-gutter: clamp(1.25rem, 3vw, 2rem);
+  --public-container: min(var(--public-content-width), calc(100% - 2 * var(--public-gutter)));
+  --public-section-space: clamp(2.25rem, 4.5vw, 4rem);
   --ui-canvas: #fff;
   --ui-surface: #fff;
   --ui-surface-muted: #f2f2f2;
@@ -23,6 +32,45 @@
   background: var(--ui-canvas);
   color-scheme: light;
 }
+
+/* Keep the same reading hierarchy across the public page templates. */
+#main.rycode-public main h1:not(.sr-only) {
+  font-size: var(--public-title-size);
+  line-height: 1.25;
+}
+#main.rycode-public main h2 {
+  font-size: var(--public-section-title-size);
+  line-height: 1.35;
+}
+#main.rycode-public main h3 {
+  font-size: var(--public-card-title-size);
+  line-height: 1.45;
+}
+#main.rycode-public main h4 {
+  font-size: var(--public-body-size);
+  line-height: 1.5;
+}
+#main.rycode-public main .framer-1ucgqp2 h2 {
+  font-size: var(--public-title-size);
+  line-height: 1.25;
+}
+#main.rycode-public :is(.moments-section h2, #footer-inquiry-title) {
+  font-size: var(--public-section-title-size);
+  line-height: 1.35;
+}
+
+/* Imported layouts set their animated heading sizes inline. */
+#main.rycode-public main [data-framer-name="Hero Section"] h2[style*="font-size:"] {
+  font-size: var(--public-title-size) !important;
+}
+#main.rycode-public main :is(.framer-14zfqxv-container, .framer-1s0jpir-container)
+  .ssr-variant > [style*="font-size:"] {
+  font-size: var(--public-section-title-size) !important;
+}
+#main.rycode-public main [data-framer-name="Title Wrapper"] h2 {
+  font-size: var(--public-card-title-size);
+}
+
 html.dark:has(.rycode-public) {
   background: #131922;
   color-scheme: dark;

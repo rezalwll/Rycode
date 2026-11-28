@@ -117,7 +117,9 @@
   padding: 18px;
 }
 .home-colorful .rycode-hero-source .hero-frame {
-  min-height: 680px;
+  height: auto;
+  min-height: clamp(460px, 82svh, 640px);
+  padding-block-start: clamp(84px, 10svh, 112px);
   color: #fff;
   background: #1a1a1a;
   box-shadow: none;
@@ -161,7 +163,6 @@
     padding: 0;
   }
   .home-colorful .rycode-hero-source .hero-frame {
-    min-height: 590px;
     border-radius: 0 0 28px 28px;
   }
 }

@@ -9,8 +9,8 @@
   display: grid;
   align-items: start;
   overflow: clip;
-  min-block-size: clamp(700px, 44vw, 780px);
-  padding-block: clamp(30px, 2.15vw, 40px) clamp(52px, 4.65vw, 84px);
+  min-block-size: clamp(540px, 41vw, 640px);
+  padding-block: var(--public-gutter) var(--public-section-space);
   background:
     radial-gradient(ellipse at 19% 77%, color-mix(in srgb, var(--brand-blue) 28%, transparent), transparent 38%),
     radial-gradient(ellipse at 68% 1%, light-dark(#f2effa, #22233e), transparent 58%),
@@ -24,7 +24,7 @@
   grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(28px, 4.2vw, 76px);
-  width: min(1540px, calc(100% - clamp(52px, 13.5vw, 246px)));
+  width: var(--public-container);
   margin-inline: auto;
   padding-inline-start: clamp(0px, 3.25vw, 60px);
 }
@@ -126,7 +126,7 @@
   max-width: min(100%, 450px);
   margin: clamp(9px, 0.85vw, 15px) 0 0;
   color: var(--hero-muted);
-  font-size: clamp(0.95rem, 1.15vw, 1.125rem);
+  font-size: var(--public-body-size);
   line-height: 1.8;
 }
 

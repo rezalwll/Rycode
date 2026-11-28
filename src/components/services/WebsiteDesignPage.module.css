@@ -16,7 +16,7 @@
 }
 
 .container {
-  width: min(1120px, calc(100% - 64px));
+  width: var(--public-container);
   margin-inline: auto;
 }
 
@@ -132,7 +132,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;
-  padding-block: clamp(36px, 5vw, 62px);
+  padding-block: var(--public-section-space);
   border-block-end: 1px solid var(--line);
 }
 
@@ -422,7 +422,7 @@
 }
 
 .faq {
-  padding-block: clamp(36px, 5vw, 66px);
+  padding-block: var(--public-section-space);
   border-block-end: 1px solid var(--line);
 }
 
@@ -570,8 +570,8 @@
   display: grid;
   grid-template-columns: minmax(0, 47%) minmax(0, 1fr);
   align-items: center;
-  width: min(1560px, calc(100% - 64px));
-  min-block-size: clamp(380px, 33vw, 520px);
+  width: var(--public-container);
+  min-block-size: clamp(340px, 29vw, 440px);
   margin-block-start: clamp(36px, 5.5vw, 68px);
   margin-inline: auto;
   overflow: hidden;

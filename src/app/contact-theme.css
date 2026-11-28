@@ -6,6 +6,9 @@
 .rycode-public .framer-UUxDN .framer-zh7igo {
   padding-top: 45px;
 }
+#main.rycode-public .framer-UUxDN .framer-4ent3p h2 {
+  font-size: var(--public-title-size);
+}
 .rycode-public
   .framer-UUxDN
   :is(.framer-1lxnfwb, .framer-101bh9k, .framer-1etwmq0) {
