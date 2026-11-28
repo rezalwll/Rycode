@@ -30,7 +30,7 @@
   gap: 20px;
   padding-block: 22px;
   border-block-end: 1px solid var(--line);
-  font-size: 0.83rem;
+  font-size: var(--public-meta-size);
 }
 .heroNav nav {
   display: flex;
@@ -62,7 +62,7 @@
   gap: 15px;
 }
 .hero h1 {
-  font-size: clamp(2.25rem, 3.55vw, 3.6rem);
+  font-size: var(--public-title-size);
   letter-spacing: normal;
   text-wrap: initial;
 }
@@ -73,7 +73,7 @@
 .heroDescription {
   max-width: 52ch;
   color: var(--muted);
-  font-size: 1.1rem;
+  font-size: var(--public-lead-size);
 }
 .actions {
   display: flex;
@@ -144,7 +144,7 @@
 }
 .sectionIntro h2 {
   margin: 0;
-  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+  font-size: var(--public-section-title-size);
 }
 .sectionIntro p {
   color: var(--muted);
@@ -219,7 +219,7 @@
 }
 .typeChoice small {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--public-meta-size);
 }
 .typePreview {
   display: grid;
@@ -239,14 +239,14 @@
   padding: 3px 9px;
   background: var(--ui-surface, #fff);
   color: var(--ink);
-  font-size: 0.72rem;
+  font-size: var(--public-caption-size);
 }
 .typeDetails {
   align-self: center;
   padding: clamp(15px, 2.3vw, 30px);
 }
 .typeDetails h3 {
-  font-size: 1.5rem;
+  font-size: var(--public-card-title-size);
 }
 .typeDetails p {
   margin-block: 8px 14px;
@@ -265,7 +265,7 @@
   align-items: center;
   gap: 7px;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: var(--public-card-copy-size);
 }
 .typeDetails li svg {
   color: var(--blue);
@@ -284,7 +284,7 @@
 }
 .journeyChoices label span {
   color: var(--ink);
-  font-size: 0.82rem;
+  font-size: var(--public-secondary-action-size);
 }
 .journeyResult {
   padding: 20px;
@@ -316,7 +316,7 @@
 }
 .journeySteps p {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: var(--public-card-copy-size);
 }
 .features {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -342,7 +342,7 @@
 .features p,
 .featureNote p {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: var(--public-card-copy-size);
 }
 .featureNote {
   margin-block-start: 12px;
@@ -367,7 +367,7 @@
 }
 .comparison td {
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: var(--public-card-copy-size);
 }
 .process {
   grid-template-columns: repeat(3, 1fr);
@@ -389,7 +389,7 @@
 }
 .process p {
   color: var(--muted);
-  font-size: 0.83rem;
+  font-size: var(--public-card-copy-size);
 }
 .portfolioCallout {
   display: flex;
@@ -436,7 +436,7 @@
 .faqs details p {
   padding-block-end: 13px;
   color: var(--muted);
-  font-size: 0.83rem;
+  font-size: var(--public-answer-size);
 }
 .contact {
   display: grid;
@@ -450,7 +450,7 @@
 }
 .contactIntro h2 {
   margin-block: 7px;
-  font-size: 2rem;
+  font-size: var(--public-section-title-size);
 }
 .contactIntro p {
   margin-block-end: 14px;
@@ -464,7 +464,7 @@
   display: grid;
   gap: 4px;
   color: var(--ink);
-  font-size: 0.8rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
 }
 .form input,
@@ -509,7 +509,7 @@
   padding: 5px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: var(--public-secondary-action-size);
 }
 .srOnly {
   position: absolute;

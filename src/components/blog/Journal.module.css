@@ -67,14 +67,14 @@
   object-fit: cover;
 }
 .hero h1 {
-  font-size: clamp(36px, 4.2vw, 58px);
+  font-size: var(--public-title-size);
   line-height: 1.5;
   font-weight: 600;
   margin: 0 0 16px;
 }
 .heroCopy > p {
   color: var(--journal-muted);
-  font-size: 16px;
+  font-size: var(--public-lead-size);
   line-height: 2;
   margin: 0 0 26px;
   max-width: 620px;
@@ -103,7 +103,7 @@
   background: transparent;
   color: var(--journal-ink);
   font: inherit;
-  font-size: 14px;
+  font-size: var(--public-body-size);
   text-align: start;
 }
 .search input::placeholder {
@@ -127,7 +127,7 @@
   background: var(--brand-blue);
   color: var(--brand-on-blue);
   font: inherit;
-  font-size: 13px;
+  font-size: var(--public-secondary-action-size);
   font-weight: 600;
   white-space: nowrap;
   transition: background-color 180ms;
@@ -258,7 +258,7 @@
   border-radius: 8px;
   padding: 9px 16px;
   white-space: nowrap;
-  font-size: 13px;
+  font-size: var(--public-secondary-action-size);
   line-height: 1.7;
   transition:
     background-color 180ms,
@@ -284,13 +284,13 @@
   margin-bottom: 25px;
 }
 .sectionHeading h2 {
-  font-size: clamp(24px, 2.5vw, 32px);
+  font-size: var(--public-section-title-size);
   line-height: 1.6;
   font-weight: 600;
   margin: 0;
 }
 .sectionHeading > span {
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   color: var(--journal-muted);
 }
 .featured {
@@ -354,7 +354,7 @@
   border-radius: 5px;
   background: #f5f0fc;
   color: #66508a;
-  font-size: 10px;
+  font-size: var(--public-caption-size);
   line-height: 1.7;
 }
 .cardCopy {
@@ -365,19 +365,19 @@
   padding: 20px;
 }
 .category {
-  font-size: 11px;
+  font-size: var(--public-meta-size);
   color: var(--journal-blue);
   font-weight: 600;
   margin-bottom: 8px;
 }
 .card h3 {
-  font-size: 20px;
+  font-size: var(--public-card-title-size);
   line-height: 1.8;
   font-weight: 600;
   margin: 0 0 8px;
 }
 .cardCopy > p {
-  font-size: 13px;
+  font-size: var(--public-card-copy-size);
   line-height: 1.95;
   margin: 0 0 18px;
   color: var(--journal-muted);
@@ -393,7 +393,7 @@
   align-items: center;
   margin-top: auto;
   width: 100%;
-  font-size: 11px;
+  font-size: var(--public-meta-size);
   line-height: 1.8;
   color: var(--journal-muted);
 }
@@ -409,7 +409,7 @@
   margin-top: 14px;
 }
 .cardTags span {
-  font-size: 10px;
+  font-size: var(--public-caption-size);
   line-height: 1.8;
   background: var(--journal-panel);
   padding: 3px 7px;
@@ -426,7 +426,7 @@
   min-height: 210px;
 }
 .featureCard h3 {
-  font-size: 19px;
+  font-size: var(--public-card-title-size);
 }
 .featureCard .cardTags {
   display: none;
@@ -443,7 +443,7 @@
   min-height: 0;
 }
 .leadCard h3 {
-  font-size: 25px;
+  font-size: var(--public-card-title-size);
 }
 .leadCard .cardCopy {
   padding: 24px;
@@ -472,7 +472,7 @@
   margin-bottom: 24px;
   border: 1px solid var(--journal-line);
   border-radius: 10px;
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   line-height: 1.8;
 }
 .activeFilters a {
@@ -495,11 +495,11 @@
 }
 .empty h3 {
   margin: 20px 0 8px;
-  font-size: 23px;
+  font-size: var(--public-card-title-size);
 }
 .empty p {
   color: var(--journal-muted);
-  font-size: 14px;
+  font-size: var(--public-card-copy-size);
   line-height: 1.9;
 }
 .empty a {
@@ -517,7 +517,7 @@
   border-top: 1px solid var(--journal-line);
   padding-top: 26px;
   margin-top: 40px;
-  font-size: 13px;
+  font-size: var(--public-secondary-action-size);
 }
 .pagination a {
   display: flex;
@@ -566,7 +566,7 @@
   gap: 7px;
   margin-bottom: 32px;
   color: var(--journal-muted);
-  font-size: 12px;
+  font-size: var(--public-caption-size);
   line-height: 1.8;
 }
 .breadcrumb a:hover {
@@ -582,7 +582,7 @@
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   color: var(--journal-blue);
   padding: 6px 12px;
   border: 1px solid var(--journal-line);
@@ -590,13 +590,13 @@
 }
 .articleHeader h1 {
   margin: 20px auto 18px;
-  font-size: clamp(30px, 4vw, 50px);
+  font-size: var(--public-title-size);
   font-weight: 600;
   line-height: 1.65;
   text-wrap: balance;
 }
 .articleSummary {
-  font-size: 17px;
+  font-size: var(--public-lead-size);
   line-height: 2;
   color: var(--journal-muted);
   max-width: 740px;
@@ -609,7 +609,7 @@
   align-items: center;
   gap: 12px 22px;
   color: var(--journal-muted);
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   line-height: 1.8;
 }
 .articleMeta span {
@@ -629,7 +629,7 @@
   border-radius: 4px;
   background: var(--journal-panel);
   color: var(--journal-muted);
-  font-size: 11px;
+  font-size: var(--public-meta-size);
 }
 .articleTags a:hover {
   color: var(--journal-blue);
@@ -640,7 +640,7 @@
   background: #f6f0fc;
   color: #654b8b;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: var(--public-caption-size);
   line-height: 1.9;
   margin: 24px auto 0;
 }
@@ -669,19 +669,19 @@
 }
 .articleBody > div {
   color: var(--journal-ink);
-  font-size: 17px;
+  font-size: var(--public-body-size);
   line-height: 2.1;
 }
 .articleBody :is(h2, h3, h4) {
   scroll-margin-top: 120px;
 }
 .articleBody h2 {
-  font-size: 28px;
+  font-size: var(--public-section-title-size);
   margin: 42px 0 18px;
   line-height: 1.8;
 }
 .articleBody h3 {
-  font-size: 22px;
+  font-size: var(--public-card-title-size);
   margin: 32px 0 14px;
   line-height: 1.8;
 }
@@ -736,7 +736,7 @@
   border-collapse: collapse;
   width: 100%;
   min-width: 460px;
-  font-size: 14px;
+  font-size: var(--public-body-size);
   line-height: 1.9;
 }
 .articleBody :is(th, td) {
@@ -757,7 +757,7 @@
   justify-content: space-between;
   gap: 16px;
   color: var(--journal-muted);
-  font-size: 13px;
+  font-size: var(--public-meta-size);
 }
 .breadcrumb > span {
   display: inline-flex;
@@ -785,14 +785,14 @@
   border-radius: 8px;
   padding: 10px 14px;
   font: inherit;
-  font-size: 12px;
+  font-size: var(--public-secondary-action-size);
   cursor: pointer;
 }
 .share:hover {
   border-color: var(--brand-blue);
 }
 .shareStatus {
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   color: var(--journal-muted);
   line-height: 1.8;
 }
@@ -800,7 +800,7 @@
   padding: 12px;
   border: 1px dashed #8b6bda;
   margin-bottom: 20px;
-  font-size: 13px;
+  font-size: var(--public-caption-size);
 }
 @media (max-width: 1099px) {
   .loading {
@@ -859,12 +859,6 @@
     gap: 24px;
     margin-bottom: 28px;
   }
-  .hero h1 {
-    font-size: clamp(32px, 8vw, 46px);
-  }
-  .heroCopy > p {
-    font-size: 14px;
-  }
   .terminal {
     display: none;
   }
@@ -884,12 +878,6 @@
   .sectionHeading {
     gap: 12px;
   }
-  .sectionHeading > span {
-    font-size: 11px;
-  }
-  .sectionHeading h2 {
-    font-size: 25px;
-  }
   .featured,
   .grid {
     grid-template-columns: 1fr;
@@ -905,21 +893,14 @@
   .leadCard .cardImage {
     aspect-ratio: 16 / 10;
   }
-  .leadCard h3 {
-    font-size: 22px;
-  }
   .leadCard .cardCopy {
     padding: 20px;
   }
   .featureCard .cardTags {
     display: flex;
   }
-  .card h3 {
-    font-size: 20px;
-  }
   .pagination {
     gap: 8px;
-    font-size: 11px;
   }
   .pagination a {
     gap: 4px;
@@ -940,26 +921,11 @@
   .articleBody {
     width: 100%;
   }
-  .articleHeader h1 {
-    font-size: 31px;
-  }
-  .articleSummary {
-    font-size: 15px;
-  }
   .articleCover {
     margin: 28px auto;
   }
   .articleCover img {
     aspect-ratio: 16 / 10;
-  }
-  .articleBody > div {
-    font-size: 16px;
-  }
-  .articleBody h2 {
-    font-size: 24px;
-  }
-  .articleBody h3 {
-    font-size: 20px;
   }
   .articleEnd {
     flex-wrap: wrap;

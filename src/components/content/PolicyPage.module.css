@@ -14,7 +14,7 @@
 
 .heroCopy h1 {
   margin: 0 0 14px;
-  font-size: clamp(2.2rem, 5.15vw, 4.6rem);
+  font-size: var(--public-title-size);
   font-weight: 800;
   line-height: 1.24;
   text-wrap: balance;
@@ -25,8 +25,11 @@
   max-inline-size: 58ch;
   margin: 0;
   color: var(--ui-muted);
-  font-size: clamp(0.99rem, 1.4vw, 1.12rem);
   line-height: 2;
+}
+
+.heroCopy p {
+  font-size: var(--public-lead-size);
 }
 
 .heroLink {
@@ -34,7 +37,7 @@
   align-items: center;
   gap: 8px;
   color: var(--ui-link);
-  font-size: 0.9rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
   text-decoration: none;
   min-block-size: 44px;
@@ -114,7 +117,7 @@
   border-radius: 10px;
   background: var(--ui-surface);
   color: var(--ui-ink);
-  font-size: clamp(0.72rem, 1.1vw, 0.9rem);
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
   line-height: 1.5;
   text-decoration: none;
@@ -243,13 +246,13 @@
 }
 
 .steps strong {
-  font-size: 0.98rem;
+  font-size: var(--public-body-size);
 }
 
 .steps p {
   margin: 5px 0 0;
   color: var(--ui-muted);
-  font-size: 0.9rem;
+  font-size: var(--public-card-copy-size);
   line-height: 1.75;
 }
 
@@ -265,7 +268,7 @@
 .topic h2,
 .contact h2 {
   margin: 0;
-  font-size: clamp(1.17rem, 2.1vw, 1.62rem);
+  font-size: var(--public-section-title-size);
   font-weight: 750;
   line-height: 1.55;
   text-wrap: balance;
@@ -279,7 +282,7 @@
   max-inline-size: 75ch;
   margin: 0;
   color: var(--ui-muted);
-  font-size: clamp(0.96rem, 1.15vw, 1.07rem);
+  font-size: var(--public-body-size);
   line-height: 1.97;
 }
 
@@ -377,7 +380,7 @@
 }
 
 .contact p {
-  font-size: 0.95rem;
+  font-size: var(--public-banner-copy-size);
 }
 
 .actions {

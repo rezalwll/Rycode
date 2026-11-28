@@ -73,7 +73,7 @@
   gap: 0.7em;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: clamp(0.83rem, 1.03vw, 1rem);
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
   line-height: 1.55;
   text-align: center;
@@ -117,7 +117,7 @@
 .copy .lead {
   margin: clamp(29px, 2.8vw, 50px) 0 0;
   color: var(--hero-ink);
-  font-size: clamp(1.125rem, 1.42vw, 1.5rem);
+  font-size: var(--public-lead-size);
   font-weight: 800;
   line-height: 1.6;
 }
@@ -126,7 +126,7 @@
   max-width: min(100%, 450px);
   margin: clamp(9px, 0.85vw, 15px) 0 0;
   color: var(--hero-muted);
-  font-size: clamp(0.95rem, 1.15vw, 1.125rem);
+  font-size: var(--public-lead-size);
   line-height: 1.8;
 }
 
@@ -146,7 +146,7 @@
   gap: 5px;
   padding-inline: 6px;
   color: var(--hero-blue);
-  font-size: clamp(0.74rem, 0.96vw, 0.94rem);
+  font-size: var(--public-meta-size);
   font-weight: 700;
   line-height: 1.5;
   text-align: center;

@@ -117,7 +117,7 @@
 }
 .page:global(#channel-services) .heroCopy h1 {
   color: var(--hero-ink) !important;
-  font-size: clamp(40px, 4.25vw, 78px);
+  font-size: var(--public-title-size);
   line-height: 1.24;
 }
 .heroCopy:dir(rtl) .heroTitle {
@@ -130,13 +130,13 @@
 .headingNote,
 .detailCopy p {
   color: var(--muted);
-  font-size: 17px;
+  font-size: var(--public-section-copy-size);
   line-height: 1.9;
 }
 .heroNote {
   max-width: 560px;
   color: var(--hero-muted);
-  font-size: clamp(15px, 1.05vw, 18px);
+  font-size: var(--public-lead-size);
 }
 .heroActions {
   display: flex;
@@ -148,7 +148,7 @@
 .detailTags {
   color: var(--muted);
   font-weight: 500;
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   line-height: 1.5;
 }
 .sectionTitle {
@@ -246,7 +246,7 @@
 }
 .capabilityNumber > span:first-child {
   color: var(--brand-blue);
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   font-variant-numeric: tabular-nums;
 }
 .phoneName {
@@ -258,7 +258,7 @@
   left: 50%;
   writing-mode: vertical-rl;
   transform: translateX(-50%) rotate(180deg);
-  font-size: 16px;
+  font-size: var(--public-body-size);
   line-height: 1;
   font-weight: 500;
   white-space: nowrap;
@@ -286,7 +286,7 @@
 }
 .capabilityBody h3 {
   margin-top: 10px;
-  font-size: clamp(25px, 2.7vw, 39px);
+  font-size: var(--public-card-title-size);
   line-height: 1.4;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -294,7 +294,7 @@
 .capabilityBody p {
   margin-top: 12px;
   color: var(--light-muted);
-  font-size: 15px;
+  font-size: var(--public-card-copy-size);
   line-height: 1.9;
   max-width: 420px;
 }
@@ -311,7 +311,7 @@
   border-radius: 8px;
   background: rgb(196 181 253 / 14%);
   color: #f1eaff;
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   line-height: 1.55;
 }
 .capabilityBody a {
@@ -385,13 +385,13 @@
   gap: 12px;
 }
 .detailTitle {
-  font-size: clamp(23px, 2.45vw, 35px);
+  font-size: var(--public-card-title-size);
   line-height: 1.42;
   font-weight: 600;
 }
 .detailCopy p {
   max-width: 680px;
-  font-size: 15px;
+  font-size: var(--public-card-copy-size);
 }
 .detailCopy a {
   margin-top: 4px;
@@ -467,21 +467,21 @@
 }
 .step > span {
   color: var(--brand-blue);
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   font-weight: 600;
 }
 .step[data-active="true"] > span {
   color: var(--brand-blue);
 }
 .step h3 {
-  font-size: 19px;
+  font-size: var(--public-card-title-size);
   line-height: 1.6;
   font-weight: 600;
 }
 .step p {
   margin-top: 5px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: var(--public-card-copy-size);
   line-height: 1.8;
   transition: color 0.5s;
 }
@@ -644,7 +644,7 @@
   }
   .heroNote,
   .headingNote {
-    font-size: 15px;
+    font-size: var(--public-section-copy-size);
   }
   .capabilityBody {
     grid-template-columns: minmax(0, 1fr);
@@ -676,12 +676,6 @@
   .step {
     padding: 14px 16px;
   }
-  .step h3 {
-    font-size: 17px;
-  }
-  .step p {
-    font-size: 13px;
-  }
   .callToActionPanel::after {
     background: linear-gradient(
       to bottom,
@@ -701,9 +695,6 @@
     align-items: center;
     padding-block: 36px 4px;
     text-align: center;
-  }
-  .page:global(#channel-services) .heroCopy h1 {
-    font-size: clamp(34px, 8vw, 52px);
   }
   .heroActions {
     justify-content: center;

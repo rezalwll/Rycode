@@ -323,7 +323,7 @@ export async function ProjectRescuePage() {
         </section>
 
         <Section id="rescue-faq" title={copy.faq.title}>
-          <div className={styles.faq}>
+          <div className={styles.faq} data-public-faq>
             {copy.faq.items.map(({ question, answer }) => (
               <div key={question}>
                 <h3>{question}</h3>

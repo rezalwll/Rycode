@@ -96,7 +96,7 @@
   align-items: center;
   padding: 6px 13px;
   border-radius: 12px;
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-size: var(--public-secondary-action-size);
   font-weight: 750;
   line-height: 1.5;
 }
@@ -149,7 +149,7 @@
 .hero .intro {
   max-width: 620px;
   margin-block: clamp(15px, 2vw, 29px) clamp(22px, 2.6vw, 38px);
-  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-size: var(--public-lead-size);
 }
 .heroCopy,
 .heroVisual {
@@ -255,7 +255,7 @@
   display: flex;
   align-items: center;
   gap: clamp(10px, 1.2vw, 18px);
-  font-size: clamp(1.1rem, 1.75vw, 1.55rem);
+  font-size: var(--public-section-title-size);
   font-weight: 800;
   margin-block-end: clamp(16px, 1.8vw, 26px);
 }
@@ -280,7 +280,7 @@
 }
 .heroPanel p {
   margin-block-start: clamp(14px, 1.55vw, 24px);
-  font-size: clamp(0.87rem, 1.1vw, 1rem);
+  font-size: var(--public-card-copy-size);
 }
 .lifecyclePanel p {
   color: #f0f8ff;
@@ -290,7 +290,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   text-align: center;
-  font-size: clamp(0.8rem, 1.03vw, 0.95rem);
+  font-size: var(--public-card-copy-size);
   font-weight: 720;
 }
 .lifecycle::before {
@@ -331,12 +331,12 @@
   border-radius: 100px;
   color: var(--support-blue);
   background: light-dark(#f5faff, #253447);
-  font-size: 0.75rem;
+  font-size: var(--public-meta-size);
 }
 .tags li {
   padding: 4px 10px;
   border-color: light-dark(#cce4f7, #3d5b77);
-  font-size: clamp(0.76rem, 0.94vw, 0.9rem);
+  font-size: var(--public-meta-size);
 }
 
 .section {
@@ -352,7 +352,7 @@
   margin-block-end: clamp(24px, 4vw, 48px);
 }
 .sectionHead h2 {
-  font-size: clamp(1.65rem, 3.6vw, 3.3rem);
+  font-size: var(--public-section-title-size);
   font-weight: 750;
   max-width: 22ch;
   text-wrap: balance;
@@ -379,7 +379,7 @@
 .scopeGrid h3,
 .process h3,
 .qualityGrid h3 {
-  font-size: clamp(1.02rem, 1.6vw, 1.3rem);
+  font-size: var(--public-card-title-size);
 }
 .scopeGrid [data-fill-button] {
   margin-block-start: 7px;
@@ -432,7 +432,7 @@
   color: var(--support-ink);
   font: inherit;
   font-weight: 760;
-  font-size: clamp(0.82rem, 1.45vw, 1.18rem);
+  font-size: var(--public-secondary-action-size);
   padding: 16px clamp(9px, 2vw, 24px);
   border: 0;
   background: transparent;
@@ -457,7 +457,7 @@
   color: var(--support-blue);
 }
 .galleryCard[data-active="true"] > button {
-  font-size: clamp(1.2rem, 2.4vw, 2rem);
+  font-size: var(--public-card-title-size);
   padding-block-end: 4px;
 }
 .galleryCopy {
@@ -465,7 +465,7 @@
   animation: rise 320ms ease both;
 }
 .galleryCopy p {
-  font-size: 0.9rem;
+  font-size: var(--public-card-copy-size);
   max-width: 48ch;
   color: light-dark(#354c5e, var(--brand-blue));
 }
@@ -495,7 +495,7 @@
 }
 .step {
   font-weight: 750;
-  font-size: 0.8rem;
+  font-size: var(--public-meta-size);
 }
 .stepLine {
   display: block;
@@ -521,7 +521,7 @@
 }
 .process p,
 .qualityGrid p {
-  font-size: 0.87rem;
+  font-size: var(--public-card-copy-size);
 }
 .scenarioControls {
   display: flex;
@@ -537,7 +537,7 @@
   padding: 6px 14px;
   color: var(--support-ink);
   font: inherit;
-  font-size: 0.87rem;
+  font-size: var(--public-secondary-action-size);
   cursor: pointer;
 }
 .scenarioControls > button:is(:hover, [aria-pressed="true"]) {
@@ -569,7 +569,7 @@
   padding: clamp(18px, 4vw, 54px);
 }
 .scenarioCopy h3 {
-  font-size: clamp(1.22rem, 2.6vw, 2rem);
+  font-size: var(--public-card-title-size);
 }
 .scenarioCopy dl > div {
   padding-block: 8px;
@@ -578,10 +578,10 @@
 .scenarioCopy dt {
   color: var(--support-blue);
   font-weight: 730;
-  font-size: 0.86rem;
+  font-size: var(--public-card-copy-size);
 }
 .scenarioCopy dd {
-  font-size: 0.89rem;
+  font-size: var(--public-card-copy-size);
 }
 .scopeNote {
   display: grid;
@@ -596,7 +596,7 @@
 .scopeNote p {
   padding: 15px 18px;
   background: light-dark(#f8fbfe, #202833);
-  font-size: 0.88rem;
+  font-size: var(--public-card-copy-size);
 }
 .scopeNote strong {
   display: block;
@@ -615,12 +615,12 @@
   background: light-dark(#f3faff, #253447);
 }
 .models h3 {
-  font-size: clamp(1.22rem, 2.3vw, 1.9rem);
+  font-size: var(--public-card-title-size);
 }
 .models .cadence {
   color: var(--support-blue);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: var(--public-meta-size);
 }
 .models ul {
   margin-block: 10px 14px;
@@ -631,7 +631,7 @@
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  font-size: 0.86rem;
+  font-size: var(--public-card-copy-size);
 }
 .models li svg {
   color: var(--support-blue);
@@ -658,7 +658,7 @@
   cursor: pointer;
   list-style: none;
   font-weight: 720;
-  font-size: 0.92rem;
+  font-size: var(--public-question-size);
 }
 .faq summary::-webkit-details-marker {
   display: none;
@@ -671,7 +671,7 @@
   rotate: 45deg;
 }
 .faq details > p {
-  font-size: 0.87rem;
+  font-size: var(--public-answer-size);
   padding-block-end: 14px;
 }
 
@@ -718,7 +718,7 @@
   .heroNav nav a {
     min-block-size: 38px;
     padding-inline: 6px;
-    font-size: 0.8rem;
+    font-size: var(--public-secondary-action-size);
   }
   .heroNav .heroNavAction {
     display: none;
@@ -767,9 +767,6 @@
   }
   .galleryCard[data-active="false"] > button {
     align-items: center;
-  }
-  .galleryCard > button {
-    font-size: 0.95rem;
   }
   .scenarioPhoto {
     min-height: 205px;

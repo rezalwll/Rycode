@@ -48,7 +48,7 @@
 .banner .copy p {
   margin-block-start: 8px;
   color: var(--ui-muted);
-  font-size: 0.9375rem;
+  font-size: var(--public-banner-copy-size);
   line-height: 1.7;
 }
 
@@ -165,7 +165,7 @@
   align-items: center;
   gap: 6px;
   color: var(--ui-ink);
-  font-size: 0.875rem;
+  font-size: var(--public-card-copy-size);
   font-weight: 700;
 }
 
@@ -195,7 +195,7 @@
   gap: 5px;
   min-block-size: 32px;
   color: var(--ui-ink);
-  font-size: 0.8125rem;
+  font-size: var(--public-meta-size);
   line-height: 1.5;
   text-decoration: none;
 }

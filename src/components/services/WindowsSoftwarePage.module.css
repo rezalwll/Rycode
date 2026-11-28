@@ -19,15 +19,15 @@
   line-height: 1.42;
 }
 .page h1 {
-  font-size: clamp(2.15rem, 4vw, 4rem);
+  font-size: var(--public-title-size);
   font-weight: 850;
 }
 .page h2 {
-  font-size: clamp(1.65rem, 2.8vw, 2.85rem);
+  font-size: var(--public-section-title-size);
   font-weight: 800;
 }
 .page h3 {
-  font-size: clamp(1rem, 1.38vw, 1.22rem);
+  font-size: var(--public-card-title-size);
   font-weight: 760;
 }
 .page p {
@@ -57,7 +57,7 @@
   color: var(--muted);
   border-block-end: 1px solid var(--line);
   padding-block-end: 13px;
-  font-size: 0.84rem;
+  font-size: var(--public-meta-size);
 }
 .breadcrumb a {
   color: var(--blue);
@@ -83,7 +83,7 @@
 }
 .lead {
   max-width: 42ch;
-  font-size: clamp(1rem, 1.45vw, 1.17rem);
+  font-size: var(--public-lead-size);
 }
 .actions {
   display: flex;
@@ -100,7 +100,7 @@
   padding: 8px 15px;
   border: 1px solid light-dark(#bfd7e8, #405064);
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 750;
   text-decoration: none;
   transition:
@@ -273,11 +273,11 @@
   display: block;
 }
 .quickPaths b {
-  font-size: 0.89rem;
+  font-size: var(--public-secondary-action-size);
 }
 .quickPaths small {
   color: var(--muted);
-  font-size: 0.77rem;
+  font-size: var(--public-meta-size);
 }
 
 .problem,
@@ -330,7 +330,7 @@
   gap: 8px;
   border-block-end: 1px solid var(--line);
   padding-block: 5px 10px;
-  font-size: 0.88rem;
+  font-size: var(--public-card-copy-size);
 }
 .problemList svg {
   align-self: start;
@@ -370,7 +370,7 @@
   margin-block-start: 3px;
 }
 .solutionGrid p {
-  font-size: 0.9rem;
+  font-size: var(--public-card-copy-size);
 }
 .solutionGrid ul {
   display: flex;
@@ -381,7 +381,7 @@
 }
 .solutionGrid li {
   color: var(--brand-blue);
-  font-size: 0.76rem;
+  font-size: var(--public-meta-size);
 }
 
 .systemOptions {
@@ -402,7 +402,7 @@
 }
 .systemOptions p {
   margin-block-start: 5px;
-  font-size: 0.86rem;
+  font-size: var(--public-card-copy-size);
 }
 .existing {
   display: grid;
@@ -432,7 +432,7 @@
   gap: 8px;
 }
 .existing li {
-  font-size: 0.9rem;
+  font-size: var(--public-card-copy-size);
 }
 .existing li svg,
 .textLink {
@@ -441,7 +441,7 @@
 .textLink {
   width: fit-content;
   font-weight: 750;
-  font-size: 0.87rem;
+  font-size: var(--public-secondary-action-size);
   text-decoration: none;
 }
 .textLink:hover {
@@ -473,12 +473,12 @@
 }
 .process li span {
   color: var(--blue);
-  font-size: 0.83rem;
+  font-size: var(--public-meta-size);
   font-weight: 850;
 }
 .process li p {
   margin-block-start: 4px;
-  font-size: 0.86rem;
+  font-size: var(--public-card-copy-size);
 }
 .faq {
   display: grid;
@@ -499,7 +499,7 @@
   min-height: 53px;
   padding: 10px 4px;
   color: var(--ink);
-  font-size: 0.95rem;
+  font-size: var(--public-question-size);
   font-weight: 730;
   list-style: none;
   cursor: pointer;
@@ -520,7 +520,7 @@
 .faq details p {
   max-width: 66ch;
   padding: 0 4px 14px;
-  font-size: 0.9rem;
+  font-size: var(--public-answer-size);
 }
 .closing {
   display: flex;
@@ -572,9 +572,6 @@
 @media (max-width: 480px) {
   .container {
     width: calc(100% - 28px);
-  }
-  .page h1 {
-    font-size: clamp(1.95rem, 8.5vw, 2.5rem);
   }
   .page :is(.heroGrid, .heroCopy) {
     gap: 18px;

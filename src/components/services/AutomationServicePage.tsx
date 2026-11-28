@@ -324,7 +324,7 @@ export async function AutomationServicePage() {
         accent="و سؤال‌های رایج"
         description="هزینه به تعداد مراحل، اتصال‌ها، امکانات پنل، حجم داده و شرایط نگهداری بستگی داره. هزینه سرویس‌هایی مثل پیامک یا میزبانی جدا مشخص می‌شه."
       >
-        <div className={styles.faq} data-reveal>
+        <div className={styles.faq} data-public-faq data-reveal>
           {automationFaq.map(([question, answer]) => (
             <details key={question}>
               <summary>

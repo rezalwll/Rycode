@@ -4,7 +4,7 @@
   min-height: 70vh;
   padding: 150px max(20px, calc((100% - 1120px) / 2)) 100px;
   font:
-    400 17px/1.85 "Geist",
+    400 var(--public-body-size)/1.85 "Geist",
     Arial,
     sans-serif;
   overflow-wrap: anywhere;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 .page h1 {
-  font-size: clamp(40px, 5.3vw, 76px);
+  font-size: var(--public-title-size);
   line-height: 1.2;
   letter-spacing: -0.04em;
   max-width: 1000px;
@@ -21,12 +21,12 @@
   font-weight: 600;
 }
 .page h2 {
-  font-size: clamp(28px, 3vw, 44px);
+  font-size: var(--public-section-title-size);
   line-height: 1.4;
   margin: 45px 0 18px;
 }
 .page h3 {
-  font-size: 26px;
+  font-size: var(--public-card-title-size);
   margin: 28px 0 16px;
 }
 .page p {
@@ -34,7 +34,7 @@
 }
 .summary {
   max-width: 800px;
-  font-size: clamp(18px, 2.2vw, 25px);
+  font-size: var(--public-lead-size);
   color: #ccc;
 }
 .actions {
@@ -130,7 +130,7 @@
   margin: 18px 0 10px;
 }
 .card p {
-  font-size: 16px;
+  font-size: var(--public-card-copy-size);
   color: #bbb;
 }
 .projectListing {
@@ -140,7 +140,7 @@
   color: var(--ui-ink);
 }
 .projectListing > h2 {
-  font-size: clamp(24px, 3.6vw, 46px);
+  font-size: var(--public-section-title-size);
   font-weight: 760;
   line-height: 1.4;
   margin-block-end: clamp(16px, 3vw, 30px);
@@ -152,7 +152,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 14px;
+  font-size: var(--public-meta-size);
   color: #aaa;
   padding-block: 15px;
   border-block: 1px solid #333;
@@ -239,7 +239,7 @@
   color: #ff7565;
 }
 .aside h2 {
-  font-size: 24px;
+  font-size: var(--public-section-title-size);
   margin: 0 0 16px;
 }
 .toc {
@@ -248,12 +248,12 @@
   padding-top: 18px;
 }
 .toc h3 {
-  font-size: 18px;
+  font-size: var(--public-card-title-size);
   margin: 0 0 12px;
 }
 .toc ol {
   padding-inline-start: 20px;
-  font-size: 14px;
+  font-size: var(--public-card-copy-size);
 }
 .toc a {
   margin: 8px 0;
@@ -270,7 +270,7 @@
 }
 .service h3 {
   margin: 0 0 18px;
-  font-size: 26px;
+  font-size: var(--public-card-title-size);
 }
 .service:focus-visible {
   border-color: #ff1a05;
@@ -303,7 +303,7 @@
 }
 .service h2 {
   margin: 0 0 18px;
-  font-size: 30px;
+  font-size: var(--public-section-title-size);
 }
 .number {
   color: #666;
@@ -318,7 +318,7 @@
 }
 .faq summary {
   cursor: pointer;
-  font-size: 20px;
+  font-size: var(--public-question-size);
   list-style: none;
   display: flex;
   align-items: center;
@@ -364,7 +364,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  font-size: 14px;
+  font-size: var(--public-secondary-action-size);
   color: #aaa;
 }
 .breadcrumb a {
@@ -490,7 +490,7 @@
   position: relative;
   z-index: 1;
   color: #81796f;
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   letter-spacing: 0.03em;
 }
 .servicePage .breadcrumb a {
@@ -501,7 +501,7 @@
   z-index: 1;
   max-width: 840px;
   margin: 0 0 26px;
-  font-size: clamp(48px, 6.2vw, 88px);
+  font-size: var(--public-title-size);
   line-height: 1.18;
   color: #211e1b;
   font-family: Georgia, "Times New Roman", serif;
@@ -514,7 +514,7 @@
   z-index: 1;
   max-width: 700px;
   color: #655e56;
-  font-size: clamp(19px, 2vw, 25px);
+  font-size: var(--public-lead-size);
   line-height: 1.85;
 }
 .servicePage .actions {
@@ -556,7 +556,7 @@
   margin-bottom: 42px;
   border-color: #d2c7bc;
   color: #81776d;
-  font-size: 12px;
+  font-size: var(--public-meta-size);
   letter-spacing: 0.03em;
 }
 .servicePage .cover {
@@ -575,7 +575,7 @@
 }
 .servicePage .specialties > h2 {
   margin-top: 16px;
-  font-size: clamp(30px, 3.6vw, 52px);
+  font-size: var(--public-section-title-size);
   letter-spacing: -0.04em;
   color: #24211e;
   font-family: Georgia, "Times New Roman", serif;
@@ -607,7 +607,7 @@
   margin-top: 0;
   padding-top: 28px;
   border-top: 1px solid #d2c7bc;
-  font-size: clamp(30px, 3.4vw, 48px);
+  font-size: var(--public-section-title-size);
   letter-spacing: -0.04em;
   color: #24211e;
   font-family: Georgia, "Times New Roman", serif;
@@ -680,12 +680,6 @@
   }
   .page {
     padding-block: 115px 65px;
-  }
-  .page h1 {
-    font-size: 40px;
-  }
-  .servicePage > h1 {
-    font-size: 44px;
   }
   .servicePage .specialties {
     padding: 28px 20px;
@@ -809,12 +803,12 @@
 .projectFacts dt {
   margin-bottom: 5px;
   color: var(--ui-muted, #506174);
-  font-size: 0.9rem;
+  font-size: var(--public-meta-size);
 }
 
 .projectFacts dd {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--public-body-size);
   font-weight: 650;
 }
 

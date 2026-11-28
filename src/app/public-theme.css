@@ -1,8 +1,23 @@
-/* Public-site palette; brand colors are shared with the app icons and emblem. */
-.rycode-public {
+/* The homepage supplies the type sizes for every public template. */
+:root {
   --public-title-size: clamp(2rem, 1.5rem + 2.2vw, 3.5rem);
   --public-section-title-size: clamp(1.625rem, 1.275rem + 1.25vw, 2.375rem);
   --public-card-title-size: clamp(1.1875rem, 1.0625rem + 0.45vw, 1.4375rem);
+  --public-lead-size: 1.0625rem;
+  --public-body-size: 1rem;
+  --public-section-copy-size: var(--public-body-size);
+  --public-card-copy-size: 0.875rem;
+  --public-meta-size: 0.8125rem;
+  --public-caption-size: 0.75rem;
+  --public-action-size: var(--public-body-size);
+  --public-secondary-action-size: 0.9375rem;
+  --public-question-size: 1.125rem;
+  --public-answer-size: var(--public-body-size);
+  --public-banner-copy-size: var(--public-card-copy-size);
+}
+
+/* Public-site palette; brand colors are shared with the app icons and emblem. */
+.rycode-public {
   --closing-banner-width: 60rem;
   --closing-banner-height: 18rem;
   --closing-banner-gutter: 2rem;
@@ -11,7 +26,6 @@
     calc(100vw - 2 * var(--closing-banner-gutter))
   );
   --closing-banner-padding: clamp(1rem, 2.8vw, 1.5rem);
-  --closing-banner-title-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
   --ui-canvas: #fff;
   --ui-surface: #fff;
   --ui-surface-muted: #f2f2f2;
@@ -34,7 +48,10 @@
   color-scheme: light;
 }
 
-/* Share font sizes across public templates while letting each layout flow. */
+.rycode-public main,
+:where(.rycode-public main) p {
+  font-size: var(--public-body-size);
+}
 #main.rycode-public main :is(h1:not(.sr-only), .framer-1ucgqp2 h2, .framer-4ent3p h2) {
   font-size: var(--public-title-size);
 }
@@ -46,10 +63,25 @@
   font-size: var(--public-card-title-size);
 }
 #main.rycode-public main h4 {
-  font-size: 1.0625rem;
+  font-size: var(--public-lead-size);
 }
 #main.rycode-public main :is(h1:not(.sr-only) + p, .hero-subtitle) {
-  font-size: 1.0625rem;
+  font-size: var(--public-lead-size);
+}
+#main.rycode-public main form :is(label, label p) {
+  font-size: var(--public-secondary-action-size);
+}
+#main.rycode-public main form :is(input, textarea, select) {
+  font-size: var(--public-body-size);
+}
+#main.rycode-public main :is(.framer-1ucgqp2, .framer-4ent3p) h2 + p {
+  font-size: var(--public-lead-size);
+}
+#main.rycode-public main :is(details[name$="-faq"], details[name$="-questions"], [data-public-faq]) :is(summary, h3) {
+  font-size: var(--public-question-size);
+}
+#main.rycode-public main :is(details[name$="-faq"], details[name$="-questions"], [data-public-faq]) p {
+  font-size: var(--public-answer-size);
 }
 
 /* Imported animated headings carry their font size in the style attribute. */
@@ -309,13 +341,23 @@ html.dark:has(.rycode-public) {
   min-block-size: var(--closing-banner-height);
 }
 
-#main.rycode-public [data-closing-banner="standard"] h2 {
-  font-size: var(--closing-banner-title-size);
+#main.rycode-public [data-closing-banner] :is(h2, h3) {
+  font-size: var(--public-card-title-size);
+}
+#main.rycode-public [data-closing-banner] p:not(form p) {
+  font-size: var(--public-banner-copy-size);
 }
 
 @media (max-width: 639px) {
   .rycode-public {
     --closing-banner-gutter: 1.25rem;
+  }
+  :root {
+    --public-meta-size: var(--public-caption-size);
+    --public-section-copy-size: var(--public-card-copy-size);
+    --public-question-size: var(--public-secondary-action-size);
+    --public-answer-size: var(--public-card-copy-size);
+    --public-banner-copy-size: var(--public-caption-size);
   }
 }
 

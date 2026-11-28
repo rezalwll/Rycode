@@ -40,7 +40,7 @@
 }
 
 .page h3 {
-  font-size: clamp(0.95rem, 1.3vw, 1.09rem);
+  font-size: var(--public-card-title-size);
   font-weight: 700;
   line-height: 1.55;
 }
@@ -68,7 +68,7 @@
 }
 
 .page h1 {
-  font-size: clamp(1.75rem, 3.65vw, 3.15rem);
+  font-size: var(--public-title-size);
   line-height: 1.32;
 }
 
@@ -88,16 +88,14 @@
 }
 
 .page[dir="ltr"] h1 em {
-  font:
-    italic 0.96em Georgia,
-    serif;
+  font: italic var(--public-title-size) Georgia, serif;
 }
 
 .page .heroDescription {
   max-inline-size: 56ch;
   margin-block-start: 14px;
   color: var(--about-muted);
-  font-size: clamp(0.94rem, 1.3vw, 1.06rem);
+  font-size: var(--public-lead-size);
   line-height: 1.85;
 }
 
@@ -126,7 +124,7 @@
   border-radius: 8px;
   background: var(--brand-blue);
   color: var(--brand-on-blue);
-  font-size: 0.88rem;
+  font-size: var(--public-action-size);
   font-weight: 700;
   transition: background-color 220ms ease;
 }
@@ -188,7 +186,7 @@
   border-radius: 9px;
   background: light-dark(#fff, #222830);
   color: var(--about-ink);
-  font-size: 0.78rem;
+  font-size: var(--public-caption-size);
   font-weight: 650;
   line-height: 1.45;
   transition:
@@ -214,7 +212,7 @@
 
 .heading h2 {
   max-inline-size: 36ch;
-  font-size: clamp(1.35rem, 2.65vw, 2.3rem);
+  font-size: var(--public-section-title-size);
   line-height: 1.4;
   scroll-margin-block-start: 88px;
 }
@@ -230,7 +228,7 @@
 .page .description {
   max-inline-size: 65ch;
   color: var(--about-muted);
-  font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+  font-size: var(--public-body-size);
   line-height: 1.9;
 }
 
@@ -267,7 +265,7 @@
 
 .page :is(.principles, .capabilities, .steps, .audiences) p {
   color: var(--about-muted);
-  font-size: 0.92rem;
+  font-size: var(--public-card-copy-size);
   line-height: 1.75;
 }
 
@@ -330,7 +328,7 @@
 
 .stepNumber {
   color: var(--about-accent);
-  font-size: 0.79rem;
+  font-size: var(--public-caption-size);
   font-weight: 700;
 }
 
@@ -385,7 +383,7 @@
   max-inline-size: 620px;
   margin-block-start: 4px;
   margin-inline: auto;
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-size: var(--public-banner-copy-size);
   line-height: 1.65;
   text-wrap: pretty;
 }

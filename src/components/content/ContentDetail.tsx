@@ -331,7 +331,7 @@ export async function ContentDetail({
             {fa ? "پرسش‌های متداول" : "Frequently asked questions"}
           </h2>
           {faqs.map((faq) => (
-            <details key={faq.id} className={styles.faq}>
+            <details key={faq.id} className={styles.faq} data-public-faq>
               <summary>{faq.question}</summary>
               <p>{faq.answer}</p>
             </details>

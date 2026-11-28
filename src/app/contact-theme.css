@@ -74,6 +74,9 @@
 .rycode-public .framer-UUxDN .framer-pqxl1p {
   background-color: rgb(16 29 48 / 20%);
 }
+.rycode-public .framer-UUxDN .framer-1d753wm p {
+  font-size: var(--public-body-size);
+}
 .rycode-public .framer-UUxDN #project-inquiry .framer-form-input-wrapper {
   --framer-input-background: var(--ui-field);
   --framer-input-font-color: var(--ui-ink);

@@ -20,7 +20,7 @@
   padding-inline: 42px 5px;
   background: transparent;
   color: var(--ui-ink);
-  font-size: 0.9375rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
   line-height: 1.55;
   text-align: start;
@@ -113,7 +113,7 @@
   color: var(--ui-ink) !important;
   box-shadow: none !important;
   font-family: inherit;
-  font-size: 16px !important;
+  font-size: var(--public-action-size) !important;
   font-weight: 600 !important;
   line-height: 26px !important;
   letter-spacing: normal !important;

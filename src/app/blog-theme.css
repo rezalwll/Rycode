@@ -57,16 +57,17 @@
 }
 .blog-colorful [data-blog-card] .framer-p08vs7 .framer-text {
   color: var(--blog-ink) !important;
-  font-size: clamp(18px, 1.7vw, 23px);
+  font-size: var(--public-card-title-size);
   line-height: 1.55;
 }
 .blog-colorful [data-blog-card] .framer-ef2y83 .framer-text {
   color: var(--blog-muted) !important;
+  font-size: var(--public-card-copy-size);
   line-height: 1.85;
 }
 .blog-colorful [data-blog-card] .framer-1l76jpf .framer-text {
   color: var(--blog-purple) !important;
-  font-size: 12px;
+  font-size: var(--public-caption-size);
   font-weight: 600;
 }
 .blog-colorful .filters summary::before {

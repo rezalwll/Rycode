@@ -95,18 +95,18 @@
 }
 .hero h1 {
   margin-block: clamp(13px, 1.7vw, 24px) 13px;
-  font-size: clamp(2.35rem, 4.1vw, 4.55rem);
+  font-size: var(--public-title-size);
   font-weight: 800;
   line-height: 1.25;
 }
 .hero .heroLead {
   color: var(--data-blue);
   margin-block-end: 12px;
-  font-size: clamp(1.12rem, 1.72vw, 1.42rem);
+  font-size: var(--public-lead-size);
   font-weight: 730;
 }
 .heroCopy > p:last-of-type {
-  font-size: clamp(0.96rem, 1.3vw, 1.12rem);
+  font-size: var(--public-lead-size);
   max-inline-size: 510px;
   text-wrap: pretty;
 }
@@ -127,7 +127,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.89rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 700;
 }
 .back svg {
@@ -154,7 +154,7 @@
   padding: 9px 14px;
   min-height: 47px;
   line-height: 1.55;
-  font-size: 0.84rem;
+  font-size: var(--public-secondary-action-size);
   font-weight: 750;
   text-align: center;
   transition:
@@ -199,7 +199,7 @@
   border-block-end: 1px solid var(--data-line);
   padding: 12px 15px;
   font-weight: 750;
-  font-size: 0.91rem;
+  font-size: var(--public-meta-size);
 }
 .demoTitle {
   display: flex;
@@ -214,7 +214,7 @@
   flex: none;
 }
 .sample figcaption small {
-  font-size: 0.7rem;
+  font-size: var(--public-caption-size);
   font-weight: 650;
   color: var(--data-muted);
 }
@@ -455,7 +455,7 @@
 }
 .heading h2,
 .closing h2 {
-  font-size: clamp(1.65rem, 3.35vw, 3.45rem);
+  font-size: var(--public-section-title-size);
   font-weight: 760;
 }
 .heading p {
@@ -483,13 +483,13 @@
 .compareGrid h3,
 .process h3,
 .privacy h3 {
-  font-size: 1.07rem;
+  font-size: var(--public-card-title-size);
 }
 .problemGrid p,
 .compareGrid p,
 .process p,
 .privacy p {
-  font-size: 0.88rem;
+  font-size: var(--public-card-copy-size);
 }
 .section > .textLink {
   margin-block-start: 19px;
@@ -513,7 +513,7 @@
 .serviceNav a {
   color: var(--data-blue);
   padding: 5px 9px;
-  font-size: 0.76rem;
+  font-size: var(--public-meta-size);
   border: 1px solid var(--data-line);
   border-radius: 5px;
 }
@@ -542,11 +542,11 @@
 }
 .index {
   color: var(--data-blue);
-  font-size: 0.77rem;
+  font-size: var(--public-meta-size);
   font-weight: 750;
 }
 .service h3 {
-  font-size: clamp(1.27rem, 2.55vw, 2.6rem);
+  font-size: var(--public-card-title-size);
   font-weight: 760;
 }
 .serviceCopy p {
@@ -556,7 +556,7 @@
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  font-size: 0.84rem;
+  font-size: var(--public-card-copy-size);
 }
 .serviceCopy li svg {
   flex: none;
@@ -617,7 +617,7 @@
   gap: 10px;
   list-style: none;
   cursor: pointer;
-  font-size: 0.89rem;
+  font-size: var(--public-question-size);
   font-weight: 720;
   padding: 12px 0;
 }
@@ -634,7 +634,7 @@
 }
 .faq details p {
   padding-block-end: 13px;
-  font-size: 0.86rem;
+  font-size: var(--public-answer-size);
 }
 .closing {
   display: grid;
@@ -710,7 +710,7 @@
   padding-block: 8px;
   border-block-end: 1px solid var(--data-line);
   color: var(--data-blue);
-  font-size: 0.86rem;
+  font-size: var(--public-secondary-action-size);
 }
 .related a:hover {
   color: var(--ui-ink);
@@ -743,9 +743,6 @@
   .heroCopy {
     max-width: 550px;
     padding-block: 0;
-  }
-  .hero h1 {
-    font-size: clamp(2.1rem, 8.5vw, 3.5rem);
   }
   .heroArt {
     isolation: isolate;

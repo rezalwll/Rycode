@@ -22,7 +22,7 @@
 }
 .header h2 {
   margin: 0;
-  font-size: clamp(32px, 3.7vw, 48px);
+  font-size: var(--public-section-title-size);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.04em;
@@ -30,7 +30,7 @@
 .description {
   margin: 9px 0 0;
   color: var(--journal-muted);
-  font-size: 15px;
+  font-size: var(--public-section-copy-size);
   line-height: 1.85;
 }
 .allArticles {
@@ -45,7 +45,7 @@
   border: 1px solid light-dark(#dfe3eb, var(--ui-line));
   color: var(--ui-link, var(--brand-blue));
   background: var(--journal-surface);
-  font-size: 14px;
+  font-size: var(--public-secondary-action-size);
   text-decoration: none;
   transition:
     background-color 200ms ease,
@@ -120,7 +120,7 @@
   border: 1px solid light-dark(#dfe5ef, var(--ui-line));
   border-radius: 999px;
   color: var(--ui-ink, #303b48);
-  font-size: 12px;
+  font-size: var(--public-caption-size);
 }
 .body {
   display: flex;
@@ -138,7 +138,7 @@
   column-gap: 8px;
   row-gap: 2px;
   color: var(--journal-muted);
-  font-size: 12px;
+  font-size: var(--public-caption-size);
   line-height: 1.6;
 }
 .dot {
@@ -149,18 +149,18 @@
 }
 .body h3 {
   margin: 0;
-  font-size: clamp(17px, 1.65vw, 21px);
+  font-size: var(--public-card-title-size);
   font-weight: 600;
   line-height: 1.65;
   overflow-wrap: anywhere;
 }
 .featured h3 {
-  font-size: clamp(21px, 2vw, 27px);
+  font-size: var(--public-card-title-size);
 }
 .summary {
   margin: 0;
   color: var(--journal-muted);
-  font-size: 14px;
+  font-size: var(--public-card-copy-size);
   line-height: 1.85;
 }
 .read {
@@ -170,7 +170,7 @@
   margin-top: auto;
   padding-top: 6px;
   color: var(--ui-link, var(--brand-blue));
-  font-size: 13px;
+  font-size: var(--public-meta-size);
   line-height: 1.6;
 }
 .read svg {
@@ -223,13 +223,9 @@
     gap: 15px;
     margin-bottom: 22px;
   }
-  .description {
-    font-size: 14px;
-  }
   .allArticles {
     min-height: 40px;
     padding-inline: 13px;
-    font-size: 13px;
   }
   .body {
     padding: 15px 16px 18px;
@@ -243,7 +239,7 @@
     aspect-ratio: 1;
   }
   .compact h3 {
-    font-size: 15px;
+    font-size: var(--public-card-title-size);
   }
   .compact .meta {
     font-size: 11px;
