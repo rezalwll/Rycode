@@ -6,7 +6,7 @@ const db = database();
 try {
   const result = await seedBusinessJournal(db);
   console.log(
-    `Created ${result.created} business guides; archived ${result.archived} untouched seed articles. Existing editorial changes were preserved.`,
+    `Created ${result.created} business guides, updated ${result.updated} untouched guides and archived ${result.archived} untouched seed articles.`,
   );
 } finally {
   await db.$disconnect();

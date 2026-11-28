@@ -41,7 +41,7 @@ for (const prefix of ["", "/en"]) {
         .filter((_, e) =>
           $(e)
             .text()
-            .includes(prefix ? "View All Work" : "همهٔ پروژه‌ها"),
+            .includes(prefix ? "View All Work" : "همه پروژه‌ها"),
         )
         .attr("href"),
       `${prefix}/work`,

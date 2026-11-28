@@ -1,12 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BrandBanner } from "@/components/content/BrandBanner";
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowUpLeft,
+  CalendarDays,
+  ChartNoAxesColumnIncreasing,
   Check,
+  CircleHelp,
   Clock3,
+  Handshake,
   Plus,
+  Search,
+  TrendingUp,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { seoGrowthCopy as copy } from "./seo-growth-copy";
@@ -15,12 +21,12 @@ import styles from "./SeoGrowthPage.module.css";
 const inquiryHref = "/contact?service=grow";
 const formatNumber = new Intl.NumberFormat("fa", { minimumIntegerDigits: 2 });
 const pageLinks = [
-  ["growth-diagnosis", "بررسی سایت"],
-  ["growth-services", "خدمات سئو"],
-  ["growth-process", "مراحل همکاری"],
-  ["growth-pricing", "هزینه و زمان"],
-  ["growth-faq", "پرسش‌های متداول"],
-];
+  ["growth-diagnosis", "بررسی سایت", Search],
+  ["growth-services", "خدمات سئو", ChartNoAxesColumnIncreasing],
+  ["growth-process", "مراحل همکاری", Handshake],
+  ["growth-pricing", "هزینه و زمان", CalendarDays],
+  ["growth-faq", "پرسش‌های متداول", CircleHelp],
+] as const;
 
 function InquiryLink({ children }: { children: ReactNode }) {
   return (
@@ -34,54 +40,61 @@ function InquiryLink({ children }: { children: ReactNode }) {
 export function SeoGrowthPage() {
   return (
     <main className={styles.page} dir="rtl" data-seo-growth-page>
-      <div className={styles.container}>
+      <div className={styles.intro}>
         <header className={styles.hero} id="growth-overview">
-          <Link href="/services" className={styles.back}>
-            <ArrowLeft size={16} aria-hidden="true" />
-            همهٔ خدمات
-          </Link>
-          <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <Link href="/services" className={styles.back}>
+              <ArrowLeft size={16} aria-hidden="true" />
+              همه خدمات
+            </Link>
             <div>
               <h1>سئو و رشد سایت</h1>
               <p className={styles.heroLead}>
                 سایتت رو ساختی. حالا وقتشه دیده بشه.
               </p>
             </div>
-            <div className={styles.heroSummary}>
-              <p>
-                سایتت رو بررسی می‌کنیم، موانع رشد رو پیدا می‌کنیم و کمک می‌کنیم
-                مخاطب درست از جست‌وجو به صفحهٔ درست برسه.
-              </p>
-              <div className={styles.actions}>
-                <InquiryLink>درخواست بررسی سئو</InquiryLink>
-                <a className={styles.secondary} href="#growth-services">
-                  دیدن خدمات سئو <ArrowDown size={16} aria-hidden="true" />
-                </a>
-              </div>
+            <p>
+              سایتت رو بررسی می‌کنیم، موانع رشد رو پیدا می‌کنیم و کمک می‌کنیم
+              مخاطب درست از جست‌وجو به صفحه درست برسه.
+            </p>
+            <div className={styles.actions}>
+              <InquiryLink>درخواست بررسی سئو</InquiryLink>
+              <a data-secondary-action href="#growth-services">
+                دیدن خدمات سئو
+              </a>
             </div>
+          </div>
+          <div className={styles.cover}>
+            <div className={styles.heroImage}>
+              <Image
+                src="/brand/seo-growth/search-analysis.webp"
+                alt="لپ‌تاپ با تحلیل جست‌وجو کنار نقشه صفحات سایت"
+                fill
+                sizes="(max-width: 760px) 100vw, 55vw"
+                preload
+              />
+            </div>
+            <span className={styles.heroBadge} aria-hidden="true">
+              <TrendingUp strokeWidth={1.75} />
+            </span>
           </div>
         </header>
 
-        <div className={styles.cover}>
-          <Image
-            src="/brand/seo-growth/search-analysis.webp"
-            alt="لپ‌تاپ با تحلیل جست‌وجو کنار نقشهٔ صفحات سایت"
-            fill
-            sizes="(max-width: 1300px) 94vw, 1220px"
-            preload
-          />
-        </div>
-
         <nav className={styles.jumpLinks} aria-label="بخش‌های صفحه">
           <ul>
-            {pageLinks.map(([id, label]) => (
+            {pageLinks.map(([id, label, Icon]) => (
               <li key={id}>
-                <a href={`#${id}`}>{label}</a>
+                <a href={`#${id}`}>
+                  <Icon size={18} aria-hidden="true" />
+                  {label}
+                </a>
               </li>
             ))}
           </ul>
         </nav>
+      </div>
 
+      <div className={styles.container}>
         <section
           className={styles.diagnosis}
           id="growth-diagnosis"
@@ -107,13 +120,13 @@ export function SeoGrowthPage() {
             <div>
               <Image
                 src="/brand/seo-growth/analysis-dashboard.webp"
-                alt="نمونهٔ نمودار میله‌ای در رابط گزارش"
+                alt="نمونه نمودار میله‌ای در رابط گزارش"
                 width={603}
                 height={294}
                 sizes="(max-width: 760px) 88vw, 530px"
               />
             </div>
-            <figcaption>نمونهٔ تصویری گزارش</figcaption>
+            <figcaption>نمونه تصویری گزارش</figcaption>
           </figure>
         </section>
 
@@ -126,7 +139,7 @@ export function SeoGrowthPage() {
             <h2 id="growth-services-title">برای رشد سایت چه کار می‌کنیم؟</h2>
             <p>
               بسته به وضعیت سایت، می‌تونیم از یک بررسی کوتاه، اصلاح چند صفحه یا
-              یک برنامهٔ مستمر شروع کنیم.
+              یک برنامه مستمر شروع کنیم.
             </p>
             <InquiryLink>می‌خوام سایتم بررسی بشه</InquiryLink>
           </div>
@@ -212,8 +225,8 @@ export function SeoGrowthPage() {
               <article>
                 <h3>هزینه به حجم کار بستگی داره</h3>
                 <p>
-                  اندازهٔ سایت، وضعیت فنی، رقابت و حجم محتوا رو بررسی می‌کنیم تا
-                  بشه هزینهٔ پروژه رو برآورد کرد.
+                  اندازه سایت، وضعیت فنی، رقابت و حجم محتوا رو بررسی می‌کنیم تا
+                  بشه هزینه پروژه رو برآورد کرد.
                 </p>
               </article>
               <article id="growth-timing">
@@ -221,12 +234,12 @@ export function SeoGrowthPage() {
                   <Clock3 size={19} aria-hidden="true" /> زمان نتیجه متغیره
                 </h3>
                 <p>
-                  بعد از بررسی سایت، برنامهٔ اجرا و نحوهٔ سنجش تغییرات رو مشخص
+                  بعد از بررسی سایت، برنامه اجرا و نحوه سنجش تغییرات رو مشخص
                   می‌کنیم. رتبه و زمان نتیجه تضمینی نیست.
                 </p>
               </article>
             </div>
-            <InquiryLink>برآورد هزینهٔ سئوی سایت</InquiryLink>
+            <InquiryLink>برآورد هزینه سئوی سایت</InquiryLink>
           </div>
         </section>
 
@@ -251,21 +264,18 @@ export function SeoGrowthPage() {
           </div>
         </section>
 
-        <section
-          className={styles.closing}
-          aria-labelledby="growth-contact-title"
+        <BrandBanner
+          id="growth-contact"
+          title="بیا ببینیم از کجا شروع کنیم"
+          description="آدرس سایتت رو بفرست و بگو دوست داری چه چیزی بهتر بشه."
         >
-          <div>
-            <h2 id="growth-contact-title">بیا ببینیم از کجا شروع کنیم</h2>
-            <p>آدرس سایتت رو بفرست و بگو دوست داری چه چیزی بهتر بشه.</p>
-          </div>
           <div className={styles.actions}>
             <InquiryLink>درخواست بررسی سئو</InquiryLink>
-            <Link className={styles.secondary} href="/services">
-              همهٔ خدمات <ArrowLeft size={16} aria-hidden="true" />
+            <Link data-secondary-action href="/services">
+              همه خدمات
             </Link>
           </div>
-        </section>
+        </BrandBanner>
 
         <nav
           className={styles.related}

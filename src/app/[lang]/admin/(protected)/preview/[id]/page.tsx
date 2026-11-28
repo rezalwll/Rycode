@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { z } from "zod";
 import { requireStaffPage } from "@/server/auth";
 import { database } from "@/server/db";
 import { lookupContent } from "@/server/content";
@@ -12,10 +13,11 @@ export default async function Preview({
 }) {
   await requireStaffPage();
   const { id } = await params;
+  if (!z.uuid().safeParse(id).success) notFound();
   const locale = (await searchParams).locale === "en" ? "en" : "fa";
   const record = await database().content.findUnique({
-    where: { id },
-    select: { kind: true, slug: true },
+    where: { id, kind: { in: ["ARTICLE", "PROJECT"] } },
+    select: { slug: true, kind: true },
   });
   if (!record) notFound();
   const { content } = await lookupContent(

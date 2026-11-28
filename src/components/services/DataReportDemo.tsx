@@ -5,6 +5,9 @@ import {
   ArrowDownLeft,
   ChartNoAxesColumnIncreasing,
   FileSpreadsheet,
+  Folder,
+  Layers3,
+  ShoppingCart,
   Table2,
 } from "lucide-react";
 import styles from "./DataToolsPage.module.css";
@@ -112,30 +115,17 @@ export function DataReportDemo() {
 
   return (
     <figure
+      id="data-report"
       className={styles.demo}
       aria-label="گزارش فروش و یکپارچه‌سازی فایل‌ها"
     >
-      <div className={styles.demoTop}>
-        <span className={styles.demoTitle}>
-          <ChartNoAxesColumnIncreasing size={19} aria-hidden="true" /> گزارش
-          فروش
-        </span>
-      </div>
       <div className={styles.demoGrid}>
-        <aside className={styles.sources} aria-label="فایل‌های ورودی">
-          <span>فایل‌های ورودی</span>
-          {["فروش.xlsx", "مشتریان.csv", "هزینه‌ها.xlsx"].map((file) => (
-            <span key={file} className={styles.source}>
-              <FileSpreadsheet size={16} aria-hidden="true" />
-              <bdi>{file}</bdi>
-            </span>
-          ))}
-          <span className={styles.join}>
-            <ArrowDownLeft size={16} aria-hidden="true" /> یک ساختار مشترک
-          </span>
-        </aside>
         <div className={styles.dashboard}>
           <div className={styles.controlRow}>
+            <h2 className={styles.demoTitle}>
+              <ChartNoAxesColumnIncreasing size={22} aria-hidden="true" />
+              گزارش فروش
+            </h2>
             <div role="group" aria-label="نمای داده" className={styles.segment}>
               <button
                 type="button"
@@ -173,12 +163,18 @@ export function DataReportDemo() {
               <div className={styles.demoState} key="report">
                 <div className={styles.metrics}>
                   <div>
-                    <span>تعداد فروش</span>
-                    <strong>{number.format(total)}</strong>
+                    <div>
+                      <span>تعداد فروش</span>
+                      <strong>{number.format(total)}</strong>
+                    </div>
+                    <ShoppingCart size={21} aria-hidden="true" />
                   </div>
                   <div>
-                    <span>پرفروش‌ترین محصول</span>
-                    <strong>{entries[0][0]}</strong>
+                    <div>
+                      <span>پرفروش‌ترین محصول</span>
+                      <strong>{entries[0][0]}</strong>
+                    </div>
+                    <Layers3 size={21} aria-hidden="true" />
                   </div>
                 </div>
                 <div className={styles.chart}>
@@ -221,6 +217,22 @@ export function DataReportDemo() {
             )}
           </div>
         </div>
+        <aside className={styles.sources} aria-labelledby={`${panelId}-sources`}>
+          <h3 id={`${panelId}-sources`}>
+            <Folder size={21} aria-hidden="true" /> فایل‌های ورودی
+          </h3>
+          <ul className={styles.sourceList}>
+            {["فروش.xlsx", "مشتریان.csv", "هزینه‌ها.xlsx"].map((file) => (
+              <li key={file} className={styles.source}>
+                <FileSpreadsheet size={18} aria-hidden="true" />
+                <bdi>{file}</bdi>
+              </li>
+            ))}
+          </ul>
+          <span className={styles.join}>
+            <ArrowDownLeft size={17} aria-hidden="true" /> یک ساختار مشترک
+          </span>
+        </aside>
       </div>
     </figure>
   );

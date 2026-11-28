@@ -1,6 +1,9 @@
 import { randomBytes } from "node:crypto";
+import { after } from "next/server";
 import { leadSchema } from "@/lib/content-rules";
+import { analyticsContext } from "@/lib/insights";
 import { database } from "@/server/db";
+import { writeOperationalLog } from "@/server/operational-log";
 import {
   assertSameOrigin,
   boundedJson,
@@ -9,11 +12,22 @@ import {
   requestKey,
 } from "@/server/security";
 export async function POST(request: Request) {
+  const started = Date.now();
+  function log(code: string, level: "warning" | "error") {
+    after(() => writeOperationalLog({
+      area: "form",
+      code,
+      path: "/api/leads",
+      level,
+      elapsedMs: Date.now() - started,
+    }));
+  }
   try {
     await assertSameOrigin(request);
     const raw = await boundedJson(request, 18000);
     const parsed = leadSchema.safeParse(raw);
-    if (!parsed.success)
+    if (!parsed.success) {
+      log("validation", "warning");
       return Response.json(
         {
           error: "اطلاعات فرم را بررسی کنید / Review the form",
@@ -21,7 +35,11 @@ export async function POST(request: Request) {
         },
         { status: 422 },
       );
+    }
     const input = parsed.data;
+    const attribution = analyticsContext.safeParse(
+      raw && typeof raw === "object" && "attribution" in raw ? raw.attribution : undefined,
+    );
     if (input.website)
       return Response.json({
         receipt: "RY-" + randomBytes(6).toString("hex").toUpperCase(),
@@ -50,12 +68,15 @@ export async function POST(request: Request) {
         service: input.service || null,
         sourcePath: input.sourcePath.split(/[?#]/)[0],
         locale: input.locale,
+        attribution: attribution.success ? attribution.data : undefined,
       },
       select: { receipt: true },
     });
     return Response.json(lead, { status: 201 });
   } catch (error) {
     const status = error instanceof HttpError ? error.status : 503;
+    if (status === 503 || status === 422 || status === 429)
+      log(String(status), status >= 500 ? "error" : "warning");
     return Response.json(
       {
         error:

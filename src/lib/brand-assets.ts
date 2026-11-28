@@ -3,3 +3,4 @@
 export const BRAND_MARK_SRC = "/brand/rycode-mark.svg?v=3498db";
 export const BRAND_MARK_WIDTH = 1109;
 export const BRAND_MARK_HEIGHT = 1418;
+export const BRAND_LOADING_MARK_SRC = "/brand/rycode-loading-mark.webp";

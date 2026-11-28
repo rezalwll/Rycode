@@ -142,6 +142,7 @@ export const listPublishedContent = cache(
       search?: string;
       category?: string;
       latestFirst?: boolean;
+      featuredOnly?: boolean;
     } = {},
   ) => {
     if (!databaseConfigured())
@@ -150,6 +151,8 @@ export const listPublishedContent = cache(
     const where: Prisma.ContentWhereInput = {
       kind,
       sample: false,
+      ...(kind === "PROJECT" ? { legacy: false } : {}),
+      ...(options.featuredOnly ? { featured: true } : {}),
       OR: [
         { status: "PUBLISHED" },
         { status: "SCHEDULED", scheduledAt: { lte: now } },

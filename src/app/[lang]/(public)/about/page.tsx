@@ -1,7 +1,9 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import { Reveal } from "@/components/Motion";
+import { ServiceArtwork } from "@/components/services/ServiceArtwork";
 import { getTranslations } from "@/lib/i18n-server";
 import { pageMetadata } from "@/lib/seo";
 import { aboutCopy, capabilityLinks } from "./copy";
@@ -20,12 +22,10 @@ export async function generateMetadata() {
 
 function SectionHeading({
   id,
-  label,
   title,
   description,
 }: {
   id: string;
-  label: string;
   title: string;
   description?: string;
 }) {
@@ -36,7 +36,6 @@ function SectionHeading({
       duration={650}
       initialOpacity={0.55}
     >
-      <p className={styles.label}>{label}</p>
       <div>
         <h2 id={id}>{title}</h2>
         {description && <p className={styles.description}>{description}</p>}
@@ -57,7 +56,6 @@ export default async function AboutPage() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div className={styles.heroIntro}>
-            <p className={styles.label}>{copy.title}</p>
             <Reveal duration={700} initialOpacity={0.55}>
               <h1>
                 {copy.headline[0]} <em>{copy.headline[1]}</em>
@@ -66,7 +64,7 @@ export default async function AboutPage() {
               <div className={styles.actions}>
                 <Link
                   className={styles.button}
-                  href={href("/contact#project-inquiry")}
+                  href={href("/contact")}
                 >
                   {copy.contact}
                   <ArrowUpRight
@@ -75,7 +73,7 @@ export default async function AboutPage() {
                     aria-hidden="true"
                   />
                 </Link>
-                <Link className={styles.textLink} href={href("/services")}>
+                <Link data-secondary-action href={href("/services")}>
                   {copy.services}
                 </Link>
               </div>
@@ -94,7 +92,6 @@ export default async function AboutPage() {
             </div>
             <a className={styles.galleryNote} href="#approach">
               <span>{copy.photoNote}</span>
-              <ArrowDown size={15} aria-hidden="true" />
             </a>
           </div>
         </header>
@@ -106,7 +103,6 @@ export default async function AboutPage() {
           <div>
             <SectionHeading
               id="about-identity"
-              label={copy.identity.label}
               title={copy.identity.title}
             />
             <div className={styles.identityCopy}>
@@ -132,7 +128,6 @@ export default async function AboutPage() {
         >
           <SectionHeading
             id="about-principles"
-            label={copy.principles.label}
             title={copy.principles.title}
           />
           <ul className={styles.principles}>
@@ -151,7 +146,6 @@ export default async function AboutPage() {
         >
           <SectionHeading
             id="about-capabilities"
-            label={copy.capabilities.label}
             title={copy.capabilities.title}
           />
           <ul className={styles.capabilities}>
@@ -160,14 +154,11 @@ export default async function AboutPage() {
               return (
                 <li key={path}>
                   <Link href={href(path)} className={styles.capability}>
-                    <div className={styles.capabilityPhoto}>
-                      <Image
-                        src={image}
-                        alt=""
-                        fill
-                        sizes="(max-width: 560px) 30vw, (max-width: 900px) 46vw, (max-width: 1200px) 23vw, 275px"
-                      />
-                    </div>
+                    <ServiceArtwork
+                      src={image}
+                      className={styles.capabilityPhoto}
+                      sizes="(max-width: 560px) 94vw, (max-width: 900px) 46vw, (max-width: 1200px) 23vw, 275px"
+                    />
                     <div className={styles.capabilityCopy}>
                       <h3>{title}</h3>
                       <p>{description}</p>
@@ -189,7 +180,6 @@ export default async function AboutPage() {
         >
           <SectionHeading
             id="about-process"
-            label={copy.process.label}
             title={copy.process.title}
           />
           <ol className={styles.steps}>
@@ -208,7 +198,6 @@ export default async function AboutPage() {
         <section className={styles.section} aria-labelledby="about-fit">
           <SectionHeading
             id="about-fit"
-            label={copy.fit.label}
             title={copy.fit.title}
             description={copy.fit.description}
           />
@@ -226,18 +215,18 @@ export default async function AboutPage() {
           id="next-step"
           className={styles.closing}
           aria-labelledby="about-closing"
+          data-action-banner="centered"
         >
           <div className={styles.closingBody}>
             <SectionHeading
               id="about-closing"
-              label={copy.closing.label}
               title={copy.closing.title}
               description={copy.closing.description}
             />
             <div className={styles.closingActions}>
               <Link
                 className={styles.button}
-                href={href("/contact#project-inquiry")}
+                href={href("/contact")}
               >
                 {copy.closing.action}
                 <ArrowUpRight
@@ -246,15 +235,12 @@ export default async function AboutPage() {
                   aria-hidden="true"
                 />
               </Link>
-              <Link className={styles.closingServices} href={href("/services")}>
+              <Link data-secondary-action href={href("/services")}>
                 {copy.services}
               </Link>
             </div>
           </div>
-          <div className={styles.closingShapes} aria-hidden="true">
-            <span className={styles.closingRings} />
-            <span className={styles.closingDiamonds} />
-          </div>
+          <ActionBannerArt />
         </section>
       </div>
     </main>

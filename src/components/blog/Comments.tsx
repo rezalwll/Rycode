@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { MessageSquare, Send } from "lucide-react";
 import type { CommentPage } from "@/lib/comments";
 import { articleDate } from "@/lib/article";
+import { BrandLoading, BrandLoadingMark } from "@/components/BrandLoading";
 import styles from "./Comments.module.css";
 
 export function Comments({
@@ -124,10 +125,6 @@ export function Comments({
     >
       <div className={styles.heading}>
         <div>
-          <p className={styles.eyebrow}>
-            <MessageSquare size={17} aria-hidden />
-            {fa ? "گفت‌وگو ادامه دارد" : "JOIN THE CONVERSATION"}
-          </p>
           <h2 id="comments-title">
             {fa ? "دیدگاه‌ها" : "Comments"}
             {data && (
@@ -145,6 +142,7 @@ export function Comments({
           aria-live="polite"
           aria-busy={loading}
         >
+          {loading && !data && <BrandLoading label={fa ? "در حال دریافت دیدگاه‌ها…" : "Loading comments…"} />}
           {data && !data.items.length && (
             <div className={styles.empty}>
               <MessageSquare size={28} aria-hidden />
@@ -153,7 +151,7 @@ export function Comments({
               </h3>
               <p>
                 {fa
-                  ? "سؤال یا تجربه‌ات دربارهٔ این مقاله را با ما به اشتراک بگذار"
+                  ? "سؤال یا تجربه‌ات درباره این مقاله را با ما به اشتراک بگذار"
                   : "Share a question or your experience with this article."}
               </p>
             </div>
@@ -194,6 +192,7 @@ export function Comments({
               disabled={loading}
               onClick={loadMore}
             >
+              {loading && <BrandLoadingMark />}
               {loading
                 ? fa
                   ? "در حال دریافت…"

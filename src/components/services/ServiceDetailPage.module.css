@@ -43,20 +43,6 @@
 .heroCopy {
   padding-block: 30px;
 }
-.kicker {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 24px;
-  color: #555;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.kicker span {
-  color: var(--accent);
-  font-size: 15px;
-}
 .hero h1 {
   max-width: 630px;
   margin: 0 0 24px;
@@ -195,9 +181,6 @@
   align-items: end;
   margin-bottom: 40px;
 }
-.sectionIntro .kicker {
-  margin: 0;
-}
 .sectionIntro h2 {
   max-width: 520px;
 }
@@ -253,18 +236,14 @@
 }
 .contentSection {
   display: grid;
-  grid-template-columns: 0.72fr 1.28fr;
-  gap: 70px;
-  padding: 82px 0 0;
-  border-top: 1px solid var(--line);
-}
-.contentAside {
-  position: sticky;
-  top: 120px;
-  align-self: start;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(20px, 3.2vw, 38px);
+  padding-block-start: clamp(42px, 6vw, 82px);
+  border-block-start: 1px solid var(--line);
 }
 .contentAside h2 {
-  margin-bottom: 24px;
+  margin-block-end: 10px;
+  max-width: 30ch;
 }
 .contentCards {
   display: grid;
@@ -273,8 +252,9 @@
   counter-reset: service-section;
 }
 .contentCard {
-  padding: 30px 34px 28px;
+  padding: clamp(18px, 3vw, 34px);
   border: 1px solid var(--line);
+  border-radius: 14px;
   background: var(--paper);
 }
 .contentCard:nth-child(even) {
@@ -330,10 +310,6 @@
   color: #fff;
   text-align: center;
 }
-.cta .kicker {
-  justify-content: center;
-  color: #bbb;
-}
 .cta h2 {
   max-width: 720px;
   margin: 0 auto 34px;
@@ -358,13 +334,9 @@
   .heroMedia img {
     min-height: 480px;
   }
-  .statement,
-  .contentSection {
+  .statement {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-  .contentAside {
-    position: static;
   }
 }
 @media (max-width: 560px) {
@@ -396,9 +368,6 @@
   }
   .specialties {
     margin-bottom: 90px;
-  }
-  .contentSection {
-    padding-top: 55px;
   }
   .contentCard {
     padding: 24px 20px;
@@ -457,24 +426,6 @@
   flex-wrap: wrap;
   gap: 22px;
 }
-.secondaryAction {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  color: #d5d1cb;
-  font-size: 13px;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.secondaryAction span {
-  color: var(--accent);
-  font-size: 19px;
-  transition: transform 0.3s;
-}
-.secondaryAction:hover,
-.secondaryAction:focus-visible {
-  color: #fff;
-}
 .buildProof {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -508,16 +459,15 @@
 .process {
   margin-block: 0 155px;
 }
+.buildWork {
+  scroll-margin-block-start: 110px;
+}
 .sectionHeader {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 40px;
   margin-bottom: 46px;
-}
-.sectionHeader .kicker {
-  margin-bottom: 18px;
-  color: #88837d;
 }
 .sectionHeader h2 {
   max-width: 700px;
@@ -529,12 +479,16 @@
   line-height: 1.18;
   letter-spacing: -0.065em;
 }
-.sectionHeader > p {
+:is(.sectionHeader, .buildWorkIntro) > p {
   max-width: 310px;
   margin: 0;
   color: #99958f;
   font-size: 14px;
   line-height: 1.9;
+}
+.buildWorkIntro {
+  display: grid;
+  gap: 12px;
 }
 .projectGrid {
   display: grid;
@@ -755,9 +709,6 @@
 .buildPage .cta h2 {
   color: var(--ui-ink, #303b48);
 }
-.buildPage .cta .kicker {
-  color: #68635d;
-}
 .buildPage .cta .primary {
   background: #111;
   color: #fff;
@@ -772,7 +723,7 @@
   .sectionHeader {
     display: block;
   }
-  .sectionHeader > p {
+  .sectionHeader > :is(p, .buildWorkIntro) {
     margin-top: 20px;
   }
   .capabilityGrid,
@@ -908,9 +859,6 @@
 .softwarePage .primary:hover span,
 .softwarePage .primary:focus-visible span {
   background: #101212;
-}
-.softwarePage .secondaryAction {
-  color: #c2c9c5;
 }
 .softwareHeroVisual {
   position: relative;
@@ -1338,9 +1286,6 @@
 .softwarePage .cta h2 {
   color: #101212;
 }
-.softwarePage .cta .kicker {
-  color: #676d69;
-}
 .softwarePage .cta .primary {
   background: #101212;
   color: #fff;
@@ -1509,13 +1454,6 @@
 .softwareLight .primary:focus-visible span {
   background: #171918;
 }
-.softwareLight .secondaryAction {
-  color: #4e5954;
-}
-.softwareLight .secondaryAction:hover,
-.softwareLight .secondaryAction:focus-visible {
-  color: #171918;
-}
 .softwareLight .softwareGrid {
   opacity: 0.5;
   background-image:
@@ -1646,9 +1584,6 @@
 }
 .softwareLight .cta h2 {
   color: #fff;
-}
-.softwareLight .cta .kicker {
-  color: #b9c2bd;
 }
 .softwareLight .cta .primary {
   background: #fff;
@@ -1971,9 +1906,6 @@
 .currentPage .sectionHeader {
   align-items: start;
   margin-bottom: 58px;
-}
-.currentPage .sectionHeader .kicker {
-  color: #737c76;
 }
 .currentPage .sectionHeader h2 {
   max-width: 660px;
@@ -2650,9 +2582,6 @@
 .rescuePage .cta h2 {
   color: #111513;
 }
-.rescuePage .cta .kicker {
-  color: #68736c;
-}
 .rescuePage .cta .primary {
   background: #111513;
   color: #fff;
@@ -2801,13 +2730,6 @@
 .connectPage .primary:hover span,
 .connectPage .primary:focus-visible span {
   background: var(--ink);
-}
-.connectPage .secondaryAction {
-  color: #5c667b;
-}
-.connectPage .secondaryAction:hover,
-.connectPage .secondaryAction:focus-visible {
-  color: var(--ink);
 }
 .connectWorkflowVisual {
   position: relative;
@@ -3081,9 +3003,6 @@
   align-items: start;
   margin-bottom: 50px;
 }
-.connectPage .sectionHeader .kicker {
-  color: #7a8499;
-}
 .connectPage .sectionHeader h2 {
   max-width: 720px;
   color: var(--ink);
@@ -3181,9 +3100,6 @@
   color: #b4bce0;
   font-size: 15px;
   line-height: 1.9;
-}
-.beforeAfterCopy .kicker {
-  color: #aeb7df;
 }
 .beforeAfterTable {
   overflow: hidden;
@@ -3588,13 +3504,6 @@
   background: var(--accent);
   color: #fff;
 }
-.brutalistPage .secondaryAction {
-  color: #a9aaa4;
-  text-transform: uppercase;
-}
-.brutalistPage .secondaryAction span {
-  color: var(--acid);
-}
 .brutalistPage .connectWorkflowVisual {
   min-height: 630px;
   border: 1px solid #60635e;
@@ -3745,9 +3654,6 @@
 .brutalistPage .sectionHeader {
   margin-bottom: 34px;
 }
-.brutalistPage .sectionHeader .kicker {
-  color: var(--acid);
-}
 .brutalistPage .sectionHeader h2 {
   max-width: 850px;
   color: #f2f2ed;
@@ -3820,9 +3726,6 @@
 }
 .brutalistPage .beforeAfterCopy > p {
   color: #4b5148;
-}
-.brutalistPage .beforeAfterCopy .kicker {
-  color: #3e463b;
 }
 .brutalistPage .beforeAfterCopy .primary {
   background: #161917;
@@ -3966,9 +3869,6 @@
 }
 .brutalistPage .cta h2 {
   color: #161917;
-}
-.brutalistPage .cta .kicker {
-  color: #3f463a;
 }
 .brutalistPage .cta .primary {
   background: #161917;
@@ -4147,12 +4047,6 @@
 .fintlyPage .primary:focus-visible span {
   background: var(--coral);
   color: #fff;
-}
-.fintlyPage .secondaryAction {
-  color: #557169;
-}
-.fintlyPage .secondaryAction span {
-  color: var(--coral);
 }
 .dataDashboardVisual {
   position: relative;
@@ -4410,9 +4304,6 @@
 .fintlyPage .sectionHeader {
   align-items: start;
   margin-bottom: 48px;
-}
-.fintlyPage .sectionHeader .kicker {
-  color: #628178;
 }
 .fintlyPage .sectionHeader h2 {
   max-width: 760px;
@@ -4955,12 +4846,6 @@
   border-color: var(--line);
   color: #87928e;
 }
-.ledgerPage .kicker {
-  color: #7a827c;
-}
-.ledgerPage .kicker span {
-  color: var(--accent);
-}
 .ledgerPage .primary {
   background: var(--ink);
   color: #fff;
@@ -4975,12 +4860,6 @@
 .ledgerPage .primary:hover span,
 .ledgerPage .primary:focus-visible span {
   background: var(--ink);
-}
-.ledgerPage .secondaryAction {
-  color: #5e6f72;
-}
-.ledgerPage .secondaryAction span {
-  color: var(--accent);
 }
 .continueLineVisual {
   position: relative;
@@ -5598,12 +5477,6 @@
   background: #11203d;
   color: var(--cyan);
 }
-.seoPage .secondaryAction {
-  color: #b9c2d7;
-}
-.seoPage .secondaryAction span {
-  color: var(--accent);
-}
 .growthSearchVisual {
   position: relative;
   min-height: 610px;
@@ -5804,9 +5677,6 @@
   align-items: start;
   margin-bottom: 47px;
 }
-.seoPage .sectionHeader .kicker {
-  color: #8fa2c0;
-}
 .seoPage .sectionHeader h2 {
   max-width: 770px;
   color: #f5f7ff;
@@ -5948,9 +5818,6 @@
   font-size: 15px;
   line-height: 1.9;
 }
-.growthAudit .kicker {
-  color: #4b5a3a;
-}
 .growthAudit .primary {
   background: #14213d;
   color: #fff;
@@ -6057,9 +5924,6 @@
 }
 .seoPage .cta h2 {
   color: #14213d;
-}
-.seoPage .cta .kicker {
-  color: #53623d;
 }
 .seoPage .cta .primary {
   background: #14213d;
@@ -6204,8 +6068,7 @@
   background: var(--ui-surface);
   color: var(--ink);
 }
-.page .specialty:hover p,
-.page .cta .kicker {
+.page .specialty:hover p {
   color: var(--muted);
 }
 .page .primary,
@@ -6284,12 +6147,6 @@
   background: var(--ink);
   color: #fff;
 }
-.growthPage .secondaryAction {
-  color: #666;
-}
-.growthPage .secondaryAction span {
-  color: var(--accent);
-}
 .growthPage .growthSignals,
 .growthPage .growthResults,
 .growthPage .growthChannels,
@@ -6300,8 +6157,7 @@
 }
 .growthPage .growthSignals strong,
 .growthPage .growthChannelGrid article > span,
-.growthPage .growthProcessList li > span,
-.growthPage .kicker span {
+.growthPage .growthProcessList li > span {
   color: var(--accent);
 }
 .growthPage .growthSignals span,
@@ -6374,8 +6230,7 @@
 .growthPage .growthAudit h2 {
   color: var(--ink);
 }
-.growthPage .growthAudit > div > p:last-child,
-.growthPage .growthAudit .kicker {
+.growthPage .growthAudit > div > p:last-child {
   color: #40546a;
 }
 .growthPage .growthAudit .primary {
@@ -6436,9 +6291,6 @@
 .growthPage .cta h2 {
   color: #fff;
 }
-.growthPage .cta .kicker {
-  color: #cfcfcf;
-}
 .growthPage .cta .primary {
   background: var(--cyan);
   color: var(--ink);
@@ -6454,7 +6306,7 @@
   background: var(--ui-canvas);
   color: var(--ui-ink);
 }
-:global(.dark) .page :is(.breadcrumb, .breadcrumb a, .kicker, .heroMeta, .rich) {
+:global(.dark) .page :is(.breadcrumb, .breadcrumb a, .heroMeta, .rich) {
   color: var(--ui-muted);
 }
 :global(.dark) .page :is(.contentCard, .contentCard:nth-child(even), .cta) {
@@ -6473,9 +6325,8 @@
 :global(.dark) .growthPage :is(.growthAudit, .growthChannelGrid article:hover) {
   background: var(--button-hover);
 }
-:global(.dark) .growthPage :is(.growthRankHeader, .growthRankRow span, .secondaryAction),
-:global(.dark) .growthPage .growthAudit > div > p:last-child,
-:global(.dark) .growthPage .growthAudit .kicker {
+:global(.dark) .growthPage :is(.growthRankHeader, .growthRankRow span),
+:global(.dark) .growthPage .growthAudit > div > p:last-child {
   color: var(--ui-muted);
 }
 :global(.dark) .growthPage .cta .primary {
@@ -6486,7 +6337,7 @@
 :global(.dark) .page :is(.heroClaim, .growthRankRow strong) {
   color: var(--ui-ink);
 }
-:global(.dark) .page :is(.secondaryAction, .summary, .rescueLabel) {
+:global(.dark) .page :is(.summary, .rescueLabel) {
   color: var(--ui-muted);
 }
 :global(.dark) .growthPage {

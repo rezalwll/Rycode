@@ -1,8 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { services } from "@/content/services";
 
-export const inquiryHref = "/contact#project-inquiry";
-
 export function getFooterNav(locale: Locale) {
   const fa = locale === "fa";
   return [

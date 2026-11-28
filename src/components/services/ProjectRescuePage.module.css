@@ -176,6 +176,116 @@
 }
 
 .heroIntro .actions {
+  gap: clamp(8px, 1.4vw, 22px);
+  margin-block-start: clamp(4px, 0.9vw, 16px);
+}
+
+.heroIntro .primary,
+.heroSecondary {
+  min-block-size: 54px;
+  font-size: clamp(0.87rem, 1.12vw, 1.1rem);
+  font-weight: 750;
+}
+
+.heroIntro .primary {
+  padding-inline: 19px;
+}
+
+.heroSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--rescue-blue);
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.heroSecondary > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 11px;
+  background: light-dark(#e0ecff, #263c5a);
+  transition: translate 180ms ease;
+}
+
+.heroSecondary:hover > span {
+  translate: -3px 0;
+}
+
+.heroVisual {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  aspect-ratio: 1.28;
+}
+
+.heroVisual::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 11% 3% 8%;
+  border-radius: 38% 57% 40% 43% / 54% 45% 50% 38%;
+  background: linear-gradient(164deg, light-dark(#d6e6ff, #2a4771), light-dark(#e8f1fd, #203653));
+  transform: rotate(14deg);
+  content: "";
+}
+
+.heroFrame {
+  position: absolute;
+  inset: 3% 2% 0 3%;
+  overflow: hidden;
+  clip-path: ellipse(50% 49%);
+  /* Adjacent curves share a tangent at each join so the outline stays smooth. */
+  clip-path: shape(
+    from 2% 46%,
+    curve to 45% 14% with 3% 26% / 25% 22%,
+    curve to 80% 5% with 65% 6% / 70% 1%,
+    curve to 98% 49% with 90% 9% / 98% 25%,
+    curve to 55% 98% with 98% 73% / 77% 99%,
+    curve to 2% 46% with 33% 97% / 1% 66%,
+    close
+  );
+  background: var(--rescue-blue-tint);
+}
+
+.heroPhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroVisual > span {
+  display: grid;
+  position: absolute;
+  place-items: center;
+  width: clamp(42px, 5vw, 79px);
+  aspect-ratio: 1;
+  border: 1px solid light-dark(#fff, #536b89);
+  border-radius: 25%;
+  background: light-dark(#fffffff0, #1f334cec);
+  box-shadow: 0 13px 28px light-dark(#2b4b7827, #0b152774);
+  color: var(--rescue-blue);
+}
+
+.heroVisual > span svg {
+  width: 56%;
+  height: 56%;
+  stroke-width: 1.75;
+}
+
+.codeIcon {
+  inset: 15% 3% auto auto;
+}
+
+.puzzleIcon {
+  inset: 43% auto auto 0;
+}
+
+.rocketIcon {
+  inset: auto 11% 7% auto;
+}
+
+.actions {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
@@ -184,7 +294,6 @@
 .back,
 .textLink,
 .primary,
-.secondary,
 .urgentAction {
   display: inline-flex;
   align-items: center;
@@ -199,7 +308,6 @@
 }
 
 .primary,
-.secondary,
 .urgentAction {
   min-height: 46px;
   padding: 8px 15px;
@@ -217,17 +325,13 @@
   background: var(--rescue-blue-tint);
 }
 
-.secondary {
-  background: var(--ui-surface, #fff);
-}
-
 .urgentAction {
   border-color: light-dark(#eed8bc, #405064);
   background: light-dark(#fff4e5, #202833);
   color: light-dark(#874510, #f7c08f);
 }
 
-:is(.primary, .secondary, .urgentAction):is(:hover, :focus-visible) {
+:is(.primary, .urgentAction):is(:hover, :focus-visible) {
   border-color: light-dark(#d7caee, #405064);
   background: var(--rescue-purple-tint);
   color: var(--rescue-purple);
@@ -831,10 +935,6 @@
 
   .inquiryList > div {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .inquiryList dd {
-    padding-inline-start: 40px;
   }
 
   .inquiryList dd {

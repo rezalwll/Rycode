@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowRight,
   ArrowUpLeft,
@@ -24,7 +24,7 @@ import { specialtyServices } from "@/content/specialty-services";
 import { getTranslations } from "@/lib/i18n-server";
 import styles from "./WindowsSoftwarePage.module.css";
 
-const inquiryHref = "/contact?service=software#project-inquiry";
+const inquiryHref = "/contact?service=software";
 
 const orderTrend = [
   [{ fa: "شنبه", en: "Sat" }, 38],
@@ -41,18 +41,18 @@ const systemOptions = [
     icon: HardDrive,
     title: { fa: "آفلاین و محلی", en: "Local and offline" },
     description: {
-      fa: "ثبت و مشاهدهٔ اطلاعات روی همان رایانه، با مسیر مشخص پشتیبان‌گیری.",
+      fa: "ثبت و مشاهده اطلاعات روی همان رایانه، با مسیر مشخص پشتیبان‌گیری.",
       en: "Enter and view data on the same computer with a clear way to back it up.",
     },
   },
   {
     icon: Network,
     title: {
-      fa: "شبکهٔ داخلی و چندکاربره",
+      fa: "شبکه داخلی و چندکاربره",
       en: "Shared access on a local network",
     },
     description: {
-      fa: "دادهٔ مشترک برای چند رایانه، با دسترسی متناسب با نقش هر کاربر.",
+      fa: "داده مشترک برای چند رایانه، با دسترسی متناسب با نقش هر کاربر.",
       en: "Share data across computers, with access tailored to each user's role.",
     },
   },
@@ -68,7 +68,7 @@ const systemOptions = [
     icon: FileSpreadsheet,
     title: { fa: "ورود و خروجی فایل", en: "File imports and exports" },
     description: {
-      fa: "خواندن و بررسی داده‌های اکسل و CSV و تهیهٔ خروجی متناسب با کار.",
+      fa: "خواندن و بررسی داده‌های اکسل و CSV و تهیه خروجی متناسب با کار.",
       en: "Read and validate Excel and CSV data, then export it in the format your work requires.",
     },
   },
@@ -336,9 +336,8 @@ export async function WindowsSoftwarePage() {
                     "Discuss a Windows app",
                   )}
                 </PrimaryLink>
-                <a className={styles.secondary} href="#windows-solutions">
-                  {text("ببین چه نرم‌افزارهایی می‌سازیم", "See what we build")}{" "}
-                  <ArrowDown size={16} aria-hidden="true" />
+                <a data-secondary-action href="#windows-solutions">
+                  {text("ببین چه نرم‌افزارهایی می‌سازیم", "See what we build")}
                 </a>
               </div>
             </div>
@@ -417,7 +416,6 @@ export async function WindowsSoftwarePage() {
                   <b>{label[locale]}</b>
                   <small>{detail[locale]}</small>
                 </span>
-                <ArrowDown size={17} aria-hidden="true" />
               </a>
             ))}
           </div>
@@ -524,7 +522,7 @@ export async function WindowsSoftwarePage() {
             </h2>
             <p>
               {text(
-                "از یک رایانهٔ آفلاین تا چند کاربر روی شبکهٔ داخلی، شیوهٔ نصب رو بر اساس محل ذخیرهٔ داده، دستگاه‌ها و نیاز تیم مشخص می‌کنیم.",
+                "از یک رایانه آفلاین تا چند کاربر روی شبکه داخلی، شیوه نصب رو بر اساس محل ذخیره داده، دستگاه‌ها و نیاز تیم مشخص می‌کنیم.",
                 "From one offline computer to multiple users on a local network, we plan the setup around your data, devices and team.",
               )}
             </p>
@@ -567,7 +565,7 @@ export async function WindowsSoftwarePage() {
                   "Bug fixes and interface improvements",
                 ),
                 text(
-                  "سازگاری با نسخهٔ هدف ویندوز",
+                  "سازگاری با نسخه هدف ویندوز",
                   "Compatibility with the target Windows version",
                 ),
                 text(
@@ -583,7 +581,7 @@ export async function WindowsSoftwarePage() {
             </ul>
             <Link className={styles.textLink} href={href("/services/rescue")}>
               {text(
-                "رفع باگ و توسعهٔ پروژه‌های موجود",
+                "رفع باگ و توسعه پروژه‌های موجود",
                 "Fix and improve an existing project",
               )}{" "}
               <Arrow size={16} aria-hidden="true" />
@@ -612,7 +610,7 @@ export async function WindowsSoftwarePage() {
             </h2>
             <p>
               {text(
-                "نسخهٔ اول رو با کارهای روزمرهٔ تیمت می‌سنجیم. قبل از تحویل، نصب و مسیرهای اصلی رو در محیط توافق‌شده آزمایش می‌کنیم.",
+                "نسخه اول رو با کارهای روزمره تیمت می‌سنجیم. قبل از تحویل، نصب و مسیرهای اصلی رو در محیط توافق‌شده آزمایش می‌کنیم.",
                 "We check the first version against your team's daily tasks, then test installation and core workflows in the agreed environment before handover.",
               )}
             </p>
@@ -649,7 +647,11 @@ export async function WindowsSoftwarePage() {
           </div>
         </section>
 
-        <section className={styles.closing}>
+        <section
+          className={styles.closing}
+          data-action-banner="quiet"
+          data-banner-layout="side"
+        >
           <div>
             <h2>
               {text(
@@ -659,7 +661,7 @@ export async function WindowsSoftwarePage() {
             </h2>
             <p>
               {text(
-                "بگو امروز چطور انجامش می‌دی و چه خروجی‌ای لازم داری. از همین‌جا محدودهٔ نسخهٔ اول رو مشخص می‌کنیم.",
+                "بگو امروز چطور انجامش می‌دی و چه خروجی‌ای لازم داری. از همین‌جا محدوده نسخه اول رو مشخص می‌کنیم.",
                 "Tell us how you do it today and what result you need. We can use that to scope the first version.",
               )}
             </p>
@@ -672,13 +674,13 @@ export async function WindowsSoftwarePage() {
               )}
             </PrimaryLink>
             <Link
-              className={styles.secondary}
+              data-secondary-action
               href={href("/services/software")}
             >
-              {text("همه‌ی نرم‌افزارها", "All software services")}{" "}
-              <Arrow size={16} aria-hidden="true" />
+              {text("همه‌ی نرم‌افزارها", "All software services")}
             </Link>
           </div>
+          <ActionBannerArt />
         </section>
       </div>
     </main>

@@ -32,12 +32,6 @@
   text-wrap: balance;
 }
 
-.page h1 {
-  font-size: clamp(3rem, 6.2vw, 5.9rem);
-  font-weight: 750;
-  line-height: 1.1;
-}
-
 .page h2 {
   font-size: clamp(1.65rem, 3vw, 2.65rem);
 }
@@ -61,13 +55,75 @@
   flex: none;
 }
 
+.intro {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background:
+    radial-gradient(ellipse at 16% 36%, light-dark(#deecfc, #243a55), transparent 63%),
+    radial-gradient(ellipse at 79% 36%, light-dark(#fcfdff, #1a293d), transparent 62%),
+    light-dark(#f3f7fc, #1a293b);
+}
+
+.intro::before,
+.intro::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  content: "";
+}
+
+.intro::before {
+  inset: 9% auto auto -13%;
+  width: min(43vw, 710px);
+  height: 26%;
+  rotate: -14deg;
+  background: linear-gradient(105deg, light-dark(#8dbcf2, #365c88), transparent 80%);
+}
+
+.intro::after {
+  inset: auto -16% -18% auto;
+  width: min(49vw, 820px);
+  height: 42%;
+  rotate: -27deg;
+  background: linear-gradient(155deg, transparent 15%, light-dark(#b4d4f7, #304b6d));
+}
+
 .hero {
-  padding-block: clamp(22px, 4vw, 58px) clamp(24px, 4vw, 50px);
+  display: grid;
+  grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
+  align-items: center;
+  min-block-size: clamp(410px, 35vw, 640px);
+  padding-inline-start: max(clamp(24px, 6vw, 132px), calc((100% - 1560px) / 2));
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: clamp(14px, 1.65vw, 27px);
+  padding-block: clamp(22px, 4vw, 54px);
+  padding-inline-end: clamp(10px, 1.75vw, 26px);
+}
+
+.page .heroCopy h1 {
+  font-size: clamp(2.55rem, 4.55vw, 5.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.heroCopy > p {
+  max-inline-size: 500px;
+  font-size: clamp(0.96rem, 1.25vw, 1.23rem);
+  line-height: 1.9;
+  text-wrap: pretty;
 }
 
 .back,
-.primary,
-.secondary {
+.primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -84,19 +140,12 @@
   color: var(--blue);
 }
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.59fr);
-  gap: clamp(26px, 5vw, 90px);
-  align-items: end;
-  margin-block-start: clamp(26px, 4vw, 52px);
-}
-
 .page .heroLead {
-  margin-block-start: 16px;
+  margin-block-start: clamp(10px, 1.3vw, 20px);
   color: var(--blue);
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-  font-weight: 650;
+  font-size: clamp(1.08rem, 1.85vw, 1.68rem);
+  font-weight: 700;
+  line-height: 1.65;
 }
 
 .actions {
@@ -105,12 +154,7 @@
   align-items: center;
   gap: 10px;
 }
-.heroSummary .actions {
-  margin-block-start: 18px;
-}
-
-.primary,
-.secondary {
+.primary {
   min-height: 46px;
   padding: 9px 15px;
   border: 1px solid light-dark(#d4e4f3, #405064);
@@ -127,18 +171,12 @@
   background: light-dark(#eaf4fc, #253447);
   color: light-dark(#1d507c, #9fcdf0);
 }
-.secondary {
-  background: var(--ui-surface, #fff);
-  color: var(--blue);
-}
-.primary:is(:hover, :focus-visible),
-.secondary:is(:hover, :focus-visible) {
+.primary:is(:hover, :focus-visible) {
   border-color: light-dark(#c8b9e7, #405064);
   background: light-dark(#f0e9fb, #253447);
   color: light-dark(#4b3786, #9fcdf0);
 }
 
-.cover,
 .processImage,
 .estimateImage {
   position: relative;
@@ -148,22 +186,54 @@
 }
 
 .cover {
-  aspect-ratio: 2.6;
+  position: relative;
+  align-self: stretch;
+  min-inline-size: 0;
 }
 
-.cover img,
+.heroImage {
+  position: absolute;
+  inset: 8% 0 0;
+}
+
+.heroImage img {
+  object-fit: cover;
+  object-position: left center;
+  mask-image:
+    linear-gradient(to right, #000 62%, transparent 100%),
+    linear-gradient(to bottom, transparent, #000 18% 84%, transparent);
+  mask-composite: intersect;
+}
+
+.heroBadge {
+  position: absolute;
+  inset: 12% 11% auto auto;
+  display: grid;
+  place-items: center;
+  inline-size: clamp(58px, 7.35vw, 122px);
+  aspect-ratio: 1;
+  rotate: -7deg;
+  border: 1px solid light-dark(#ffffffd1, #6c90bc);
+  border-radius: 24%;
+  background: linear-gradient(150deg, light-dark(#f2f8ff, #456387), light-dark(#c9e1fc, #2d4564));
+  box-shadow: 0 11px 25px light-dark(#6a9bd84d, #111c2b7a);
+  color: var(--blue);
+}
+
+.heroBadge svg {
+  width: 58%;
+  height: auto;
+}
+
 .processImage img,
 .estimateImage img {
   object-fit: cover;
 }
 
-.cover img {
-  object-position: center 48%;
-}
-
 .jumpLinks {
-  padding-block: 16px;
-  border-block-end: 1px solid var(--line);
+  width: min(1220px, calc(100% - 36px));
+  margin-inline: auto;
+  padding-block: clamp(12px, 1.65vw, 26px) clamp(22px, 3vw, 43px);
 }
 
 .jumpLinks ul,
@@ -175,6 +245,7 @@
 }
 
 .jumpLinks ul {
+  justify-content: center;
   padding: 0;
   list-style: none;
 }
@@ -195,7 +266,18 @@
     border-color 200ms ease;
 }
 
-.jumpLinks a:is(:hover, :focus-visible),
+.jumpLinks a {
+  min-block-size: 44px;
+  background: var(--ui-surface, #fff);
+  padding-inline: clamp(12px, 1.5vw, 22px);
+  font-weight: 650;
+}
+
+.jumpLinks a:is(:hover, :focus-visible) {
+  border-color: light-dark(#aacbea, #5e87ab);
+  background: var(--soft);
+}
+
 .related a:is(:hover, :focus-visible) {
   border-color: light-dark(#c8b9e7, #405064);
   background: var(--lavender);
@@ -283,21 +365,14 @@
 }
 
 .services {
-  grid-template-columns: minmax(0, 1fr) minmax(215px, 0.46fr);
-  grid-template-areas: "list intro";
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
   border-block: 1px solid var(--line);
 }
 
 .servicesIntro {
-  position: sticky;
-  top: var(--offset);
-  grid-area: intro;
-  padding-inline-start: clamp(15px, 2vw, 30px);
-  border-inline-start: 1px solid var(--line);
-}
-
-.serviceList {
-  grid-area: list;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
 }
 
 .serviceList,
@@ -475,31 +550,16 @@
 }
 
 .faq {
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
 }
 
 .questions summary {
   font-size: 1rem;
 }
 
-.closing {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px 32px;
-  padding: clamp(20px, 4vw, 46px);
-  border: 1px solid var(--line);
-  border-inline-start: 3px solid var(--brand-blue, #3498db);
-  border-radius: 15px;
-}
-
-.closing p {
-  margin-block-start: 7px;
-}
-
 .related {
-  padding-block-start: 20px;
+  padding-block-start: clamp(18px, 2vw, 26px);
 }
 
 .related > span {
@@ -507,13 +567,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .heroGrid,
-  .cover {
-    animation: enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  .cover {
-    animation-delay: 70ms;
-  }
   .page details[open] > .disclosureBody {
     animation: enter 240ms ease-out both;
   }
@@ -530,17 +583,11 @@
   }
 }
 
-@media (max-width: 900px) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
-  }
-}
-
 @media (max-width: 760px) {
   .container {
     width: calc(100% - 36px);
   }
-  .heroGrid,
+  .hero,
   .diagnosis,
   .services,
   .process,
@@ -548,33 +595,46 @@
   .faq {
     grid-template-columns: minmax(0, 1fr);
   }
-  .heroGrid {
-    gap: 17px;
+  .hero {
+    min-block-size: auto;
+    padding-inline: 0;
+  }
+  .heroCopy {
+    max-inline-size: 560px;
+    padding: 22px 18px 12px;
   }
   .cover {
-    aspect-ratio: 1.62;
-    border-radius: 14px;
+    aspect-ratio: 1.75;
   }
-  .cover img {
-    object-position: 47% center;
+  .heroImage {
+    inset: 0;
   }
-  .services {
-    grid-template-areas: "intro" "list";
+  .heroImage img {
+    object-position: 43% center;
+    mask-image: linear-gradient(to bottom, transparent, #000 15% 83%, transparent);
   }
-  .servicesIntro {
-    position: static;
-    padding-inline-start: 0;
-    border-inline-start: 0;
+  .heroBadge {
+    inset: 11% 12% auto auto;
+    inline-size: clamp(51px, 9vw, 79px);
+  }
+  .jumpLinks ul {
+    justify-content: start;
   }
   .estimateImage {
     min-height: 0;
     aspect-ratio: 1.8;
   }
+  .related > span {
+    flex-basis: 100%;
+  }
 }
 
 @media (max-width: 440px) {
-  .page h1 {
-    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  .page .heroCopy h1 {
+    font-size: clamp(2.05rem, 9.4vw, 2.65rem);
+  }
+  .jumpLinks ul {
+    gap: 7px;
   }
   .page summary {
     gap: 9px;

@@ -15,8 +15,7 @@ span.framer-text[data-nested-link]:hover {
   --szd5nr: #fff !important;
 }
 
-.framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-2zyqfl):is(:hover, :focus-visible),
-.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) {
+.framer-obWCA:is(.framer-v-1fa7o3w, .framer-v-2zyqfl):is(:hover, :focus-visible) {
   background-color: var(--brand-blue) !important;
 }
 /* Color feedback for captured components. */
@@ -167,15 +166,6 @@ a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-6aujbd {
 }
 .framer-Irrnf .framer-1uu97bw {
   z-index: 1;
-}
-.framer-Irrnf .framer-1uu97bw .framer-text {
-  transition: color 0.4s linear;
-}
-.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-6vonoc {
-  background-color: var(--brand-accent) !important;
-}
-.framer-Irrnf.framer-v-1wjqi8p:is(:hover, :focus-visible) .framer-text {
-  color: #fff !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

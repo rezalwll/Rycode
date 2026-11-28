@@ -35,7 +35,9 @@ export async function PublishedListing({
         aria-label={fa ? "صفحه‌بندی" : "Pagination"}
       >
         {page > 1 && (
-          <Link data-fill-button rel="prev"
+          <Link
+            data-fill-button
+            rel="prev"
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page - 1, filters))}
           >
@@ -46,7 +48,9 @@ export async function PublishedListing({
           {page.toLocaleString(fa ? "fa-IR" : "en-US")}
         </span>
         {page * 12 < result.total && (
-          <Link data-fill-button rel="next"
+          <Link
+            data-fill-button
+            rel="next"
             className={kind === "PROJECT" ? styles.button : undefined}
             href={href(listingHref(kind, page + 1, filters))}
           >
@@ -87,15 +91,18 @@ export async function PublishedListing({
         }
       />
     );
-  const items = result.items.filter((item) => !item.legacy);
-  if (result.total === 0 && page === 1) return null;
+  const items = result.items;
+  if (result.total === 0 && page === 1 && !filters.q && !filters.category)
+    return null;
   return (
     <section
-      className={styles.page}
-      style={{ paddingTop: 60 }}
-      aria-label={fa ? "فهرست محتوا" : "Published content"}
+      className={styles.projectListing}
+      aria-labelledby="published-projects-title"
     >
-      <ContentCards items={items} locale={locale} />
+      <h2 id="published-projects-title">
+        {fa ? "نمونه‌کارهای رایکد" : "RYCODE projects"}
+      </h2>
+      <ContentCards items={items} locale={locale} portfolio heading="h3" />
       {items.length === 0 && (
         <p className={styles.empty}>
           {fa ? "مطلبی با این مشخصات پیدا نشد" : "No matching content found"}

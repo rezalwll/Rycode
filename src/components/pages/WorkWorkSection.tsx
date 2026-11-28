@@ -1,5 +1,5 @@
 import { getTranslations } from "@/lib/i18n-server";
-import Link from "next/link";
+import { ProgressLink as Link } from "@/components/ProgressLink";
 import { Reveal } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function WorkWorkSection() {

@@ -1,7 +1,11 @@
 "use client";
+import Image from "next/image";
 import { BrandText } from "@/components/pages/rycode-services/brand-text";
 
 import { useReferenceLocale } from "./reference-locale";
+import { Link } from "./link";
+import { LogoMark } from "./logo";
+import { LogoWordmark } from "./wordmark";
 import { useRef } from "react";
 import {
   motion,
@@ -9,18 +13,35 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import {
-  BatteryFull,
-  CalendarDays,
-  MapPin,
-  MessagesSquare,
-  Share2,
-  Signal,
-  UsersRound,
-  Wifi,
-} from "lucide-react";
+import { ArrowRight, BatteryFull, Menu, Signal, Wifi } from "lucide-react";
+
+const phoneShowcase = [
+  {
+    title: "Web design",
+    image: "/brand/source-footer/phone-showcase-web.webp",
+    href: "/services/build",
+  },
+  {
+    title: "Automation",
+    image: "/brand/source-footer/phone-automation.webp",
+    href: "/services/connect",
+  },
+  {
+    title: "Online stores",
+    image: "/brand/source-footer/phone-showcase-store.webp",
+    href: "/services/build#build-work",
+    faHref: "/services/build#website-types",
+  },
+  {
+    title: "Apps",
+    image: "/brand/source-footer/phone-showcase-app.webp",
+    href: "/services/software",
+    faHref: "/services/software#software-android",
+  },
+];
+
 export default function Moments() {
-  const { copyText } = useReferenceLocale();
+  const { copyText, fa, locale } = useReferenceLocale();
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -38,7 +59,7 @@ export default function Moments() {
         aria-labelledby="moments-title"
       >
         <h2 id="moments-title" className="sr-only">
-          {copyText("Support after launch")}
+          {copyText("Digital design by RYCODE")}
         </h2>
         <div className="moments-text" aria-hidden="true">
           <motion.div
@@ -53,11 +74,7 @@ export default function Moments() {
             className="moments-text-row moments-text-row-reverse"
             style={{ x: reduceMotion ? 0 : secondLineX }}
           >
-            <p dir="auto">
-              {copyText(
-                "From design to ongoing maintenance",
-              )}
-            </p>
+            <p dir="auto">{copyText("Designed for the real world")}</p>
           </motion.div>
         </div>
 
@@ -89,88 +106,83 @@ export default function Moments() {
 
           <div
             className="moments-phone"
-            role="img"
+            role="group"
             aria-label={copyText(
-              "Illustration of product support: a dashboard for monitoring and maintaining a live product.",
+              "Mobile preview of RYCODE with web design, automation, stores and apps.",
             )}
           >
-            <div aria-hidden="true">
-              <span className="moments-side-button moments-side-silent" />
-              <span className="moments-side-button moments-side-volume-one" />
-              <span className="moments-side-button moments-side-volume-two" />
-              <span className="moments-side-button moments-side-power" />
-              <div className="moments-phone-screen">
-                <div className="moments-status">
-                  <span>{copyText("9:41")}</span>
-                  <div>
-                    <Signal size={14} fill="currentColor" />
-                    <Wifi size={13} />
-                    <BatteryFull size={20} fill="currentColor" />
-                  </div>
+            <span className="moments-side-button moments-side-silent" />
+            <span className="moments-side-button moments-side-volume-one" />
+            <span className="moments-side-button moments-side-volume-two" />
+            <span className="moments-side-button moments-side-power" />
+            <div className="moments-phone-screen">
+              <div className="moments-status" dir="ltr" aria-hidden="true">
+                <span>9:41</span>
+                <div>
+                  <Signal size={14} fill="currentColor" />
+                  <Wifi size={13} />
+                  <BatteryFull size={20} fill="currentColor" />
                 </div>
-                <div className="moments-island">
-                  <span />
+              </div>
+              <div className="moments-island">
+                <span />
+              </div>
+              <div className="moments-app">
+                <div className="moments-app-header" aria-hidden="true">
+                  <div className="moments-app-brand" dir="ltr">
+                    <LogoMark alt="" />
+                    <LogoWordmark />
+                  </div>
+                  <span className="moments-app-menu">
+                    <Menu />
+                  </span>
                 </div>
-                <div className="moments-phone-content">
-                  <div className="moments-phone-top" dir="ltr">
-                    <span>
-                      <Share2 size={16} strokeWidth={1.5} />
-                    </span>
-                    <span>
-                      <MapPin size={16} strokeWidth={1.5} />
-                    </span>
-                  </div>
-                  <div className="moments-phone-main">
-                    <div className="moments-dashboard" dir="ltr">
-                      <div className="moments-dashboard-back" />
-                      <div className="moments-dashboard-front">
-                        <div className="moments-dashboard-rows">
-                          <i />
-                          <i />
-                          <i />
-                        </div>
-                        <div className="moments-dashboard-chart">
-                          <div className="moments-dashboard-trend">
-                            <i />
-                            <i />
-                            <i />
-                            <i />
-                          </div>
-                          <div className="moments-dashboard-bars">
-                            <i />
-                            <i />
-                            <i />
-                            <i />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="moments-phone-copy">
-                      <p className="moments-phone-heading">
-                        {copyText("Support after launch")}
-                      </p>
-                      <p>
-                        {copyText(
-                          "Fix bugs, keep your product running and add features as needs change.",
-                        )}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="moments-phone-bottom">
-                    <div className="moments-phone-tabs" dir="ltr">
-                      <span>
-                        <MessagesSquare size={17} strokeWidth={1.5} />
-                      </span>
-                      <span>
-                        <CalendarDays size={17} strokeWidth={1.5} />
-                      </span>
-                      <span>
-                        <UsersRound size={17} strokeWidth={1.5} />
-                      </span>
-                    </div>
-                    <span className="moments-home-indicator" />
-                  </div>
+                <div className="moments-app-intro" aria-hidden="true">
+                  <p className="moments-app-title">
+                    <span>{copyText("From idea,")}</span>
+                    <br />
+                    {copyText("to product")}
+                  </p>
+                  <p className="moments-app-note">
+                    {copyText(
+                      "The right solution for every challenge. From design and development to automation and growth, we’re with you.",
+                    )}
+                  </p>
                 </div>
+                <div className="moments-app-hero">
+                  <Image
+                    src="/brand/channel-services/hero-workspace.webp"
+                    alt=""
+                    fill
+                    sizes="(max-width: 432px) 74vw, 320px"
+                  />
+                </div>
+                <div className="moments-app-gallery">
+                  {phoneShowcase.map(({ title, image, href, faHref }) => (
+                    <Link
+                      className="moments-app-tile"
+                      href={fa && faHref ? faHref : href}
+                      locale={locale}
+                      key={title}
+                    >
+                      <span className="moments-app-tile-art">
+                        <Image
+                          src={image}
+                          alt=""
+                          fill
+                          sizes="(max-width: 432px) 37vw, 145px"
+                        />
+                      </span>
+                      <span className="moments-app-tile-label">
+                        {copyText(title)}
+                        <span aria-hidden="true">
+                          <ArrowRight />
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                <span className="moments-home-indicator" />
               </div>
             </div>
           </div>

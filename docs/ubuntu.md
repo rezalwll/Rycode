@@ -31,6 +31,7 @@ Use Ubuntu 24.04 with Docker Engine and Compose. Copy `.env.example` to private
 - `POSTGRES_PASSWORD`: a fresh base64url secret, avoiding URL-special punctuation.
 - `BETTER_AUTH_SECRET`: a different random value, at least 32 characters.
 - `INDEXABLE=false` until launch approval.
+- `RYCODE_RELEASE`: the deployed commit SHA shown in the staff operations log.
 - `APP_IMAGE=ghcr.io/rezalwll/rycode:<commit-sha>` and
   `MIGRATION_IMAGE=ghcr.io/rezalwll/rycode:<commit-sha>-migration`.
 
@@ -93,3 +94,20 @@ During deployment, add server-owned systemd timers for backups and
 `docker compose --env-file .env.production run --rm migrate npm run maintenance`.
 Monitor `/api/health`, container restarts, backup age, DB/storage capacity and CI.
 No scheduler, alert destination or automatic server update is installed here.
+
+### Search Console
+
+Confirm the production domain in Google Search Console using a DNS TXT record
+and submit the public `sitemap.xml` after the indexing settings are ready.
+Enable the Search Console API in the Google Cloud project, grant a service
+account access to that verified property, and set these optional variables in
+the private production environment:
+
+- `SEARCH_CONSOLE_PROPERTY`, such as `sc-domain:example.com`.
+- `GOOGLE_SEARCH_CONSOLE_CREDENTIALS`, the service account JSON on one line.
+  Enclose it in single quotes in Compose's environment file so the encoded
+  newlines in the private key are preserved.
+
+The admin panel reads the last 28 days of finalized search data using the
+read-only scope. The panel shows the connection state and the last successful
+fetch. Keep indexing and URL inspection in Google Search Console.

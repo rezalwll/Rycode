@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import {
-  ArrowDown,
   ArrowUpLeft,
   Bell,
   CalendarDays,
@@ -66,8 +66,8 @@ export function TelegramBotPage() {
                 <a href="#telegram-inquiry" className={styles.primary}>
                   درخواست ساخت ربات <ArrowUpLeft size={17} aria-hidden="true" />
                 </a>
-                <a href="#telegram-types" className={styles.secondary}>
-                  دیدن انواع ربات <ArrowDown size={16} aria-hidden="true" />
+                <a href="#telegram-types" data-secondary-action>
+                  دیدن انواع ربات
                 </a>
               </div>
             </div>
@@ -82,7 +82,7 @@ export function TelegramBotPage() {
             <div className={styles.heading}>
               <h2 id="telegram-types-title">چه ربات‌هایی می‌سازیم؟</h2>
               <p>
-                برای نسخهٔ اول می‌تونی با یک کار مشخص شروع کنی و بعد امکانات
+                برای نسخه اول می‌تونی با یک کار مشخص شروع کنی و بعد امکانات
                 دیگه رو اضافه کنی.
               </p>
             </div>
@@ -118,7 +118,7 @@ export function TelegramBotPage() {
               </div>
               <ServicePhoto
                 src="/brand/service-editorial/telegram-order-workflow.webp"
-                alt="نمونهٔ ثبت سفارش در گفت‌وگوی موبایل و بررسی همان سفارش در پنل لپ‌تاپ"
+                alt="نمونه ثبت سفارش در گفت‌وگوی موبایل و بررسی همان سفارش در پنل لپ‌تاپ"
               />
             </div>
             <div className={styles.panelPair}>
@@ -140,14 +140,14 @@ export function TelegramBotPage() {
                 </div>
                 <dl className={styles.managerData}>
                   <div>
-                    <dt>شناسهٔ سفارش</dt>
+                    <dt>شناسه سفارش</dt>
                     <dd>
                       <bdi>DEMO-1042</bdi>
                     </dd>
                   </div>
                   <div>
                     <dt>محصول و تعداد</dt>
-                    <dd>بستهٔ پایه، ۲ بسته</dd>
+                    <dd>بسته پایه، ۲ بسته</dd>
                   </div>
                   <div>
                     <dt>وضعیت</dt>
@@ -168,7 +168,7 @@ export function TelegramBotPage() {
             <div className={styles.heading}>
               <h2 id="telegram-scope-title">از چت ساده تا مینی‌اپ</h2>
               <p>
-                امکانات نسخهٔ اول رو بر اساس کاری انتخاب می‌کنیم که کاربر باید
+                امکانات نسخه اول رو بر اساس کاری انتخاب می‌کنیم که کاربر باید
                 از اول تا آخر انجام بده.
               </p>
             </div>
@@ -232,7 +232,7 @@ export function TelegramBotPage() {
                 <h3>اگر اتصال از کار بیفته چی؟</h3>
                 <p>
                   برای مسیرهای مهم، ثبت خطا، اعلان به مدیر و جلوگیری از ثبت
-                  تکراری رو در محدودهٔ پروژه بررسی می‌کنیم. دسترسی‌ها فقط به
+                  تکراری رو در محدوده پروژه بررسی می‌کنیم. دسترسی‌ها فقط به
                   اطلاعات لازم محدود می‌شن.
                 </p>
               </article>
@@ -271,7 +271,9 @@ export function TelegramBotPage() {
             id="telegram-inquiry"
             className={styles.inquiry}
             aria-labelledby="telegram-inquiry-title"
+            data-action-banner="quiet"
           >
+            <ActionBannerArt />
             <div className={styles.inquiryIntro}>
               <h2 id="telegram-inquiry-title">
                 بگو رباتت قراره چه کاری انجام بده

@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { ActionBannerArt } from "./ActionBannerArt";
 import {
-  ArrowDown,
   ArrowUpLeft,
   ArrowUpRight,
   MessageCircle,
@@ -22,9 +22,6 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
     >
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>
-            <span aria-hidden="true">✦</span> {fa ? "پرسش‌های متداول" : "FAQ"}
-          </p>
           <h2 id="faq-title">
             {fa ? "سؤال از شما، پاسخ از ما" : "Your questions, answered"}
           </h2>
@@ -49,9 +46,7 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
                   }).format(index + 1)}
                 </span>
                 <span className={styles.question}>{entry.question}</span>
-                <span className={styles.toggle} aria-hidden="true">
-                  <ArrowDown size={18} strokeWidth={1.6} />
-                </span>
+                <span className={styles.toggle} aria-hidden="true" />
               </summary>
               <div className={styles.answer}>
                 <p>{entry.answer}</p>
@@ -59,7 +54,11 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
             </details>
           ))}
         </div>
-        <div className={styles.help}>
+        <div
+          className={styles.help}
+          data-action-banner="quiet"
+          data-banner-layout="side"
+        >
           <span className={styles.helpIcon} aria-hidden="true">
             <MessageCircle size={22} strokeWidth={1.5} />
           </span>
@@ -67,7 +66,7 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
             <h3>{fa ? "هنوز سؤالی دارید؟" : "Still have a question?"}</h3>
             <p>
               {fa
-                ? "دربارهٔ پروژه‌تان با هم صحبت کنیم"
+                ? "درباره پروژه‌تان با هم صحبت کنیم"
                 : "Let’s talk about your project."}
             </p>
           </div>
@@ -83,6 +82,7 @@ export async function FaqSection({ entries }: { entries: FaqEntry[] }) {
               <ArrowUpRight size={18} aria-hidden="true" />
             )}
           </Link>
+          <ActionBannerArt />
         </div>
       </div>
     </section>

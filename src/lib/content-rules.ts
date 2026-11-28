@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { inquiryMessageMinimum } from "./inquiry";
 export const locales = ["fa", "en"] as const;
 export const kinds = ["ARTICLE", "SERVICE", "PROJECT", "PAGE"] as const;
 export const normalizeDigits = (value: string) =>
@@ -208,13 +209,17 @@ export const leadSchema = z
       .transform((v) => normalizeDigits(v).replace(/[\s()-]/g, ""))
       .pipe(z.string().regex(/^(?:\+?[0-9]{7,15})?$/))
       .optional(),
-    message: z.string().trim().min(10).max(5000),
+    message: z.string().trim().max(5000),
     service: z.string().max(160).optional(),
     locale: z.enum(locales),
     sourcePath: z.string().startsWith("/").max(300),
     requestKey: z.string().uuid(),
     website: z.string().max(200).default(""),
     startedAt: z.number().int().positive(),
+  })
+  .refine((v) => v.message.length >= inquiryMessageMinimum(v.sourcePath), {
+    path: ["message"],
+    message: "Enter a project description of the required length",
   })
   .refine((v) => Boolean(v.email || v.phone), {
     message: "Enter an email address or phone number",

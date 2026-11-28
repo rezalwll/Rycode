@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import { ProgressLink } from "@/components/ProgressLink";
+import { ServiceArtwork } from "@/components/services/ServiceArtwork";
 import { memo, useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -32,44 +33,39 @@ const FeatureCard = memo(function FeatureCard({
           <span>{service.categoryTitle[locale]}</span>
         </div>
         <h3>
-          <a
+          <ProgressLink
             tabIndex={duplicate ? -1 : undefined}
             href={href(`/services/${service.slug}`)}
           >
             {service.title[locale]}
-          </a>
+          </ProgressLink>
         </h3>
       </div>
       <p className="feature-card-summary">{service.summary[locale]}</p>
-      <div className="capability-card-image" aria-hidden="true">
-        <Image
-          src={service.image}
-          alt=""
-          width={640}
-          height={360}
-          sizes="(max-width: 809px) 80vw, 280px"
-          loading="lazy"
-          draggable={false}
-        />
-      </div>
+      <ServiceArtwork
+        src={service.image}
+        className="capability-card-image"
+        sizes="(max-width: 809px) 80vw, 280px"
+        framing="card"
+      />
       <span className="feature-card-tag" dir="ltr">
         {service.tag}
       </span>
       <div className="feature-card-actions">
-        <a
+        <ProgressLink
           className="capability-card-link"
           tabIndex={duplicate ? -1 : undefined}
           href={href(`/services/${service.slug}`)}
-          aria-label={`${text("بیشتر دربارهٔ", "More about")} ${service.categoryTitle[locale]}`}
+          aria-label={`${text("بیشتر درباره", "More about")} ${service.categoryTitle[locale]}`}
         >
           <span className="capability-card-link-copy">
-            <span>{text("بیشتر دربارهٔ", "More about")}</span>
+            <span>{text("بیشتر درباره", "More about")}</span>
             <strong>{service.linkTitle[locale]}</strong>
           </span>
           <span className="capability-card-link-arrow" aria-hidden="true">
             {fa ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
           </span>
-        </a>
+        </ProgressLink>
       </div>
     </article>
   );
@@ -170,7 +166,9 @@ export function FeatureTicker({
       }}
       onFocusCapture={(event) => {
         setFocused(true);
-        const card = (event.target as HTMLElement).closest<HTMLElement>(
+        // Moving a pointer-focused card before mouseup can cancel the link click.
+        if (!event.target.matches(":focus-visible")) return;
+        const card = event.target.closest<HTMLElement>(
           ".capability-card",
         );
         if (
@@ -301,9 +299,9 @@ export default function ReferenceFeatures() {
                 )}
               </span>
             </h2>
-            <a data-fill-button href={href("/services")} className="features-about-link">
-              {text("همهٔ خدمات رایکد", "All RYCODE services")}
-            </a>
+            <ProgressLink data-fill-button href={href("/services")} className="features-about-link">
+              {text("همه خدمات رایکد", "All RYCODE services")}
+            </ProgressLink>
           </motion.div>
           <div id="features-cards" className="features-gallery">
             <FeatureTicker visible={visible} reducedMotion={reduceMotion} />

@@ -85,10 +85,6 @@
   color: var(--feature-accent);
   font-weight: 700;
 }
-.home-colorful .rycode-services-source .capability-card-image {
-  border: 1px solid color-mix(in srgb, var(--feature-accent) 36%, #e8e8e8);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 55%);
-}
 .home-colorful .rycode-services-source .feature-card-tag {
   color: light-dark(color-mix(in srgb, var(--feature-accent) 70%, #333), var(--ui-muted));
   font-weight: 600;

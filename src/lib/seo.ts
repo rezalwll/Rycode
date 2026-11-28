@@ -26,15 +26,15 @@ const descriptions: Record<string, Record<Locale, string>> = {
     en: "RYCODE builds websites, online stores, custom software and workflow automation, with SEO, bug fixes and ongoing support.",
   },
   "/contact": {
-    fa: "برای طراحی سایت، توسعه نرم‌افزار یا بررسی پروژهٔ فعلی با رایکد تماس بگیرید و درخواست خود را ثبت کنید",
+    fa: "برای طراحی سایت، توسعه نرم‌افزار یا بررسی پروژه فعلی با رایکد تماس بگیرید و درخواست خود را ثبت کنید",
     en: "Send RYCODE a project inquiry for website design, custom software or help with an existing project.",
   },
   "/work": {
-    fa: "نمونه‌کارهای رایکد در طراحی و توسعهٔ تجربه‌های دیجیتال؛ جزئیات پروژه‌ها، رویکرد طراحی و روند اجرا",
+    fa: "نمونه‌کارهای رایکد در طراحی و توسعه تجربه‌های دیجیتال؛ جزئیات پروژه‌ها، رویکرد طراحی و روند اجرا",
     en: "Explore RYCODE's digital projects, design approaches and delivery process.",
   },
   "/blog": {
-    fa: "راهنمای انتخاب سایت، نرم‌افزار، سئو و خودکارسازی برای کسب‌وکار؛ مقایسهٔ راه‌حل‌ها، هزینه‌ها و نکات سفارش و نگهداری پروژه با رایکد",
+    fa: "راهنمای انتخاب سایت، نرم‌افزار، سئو و خودکارسازی برای کسب‌وکار؛ مقایسه راه‌حل‌ها، هزینه‌ها و نکات سفارش و نگهداری پروژه با رایکد",
     en: "Practical RYCODE guides to choosing websites, business software, SEO and automation. Compare options, understand costs and plan your next project.",
   },
   "/services": {

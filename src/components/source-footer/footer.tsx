@@ -8,11 +8,13 @@ import {
   MessageCircleMore,
 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
+import { BrandBanner } from "@/components/content/BrandBanner";
+import { SocialLinks } from "@/components/SocialLinks";
 
 import { FooterFluid } from "./footer-fluid";
 import { Link } from "./link";
 import { LogoMark } from "./logo";
-import { getFooterNav, inquiryHref } from "./navigation";
+import { getFooterNav } from "./navigation";
 import { Container } from "./primitives";
 import { LogoWordmark } from "./wordmark";
 
@@ -52,23 +54,19 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <section
+        <BrandBanner
+          id="footer-inquiry"
           className="rycode-footer-inquiry"
-          aria-labelledby="footer-inquiry-title"
+          title={isFa ? "برای پروژه‌ات چه کمکی لازم داری؟" : "What do you need help with?"}
+          description={
+            isFa
+              ? "برای طراحی سایت، توسعه نرم‌افزار یا رفع باگ، توی فرم درخواست بگو چه کمکی لازم داری."
+              : "Tell us whether you need a new site, custom software, or help fixing an existing project."
+          }
         >
-          <div className="rycode-footer-inquiry-copy">
-            <h2 id="footer-inquiry-title">
-              {isFa ? "برای پروژه‌ات چه کمکی لازم داری؟" : "What do you need help with?"}
-            </h2>
-            <p>
-              {isFa
-                ? "برای طراحی سایت، توسعهٔ نرم‌افزار یا رفع باگ، توی فرم درخواست بگو چه کمکی لازم داری."
-                : "Tell us whether you need a new site, custom software, or help fixing an existing project."}
-            </p>
-          </div>
           <div className="rycode-footer-actions">
             <Link
-              href={inquiryHref}
+              href="/contact"
               locale={locale}
               className="rycode-footer-button rycode-footer-button-primary"
             >
@@ -78,13 +76,12 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <Link
               href="/services"
               locale={locale}
-              className="rycode-footer-button rycode-footer-button-secondary"
+              data-secondary-action
             >
               {isFa ? "مشاهده خدمات" : "Explore services"}
-              <ChevronRight aria-hidden="true" />
             </Link>
           </div>
-        </section>
+        </BrandBanner>
 
         <nav
           className="rycode-footer-nav"
@@ -111,12 +108,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                     </li>
                   ))}
                 </ul>
+                {id === "resources" && (
+                  <SocialLinks locale={locale} variant="footer" />
+                )}
               </div>
             );
           })}
         </nav>
 
-        <div className="rycode-footer-bottom">
+        <div id="site-end" className="rycode-footer-bottom">
           <p className="rycode-footer-copyright">
             <span aria-hidden="true">©</span>
             <bdi dir="ltr">

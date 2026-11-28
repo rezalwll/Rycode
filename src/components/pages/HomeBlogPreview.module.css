@@ -20,18 +20,6 @@
   gap: 24px;
   margin-bottom: 30px;
 }
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 9px;
-  color: var(--journal-muted);
-  font-size: 13px;
-}
-.eyebrow span {
-  color: light-dark(#8c6bc8, var(--ui-purple));
-  font-size: 16px;
-}
 .header h2 {
   margin: 0;
   font-size: clamp(32px, 3.7vw, 48px);

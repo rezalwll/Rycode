@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { BrandLoading } from "@/components/BrandLoading";
 import styles from "./Admin.module.css";
 type MediaItem = {
   id: string;
@@ -16,6 +17,7 @@ export function MediaLibrary({
   const [items, setItems] = useState<MediaItem[]>([]);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     let active = true;
     fetch("/api/admin/media")
@@ -28,6 +30,9 @@ export function MediaLibrary({
       })
       .catch((e) => {
         if (active) setMessage(e.message);
+      })
+      .finally(() => {
+        if (active) setLoaded(true);
       });
     return () => {
       active = false;
@@ -40,7 +45,7 @@ export function MediaLibrary({
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp"
-          disabled={busy}
+          disabled={busy || !loaded}
           onChange={async (event) => {
             const file = event.target.files?.[0];
             if (!file) return;
@@ -67,6 +72,8 @@ export function MediaLibrary({
           }}
         />
       </label>
+      {!loaded && <BrandLoading label="در حال دریافت تصاویر…" />}
+      {busy && <BrandLoading label="در حال بارگذاری تصویر…" />}
       {message && (
         <p role="status" className={styles.message}>
           {message}
@@ -98,7 +105,7 @@ export function MediaLibrary({
           </button>
         ))}
       </div>
-      {items.length === 0 && (
+      {loaded && !busy && !message && items.length === 0 && (
         <p className={styles.empty}>هنوز تصویری اضافه نشده است</p>
       )}
     </div>

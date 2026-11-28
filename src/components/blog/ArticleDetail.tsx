@@ -6,6 +6,7 @@ import { localizedHref, type Locale } from "@/lib/i18n";
 import { absoluteUrl, jsonLd } from "@/lib/seo";
 import { articleHeadings, articleDate } from "@/lib/article";
 import { RichContent } from "@/components/content/RichContent";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import { ArticleCard } from "./ArticleCard";
 import { ArticleReader } from "./ArticleReader";
 import { CopyButton } from "./CopyButton";
@@ -135,7 +136,7 @@ export async function ArticleDetail({
         {content.sample && (
           <p className={styles.sampleNotice}>
             {fa
-              ? "محتوای نمونه برای نمایش امکانات مجله؛ این مقاله آموزش منتشرشدهٔ نهایی رایکد نیست"
+              ? "محتوای نمونه برای نمایش امکانات مجله؛ این مقاله آموزش منتشرشده نهایی رایکد نیست"
               : "Sample content demonstrating the journal. This is not a final published RYCODE tutorial."}
           </p>
         )}
@@ -167,16 +168,15 @@ export async function ArticleDetail({
       </div>
       {!preview && (
         <section
-          className={`${business.consult} ${business.articleConsult}`}
+          className={business.articleConsult}
           aria-labelledby="article-consult-title"
+          data-action-banner="feature"
+          data-banner-layout="reserved"
         >
-          <div>
-            <p className={business.eyebrow}>
-              {fa ? "برای شرایط کسب‌وکار تو" : "FOR YOUR BUSINESS"}
-            </p>
+          <div className={business.consultCopy}>
             <h2 id="article-consult-title">
               {fa
-                ? "این موضوع به پروژهٔ تو هم مربوط است؟"
+                ? "این موضوع به پروژه تو هم مربوط است؟"
                 : "How does this apply to your project?"}
             </h2>
             <p>
@@ -184,24 +184,29 @@ export async function ArticleDetail({
                 ? "شرایط و هدفت را بگو تا مسیر مناسب را برای همان مسئله بررسی کنیم"
                 : "Tell us what you are trying to achieve and where you are stuck so we can review your options."}
             </p>
-            {service && (
+            <div className={business.consultActions}>
               <Link
-                className={styles.serviceLink}
-                href={href("/services/" + service.id)}
+                data-fill-button
+                className={business.primary}
+                href={href(
+                  "/contact" + (service ? "?service=" + service.id : ""),
+                )}
               >
-                {fa ? "بیشتر دربارهٔ " : "Explore "}
-                {service.title[locale]} ↗
+                {fa ? "بررسی پروژه من" : "Discuss my project"}{" "}
+                <span aria-hidden>{fa ? "↖" : "↗"}</span>
               </Link>
-            )}
+              {service && (
+                <Link
+                  data-secondary-action
+                  href={href("/services/" + service.id)}
+                >
+                  {fa ? "بیشتر درباره " : "Explore "}
+                  {service.title[locale]}
+                </Link>
+              )}
+            </div>
           </div>
-          <Link
-            data-fill-button
-            className={business.primary}
-            href={href("/contact" + (service ? "?service=" + service.id : ""))}
-          >
-            {fa ? "بررسی پروژهٔ من" : "Discuss my project"}{" "}
-            <span aria-hidden>{fa ? "↖" : "↗"}</span>
-          </Link>
+          <ActionBannerArt />
         </section>
       )}
       {!preview && (
@@ -216,11 +221,8 @@ export async function ArticleDetail({
         <section className={styles.section} aria-labelledby="related-title">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.eyebrow}>
-                {fa ? "برای تصمیم کامل‌تر" : "ANOTHER USEFUL PERSPECTIVE"}
-              </p>
               <h2 id="related-title">
-                {fa ? "برای ادامهٔ مطالعه" : "Related reading"}
+                {fa ? "برای ادامه مطالعه" : "Related reading"}
               </h2>
             </div>
             <Link href={href("/blog")}>

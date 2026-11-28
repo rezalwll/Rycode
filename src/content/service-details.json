@@ -76,17 +76,17 @@
           "en": "What affects cost and timing?"
         },
         "body": {
-          "fa": "تعداد و نوع صفحات، محتوای آماده، امکانات اختصاصی، زبان‌ها و اتصال به سرویس‌های دیگر روی برآورد اثر دارند. WordPress یا توسعهٔ اختصاصی را بر اساس همین نیازها انتخاب می‌کنیم",
+          "fa": "تعداد و نوع صفحات، محتوای آماده، امکانات اختصاصی، زبان‌ها و اتصال به سرویس‌های دیگر روی برآورد اثر دارند. WordPress یا توسعه اختصاصی را بر اساس همین نیازها انتخاب می‌کنیم",
           "en": "Page types, available content, custom features, languages and integrations affect the estimate. These needs guide the choice between WordPress and custom development."
         }
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
-          "fa": "دامنه، هاست، حساب‌های اصلی و دسترسی مدیریت با مالکیت روشن تحویل می‌شوند؛ نگهداری و توسعهٔ بعدی دامنهٔ جداگانه دارد",
+          "fa": "دامنه، هاست، حساب‌های اصلی و دسترسی مدیریت با مالکیت روشن تحویل می‌شوند؛ نگهداری و توسعه بعدی دامنه جداگانه دارد",
           "en": "Domains, hosting accounts and administration access have explicit ownership. Ongoing care has a separately agreed scope."
         }
       }
@@ -165,7 +165,7 @@
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
@@ -228,17 +228,17 @@
           "en": "What affects cost and timing?"
         },
         "body": {
-          "fa": "نقش‌های کاربری، قواعد کسب‌وکار، پیچیدگی داده، اتصال‌ها و انتقال از سیستم قبلی تعیین‌کننده‌اند. نسخهٔ اول را از امکانات ضروری شروع می‌کنیم",
+          "fa": "نقش‌های کاربری، قواعد کسب‌وکار، پیچیدگی داده، اتصال‌ها و انتقال از سیستم قبلی تعیین‌کننده‌اند. نسخه اول را از امکانات ضروری شروع می‌کنیم",
           "en": "User roles, business rules, data complexity, integrations and migration drive scope. The first version starts with essential capabilities."
         }
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
-          "fa": "تحویل مرحله‌ای و معیار پذیرش از ابتدا مشخص می‌شود؛ مسیر توسعهٔ بعدی و مالکیت کد و داده هم روشن می‌ماند",
+          "fa": "تحویل مرحله‌ای و معیار پذیرش از ابتدا مشخص می‌شود؛ مسیر توسعه بعدی و مالکیت کد و داده هم روشن می‌ماند",
           "en": "Milestones and acceptance criteria are agreed early, with clear code and data ownership and a path for future development."
         }
       }
@@ -317,7 +317,7 @@
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
@@ -396,7 +396,7 @@
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
@@ -461,11 +461,11 @@
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
-          "fa": "منبع و روش محاسبهٔ هر شاخص مستند می‌شود تا عددها قابل‌پیگیری باشند؛ کیفیت گزارش به کیفیت دادهٔ ورودی هم وابسته است",
+          "fa": "منبع و روش محاسبه هر شاخص مستند می‌شود تا عددها قابل‌پیگیری باشند؛ کیفیت گزارش به کیفیت داده ورودی هم وابسته است",
           "en": "Metric sources and calculations are documented. Report quality also depends on the quality of incoming data."
         }
       }
@@ -530,11 +530,11 @@
       },
       {
         "title": {
-          "fa": "تحویل و ادامهٔ همکاری",
+          "fa": "تحویل و ادامه همکاری",
           "en": "Handover and ongoing care"
         },
         "body": {
-          "fa": "ساعات پاسخ‌گویی، کانال ثبت درخواست و مسئولیت زیرساخت در توافق مشخص می‌شوند؛ وعدهٔ پشتیبانی نامحدود و مبهم نمی‌دهیم",
+          "fa": "ساعات پاسخ‌گویی، کانال ثبت درخواست و مسئولیت زیرساخت در توافق مشخص می‌شوند؛ وعده پشتیبانی نامحدود و مبهم نمی‌دهیم",
           "en": "Response hours, request channels and infrastructure responsibility are explicit. Support is not presented as unlimited or undefined."
         }
       }

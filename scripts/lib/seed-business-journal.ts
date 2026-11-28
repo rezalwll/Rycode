@@ -9,18 +9,69 @@ export async function seedBusinessJournal(db: PrismaClient) {
   return db.$transaction(
     async (tx) => {
       let created = 0;
+      let updated = 0;
       for (const [position, guide] of businessGuides.entries()) {
+        const sourceKey = "business-guide:" + guide.slug;
+        const coverPath = "/brand/journal/business/" + guide.cover;
+        const featuredImage = coverPath + ".webp";
+        const translations = (["fa", "en"] as const).map((locale) => {
+          const translation = guide.translations[locale];
+          const body = { type: "doc", content: translation.content };
+          return {
+            locale,
+            title: translation.title,
+            summary: translation.summary,
+            body: body as Prisma.InputJsonValue,
+            bodyText: documentText(body),
+            imageAlt: translation.imageAlt,
+            seoDescription: translation.summary,
+          };
+        });
         const existing = await tx.content.findUnique({
           where: { kind_slug: { kind: "ARTICLE", slug: guide.slug } },
-          select: { id: true },
+          select: { id: true, sourceKey: true, featuredImage: true },
         });
-        if (existing) continue; // Preserve edits, moderation and the publication decision.
+        if (existing) {
+          const previousCover = coverPath + ".png";
+          if (
+            existing.sourceKey !== sourceKey ||
+            existing.featuredImage !== previousCover
+          )
+            continue;
+
+          // Take the same lock as the CMS before checking for editorial changes.
+          await tx.$queryRaw`SELECT id FROM "Content" WHERE id = ${existing.id} FOR UPDATE`;
+          const untouched = await tx.content.findUnique({
+            where: {
+              id: existing.id,
+              sourceKey,
+              featuredImage: previousCover,
+              revisions: { none: {} },
+            },
+            select: { id: true },
+          });
+          if (!untouched) continue;
+          await tx.content.update({
+            where: { id: untouched.id },
+            data: {
+              featuredImage,
+              translations: {
+                updateMany: translations.map(({ locale, ...data }) => ({
+                  where: { locale },
+                  data,
+                })),
+              },
+            },
+          });
+          updated++;
+          continue;
+        }
         const service = services.find((item) => item.id === guide.serviceId)!;
         await tx.content.create({
           data: {
             kind: "ARTICLE",
             slug: guide.slug,
-            sourceKey: "business-guide:" + guide.slug,
+            sourceKey,
             status: "PUBLISHED",
             sample: false,
             noIndex: false,
@@ -31,22 +82,9 @@ export async function seedBusinessJournal(db: PrismaClient) {
             category: "",
             tags: [service.title.fa, service.title.en],
             publishedAt: new Date(),
-            featuredImage: "/brand/journal/business/" + guide.cover + ".png",
+            featuredImage,
             translations: {
-              create: (["fa", "en"] as const).map((locale) => {
-                const translation = guide.translations[locale];
-                const body = { type: "doc", content: translation.content };
-                return {
-                  locale,
-                  approved: true,
-                  title: translation.title,
-                  summary: translation.summary,
-                  body: body as Prisma.InputJsonValue,
-                  bodyText: documentText(body),
-                  imageAlt: translation.title,
-                  seoDescription: translation.summary,
-                };
-              }),
+              create: translations.map((text) => ({ ...text, approved: true })),
             },
           },
         });
@@ -71,7 +109,7 @@ export async function seedBusinessJournal(db: PrismaClient) {
         },
         data: { status: "ARCHIVED", featured: false },
       });
-      return { created, archived: archived.count };
+      return { created, updated, archived: archived.count };
     },
     { timeout: 30000 },
   );

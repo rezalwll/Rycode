@@ -1,0 +1,39 @@
+.control {
+  position: fixed;
+  z-index: 20;
+  right: max(clamp(14px, 2.5vw, 32px), env(safe-area-inset-right));
+  bottom: max(clamp(14px, 2.5vw, 32px), env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  inline-size: 48px;
+  block-size: 48px;
+  border: 1px solid var(--ui-rule);
+  border-radius: 50%;
+  background-color: var(--ui-surface);
+  color: var(--ui-link);
+  box-shadow: 0 7px 24px light-dark(#17365026, #0006);
+}
+
+.control:is(:hover, :focus-visible) {
+  border-color: var(--ui-link);
+  background-color: light-dark(#e8f4fe, #263d54);
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--ui-link);
+  outline-offset: 3px;
+}
+
+.control[data-direction="up"] svg {
+  rotate: 180deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .control {
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .control svg {
+    transition: rotate 240ms ease;
+  }
+}

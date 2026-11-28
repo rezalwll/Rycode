@@ -17,7 +17,7 @@ export function WordPressRepairPage() {
     <main className={styles.page} dir="rtl">
       <div className={styles.shell}>
         <nav className={styles.breadcrumb} aria-label="مسیر صفحه">
-          <Link href="/services/rescue">رفع باگ و توسعهٔ پروژه‌ها</Link>
+          <Link href="/services/rescue">رفع باگ و توسعه پروژه‌ها</Link>
           <span aria-hidden="true">/</span>
           <span aria-current="page">رفع مشکل وردپرس</span>
         </nav>
@@ -31,7 +31,7 @@ export function WordPressRepairPage() {
             <div className={styles.sectionIntro}>
               <h2 id="wp-services-title">چه مشکلاتی رو بررسی می‌کنیم؟</h2>
               <p>
-                از خطای یک صفحه تا توقف فروش. محدودهٔ بررسی به نشانه‌ها، تغییرات
+                از خطای یک صفحه تا توقف فروش. محدوده بررسی به نشانه‌ها، تغییرات
                 اخیر و بخش‌هایی که درگیر شدن بستگی داره.
               </p>
             </div>
@@ -61,7 +61,7 @@ export function WordPressRepairPage() {
               </div>
               <ServicePhoto
                 src="/brand/service-editorial/wordpress-diagnostics.webp"
-                alt="نمای فروشگاه و ابزارهای عیب‌یابی مرورگر روی صفحهٔ لپ‌تاپ"
+                alt="نمای فروشگاه و ابزارهای عیب‌یابی مرورگر روی صفحه لپ‌تاپ"
               />
             </div>
             <ol className={styles.steps}>
@@ -110,8 +110,8 @@ export function WordPressRepairPage() {
                 شدت خطا، امکان بازتولید، دسترسی‌ها و حجم تغییر روی هزینه اثر
                 دارن. بعد از بررسی اولیه، محدوده و برآورد مشخص می‌شه.
               </p>
-              <a className={styles.secondary} href="#wp-inquiry">
-                درخواست برآورد <ArrowUpLeft size={15} aria-hidden="true" />
+              <a data-secondary-action href="#wp-inquiry">
+                درخواست برآورد
               </a>
             </div>
             <div className={styles.questions}>
@@ -128,11 +128,11 @@ export function WordPressRepairPage() {
           </section>
         </WordPressRepairFlow>
         <nav className={styles.related} aria-label="خدمات مرتبط">
-          <Link href="/services/rescue">رفع باگ و توسعهٔ پروژه‌ها</Link>
+          <Link href="/services/rescue">رفع باگ و توسعه پروژه‌ها</Link>
           <Link href="/services/build">طراحی و بازطراحی سایت</Link>
           <Link href="/services/grow">سئو و رشد سایت</Link>
           <Link href="/services/support">پشتیبانی و نگهداری</Link>
-          <Link href="/services">همهٔ خدمات رایکد</Link>
+          <Link href="/services">همه خدمات رایکد</Link>
         </nav>
       </div>
     </main>

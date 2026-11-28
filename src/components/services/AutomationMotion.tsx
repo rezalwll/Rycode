@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, Play, Zap } from "lucide-react";
+import { Play, Zap } from "lucide-react";
 import { automationScenarios } from "./automation-copy";
 import styles from "./AutomationServicePage.module.css";
 
@@ -75,18 +75,14 @@ export function AutomationDemo() {
           <span>رویداد شروع</span>
           <strong>{scenario.input}</strong>
         </div>
-        <div className={styles.demoConnector} aria-hidden="true">
-          <ArrowDown size={18} />
-        </div>
+        <div className={styles.demoConnector} aria-hidden="true" />
         <div className={`${styles.demoNode} ${styles.demoAction}`}>
           <span>
             <Zap size={14} aria-hidden="true" /> پردازش
           </span>
           <strong>{scenario.action}</strong>
         </div>
-        <div className={styles.demoConnector} aria-hidden="true">
-          <ArrowDown size={18} />
-        </div>
+        <div className={styles.demoConnector} aria-hidden="true" />
         <ul className={styles.demoResults} aria-label="خروجی‌ها">
           {scenario.outputs.map((output) => (
             <li key={output}>{output}</li>

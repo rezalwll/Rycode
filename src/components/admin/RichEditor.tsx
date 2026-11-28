@@ -182,7 +182,7 @@ export function RichEditor({
         <button
           type="button"
           onClick={() => {
-            const src = prompt("مسیر تصویر از کتابخانهٔ رسانه (/media/…)");
+            const src = prompt("مسیر تصویر از کتابخانه رسانه (/media/…)");
             if (src && /^\/media\/[a-f0-9-]+$/.test(src))
               editor
                 ?.chain()

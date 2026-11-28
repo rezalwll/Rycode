@@ -26,13 +26,10 @@ export async function Journal({
     <main className={styles.journal} dir={fa ? "rtl" : "ltr"}>
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>
-            <span aria-hidden>✦</span> RYCODE JOURNAL
-          </span>
           <h1>{fa ? "بلاگ رایکد" : "The RYCODE journal"}</h1>
           <p>
             {fa
-              ? "راهنماهایی برای انتخاب آگاهانهٔ سایت، نرم‌افزار و مسیر رشد کسب‌وکار؛ از مقایسهٔ راه‌حل‌ها تا هزینه و نگهداری"
+              ? "راهنماهایی برای انتخاب آگاهانه سایت، نرم‌افزار و مسیر رشد کسب‌وکار؛ از مقایسه راه‌حل‌ها تا هزینه و نگهداری"
               : "Practical guides to choosing a website, business software or SEO service. Compare requirements, costs and maintenance options."}
           </p>
           <form
@@ -81,9 +78,6 @@ export async function Journal({
         <section className={styles.section} aria-labelledby="featured-title">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.eyebrow}>
-                {fa ? "برای شروع" : "START HERE"}
-              </p>
               <h2 id="featured-title">
                 {fa ? "انتخاب سردبیر" : "Featured reads"}
               </h2>
@@ -114,13 +108,10 @@ export async function Journal({
       >
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.eyebrow}>
-              {fa ? "بخوان و آگاهانه انتخاب کن" : "READ & DECIDE"}
-            </p>
             <h2 id="all-articles-title">
               {filtered
                 ? fa
-                  ? "نتیجهٔ جست‌وجو"
+                  ? "نتیجه جست‌وجو"
                   : "Search results"
                 : fa
                   ? "همه مقالات"
@@ -160,7 +151,7 @@ export async function Journal({
             <h3>{fa ? "مقاله‌ای پیدا نشد" : "No articles found"}</h3>
             <p>
               {fa
-                ? "عبارت کوتاه‌تری جست‌وجو کن یا همهٔ مقاله‌ها را ببین"
+                ? "عبارت کوتاه‌تری جست‌وجو کن یا همه مقاله‌ها را ببین"
                 : "Try a shorter search or browse all articles."}
             </p>
             <Link href={href("/blog") + "#articles"}>
@@ -183,13 +174,13 @@ export async function Journal({
                 }
               >
                 {fa ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}
-                {fa ? "صفحهٔ قبل" : "Previous"}
+                {fa ? "صفحه قبل" : "Previous"}
               </Link>
             ) : (
               <span />
             )}
             <span>
-              {fa ? "صفحهٔ" : "Page"}{" "}
+              {fa ? "صفحه" : "Page"}{" "}
               {filters.page.toLocaleString(fa ? "fa-IR" : "en-US")}{" "}
               {fa ? "از" : "of"} {pages.toLocaleString(fa ? "fa-IR" : "en-US")}
             </span>
@@ -201,7 +192,7 @@ export async function Journal({
                   "#articles"
                 }
               >
-                {fa ? "صفحهٔ بعد" : "Next"}
+                {fa ? "صفحه بعد" : "Next"}
                 {fa ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
               </Link>
             ) : (

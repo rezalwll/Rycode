@@ -2,10 +2,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  ArrowDown,
   ArrowUpLeft,
   Bot,
-  ClipboardList,
   PackageOpen,
   Plus,
   ShieldCheck,
@@ -20,33 +18,19 @@ import {
 } from "./automation-copy";
 import styles from "./AutomationServicePage.module.css";
 
-const inquiryHref = "/contact?service=connect#project-inquiry";
+const inquiryHref = "/contact?service=connect";
 const shortcuts = [
   { id: "telegram", title: "ربات تلگرام", label: "ثبت درخواست" },
   { id: "orders", title: "خودکارسازی سفارش‌ها", label: "فروشگاه و انبار" },
   { id: "integrations", title: "اتصال سیستم‌ها", label: "حسابداری و API" },
   { id: "spreadsheets", title: "اکسل و گزارش‌ها", label: "فایل و داده" },
 ];
-const connections = [
-  ["پیام‌رسان", "تلگرام"],
-  ["فروش", "فروشگاه"],
-  ["مالی", "حسابداری"],
-  ["موجودی", "انبار"],
-  ["مشتریان", "CRM"],
-  ["اطلاع‌رسانی", "پیامک"],
-  ["اطلاع‌رسانی", "ایمیل"],
-  ["ثبت اطلاعات", "فرم سایت"],
-  ["داده", "Excel و CSV"],
-  ["تبادل داده", "API و Webhook"],
-  ["پرداخت", "درگاه پرداخت"],
-  ["مدیریت", "پنل وب"],
-];
 const related = [
   ["software", "طراحی نرم‌افزار اختصاصی"],
   ["build", "طراحی سایت و فروشگاه"],
   ["data", "داده و ابزارهای کاری"],
-  ["rescue", "رفع باگ و توسعهٔ پروژه"],
-  ["continue", "پشتیبانی و توسعهٔ مستمر"],
+  ["rescue", "رفع باگ و توسعه پروژه"],
+  ["continue", "پشتیبانی و توسعه مستمر"],
 ];
 
 function number(index: number) {
@@ -91,8 +75,7 @@ function Section({
         <Rail index={index} label={label} />
         <header className={styles.sectionHead} data-reveal>
           <h2 id={`${id}-title`}>
-            {title}
-            <br />
+            {title}{" "}
             <em>{accent}</em>
           </h2>
           {description && <p>{description}</p>}
@@ -130,9 +113,8 @@ export async function AutomationServicePage() {
                   می‌خوام کارهام خودکار بشن{" "}
                   <ArrowUpLeft size={17} aria-hidden="true" />
                 </Link>
-                <a href="#automation-services" className={styles.secondary}>
-                  ببین چه چیزهایی می‌شه ساخت{" "}
-                  <ArrowDown size={17} aria-hidden="true" />
+                <a href="#automation-services" data-secondary-action>
+                  ببین چه چیزهایی می‌شه ساخت
                 </a>
               </div>
             </div>
@@ -151,7 +133,6 @@ export async function AutomationServicePage() {
                   </span>
                   <strong>{title}</strong>
                   <small>{label}</small>
-                  <ArrowDown size={18} aria-hidden="true" />
                 </a>
               ))}
             </nav>
@@ -285,20 +266,6 @@ export async function AutomationServicePage() {
         <div data-reveal>
           <AutomationDemo />
         </div>
-        <div className={styles.connectors} data-reveal>
-          <h3>چه ابزارهایی می‌تونن به هم وصل بشن؟</h3>
-          <ul className={`${styles.connectorMap} ${styles.crosshair}`}>
-            {connections.map(([category, name]) => (
-              <li key={name}>
-                <small>{category}</small>
-                <strong>{name}</strong>
-              </li>
-            ))}
-          </ul>
-          <p>
-            امکان هر اتصال به دسترسی‌ها و روش تبادل اطلاعات سرویس بستگی داره.
-          </p>
-        </div>
       </Section>
 
       <Section
@@ -355,7 +322,7 @@ export async function AutomationServicePage() {
         label="هزینه و جزئیات"
         title="هزینه، دسترسی‌ها"
         accent="و سؤال‌های رایج"
-        description="هزینه به تعداد مراحل، اتصال‌ها، امکانات پنل، حجم داده و شرایط نگهداری بستگی داره. هزینهٔ سرویس‌هایی مثل پیامک یا میزبانی جدا مشخص می‌شه."
+        description="هزینه به تعداد مراحل، اتصال‌ها، امکانات پنل، حجم داده و شرایط نگهداری بستگی داره. هزینه سرویس‌هایی مثل پیامک یا میزبانی جدا مشخص می‌شه."
       >
         <div className={styles.faq} data-reveal>
           {automationFaq.map(([question, answer]) => (
@@ -381,38 +348,11 @@ export async function AutomationServicePage() {
             ))}
           </ul>
           <Link className={styles.textLink} href="/work">
-            مشاهدهٔ نمونه‌کارهای رایکد{" "}
+            مشاهده نمونه‌کارهای رایکد{" "}
             <ArrowUpLeft size={15} aria-hidden="true" />
           </Link>
         </div>
       </Section>
-
-      <section
-        className={`${styles.sheet} ${styles.blue} ${styles.closing}`}
-        aria-labelledby="automation-contact-title"
-      >
-        <div className={styles.inner}>
-          <Rail index={5} label="تماس" />
-          <div className={styles.closingBody} data-reveal>
-            <h2 id="automation-contact-title">
-              بگو کدوم کارت <em>تکراریه</em>
-            </h2>
-            <p>
-              بگو الان کارت چطور انجام می‌شه و دوست داری چه بخشی از اون راحت‌تر
-              بشه. باهم بررسی می‌کنیم از کجا شروع کنیم.
-            </p>
-            <div className={styles.actions}>
-              <Link className={styles.primary} href={inquiryHref}>
-                بیا کارهام رو ساده‌تر کنیم{" "}
-                <ArrowUpLeft size={17} aria-hidden="true" />
-              </Link>
-              <Link className={styles.secondary} href="/services">
-                همهٔ خدمات رایکد <ClipboardList size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

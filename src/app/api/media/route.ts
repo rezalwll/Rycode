@@ -2,11 +2,14 @@ import { randomUUID } from "node:crypto";
 import { mkdir, open, unlink } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import sharp from "sharp";
+import { after } from "next/server";
 import { requireStaff } from "@/server/auth";
 import { database } from "@/server/db";
+import { writeOperationalLog } from "@/server/operational-log";
 import { assertSameOrigin, consumeLimit, HttpError } from "@/server/security";
 export const runtime = "nodejs";
 export async function POST(request: Request) {
+  const started = Date.now();
   let target: string | undefined;
   try {
     await assertSameOrigin(request);
@@ -102,12 +105,18 @@ export async function POST(request: Request) {
   } catch (error) {
     if (target) await unlink(target).catch(() => {});
     const status = error instanceof HttpError ? error.status : 503;
+    if (status === 413 || status === 422 || status === 429 || status >= 500) {
+      after(() => writeOperationalLog({
+        area: "media", code: String(status), path: "/api/media",
+        level: status >= 500 ? "error" : "warning", elapsedMs: Date.now() - started,
+      }));
+    }
     return Response.json(
       {
         error:
           error instanceof HttpError
             ? error.message
-            : "ذخیرهٔ تصویر موقتاً در دسترس نیست؛ دوباره تلاش کنید",
+            : "ذخیره تصویر موقتاً در دسترس نیست؛ دوباره تلاش کنید",
       },
       { status },
     );

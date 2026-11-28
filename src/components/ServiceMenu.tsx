@@ -133,7 +133,7 @@ export function ServiceMenu({
             href={localizedHref("/services", locale)}
             onClick={() => setOpen(false)}
           >
-            <span>{fa ? "همهٔ خدمات رایکد" : "Explore all services"}</span>
+            <span>{fa ? "همه خدمات رایکد" : "Explore all services"}</span>
             <span aria-hidden="true">{fa ? "←" : "→"}</span>
           </Link>
         </div>

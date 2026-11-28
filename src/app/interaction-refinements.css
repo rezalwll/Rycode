@@ -1,4 +1,7 @@
 /* Transparent over the video, solid after scrolling. */
+.rycode-public {
+  --header-scrolled-height: 60px;
+}
 .rycode-public .rycode-source-header .rycode-header {
   --header-rest-height: 74px;
   --header-row-height: var(--header-rest-height);
@@ -25,7 +28,7 @@
   transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .rycode-public .rycode-source-header .rycode-header--scrolled {
-  --header-row-height: 60px;
+  --header-row-height: var(--header-scrolled-height);
 }
 /* Inner pages reserve their own header row instead of overlaying their hero. */
 .rycode-public .rycode-source-header .rycode-header[data-header-page="inner"] {
@@ -264,6 +267,9 @@
 }
 
 @media (max-width: 639px) {
+  .rycode-public {
+    --header-scrolled-height: 56px;
+  }
   .rycode-public
     .rycode-source-header
     .rycode-header[data-header-page="home"][data-header-surface="overlay"] {
@@ -271,9 +277,6 @@
   }
   .rycode-public .rycode-source-header .rycode-header {
     --header-rest-height: 64px;
-  }
-  .rycode-public .rycode-source-header .rycode-header--scrolled {
-    --header-row-height: 56px;
   }
   .rycode-public .rycode-header .rycode-logo {
     font-size: 24px;

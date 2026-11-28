@@ -1,26 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import type { ReactNode } from "react";
 import {
   ArrowRight,
   ArrowUpLeft,
   Bug,
   Calculator,
+  CalendarDays,
   ChevronLeft,
   ClipboardCheck,
   CodeXml,
   Gauge,
+  Laptop,
   Layers2,
+  Layers3,
   PackageCheck,
   Plus,
   Puzzle,
+  RefreshCw,
   Rocket,
   Search,
   ShieldCheck,
-  CalendarDays,
-  Laptop,
-  Layers3,
-  RefreshCw,
   TriangleAlert,
   Users,
   Zap,
@@ -29,7 +30,7 @@ import { lookupContent } from "@/server/content";
 import { rescueCopy as copy } from "./rescue-copy";
 import styles from "./ProjectRescuePage.module.css";
 
-const inquiryHref = "/contact?service=rescue#project-inquiry";
+const inquiryHref = "/contact?service=rescue";
 const processIcons = [Search, ShieldCheck, PackageCheck];
 const situationIcons = [Bug, Layers2, Plus, Gauge] as const;
 const sectionLinks = [
@@ -363,16 +364,16 @@ export async function ProjectRescuePage() {
           id="rescue-work"
           aria-labelledby="rescue-closing-title"
         >
-          <div className={styles.closingCopy}>
+          <div className={styles.closingCopy} data-action-banner="quiet">
             <h2 id="rescue-closing-title">{copy.closing.title}</h2>
             <p>بگو پروژه الان کجاست و دوست داری به چه نتیجه‌ای برسی.</p>
             <div className={styles.actions}>
               <InquiryLink>{copy.closing.primary}</InquiryLink>
-              <Link className={styles.secondary} href="/work">
+              <Link data-secondary-action href="/work">
                 {copy.work.action}
-                <ArrowUpLeft size={17} aria-hidden="true" />
               </Link>
             </div>
+            <ActionBannerArt />
           </div>
           <div className={styles.closingPhoto}>
             <Image

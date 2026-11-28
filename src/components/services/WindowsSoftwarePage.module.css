@@ -92,7 +92,7 @@
   align-items: center;
   gap: 9px;
 }
-.page :is(.primary, .secondary) {
+.page .primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -114,17 +114,9 @@
   color: #fff;
   border-color: var(--blue);
 }
-.page .secondary {
-  background: var(--ui-surface, #fff);
-  color: var(--blue-dark);
-}
 .page .primary:hover {
   background: light-dark(var(--blue-dark), #245b80);
   border-color: var(--blue-dark);
-}
-.page .secondary:hover {
-  border-color: var(--blue);
-  background: var(--blue-soft);
 }
 
 .productStage {
@@ -491,8 +483,8 @@
 }
 .faq {
   display: grid;
-  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
-  gap: 15px clamp(24px, 5vw, 75px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
 }
 .faq > div {
   border-block-start: 1px solid var(--line);

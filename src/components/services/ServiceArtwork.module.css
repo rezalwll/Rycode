@@ -1,0 +1,38 @@
+.frame {
+  position: relative;
+  display: block;
+  min-inline-size: 0;
+  overflow: hidden;
+}
+
+.frame > img {
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 14px;
+}
+
+.cropped {
+  container-type: size;
+}
+
+.crop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Scale the selected rectangle to cover the frame at any aspect ratio. */
+  width: max(100%, calc(100cqh * var(--crop-ratio)));
+  aspect-ratio: var(--crop-ratio);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.crop > img {
+  position: absolute;
+  top: var(--source-top);
+  left: var(--source-left);
+  width: var(--source-width);
+  max-width: none;
+  height: var(--source-height);
+}

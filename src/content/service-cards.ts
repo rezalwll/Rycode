@@ -72,7 +72,7 @@ function cards(categoryId: CategoryId, rows: CardRow[]) {
     linkTitle: categoryLinkTitles[categoryId],
     tag: category.tag,
     accent: category.accent,
-    image: `/brand/capabilities/${id}.webp`,
+    image: `/brand/home-service-cards/${id}.webp`,
   }));
 }
 
@@ -83,7 +83,7 @@ const categoryCards = [
       "business-site",
       "طراحی سایت",
       "Website design",
-      "سایت شرکتی، وردپرسی یا اختصاصی؛ یک معرفی مرتب از کسب‌وکارت، با مدیریت سادهٔ محتوا",
+      "سایت شرکتی، وردپرسی یا اختصاصی؛ یک معرفی مرتب از کسب‌وکارت، با مدیریت ساده محتوا",
       "A business, WordPress or custom website that presents your work clearly and keeps content manageable",
     ],
     [
@@ -97,7 +97,7 @@ const categoryCards = [
       "landing-redesign",
       "لندینگ‌پیج و بازطراحی",
       "Landing pages & redesigns",
-      "یک صفحه برای معرفی پیشنهادت بساز یا مسیرهای گیج‌کنندهٔ سایت قدیمی را بهتر کن",
+      "یک صفحه برای معرفی پیشنهادت بساز یا مسیرهای گیج‌کننده سایت قدیمی را بهتر کن",
       "Build a page for your offer or improve confusing journeys on an existing site",
     ],
   ]),
@@ -129,7 +129,7 @@ const categoryCards = [
       "android-app",
       "اپلیکیشن اندروید",
       "Android apps",
-      "خدمات یا ابزار کاری را روی موبایل ارائه کن، مستقل یا متصل به سامانهٔ فعلی",
+      "خدمات یا ابزار کاری را روی موبایل ارائه کن، مستقل یا متصل به سامانه فعلی",
       "Bring services or work tools to mobile, standalone or connected to your existing system",
     ],
     [
@@ -150,7 +150,7 @@ const categoryCards = [
     ],
     [
       "stalled-project",
-      "تکمیل پروژهٔ نیمه‌کاره",
+      "تکمیل پروژه نیمه‌کاره",
       "Unfinished projects",
       "اول وضعیت پروژه را بررسی کنیم، بعد از بخش‌های قابل ادامه جلو برویم",
       "Review the current state and continue from the parts that can be kept",

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowDown,
   ArrowUpLeft,
   Check,
   ChevronLeft,
@@ -13,8 +12,7 @@ import {
   Rocket,
   Wrench,
 } from "lucide-react";
-import { ContactForm, FormSubmit } from "@/components/ContactForm";
-import { supportServiceId, supportServiceSlug } from "@/lib/service-routes";
+import { supportServiceId } from "@/lib/service-routes";
 import { SupportGallery, SupportScenarios } from "./SupportShowcases";
 import {
   supportFaq,
@@ -24,15 +22,9 @@ import {
 } from "./support-copy";
 import styles from "./SupportServicePage.module.css";
 
-const priorities = [
-  ["بحرانی", "قطع سرویس، توقف سفارش‌گیری یا خطر برای اطلاعات"],
-  ["مهم", "خرابی یک امکان ضروری برای بخشی از کاربران"],
-  ["عادی", "اصلاح محدود یا نگهداری برنامه‌ریزی‌شده"],
-  ["توسعه", "درخواست قابلیت، گزارش یا تغییر رابط"],
-];
 const qualities = [
   [
-    "محدودهٔ روشن",
+    "محدوده روشن",
     "قبل از شروع مشخص می‌کنیم مسئول هر کار کیه و چه درخواست‌هایی پوشش داده می‌شن.",
   ],
   [
@@ -49,7 +41,6 @@ const qualities = [
   ],
 ];
 const stepNumber = new Intl.NumberFormat("fa-IR", { minimumIntegerDigits: 2 });
-
 const supportNavigation = [
   { href: "#support-intro", label: "نمای کلی" },
   { href: "#support-lifecycle", label: "مسیر پروژه" },
@@ -58,33 +49,44 @@ const supportNavigation = [
 ] as const;
 const supportRequestLabel = "برای پروژه‌ام پشتیبانی می‌خوام";
 
+function requestHref(model?: string) {
+  const query = new URLSearchParams({ service: supportServiceId });
+  if (model) query.set("model", model);
+  return `/contact?${query}#project-inquiry`;
+}
+
 function Action({
   href,
   children,
-  down = false,
   secondary = false,
 }: {
   href: string;
   children: ReactNode;
-  down?: boolean;
   secondary?: boolean;
 }) {
-  const Icon = down ? ArrowDown : ArrowUpLeft;
-  const className = `${styles.action} ${secondary ? styles.secondary : ""}`;
-  const label = (
+  const className = secondary ? undefined : styles.action;
+  const label = secondary ? children : (
     <>
       <span>{children}</span>
-      <span>
-        <Icon size={17} aria-hidden="true" />
+      <span className={styles.actionIcon}>
+        <ArrowUpLeft size={17} aria-hidden="true" />
       </span>
     </>
   );
   return href.startsWith("#") ? (
-    <a className={className} href={href}>
+    <a
+      className={className}
+      data-secondary-action={secondary || undefined}
+      href={href}
+    >
       {label}
     </a>
   ) : (
-    <Link className={className} href={href}>
+    <Link
+      className={className}
+      data-secondary-action={secondary || undefined}
+      href={href}
+    >
       {label}
     </Link>
   );
@@ -119,6 +121,7 @@ function Section({
 
 export function SupportServicePage({ model }: { model?: string | string[] }) {
   const chosenModel = supportModels.find(({ id }) => id === model);
+  const inquiryHref = requestHref(chosenModel?.id);
   return (
     <main dir="rtl" data-support-page className={styles.page}>
       <header className={styles.hero} id="support-intro">
@@ -135,7 +138,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                 </a>
               ))}
             </nav>
-            <Link className={styles.heroNavAction} href="#support-request">
+            <Link className={styles.heroNavAction} href={inquiryHref}>
               {supportRequestLabel}
             </Link>
           </div>
@@ -149,7 +152,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                 سایت یا نرم‌افزارت هم می‌تونیم برنامه داشته باشیم.
               </p>
               <div className={styles.actions}>
-                <Action href="#support-request">{supportRequestLabel}</Action>
+                <Action href={inquiryHref}>{supportRequestLabel}</Action>
                 <a className={styles.heroSecondary} href="#support-services">
                   <span>
                     <ChevronLeft size={19} aria-hidden="true" />
@@ -246,7 +249,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                 تشخیص علت و اصلاح همون مسیر است.
               </p>
               <Action href="/services/rescue" secondary>
-                خدمات رفع باگ و توسعهٔ پروژه
+                خدمات رفع باگ و توسعه پروژه
               </Action>
             </article>
             <article>
@@ -256,7 +259,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                 برای بررسی‌های منظم، به‌روزرسانی کنترل‌شده و اولویت‌بندی
                 بهبودها، محدوده و روش همکاری رو مشخص می‌کنیم.
               </p>
-              <Action href="#support-models" down secondary>
+              <Action href="#support-models" secondary>
                 دیدن مدل‌های همکاری
               </Action>
             </article>
@@ -267,7 +270,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
           id="support-services"
           title="برای بهتر شدن پروژه‌ات چه کار می‌کنیم؟"
           intro="هر خدمت رو باز کن تا ببینی چه چیزهایی رو می‌تونیم بررسی یا اصلاح کنیم."
-          action={<Action href="#support-request">درخواست بررسی پروژه</Action>}
+          action={<Action href={inquiryHref}>درخواست بررسی پروژه</Action>}
         >
           <div className={styles.galleries}>
             <SupportGallery
@@ -284,7 +287,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
         <Section
           id="support-process"
           title="پشتیبانی چطور شروع می‌شه؟"
-          intro="قبل از انجام تغییرات، وضعیت فعلی پروژه و محدودهٔ رسیدگی رو باهم مشخص می‌کنیم."
+          intro="قبل از انجام تغییرات، وضعیت فعلی پروژه و محدوده رسیدگی رو باهم مشخص می‌کنیم."
         >
           <ol className={styles.process}>
             {supportProcess.map(({ title, detail }, index) => (
@@ -322,12 +325,12 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
           </div>
           <div className={styles.scopeNote}>
             <p>
-              <strong>در محدودهٔ توافق</strong> بررسی فنی، به‌روزرسانی‌های مشخص،
+              <strong>در محدوده توافق</strong> بررسی فنی، به‌روزرسانی‌های مشخص،
               رفع خطاهای توافق‌شده، اصلاح محدود و گزارش کار.
             </p>
             <p>
-              <strong>با برآورد جداگانه</strong> بازطراحی گسترده، توسعهٔ قابلیت
-              بزرگ، مهاجرت پیچیده، خدمات سئو و هزینهٔ سرویس‌های جانبی.
+              <strong>با برآورد جداگانه</strong> بازطراحی گسترده، توسعه قابلیت
+              بزرگ، مهاجرت پیچیده، خدمات سئو و هزینه سرویس‌های جانبی.
             </p>
           </div>
         </Section>
@@ -354,7 +357,7 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
                   </ul>
                   <div className={styles.modelAction}>
                     <Action
-                      href={`/services/${supportServiceSlug}?model=${id}#support-request`}
+                      href={requestHref(id)}
                       secondary
                     >
                       درخواست {title}
@@ -378,101 +381,6 @@ export function SupportServicePage({ model }: { model?: string | string[] }) {
               </details>
             ))}
           </div>
-        </Section>
-
-        <Section
-          id="support-request"
-          title="بیا دربارهٔ پشتیبانی پروژه‌ات حرف بزنیم"
-          intro="نوع پروژه، شرح نیاز و اثرش روی کار روزمره رو بگو. برای بررسی اولیه، شرح مسئله و نشانی عمومی سایت کافیه."
-        >
-          <div className={styles.contactGrid}>
-            <div className={styles.priorities}>
-              <h3>شدت درخواست چطوری مشخص می‌شه؟</h3>
-              <dl>
-                {priorities.map(([title, copy]) => (
-                  <div key={title}>
-                    <dt>{title}</dt>
-                    <dd>{copy}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p>
-                ساعات پاسخ‌گویی و نحوهٔ رسیدگی به درخواست فوری در توافق هر پروژه
-                مشخص می‌شه.
-              </p>
-            </div>
-            <ContactForm key={chosenModel?.id} className={styles.form}>
-              <input type="hidden" name="Service" value={supportServiceId} />
-              <label>
-                نام و نام خانوادگی
-                <input
-                  name="Name"
-                  autoComplete="name"
-                  required
-                  minLength={2}
-                  maxLength={120}
-                  dir="auto"
-                />
-              </label>
-              <label>
-                شمارهٔ تماس
-                <input
-                  name="Phone"
-                  type="tel"
-                  autoComplete="tel"
-                  required
-                  maxLength={24}
-                  dir="ltr"
-                />
-              </label>
-              <label>
-                ایمیل (اختیاری)
-                <input
-                  name="Email"
-                  type="email"
-                  autoComplete="email"
-                  maxLength={254}
-                  dir="ltr"
-                />
-              </label>
-              <label>
-                مدل همکاری
-                <select
-                  name="Support model"
-                  defaultValue={chosenModel?.title || ""}
-                >
-                  <option value="">نیاز به راهنمایی دارم</option>
-                  {supportModels.map(({ id, title }) => (
-                    <option key={id} value={title}>
-                      {title}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                شرح درخواست
-                <textarea
-                  name="Message"
-                  rows={4}
-                  required
-                  minLength={10}
-                  maxLength={4900}
-                  dir="auto"
-                />
-              </label>
-              <FormSubmit className={styles.submit}>
-                ثبت درخواست پشتیبانی{" "}
-                <ArrowUpLeft size={17} aria-hidden="true" />
-              </FormSubmit>
-            </ContactForm>
-          </div>
-          <nav className={styles.related} aria-label="خدمات مرتبط با پشتیبانی">
-            <Link href="/services/build">طراحی سایت و فروشگاه</Link>
-            <Link href="/services/software">نرم‌افزار اختصاصی</Link>
-            <Link href="/services/integrations-bots">ربات‌ها و خودکارسازی</Link>
-            <Link href="/services/grow">سئو و رشد سایت</Link>
-            <Link href="/services">همهٔ خدمات رایکد</Link>
-          </nav>
         </Section>
       </div>
     </main>

@@ -50,7 +50,7 @@ function VerifiedCard({
         <div className={styles.cardMeta}>
           <span>
             {item.category ||
-              (locale === "fa" ? "مطالعهٔ موردی" : "Case study")}
+              (locale === "fa" ? "مطالعه موردی" : "Case study")}
           </span>
           <span>{new Date(item.publishedAt).getFullYear()}</span>
         </div>
@@ -88,10 +88,6 @@ export async function PortfolioShowcase({
       <div className={styles.shell}>
         <div className={styles.hero}>
           <div>
-            <p className={styles.eyebrow}>
-              <span aria-hidden="true">✦</span>
-              {fa ? "نمونه‌کارها" : "SELECTED WORK"}
-            </p>
             <h1>
               {compact
                 ? fa
@@ -144,7 +140,7 @@ export async function PortfolioShowcase({
             <span className={styles.emptyMark}>✦</span>
             <h2>
               {fa
-                ? "هنوز مطالعهٔ موردی منتشر نشده است"
+                ? "هنوز مطالعه موردی منتشر نشده است"
                 : "No approved case studies yet"}
             </h2>
             <p>

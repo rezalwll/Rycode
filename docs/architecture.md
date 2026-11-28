@@ -80,18 +80,30 @@ in the database; no email or SMS service is configured. Rate keys use HMACs.
 Forwarded IPs are only trusted when `TRUST_PROXY=true` behind a verified proxy.
 With the current false setting, limits are shared conservatively across clients.
 
-Analytics increments one PostgreSQL counter per UTC day, event and public page.
-There are no individual visit records, visitor/session identifiers, analytics
-cookies, referrers, campaign parameters or inquiry details. Browser requests omit
-credentials and referrers; no consent banner or status badge is rendered. The
-migration preserves old event totals and discards their individual records and
-identifiers. The dashboard separates these approximate totals from actual saved
-Lead totals. Client events may be blocked or spoofed and are not unique people.
+The admin-only report at `/admin/analytics` uses hourly PostgreSQL counters in
+Asia/Tehran. A batched increment records an allowed public path, event, coarse
+device/browser information and normalized traffic source/campaign labels.
+Tab storage keeps these labels for attribution during a visit without assigning
+a visitor ID. Browser collectors omit credentials and full referrer URLs. Page
+exits depend on the browser sending a pagehide event. Counts measure events and
+can be affected by client-side blocking and automation.
+
+Confirmed submissions are counted from the Lead table, including after a client
+retry. Attribution labels can be attached to a lead. Contact information and
+message contents stay in the inquiry. Lead status transitions record previous
+and new status in the staff audit log. The overview still includes legacy
+daily page-view and contact-click aggregates. Detailed dimensions and local
+hours are available from the start of the new collector.
+
+Operational logs retain structured event codes for form and upload failures,
+staff sign-in, server errors, application start and backup attempts. They store
+application route templates where available. The report uses a live database
+check and process metrics. It also surfaces aggregated browser errors and 404s.
 
 `npm run maintenance` removes expired sessions/verifications/rate buckets and
-analytics older than 90 days. Leads, revisions and audit logs remain for staff
-operations and backups; revisit their retention when finalizing production policy.
-No OS scheduler is installed by this task.
+analytics older than 90 days. It retains operational logs for 30 days and
+backup/startup events for 90 days. Leads, revisions and audit logs remain for
+staff operations and backups. Configure a maintenance timer on the server.
 
 ## Verification
 

@@ -28,49 +28,6 @@ export async function HomeHeroSection() {
       <div className="framer-1x90tsp" data-framer-name="Container">
         <div className="framer-1b9iyr7" data-framer-name="Content">
           <div className="framer-z595cn" data-framer-name="Tag & Title">
-            <div className="ssr-variant">
-              <Reveal
-                className="framer-dizg75-container"
-                data-framer-appear-id="dizg75"
-                style={referenceStyles.s753530771e}
-                as="div"
-                from="translateY(300px)"
-              >
-                <div
-                  className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1sut3or w-full!"
-                  data-framer-name="Hero Section Tag"
-                >
-                  <div
-                    className="framer-1f0zcfp"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sa95470ceb9}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.s781d92f43a}
-                    >
-                      {"✦"}
-                    </p>
-                  </div>
-                  <div
-                    className="framer-qs9ltm"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.s143c03551f}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.se8682f4ed5}
-                    >
-                      {t("Helping ambitious brands launch faster")}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
             <div className="ssr-variant hidden-1bcn26v">
               <Reveal
                 className="framer-1nayp60"

@@ -8,7 +8,7 @@ import { WorkBlock0 } from "@/components/pages/WorkBlock0";
 import { WorkHeroSection } from "@/components/pages/WorkHeroSection";
 import { WorkWorkSection } from "@/components/pages/WorkWorkSection";
 import { WorkFAQSection } from "@/components/pages/WorkFAQSection";
-import type { ListingSearchParams } from "@/lib/listing-params";
+import { listingParams, type ListingSearchParams } from "@/lib/listing-params";
 import { listingMetadata } from "@/server/listing-metadata";
 export async function generateMetadata({
   searchParams,
@@ -23,6 +23,8 @@ export default async function Page({
   searchParams: Promise<ListingSearchParams>;
 }) {
   const { t } = await getTranslations();
+  const query = await searchParams;
+  const filters = listingParams(query);
   return (
     <main
       data-framer-root=""
@@ -32,8 +34,10 @@ export default async function Page({
       <h1 className="sr-only">{t("Work")}</h1>
       <WorkBlock0 />
       <WorkHeroSection />
-      <WorkWorkSection />
-      <PublishedListing kind="PROJECT" searchParams={await searchParams} />
+      <PublishedListing kind="PROJECT" searchParams={query} />
+      {filters.page === 1 && !filters.q && !filters.category && (
+        <WorkWorkSection />
+      )}
       <ManagedFaq scope="work">
         <WorkFAQSection />
       </ManagedFaq>

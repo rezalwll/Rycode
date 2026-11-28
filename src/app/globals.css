@@ -2704,7 +2704,8 @@
   padding: 0;
   display: flex;
   position: sticky;
-  top: 40px;
+  /* Leave room for the compact header, its border, and a 16px gap. */
+  inset-block-start: calc(var(--header-scrolled-height, 60px) + 1px + 16px);
   overflow: visible;
 }
 .framer-HujZo .framer-5vpldf {

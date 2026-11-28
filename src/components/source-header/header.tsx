@@ -10,6 +10,7 @@ import {
   FileSpreadsheet,
   Languages,
   Headset,
+  LayoutGrid,
   Menu,
   ScanLine,
   Wrench,
@@ -406,6 +407,7 @@ function DesktopNavItem({
 }
 
 const submenuIcons: Record<string, LucideIcon> = {
+  "/services": LayoutGrid,
   "/services/web-development": ScanLine,
   "/services/seo-growth": ChartNoAxesCombined,
   "/services/custom-software": CodeXml,
@@ -469,6 +471,16 @@ function ServicesMenu({
       )}
     >
       <ul className="rycode-services-menu-list">
+        <li>
+          <SubmenuLink
+            href="/services"
+            onClick={onClose}
+            current={pathname === "/services"}
+            className="rycode-services-menu-link rycode-services-menu-overview"
+          >
+            {locale === "fa" ? "همه خدمات" : "All services"}
+          </SubmenuLink>
+        </li>
         {serviceHighlights.map((service) => (
           <li key={service.id}>
             <SubmenuLink

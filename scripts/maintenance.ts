@@ -13,9 +13,18 @@ const results = await db.$transaction([
   db.analyticsDaily.deleteMany({
     where: { day: { lt: new Date(Date.now() - 90 * 86400000) } },
   }),
+  db.analyticsHourly.deleteMany({
+    where: { bucket: { lt: new Date(now.getTime() - 90 * 86400000) } },
+  }),
+  db.operationalLog.deleteMany({
+    where: { createdAt: { lt: new Date(now.getTime() - 30 * 86400000) }, area: { notIn: ["backup", "deploy"] } },
+  }),
+  db.operationalLog.deleteMany({
+    where: { createdAt: { lt: new Date(now.getTime() - 90 * 86400000) }, area: { in: ["backup", "deploy"] } },
+  }),
 ]);
 console.log(
-  "Expired sessions, verifications, rate buckets and 90-day analytics removed:",
+  "Expired auth records, analytics and operational logs removed:",
   results.map((result) => result.count),
 );
 await db.$disconnect();

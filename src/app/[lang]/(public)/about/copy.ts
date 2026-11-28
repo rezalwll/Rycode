@@ -27,22 +27,19 @@ type AboutCopy = {
   photoNote: string;
   contact: string;
   services: string;
-  identity: { label: string; title: string; description: readonly string[] };
-  principles: { label: string; title: string; items: readonly Entry[] };
+  identity: { title: string; description: readonly string[] };
+  principles: { title: string; items: readonly Entry[] };
   capabilities: {
-    label: string;
     title: string;
     items: readonly [Entry, Entry, Entry, Entry];
   };
-  process: { label: string; title: string; items: readonly Entry[] };
+  process: { title: string; items: readonly Entry[] };
   fit: {
-    label: string;
     title: string;
     description: string;
     items: readonly Entry[];
   };
   closing: {
-    label: string;
     title: string;
     description: string;
     action: string;
@@ -57,21 +54,19 @@ export const aboutCopy = {
       "فکر، دقت و تصمیم‌های درست هم هست. ما توی رایکد اول مسئله رو می‌فهمیم، راه مناسب رو پیدا می‌کنیم و چیزی می‌سازیم که واقعاً به کار بیاد.",
     photoAlts: [
       "میز کار روشن با لپ‌تاپ و دفتر یادداشت کنار پنجره",
-      "صفحهٔ کد روی لپ‌تاپ کنار دفتر یادداشت",
+      "صفحه کد روی لپ‌تاپ کنار دفتر یادداشت",
     ],
     photoNote: "اول مسئله، بعد راه‌حل",
-    contact: "بیا دربارهٔ پروژه‌ات حرف بزنیم",
+    contact: "بیا درباره پروژه‌ات حرف بزنیم",
     services: "خدمات رایکد رو ببین",
     identity: {
-      label: "رایکد چیه؟",
       title: "یه برند مستقل برای ساختن، درست کردن و بهتر کردن",
       description: [
-        "رایکد یک برند مستقل در زمینهٔ طراحی سایت، توسعهٔ نرم‌افزار و راه‌حل‌های دیجیتاله. گاهی نقطهٔ شروع یک ایدهٔ تازه‌ست، گاهی یک سایت قدیمی یا پروژه‌ای که وسط راه به مشکل خورده.",
+        "رایکد یک برند مستقل در زمینه طراحی سایت، توسعه نرم‌افزار و راه‌حل‌های دیجیتاله. گاهی نقطه شروع یک ایده تازه‌ست، گاهی یک سایت قدیمی یا پروژه‌ای که وسط راه به مشکل خورده.",
         "اول وضعیت پروژه و چیزی رو که باید تغییر کنه بررسی می‌کنیم. راه‌حل می‌تونه یک سایت وردپرسی، یک نرم‌افزار اختصاصی، ربات یا فایل اکسل باشه. گاهی هم همون چیزی که داری به اصلاح نیاز داره.",
       ],
     },
     principles: {
-      label: "اصول کار",
       title: "چند چیز که توی رایکد برامون مهمه",
       items: [
         [
@@ -88,7 +83,7 @@ export const aboutCopy = {
         ],
         [
           "چیزی بسازیم که بشه ازش استفاده کرد",
-          "سرعت، تجربهٔ کاربری و نگهداری محصول به اندازهٔ ظاهرش مهمن.",
+          "سرعت، تجربه کاربری و نگهداری محصول به اندازه ظاهرش مهمن.",
         ],
         [
           "برای فردای پروژه هم فکر کنیم",
@@ -101,7 +96,6 @@ export const aboutCopy = {
       ],
     },
     capabilities: {
-      label: "کاری که انجام می‌دیم",
       title: "از ساختن تا بهتر کردن",
       items: [
         [
@@ -110,7 +104,7 @@ export const aboutCopy = {
         ],
         [
           "درست می‌کنیم",
-          "سایت، نرم‌افزار یا پروژهٔ نیمه‌کاره رو بررسی می‌کنیم تا معلوم بشه چه بخش‌هایی رو می‌شه حفظ یا اصلاح کرد.",
+          "سایت، نرم‌افزار یا پروژه نیمه‌کاره رو بررسی می‌کنیم تا معلوم بشه چه بخش‌هایی رو می‌شه حفظ یا اصلاح کرد.",
         ],
         [
           "متصل و ساده می‌کنیم",
@@ -123,7 +117,6 @@ export const aboutCopy = {
       ],
     },
     process: {
-      label: "روش همکاری",
       title: "از یک گفت‌وگوی ساده شروع می‌کنیم",
       items: [
         [
@@ -135,7 +128,7 @@ export const aboutCopy = {
           "سؤال‌های لازم رو می‌پرسیم، راه‌ها رو بررسی می‌کنیم و ضروری‌ها رو مشخص می‌کنیم.",
         ],
         [
-          "محدودهٔ کار رو مشخص می‌کنیم",
+          "محدوده کار رو مشخص می‌کنیم",
           "روشن می‌کنیم چه چیزی ساخته یا اصلاح می‌شه و چه خروجی‌ای باید تحویل بگیری.",
         ],
         [
@@ -143,13 +136,12 @@ export const aboutCopy = {
           "طراحی، توسعه، بررسی و تحویل رو بر اساس نوع همکاری پیش می‌بریم.",
         ],
         [
-          "دربارهٔ ادامهٔ مسیر تصمیم می‌گیریم",
-          "اگر پروژه به نگهداری یا امکانات تازه نیاز داشته باشه، محدودهٔ پشتیبانی و توسعه رو مشخص می‌کنیم.",
+          "درباره ادامه مسیر تصمیم می‌گیریم",
+          "اگر پروژه به نگهداری یا امکانات تازه نیاز داشته باشه، محدوده پشتیبانی و توسعه رو مشخص می‌کنیم.",
         ],
       ],
     },
     fit: {
-      label: "مناسب چه پروژه‌هایی هستیم؟",
       title: "لازم نیست همه‌چیز رو از اول بدونی",
       description:
         "از یک اصلاح محدود تا طراحی یک محصول اختصاصی، اول نیاز، امکانات فنی و شرایط همکاری رو بررسی می‌کنیم.",
@@ -169,7 +161,6 @@ export const aboutCopy = {
       ],
     },
     closing: {
-      label: "همکاری با رایکد",
       title: "پروژه‌ات رو برامون تعریف کن",
       description:
         "بگو چه چیزی می‌خوای بسازی یا کدوم کار رو می‌خوای ساده‌تر کنی. اگه سایت یا نرم‌افزاری داری که درست کار نمی‌کنه، لینک و شرح کوتاهی از مشکل رو بفرست.",
@@ -189,7 +180,6 @@ export const aboutCopy = {
     contact: "Let’s talk about your project",
     services: "Explore RYCODE services",
     identity: {
-      label: "Who we are",
       title:
         "An independent practice that builds, fixes, and improves digital products",
       description: [
@@ -198,7 +188,6 @@ export const aboutCopy = {
       ],
     },
     principles: {
-      label: "Our principles",
       title: "What matters to us at RYCODE",
       items: [
         [
@@ -228,7 +217,6 @@ export const aboutCopy = {
       ],
     },
     capabilities: {
-      label: "What we do",
       title: "From building to improving",
       items: [
         [
@@ -250,7 +238,6 @@ export const aboutCopy = {
       ],
     },
     process: {
-      label: "How we work",
       title: "We start with a simple conversation",
       items: [
         [
@@ -276,7 +263,6 @@ export const aboutCopy = {
       ],
     },
     fit: {
-      label: "Who we work with",
       title: "You don’t need all the answers up front",
       description:
         "From a targeted fix to a custom product, we start by reviewing the need, technical options, and terms of working together.",
@@ -296,7 +282,6 @@ export const aboutCopy = {
       ],
     },
     closing: {
-      label: "Work with RYCODE",
       title: "Tell us about your project",
       description:
         "Tell us what you want to build or which task you want to simplify. If an existing website or application has a problem, share a link and a short description.",

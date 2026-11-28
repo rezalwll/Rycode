@@ -5,7 +5,7 @@ import { serviceCatalog } from "@/server/content";
 import { ServiceCard } from "@/components/ServiceCard";
 import { referenceStyles } from "@/styles/reference-styles";
 export async function HomeServiceSection() {
-  const { t, locale } = await getTranslations();
+  const { locale } = await getTranslations();
   const services = await serviceCatalog(locale);
   return (
     <AccordionGroup
@@ -22,43 +22,6 @@ export async function HomeServiceSection() {
             as="div"
             from="translateY(200px)"
           >
-            <div className="ssr-variant">
-              <div className="framer-dpylpp-container">
-                <div
-                  className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1fz5pen"
-                  data-framer-name="Variant 1"
-                >
-                  <div
-                    className="framer-1f0zcfp"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sa95470ceb9}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.s781d92f43a}
-                    >
-                      {"✦"}
-                    </p>
-                  </div>
-                  <div
-                    className="framer-qs9ltm"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.s143c03551f}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.se8682f4ed5}
-                    >
-                      {t("SERVICES")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div
               className="framer-dhp202-container"
               data-code-component-plugin-id="84d4c1"

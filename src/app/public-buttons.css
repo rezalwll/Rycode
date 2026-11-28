@@ -3,6 +3,93 @@
    Important declarations normalize the captured Framer inline styles. */
 .public-service-boundary { display: contents; }
 
+.rycode-public a[data-secondary-action] {
+  --secondary-tile: light-dark(#dce9ff, #334b6d);
+  --secondary-arrow: light-dark(#244e82, #e2eeff);
+  --secondary-focus: light-dark(#4b72ac, #9ac8ff);
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-block-size: 44px;
+  padding-block: 8px;
+  padding-inline: 42px 5px;
+  background: transparent;
+  color: light-dark(#315371, #d0eaff);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.55;
+  text-align: start;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.rycode-public a[data-secondary-action]::before,
+.rycode-public a[data-secondary-action]::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  translate: 0 -50%;
+  pointer-events: none;
+}
+.rycode-public a[data-secondary-action]::before {
+  inset-inline-start: 5px;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 7px;
+  background-color: var(--secondary-tile);
+  rotate: -9deg;
+  transition: background-color 280ms ease, rotate 280ms ease;
+}
+.rycode-public a[data-secondary-action]::after {
+  inset-inline-start: 11px;
+  inline-size: 16px;
+  block-size: 16px;
+  background-color: var(--secondary-arrow);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6.5 6 5.5-6 5.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.rycode-public a[data-secondary-action]:dir(rtl)::after {
+  scale: -1 1;
+}
+.rycode-public a[data-secondary-action]:is(:hover, :focus-visible) {
+  --secondary-tile: light-dark(#bcd5fa, #45648e);
+}
+.rycode-public a[data-secondary-action]:is(:hover, :focus-visible)::before {
+  rotate: 0deg;
+}
+.rycode-public a[data-secondary-action]:focus-visible {
+  outline: 2px solid var(--secondary-focus);
+  outline-offset: 3px;
+}
+.rycode-public a[data-secondary-action="pill"] {
+  --secondary-tile: #d4e8ff;
+  --secondary-arrow: #244e82;
+  border: 1px solid #bfd5ed;
+  border-radius: 999px;
+  padding-inline-end: 16px;
+  background: #f2f7ff;
+  color: #183c62;
+}
+.rycode-public a[data-secondary-action="pill"]:is(:hover, :focus-visible) {
+  --secondary-tile: #bfdaf9;
+  background: #e6f1ff;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rycode-public a[data-secondary-action]::before {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .rycode-public a[data-secondary-action]::before {
+    border: 1px solid LinkText;
+  }
+  .rycode-public a[data-secondary-action]::after {
+    forced-color-adjust: none;
+    background-color: LinkText;
+  }
+}
+
 .rycode-public:not(:has([data-service-page])) :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link) {
   position: relative !important;
   isolation: isolate;

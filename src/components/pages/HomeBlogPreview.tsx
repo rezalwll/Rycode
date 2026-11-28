@@ -26,21 +26,17 @@ export async function HomeBlogPreview() {
       <div className={styles.inner}>
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>
-              <span aria-hidden="true">✦</span>
-              {fa ? "یادداشت‌ها و راهنماها" : "NOTES & GUIDES"}
-            </p>
             <h2 id="home-blog-title">
-              {fa ? "مجلهٔ رایکد" : "RYCODE Journal"}
+              {fa ? "مجله رایکد" : "RYCODE Journal"}
             </h2>
             <p className={styles.description}>
               {fa
-                ? "دربارهٔ طراحی سایت، نرم‌افزار و راه‌های ساده‌تر کردن کارها."
+                ? "درباره طراحی سایت، نرم‌افزار و راه‌های ساده‌تر کردن کارها."
                 : "Practical ideas on websites, software and making everyday work simpler."}
             </p>
           </div>
           <Link className={styles.allArticles} href={href("/blog")}>
-            {fa ? "همهٔ مقاله‌ها" : "All articles"}
+            {fa ? "همه مقاله‌ها" : "All articles"}
             <Arrow size={17} aria-hidden="true" />
           </Link>
         </header>

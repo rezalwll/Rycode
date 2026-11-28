@@ -12,18 +12,6 @@
   text-align: center;
   margin: 0 auto 36px;
 }
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 14px;
-  font-size: 13px;
-  color: light-dark(#666, #bdcbd9);
-}
-.eyebrow span {
-  color: #9484b3;
-  font-size: 19px;
-}
 .intro h2 {
   font-size: clamp(30px, 3.6vw, 48px);
   line-height: 1.5;
@@ -107,12 +95,21 @@
   border-color: var(--brand-purple);
   color: #fff;
 }
-.toggle svg {
-  transform: rotate(90deg);
-  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+.toggle::before,
+.toggle::after {
+  grid-area: 1 / 1;
+  width: 13px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  content: "";
 }
-.item[open] .toggle svg {
-  transform: rotate(0deg);
+.toggle::after {
+  transform: rotate(90deg);
+  transition: transform 250ms ease;
+}
+.item[open] .toggle::after {
+  transform: rotate(90deg) scaleX(0);
 }
 .answer {
   padding: 0 68px 24px;
@@ -142,8 +139,9 @@
   gap: 16px;
   margin-top: 24px;
   padding: 24px;
-  border: 1px dashed light-dark(#dedbe5, #405064);
+  border: 1px solid light-dark(#d7e5f5, #405872);
   border-radius: 18px;
+  background: linear-gradient(140deg, light-dark(#fafcff, #1a2634), light-dark(#eef5ff, #22364b));
 }
 .helpIcon {
   width: 48px;
@@ -249,7 +247,7 @@
 @media (prefers-reduced-motion: reduce) {
   .item,
   .toggle,
-  .toggle svg,
+  .toggle::after,
   .item::details-content {
     transition: none;
   }

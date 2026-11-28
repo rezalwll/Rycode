@@ -9,5 +9,9 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className={styles.root}>{children}</div>;
+  return (
+    <div className={styles.root} dir="rtl" lang="fa">
+      {children}
+    </div>
+  );
 }

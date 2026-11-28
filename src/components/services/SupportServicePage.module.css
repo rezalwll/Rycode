@@ -204,7 +204,7 @@
 .heroCopy .action > span {
   min-height: 49px;
 }
-.heroCopy .action > span:last-child {
+.heroCopy .action > .actionIcon {
   width: 49px;
 }
 .heroSecondary {
@@ -251,18 +251,17 @@
     color 220ms ease,
     border-color 220ms ease;
 }
-.action > span:last-child {
+.action > .actionIcon {
   width: 44px;
   flex: none;
   padding: 0;
   background: #cdeaff;
   border-color: light-dark(#cdeaff, #405064);
 }
-.action:hover > span:first-child,
-.secondary > span:last-child {
+.action:is(:hover, :focus-visible) > span:first-child {
   background: var(--support-tint);
 }
-.action:hover > span:last-child {
+.action:is(:hover, :focus-visible) > .actionIcon {
   background: light-dark(var(--support-blue), #245b80);
   color: #fff;
   border-color: var(--support-blue);
@@ -642,19 +641,16 @@
 .scenarioCopy h3 {
   font-size: clamp(1.22rem, 2.6vw, 2rem);
 }
-.scenarioCopy dl > div,
-.priorities dl > div {
+.scenarioCopy dl > div {
   padding-block: 8px;
   border-block-start: 1px solid var(--support-line);
 }
-.scenarioCopy dt,
-.priorities dt {
+.scenarioCopy dt {
   color: var(--support-blue);
   font-weight: 730;
   font-size: 0.86rem;
 }
-.scenarioCopy dd,
-.priorities dd {
+.scenarioCopy dd {
   font-size: 0.89rem;
 }
 .scopeNote {
@@ -718,9 +714,7 @@
 }
 .faq {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  column-gap: 26px;
+  grid-template-columns: minmax(0, 1fr);
 }
 .faq details {
   border-block-start: 1px solid var(--support-line);
@@ -749,97 +743,6 @@
 .faq details > p {
   font-size: 0.87rem;
   padding-block-end: 14px;
-}
-.contactGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 14px;
-}
-.priorities,
-.form {
-  border: 1px solid var(--support-line);
-  background: light-dark(#f7fbfe, #202833);
-  border-radius: 18px;
-  padding: clamp(16px, 3vw, 33px);
-}
-.priorities h3 {
-  margin-block-end: 14px;
-  font-size: 1.15rem;
-}
-.priorities p {
-  font-size: 0.85rem;
-  margin-block-start: 14px;
-}
-.form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 14px;
-  background: var(--ui-surface, #fff);
-  position: relative;
-}
-.form > label {
-  display: grid;
-  min-width: 0;
-  gap: 5px;
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-.form > :is(label:has(textarea), p[role="status"]) {
-  grid-column: 1 / -1;
-}
-.form :is(input:not([type="hidden"]), textarea, select) {
-  background: light-dark(#f9fcff, #202833);
-  border: 1px solid var(--support-line);
-  border-radius: 7px;
-  width: 100%;
-  min-width: 0;
-  min-height: 42px;
-  color: var(--support-ink);
-  font: inherit;
-  padding: 7px 9px;
-}
-.form textarea {
-  resize: vertical;
-}
-.form > p[role="status"] {
-  color: var(--support-blue);
-}
-.submit {
-  width: fit-content;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: light-dark(var(--support-blue), #245b80);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.submit:hover {
-  background: #114b74;
-}
-.submit:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
-.related {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  margin-block-start: 22px;
-}
-.related a {
-  color: var(--support-blue);
-  font-size: 0.86rem;
-}
-.related a:hover {
-  color: var(--ui-ink);
 }
 
 @keyframes rise {
@@ -912,7 +815,6 @@
   .scopeGrid,
   .models,
   .scenarioInner,
-  .contactGrid,
   .scopeNote,
   .faq {
     grid-template-columns: minmax(0, 1fr);
@@ -944,9 +846,6 @@
   }
 }
 @media (max-width: 420px) {
-  .form {
-    grid-template-columns: minmax(0, 1fr);
-  }
   .process,
   .qualityGrid {
     grid-template-columns: minmax(0, 1fr);

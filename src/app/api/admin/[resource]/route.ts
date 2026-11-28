@@ -16,11 +16,15 @@ import {
   safeInternalPath,
   consumeLimit,
 } from "@/server/security";
-import type { Prisma } from "@/generated/prisma/client";
+import { Prisma, type LeadStatus } from "@/generated/prisma/client";
+import { insightsZone } from "@/lib/insights";
 import { commentStatusSchema } from "@/lib/comments";
 import { moderateComment } from "@/server/comments";
+import legacyContent from "@/content/legacy-content.json";
 
 type Context = { params: Promise<{ resource: string }> };
+const contentKinds = { content: "ARTICLE", projects: "PROJECT" } as const;
+const reservedProjectSlugs = new Set(legacyContent.filter((entry) => entry.kind === "PROJECT").map((entry) => entry.slug));
 const adminOnly = new Set([
   "comments",
   "leads",
@@ -120,7 +124,8 @@ export async function GET(request: Request, context: Context) {
         { headers: { "Cache-Control": "no-store" } },
       );
     }
-    if (resource === "content") {
+    if (resource === "content" || resource === "projects") {
+      const kind = contentKinds[resource];
       if (url.searchParams.get("choices") === "1")
         return Response.json(
           await database().content.findMany({
@@ -137,23 +142,26 @@ export async function GET(request: Request, context: Context) {
           }),
         );
       const id = url.searchParams.get("id");
-      if (id)
-        return Response.json(
-          await database().content.findUnique({
-            where: { id: z.string().uuid().parse(id) },
-            include: {
-              translations: true,
-              revisions: { orderBy: { createdAt: "desc" }, take: 15 },
-            },
-          }),
-        );
-      const kind = url.searchParams.get("kind");
+      if (id) {
+        const record = await database().content.findUnique({
+          where: { id: z.string().uuid().parse(id), kind },
+          include: {
+            translations: true,
+            revisions: { orderBy: { createdAt: "desc" }, take: 15 },
+          },
+        });
+        if (!record)
+          throw new HttpError(404, kind === "PROJECT" ? "نمونه‌کار پیدا نشد" : "نوشته پیدا نشد");
+        return Response.json(record);
+      }
+      const status = url.searchParams.get("status");
       const where: Prisma.ContentWhereInput = {
-        ...(kind
+        kind,
+        ...(status
           ? {
-              kind: z
-                .enum(["ARTICLE", "SERVICE", "PROJECT", "PAGE"])
-                .parse(kind),
+              status: z
+                .enum(["DRAFT", "PUBLISHED", "SCHEDULED", "ARCHIVED"])
+                .parse(status),
             }
           : {}),
         ...(search
@@ -178,14 +186,32 @@ export async function GET(request: Request, context: Context) {
     }
     if (resource === "leads") {
       const id = url.searchParams.get("id");
-      if (id)
-        return Response.json(
-          await database().lead.findUnique({
-            where: { id: z.string().uuid().parse(id) },
+      if (id) {
+        const leadId = z.string().uuid().parse(id);
+        const db = database();
+        const [lead, history] = await Promise.all([
+          db.lead.findUnique({
+            where: { id: leadId },
             include: { notes: { orderBy: { createdAt: "desc" } } },
           }),
-        );
+          db.auditLog.findMany({
+            where: { entityId: leadId, action: "lead.updated", metadata: { not: Prisma.DbNull } },
+            orderBy: { createdAt: "desc" },
+            take: 100,
+          }),
+        ]);
+        if (!lead) throw new HttpError(404, "درخواست پیدا نشد.");
+        const actors = await db.user.findMany({
+          where: { id: { in: [...new Set(history.map((row) => row.actorId))] } },
+          select: { id: true, name: true },
+        });
+        const names = new Map(actors.map((row) => [row.id, row.name]));
+        return Response.json({ ...lead, history: history.map((row) => ({
+          id: row.id, createdAt: row.createdAt, change: row.metadata, actor: names.get(row.actorId),
+        })) });
+      }
       const status = url.searchParams.get("status");
+      const phoneSearch = normalizeDigits(search).replace(/[\s()-]/g, "");
       const where: Prisma.LeadWhereInput = {
         ...(status
           ? {
@@ -208,6 +234,9 @@ export async function GET(request: Request, context: Context) {
                 { name: { contains: search, mode: "insensitive" } },
                 { email: { contains: search, mode: "insensitive" } },
                 { receipt: { contains: search, mode: "insensitive" } },
+                ...(/^\+?[0-9]+$/.test(phoneSearch)
+                  ? [{ phone: { contains: phoneSearch.replace(/^\+/, "") } }]
+                  : []),
               ],
             }
           : {}),
@@ -264,34 +293,29 @@ export async function GET(request: Request, context: Context) {
       );
     if (resource === "analytics") {
       const since = new Date(Date.now() - 30 * 86400000);
-      const [events, paths, leads] = await Promise.all([
-        database().analyticsDaily.groupBy({
-          by: ["name"],
-          where: { day: { gte: since } },
-          _sum: { count: true },
-        }),
-        database().analyticsDaily.groupBy({
-          by: ["path"],
-          where: { day: { gte: since } },
-          _sum: { count: true },
-          orderBy: { _sum: { count: "desc" } },
-          take: 20,
-        }),
+      const [totals, leads] = await Promise.all([
+        database().$queryRaw<{ name: string | null; path: string | null; count: number }[]>`
+          SELECT name, path, sum(count)::float8 AS count FROM (
+            SELECT name, path, count FROM "AnalyticsDaily"
+            WHERE "day" >= ${since} AND name IN ('page_view', 'contact_click')
+            UNION ALL
+            SELECT name, path, count FROM "AnalyticsHourly"
+            WHERE bucket >= (${since}::timestamp AT TIME ZONE 'UTC') AT TIME ZONE ${insightsZone}
+              AND name IN ('page_view', 'contact_click')
+          ) events
+          GROUP BY GROUPING SETS ((name), (path))
+        `,
         database().lead.groupBy({
           by: ["status"],
           where: { createdAt: { gte: since } },
           _count: true,
         }),
       ]);
+      const events = totals.filter((row) => row.name !== null).map((row) => ({ name: row.name, _count: row.count }));
+      const paths = totals.filter((row) => row.path !== null).sort((a, b) => b.count - a.count).slice(0, 20);
       return Response.json({
-        events: events.map(({ name, _sum }) => ({
-          name,
-          _count: _sum.count || 0,
-        })),
-        paths: paths.map(({ path, _sum }) => ({
-          path,
-          _count: _sum.count || 0,
-        })),
+        events: [...events, { name: "lead_saved", _count: leads.reduce((count, row) => count + row._count, 0) }],
+        paths: paths.map(({ path, count }) => ({ path, _count: count })),
         leads,
       });
     }
@@ -310,32 +334,34 @@ export async function POST(request: Request, context: Context) {
     if (resource === "comments")
       return Response.json(await moderateComment(actor, raw));
     let entityId = "";
-    if (resource === "content") {
+    if (resource === "content" || resource === "projects") {
+      const kind = contentKinds[resource];
+      const notFoundMessage = kind === "PROJECT" ? "نمونه‌کار پیدا نشد" : "نوشته پیدا نشد";
       const input = contentSchema.parse(raw);
+      if (input.kind !== kind)
+        throw new HttpError(
+          422,
+          kind === "PROJECT" ? "این بخش برای مدیریت نمونه‌کارهاست" : "این بخش برای مدیریت نوشته‌های بلاگ است",
+        );
       if (actor.role !== "ADMIN" && input.status !== "DRAFT")
         throw new HttpError(403, "Publishing requires an administrator");
       let existing = input.id
         ? await database().content.findUnique({
-            where: { id: input.id },
+            where: { id: input.id, kind },
             include: { translations: true },
           })
         : null;
-      if (input.id && !existing) throw new HttpError(404, "Content not found");
-      if (existing?.sourceKey && existing.kind !== input.kind)
-        throw new HttpError(
-          422,
-          "The kind of a seeded service group cannot change",
-        );
+      if (input.id && !existing) throw new HttpError(404, notFoundMessage);
       if (actor.role !== "ADMIN" && existing && existing.status !== "DRAFT")
         throw new HttpError(403, "Published content requires an administrator");
       const result = await database().$transaction(async (tx) => {
         if (existing) {
           await tx.$queryRaw`SELECT id FROM "Content" WHERE id = ${existing.id} FOR UPDATE`;
           const current = await tx.content.findUnique({
-            where: { id: existing.id },
+            where: { id: existing.id, kind },
             include: { translations: true },
           });
-          if (!current) throw new HttpError(404, "Content not found");
+          if (!current) throw new HttpError(404, notFoundMessage);
           if (actor.role !== "ADMIN" && current.status !== "DRAFT")
             throw new HttpError(
               403,
@@ -343,10 +369,9 @@ export async function POST(request: Request, context: Context) {
             );
           existing = current;
         }
-        if (
-          existing &&
-          (existing.slug !== input.slug || existing.kind !== input.kind)
-        ) {
+        if (kind === "PROJECT" && input.slug !== existing?.slug && reservedProjectSlugs.has(input.slug))
+          throw new HttpError(409, "این نشانی در صفحه نمونه‌کارها استفاده می‌شه. نشانی دیگری انتخاب کنید.");
+        if (existing && existing.slug !== input.slug) {
           await tx.faq.updateMany({
             where: { scope: contentPath(existing).slice(1) },
             data: { scope: contentPath(input).slice(1) },
@@ -375,7 +400,7 @@ export async function POST(request: Request, context: Context) {
         }
         const fields = {
           legacy: false,
-          kind: input.kind,
+          kind,
           slug: input.slug,
           status: input.status,
           featuredImage: input.featuredImage || null,
@@ -383,9 +408,7 @@ export async function POST(request: Request, context: Context) {
           category: input.category,
           tags: input.tags,
           relatedIds: input.relatedIds,
-          serviceId: existing?.sourceKey?.startsWith("service:")
-            ? existing.sourceKey.slice("service:".length)
-            : input.serviceId || null,
+          serviceId: input.serviceId || null,
           noIndex: input.noIndex || input.sample,
           featured: input.featured,
           sample: input.sample,
@@ -438,7 +461,7 @@ export async function POST(request: Request, context: Context) {
             actorId: actor.id,
             action: "content.saved",
             entityId: record.id,
-            metadata: { status: input.status },
+            metadata: { kind, status: input.status },
           },
         });
         return record;
@@ -464,7 +487,12 @@ export async function POST(request: Request, context: Context) {
         })
         .parse(raw);
       await database().$transaction(async (tx) => {
-        if (input.status)
+        const [previous] = await tx.$queryRaw<{ status: LeadStatus }[]>`
+          SELECT status FROM "Lead" WHERE id = ${input.id} FOR UPDATE
+        `;
+        if (!previous) throw new HttpError(404, "درخواست پیدا نشد.");
+        const changed = input.status && previous.status !== input.status;
+        if (changed)
           await tx.lead.update({
             where: { id: input.id },
             data: { status: input.status },
@@ -478,6 +506,7 @@ export async function POST(request: Request, context: Context) {
             actorId: actor.id,
             action: "lead.updated",
             entityId: input.id,
+            ...(changed ? { metadata: { from: previous.status, to: input.status } } : {}),
           },
         });
       });

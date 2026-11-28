@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowUpLeft,
   ChartNoAxesColumnIncreasing,
@@ -22,7 +23,7 @@ import {
 } from "./data-tools-copy";
 import styles from "./DataToolsPage.module.css";
 
-const inquiryHref = `/contact?service=${dataServiceId}#project-inquiry`;
+const inquiryHref = `/contact?service=${dataServiceId}`;
 const formatNumber = new Intl.NumberFormat("fa-IR", {
   minimumIntegerDigits: 2,
 });
@@ -38,20 +39,22 @@ const commonProblems = [
   ],
   [
     "فایل سخت‌ویرایش",
-    "فرمول‌ها به هم وابسته‌ان و یک تغییر کوچک نتیجهٔ شیت دیگه‌ای رو به هم می‌زنه.",
+    "فرمول‌ها به هم وابسته‌ان و یک تغییر کوچک نتیجه شیت دیگه‌ای رو به هم می‌زنه.",
   ],
 ];
 
 export function DataToolsPage() {
   return (
     <main className={styles.page} dir="rtl" data-data-tools>
-      <div className={styles.frame}>
-        <header className={styles.hero}>
+      <header className={styles.hero}>
+        <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
             <Link href="/services" className={styles.back}>
-              <ArrowLeft size={15} aria-hidden="true" /> همهٔ خدمات
+              <ArrowLeft size={15} aria-hidden="true" /> همه خدمات
             </Link>
-            <h1>اکسل، داده و ابزارهای کاری</h1>
+            <h1>
+              اکسل، داده و<br /> ابزارهای کاری
+            </h1>
             <p className={styles.heroLead}>
               داده وقتی ارزش دارد که بتوانی با آن تصمیم بگیری
             </p>
@@ -64,15 +67,27 @@ export function DataToolsPage() {
                 می‌خوام کار با اطلاعاتم راحت‌تر بشه{" "}
                 <ArrowUpLeft size={17} aria-hidden="true" />
               </Link>
-              <a href="#data-services" className={styles.secondary}>
-                ببین چه ابزارهایی می‌سازیم{" "}
-                <ArrowDown size={17} aria-hidden="true" />
+              <a href="#data-services" data-secondary-action>
+                ببین چه ابزارهایی می‌سازیم
               </a>
             </div>
           </div>
+          <div className={styles.heroArt}>
+            <Image
+              src="/brand/data-tools/excel-workspace.webp"
+              alt="لپ‌تاپ با صفحه اکسل و نمودارهای گزارش"
+              fill
+              sizes="(max-width: 760px) 95vw, (max-width: 1480px) 54vw, 780px"
+              preload
+            />
+          </div>
+        </div>
+        <div className={styles.frame}>
           <DataReportDemo />
-        </header>
+        </div>
+      </header>
 
+      <div className={styles.frame}>
         <section
           className={styles.section}
           aria-labelledby="data-problems-title"
@@ -83,7 +98,7 @@ export function DataToolsPage() {
             </h2>
             <p>
               وقتی داده‌ها بین چند فایل و چند نفر پخش می‌شن، حتی جواب یک سؤال
-              ساده وقت می‌گیره. اصلاح فایل‌های فعلی می‌تونه نقطهٔ شروع باشه.
+              ساده وقت می‌گیره. اصلاح فایل‌های فعلی می‌تونه نقطه شروع باشه.
             </p>
           </div>
           <div className={styles.problemGrid}>
@@ -235,8 +250,8 @@ export function DataToolsPage() {
                 برای بررسی اولیه، فایل بدون اطلاعات حساس کافیه
               </h3>
               <p>
-                دسترسی به داده‌ها، کار روی نسخهٔ کپی و شیوهٔ تحویل رو متناسب با
-                پروژه هماهنگ می‌کنیم. شمارهٔ مشتری‌ها یا فایل مالی اصلی رو در
+                دسترسی به داده‌ها، کار روی نسخه کپی و شیوه تحویل رو متناسب با
+                پروژه هماهنگ می‌کنیم. شماره مشتری‌ها یا فایل مالی اصلی رو در
                 فرم عمومی نفرست.
               </p>
             </div>
@@ -251,7 +266,7 @@ export function DataToolsPage() {
           <div className={styles.heading}>
             <h2 id="data-pricing-title">هزینه به چه چیزهایی بستگی داره؟</h2>
             <p>
-              می‌شه از اصلاح یک فایل یا ساخت یک گزارش شروع کرد و بقیهٔ کار رو
+              می‌شه از اصلاح یک فایل یا ساخت یک گزارش شروع کرد و بقیه کار رو
               مرحله‌ای جلو برد.
             </p>
           </div>
@@ -269,7 +284,7 @@ export function DataToolsPage() {
               </p>
             </article>
             <article>
-              <h3>نحوهٔ استفاده</h3>
+              <h3>نحوه استفاده</h3>
               <p>
                 تعداد کاربران، نیاز به دسترسی هم‌زمان، پردازش خودکار و اتصال به
                 ابزارهای دیگه.
@@ -277,7 +292,7 @@ export function DataToolsPage() {
             </article>
           </div>
           <Link href={inquiryHref} className={styles.textLink}>
-            دربارهٔ هزینهٔ پروژه‌ام بپرس{" "}
+            درباره هزینه پروژه‌ام بپرس{" "}
             <ArrowUpLeft size={16} aria-hidden="true" />
           </Link>
         </section>
@@ -306,6 +321,7 @@ export function DataToolsPage() {
         <section
           className={styles.closing}
           aria-labelledby="data-closing-title"
+          data-action-banner="quiet"
         >
           <div>
             <h2 id="data-closing-title">بیا کار با داده‌هات رو ساده‌تر کنیم</h2>
@@ -315,11 +331,11 @@ export function DataToolsPage() {
             </p>
             <div className={styles.actions}>
               <Link href={inquiryHref} className={styles.primary}>
-                دربارهٔ کارم توضیح می‌دم{" "}
+                درباره کارم توضیح می‌دم{" "}
                 <ArrowUpLeft size={17} aria-hidden="true" />
               </Link>
-              <Link href="/services" className={styles.secondary}>
-                همهٔ خدمات رایکد <ArrowLeft size={17} aria-hidden="true" />
+              <Link href="/services" data-secondary-action>
+                همه خدمات رایکد
               </Link>
             </div>
           </div>
@@ -332,18 +348,19 @@ export function DataToolsPage() {
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
             <Link href="/services/rescue">
-              رفع باگ و توسعهٔ پروژه‌ها{" "}
+              رفع باگ و توسعه پروژه‌ها{" "}
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
             <Link href="/services/continue">
-              پشتیبانی و توسعهٔ مستمر{" "}
+              پشتیبانی و توسعه مستمر{" "}
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
             <Link href="/work">
-              مشاهدهٔ نمونه‌کارهای رایکد{" "}
+              مشاهده نمونه‌کارهای رایکد{" "}
               <ArrowUpLeft size={15} aria-hidden="true" />
             </Link>
           </nav>
+          <ActionBannerArt />
         </section>
       </div>
     </main>

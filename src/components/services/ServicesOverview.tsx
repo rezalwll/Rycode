@@ -19,10 +19,6 @@ export function ServicesOverview({
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="services-title">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>
-            <span aria-hidden="true">✦</span>
-            {fa ? "خدمات رایکد" : "WHAT WE DO"}
-          </p>
           <h1 id="services-title">
             {fa ? (
               <>
@@ -46,15 +42,14 @@ export function ServicesOverview({
           <div className={styles.heroActions}>
             <Link data-fill-button className={styles.button} href={href("/contact")}>
               <span>
-                {fa ? "دربارهٔ پروژه‌ات بگو" : "Tell us about your project"}
+                {fa ? "درباره پروژه‌ات بگو" : "Tell us about your project"}
               </span>
               <span className={styles.buttonArrow} aria-hidden="true">
                 {arrow}
               </span>
             </Link>
-            <a className={styles.textLink} href="#services-list">
+            <a data-secondary-action href="#services-list">
               {fa ? "کشف خدمات" : "Explore services"}
-              <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
@@ -80,10 +75,6 @@ export function ServicesOverview({
         aria-labelledby="service-list-title"
       >
         <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>
-            <span aria-hidden="true">✦</span>
-            {fa ? "راه‌حل‌های ما" : "OUR EXPERTISE"}
-          </p>
           <h2 id="service-list-title">
             {fa ? "از کجا شروع کنیم؟" : "Where do we start?"}
           </h2>
@@ -116,7 +107,7 @@ export function ServicesOverview({
                     ))}
                   </ul>
                   <span className={styles.detailLabel}>
-                    {fa ? "بیشتر دربارهٔ این خدمت" : "Explore this service"}
+                    {fa ? "بیشتر درباره این خدمت" : "Explore this service"}
                     <span className={styles.detailArrow} aria-hidden="true">
                       {arrow}
                     </span>
@@ -144,10 +135,6 @@ export function ServicesOverview({
         aria-labelledby="services-contact-title"
       >
         <div className={styles.closingInner}>
-          <p className={styles.eyebrow}>
-            <span aria-hidden="true">✦</span>
-            {fa ? "انتخاب خدمت" : "CHOOSING A SERVICE"}
-          </p>
           <h2 id="services-contact-title">
             {fa ? (
               <>
@@ -166,7 +153,7 @@ export function ServicesOverview({
           <div className={styles.closingAction}>
             <p>
               {fa
-                ? "از مسئله‌ات بگو؛ با هم نقطهٔ شروع درست را پیدا می‌کنیم"
+                ? "از مسئله‌ات بگو؛ با هم نقطه شروع درست را پیدا می‌کنیم"
                 : "Tell us what you’re working through. We’ll find the right starting point together."}
             </p>
             <Link data-fill-button className={styles.button} href={href("/contact")}>

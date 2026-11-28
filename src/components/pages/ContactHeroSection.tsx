@@ -6,7 +6,14 @@ import { Reveal } from "@/components/Motion";
 import { ContactForm, FormField, FormSubmit } from "@/components/ContactForm";
 import { DistortedImage } from "@/components/DistortedImage";
 import { referenceStyles } from "@/styles/reference-styles";
-export async function ContactHeroSection() {
+
+const contactReveal = { from: "none", duration: 480 };
+
+export async function ContactHeroSection({
+  supportModel,
+}: {
+  supportModel?: string;
+}) {
   const { t, locale } = await getTranslations();
   const settings = await siteSettings();
   const phone = String(settings["contact.phone"] || "0998 - 122 - 2022");
@@ -130,7 +137,7 @@ export async function ContactHeroSection() {
               data-framer-name="Name & Location"
               style={referenceStyles.s3670d2058c}
               as="div"
-              from="translateY(200px)"
+              {...contactReveal}
             >
               <div
                 className="framer-12tkm4c"
@@ -160,7 +167,7 @@ export async function ContactHeroSection() {
                   {String(
                     settings["contact.address." + locale] ||
                       (locale === "fa"
-                        ? "برای هماهنگی از فرم یا شمارهٔ تماس استفاده کنید"
+                        ? "برای هماهنگی از فرم یا شماره تماس استفاده کنید"
                         : "Use the form or phone number to arrange a conversation"),
                   )}
                 </p>
@@ -172,7 +179,7 @@ export async function ContactHeroSection() {
               data-framer-name="Contact Sources"
               style={referenceStyles.s3670d2058c}
               as="div"
-              from="translateY(200px)"
+              {...contactReveal}
             >
               <div
                 className="framer-s50f44"
@@ -220,48 +227,6 @@ export async function ContactHeroSection() {
                   </a>
                 </div>
               </div>
-              <div
-                className="framer-jzzf7m"
-                data-border="true"
-                data-framer-name="Contact Source"
-              >
-                <div
-                  className="framer-lryk23"
-                  data-framer-component-type="RichTextContainer"
-                  style={referenceStyles.se120e01975}
-                >
-                  <p
-                    className="framer-text framer-styles-preset-rx12qp"
-                    data-styles-preset="EzakxyTlE"
-                    dir="auto"
-                    style={referenceStyles.s5a374ddac4}
-                  >
-                    {t("Project inquiry")}
-                  </p>
-                </div>
-                <div className="framer-1dv129i-container">
-                  <a
-                    className="framer-n76Tz framer-9qjuV framer-1in1u19 framer-v-1in1u19 framer-1y6m83r"
-                    data-framer-name="Variant 1"
-                    href="#project-inquiry"
-                  >
-                    <div
-                      className="framer-19ao40j"
-                      data-framer-component-type="RichTextContainer"
-                      style={referenceStyles.s143c03551f}
-                    >
-                      <p
-                        className="framer-text framer-styles-preset-12928c1"
-                        data-styles-preset="V0V25Na8R"
-                        dir="auto"
-                        style={referenceStyles.s22c291e9ee}
-                      >
-                        {t("Start a project")}
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
               <div className="framer-1rtz9aa" data-framer-name="Contact Source">
                 <div
                   className="framer-1b7a1y6"
@@ -288,7 +253,7 @@ export async function ContactHeroSection() {
               data-framer-component-type="RichTextContainer"
               style={referenceStyles.s3670d2058c}
               as="div"
-              from="translateY(200px)"
+              {...contactReveal}
             >
               <h2
                 className="framer-text framer-styles-preset-eiwrr4"
@@ -300,13 +265,16 @@ export async function ContactHeroSection() {
               </h2>
             </Reveal>
             <ContactForm id="project-inquiry" className="framer-lknqqb">
+              {supportModel && (
+                <input type="hidden" name="Support model" value={supportModel} />
+              )}
               <div className="framer-19lbbtg" data-framer-name="All Forms">
                 <Reveal
                   className="framer-14aqv6z"
                   data-framer-appear-id="14aqv6z"
                   style={referenceStyles.sd26cd70eb9}
                   as="label"
-                  from="translateY(150px)"
+                  {...contactReveal}
                 >
                   <div
                     className="framer-1fc8ydd"
@@ -338,7 +306,7 @@ export async function ContactHeroSection() {
                   data-framer-appear-id="1yitcnd"
                   style={referenceStyles.sd26cd70eb9}
                   as="label"
-                  from="translateY(150px)"
+                  {...contactReveal}
                 >
                   <div
                     className="framer-uemtml"
@@ -351,15 +319,19 @@ export async function ContactHeroSection() {
                       dir="auto"
                       style={referenceStyles.s5a374ddac4}
                     >
-                      {t("What's your email?")}
+                      {locale === "fa" ? "شماره تماس" : "Phone number"}
                     </p>
                   </div>
                   <div className="framer-form-text-input framer-form-input-wrapper framer-ko6oy0">
                     <FormField
-                      type="email"
-                      required={true}
-                      name="Email"
-                      placeholder={t("e.g info@mail.com")}
+                      type="tel"
+                      name="Phone"
+                      autoComplete="tel"
+                      required
+                      maxLength={25}
+                      placeholder={
+                        locale === "fa" ? "مثلاً ۰۹۱۲۳۴۵۶۷۸۹" : "e.g. +98 912 345 6789"
+                      }
                       className="framer-form-input framer-form-input-empty"
                       as="input"
                     ></FormField>
@@ -370,7 +342,7 @@ export async function ContactHeroSection() {
                   data-framer-appear-id="tgctt4"
                   style={referenceStyles.sd26cd70eb9}
                   as="label"
-                  from="translateY(150px)"
+                  {...contactReveal}
                 >
                   <div
                     className="framer-1nlzkfn"
@@ -402,7 +374,7 @@ export async function ContactHeroSection() {
                 data-framer-appear-id="153eq3v"
                 style={referenceStyles.sd26cd70eb9}
                 as="div"
-                from="translateY(150px)"
+                {...contactReveal}
               >
                 <FormSubmit
                   type="submit"

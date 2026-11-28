@@ -15,20 +15,6 @@
   border-bottom: 1px solid #d9dfe4;
   padding-bottom: 55px;
 }
-.eyebrow {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin: 0 0 24px;
-  color: #5b6670;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  line-height: 1.8;
-}
-.eyebrow span {
-  color: #ff1a05;
-  font-size: 18px;
-}
 .hero h1 {
   margin: 0;
   max-width: 760px;

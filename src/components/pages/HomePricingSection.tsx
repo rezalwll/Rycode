@@ -19,43 +19,6 @@ export async function HomePricingSection() {
             as="div"
             from="translateY(200px)"
           >
-            <div className="ssr-variant">
-              <div className="framer-pvemih-container">
-                <div
-                  className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1tly2e5"
-                  data-framer-name="Variant 2"
-                >
-                  <div
-                    className="framer-1f0zcfp"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sa95470ceb9}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.s781d92f43a}
-                    >
-                      {"✦"}
-                    </p>
-                  </div>
-                  <div
-                    className="framer-qs9ltm"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sdb4e5c5446}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-rx12qp"
-                      data-styles-preset="EzakxyTlE"
-                      dir="auto"
-                      style={referenceStyles.s2a1463207d}
-                    >
-                      {t("PRICING")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div
               className="framer-mpjt7g-container"
               data-code-component-plugin-id="84d4c1"

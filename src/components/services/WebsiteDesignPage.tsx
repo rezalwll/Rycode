@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ArrowUpLeft,
   Blocks,
+  ChevronLeft,
   Gauge,
   MousePointer2,
   Plus,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { WebsiteDesignHero } from "./WebsiteDesignHero";
+import { WebsiteTypePicker } from "./WebsiteTypePicker";
 import { websiteDesignCopy as copy } from "./website-design-copy";
 import styles from "./WebsiteDesignPage.module.css";
 
@@ -28,44 +30,21 @@ const qualityIcons = [
 const [comparisonIntro, wordpress, custom, comparisonNote] =
   copy.comparison.paragraphs;
 
-const templateSources = {
-  pane: {
-    name: "Pane",
-    href: "https://www.framer.com/marketplace/templates/studio-website/",
-  },
-  cartelle: {
-    name: "Cartelle",
-    href: "https://www.framer.com/marketplace/templates/cartelle/",
-  },
-  cornice: {
-    name: "Cornice",
-    href: "https://www.framer.com/marketplace/templates/cornice/",
-  },
-};
-
-type TemplateArtwork = {
+type Artwork = {
   src: string;
   alt: string;
-  source: keyof typeof templateSources;
 };
 
-const templateArtwork = {
+const websiteArtwork = {
   shop: {
-    src: "/brand/website-design/cartelle-shop.webp",
-    alt: "صفحهٔ فروشگاه Cartelle با دسته‌بندی، فیلتر و کارت‌های محصول",
-    source: "cartelle",
+    src: "/brand/home-service-cards/online-store.webp",
+    alt: "نمونه فروشگاه لوازم خانه با کارت‌های محصول و سبد خرید",
   },
   dashboard: {
-    src: "/brand/website-design/pane-ledgerly.webp",
-    alt: "داشبورد Ledgerly با جدول فاکتورها و جزئیات پرداخت",
-    source: "pane",
+    src: "/brand/home-service-cards/custom-excel.webp",
+    alt: "نمونه ابزار اختصاصی با جدول داده، محاسبه‌گر و نمودار",
   },
-  studio: {
-    src: "/brand/website-design/cornice-studio.webp",
-    alt: "عکس سیاه‌وسفید از گفت‌وگو دربارهٔ طراحی روی لپ‌تاپ",
-    source: "cornice",
-  },
-} satisfies Record<string, TemplateArtwork>;
+} satisfies Record<string, Artwork>;
 
 const examples = [
   {
@@ -106,22 +85,19 @@ function Paragraphs({ items }: { items: readonly string[] }) {
   ));
 }
 
-function SplitSection({
+function DesignSection({
   id,
   title,
-  wide,
   children,
 }: {
   id: string;
   title: string;
-  wide?: boolean;
   children: ReactNode;
 }) {
   return (
     <section
-      className={styles.splitSection}
+      className={styles.designSection}
       id={id}
-      data-wide={wide}
       aria-labelledby={`${id}-title`}
     >
       <h2 id={`${id}-title`}>{title}</h2>
@@ -150,34 +126,23 @@ function MoreCopy({
   );
 }
 
-function TemplatePreview({
+function ArtworkPreview({
   artwork,
   frame,
   sizes,
 }: {
-  artwork: TemplateArtwork;
+  artwork: Artwork;
   frame: string;
   sizes: string;
 }) {
-  const source = templateSources[artwork.source];
-
   return (
-    <figure className={styles.templatePreview}>
-      <div className={`${styles.templateImage} ${frame}`}>
-        <Image
-          src={artwork.src}
-          alt={artwork.alt}
-          fill
-          sizes={sizes}
-        />
-      </div>
-      <figcaption>
-        تصویر از قالب{" "}
-        <a href={source.href} target="_blank" rel="noreferrer">
-          <bdi lang="en">{source.name}</bdi>
-          <ArrowUpLeft size={12} aria-hidden="true" />
-        </a>
-      </figcaption>
+    <figure className={`${styles.artwork} ${frame}`}>
+      <Image
+        src={artwork.src}
+        alt={artwork.alt}
+        fill
+        sizes={sizes}
+      />
     </figure>
   );
 }
@@ -191,54 +156,42 @@ export function WebsiteDesignPage() {
         secondaryHref="#website-types"
       />
       <div className={styles.container}>
-        <SplitSection id="website-types" title={copy.types.title} wide>
+        <DesignSection id="website-types" title={copy.types.title}>
           <p>{copy.types.subtitle}</p>
-          <div className={styles.typeList}>
-            {[copy.types.items.slice(0, 4), copy.types.items.slice(4)].map(
-              (column) => (
-                <div className={styles.typeColumn} key={column[0].id}>
-                  {column.map((item) => (
-                    <details key={item.id} name="website-types">
-                      <summary>
-                        <span className={styles.number}>{item.number}</span>
-                        <span>{item.title}</span>
-                        <Plus
-                          size={18}
-                          aria-hidden="true"
-                          className={styles.plus}
-                        />
-                      </summary>
-                      <div className={styles.detailsBody}>
-                        <p className={styles.detailLead}>{item.lead}</p>
-                        <Paragraphs items={item.paragraphs} />
-                        <h4>{item.listTitle}</h4>
-                        <ul className={styles.featureList}>
-                          {item.features.map((feature) => (
-                            <li key={feature}>{feature}</li>
-                          ))}
-                        </ul>
-                        <Link
-                          href={
-                            item.id === "corporate"
-                              ? "/services/corporate-website-design"
-                              : inquiryHref
-                          }
-                          className={styles.textLink}
-                        >
-                          {item.link} <ArrowLeft size={16} aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </details>
-                  ))}
-                </div>
+          <WebsiteTypePicker
+            items={copy.types.items.map((item) => ({
+              id: item.id,
+              number: item.number,
+              title: item.title,
+              content: (
+                <>
+                  <p className={styles.detailLead}>{item.lead}</p>
+                  <Paragraphs items={item.paragraphs} />
+                  <h4>{item.listTitle}</h4>
+                  <ul className={styles.featureList}>
+                    {item.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={
+                      item.id === "corporate"
+                        ? "/services/corporate-website-design"
+                        : inquiryHref
+                    }
+                    data-secondary-action
+                  >
+                    {item.link}
+                  </Link>
+                </>
               ),
-            )}
-          </div>
+            }))}
+          />
           <MoreCopy
-            label="بیشتر دربارهٔ طراحی سایت در رایکد"
+            label="بیشتر درباره طراحی سایت در رایکد"
             items={[...copy.hero.paragraphs, ...copy.types.paragraphs]}
           />
-        </SplitSection>
+        </DesignSection>
 
         <section
           className={styles.work}
@@ -247,8 +200,8 @@ export function WebsiteDesignPage() {
         >
           <div className={styles.sectionHeading}>
             <h2 id="build-work-title">نمونه‌هایی از طراحی سایت</h2>
-            <Link href="/work" className={styles.textLink}>
-              همهٔ نمونه‌کارها <ArrowLeft size={16} aria-hidden="true" />
+            <Link href="/work" data-secondary-action="pill">
+              دیدن همه نمونه‌کارها
             </Link>
           </div>
           <div className={styles.workGrid}>
@@ -273,7 +226,7 @@ export function WebsiteDesignPage() {
                         <small>طراحی پروژه</small>
                         <strong>{project.title}</strong>
                         <span>
-                          مشاهدهٔ پروژه <ArrowUpLeft size={12} />
+                          مشاهده پروژه <ArrowUpLeft size={12} />
                         </span>
                       </div>
                       <div className={styles.projectMockupImage}>
@@ -297,7 +250,7 @@ export function WebsiteDesignPage() {
           </div>
         </section>
 
-        <SplitSection id="website-quality" title={copy.quality.title} wide>
+        <DesignSection id="website-quality" title={copy.quality.title}>
           <p>{copy.quality.subtitle}</p>
           <div className={styles.qualityGrid}>
             {copy.quality.items.map((item, index) => {
@@ -317,24 +270,24 @@ export function WebsiteDesignPage() {
             label="چرا این ویژگی‌ها مهم‌اند؟"
             items={copy.quality.paragraphs}
           />
-        </SplitSection>
+        </DesignSection>
 
-        <SplitSection id="website-platform" title={copy.comparison.title} wide>
+        <DesignSection id="website-platform" title={copy.comparison.title}>
           <p>{copy.comparison.subtitle}</p>
           <div className={styles.comparisonGrid}>
             <article>
-              <TemplatePreview
-                artwork={templateArtwork.shop}
-                frame={styles.shopArtwork}
+              <ArtworkPreview
+                artwork={websiteArtwork.shop}
+                frame={styles.comparisonArtwork}
                 sizes="(max-width: 620px) 90vw, 520px"
               />
               <h3>وردپرس و ووکامرس</h3>
               <p>{wordpress}</p>
             </article>
             <article>
-              <TemplatePreview
-                artwork={templateArtwork.dashboard}
-                frame={styles.dashboardArtwork}
+              <ArtworkPreview
+                artwork={websiteArtwork.dashboard}
+                frame={styles.comparisonArtwork}
                 sizes="(max-width: 620px) 90vw, 520px"
               />
               <h3>طراحی اختصاصی</h3>
@@ -345,12 +298,12 @@ export function WebsiteDesignPage() {
             label="چطور انتخاب می‌کنیم؟"
             items={[comparisonIntro, comparisonNote]}
           />
-          <Link href={inquiryHref} className={styles.secondary}>
+          <Link href={inquiryHref} data-secondary-action>
             {copy.comparison.action}
           </Link>
-        </SplitSection>
+        </DesignSection>
 
-        <SplitSection id="website-process" title={copy.process.title} wide>
+        <DesignSection id="website-process" title={copy.process.title}>
           <Paragraphs
             items={[copy.process.subtitle, ...copy.process.paragraphs]}
           />
@@ -367,23 +320,54 @@ export function WebsiteDesignPage() {
               </li>
             ))}
           </ol>
-        </SplitSection>
+        </DesignSection>
 
-        <SplitSection id="website-cost" title={copy.cost.title}>
-          <h3>{copy.cost.subtitle}</h3>
-          <ul className={styles.costFactors}>
-            {copy.cost.features.map((feature) => (
-              <li key={feature}>{feature}</li>
-            ))}
-          </ul>
-          <MoreCopy
-            label="جزئیات برآورد و پرداخت"
-            items={[...copy.cost.paragraphs, ...copy.cost.notes]}
-          />
-          <Link href={inquiryHref} className={styles.secondary}>
-            {copy.cost.action}
-          </Link>
-        </SplitSection>
+        <DesignSection id="website-cost" title={copy.cost.title}>
+          <div className={styles.costPanel}>
+            <div className={styles.costHeader}>
+              <div className={styles.costCopy}>
+                <h3>{copy.cost.subtitle}</h3>
+                <ul
+                  className={styles.costFactors}
+                  aria-label={copy.cost.paragraphs[1]}
+                >
+                  {copy.cost.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+              <Link href={inquiryHref} data-secondary-action>
+                {copy.cost.action}
+              </Link>
+            </div>
+            <details className={styles.moreCopy}>
+              <summary>
+                جزئیات برآورد و پرداخت
+                <Plus size={15} className={styles.plus} aria-hidden="true" />
+              </summary>
+              <div className={styles.costNotes}>
+                <div>
+                  <h4>محدوده پروژه</h4>
+                  <p>
+                    <InlineCopy text={copy.cost.paragraphs[0]} />
+                  </p>
+                </div>
+                <div>
+                  <h4>اولویت امکانات</h4>
+                  <p>
+                    <InlineCopy text={copy.cost.notes[0]} />
+                  </p>
+                </div>
+                <div>
+                  <h4>شرایط پرداخت</h4>
+                  <p>
+                    <InlineCopy text={copy.cost.notes[1]} />
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </DesignSection>
 
         <section className={styles.faq} aria-labelledby="website-faq-title">
           <h2 id="website-faq-title">{copy.faq.title}</h2>
@@ -402,7 +386,7 @@ export function WebsiteDesignPage() {
           </div>
         </section>
 
-        <SplitSection id="website-related" title={copy.related.title} wide>
+        <DesignSection id="website-related" title={copy.related.title}>
           <Paragraphs items={copy.related.paragraphs} />
           <div className={styles.relatedGrid}>
             {copy.related.items.map((service) => (
@@ -415,35 +399,48 @@ export function WebsiteDesignPage() {
               </Link>
             ))}
           </div>
-        </SplitSection>
+        </DesignSection>
 
-        <section
-          className={styles.closing}
-          aria-labelledby="website-closing-title"
-        >
-          <div className={styles.closingCopy}>
-            <h2 id="website-closing-title">{copy.closing.title}</h2>
-            <Paragraphs items={copy.closing.paragraphs.slice(-1)} />
-            <div className={styles.actions}>
-              <Link href={inquiryHref} className={styles.primary}>
-                {copy.closing.primary}
-              </Link>
-              <Link href="/services" className={styles.secondary}>
-                {copy.closing.secondary}
-              </Link>
-            </div>
-            <MoreCopy
-              label="از کجا می‌تونیم شروع کنیم؟"
-              items={copy.closing.paragraphs.slice(0, -1)}
-            />
-          </div>
-          <TemplatePreview
-            artwork={templateArtwork.studio}
-            frame={styles.closingArt}
-            sizes="(max-width: 840px) 90vw, 520px"
-          />
-        </section>
       </div>
+
+      <section
+        className={styles.closing}
+        id="website-closing"
+        aria-labelledby="website-closing-title"
+      >
+        <div className={styles.closingCopy}>
+          <h2 id="website-closing-title">
+            <span className={styles.closingSpark} aria-hidden="true" />
+            {copy.closing.title[0]}
+            <br />
+            {copy.closing.title[1]}{" "}
+            <span className={styles.closingHighlight}>{copy.closing.title[2]}</span>
+          </h2>
+          <Paragraphs items={copy.closing.paragraphs.slice(-1)} />
+          <div className={styles.actions}>
+            <Link href={inquiryHref} className={styles.primary}>
+              <ArrowLeft size={20} aria-hidden="true" />
+              {copy.closing.primary}
+            </Link>
+            <Link href="/services" className={styles.closingSecondary}>
+              <ChevronLeft size={18} aria-hidden="true" />
+              {copy.closing.secondary}
+            </Link>
+          </div>
+          <MoreCopy
+            label="از کجا می‌تونیم شروع کنیم؟"
+            items={copy.closing.paragraphs.slice(0, -1)}
+          />
+        </div>
+        <div className={styles.closingArt}>
+          <Image
+            src="/brand/website-design/closing-laptop.webp"
+            alt="پیش‌نمایش یک وب‌سایت معماری روی لپ‌تاپ"
+            fill
+            sizes="(max-width: 840px) calc(100vw - 32px), (max-width: 1600px) 59vw, 930px"
+          />
+        </div>
+      </section>
     </main>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { channelSteps } from "./channel-content";
+import { ServiceArtwork } from "./ServiceArtwork";
 import type { Locale } from "@/lib/i18n";
 import styles from "./ChannelServicesPage.module.css";
 
@@ -48,6 +49,7 @@ export function ChannelCapabilities({
   return (
     <div
       className={styles.capabilities}
+      style={{ "--collapsed-card-count": services.length - 1 } as CSSProperties}
       onPointerEnter={(event) => {
         if (event.pointerType !== "touch") setHovered(true);
       }}
@@ -114,12 +116,10 @@ export function ChannelCapabilities({
                   {detailLabel}
                 </Link>
               </div>
-              <div
+              <ServiceArtwork
+                src={service.image}
                 className={styles.capabilityImage}
-                style={{
-                  backgroundImage: `url(${JSON.stringify(service.image)})`,
-                }}
-                aria-hidden="true"
+                sizes="(max-width: 809px) 85vw, (max-width: 979px) 40vw, 355px"
               />
             </div>
           </div>
@@ -214,7 +214,7 @@ export function ChannelProcess({ locale }: { locale: Locale }) {
         role="img"
         aria-label={
           locale === "fa"
-            ? "میز کار و طرح‌های اولیهٔ پروژه"
+            ? "میز کار و طرح‌های اولیه پروژه"
             : "Pinned sketches and material swatches above a studio desk"
         }
       >

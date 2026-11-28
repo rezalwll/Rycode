@@ -3,6 +3,7 @@ import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { NotFoundBlock0 } from "@/components/pages/NotFoundBlock0";
 import { NotFoundHeroSection } from "@/components/pages/NotFoundHeroSection";
+import { NotFoundAnalytics } from "@/components/AnonymousAnalytics";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return { title: t("Page not found") };
@@ -16,6 +17,7 @@ export default async function Page() {
       style={referenceStyles.s430a37b031}
     >
       <h1 className="sr-only">{t("Page not found")}</h1>
+      <NotFoundAnalytics />
       <NotFoundBlock0 />
       <NotFoundHeroSection />
     </main>

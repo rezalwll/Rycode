@@ -1,6 +1,4 @@
 import {
-  ArrowDown,
-  ArrowUpRight,
   ChartNoAxesCombined,
   Database,
   ExternalLink,
@@ -16,6 +14,7 @@ import { notFound } from "next/navigation";
 import { policies, type PolicyKind } from "@/content/policies";
 import { getTranslations } from "@/lib/i18n-server";
 import { lookupContent } from "@/server/content";
+import { ActionBannerArt } from "./ActionBannerArt";
 import { ContentDetail } from "./ContentDetail";
 import styles from "./PolicyPage.module.css";
 
@@ -56,7 +55,6 @@ function PrivacyOverview({ fa }: { fa: boolean }) {
             <a href={`#${id}`}>
               <Icon size={18} aria-hidden="true" />
               <span>{label}</span>
-              <ArrowDown size={13} aria-hidden="true" />
             </a>
           </li>
         ))}
@@ -140,9 +138,8 @@ export async function PolicyPage({ kind }: { kind: PolicyKind }) {
                   ? "پیگیری اطلاعات ارسالی"
                   : "Manage your information"
                 : fa
-                  ? "مشاهدهٔ شرایط شروع همکاری"
+                  ? "مشاهده شرایط شروع همکاری"
                   : "Read the project terms"}
-              <ArrowDown size={15} aria-hidden="true" />
             </a>
           </div>
           {privacy ? <PrivacyOverview fa={fa} /> : <ProjectSteps fa={fa} />}
@@ -175,20 +172,25 @@ export async function PolicyPage({ kind }: { kind: PolicyKind }) {
           })}
         </article>
 
-        <section className={styles.contact} aria-labelledby="policy-contact">
+        <section
+          className={styles.contact}
+          aria-labelledby="policy-contact"
+          data-action-banner="quiet"
+          data-banner-layout="side"
+        >
           <div>
             <h2 id="policy-contact">{copy.contactTitle}</h2>
             <p>{copy.contactDescription}</p>
           </div>
           <div className={styles.actions}>
-            <Link href={href("/contact#project-inquiry")} data-fill-button>
+            <Link href={href("/contact")} data-fill-button>
               {fa ? "تماس با ما" : "Contact us"}
             </Link>
-            <Link href={href(`/${related}`)} className={styles.related}>
+            <Link href={href(`/${related}`)} data-secondary-action>
               {policies[related][locale].title}
-              <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
+          <ActionBannerArt />
         </section>
       </div>
     </main>

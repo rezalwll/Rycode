@@ -2,21 +2,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { currentStaff } from "@/server/auth";
 import { AdminLogout } from "@/components/admin/AdminSession";
+import { AdminNavigation } from "@/components/admin/AdminNavigation";
 import styles from "@/components/admin/Admin.module.css";
-import { BrandLogo } from "@/components/BrandLogo";
-const sections = [
-  ["", "نمای کلی"],
-  ["leads", "درخواست‌ها"],
-  ["comments", "دیدگاه‌های بلاگ"],
-  ["content", "محتوا و انتشار"],
-  ["media", "رسانه‌ها"],
-  ["faqs", "پرسش‌های متداول"],
-  ["settings", "تنظیمات سایت"],
-  ["redirects", "ریدایرکت‌ها"],
-  ["analytics", "گزارش‌ها"],
-  ["users", "دسترسی‌ها"],
-  ["audit", "سابقهٔ عملیات"],
-];
+import { ArrowUpLeft, UserRound } from "lucide-react";
 export default async function ProtectedLayout({
   children,
 }: {
@@ -27,30 +15,29 @@ export default async function ProtectedLayout({
   return (
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
-        <Link href="/" className={styles.brand}>
-          <BrandLogo />
-        </Link>
-        <nav aria-label="مدیریت">
-          {sections
-            .filter(
-              ([key]) =>
-                staff.role === "ADMIN" ||
-                ["", "content", "media", "faqs"].includes(key),
-            )
-            .map(([key, title]) => (
-              <Link key={key} href={"/admin" + (key ? "/" + key : "")}>
-                {title}
-              </Link>
-            ))}
-        </nav>
-        <p>{staff.name}</p>
-        <small>{staff.email}</small>
-        <div className={styles.actions}>
-          <AdminLogout />
-        </div>
-        <Link href="/">مشاهدهٔ سایت ↗</Link>
+        <AdminNavigation isAdmin={staff.role === "ADMIN"} />
       </aside>
-      <main className={styles.content}>{children}</main>
+      <div className={styles.workspace}>
+        <header className={styles.topbar}>
+          <div className={styles.profile}>
+            <span className={styles.profileIcon}>
+              <UserRound size={17} aria-hidden="true" />
+            </span>
+            <div>
+              <strong>{staff.name}</strong>
+              <small>{staff.role === "ADMIN" ? "مدیر سایت" : "ویرایشگر"}</small>
+            </div>
+          </div>
+          <div className={styles.topbarActions}>
+            <Link href="/" className={styles.button} aria-label="مشاهده سایت">
+              <span>مشاهده سایت</span>{" "}
+              <ArrowUpLeft size={15} aria-hidden="true" />
+            </Link>
+            <AdminLogout />
+          </div>
+        </header>
+        <main className={styles.content}>{children}</main>
+      </div>
     </div>
   );
 }

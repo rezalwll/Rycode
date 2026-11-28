@@ -25,9 +25,9 @@ export async function HomeFAQSection() {
           ),
         },
         {
-          question: t("Which platforms do you work with?"),
+          question: t("How is the project cost paid?"),
           answer: t(
-            "We work with Framer, WordPress, Webflow, and other modern platforms based on your project requirements.",
+            "You pay 50% of the total project cost upfront, 25% during the project, and the final 25% when the work is complete.",
           ),
         },
         {

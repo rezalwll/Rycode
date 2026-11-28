@@ -1,5 +1,5 @@
 "use client";
-import NextLink from "next/link";
+import { ProgressLink } from "@/components/ProgressLink";
 import { usePathname as useNextPathname } from "next/navigation";
 import type { ComponentProps } from "react";
 import { useLocale } from "@/components/LocaleProvider";
@@ -26,14 +26,18 @@ export function Link({
   locale,
   href,
   ...props
-}: Omit<ComponentProps<typeof NextLink>, "href" | "locale"> & {
+}: Omit<
+  ComponentProps<typeof ProgressLink>,
+  "href" | "locale" | "loadingLocale"
+> & {
   href: string;
   locale?: Locale;
 }) {
   const current = useLocale();
   return (
-    <NextLink
+    <ProgressLink
       {...props}
+      loadingLocale={current.locale}
       href={localizedHref(sourceHref(href), locale || current.locale)}
     />
   );

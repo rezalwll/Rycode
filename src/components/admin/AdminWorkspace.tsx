@@ -1,11 +1,23 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Inbox, Plus, Search, X } from "lucide-react";
 import type { RichNode } from "@/lib/content-rules";
-import { textDocument } from "@/lib/content-rules";
+import { normalizeSlug, textDocument } from "@/lib/content-rules";
 import { RichEditor } from "./RichEditor";
 import { MediaLibrary } from "./MediaLibrary";
 import { AdminComments } from "./AdminComments";
+import {
+  BrandLoading,
+  BrandLoadingMark,
+  BrandTableLoading,
+} from "@/components/BrandLoading";
+import {
+  articleStatuses,
+  leadStatuses,
+  statusLabels as statuses,
+} from "./admin-labels";
 import styles from "./Admin.module.css";
 
 type Row = Record<string, unknown>;
@@ -40,29 +52,16 @@ type ContentRow = {
   revisions?: { id: string; createdAt: string; snapshot: ContentRow }[];
 };
 const titles: Record<string, string> = {
-  overview: "مدیریت رایکد",
   leads: "درخواست‌های همکاری",
   comments: "دیدگاه‌های بلاگ",
-  content: "محتوا و انتشار",
-  media: "کتابخانهٔ رسانه",
+  content: "نوشته‌های بلاگ",
+  projects: "نمونه‌کارها",
+  media: "کتابخانه رسانه",
   faqs: "پرسش‌های متداول",
   settings: "تنظیمات سایت",
   redirects: "ریدایرکت‌ها",
-  analytics: "گزارش ۳۰ روز اخیر",
   users: "دسترسی مدیران",
-  audit: "سابقهٔ عملیات",
-};
-const statuses: Record<string, string> = {
-  NEW: "جدید",
-  CONTACTED: "تماس گرفته شد",
-  QUALIFIED: "در حال بررسی",
-  WON: "شروع همکاری",
-  LOST: "ناموفق",
-  SPAM: "اسپم",
-  ARCHIVED: "آرشیو",
-  DRAFT: "پیش‌نویس",
-  PUBLISHED: "منتشرشده",
-  SCHEDULED: "زمان‌بندی‌شده",
+  audit: "سابقه عملیات",
 };
 const kinds: Record<string, string> = {
   ARTICLE: "مقاله",
@@ -70,6 +69,13 @@ const kinds: Record<string, string> = {
   PROJECT: "نمونه‌کار",
   PAGE: "صفحه",
 };
+const blankArticle: ContentRow = {
+  kind: "ARTICLE",
+  slug: "",
+  status: "DRAFT",
+  translations: [],
+};
+const blankProject: ContentRow = { ...blankArticle, kind: "PROJECT" };
 async function api(resource: string, payload?: unknown) {
   const response = await fetch("/api/admin/" + resource, {
     ...(payload
@@ -116,12 +122,14 @@ function Input({
   value,
   type = "text",
   required = false,
+  onChange,
 }: {
   label: string;
   name: string;
   value?: string | number;
   type?: string;
   required?: boolean;
+  onChange?: (value: string) => void;
 }) {
   return (
     <label>
@@ -131,6 +139,9 @@ function Input({
         defaultValue={value || ""}
         type={type}
         required={required}
+        onChange={
+          onChange ? (event) => onChange(event.target.value) : undefined
+        }
       />
     </label>
   );
@@ -147,12 +158,18 @@ function ContentEditor({
   onClose: () => void;
 }) {
   const [record, setRecord] = useState(initial);
+  const isProject = initial.kind === "PROJECT";
+  const resource = isProject ? "projects" : "content";
+  const [projectSlug, setProjectSlug] = useState(initial.slug);
+  const [slugEdited, setSlugEdited] = useState(Boolean(initial.slug));
   const [image, setImage] = useState(initial.featuredImage || "");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [revision, setRevision] = useState(0);
   const [choices, setChoices] = useState<ContentRow[]>([]);
+  const editorPanel = useRef<HTMLElement>(null);
   useEffect(() => {
+    editorPanel.current?.focus();
     let active = true;
     api("content?choices=1")
       .then((result) => {
@@ -164,9 +181,17 @@ function ContentEditor({
     };
   }, []);
   return (
-    <section className={styles.panel}>
+    <section className={styles.panel} ref={editorPanel} tabIndex={-1}>
       <div className={styles.actions}>
-        <h2>{record.id ? "ویرایش محتوا" : "محتوای جدید"}</h2>
+        <h2>
+          {isProject
+            ? record.id
+              ? "ویرایش نمونه‌کار"
+              : "نمونه‌کار جدید"
+            : record.id
+              ? "ویرایش نوشته"
+              : "نوشته جدید"}
+        </h2>
         <button type="button" onClick={onClose}>
           بستن
         </button>
@@ -178,6 +203,16 @@ function ContentEditor({
             rel="noreferrer"
           >
             پیش‌نمایش خصوصی ↗
+          </Link>
+        )}
+        {isProject && record.status === "PUBLISHED" && (
+          <Link
+            className={styles.button}
+            href={"/work/" + encodeURIComponent(record.slug)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            مشاهده در سایت ↗
           </Link>
         )}
       </div>
@@ -205,9 +240,9 @@ function ContentEditor({
                 imageAlt: String(f.get(locale + "ImageAlt") || ""),
               });
             }
-            const saved = await api("content", {
+            const saved = await api(resource, {
               ...(record.id ? { id: record.id } : {}),
-              kind: f.get("kind"),
+              kind: initial.kind,
               slug: f.get("slug"),
               status: f.get("status"),
               ...(image ? { featuredImage: image } : {}),
@@ -233,9 +268,13 @@ function ContentEditor({
               translations,
             });
             setRecord((current) => ({ ...current, id: saved.id }));
-            const updated = await api("content?id=" + saved.id);
+            const updated = await api(resource + "?id=" + saved.id);
             setRecord(updated);
-            setMessage("محتوا ذخیره شد");
+            if (isProject) {
+              setProjectSlug(updated.slug);
+              setSlugEdited(true);
+            }
+            setMessage(isProject ? "نمونه‌کار ذخیره شد" : "نوشته ذخیره شد");
             onSaved();
           } catch (e) {
             setMessage((e as Error).message);
@@ -245,31 +284,33 @@ function ContentEditor({
         }}
       >
         <div className={styles.grid}>
-          <label>
-            نوع محتوا
-            <select name="kind" defaultValue={record.kind}>
-              {Object.entries(kinds).map(([value, label]) => (
-                <option value={value} key={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <Input
-            label="نشانی (Slug)"
-            name="slug"
-            value={record.slug}
-            required
-          />
+          {isProject ? (
+            <label>
+              نشانی صفحه نمونه‌کار
+              <input
+                name="slug"
+                value={projectSlug}
+                maxLength={150}
+                dir="auto"
+                required
+                onChange={(event) => {
+                  setProjectSlug(event.target.value);
+                  setSlugEdited(Boolean(event.target.value));
+                }}
+              />
+            </label>
+          ) : (
+            <Input
+              label="نشانی (Slug)"
+              name="slug"
+              value={record.slug}
+              required
+            />
+          )}
           <label>
             وضعیت
             <select name="status" defaultValue={record.status}>
-              {[
-                "DRAFT",
-                ...(role === "ADMIN"
-                  ? ["PUBLISHED", "SCHEDULED", "ARCHIVED"]
-                  : []),
-              ].map((value) => (
+              {(role === "ADMIN" ? articleStatuses : ["DRAFT"]).map((value) => (
                 <option value={value} key={value}>
                   {statuses[value]}
                 </option>
@@ -304,18 +345,10 @@ function ContentEditor({
             value={record.tags?.join(", ")}
           />
           <label>
-            {record.kind === "SERVICE" ? "گروه خدمت" : "خدمت مرتبط"}
-            {record.sourceKey?.startsWith("service:") && (
-              <input
-                type="hidden"
-                name="serviceId"
-                value={record.serviceId || ""}
-              />
-            )}
+            خدمت مرتبط
             <select
               key={choices.length}
               name="serviceId"
-              disabled={record.sourceKey?.startsWith("service:")}
               defaultValue={record.serviceId || ""}
             >
               <option value="">بدون ارتباط</option>
@@ -366,26 +399,26 @@ function ContentEditor({
             />
             عدم ایندکس در موتورهای جست‌وجو
           </label>
-          {record.kind === "ARTICLE" && (
-            <>
-              <label className={styles.check}>
-                <input
-                  name="featured"
-                  type="checkbox"
-                  defaultChecked={record.featured}
-                />
-                مقالهٔ منتخب بلاگ
-              </label>
-              <label className={styles.check}>
-                <input
-                  name="sample"
-                  type="checkbox"
-                  defaultChecked={record.sample}
-                />
-                محتوای نمونه (برچسب نمونه و عدم ایندکس)
-              </label>
-            </>
-          )}
+          <label className={styles.check}>
+            <input
+              name="featured"
+              type="checkbox"
+              defaultChecked={record.featured}
+            />
+            {isProject
+              ? "نمایش در نمونه‌کارهای منتخب صفحه اصلی"
+              : "مقاله منتخب بلاگ"}
+          </label>
+          <label className={styles.check}>
+            <input
+              name="sample"
+              type="checkbox"
+              defaultChecked={record.sample}
+            />
+            {isProject
+              ? "نمونه آزمایشی (خارج از فهرست عمومی)"
+              : "محتوای نمونه (برچسب نمونه و عدم ایندکس)"}
+          </label>
           <label>
             تصویر شاخص
             <input
@@ -400,6 +433,15 @@ function ContentEditor({
           <summary>انتخاب تصویر شاخص از کتابخانه</summary>
           <MediaLibrary onSelect={setImage} />
         </details>
+        {isProject &&
+          /^\/(assets|media|brand)\/[a-zA-Z0-9_./-]+$/.test(image) &&
+          !image.includes("..") && (
+            <img
+              className={styles.projectCoverPreview}
+              src={image}
+              alt="پیش‌نمایش تصویر شاخص"
+            />
+          )}
         {(["fa", "en"] as const).map((locale) => {
           const text = record.translations.find((t) => t.locale === locale);
           return (
@@ -415,10 +457,22 @@ function ContentEditor({
               </h2>
               <div className={styles.grid}>
                 <Input
-                  label={locale === "fa" ? "عنوان" : "Title"}
+                  label={
+                    locale === "fa"
+                      ? isProject
+                        ? "عنوان پروژه"
+                        : "عنوان"
+                      : "Title"
+                  }
                   name={locale + "Title"}
                   value={text?.title}
                   required={locale === "fa"}
+                  onChange={
+                    locale === "fa" && isProject && !slugEdited
+                      ? (title) =>
+                          setProjectSlug(normalizeSlug(title).slice(0, 150))
+                      : undefined
+                  }
                 />
                 <Input
                   label={locale === "fa" ? "توضیح تصویر" : "Image description"}
@@ -426,7 +480,11 @@ function ContentEditor({
                   value={text?.imageAlt}
                 />
                 <label className={styles.wide}>
-                  {locale === "fa" ? "خلاصه" : "Summary"}
+                  {locale === "fa"
+                    ? isProject
+                      ? "خلاصه برای کارت نمونه‌کار"
+                      : "خلاصه"
+                    : "Summary"}
                   <textarea
                     name={locale + "Summary"}
                     defaultValue={text?.summary || ""}
@@ -457,7 +515,7 @@ function ContentEditor({
                     defaultChecked={text?.approved || false}
                   />
                   {locale === "fa"
-                    ? "این نسخه آمادهٔ انتشار است"
+                    ? "این نسخه آماده انتشار است"
                     : "Translation approved for publication"}
                 </label>
               </div>
@@ -465,7 +523,12 @@ function ContentEditor({
           );
         })}
         <button className={styles.primary} disabled={busy}>
-          {busy ? "در حال ذخیره…" : "ذخیرهٔ محتوا"}
+          {busy && <BrandLoadingMark />}
+          {busy
+            ? "در حال ذخیره…"
+            : isProject
+              ? "ذخیره نمونه‌کار"
+              : "ذخیره نوشته"}
         </button>
         {message && (
           <p className={styles.message} role="status">
@@ -488,6 +551,10 @@ function ContentEditor({
                     revisions: record.revisions,
                   });
                   setImage(r.snapshot.featuredImage || "");
+                  if (isProject) {
+                    setProjectSlug(r.snapshot.slug);
+                    setSlugEdited(true);
+                  }
                   setRevision((n) => n + 1);
                   setMessage(
                     "نسخه در ویرایشگر بارگذاری شد؛ برای اعمال، ذخیره کنید",
@@ -506,52 +573,118 @@ function ContentEditor({
 export function AdminWorkspace({
   section,
   role,
+  initialStatus,
+  initialItem,
+  newEntry,
 }: {
   section: string;
   role: string;
+  initialStatus: string;
+  initialItem?: string;
+  newEntry: boolean;
 }) {
-  const [data, setData] = useState<unknown>(null);
+  const router = useRouter();
+  const isProject = section === "projects";
+  const isContent = section === "content" || isProject;
+  const blankEntry = isProject ? blankProject : blankArticle;
+  const [result, setResult] = useState<{
+    key: string;
+    data?: unknown;
+    error?: string;
+  } | null>(null);
   const [message, setMessage] = useState("");
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(initialStatus);
   const [page, setPage] = useState(1);
   const [reload, setReload] = useState(0);
   const [selected, setSelected] = useState<Row | null>(null);
-  const [editing, setEditing] = useState<ContentRow | null>(null);
-  const refresh = () => setReload((n) => n + 1);
-  useEffect(() => {
-    let active = true;
-    const resource =
-      section === "overview"
-        ? role === "ADMIN"
-          ? "analytics"
-          : "content"
-        : section;
-    if (section === "media" || section === "comments") return;
-    const params = new URLSearchParams({
+  const [openingLead, setOpeningLead] = useState<string | null>(
+    section === "leads" ? initialItem || null : null,
+  );
+  const [editing, setEditing] = useState<ContentRow | null>(
+    newEntry ? blankEntry : null,
+  );
+  const [openingEntry, setOpeningEntry] = useState(
+    Boolean(initialItem && isContent),
+  );
+  const fetchList = section !== "media" && section !== "comments";
+  const requestUrl =
+    section +
+    "?" +
+    new URLSearchParams({
       page: String(page),
       q: query,
-      ...(filter
-        ? { [section === "content" ? "kind" : "status"]: filter }
-        : {}),
+      ...(filter ? { status: filter } : {}),
     });
-    api(resource + "?" + params)
-      .then((result) => {
-        if (active) {
-          setData(result);
-          setMessage("");
-        }
+  const requestKey = requestUrl + ":" + reload;
+  const currentResult = result?.key === requestKey ? result : null;
+  const loading = fetchList && !currentResult;
+  const listError = currentResult?.error;
+  const data = currentResult?.data ?? null;
+  const leadDetail = useRef<HTMLElement>(null);
+  const leadTrigger = useRef<HTMLButtonElement>(null);
+  const refresh = () => setReload((n) => n + 1);
+  useEffect(() => {
+    if (selected && section === "leads") leadDetail.current?.focus();
+  }, [selected, section]);
+  useEffect(() => {
+    if (!fetchList) return;
+    let active = true;
+    api(requestUrl)
+      .then((data) => {
+        if (active) setResult({ key: requestKey, data });
       })
-      .catch((error) => {
-        if (active) setMessage(error.message);
+      .catch((error: Error) => {
+        if (active) setResult({ key: requestKey, error: error.message });
       });
     return () => {
       active = false;
     };
-  }, [section, role, page, query, filter, reload]);
+  }, [fetchList, requestKey, requestUrl]);
+  useEffect(() => {
+    if (!initialItem) return;
+    let active = true;
+    api(section + "?id=" + initialItem)
+      .then((item) => {
+        if (!active) return;
+        if (section === "leads") setSelected(item);
+        else setEditing(item);
+      })
+      .catch((error: Error) => {
+        if (active) setMessage(error.message);
+      })
+      .finally(() => {
+        if (active) {
+          setOpeningLead(null);
+          setOpeningEntry(false);
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, [initialItem, section]);
   const rows = (
     Array.isArray(data) ? data : (data as { items?: Row[] } | null)?.items || []
   ) as Row[];
+  async function openLead(id: string, trigger: HTMLButtonElement) {
+    setOpeningLead(id);
+    leadTrigger.current = trigger;
+    try {
+      const lead = await api("leads?id=" + id);
+      if (!lead) throw new Error("درخواست پیدا نشد.");
+      setSelected(lead);
+      setMessage("");
+    } catch (error) {
+      setMessage((error as Error).message);
+    } finally {
+      setOpeningLead(null);
+    }
+  }
+  function closeLead() {
+    setSelected(null);
+    if (initialItem) router.replace("/admin/leads", { scroll: false });
+    leadTrigger.current?.focus();
+  }
   const submit = async (
     event: FormEvent<HTMLFormElement>,
     payload: (f: FormData) => unknown,
@@ -560,7 +693,8 @@ export function AdminWorkspace({
     try {
       await api(section, payload(new FormData(event.currentTarget)));
       setMessage("ذخیره شد");
-      setSelected(null);
+      if (section === "leads") closeLead();
+      else setSelected(null);
       refresh();
     } catch (error) {
       setMessage((error as Error).message);
@@ -568,107 +702,78 @@ export function AdminWorkspace({
   };
   return (
     <>
-      <h1>{titles[section]}</h1>
-      <p className={styles.muted}>سایت و درخواست‌ها را از اینجا مدیریت کنید.</p>
+      <header className={styles.pageHeading}>
+        <h1>{titles[section]}</h1>
+        {section === "leads" && (
+          <p className={styles.muted}>
+            پیام‌های فرم تماس را بخوانید و وضعیت پیگیری را ثبت کنید.
+          </p>
+        )}
+        {isProject && (
+          <p className={styles.muted}>
+            نمونه‌کارهای منتشرشده به‌صورت خودکار در صفحه نمونه‌کارهای سایت نمایش
+            داده می‌شن.
+          </p>
+        )}
+      </header>
       {section === "comments" && <AdminComments />}
+      {listError && (
+        <p role="alert" className={styles.message}>
+          {listError}
+        </p>
+      )}
+      {loading && !isContent && section !== "leads" && (
+        <BrandTableLoading label="در حال دریافت اطلاعات…" />
+      )}
+      {openingEntry && (
+        <BrandLoading
+          label={
+            isProject ? "در حال باز کردن نمونه‌کار…" : "در حال باز کردن نوشته…"
+          }
+        />
+      )}
       {message && (
         <p role="status" className={styles.message}>
           {message}
         </p>
       )}
-      {(section === "overview" || section === "analytics") && (
-        <>
-          <div className={styles.metrics}>
-            {role === "ADMIN" ? (
-              Object.entries({
-                page_view: "بازدید صفحه‌ها",
-                contact_click: "کلیک تماس",
-                lead_saved: "ارسال موفق فرم",
-              }).map(([name, label]) => (
-                <article key={name}>
-                  <span>{label}</span>
-                  <strong>
-                    {(
-                      (
-                        data as {
-                          events?: { name: string; _count: number }[];
-                        } | null
-                      )?.events?.find((event) => event.name === name)?._count ||
-                      0
-                    ).toLocaleString("fa-IR")}
-                  </strong>
-                </article>
-              ))
-            ) : (
-              <article>
-                <Link href="/admin/content">نوشتن و مدیریت محتوا ↗</Link>
-              </article>
-            )}
-          </div>
-          {role === "ADMIN" && (
-            <div className={styles.panel}>
-              <h2>درخواست‌های ثبت‌شدهٔ واقعی</h2>
-              <div className={styles.metrics}>
-                {(
-                  (
-                    data as {
-                      leads?: { status: string; _count: number }[];
-                    } | null
-                  )?.leads || []
-                ).map((row) => (
-                  <article key={row.status}>
-                    <span>{statuses[row.status]}</span>
-                    <strong>{row._count.toLocaleString("fa-IR")}</strong>
-                  </article>
-                ))}
-              </div>
-              <p className={styles.muted}>
-                آمار بازدید، مجموع روزانهٔ رویدادهاست و تعداد افراد یکتا نیست؛
-                درخواست‌ها مستقیماً از فرم‌های ذخیره‌شده خوانده می‌شود.
-              </p>
-            </div>
-          )}
-          <div className={styles.panel}>
-            <h2>دسترسی سریع</h2>
-            <div className={styles.actions}>
-              <Link className={styles.button} href="/admin/content">
-                محتوا
-              </Link>
-              <Link className={styles.button} href="/admin/media">
-                رسانه‌ها
-              </Link>
-              {role === "ADMIN" && (
-                <Link className={styles.button} href="/admin/leads">
-                  درخواست‌های همکاری
-                </Link>
-              )}
-            </div>
-          </div>
-          {role === "ADMIN" && (
-            <Table
-              head={["صفحه", "رویدادها"]}
-              rows={(
-                (data as { paths?: { path: string; _count: number }[] } | null)
-                  ?.paths || []
-              ).map((row) => [row.path, row._count])}
-            />
-          )}
-        </>
+      {editing && isContent && (
+        <ContentEditor
+          key={editing.id || "new"}
+          initial={editing}
+          role={role}
+          onClose={() => {
+            setEditing(null);
+            if (initialItem || newEntry) {
+              router.replace("/admin/" + section, { scroll: false });
+            }
+          }}
+          onSaved={refresh}
+        />
       )}
-      {(section === "content" || section === "leads") && (
+      {(isContent || section === "leads") && (
         <>
           <div className={styles.toolbar}>
-            <input
-              aria-label="جست‌وجو"
-              placeholder="جست‌وجو…"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setPage(1);
-              }}
-            />
+            <div className={styles.searchField}>
+              <Search size={18} aria-hidden="true" />
+              <input
+                aria-label="جست‌وجو"
+                placeholder={
+                  section === "leads"
+                    ? "نام، شماره تماس یا کد پیگیری…"
+                    : isProject
+                      ? "جست‌وجوی نمونه‌کار…"
+                      : "جست‌وجوی نوشته…"
+                }
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setPage(1);
+                }}
+              />
+            </div>
             <select
-              aria-label="فیلتر"
+              aria-label="وضعیت"
               value={filter}
               onChange={(e) => {
                 setFilter(e.target.value);
@@ -676,97 +781,266 @@ export function AdminWorkspace({
               }}
             >
               <option value="">همه</option>
-              {Object.entries(section === "content" ? kinds : statuses)
-                .filter(
-                  ([key]) =>
-                    section === "content" ||
-                    !["DRAFT", "PUBLISHED", "SCHEDULED"].includes(key),
-                )
-                .map(([value, label]) => (
-                  <option value={value} key={value}>
-                    {label}
-                  </option>
-                ))}
+              {(isContent ? articleStatuses : leadStatuses).map((value) => (
+                <option value={value} key={value}>
+                  {statuses[value]}
+                </option>
+              ))}
             </select>
-            {section === "content" && (
+            {isContent && (
               <button
                 className={styles.primary}
-                onClick={() =>
-                  setEditing({
-                    kind: "ARTICLE",
-                    slug: "",
-                    status: "DRAFT",
-                    translations: [],
-                  })
-                }
+                onClick={() => setEditing(blankEntry)}
               >
-                + محتوای جدید
+                <Plus size={17} aria-hidden="true" />{" "}
+                {isProject ? "نمونه‌کار جدید" : "نوشته جدید"}
               </button>
             )}
           </div>
-          <Table
-            head={
-              section === "content"
-                ? ["عنوان", "نوع", "وضعیت", "نشانی", "عملیات"]
-                : ["نام و کد پیگیری", "راه تماس", "وضعیت", "تاریخ", "عملیات"]
-            }
-            rows={rows.map((row) =>
-              section === "content"
-                ? [
-                    (row.translations as Translation[])?.find(
-                      (t) => t.locale === "fa",
-                    )?.title || String(row.slug),
-                    kinds[String(row.kind)],
-                    statuses[String(row.status)],
-                    String(row.slug),
+          {section === "leads" ? (
+            <div className={styles.inbox} data-open={Boolean(selected)}>
+              <div className={styles.inboxList}>
+                {loading ? (
+                  <BrandTableLoading label="در حال دریافت درخواست‌ها…" />
+                ) : rows.length ? (
+                  <ul className={styles.leadList}>
+                    {rows.map((row) => (
+                      <li key={String(row.id)}>
+                        <button
+                          type="button"
+                          className={styles.leadRow}
+                          aria-expanded={selected?.id === row.id}
+                          disabled={openingLead !== null}
+                          onClick={(event) =>
+                            void openLead(String(row.id), event.currentTarget)
+                          }
+                        >
+                          <span className={styles.leadAvatar}>
+                            <Inbox size={17} aria-hidden="true" />
+                          </span>
+                          <span className={styles.leadIdentity}>
+                            <strong dir="auto">{String(row.name)}</strong>
+                            <small dir="ltr">{String(row.receipt)}</small>
+                            <small dir="ltr">
+                              {String(row.phone || row.email || "—")}
+                            </small>
+                          </span>
+                          <span className={styles.leadMeta}>
+                            <span
+                              className={styles.badge}
+                              data-status={String(row.status)}
+                            >
+                              {statuses[String(row.status)]}
+                            </span>
+                            <time dateTime={String(row.createdAt)}>
+                              {new Date(
+                                String(row.createdAt),
+                              ).toLocaleDateString("fa-IR")}
+                            </time>
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  !listError && (
+                    <p className={styles.empty}>درخواستی پیدا نشد.</p>
+                  )
+                )}
+              </div>
+              {openingLead ? (
+                <BrandTableLoading label="در حال باز کردن درخواست…" />
+              ) : selected ? (
+                <section
+                  className={styles.leadDetail}
+                  tabIndex={-1}
+                  ref={leadDetail}
+                  key={String(selected.id)}
+                >
+                  <div className={styles.detailHeading}>
+                    <div>
+                      <small dir="ltr">{String(selected.receipt)}</small>
+                      <h2>{String(selected.name)}</h2>
+                    </div>
                     <button
-                      key="edit"
-                      onClick={async () => {
-                        try {
-                          setEditing(await api("content?id=" + row.id));
-                        } catch (e) {
-                          setMessage((e as Error).message);
-                        }
-                      }}
+                      onClick={closeLead}
+                      aria-label="بستن جزئیات درخواست"
                     >
-                      ویرایش
-                    </button>,
-                  ]
-                : [
-                    <span key="name">
-                      {String(row.name)}
-                      <br />
-                      <small dir="ltr">{String(row.receipt)}</small>
-                    </span>,
-                    <span key="contact" dir="ltr">
-                      {String(row.phone || row.email || "—")}
-                    </span>,
-                    statuses[String(row.status)],
-                    new Date(String(row.createdAt)).toLocaleDateString("fa-IR"),
-                    <button
-                      key="open"
-                      onClick={async () => {
-                        try {
-                          setSelected(await api("leads?id=" + row.id));
-                        } catch (e) {
-                          setMessage((e as Error).message);
-                        }
-                      }}
-                    >
-                      بررسی
-                    </button>,
-                  ],
-            )}
-          />
+                      <X size={17} aria-hidden="true" />
+                    </button>
+                  </div>
+                  <div className={styles.contactDetails}>
+                    {typeof selected.phone === "string" &&
+                      /^\+?[0-9]+$/.test(selected.phone) && (
+                        <a href={"tel:" + selected.phone} dir="ltr">
+                          {selected.phone}
+                        </a>
+                      )}
+                    {typeof selected.email === "string" && selected.email && (
+                      <a href={"mailto:" + selected.email} dir="ltr">
+                        {selected.email}
+                      </a>
+                    )}
+                  </div>
+                  <small>
+                    خدمت: {String(selected.service || "—")} · صفحه:{" "}
+                    {String(selected.sourcePath)}
+                  </small>
+                  {selected.attribution != null &&
+                    (() => {
+                      const attribution = selected.attribution as Record<
+                        string,
+                        string
+                      >;
+                      return (
+                        <div className={styles.note}>
+                          <small>
+                            صفحه ورود <bdi>{attribution.landing || "—"}</bdi>
+                          </small>
+                          <small>
+                            منبع{" "}
+                            <bdi>
+                              {attribution.source === "unknown"
+                                ? "نامشخص"
+                                : attribution.source}
+                            </bdi>
+                          </small>
+                          {attribution.campaign && (
+                            <small>
+                              کمپین <bdi>{attribution.campaign}</bdi>
+                            </small>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  <div className={styles.leadMessage}>
+                    <h3>متن پیام</h3>
+                    <p dir="auto">{String(selected.message)}</p>
+                  </div>
+                  <form
+                    className={styles.leadFollowup}
+                    onSubmit={(e) =>
+                      submit(e, (f) => ({
+                        id: selected.id,
+                        status: f.get("status"),
+                        ...(String(f.get("note") || "").trim()
+                          ? { note: f.get("note") }
+                          : {}),
+                      }))
+                    }
+                  >
+                    <label>
+                      وضعیت
+                      <select
+                        name="status"
+                        defaultValue={String(selected.status)}
+                      >
+                        {leadStatuses.map((status) => (
+                          <option key={status} value={status}>
+                            {statuses[status]}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      یادداشت داخلی
+                      <textarea name="note" maxLength={5000} />
+                    </label>
+                    <button className={styles.primary}>ذخیره پیگیری</button>
+                  </form>
+                  {((selected.history as Row[]) || []).map((entry) => {
+                    const change = entry.change as { from: string; to: string };
+                    return (
+                      <div className={styles.note} key={String(entry.id)}>
+                        <p>
+                          {statuses[change.from]} ← {statuses[change.to]}
+                        </p>
+                        <small>
+                          {String(entry.actor || "مدیر")} ·{" "}
+                          {new Date(String(entry.createdAt)).toLocaleString(
+                            "fa-IR",
+                          )}
+                        </small>
+                      </div>
+                    );
+                  })}
+                  {((selected.notes as Row[]) || []).map((note) => (
+                    <div key={String(note.id)} className={styles.note}>
+                      <p>{String(note.body)}</p>
+                      <small>
+                        {new Date(String(note.createdAt)).toLocaleString(
+                          "fa-IR",
+                        )}
+                      </small>
+                    </div>
+                  ))}
+                </section>
+              ) : (
+                <div className={styles.inboxHint}>
+                  <Inbox size={25} aria-hidden="true" />
+                  <p>برای خواندن پیام، یک درخواست را انتخاب کنید.</p>
+                </div>
+              )}
+            </div>
+          ) : loading ? (
+            <BrandTableLoading
+              label={
+                isProject
+                  ? "در حال دریافت نمونه‌کارها…"
+                  : "در حال دریافت نوشته‌ها…"
+              }
+            />
+          ) : (
+            !listError && (
+              <Table
+                head={["عنوان", "وضعیت", "نشانی", "عملیات"]}
+                rows={rows.map((row) => [
+                  (row.translations as Translation[])?.find(
+                    (t) => t.locale === "fa",
+                  )?.title || String(row.slug),
+                  <span
+                    key="status"
+                    className={styles.badge}
+                    data-status={String(row.status)}
+                  >
+                    {statuses[String(row.status)]}
+                  </span>,
+                  <bdi key="slug" dir="ltr">
+                    {String(row.slug)}
+                  </bdi>,
+                  <button
+                    key="edit"
+                    disabled={openingEntry}
+                    onClick={async () => {
+                      setOpeningEntry(true);
+                      try {
+                        setEditing(await api(section + "?id=" + row.id));
+                      } catch (e) {
+                        setMessage((e as Error).message);
+                      } finally {
+                        setOpeningEntry(false);
+                      }
+                    }}
+                  >
+                    ویرایش
+                  </button>,
+                ])}
+              />
+            )
+          )}
           <div className={styles.actions}>
-            <button disabled={page === 1} onClick={() => setPage((p) => p - 1)}>
+            <button
+              disabled={loading || page === 1}
+              onClick={() => setPage((p) => p - 1)}
+            >
               قبلی
             </button>
             <span>{page}</span>
             <button
               disabled={
+                loading ||
                 page * 30 >=
-                Number((data as { total?: number } | null)?.total || 0)
+                  Number((data as { total?: number } | null)?.total || 0)
               }
               onClick={() => setPage((p) => p + 1)}
             >
@@ -778,73 +1052,8 @@ export function AdminWorkspace({
           </div>
         </>
       )}
-      {editing && section === "content" && (
-        <ContentEditor
-          key={editing.id || "new"}
-          initial={editing}
-          role={role}
-          onClose={() => setEditing(null)}
-          onSaved={refresh}
-        />
-      )}
-      {selected && section === "leads" && (
-        <div className={styles.panel}>
-          <div className={styles.actions}>
-            <h2>{String(selected.name)}</h2>
-            <button onClick={() => setSelected(null)}>بستن</button>
-          </div>
-          <p dir="ltr">
-            {String(selected.phone || "")} {String(selected.email || "")}
-          </p>
-          <small>
-            خدمت: {String(selected.service || "—")} · صفحه:{" "}
-            {String(selected.sourcePath)}
-          </small>
-          <p style={{ whiteSpace: "pre-wrap" }}>{String(selected.message)}</p>
-          <form
-            className={styles.grid}
-            onSubmit={(e) =>
-              submit(e, (f) => ({
-                id: selected.id,
-                status: f.get("status"),
-                ...(String(f.get("note") || "").trim()
-                  ? { note: f.get("note") }
-                  : {}),
-              }))
-            }
-          >
-            <label>
-              وضعیت
-              <select name="status" defaultValue={String(selected.status)}>
-                {Object.entries(statuses)
-                  .filter(
-                    ([s]) => !["DRAFT", "PUBLISHED", "SCHEDULED"].includes(s),
-                  )
-                  .map(([s, t]) => (
-                    <option key={s} value={s}>
-                      {t}
-                    </option>
-                  ))}
-              </select>
-            </label>
-            <label>
-              یادداشت داخلی
-              <textarea name="note" maxLength={5000} />
-            </label>
-            <button className={styles.primary}>ذخیرهٔ پیگیری</button>
-          </form>
-          {((selected.notes as Row[]) || []).map((note) => (
-            <div key={String(note.id)} className={styles.note}>
-              <p>{String(note.body)}</p>
-              <small>
-                {new Date(String(note.createdAt)).toLocaleString("fa-IR")}
-              </small>
-            </div>
-          ))}
-        </div>
-      )}
       {section === "media" && <MediaLibrary />}
-      {section === "settings" && (
+      {!loading && !listError && section === "settings" && (
         <div className={styles.panel}>
           {[
             "contact.phone",
@@ -877,7 +1086,7 @@ export function AdminWorkspace({
           ))}
         </div>
       )}
-      {section === "redirects" && (
+      {!loading && !listError && section === "redirects" && (
         <>
           <form
             className={styles.panel + " " + styles.grid}
@@ -895,7 +1104,7 @@ export function AdminWorkspace({
               <input type="checkbox" name="permanent" defaultChecked />
               انتقال دائمی ۳۰۸
             </label>
-            <button className={styles.primary}>ذخیرهٔ انتقال</button>
+            <button className={styles.primary}>ذخیره انتقال</button>
           </form>
           <Table
             head={["مبدأ", "مقصد", "نوع", "عملیات"]}
@@ -920,7 +1129,7 @@ export function AdminWorkspace({
           />
         </>
       )}
-      {section === "faqs" && (
+      {!loading && !listError && section === "faqs" && (
         <>
           <form
             key={String(selected?.id || "new")}
@@ -981,7 +1190,7 @@ export function AdminWorkspace({
               />
               منتشر شود
             </label>
-            <button className={styles.primary}>ذخیرهٔ پرسش</button>
+            <button className={styles.primary}>ذخیره پرسش</button>
             {selected && (
               <button type="button" onClick={() => setSelected(null)}>
                 پرسش جدید
@@ -1002,7 +1211,7 @@ export function AdminWorkspace({
           />
         </>
       )}
-      {section === "users" && (
+      {!loading && !listError && section === "users" && (
         <Table
           head={["نام", "ایمیل", "نقش"]}
           rows={rows.map((row) => [
@@ -1029,10 +1238,10 @@ export function AdminWorkspace({
           ])}
         />
       )}
-      {section === "audit" && (
+      {!loading && !listError && section === "audit" && (
         <>
           <Table
-            head={["عملیات", "شناسهٔ رکورد", "مدیر", "زمان"]}
+            head={["عملیات", "شناسه رکورد", "مدیر", "زمان"]}
             rows={rows.map((row) => [
               String(row.action),
               String(row.entityId),

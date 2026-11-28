@@ -93,12 +93,55 @@ async function user(role) {
     .map((c) => c.split(";")[0])
     .join("; ");
 }
+async function publicContentFixture({
+  kind,
+  slug,
+  featuredImage,
+  noIndex = false,
+  position = 0,
+  translations,
+}) {
+  const id = randomUUID();
+  contentIds.push(id);
+  await client.query(
+    `INSERT INTO "Content" (id, kind, slug, status, "featuredImage", "noIndex", position, "publishedAt", "updatedAt")
+     VALUES ($1, $2, $3, 'PUBLISHED', $4, $5, $6, NOW(), NOW())`,
+    [id, kind, slug, featuredImage, noIndex, position],
+  );
+  for (const {
+    locale,
+    approved,
+    title,
+    summary,
+    body,
+    seoTitle,
+    seoDescription,
+  } of translations) {
+    await client.query(
+      `INSERT INTO "ContentTranslation" (id, "contentId", locale, approved, title, summary, body, "seoTitle", "seoDescription")
+       VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb, $8, $9)`,
+      [
+        randomUUID(),
+        id,
+        locale,
+        approved,
+        title,
+        summary,
+        JSON.stringify(body),
+        seoTitle,
+        seoDescription,
+      ],
+    );
+  }
+  return id;
+}
 try {
   adminCookie = await user("ADMIN");
   editorCookie = await user("EDITOR");
   for (const path of [
     "/admin",
     "/admin/content",
+    "/admin/projects",
     "/admin/preview/" + randomUUID(),
   ]) {
     const anonymous = await fetch(base + path, { redirect: "manual" });
@@ -175,7 +218,7 @@ try {
         content: [
           {
             type: "text",
-            text: "این متن برای آزمون انتشار فارسی بدون ترجمهٔ انگلیسی نوشته شده است.",
+            text: "این متن برای آزمون انتشار فارسی بدون ترجمه انگلیسی نوشته شده است.",
           },
         ],
       },
@@ -190,13 +233,95 @@ try {
       {
         locale: "fa",
         approved: true,
-        title: "آزمون مقالهٔ فارسی",
+        title: "آزمون مقاله فارسی",
         summary: "بررسی گردش انتشار و دسترسی به پیش‌نویس",
         body: document,
       },
     ],
     tags: ["test"],
   };
+  for (const kind of ["PAGE", "SERVICE", "PROJECT"]) {
+    const protectedFixture = {
+      ...draft,
+      kind,
+      slug: slug + "-" + kind.toLowerCase(),
+    };
+    assert.equal(
+      (await post("/api/admin/content", protectedFixture, adminCookie)).status,
+      422,
+    );
+    const id = await publicContentFixture(protectedFixture);
+    const list = await fetch(
+      base +
+        "/api/admin/content?q=" +
+        encodeURIComponent(draft.translations[0].title),
+      { headers: { Cookie: adminCookie } },
+    );
+    assert.equal(list.status, 200);
+    assert.ok(
+      (await list.json()).items.every((item) => item.kind === "ARTICLE"),
+    );
+    assert.equal(
+      (
+        await fetch(base + "/api/admin/content?id=" + id, {
+          headers: { Cookie: adminCookie },
+        })
+      ).status,
+      404,
+    );
+    assert.equal(
+      (
+        await fetch(base + "/admin/preview/" + id, {
+          headers: { Cookie: adminCookie },
+        })
+      ).status,
+      kind === "PROJECT" ? 200 : 404,
+    );
+    assert.equal(
+      (await post("/api/admin/content", { ...draft, id }, adminCookie)).status,
+      404,
+      "existing non-blog content cannot be converted",
+    );
+    assert.equal(
+      (await client.query('SELECT kind, slug FROM "Content" WHERE id=$1', [id]))
+        .rows[0].kind,
+      kind,
+    );
+  }
+  const newProject = {
+    ...draft,
+    kind: "PROJECT",
+    slug: slug + "-managed-work",
+    featured: true,
+    translations: [{ ...draft.translations[0], title: "نمونه‌کار مدیریت‌شده" }],
+  };
+  assert.equal((await fetch(base + "/api/admin/projects")).status, 401);
+  assert.equal((await post("/api/admin/projects", draft, adminCookie)).status, 422);
+  assert.equal((await post("/api/admin/projects", { ...newProject, slug: "creative-agency" }, adminCookie)).status, 409);
+  const projectDraftResponse = await post("/api/admin/projects", newProject, editorCookie);
+  assert.equal(projectDraftResponse.status, 200);
+  const { id: managedProjectId } = await projectDraftResponse.json();
+  contentIds.push(managedProjectId);
+  const projectPath = "/work/" + newProject.slug;
+  assert.equal((await fetch(base + projectPath)).status, 404);
+  const projectPreview = await fetch(base + "/admin/preview/" + managedProjectId, {
+    headers: { Cookie: editorCookie },
+  });
+  assert.equal(projectPreview.status, 200);
+  assert.equal(load(await projectPreview.text())("main h1").text(), newProject.translations[0].title);
+  const publishProject = { ...newProject, id: managedProjectId, status: "PUBLISHED" };
+  assert.equal((await post("/api/admin/projects", publishProject, editorCookie)).status, 403);
+  assert.equal((await post("/api/admin/projects", publishProject, adminCookie)).status, 200);
+  const projectDetail = await fetch(base + projectPath);
+  assert.equal(projectDetail.status, 200);
+  assert.equal(load(await projectDetail.text())("main h1").text(), newProject.translations[0].title);
+  for (const page of ["/", "/work"]) {
+    const pageHtml = load(await (await fetch(base + page)).text());
+    assert.equal(pageHtml(`[data-project-cards] a[href="${projectPath}"]`).length, 1);
+  }
+  assert.equal((await fetch(base + "/en" + projectPath)).status, 404);
+  assert.equal((await post("/api/admin/projects", { ...publishProject, status: "ARCHIVED" }, adminCookie)).status, 200);
+  assert.equal((await fetch(base + projectPath)).status, 404);
   let response = await post("/api/admin/content", draft, editorCookie);
   assert.equal(
     response.status,
@@ -449,23 +574,17 @@ try {
   );
   // Exercise both pages of a real project listing; noIndex controls indexing, not visibility.
   for (let index = 0; index < 13; index++) {
-    const result = await post(
-      "/api/admin/content",
-      {
-        ...draft,
-        kind: "PROJECT",
-        slug: slug + "-project-" + index,
-        status: "PUBLISHED",
-        noIndex: index === 12,
-        position: index,
-        translations: [
-          { ...draft.translations[0], title: "آزمون پروژه " + index },
-        ],
-      },
-      adminCookie,
-    );
-    assert.equal(result.status, 200, "project fixture");
-    contentIds.push((await result.json()).id);
+    await publicContentFixture({
+      ...draft,
+      kind: "PROJECT",
+      slug: slug + "-project-" + index,
+      status: "PUBLISHED",
+      noIndex: index === 12,
+      position: index,
+      translations: [
+        { ...draft.translations[0], title: "آزمون پروژه " + index },
+      ],
+    });
   }
   const projects = load(await (await fetch(base + "/work")).text());
   assert.ok(
@@ -492,27 +611,21 @@ try {
     await (await fetch(base + "/work/" + slug + "-project-12")).text(),
   );
   assert.match(noIndexPage("meta[name='robots']").attr("content"), /noindex/);
-  const policy = await post(
-    "/api/admin/content",
-    {
-      ...draft,
-      kind: "PAGE",
-      slug: "privacy",
-      status: "PUBLISHED",
-      noIndex: true,
-      translations: [
-        {
-          ...draft.translations[0],
-          title: "حریم خصوصی آزمایشی",
-          seoTitle: "عنوان سئوی آزمایشی",
-          seoDescription: "توضیحات سئوی سیاست حریم خصوصی آزمایشی",
-        },
-      ],
-    },
-    adminCookie,
-  );
-  assert.equal(policy.status, 200);
-  contentIds.push((await policy.json()).id);
+  await publicContentFixture({
+    ...draft,
+    kind: "PAGE",
+    slug: "privacy",
+    status: "PUBLISHED",
+    noIndex: true,
+    translations: [
+      {
+        ...draft.translations[0],
+        title: "حریم خصوصی آزمایشی",
+        seoTitle: "عنوان سئوی آزمایشی",
+        seoDescription: "توضیحات سئوی سیاست حریم خصوصی آزمایشی",
+      },
+    ],
+  });
   const privacy = load(await (await fetch(base + "/privacy")).text());
   assert.match(privacy("title").text(), /عنوان سئوی آزمایشی/);
   assert.equal(

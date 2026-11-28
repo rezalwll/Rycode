@@ -105,7 +105,7 @@
   gap: 10px;
   margin-block-start: 23px;
 }
-.page :is(.primary, .secondary) {
+.page .primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -137,14 +137,6 @@
 .page .primary:disabled {
   opacity: 0.7;
   cursor: default;
-}
-.page .secondary {
-  color: var(--tg-blue);
-  background: var(--ui-surface, #fff);
-}
-.page .secondary:hover {
-  background: var(--tg-tint);
-  border-color: #8cb9d7;
 }
 
 .demo {
@@ -460,12 +452,13 @@
 }
 .faq {
   display: grid;
-  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
-  gap: 16px clamp(16px, 4vw, 55px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
 }
 .docs {
-  display: grid;
-  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
   margin-block-start: 9px;
   font-size: 0.86rem;
 }

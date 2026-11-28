@@ -104,7 +104,7 @@ export function TelegramBotDemo() {
           ref={history}
           className={styles.history}
           role="region"
-          aria-label="مکالمهٔ سفارش و پیگیری"
+          aria-label="مکالمه سفارش و پیگیری"
           tabIndex={0}
         >
           {answers.map((answer, index) => (
@@ -155,7 +155,7 @@ export function TelegramBotDemo() {
                 setAnswers(answers.slice(0, -1));
               }}
             >
-              مرحلهٔ قبل
+              مرحله قبل
             </button>
           )}
         </div>

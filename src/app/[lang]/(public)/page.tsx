@@ -9,6 +9,7 @@ import { HomeWorkSection } from "@/components/pages/HomeWorkSection";
 import { HomeProcessSection } from "@/components/pages/HomeProcessSection";
 import { HomeBlogPreview } from "@/components/pages/HomeBlogPreview";
 import { HomeFAQSection } from "@/components/pages/HomeFAQSection";
+import { HomeScrollControl } from "@/components/pages/HomeScrollControl";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return {
@@ -40,6 +41,7 @@ export default async function Page({
           <HomeFAQSection />
         </ManagedFaq>
       </div>
+      <HomeScrollControl locale={lang} />
     </main>
   );
 }

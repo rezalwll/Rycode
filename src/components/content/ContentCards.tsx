@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ProgressLink as Link } from "@/components/ProgressLink";
 import type { PublicContent } from "@/server/content";
 import { contentPath } from "@/server/content";
 import { localizedHref, type Locale } from "@/lib/i18n";
@@ -6,12 +6,21 @@ import styles from "./Content.module.css";
 export function ContentCards({
   items,
   locale,
+  portfolio = false,
+  heading: Heading = "h2",
 }: {
   items: PublicContent[];
   locale: Locale;
+  portfolio?: boolean;
+  heading?: "h2" | "h3";
 }) {
   return (
-    <div className={styles.grid}>
+    <div
+      className={
+        portfolio ? `${styles.grid} ${styles.projectGrid}` : styles.grid
+      }
+      data-project-cards={portfolio || undefined}
+    >
       {items.map((item) => (
         <Link
           key={item.id}
@@ -31,7 +40,10 @@ export function ContentCards({
               {locale === "fa" ? "↖" : "↗"}
             </span>
           </div>
-          <h2>{item.title}</h2>
+          {portfolio && item.category && (
+            <span className={styles.projectCategory}>{item.category}</span>
+          )}
+          <Heading>{item.title}</Heading>
           <p>{item.summary}</p>
           <time dateTime={item.publishedAt}>
             {new Date(item.publishedAt).toLocaleDateString(

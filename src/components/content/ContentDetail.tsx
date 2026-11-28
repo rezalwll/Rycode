@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ActionBannerArt } from "./ActionBannerArt";
 import { RichContent } from "./RichContent";
 import { ContentCards } from "./ContentCards";
 import { ContentToc } from "./ContentToc";
@@ -164,7 +165,6 @@ export async function ContentDetail({
           </span>
         ))}
       </nav>
-      <p className={styles.eyebrow}>{section}</p>
       <h1>{content.title}</h1>
       <p className={styles.summary}>{content.summary}</p>
       {content.kind === "SERVICE" && (
@@ -209,15 +209,12 @@ export async function ContentDetail({
           className={styles.specialties}
           aria-labelledby="specialty-services-title"
         >
-          <p className={styles.eyebrow}>
-            {fa ? "مسیر تخصصی پروژهٔ تو" : "Find your specialist service"}
-          </p>
           <h2 id="specialty-services-title">
             {fa ? "خدمات تخصصی این بخش" : "Specialist services"}
           </h2>
           <p>
             {fa
-              ? "برای شناخت دقیق‌تر امکانات، مراحل و شرایط تحویل، صفحهٔ مرتبط با پروژه‌ات را ببین"
+              ? "برای شناخت دقیق‌تر امکانات، مراحل و شرایط تحویل، صفحه مرتبط با پروژه‌ات را ببین"
               : "Explore the scope, delivery process and handover for your project."}
           </p>
           <div className={styles.services}>
@@ -251,9 +248,9 @@ export async function ContentDetail({
           )}
           <RichContent document={content.body} />
         </article>
-        <aside className={styles.aside} data-lenis-prevent>
+        <aside className={styles.aside} data-lenis-prevent data-action-banner="quiet">
           <h2>
-            {fa ? "دربارهٔ پروژه‌ات حرف بزنیم" : "Tell us about your project"}
+            {fa ? "درباره پروژه‌ات حرف بزنیم" : "Tell us about your project"}
           </h2>
           <p>
             {fa
@@ -270,6 +267,7 @@ export async function ContentDetail({
           {headings.length > 0 && (
             <ContentToc headings={headings} fa={fa} hasFaq={faqs.length > 0} />
           )}
+          <ActionBannerArt />
         </aside>
       </div>
       {faqs.length > 0 && (

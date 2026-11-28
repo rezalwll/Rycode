@@ -3,13 +3,23 @@ import { referenceStyles } from "@/styles/reference-styles";
 import type { Metadata } from "next";
 import { ContactBlock0 } from "@/components/pages/ContactBlock0";
 import { ContactHeroSection } from "@/components/pages/ContactHeroSection";
+import { supportModels } from "@/components/services/support-copy";
+import { supportServiceId } from "@/lib/service-routes";
 import "@/app/contact-theme.css";
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getTranslations();
   return { title: t("Contact") };
 }
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string | string[]; model?: string | string[] }>;
+}) {
   const { t } = await getTranslations();
+  const { service, model } = await searchParams;
+  const supportModel = service === supportServiceId
+    ? supportModels.find(({ id }) => id === model)?.title
+    : undefined;
   return (
     <main
       data-framer-root=""
@@ -18,7 +28,7 @@ export default async function Page() {
     >
       <h1 className="sr-only">{t("Contact")}</h1>
       <ContactBlock0 />
-      <ContactHeroSection />
+      <ContactHeroSection supportModel={supportModel} />
     </main>
   );
 }

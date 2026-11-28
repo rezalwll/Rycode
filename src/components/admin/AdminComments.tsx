@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { commentStatuses } from "@/lib/comments";
 import styles from "./Admin.module.css";
+import { BrandTableLoading } from "@/components/BrandLoading";
 
 type Row = {
   id: string;
@@ -132,7 +133,7 @@ export function AdminComments() {
       )}
       {error && <p role="alert">{error}</p>}
       {loading ? (
-        <p role="status">در حال دریافت…</p>
+        <BrandTableLoading label="در حال دریافت دیدگاه‌ها…" />
       ) : (
         !error && (
           <>
@@ -203,7 +204,7 @@ export function AdminComments() {
                   <button className={styles.primary} disabled={saving !== null}>
                     {saving === row.id
                       ? "در حال ذخیره…"
-                      : "ذخیرهٔ وضعیت و پاسخ"}
+                      : "ذخیره وضعیت و پاسخ"}
                   </button>
                 </form>
               </article>
@@ -219,7 +220,7 @@ export function AdminComments() {
                 قبلی
               </button>
               <span>
-                صفحهٔ {page.toLocaleString("fa-IR")} · تعداد:{" "}
+                صفحه {page.toLocaleString("fa-IR")} · تعداد:{" "}
                 {(data?.total || 0).toLocaleString("fa-IR")}
               </span>
               <button

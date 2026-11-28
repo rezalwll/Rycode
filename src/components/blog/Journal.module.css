@@ -66,20 +66,6 @@
   height: 100%;
   object-fit: cover;
 }
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--journal-blue);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  margin: 0 0 12px;
-}
-.eyebrow > span {
-  font-size: 21px;
-  color: #3498db;
-}
 .hero h1 {
   font-size: clamp(36px, 4.2vw, 58px);
   line-height: 1.5;
@@ -296,10 +282,6 @@
   align-items: flex-end;
   gap: 20px;
   margin-bottom: 25px;
-}
-.sectionHeading .eyebrow {
-  margin-bottom: 6px;
-  font-size: 11px;
 }
 .sectionHeading h2 {
   font-size: clamp(24px, 2.5vw, 32px);
@@ -642,14 +624,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-}
-.serviceLink {
-  display: inline-block;
-  margin-top: 14px;
-  color: var(--journal-blue) !important;
-  font-size: 12px;
-  border-bottom: 1px solid var(--journal-line);
-  padding-bottom: 5px;
 }
 .articleTags a {
   padding: 4px 9px;

@@ -1,9 +1,12 @@
 import { getTranslations } from "@/lib/i18n-server";
-import Link from "next/link";
+import { ProgressLink as Link } from "@/components/ProgressLink";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
+import { listPublishedContent } from "@/server/content";
+import { ContentCards } from "@/components/content/ContentCards";
 export async function HomeWorkSection() {
   const { t, locale, href } = await getTranslations();
+  const { items } = await listPublishedContent("PROJECT", locale, { featuredOnly: true });
   return (
     <section
       className="framer-1udbsna"
@@ -21,43 +24,6 @@ export async function HomeWorkSection() {
             duration={1200}
             easing="cubic-bezier(.22,1,.36,1)"
           >
-            <div className="ssr-variant">
-              <div className="framer-1q5rzir-container">
-                <div
-                  className="framer-XXyqM framer-UO2GW framer-P2lQE framer-1fz5pen framer-v-1tly2e5"
-                  data-framer-name="Variant 2"
-                >
-                  <div
-                    className="framer-1f0zcfp"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sa95470ceb9}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-10zsitg"
-                      data-styles-preset="Ic0XZZbRG"
-                      dir="auto"
-                      style={referenceStyles.s781d92f43a}
-                    >
-                      {"✦"}
-                    </p>
-                  </div>
-                  <div
-                    className="framer-qs9ltm"
-                    data-framer-component-type="RichTextContainer"
-                    style={referenceStyles.sdb4e5c5446}
-                  >
-                    <p
-                      className="framer-text framer-styles-preset-rx12qp"
-                      data-styles-preset="EzakxyTlE"
-                      dir="auto"
-                      style={referenceStyles.s2a1463207d}
-                    >
-                      {t("WORK")}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div
               className="framer-14zfqxv-container"
               data-code-component-plugin-id="84d4c1"
@@ -292,6 +258,9 @@ export async function HomeWorkSection() {
               </div>
             </div>
           </Reveal>
+          {items.length > 0 ? (
+            <ContentCards items={items.slice(0, 3)} locale={locale} portfolio heading="h3" />
+          ) : (
           <Reveal
             className="framer-1n0hkwf"
             data-framer-name="Card Wrapper"
@@ -2552,6 +2521,7 @@ export async function HomeWorkSection() {
               </Link>
             </div>
           </Reveal>
+          )}
         </div>
       </div>
     </section>

@@ -256,3 +256,14 @@ html.dark:has(.rycode-public) {
 .rycode-public [data-framer-name="Contact Card"] :is(h1, h2, h3) {
   color: #fff !important;
 }
+:where(.rycode-public [data-action-banner]) {
+  position: relative;
+  isolation: isolate;
+}
+
+@media (min-width: 840px) and (forced-colors: none) {
+  .rycode-public [data-action-banner][data-banner-layout="side"] {
+    --banner-art-space: clamp(160px, 18vw, 248px);
+    padding-inline-end: var(--banner-art-space);
+  }
+}
