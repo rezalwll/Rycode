@@ -12,7 +12,7 @@
 }
 
 .shell {
-  width: var(--public-container);
+  width: min(1280px, calc(100% - 72px));
   margin-inline: auto;
 }
 .page :is(h1, h2, h3, p, ol, fieldset) {

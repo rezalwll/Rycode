@@ -10,7 +10,7 @@
   line-height: 1.8;
 }
 .shell {
-  width: var(--public-container);
+  width: min(1280px, calc(100% - 72px));
   margin-inline: auto;
 }
 .page :is(h1, h2, h3, p, ul, ol, dl, dd, fieldset) {

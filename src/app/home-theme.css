@@ -122,7 +122,6 @@
 .home-colorful .rycode-hero-source .hero-frame {
   height: auto;
   min-height: 0;
-  padding-block-start: clamp(84px, 10svh, 112px);
   color: #fff;
   background: #1a1a1a;
   box-shadow: none;

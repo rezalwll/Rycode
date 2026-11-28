@@ -16,11 +16,11 @@
   text-wrap: balance;
 }
 .shell {
-  width: var(--public-container);
+  width: min(1376px, calc(100% - 80px));
   margin-inline: auto;
 }
 .heroShell {
-  width: var(--public-container);
+  width: min(1240px, calc(100% - 64px));
   margin-inline: auto;
 }
 .heroNav {

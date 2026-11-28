@@ -45,7 +45,7 @@
   scroll-margin-block-start: 95px;
 }
 .container {
-  width: var(--public-container);
+  width: min(1280px, calc(100% - 64px));
   margin-inline: auto;
   padding-block: 18px clamp(32px, 6vw, 85px);
 }

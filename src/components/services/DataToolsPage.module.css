@@ -14,7 +14,7 @@
 }
 
 .frame {
-  width: var(--public-container);
+  width: min(1320px, calc(100% - 48px));
   margin-inline: auto;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .heroGrid {
-  width: var(--public-container);
+  width: min(1440px, calc(100% - 64px));
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(0, 0.87fr) minmax(0, 1.13fr);
