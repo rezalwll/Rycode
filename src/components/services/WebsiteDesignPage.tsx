@@ -40,9 +40,9 @@ const websiteArtwork = {
     src: "/brand/home-service-cards/online-store.webp",
     alt: "نمونه فروشگاه لوازم خانه با کارت‌های محصول و سبد خرید",
   },
-  dashboard: {
-    src: "/brand/home-service-cards/custom-excel.webp",
-    alt: "نمونه ابزار اختصاصی با جدول داده، محاسبه‌گر و نمودار",
+  customSite: {
+    src: "/brand/website-design/pane-wayline.webp",
+    alt: "پیش‌نمایش وب‌سایت رزرو بلیت سفر با فرم جست‌وجو و کارت مسیر",
   },
 } satisfies Record<string, Artwork>;
 
@@ -212,8 +212,8 @@ export function WebsiteDesignPage() {
             </article>
             <article>
               <ArtworkPreview
-                artwork={websiteArtwork.dashboard}
-                frame={styles.comparisonArtwork}
+                artwork={websiteArtwork.customSite}
+                frame={`${styles.comparisonArtwork} ${styles.customSiteArtwork}`}
                 sizes="(max-width: 620px) 90vw, 520px"
               />
               <h3>طراحی اختصاصی</h3>
