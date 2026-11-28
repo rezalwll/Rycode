@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ActionBannerArt } from "@/components/content/ActionBannerArt";
 import {
   ArrowLeft,
   ArrowUpLeft,
@@ -345,23 +344,30 @@ export function DataToolsPage() {
           data-action-banner="quiet"
           data-closing-banner="standard"
         >
-          <div>
+          <div className={styles.closingCopy}>
             <h2 id="data-closing-title">بیا کار با داده‌هات رو ساده‌تر کنیم</h2>
             <p>
               بگو الان با اطلاعاتت چه کاری انجام می‌دی و دوست داری کدوم بخش
               راحت‌تر بشه.
             </p>
-            <div className={styles.actions}>
-              <Link href={inquiryHref} data-fill-button className={styles.primary}>
-                درباره کارم توضیح می‌دم{" "}
-                <ArrowUpLeft size={17} aria-hidden="true" />
+            <div className={styles.closingActions}>
+              <Link href={inquiryHref} data-fill-button>
+                درباره کارم توضیح می‌دم
               </Link>
               <Link href="/services" data-secondary-action>
                 همه خدمات رایکد
               </Link>
             </div>
           </div>
-          <ActionBannerArt />
+          <div className={styles.closingVisual}>
+            <Image
+              src="/brand/home-service-cards/custom-excel.webp"
+              alt=""
+              width={896}
+              height={504}
+              sizes="(max-width: 460px) 80vw, (max-width: 740px) 320px, 390px"
+            />
+          </div>
         </section>
       </div>
     </main>
