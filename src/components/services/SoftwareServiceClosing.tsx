@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpLeft,
-  CodeXml,
-  LayoutGrid,
-  Settings,
-  Users,
-} from "lucide-react";
+import { ArrowUpLeft, CodeXml, LayoutGrid, Users } from "lucide-react";
 import {
   BRAND_MARK_HEIGHT,
   BRAND_MARK_SRC,
@@ -18,77 +12,63 @@ import styles from "./SoftwareServiceClosing.module.css";
 
 export function SoftwareServiceClosing({ inquiryHref }: { inquiryHref: string }) {
   return (
-    <div className={styles.end} id="software-contact">
-      <section
-        className={styles.contact}
-        aria-labelledby="software-contact-title"
-        data-closing-banner="standard"
-      >
-        <div className={styles.copy}>
-          <h2 id="software-contact-title" className={styles.title}>
-            <span>ایده‌ات رو بگو تا راه</span>{" "}
-            <span>ساختنش رو پیدا کنیم</span>
-          </h2>
-          <p>
-            بگو نرم‌افزار قراره چه کاری انجام بده و چه کسانی ازش استفاده
-            می‌کنن.
-          </p>
-          <div className={styles.actions}>
-            <Link data-fill-button href={inquiryHref}>
-              بیا درباره نرم‌افزارم حرف بزنیم
-            </Link>
-            <Link data-secondary-action href="/services">
-              همه خدمات
-            </Link>
-          </div>
+    <section
+      className={styles.banner}
+      id="software-contact"
+      aria-labelledby="software-contact-title"
+      data-closing-banner="standard"
+    >
+      <div className={styles.copy}>
+        <h2 id="software-contact-title">
+          ایده‌ات رو بگو تا راه ساختنش رو پیدا کنیم
+        </h2>
+        <p>
+          بگو نرم‌افزار قراره چه کاری انجام بده و چه کسانی ازش استفاده
+          می‌کنن.
+        </p>
+        <div className={styles.actions}>
+          <Link data-fill-button href={inquiryHref}>
+            گفت‌وگو درباره پروژه
+          </Link>
         </div>
-        <div className={styles.art} aria-hidden="true">
-          <span className={styles.backPlate} />
-          <span className={styles.markPlate}>
-            <Image
-              src={BRAND_MARK_SRC}
-              alt=""
-              width={BRAND_MARK_WIDTH}
-              height={BRAND_MARK_HEIGHT}
-            />
-          </span>
-          <span className={`${styles.tile} ${styles.codeTile}`}>
-            <CodeXml />
-          </span>
-          <span className={`${styles.tile} ${styles.usersTile}`}>
-            <Users />
-          </span>
-          <span className={`${styles.tile} ${styles.settingsTile}`}>
-            <Settings />
-          </span>
-        </div>
-      </section>
-
-      <div className={styles.inner}>
-        <nav className={styles.related} aria-labelledby="software-related-title">
-          <div className={styles.layersArt} aria-hidden="true">
-            <span />
-            <span />
-          </div>
-          <div className={styles.relatedCopy}>
-            <h2 id="software-related-title">
-              <span className={styles.relatedIcon}>
-                <LayoutGrid aria-hidden="true" />
-              </span>
-              خدمات مرتبط
-            </h2>
-            <ul role="list">
-              {softwareRelated.map(({ href, title }) => (
-                <li key={href}>
-                  <Link href={localizedHref(href, "fa")}>
-                    {title} <ArrowUpLeft size={16} aria-hidden="true" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
       </div>
-    </div>
+      <div className={styles.art} aria-hidden="true">
+        <span className={styles.backPlate} />
+        <span className={styles.markPlate}>
+          <Image
+            src={BRAND_MARK_SRC}
+            alt=""
+            width={BRAND_MARK_WIDTH}
+            height={BRAND_MARK_HEIGHT}
+          />
+        </span>
+        <span className={`${styles.tile} ${styles.codeTile}`}>
+          <CodeXml />
+        </span>
+        <span className={`${styles.tile} ${styles.usersTile}`}>
+          <Users />
+        </span>
+      </div>
+      <nav className={styles.related} aria-labelledby="software-related-title">
+        <div className={styles.relatedHeader}>
+          <span className={styles.relatedLabel} id="software-related-title">
+            <LayoutGrid size={16} aria-hidden="true" />
+            خدمات مرتبط
+          </span>
+          <Link className={styles.allServices} href="/services">
+            همه خدمات <ArrowUpLeft size={14} aria-hidden="true" />
+          </Link>
+        </div>
+        <ul role="list">
+          {softwareRelated.map(({ href, title }) => (
+            <li key={href}>
+              <Link href={localizedHref(href, "fa")}>
+                {title} <ArrowUpLeft size={14} aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </section>
   );
 }
