@@ -220,37 +220,6 @@
   object-position: center;
 }
 
-.heroVisual > span {
-  display: grid;
-  position: absolute;
-  place-items: center;
-  width: clamp(42px, 5vw, 79px);
-  aspect-ratio: 1;
-  border: 1px solid light-dark(#fff, #536b89);
-  border-radius: 25%;
-  background: light-dark(#fffffff0, #1f334cec);
-  box-shadow: 0 13px 28px light-dark(#2b4b7827, #0b152774);
-  color: var(--rescue-blue);
-}
-
-.heroVisual > span svg {
-  width: 56%;
-  height: 56%;
-  stroke-width: 1.75;
-}
-
-.codeIcon {
-  inset: 15% 3% auto auto;
-}
-
-.puzzleIcon {
-  inset: 43% auto auto 0;
-}
-
-.rocketIcon {
-  inset: auto 11% 7% auto;
-}
-
 .actions {
   display: flex;
   flex-wrap: wrap;

@@ -9,16 +9,13 @@ import {
   Calculator,
   CalendarDays,
   ClipboardCheck,
-  CodeXml,
   Gauge,
   Laptop,
   Layers2,
   Layers3,
   PackageCheck,
   Plus,
-  Puzzle,
   RefreshCw,
-  Rocket,
   Search,
   ShieldCheck,
   TriangleAlert,
@@ -132,15 +129,6 @@ export async function ProjectRescuePage() {
                     fetchPriority="high"
                   />
                 </div>
-                <span className={styles.codeIcon}>
-                  <CodeXml aria-hidden="true" />
-                </span>
-                <span className={styles.puzzleIcon}>
-                  <Puzzle aria-hidden="true" />
-                </span>
-                <span className={styles.rocketIcon}>
-                  <Rocket aria-hidden="true" />
-                </span>
               </div>
             </div>
           </header>
