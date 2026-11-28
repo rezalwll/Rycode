@@ -3,7 +3,8 @@ import { ProgressLink as Link } from "@/components/ProgressLink";
 import { Reveal, SplitText } from "@/components/Motion";
 import { referenceStyles } from "@/styles/reference-styles";
 import { listPublishedContent } from "@/server/content";
-import { ContentCards } from "@/components/content/ContentCards";
+import { ProjectCardArtwork } from "@/components/content/ProjectCardArtwork";
+import cardStyles from "@/components/content/ProjectCardArtwork.module.css";
 export async function HomeWorkSection() {
   const { t, locale, href } = await getTranslations();
   const { items } = await listPublishedContent("PROJECT", locale, { featuredOnly: true });
@@ -259,7 +260,23 @@ export async function HomeWorkSection() {
             </div>
           </Reveal>
           {items.length > 0 ? (
-            <ContentCards items={items.slice(0, 3)} locale={locale} portfolio heading="h3" />
+            <div className={cardStyles.grid} data-project-cards>
+              {items.slice(0, 3).map((item) => (
+                <Link
+                  key={item.id}
+                  className={cardStyles.link}
+                  href={href("/work/" + item.slug)}
+                >
+                  <ProjectCardArtwork
+                    image={item.homeCard?.image ?? item.image}
+                    imageAlt={item.homeCard?.image === item.image ? item.imageAlt : ""}
+                    title={item.homeCard?.title ?? item.title}
+                    summary={item.homeCard?.summary ?? item.summary}
+                    locale={locale}
+                  />
+                </Link>
+              ))}
+            </div>
           ) : (
           <Reveal
             className="framer-1n0hkwf"

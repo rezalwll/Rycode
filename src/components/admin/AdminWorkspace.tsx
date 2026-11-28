@@ -7,6 +7,7 @@ import type { RichNode } from "@/lib/content-rules";
 import { normalizeSlug, textDocument } from "@/lib/content-rules";
 import { RichEditor } from "./RichEditor";
 import { MediaLibrary } from "./MediaLibrary";
+import { ProjectHomeCardFields } from "./ProjectHomeCardFields";
 import { AdminComments } from "./AdminComments";
 import {
   BrandLoading,
@@ -30,6 +31,8 @@ type Translation = {
   seoTitle?: string;
   seoDescription?: string;
   imageAlt?: string;
+  homeCardTitle?: string;
+  homeCardSummary?: string;
 };
 type ContentRow = {
   id?: string;
@@ -37,6 +40,7 @@ type ContentRow = {
   slug: string;
   status: string;
   featuredImage?: string;
+  homeCardImage?: string | null;
   author?: string;
   category?: string;
   tags?: string[];
@@ -163,11 +167,26 @@ function ContentEditor({
   const [projectSlug, setProjectSlug] = useState(initial.slug);
   const [slugEdited, setSlugEdited] = useState(Boolean(initial.slug));
   const [image, setImage] = useState(initial.featuredImage || "");
+  const [homeCardImage, setHomeCardImage] = useState(initial.homeCardImage || "");
+  const [homeCardLibraryLoaded, setHomeCardLibraryLoaded] = useState(false);
+  const [projectCopy, setProjectCopy] = useState<
+    Partial<Record<Translation["locale"], { title?: string; summary?: string }>>
+  >({});
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [revision, setRevision] = useState(0);
   const [choices, setChoices] = useState<ContentRow[]>([]);
   const editorPanel = useRef<HTMLElement>(null);
+  function updateProjectCopy(
+    locale: Translation["locale"],
+    field: "title" | "summary",
+    value: string,
+  ) {
+    setProjectCopy((current) => ({
+      ...current,
+      [locale]: { ...current[locale], [field]: value },
+    }));
+  }
   useEffect(() => {
     editorPanel.current?.focus();
     let active = true;
@@ -238,6 +257,10 @@ function ContentEditor({
                 seoTitle: String(f.get(locale + "SeoTitle") || ""),
                 seoDescription: String(f.get(locale + "SeoDescription") || ""),
                 imageAlt: String(f.get(locale + "ImageAlt") || ""),
+                ...(isProject && {
+                  homeCardTitle: String(f.get(locale + "HomeCardTitle") || ""),
+                  homeCardSummary: String(f.get(locale + "HomeCardSummary") || ""),
+                }),
               });
             }
             const saved = await api(resource, {
@@ -246,6 +269,7 @@ function ContentEditor({
               slug: f.get("slug"),
               status: f.get("status"),
               ...(image ? { featuredImage: image } : {}),
+              ...(isProject && { homeCardImage: homeCardImage.trim() }),
               author: f.get("author"),
               category: f.get("category"),
               tags: String(f.get("tags") || "")
@@ -420,7 +444,7 @@ function ContentEditor({
               : "محتوای نمونه (برچسب نمونه و عدم ایندکس)"}
           </label>
           <label>
-            تصویر شاخص
+            {isProject ? "تصویر شاخص نمونه‌کار" : "تصویر شاخص"}
             <input
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -442,6 +466,32 @@ function ContentEditor({
               alt="پیش‌نمایش تصویر شاخص"
             />
           )}
+        {isProject && (
+          <fieldset className={styles.homeCardFields}>
+            <legend>عکس کارت صفحه اصلی</legend>
+            <p className={styles.muted}>
+              برای حداکثر سه نمونه‌کار منتخب و منتشرشده در صفحه اصلی نمایش داده
+              می‌شود. اگر عکس جدا انتخاب نکنید، تصویر شاخص روی کارت می‌آید.
+            </p>
+            <label>
+              نشانی عکس کارت
+              <input
+                value={homeCardImage}
+                onChange={(event) => setHomeCardImage(event.target.value)}
+                placeholder="/media/… یا /assets/…"
+                dir="ltr"
+              />
+            </label>
+            <details
+              onToggle={(event) => {
+                if (event.currentTarget.open) setHomeCardLibraryLoaded(true);
+              }}
+            >
+              <summary>آپلود یا انتخاب عکس کارت</summary>
+              {homeCardLibraryLoaded && <MediaLibrary onSelect={setHomeCardImage} />}
+            </details>
+          </fieldset>
+        )}
         {(["fa", "en"] as const).map((locale) => {
           const text = record.translations.find((t) => t.locale === locale);
           return (
@@ -468,9 +518,13 @@ function ContentEditor({
                   value={text?.title}
                   required={locale === "fa"}
                   onChange={
-                    locale === "fa" && isProject && !slugEdited
-                      ? (title) =>
-                          setProjectSlug(normalizeSlug(title).slice(0, 150))
+                    isProject
+                      ? (title) => {
+                          updateProjectCopy(locale, "title", title);
+                          if (locale === "fa" && !slugEdited) {
+                            setProjectSlug(normalizeSlug(title).slice(0, 150));
+                          }
+                        }
                       : undefined
                   }
                 />
@@ -488,9 +542,26 @@ function ContentEditor({
                   <textarea
                     name={locale + "Summary"}
                     defaultValue={text?.summary || ""}
+                    onChange={
+                      isProject
+                        ? (event) => updateProjectCopy(locale, "summary", event.target.value)
+                        : undefined
+                    }
                     maxLength={700}
                   />
                 </label>
+                {isProject && (
+                  <div className={styles.wide}>
+                    <ProjectHomeCardFields
+                      locale={locale}
+                      title={text?.homeCardTitle}
+                      summary={text?.homeCardSummary}
+                      image={homeCardImage.trim() || image}
+                      fallbackTitle={(projectCopy[locale]?.title ?? text?.title ?? "").trim()}
+                      fallbackSummary={(projectCopy[locale]?.summary ?? text?.summary ?? "").trim()}
+                    />
+                  </div>
+                )}
                 <div className={styles.wide}>
                   <RichEditor
                     key={locale + revision}
@@ -551,6 +622,8 @@ function ContentEditor({
                     revisions: record.revisions,
                   });
                   setImage(r.snapshot.featuredImage || "");
+                  setHomeCardImage(r.snapshot.homeCardImage || "");
+                  setProjectCopy({});
                   if (isProject) {
                     setProjectSlug(r.snapshot.slug);
                     setSlugEdited(true);

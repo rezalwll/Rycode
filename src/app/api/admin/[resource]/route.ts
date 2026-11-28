@@ -404,6 +404,9 @@ export async function POST(request: Request, context: Context) {
           slug: input.slug,
           status: input.status,
           featuredImage: input.featuredImage || null,
+          ...(kind === "PROJECT" && input.homeCardImage !== undefined && {
+            homeCardImage: input.homeCardImage || null,
+          }),
           author: input.author,
           category: input.category,
           tags: input.tags,

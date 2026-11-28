@@ -111,6 +111,13 @@ export function textDocument(text: string): RichNode {
       })),
   };
 }
+export const homeCardTitleLimit = 100;
+export const homeCardSummaryLimit = 240;
+export const contentImagePath = z
+  .string()
+  .regex(/^\/(assets|media|brand)\/[a-zA-Z0-9_./-]+$/)
+  .refine((value) => !value.includes(".."), "Invalid image path");
+
 export const translationSchema = z.object({
   locale: z.enum(locales),
   approved: z.boolean().default(false),
@@ -120,6 +127,8 @@ export const translationSchema = z.object({
   seoTitle: z.string().trim().max(150).optional(),
   seoDescription: z.string().trim().max(320).optional(),
   imageAlt: z.string().trim().max(300).optional(),
+  homeCardTitle: z.string().trim().max(homeCardTitleLimit).optional(),
+  homeCardSummary: z.string().trim().max(homeCardSummaryLimit).optional(),
 });
 export const contentSchema = z
   .object({
@@ -127,11 +136,8 @@ export const contentSchema = z
     kind: z.enum(kinds),
     slug: z.string().transform(normalizeSlug).pipe(z.string().min(2).max(150)),
     status: z.enum(["DRAFT", "PUBLISHED", "SCHEDULED", "ARCHIVED"]),
-    featuredImage: z
-      .string()
-      .regex(/^\/(assets|media|brand)\/[a-zA-Z0-9_./-]+$/)
-      .refine((value) => !value.includes(".."), "Invalid image path")
-      .optional(),
+    featuredImage: contentImagePath.optional(),
+    homeCardImage: contentImagePath.or(z.literal("")).optional(),
     author: z.string().trim().min(1).max(120).default("RYCODE"),
     category: z.string().trim().max(100).default(""),
     tags: z.array(z.string().trim().min(1).max(70)).max(15).default([]),

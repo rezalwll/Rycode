@@ -29,6 +29,7 @@ export type PublicContent = {
   body: RichNode;
   image: string | null;
   imageAlt: string;
+  homeCard?: { image: string | null; title: string; summary: string };
   author: string;
   category: string;
   tags: string[];
@@ -82,6 +83,13 @@ export function publicDto(
     body: text.body as RichNode,
     image: record.featuredImage,
     imageAlt: text.imageAlt || text.title,
+    ...(record.kind === "PROJECT" && {
+      homeCard: {
+        image: record.homeCardImage || record.featuredImage,
+        title: text.homeCardTitle || text.title,
+        summary: text.homeCardSummary || text.summary,
+      },
+    }),
     author: record.author,
     category: record.category,
     tags: record.tags,

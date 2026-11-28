@@ -293,9 +293,25 @@ try {
     kind: "PROJECT",
     slug: slug + "-managed-work",
     featured: true,
-    translations: [{ ...draft.translations[0], title: "نمونه‌کار مدیریت‌شده" }],
+    homeCardImage: "/brand/home-service-cards/online-store.webp",
+    translations: [
+      {
+        ...draft.translations[0],
+        title: "نمونه‌کار مدیریت‌شده",
+        homeCardTitle: "تیتر روی کارت صفحه اصلی",
+        homeCardSummary: "توضیح جدا برای تصویر کارت",
+      },
+    ],
   };
-  assert.equal((await fetch(base + "/api/admin/projects")).status, 401);
+  const newProjectEditor = await fetch(base + "/admin/projects?new=1", {
+    headers: { Cookie: editorCookie },
+  });
+  assert.equal(newProjectEditor.status, 200);
+  const projectForm = load(await newProjectEditor.text());
+  assert.equal(projectForm('input[name="faHomeCardTitle"]').length, 1);
+  assert.equal(projectForm('textarea[name="faHomeCardSummary"]').length, 1);
+  assert.equal(projectForm('input[name="enHomeCardTitle"]').length, 1);
+    assert.equal((await fetch(base + "/api/admin/projects")).status, 401);
   assert.equal((await post("/api/admin/projects", draft, adminCookie)).status, 422);
   assert.equal((await post("/api/admin/projects", { ...newProject, slug: "creative-agency" }, adminCookie)).status, 409);
   const projectDraftResponse = await post("/api/admin/projects", newProject, editorCookie);
@@ -315,10 +331,37 @@ try {
   const projectDetail = await fetch(base + projectPath);
   assert.equal(projectDetail.status, 200);
   assert.equal(load(await projectDetail.text())("main h1").text(), newProject.translations[0].title);
-  for (const page of ["/", "/work"]) {
-    const pageHtml = load(await (await fetch(base + page)).text());
-    assert.equal(pageHtml(`[data-project-cards] a[href="${projectPath}"]`).length, 1);
-  }
+  const projectEditor = await fetch(base + "/api/admin/projects?id=" + managedProjectId, {
+    headers: { Cookie: adminCookie },
+  });
+  assert.equal(projectEditor.status, 200);
+  const savedProject = await projectEditor.json();
+  assert.equal(savedProject.homeCardImage, newProject.homeCardImage);
+  assert.equal(savedProject.translations[0].homeCardTitle, newProject.translations[0].homeCardTitle);
+
+  const projectCardSelector = `[data-project-cards] a[href="${projectPath}"]`;
+  const homepage = load(await (await fetch(base + "/")).text());
+  const homeCard = homepage(projectCardSelector);
+  assert.equal(homeCard.length, 1);
+  assert.equal(homeCard.find("img").attr("src"), newProject.homeCardImage);
+  assert.equal(homeCard.find("h3").text(), newProject.translations[0].homeCardTitle);
+  assert.equal(homeCard.find("p").text(), newProject.translations[0].homeCardSummary);
+  const workPage = load(await (await fetch(base + "/work")).text());
+  const workCard = workPage(projectCardSelector);
+  assert.equal(workCard.length, 1);
+  assert.equal(workCard.find("img").attr("src"), newProject.featuredImage);
+  assert.equal(workCard.find("h3").text(), newProject.translations[0].title);
+
+  const clearHomeCard = {
+    ...publishProject,
+    homeCardImage: "",
+    translations: [{ ...newProject.translations[0], homeCardTitle: "", homeCardSummary: "" }],
+  };
+  assert.equal((await post("/api/admin/projects", clearHomeCard, adminCookie)).status, 200);
+  const fallbackCard = load(await (await fetch(base + "/")).text())(projectCardSelector);
+  assert.equal(fallbackCard.find("img").attr("src"), newProject.featuredImage);
+  assert.equal(fallbackCard.find("h3").text(), newProject.translations[0].title);
+  assert.equal(fallbackCard.find("p").text(), newProject.translations[0].summary);
   assert.equal((await fetch(base + "/en" + projectPath)).status, 404);
   assert.equal((await post("/api/admin/projects", { ...publishProject, status: "ARCHIVED" }, adminCookie)).status, 200);
   assert.equal((await fetch(base + projectPath)).status, 404);

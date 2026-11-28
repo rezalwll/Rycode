@@ -141,6 +141,7 @@ model Content {
   sourceKey String? @unique
   status ContentStatus @default(DRAFT)
   featuredImage String?
+  homeCardImage String?
   author String @default("RYCODE")
   category String @default("")
   tags String[] @default([])
@@ -174,6 +175,8 @@ model ContentTranslation {
   seoTitle String?
   seoDescription String?
   imageAlt String @default("")
+  homeCardTitle String @default("")
+  homeCardSummary String @default("")
   content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
   @@unique([contentId, locale])
 }

@@ -1,0 +1,105 @@
+.grid {
+  display: grid;
+  gap: clamp(14px, 2.2vw, 26px);
+  width: 100%;
+}
+
+.link {
+  display: block;
+  border-radius: clamp(16px, 2.2vw, 24px);
+  text-decoration: none;
+}
+
+.artwork {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-block-size: clamp(275px, 44vw, 466px);
+  overflow: hidden;
+  padding: clamp(17px, 4vw, 44px);
+  padding-block-start: clamp(68px, 11vw, 170px);
+  border-radius: clamp(16px, 2.2vw, 24px);
+  background: #182231;
+  color: #fff;
+}
+
+.artwork::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    0deg,
+    rgb(6 12 23 / 92%),
+    rgb(6 12 23 / 62%) 37%,
+    transparent 80%
+  );
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  max-inline-size: 68ch;
+  text-align: start;
+}
+
+.artwork .title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.35rem, 3.45vw, 2.65rem);
+  font-weight: 750;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.artwork .summary {
+  margin: 6px 0 0;
+  color: #f0f4fa;
+  font-size: clamp(0.88rem, 1.35vw, 1.13rem);
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.arrow {
+  position: absolute;
+  inset-block-start: clamp(16px, 3vw, 33px);
+  inset-inline-end: clamp(16px, 3vw, 33px);
+  display: grid;
+  place-items: center;
+  inline-size: 42px;
+  block-size: 42px;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 50%;
+  background: rgb(6 12 23 / 55%);
+  color: #fff;
+  transition: background-color 180ms ease;
+}
+
+.artwork:dir(rtl) .arrow svg {
+  scale: -1 1;
+}
+
+.link:is(:hover, :focus-visible) .arrow {
+  background: #24628e;
+}
+
+.artwork[data-card-preview] {
+  min-block-size: 185px;
+  padding: 54px 18px 18px;
+}
+
+.artwork[data-card-preview] .title {
+  font-size: 1.25rem;
+}
+
+.artwork[data-card-preview] .summary {
+  font-size: 0.9rem;
+}
