@@ -48,7 +48,7 @@
 }
 
 .page :is(a, button, summary):focus-visible {
-  outline: 2px solid var(--purple);
+  outline: 2px solid var(--blue);
   outline-offset: 4px;
 }
 
@@ -171,14 +171,14 @@
 }
 
 .primary:is(:hover, :focus-visible) {
-  border-color: light-dark(#cfbfed, #405064);
-  background: var(--purple-tint);
-  color: var(--purple);
+  border-color: var(--brand-blue);
+  background: var(--button-hover);
+  color: var(--blue);
 }
 
 .back:is(:hover, :focus-visible),
 .inlineLink:is(:hover, :focus-visible) {
-  color: var(--purple);
+  color: var(--blue);
 }
 
 .heroVisual {
@@ -424,7 +424,8 @@
 }
 .page summary:is(:hover, :focus-visible),
 .page details[open] summary {
-  color: var(--purple);
+  color: var(--blue);
+  background: var(--button-hover);
 }
 .page details[open] summary svg path[d="M12 5v14"] {
   opacity: 0;

@@ -80,10 +80,10 @@ span.framer-text[data-nested-link]:hover {
 }
 .framer-fR17n:is(:hover, :focus-visible) .framer-text,
 .framer-rlt6y:is(:hover, :focus-visible) .framer-text {
-  color: var(--brand-accent) !important;
+  color: var(--brand-blue-ink) !important;
 }
 a:has(.framer-16cun4g):is(:hover, :focus-visible) .framer-text {
-  color: var(--brand-accent) !important;
+  color: var(--brand-blue-ink) !important;
 }
 .framer-n76Tz:is(:hover, :focus-visible) .framer-text {
   color: rgb(255 255 255 / 80%) !important;
@@ -145,7 +145,7 @@ a:is(:hover, :focus-visible)
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--brand-accent);
+  outline: 2px solid var(--brand-blue-ink);
   outline-offset: 4px;
 }
 a:is(:hover, :focus-visible) .framer-7wCKM.framer-v-1f3fcye .framer-1oq7wyn {

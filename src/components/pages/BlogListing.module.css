@@ -171,12 +171,12 @@
   border-color: transparent;
 }
 .search input:focus {
-  border-color: var(--ui-purple, #c4b5fd);
+  border-color: var(--brand-blue);
   box-shadow: none;
 }
 .filters summary::after {
   color: var(--ui-purple, #c4b5fd);
 }
 .listing :focus-visible {
-  outline-color: var(--ui-purple, #c4b5fd);
+  outline-color: var(--brand-blue-ink);
 }

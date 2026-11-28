@@ -46,7 +46,7 @@
   background: #fff;
 }
 .language-switch:focus-visible {
-  outline: 2px solid var(--brand-accent);
+  outline: 2px solid var(--brand-blue-ink);
   outline-offset: 4px;
 }
 .framer-ATxvc .framer-uk7nae {

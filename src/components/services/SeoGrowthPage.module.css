@@ -5,7 +5,6 @@
   --purple: light-dark(#6e51ac, #cfb9fa);
   --line: light-dark(#dde5ee, #405064);
   --soft: light-dark(#f4f8fc, #253447);
-  --lavender: light-dark(#f5f1fc, #302841);
   --offset: 104px;
   width: 100%;
   background: var(--ui-surface, #fff);
@@ -39,7 +38,7 @@
   color: var(--ink);
 }
 .page :is(a, summary):focus-visible {
-  outline: 2px solid var(--purple);
+  outline: 2px solid var(--blue);
   outline-offset: 4px;
 }
 .page [id] {
@@ -162,9 +161,9 @@
   color: light-dark(#1d507c, #9fcdf0);
 }
 .primary:is(:hover, :focus-visible) {
-  border-color: light-dark(#c8b9e7, #405064);
-  background: light-dark(#f0e9fb, #253447);
-  color: light-dark(#4b3786, #9fcdf0);
+  border-color: var(--brand-blue);
+  background: var(--button-hover);
+  color: var(--blue);
 }
 
 .processImage,
@@ -269,8 +268,8 @@
 }
 
 .related a:is(:hover, :focus-visible) {
-  border-color: light-dark(#c8b9e7, #405064);
-  background: var(--lavender);
+  border-color: var(--brand-blue);
+  background: var(--button-hover);
 }
 
 .diagnosis,
@@ -401,10 +400,9 @@
   display: none;
 }
 
-.questions summary:hover,
-.page summary:focus-visible,
+.page summary:is(:hover, :focus-visible),
 .page details[open] > summary {
-  color: var(--purple);
+  color: var(--blue);
 }
 
 .number {
@@ -431,8 +429,11 @@
   transition: background-color 200ms ease;
 }
 
+.page summary:is(:hover, :focus-visible) .plus,
 .page details[open] > summary .plus {
-  background: var(--lavender);
+  background: var(--button-hover);
+  border-color: var(--brand-blue);
+  color: var(--blue);
 }
 
 .page details[open] > summary .plus path[d="M12 5v14"] {

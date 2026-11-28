@@ -180,14 +180,14 @@
 }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):not(:disabled):is(:hover, :focus-visible) {
   color: #fff !important;
-  border-color: var(--cta-accent, var(--brand-blue)) !important;
-  background: var(--cta-fill, var(--brand-blue-deep)) !important;
+  border-color: var(--brand-blue) !important;
+  background: var(--brand-blue-deep) !important;
   box-shadow: none !important;
 }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):not(:disabled):is(:hover, :focus-visible)::before {
-  background: var(--cta-fill, var(--brand-blue-deep)) !important;
+  background: var(--brand-blue-deep) !important;
 }
-#main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--cta-accent, var(--brand-blue)) !important; outline-offset: 4px; }
+#main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):focus-visible { outline: 2px solid var(--brand-blue-ink) !important; outline-offset: 4px; }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):active:not(:disabled) { scale: .98; }
 #main.rycode-public :is(a[data-fill-button], button[data-fill-button], a.framer-obWCA, .hero-cta, .features-about-link):disabled { opacity: .6; cursor: wait; }
 
@@ -196,7 +196,6 @@
   --cta-accent: var(--brand-purple);
   --cta-surface: light-dark(#f3effc, #302841);
   --cta-border: light-dark(#ddd1f3, #59466e);
-  --cta-fill: #6f4db3;
 }
 
 /* Pagination keeps its reading direction: previous goes back, next goes forward. */

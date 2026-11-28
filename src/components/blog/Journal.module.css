@@ -133,7 +133,7 @@
   transition: background-color 180ms;
 }
 .search button:is(:hover, :focus-visible) {
-  background: light-dark(#194e73, var(--ui-purple));
+  background: var(--brand-blue-deep);
 }
 .terminal {
   overflow: hidden;

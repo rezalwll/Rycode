@@ -88,7 +88,7 @@
 }
 .primary:hover,
 .primary:focus-visible {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 .primary:hover span,
 .primary:focus-visible span {
@@ -323,7 +323,7 @@
   color: var(--ink);
 }
 .cta .primary:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 @media (max-width: 850px) {
@@ -617,7 +617,7 @@
   color: #fff;
 }
 .buildPage .cta .primary:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 @media (max-width: 850px) {
   .buildProof {
@@ -742,7 +742,7 @@
 }
 .softwarePage .primary:hover,
 .softwarePage .primary:focus-visible {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .softwarePage .primary:hover span,
@@ -992,7 +992,7 @@
     transform 0.3s;
 }
 .moduleCard:hover i {
-  color: var(--accent);
+  color: var(--brand-blue-ink);
 }
 .softwareArchitecture {
   display: grid;
@@ -1180,7 +1180,7 @@
   color: #fff;
 }
 .softwarePage .cta .primary:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 @media (max-width: 850px) {
   .softwareHeroVisual {
@@ -1336,7 +1336,7 @@
 }
 .softwareLight .primary:hover,
 .softwareLight .primary:focus-visible {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .softwareLight .primary:hover span,
@@ -1399,7 +1399,7 @@
   color: #8a9690;
 }
 .softwareLight .moduleCard:hover i {
-  color: var(--accent);
+  color: var(--brand-blue-ink);
 }
 .softwareLight .softwareArchitecture {
   border-color: #d7ddd8;
@@ -1479,7 +1479,7 @@
   color: #171918;
 }
 .softwareLight .cta .primary:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 @media (max-width: 850px) {
@@ -2103,7 +2103,7 @@
 }
 .rescuePage .primary:hover,
 .rescuePage .primary:focus-visible {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .rescuePage .primary:hover span,
@@ -2476,7 +2476,7 @@
   color: #fff;
 }
 .rescuePage .cta .primary:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 @media (max-width: 850px) {
   .rescuePage .hero {
@@ -2927,7 +2927,7 @@
     border-color 0.35s;
 }
 .connectFlowGrid article:hover {
-  border-color: #afb8ff;
+  border-color: var(--brand-blue);
   box-shadow: 0 24px 45px #4c5a7d1d;
 }
 .connectFlowGrid article > span,
@@ -3390,7 +3390,7 @@
 }
 .brutalistPage .primary:hover span,
 .brutalistPage .primary:focus-visible span {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .brutalistPage .connectWorkflowVisual {
@@ -3573,7 +3573,7 @@
 }
 .brutalistPage .connectFlowGrid article:hover {
   border-color: var(--line);
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 .brutalistPage .connectFlowGrid article > span {
   color: var(--acid);
@@ -3659,7 +3659,7 @@
   background: transparent;
 }
 .brutalistPage .connectServiceGrid article:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 .brutalistPage .connectServiceGrid article > span {
   color: var(--acid);
@@ -3731,7 +3731,7 @@
   color: #a2a49d;
 }
 .brutalistPage .specialty:hover {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
   color: #fff;
 }
 .brutalistPage .specialty:hover p {
@@ -4744,7 +4744,7 @@
 }
 .ledgerPage .primary:hover,
 .ledgerPage .primary:focus-visible {
-  background: var(--accent);
+  background: var(--brand-blue-deep);
 }
 .ledgerPage .primary:hover span,
 .ledgerPage .primary:focus-visible span {
@@ -5314,7 +5314,7 @@
   color: #8493b1;
 }
 .seoPage .breadcrumb a:hover {
-  color: var(--accent);
+  color: var(--brand-blue-ink);
 }
 .seoPage .hero {
   min-height: 700px;
@@ -5786,7 +5786,7 @@
   color: #9aaac0;
 }
 .seoPage .specialty:hover {
-  background: var(--accent);
+  background: var(--button-hover);
   color: #14213d;
 }
 .seoPage .specialty:hover p {
@@ -5971,8 +5971,8 @@
 }
 .page .primary:is(:hover, :focus-visible),
 .page .cta .primary:hover {
-  background: var(--accent);
-  color: #1a1a1a;
+  background: var(--brand-blue-deep);
+  color: #fff;
 }
 .page .primary:is(:hover, :focus-visible) span {
   background: var(--ui-surface);

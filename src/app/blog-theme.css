@@ -103,7 +103,7 @@
   color: var(--blog-muted);
 }
 .blog-colorful :is(a, button):focus-visible {
-  outline-color: var(--blog-purple);
+  outline-color: var(--brand-blue-ink);
 }
 
 /* The featured stories sit on photography, independently of the light canvas. */

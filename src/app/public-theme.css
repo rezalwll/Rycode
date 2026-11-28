@@ -93,7 +93,7 @@ html.dark:has(.rycode-public) {
   --framer-text-color: var(--ui-ink);
 }
 .rycode-public :is(a, button, input, select, textarea):focus-visible {
-  outline-color: var(--ui-purple);
+  outline-color: var(--brand-blue-ink);
 }
 .rycode-public .brand-accent {
   color: var(--brand-blue);
@@ -107,7 +107,7 @@ html.dark:has(.rycode-public) {
   --surface-2: var(--ui-surface);
   --muted-foreground: var(--ui-muted);
   --border: var(--ui-line);
-  --brand: var(--ui-purple);
+  --brand: var(--brand-blue-ink);
   --brand-foreground: #fff;
   --brand-soft: var(--ui-surface);
 }
@@ -149,7 +149,7 @@ html.dark:has(.rycode-public) {
 .rycode-public
   .rycode-source-header
   :is(.rycode-submenu-surface, .rycode-mobile-submenu) {
-  --submenu-accent: var(--ui-purple);
+  --submenu-accent: var(--brand-blue-ink);
   --submenu-wash: var(--ui-surface);
   --submenu-edge: var(--ui-line);
 }
@@ -160,7 +160,8 @@ html.dark:has(.rycode-public) {
   .rycode-source-header
   .rycode-submenu-link:is(:hover, :focus-visible, [aria-current="page"]) {
   color: var(--ui-ink);
-  border-color: var(--ui-blue);
+  background: var(--button-hover);
+  border-color: var(--brand-blue);
 }
 
 /* Footer and introductory section use the shared palette. */
@@ -241,7 +242,7 @@ html.dark:has(.rycode-public) {
   .rycode-source-header
   .reference-overlay-header
   :is(a, button):focus-visible {
-  outline-color: var(--ui-purple);
+  outline-color: var(--brand-blue-ink);
 }
 .rycode-public .framer-obWCA {
   background-color: var(--button-surface) !important;

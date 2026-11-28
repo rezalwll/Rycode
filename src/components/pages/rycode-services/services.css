@@ -507,7 +507,8 @@
   background: #fff;
   transition:
     background-color var(--ui-duration) var(--ui-ease),
-    border-color var(--ui-duration) var(--ui-ease);
+    border-color var(--ui-duration) var(--ui-ease),
+    color var(--ui-duration) var(--ui-ease);
 }
 .rycode-services-source .capability-card-link-arrow svg {
   transition: transform var(--ui-duration) var(--ui-ease);
@@ -515,8 +516,9 @@
 .rycode-services-source
   .capability-card-link:is(:hover, :focus-visible)
   .capability-card-link-arrow {
-  background: color-mix(in srgb, var(--feature-accent) 12%, #fff);
-  border-color: color-mix(in srgb, var(--feature-accent) 45%, #e7e7e7);
+  background: var(--brand-blue-wash);
+  border-color: color-mix(in srgb, var(--brand-blue) 45%, var(--ui-line));
+  color: var(--brand-blue-deep);
 }
 @media (max-width: 809px) {
   .rycode-services-source .features-expanded .capability-card {

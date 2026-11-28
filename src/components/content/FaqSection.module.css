@@ -39,11 +39,11 @@
   interpolate-size: allow-keywords;
 }
 .item:hover {
-  border-color: light-dark(#cecbd8, #405064);
+  border-color: var(--brand-blue);
 }
 .item[open] {
-  background: light-dark(#f8f7fc, #202833);
-  border-color: light-dark(#ded8ed, #405064);
+  background: var(--button-hover);
+  border-color: color-mix(in srgb, var(--brand-blue) 42%, var(--ui-line));
 }
 .item summary {
   list-style: none;
@@ -58,7 +58,7 @@
   display: none;
 }
 .item summary:focus-visible {
-  outline: 2px solid var(--brand-purple);
+  outline: 2px solid var(--brand-blue-ink);
   outline-offset: 4px;
 }
 .number {
@@ -91,8 +91,8 @@
 }
 .item[open] .toggle,
 .item summary:is(:hover, :focus-visible) .toggle {
-  background: var(--brand-purple);
-  border-color: var(--brand-purple);
+  background: var(--brand-blue-deep);
+  border-color: var(--brand-blue-deep);
   color: #fff;
 }
 .toggle::before,
@@ -173,7 +173,6 @@
   --cta-accent: var(--brand-purple);
   --cta-surface: light-dark(#f3effc, var(--button-primary));
   --cta-border: light-dark(#ddd1f3, var(--ui-rule));
-  --cta-fill: #6f4db3;
   display: inline-flex;
   align-items: center;
   justify-content: center;

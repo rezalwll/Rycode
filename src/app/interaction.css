@@ -55,7 +55,7 @@ button.rycode-menu-toggle[aria-expanded="true"] .framer-mbjeww {
   transition: border-color 0.2s ease;
 }
 .framer-IOjX6 button.framer-hf6rbv:is(:hover, :focus-visible) {
-  --border-color: var(--brand-accent) !important;
+  --border-color: var(--brand-blue) !important;
 }
 [data-rycode-accordion="faq"] .framer-1okky9a {
   transform: rotate(270deg) !important;
@@ -100,7 +100,7 @@ button.rycode-menu-toggle[aria-expanded="true"] .framer-mbjeww {
   transition: background-color 0.2s ease;
 }
 .framer-QEDYB button.framer-1mcnny4:is(:hover, :focus-visible)::before {
-  background: var(--brand-accent);
+  background: var(--brand-blue);
 }
 .framer-6ju8k5,
 .framer-dnf87r {

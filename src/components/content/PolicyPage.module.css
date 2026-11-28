@@ -214,11 +214,6 @@
   margin-inline: auto;
 }
 
-.page[data-policy="terms"] .heroLink:is(:hover, :focus-visible) {
-  border-color: var(--brand-purple);
-  background: var(--purple-tint);
-}
-
 .steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

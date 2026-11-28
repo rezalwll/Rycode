@@ -79,7 +79,7 @@
   --feature-accent: #e85d9e !important;
 }
 .home-colorful .rycode-services-source .feature-card:hover {
-  border-color: color-mix(in srgb, var(--feature-accent) 32%, var(--ui-line));
+  border-color: color-mix(in srgb, var(--brand-blue) 32%, var(--ui-line));
 }
 .home-colorful .rycode-services-source .capability-card-label > span:first-child {
   color: var(--feature-accent);

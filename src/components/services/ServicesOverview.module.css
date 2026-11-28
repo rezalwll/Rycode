@@ -632,7 +632,7 @@
   box-shadow: none;
 }
 .page .button::before {
-  background: var(--ui-purple, #c4b5fd);
+  background: var(--button-hover);
 }
 .page .button:is(:hover, :focus-visible) {
   color: var(--ui-ink, #303b48);
@@ -645,7 +645,7 @@
   background: var(--ui-surface, #fff);
 }
 .page a:focus-visible {
-  outline-color: var(--ui-purple, #c4b5fd);
+  outline-color: var(--brand-blue-ink);
 }
 .page .heroVisual::before,
 .page .row::before,

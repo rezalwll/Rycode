@@ -5,7 +5,6 @@
   --rescue-purple: light-dark(#674c9a, #cfb9fa);
   --rescue-line: light-dark(#dce5ee, #405064);
   --rescue-blue-tint: light-dark(#edf6fd, #253447);
-  --rescue-purple-tint: light-dark(#f3effb, #253447);
   width: 100%;
   background: var(--ui-surface, #fff);
   color: var(--rescue-ink);
@@ -53,7 +52,7 @@
 }
 
 .page a:focus-visible {
-  outline: 2px solid var(--rescue-purple);
+  outline: 2px solid var(--rescue-blue);
   outline-offset: 4px;
 }
 
@@ -299,13 +298,13 @@
 }
 
 :is(.primary, .urgentAction):is(:hover, :focus-visible) {
-  border-color: light-dark(#d7caee, #405064);
-  background: var(--rescue-purple-tint);
-  color: var(--rescue-purple);
+  border-color: var(--brand-blue);
+  background: var(--button-hover);
+  color: var(--rescue-blue);
 }
 
 :is(.back, .textLink):is(:hover, :focus-visible) {
-  color: var(--rescue-purple);
+  color: var(--rescue-blue);
 }
 
 .situations {

@@ -122,9 +122,9 @@
     color 200ms ease;
 }
 .rycode-public .rycode-source-header .rycode-language-link:hover {
-  border-color: #d2cbdc;
-  background: #f8f6fc;
-  color: var(--ui-ink, #303b48);
+  border-color: var(--brand-blue);
+  background: var(--button-hover);
+  color: var(--brand-blue-ink);
 }
 .rycode-source-header .rycode-theme-toggle {
   display: inline-flex;
@@ -153,8 +153,8 @@
     box-shadow 200ms ease;
 }
 .rycode-source-header .rycode-theme-option:hover {
-  color: #29252f;
-  background: #ebe8f0;
+  color: var(--brand-blue-ink);
+  background: var(--button-hover);
 }
 .rycode-source-header .rycode-theme-option[aria-pressed="true"] {
   color: #353039;

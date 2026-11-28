@@ -758,10 +758,14 @@
 .page.servicePage :is(h1, h2, .rich h2, .service, .aside) {
   color: var(--ui-ink, #1a1a1a);
 }
-.page :is(.rich a:not(.button), .aside a:hover, .mobileToc a:hover),
+.page .rich a:not(.button),
 .page.servicePage .service::after {
   color: var(--ui-ink, #1a1a1a);
   text-decoration-color: var(--ui-purple, #c4b5fd);
+}
+.page :is(.rich a:not(.button), .aside a, .mobileToc a):is(:hover, :focus-visible) {
+  color: var(--brand-blue-ink);
+  text-decoration-color: var(--brand-blue);
 }
 .page .rich li::marker,
 .page.servicePage .rich li::marker {
@@ -777,9 +781,9 @@
 }
 .page :is(.button:hover, .button:focus-visible, .card:hover .arrow),
 .page.servicePage :is(.primary:hover, .aside .button:hover) {
-  background: var(--ui-purple, #c4b5fd);
-  color: var(--brand-ink, #303b48);
-  border-color: var(--ui-purple, #c4b5fd);
+  background: var(--brand-blue-deep);
+  color: #fff;
+  border-color: var(--brand-blue-deep);
 }
 .page.servicePage .primary span {
   background: var(--ui-surface, #fff);
@@ -790,7 +794,7 @@
   border-color: var(--ui-line, #e7e7e7);
 }
 .page :focus-visible {
-  outline-color: var(--ui-purple, #c4b5fd);
+  outline-color: var(--brand-blue-ink);
 }
 
 .projectFacts {

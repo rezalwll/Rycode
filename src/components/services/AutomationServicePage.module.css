@@ -247,8 +247,8 @@
   box-shadow: 0 10px 24px rgb(52 152 219 / 20%);
 }
 .actions .primary:is(:hover, :focus-visible) {
-  background: light-dark(#194e73, var(--ui-purple));
-  border-color: light-dark(#194e73, var(--ui-purple));
+  background: var(--brand-blue-deep);
+  border-color: var(--brand-blue-deep);
   box-shadow: 0 12px 26px rgb(52 152 219 / 28%);
 }
 
@@ -424,7 +424,7 @@
   --service-accent: #5aa7a1;
 }
 .service:hover {
-  border-color: color-mix(in srgb, var(--service-accent) 45%, var(--rule));
+  border-color: color-mix(in srgb, var(--brand-blue) 45%, var(--rule));
   box-shadow: 0 20px 48px rgb(48 59 72 / 9%);
 }
 .service:target .spec {
@@ -802,9 +802,9 @@
     background-color 200ms ease;
 }
 .related li a:is(:hover, :focus-visible) {
-  border-color: var(--accent);
-  color: light-dark(#65509b, var(--ui-purple));
-  background: color-mix(in srgb, var(--accent) 8%, var(--ui-surface));
+  border-color: var(--brand-blue);
+  color: var(--brand-blue-ink);
+  background: var(--button-hover);
 }
 .motionReady [data-reveal] {
   opacity: 0;
